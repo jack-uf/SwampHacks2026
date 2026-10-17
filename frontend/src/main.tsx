@@ -265,6 +265,8 @@ function App() {
     [refresh, setRefresh] = useState<any>({});
   const [busy, setBusy] = useState(false),
     [clock, setClock] = useState(Date.now());
+  const [reportHazard, setReportHazard] = useState("all"),
+    [reportQueue, setReportQueue] = useState("all");
   const selectedRef = useRef(selected);
   selectedRef.current = selected;
   async function loadSites() {
@@ -361,8 +363,10 @@ function App() {
       setNotice(message);
       if (selected) await loadDetail(selected);
       await loadSites();
+      return true;
     } catch (e) {
       setError(String(e));
+      return false;
     } finally {
       setBusy(false);
     }
@@ -381,6 +385,13 @@ function App() {
     (s) => s.stale || !s.index || s.index.coverage < 1,
   ).length;
   const selectedSite = sites.find((s) => s.id === selected);
+  const visibleReports = (detail?.reports || []).filter(r => {
+    const provider = r.triage?.provider;
+    const categories = [...(r.triage?.manual_categories || [r.classification]), ...(provider?.categories || [])];
+    return (reportHazard === "all" || categories.includes(reportHazard)) &&
+      (reportQueue === "all" || r.status === "pending" &&
+        (reportQueue === "manual" ? provider?.status !== "classified" : provider?.review_queue === reportQueue));
+  });
   const remaining = (state: any) =>
     Math.max(
       0,
@@ -635,7 +646,7 @@ function App() {
                       sites={sites}
                       selected={selected}
                       onSelect={choose}
-                      reports={detail?.reports || []}
+                      reports={visibleReports}
                     />
                     <div className="map-caption">
                       <span className="status-dot" />
@@ -1106,8 +1117,25 @@ function App() {
                             Submit report
                           </button>
                         </div>
-                        {detail.reports.length ? (
-                          detail.reports.map((r) => (
+                        <div className="report-filters">
+                          <label className="field">Hazard — manual or Jev suggestion
+                            <select value={reportHazard} onChange={e => setReportHazard(e.target.value)}>
+                              <option value="all">All hazards</option>
+                              {CATEGORIES.map(c => <option key={c} value={c}>{hazardName(c)}</option>)}
+                            </select>
+                          </label>
+                          <label className="field">Pending review queue
+                            <select value={reportQueue} onChange={e => setReportQueue(e.target.value)}>
+                              <option value="all">All reports and statuses</option>
+                              <option value="urgent">Jev suggests urgent review</option>
+                              <option value="clarification">Jev requests clarification / uncertain</option>
+                              <option value="manual">Manual review — Jev unavailable</option>
+                            </select>
+                          </label>
+                        </div>
+                        <p className="body-note" aria-live="polite">{visibleReports.length} of {detail.reports.length} reports match. Filters also apply to report map pins; rejected reports have no pin. Model suggestions remain unverified.</p>
+                        {visibleReports.length ? (
+                          visibleReports.map((r) => (
                             <article className="report-card" key={r.id}>
                               {r.image && (
                                 <a
@@ -1205,7 +1233,7 @@ function App() {
                         ) : (
                           <div className="empty-report">
                             <MapPin size={22} />
-                            <p>No crew reports at this facility yet.</p>
+                            <p>{detail.reports.length ? "No reports match these filters." : "No crew reports at this facility yet."}</p>
                           </div>
                         )}
                       </div>
@@ -1646,7 +1674,7 @@ function Condition({
     </div>
   );
 }
-function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSave: (categories: string[]) => Promise<void>}) {
+function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSave: (categories: string[]) => Promise<boolean>}) {
   const [editing, setEditing] = useState(false);
   const [error, setError] = useState("");
   const provider = report.triage?.provider;
@@ -1656,7 +1684,8 @@ function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSav
     {provider?.status === "classified" ? <>
       <p>Jev suggestions ({provider.model}): {provider.categories.map(hazardName).join(", ") || "abstained"}. {provider.abstained && "Uncertain — human clarification required."}</p>
       <p>{provider.immediate_review === true ? "Suggests immediate supervisor review." : provider.immediate_review === null ? "Priority uncertain; supervisor review required." : "No immediate-priority suggestion; this does not clear work."} {provider.needs_clarification && "Clarify the report."}</p>
-      <details><summary>Unverified Jev probabilities and usage</summary><pre>{JSON.stringify({probabilities: provider.probabilities, uncertain: provider.uncertain, location_sufficient: provider.location_sufficient, usage: provider.usage},null,2)}</pre></details>
+      <p>Suggested inbox: {provider.routing.choice.replaceAll("_", " ")}. Review queue: {provider.review_queue}. Urgency: {provider.urgency.score.toFixed(2)} / 2 (0 routine follow-up, 1 prompt review, 2 immediate review of current exposure).</p>
+      <details><summary>Unverified Jev judgments and usage</summary><pre>{JSON.stringify({answers: provider.answers, uncertain: provider.uncertain, location_sufficient: provider.location_sufficient, usage: provider.usage},null,2)}</pre></details>
       <small>Provider probabilities and 0.3/0.7 cutoffs are unvalidated for this domain. Suggestions never verify or dismiss reports.</small>
     </> : <p className="body-note">{provider?.reason || "No AI enrichment requested."}</p>}
     <button className="text-button" type="button" onClick={() => setEditing(!editing)}>Correct classifications</button>
@@ -1664,7 +1693,7 @@ function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSav
       e.preventDefault(); const values = new FormData(e.currentTarget).getAll("category").map(String);
       if (!values.length) {setError("Select at least one classification."); return;}
       setError("");
-      await onSave(values); setEditing(false);
+      if (await onSave(values)) setEditing(false);
     }}>
       <fieldset className="hazard-options"><legend>Supervisor classifications — select at least one</legend>{CATEGORIES.map(c => <label key={c}><input name="category" type="checkbox" value={c} defaultChecked={categories.includes(c)} /> {hazardName(c)}</label>)}</fieldset>
       {error && <p role="alert" className="form-error">{error}</p>}

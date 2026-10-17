@@ -1,0 +1,14 @@
+{
+  "corpus_sha256": "164c790ed54df24d95d2c706f636cd779be09bcd35f5d8703038ba38041f5368",
+  "questions_sha256": "60897b3a8ae2b90e92c55a408d8a3b635e379fdbd1bb6ad3b52bb77c3b792344",
+  "model": "jev-1.13.0",
+  "scenarios": 10,
+  "data_kind": "author-labeled synthetic scenarios; not independently labeled field observations",
+  "acceptance": 0.7,
+  "rejection": 0.3,
+  "typed_confidence_review_below": 0.7,
+  "estimated_input_tokens_per_call": 5000,
+  "estimated_total_usd": 0.0021,
+  "maximum_calls": 10,
+  "automatic_retries": 0
+}

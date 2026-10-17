@@ -147,3 +147,26 @@ def test_multi_hazard_correction_provider_failure_retains_report(client,monkeypa
     with db() as c:
         assert c.execute('SELECT count(*) FROM report_triage').fetchone()[0]==1
     assert client.post(f"/api/sites/{s['id']}/reports",data={**data,'categories':'{}'},headers=AUTH).status_code==422
+
+
+def test_typed_suggestions_survive_correction_without_approving_or_mutating_text(client,monkeypatch):
+    from test_jev import payload
+    async def classify(text,*,consent):
+        assert consent is True
+        return main.jev.interpret(payload({'flood':.95,'unstable_terrain':.9,'immediate_review':.5}))
+    monkeypatch.setattr(main.jev,'classify',classify)
+    s=main.SITES[0]
+    text='SYNTHETIC UNIT TEST: Water and sinking ground at the fictional east gate.'
+    data=dict(classification='other',description=text,latitude=s['latitude'],longitude=s['longitude'],jev_consent='true')
+    response=client.post(f"/api/sites/{s['id']}/reports",data=data,headers=AUTH)
+    assert response.status_code==200,response.text
+    report=response.json();provider=report['triage']['provider']
+    assert provider['review_queue']=='clarification'
+    assert provider['routing']['type']=='choice' and provider['urgency']['type']=='score'
+    assert report['triage']['manual_categories']==['other'] and report['status']=='pending'
+    url='/api/reports/'+report['id']+'/triage'
+    assert client.patch(url,json={'categories':['flood','equipment_obstruction']},headers=AUTH).status_code==200
+    saved=client.get('/api/sites/'+s['id']).json()['reports'][0]
+    assert saved['description']==text and saved['status']=='pending'
+    assert saved['triage']['provider']==provider and saved['triage']['source']=='manual_correction'
+    assert saved['triage']['manual_categories']==['flood','equipment_obstruction']

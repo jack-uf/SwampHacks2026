@@ -2124,3 +2124,5 @@ td strong {
 .report-triage { margin-top: 10px; }
 .report-triage p { font-size: 12px; }
 .report-triage pre { max-height: 200px; overflow: auto; font-size: 11px; }
+.report-filters { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.report-filters .field { flex: 1 1 220px; min-width: 0; }

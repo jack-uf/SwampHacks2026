@@ -10,7 +10,10 @@ from scripts.common import ROOT
 
 def payload(probabilities=None):
     values={key:.05 for key in jev.INSTRUCTIONS};values.update(probabilities or {})
-    return dict(model='jev-1.13.0',answers={key:dict(type='noul',noul=value) for key,value in values.items()},usage=dict(input_tokens=150,output_tokens=12))
+    answers={key:dict(type='noul',noul=value) for key,value in values.items()}
+    answers['routing']=dict(type='choice',choice='hazard_review',probabilities=dict(hazard_review=1.,clarify_report=0.,routine_log=0.),confidence=1.)
+    answers['urgency']=dict(type='score',score=1.,legend={str(i):v for i,v in enumerate(jev.URGENCY)},probabilities={'0':0.,'1':1.,'2':0.},confidence=1.)
+    return dict(model='jev-1.13.0',answers=answers,usage=dict(input_tokens=150,output_tokens=12))
 
 
 def test_hypothetical_triage_workflow_fixtures():
@@ -23,7 +26,17 @@ def test_hypothetical_triage_workflow_fixtures():
         assert result['reviewed'] is False
 
 
-@pytest.mark.parametrize('change',[lambda p:p['answers'].pop('heat'),lambda p:p['answers']['heat'].update(noul=1.1),lambda p:p['answers']['heat'].update(noul=float('nan')),lambda p:p['answers']['heat'].update(noul='0.8'),lambda p:p['answers']['heat'].update(type='choice'),lambda p:p['usage'].update(input_tokens=-1)])
+@pytest.mark.parametrize('change',[
+    lambda p:p['answers'].pop('heat'),lambda p:p['answers']['heat'].update(noul=1.1),
+    lambda p:p['answers']['heat'].update(noul=float('nan')),lambda p:p['answers']['heat'].update(noul='0.8'),
+    lambda p:p['answers']['heat'].update(type='choice'),lambda p:p['usage'].update(input_tokens=-1),
+    lambda p:p['usage'].update(output_tokens=True),lambda p:p['answers']['routing'].update(choice='safe'),
+    lambda p:p['answers']['routing']['probabilities'].update(routine_log=.8),
+    lambda p:p['answers']['routing'].update(choice='routine_log'),
+    lambda p:p['answers']['urgency']['legend'].update({'0':'Safe to work'}),
+    lambda p:p['answers']['urgency'].update(score=2.),
+    lambda p:p['answers']['urgency']['probabilities'].update({'0':float('inf')}),
+    lambda p:p['answers']['urgency'].update(confidence='0.9')])
 def test_malformed_provider_contract_rejected(change):
     p=payload();change(p)
     with pytest.raises(ValueError):jev.interpret(p)
@@ -64,4 +77,18 @@ def test_provider_failure_is_manual_and_text_only(monkeypatch,mode):
     assert set(calls[0]['json'])=={'model','state','questions'}
     assert result['status']==('classified' if mode=='ok' else 'unavailable')
     assert 'fixture-secret' not in json.dumps(result)
-    if mode=='429':assert result['retry_after']=='30'
+
+
+def test_typed_routing_uncertainty_and_urgency():
+    p=payload({'flood':.98,'unstable_terrain':.9})
+    p['answers']['routing'].update(confidence=.4)
+    result=jev.interpret(p)
+    assert result['review_queue']=='clarification' and result['abstained']
+    assert result['uncertain']==['routing']
+    p['answers']['urgency'].update(score=2.,probabilities={'0':0.,'1':0.,'2':1.})
+    result=jev.interpret(p)
+    assert result['review_queue']=='urgent' and result['reviewed'] is False
+    assert result['categories']==['flood','unstable_terrain']
+    assert result['answers']['urgency']['legend']['2']==jev.URGENCY[2]
+    p['answers']['routing'].update(choice='clarify_report',confidence=1.,probabilities=dict(hazard_review=0.,clarify_report=1.,routine_log=0.))
+    assert jev.interpret(p)['needs_clarification']

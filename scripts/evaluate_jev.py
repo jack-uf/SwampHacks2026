@@ -1,0 +1,109 @@
+"""Opt-in paid evaluation on frozen, nonsensitive synthetic scenarios; never runs in CI."""
+import argparse
+import asyncio
+import hashlib
+import json
+import os
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+from dotenv import load_dotenv
+from backend import jev
+from scripts.common import ROOT
+
+CASES = ROOT/'tests/fixtures/jev-scenarios.json'
+PROTOCOL = ROOT/'docs/jev-evaluation-protocol.json'
+INPUT_PRICE_PER_MILLION = .042  # Official models page retrieved 2026-10-16; estimate, not an invoice.
+
+
+def digest(value):
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def plan():
+    cases=json.loads(CASES.read_text())
+    assert len({c['id'] for c in cases})==len(cases)==10
+    for c in cases:
+        assert set(c['categories'])<=set(jev.CATEGORIES) and len(c['categories'])==len(set(c['categories']))
+        assert c['routing'] in jev.ROUTES and c['urgency'] in [0,1,2]
+    request=jev.request_for('')
+    return cases,dict(corpus_sha256=digest(cases),questions_sha256=digest(request['questions']),model=request['model'],
+        scenarios=len(cases),data_kind='author-labeled synthetic scenarios; not independently labeled field observations',
+        acceptance=.7,rejection=.3,typed_confidence_review_below=.7,
+        estimated_input_tokens_per_call=5000,estimated_total_usd=len(cases)*5000*INPUT_PRICE_PER_MILLION/1e6,
+        maximum_calls=len(cases),automatic_retries=0)
+
+
+def metrics(rows):
+    successful=[r for r in rows if r['result']['status']=='classified']
+    counts={k:dict(tp=0,fp=0,fn=0) for k in jev.CATEGORIES}
+    disagreements=[]
+    for row in successful:
+        expected=set(row['expected']['categories']);predicted=set(row['result']['categories'])
+        for k in counts:
+            counts[k]['tp']+=int(k in expected & predicted)
+            counts[k]['fp']+=int(k in predicted-expected)
+            counts[k]['fn']+=int(k in expected-predicted)
+        if expected!=predicted or row['expected']['routing']!=row['result']['routing']['choice']:
+            disagreements.append(dict(id=row['id'],expected=sorted(expected),suggested=sorted(predicted),
+                expected_route=row['expected']['routing'],suggested_route=row['result']['routing']['choice']))
+    def ratios(c):
+        return dict(**c,precision=c['tp']/(c['tp']+c['fp']) if c['tp']+c['fp'] else None,
+                    recall=c['tp']/(c['tp']+c['fn']) if c['tp']+c['fn'] else None)
+    totals={key:sum(v[key] for v in counts.values()) for key in ['tp','fp','fn']}
+    per_class={k:ratios(v) for k,v in counts.items()}
+    def mean(values):return sum(values)/len(values) if values else None
+    return dict(attempted=len(rows),successful=len(successful),failed=len(rows)-len(successful),
+        response_coverage=len(successful)/len(rows) if rows else None,
+        micro=ratios(totals),per_class=per_class,
+        macro_precision=mean([v['precision'] for v in per_class.values() if v['precision'] is not None]),
+        macro_recall=mean([v['recall'] for v in per_class.values() if v['recall'] is not None]),
+        abstention_rate=mean([int(r['result']['abstained']) for r in successful]),
+        uncertain_rate=mean([int(bool(r['result']['uncertain'])) for r in successful]),
+        clarification_queue_rate=mean([int(r['result']['review_queue']=='clarification') for r in successful]),
+        routing_accuracy=mean([int(r['expected']['routing']==r['result']['routing']['choice']) for r in successful]),
+        urgency_mean_absolute_error=mean([abs(r['expected']['urgency']-r['result']['urgency']['score']) for r in successful]),
+        mean_latency_seconds=mean([r['latency_seconds'] for r in rows]),disagreements=disagreements,
+        note='Classification metrics use successful responses only; failures are separate. Abstentions retain any accepted labels and count normally. Null means undefined, not zero. Macro averages exclude undefined class ratios. Urgency labels are subjective author expectations, not safety ground truth.')
+
+
+async def evaluate(output):
+    cases,configuration=plan()
+    protocol=json.loads(PROTOCOL.read_text())
+    if configuration!=protocol:raise SystemExit('Corpus/questions/model differ from frozen protocol. Predeclare a new evaluation before spending.')
+    if os.getenv('PLANIT_JEV_ENABLED')!='true' or not os.getenv('TYPESAFE_API_KEY'):
+        raise SystemExit('Live evaluation requires PLANIT_JEV_ENABLED=true and server-side TYPESAFE_API_KEY; no inference attempted.')
+    output=Path(output)
+    if output.exists():raise SystemExit('Output already exists; choose a new path. Never silently overwrite paid evidence.')
+    output.parent.mkdir(parents=True,exist_ok=True)
+    rows=[]
+    with output.open('x') as journal:
+        journal.write(json.dumps(dict(kind='protocol',created_at=datetime.now(timezone.utc).isoformat(),configuration=configuration))+'\n');journal.flush()
+        for c in cases:
+            start=time.monotonic()
+            result=await jev.classify(c['text'],consent=True)
+            row=dict(id=c['id'],text=c['text'],expected={k:c[k] for k in ['categories','routing','urgency']},
+                     request_sha256=digest(jev.request_for(c['text'])),result=result,latency_seconds=round(time.monotonic()-start,4))
+            rows.append(row);journal.write(json.dumps(dict(kind='response',**row))+'\n');journal.flush()
+            # Stop on any external/contract failure; never spend ten calls on a broken setup.
+            if result['status']!='classified':break
+        usage={k:sum(r['result'].get('usage',{}).get(k,0) for r in rows) for k in ['input_tokens','output_tokens']}
+        summary=dict(kind='summary',metrics=metrics(rows),usage=usage,
+                     estimated_usd=usage['input_tokens']*INPUT_PRICE_PER_MILLION/1e6,
+                     billing_note='Estimate from returned input tokens and published price; failed-call usage may be unknown. Not an invoice.')
+        journal.write(json.dumps(summary)+'\n')
+    print(json.dumps(summary,indent=2))
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--live',action='store_true',help='Authorize up to ten one-shot paid text requests; default only prints the plan.')
+    parser.add_argument('--output',default=str(ROOT/'output/jev-evaluation.jsonl'))
+    args=parser.parse_args()
+    load_dotenv(ROOT/'.env',override=False)
+    if args.live:asyncio.run(evaluate(args.output))
+    else:print(json.dumps(plan()[1],indent=2))
+
+
+if __name__=='__main__':main()
