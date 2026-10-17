@@ -1,0 +1,594 @@
+{
+  "dataset_sha256": "9fc9c6ff0e18ba1fd95667a5e662b3696d9ffd0704f8cc7b35d4c24fed9e16fc",
+  "sources": {
+    "experiments/sprint-20261017-hydrology/research/hres-metadata.json": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/.zmetadata",
+      "status": 200,
+      "retrieved_utc": "2026-10-17T16:41:21.117485+00:00",
+      "bytes": 7094,
+      "sha256": "4597ba02bbea8b1cd5aaa6eb98190897455baa654085141bca378e33048ec1b6"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/0",
+      "sha256": "17fa90282e35978670dbd51dd46594ba6ac91af5519653e1dd13260772e65eb2",
+      "bytes": 8891,
+      "retrieved_utc": "2026-10-17T16:44:14.758796+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-1.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/1",
+      "sha256": "890ecdd54d0a4a863af1ed29471fa1980fa4b4add5bfcff1ccc7a729c455abb8",
+      "bytes": 8238,
+      "retrieved_utc": "2026-10-17T16:44:16.059322+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-2.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/2",
+      "sha256": "24d8b8a7ae55cf08895329c3470a1a2b02a0ec2eb6ccc863261cbf77da69cfe4",
+      "bytes": 6345,
+      "retrieved_utc": "2026-10-17T16:44:16.327575+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-3.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/3",
+      "sha256": "584955436db71816c825a9a6de985cf65761bbca8d11f4c877a9a92bfdc9697a",
+      "bytes": 9819,
+      "retrieved_utc": "2026-10-17T16:44:16.640486+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-4.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/4",
+      "sha256": "929a8bcbf37d09e89edb329bd47e1f44ac735c3cfeb7d7101a04f17445660a2b",
+      "bytes": 9801,
+      "retrieved_utc": "2026-10-17T16:44:16.915435+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-5.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/5",
+      "sha256": "332244550187557d20ebfb9390beced30a892c772e84d95d378a817441d2935f",
+      "bytes": 9671,
+      "retrieved_utc": "2026-10-17T16:44:17.300046+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-6.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/6",
+      "sha256": "fb709c03d69aac8d163b790a5f87d4ad6bb690085f0ab7f614b69092fa665b4e",
+      "bytes": 9449,
+      "retrieved_utc": "2026-10-17T16:44:17.526019+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-7.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/7",
+      "sha256": "69aed2564cba24344c3e9a36a60843c3574444fe8dba7b7f7a45e041536826dd",
+      "bytes": 9675,
+      "retrieved_utc": "2026-10-17T16:44:17.869236+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/date-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/date/0",
+      "sha256": "30cab1e110e267c2417fd4f60999a9a385a2a033574aaddfd8773e37fc671fd0",
+      "bytes": 600,
+      "retrieved_utc": "2026-10-17T16:44:18.158237+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/lead_time-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/lead_time/0",
+      "sha256": "6f0be590e2cb997d157685ba6e4f963323963469f758e275f9f22b516a9b04b7",
+      "bytes": 96,
+      "retrieved_utc": "2026-10-17T16:44:18.413314+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-25.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:19.842141+00:00",
+      "status": 200,
+      "bytes": 15712584,
+      "sha256": "c658dfa75294d224363c62479e241cfc9c4458d49ce2db96a7582c9b9e694492"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-26.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:20.967541+00:00",
+      "status": 200,
+      "bytes": 15718951,
+      "sha256": "628682e9bffef7ef9649b3e80f4f7709a5b8a3232b42aef354871ea980670006"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-27.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:22.149204+00:00",
+      "status": 200,
+      "bytes": 15731272,
+      "sha256": "c7595f0784628c46ddb42a9abf3a90f941fb95228ab157517772c97a3b04ba74"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-28.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:23.173809+00:00",
+      "status": 200,
+      "bytes": 14846996,
+      "sha256": "0624e51e23c8623b0bee60631f005ff60ccf54f3c4dabaa84623cc5ad52708cc"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-29.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:24.244344+00:00",
+      "status": 200,
+      "bytes": 14525769,
+      "sha256": "cff1cdef2cef969738620945c5541e5da8d5d102f8a7ea7273e1b380ba53c015"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-25.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:26.263252+00:00",
+      "status": 200,
+      "bytes": 12984871,
+      "sha256": "21308540795f1f9583ce8ad2a835f746f1c8fbdd66c22b4811665621f17ed375"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-26.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:27.380684+00:00",
+      "status": 200,
+      "bytes": 12974957,
+      "sha256": "d84bc5bab87273b9806ca9c295bc78bab8651d3ae80c838e9600723b976d7ea7"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-27.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:28.393354+00:00",
+      "status": 200,
+      "bytes": 13146979,
+      "sha256": "28126b4903385a8f682155235eeb9445cb49afd7fc823c92dc39eb7ad665310f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-28.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:29.685835+00:00",
+      "status": 200,
+      "bytes": 12917349,
+      "sha256": "317addf673a86fc268f1e28f168f1a5506ceee7ff5e3a5aec96ed640fed935a5"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-29.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:30.789155+00:00",
+      "status": 200,
+      "bytes": 12901462,
+      "sha256": "d3b3ea7f499a7122f8223ed3a35a5a09c4a731033658e53cc6c05f1a47f3729c"
+    }
+  },
+  "protocol_sha256": "a01d0411f1b148f83093f6b1716bfb5a47eca8554bb68e0674f76e53d8845985",
+  "coverage": [
+    {
+      "station": "02081500",
+      "original_rows": 278,
+      "retained_rows": 278
+    },
+    {
+      "station": "02082950",
+      "original_rows": 278,
+      "retained_rows": 278
+    },
+    {
+      "station": "02096846",
+      "original_rows": 1277,
+      "retained_rows": 1277
+    },
+    {
+      "station": "02111180",
+      "original_rows": 1408,
+      "retained_rows": 1408
+    },
+    {
+      "station": "02177000",
+      "original_rows": 1507,
+      "retained_rows": 1507
+    },
+    {
+      "station": "02212600",
+      "original_rows": 1602,
+      "retained_rows": 1602
+    },
+    {
+      "station": "02296500",
+      "original_rows": 1638,
+      "retained_rows": 1638
+    },
+    {
+      "station": "02314500",
+      "original_rows": 1805,
+      "retained_rows": 1805
+    },
+    {
+      "station": "02327100",
+      "original_rows": 1491,
+      "retained_rows": 1491
+    },
+    {
+      "station": "02361000",
+      "original_rows": 1663,
+      "retained_rows": 1663
+    },
+    {
+      "station": "02381600",
+      "original_rows": 1443,
+      "retained_rows": 1443
+    },
+    {
+      "station": "02430085",
+      "original_rows": 1508,
+      "retained_rows": 1508
+    },
+    {
+      "station": "02472000",
+      "original_rows": 1583,
+      "retained_rows": 1583
+    },
+    {
+      "station": "03010655",
+      "original_rows": 1518,
+      "retained_rows": 1518
+    },
+    {
+      "station": "03159540",
+      "original_rows": 1537,
+      "retained_rows": 1537
+    },
+    {
+      "station": "03161000",
+      "original_rows": 1342,
+      "retained_rows": 1342
+    },
+    {
+      "station": "03213700",
+      "original_rows": 1555,
+      "retained_rows": 1555
+    },
+    {
+      "station": "03237280",
+      "original_rows": 1347,
+      "retained_rows": 1347
+    },
+    {
+      "station": "03280700",
+      "original_rows": 1267,
+      "retained_rows": 1267
+    },
+    {
+      "station": "03439000",
+      "original_rows": 1469,
+      "retained_rows": 1469
+    },
+    {
+      "station": "05056000",
+      "original_rows": 175,
+      "retained_rows": 175
+    },
+    {
+      "station": "05057000",
+      "original_rows": 168,
+      "retained_rows": 168
+    },
+    {
+      "station": "05362000",
+      "original_rows": 926,
+      "retained_rows": 926
+    },
+    {
+      "station": "05393500",
+      "original_rows": 1021,
+      "retained_rows": 1021
+    },
+    {
+      "station": "05444000",
+      "original_rows": 1368,
+      "retained_rows": 1368
+    },
+    {
+      "station": "05487980",
+      "original_rows": 224,
+      "retained_rows": 224
+    },
+    {
+      "station": "05488200",
+      "original_rows": 246,
+      "retained_rows": 246
+    },
+    {
+      "station": "05591550",
+      "original_rows": 1488,
+      "retained_rows": 1488
+    },
+    {
+      "station": "06188000",
+      "original_rows": 1006,
+      "retained_rows": 1006
+    },
+    {
+      "station": "06311000",
+      "original_rows": 826,
+      "retained_rows": 826
+    },
+    {
+      "station": "06332515",
+      "original_rows": 534,
+      "retained_rows": 534
+    },
+    {
+      "station": "06339100",
+      "original_rows": 1166,
+      "retained_rows": 1166
+    },
+    {
+      "station": "06404000",
+      "original_rows": 1185,
+      "retained_rows": 1185
+    },
+    {
+      "station": "06601000",
+      "original_rows": 1068,
+      "retained_rows": 1068
+    },
+    {
+      "station": "06784000",
+      "original_rows": 242,
+      "retained_rows": 242
+    },
+    {
+      "station": "06847900",
+      "original_rows": 1033,
+      "retained_rows": 1033
+    },
+    {
+      "station": "06876700",
+      "original_rows": 1335,
+      "retained_rows": 1335
+    },
+    {
+      "station": "06879650",
+      "original_rows": 1631,
+      "retained_rows": 1631
+    },
+    {
+      "station": "06906800",
+      "original_rows": 1397,
+      "retained_rows": 1397
+    },
+    {
+      "station": "07083000",
+      "original_rows": 796,
+      "retained_rows": 796
+    },
+    {
+      "station": "07195800",
+      "original_rows": 1660,
+      "retained_rows": 1660
+    },
+    {
+      "station": "07208500",
+      "original_rows": 1152,
+      "retained_rows": 1152
+    },
+    {
+      "station": "07290650",
+      "original_rows": 760,
+      "retained_rows": 760
+    },
+    {
+      "station": "07299670",
+      "original_rows": 292,
+      "retained_rows": 292
+    },
+    {
+      "station": "07315200",
+      "original_rows": 311,
+      "retained_rows": 311
+    },
+    {
+      "station": "07335700",
+      "original_rows": 1423,
+      "retained_rows": 1423
+    },
+    {
+      "station": "07359610",
+      "original_rows": 1563,
+      "retained_rows": 1563
+    },
+    {
+      "station": "07375000",
+      "original_rows": 1078,
+      "retained_rows": 1078
+    },
+    {
+      "station": "07376000",
+      "original_rows": 1716,
+      "retained_rows": 1716
+    },
+    {
+      "station": "08023080",
+      "original_rows": 1674,
+      "retained_rows": 1674
+    },
+    {
+      "station": "08050800",
+      "original_rows": 1416,
+      "retained_rows": 1416
+    },
+    {
+      "station": "08070000",
+      "original_rows": 1805,
+      "retained_rows": 1805
+    },
+    {
+      "station": "08079600",
+      "original_rows": 1183,
+      "retained_rows": 1183
+    },
+    {
+      "station": "08150800",
+      "original_rows": 336,
+      "retained_rows": 336
+    },
+    {
+      "station": "08155200",
+      "original_rows": 351,
+      "retained_rows": 351
+    },
+    {
+      "station": "08164000",
+      "original_rows": 1920,
+      "retained_rows": 1920
+    },
+    {
+      "station": "08190000",
+      "original_rows": 1952,
+      "retained_rows": 1952
+    },
+    {
+      "station": "08267500",
+      "original_rows": 191,
+      "retained_rows": 191
+    },
+    {
+      "station": "08269000",
+      "original_rows": 163,
+      "retained_rows": 163
+    },
+    {
+      "station": "08377900",
+      "original_rows": 1002,
+      "retained_rows": 1002
+    },
+    {
+      "station": "09107000",
+      "original_rows": 1054,
+      "retained_rows": 1054
+    },
+    {
+      "station": "09312600",
+      "original_rows": 922,
+      "retained_rows": 922
+    },
+    {
+      "station": "09404450",
+      "original_rows": 1601,
+      "retained_rows": 1601
+    },
+    {
+      "station": "09430500",
+      "original_rows": 1517,
+      "retained_rows": 1517
+    },
+    {
+      "station": "09480000",
+      "original_rows": 1035,
+      "retained_rows": 1035
+    },
+    {
+      "station": "10023000",
+      "original_rows": 1007,
+      "retained_rows": 1007
+    },
+    {
+      "station": "10166430",
+      "original_rows": 1198,
+      "retained_rows": 1198
+    },
+    {
+      "station": "10244950",
+      "original_rows": 2014,
+      "retained_rows": 2014
+    },
+    {
+      "station": "10258000",
+      "original_rows": 1697,
+      "retained_rows": 1697
+    },
+    {
+      "station": "10263500",
+      "original_rows": 643,
+      "retained_rows": 643
+    },
+    {
+      "station": "10310500",
+      "original_rows": 1441,
+      "retained_rows": 1441
+    },
+    {
+      "station": "10316500",
+      "original_rows": 870,
+      "retained_rows": 870
+    },
+    {
+      "station": "10396000",
+      "original_rows": 1491,
+      "retained_rows": 1491
+    },
+    {
+      "station": "11098000",
+      "original_rows": 1871,
+      "retained_rows": 1871
+    },
+    {
+      "station": "11124500",
+      "original_rows": 1661,
+      "retained_rows": 1661
+    },
+    {
+      "station": "11162500",
+      "original_rows": 1799,
+      "retained_rows": 1799
+    },
+    {
+      "station": "11224500",
+      "original_rows": 1880,
+      "retained_rows": 1880
+    },
+    {
+      "station": "11230500",
+      "original_rows": 1552,
+      "retained_rows": 1552
+    },
+    {
+      "station": "11381500",
+      "original_rows": 344,
+      "retained_rows": 344
+    },
+    {
+      "station": "11383500",
+      "original_rows": 351,
+      "retained_rows": 351
+    },
+    {
+      "station": "11468500",
+      "original_rows": 1897,
+      "retained_rows": 1897
+    },
+    {
+      "station": "12358500",
+      "original_rows": 1603,
+      "retained_rows": 1603
+    },
+    {
+      "station": "12447390",
+      "original_rows": 1707,
+      "retained_rows": 1707
+    },
+    {
+      "station": "12488500",
+      "original_rows": 1635,
+      "retained_rows": 1635
+    },
+    {
+      "station": "13161500",
+      "original_rows": 1261,
+      "retained_rows": 1261
+    },
+    {
+      "station": "13310700",
+      "original_rows": 1240,
+      "retained_rows": 1240
+    },
+    {
+      "station": "14020000",
+      "original_rows": 1708,
+      "retained_rows": 1708
+    },
+    {
+      "station": "14137000",
+      "original_rows": 1656,
+      "retained_rows": 1656
+    },
+    {
+      "station": "14154500",
+      "original_rows": 1735,
+      "retained_rows": 1735
+    }
+  ],
+  "rows": 107689,
+  "gauges": 89,
+  "seconds": 13.667722166981548,
+  "peak_rss_bytes": 670777344
+}
