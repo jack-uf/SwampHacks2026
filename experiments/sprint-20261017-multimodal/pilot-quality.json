@@ -1,0 +1,254 @@
+{
+  "note": "Aggregated from the cached pilot judgments; the collection stopped after the quality gate failed.",
+  "statuses": {
+    "ok": 21,
+    "malformed": 17
+  },
+  "judgments": 21,
+  "dry_scene_water_fraction_below_1pct": {
+    "scenes": 19,
+    "min": null,
+    "water_extent_min": 0.17,
+    "water_extent_max": 0.96,
+    "claimed_extent_above_0_5": 8
+  },
+  "prompt_variant_probe": {
+    "instructions": "scale-aware rewrite",
+    "scene": "77S_S2C_10TDP_20261003_0_L2A",
+    "water_extent": 0.95,
+    "ground": "vegetated"
+  },
+  "table": [
+    {
+      "station": "77S",
+      "item": "S2A_10TDP_20261008_1_L2A",
+      "water_extent": 0.92,
+      "water_visible": 0.91,
+      "score_gap": null,
+      "ground_condition": "vegetated",
+      "ndwi_mean": -0.566,
+      "water_fraction": 0.0027,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "77S",
+      "item": "S2B_10TDP_20260908_0_L2A",
+      "water_extent": 0.93,
+      "water_visible": 0.85,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.487,
+      "water_fraction": 0.0022,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "77S",
+      "item": "S2B_10TDP_20260928_0_L2A",
+      "water_extent": 0.9,
+      "water_visible": 0.87,
+      "score_gap": null,
+      "ground_condition": "vegetated",
+      "ndwi_mean": -0.554,
+      "water_fraction": 0.0023,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "77S",
+      "item": "S2B_10TDP_20261011_0_L2A",
+      "water_extent": 0.92,
+      "water_visible": 0.89,
+      "score_gap": null,
+      "ground_condition": "vegetated",
+      "ndwi_mean": -0.554,
+      "water_fraction": 0.0027,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "77S",
+      "item": "S2C_10TDP_20260827_0_L2A",
+      "water_extent": 0.93,
+      "water_visible": 0.85,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.485,
+      "water_fraction": 0.0019,
+      "local_cloud": 0.012
+    },
+    {
+      "station": "77S",
+      "item": "S2C_10TDP_20261003_0_L2A",
+      "water_extent": 0.96,
+      "water_visible": 0.91,
+      "score_gap": null,
+      "ground_condition": "vegetated",
+      "ndwi_mean": -0.555,
+      "water_fraction": 0.0022,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2A_13SCU_20260726_1_L2A",
+      "water_extent": 0.25,
+      "water_visible": 0.26,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.193,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2A_13SCU_20260812_0_L2A",
+      "water_extent": 0.24,
+      "water_visible": 0.21,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.195,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2A_13SCU_20260815_1_L2A",
+      "water_extent": 0.28,
+      "water_visible": 0.21,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.197,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20260629_0_L2A",
+      "water_extent": 0.18,
+      "water_visible": 0.18,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.204,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20260716_0_L2A",
+      "water_extent": 0.28,
+      "water_visible": 0.22,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.189,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20260729_0_L2A",
+      "water_extent": 0.56,
+      "water_visible": 0.59,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.199,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20260805_1_L2A",
+      "water_extent": 0.26,
+      "water_visible": 0.24,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.195,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20260808_0_L2A",
+      "water_extent": 0.17,
+      "water_visible": 0.21,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.212,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20260907_0_L2A",
+      "water_extent": 0.69,
+      "water_visible": 0.69,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.19,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2B_13SCU_20261004_0_L2A",
+      "water_extent": 0.37,
+      "water_visible": 0.49,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.215,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2C_13SCU_20260701_0_L2A",
+      "water_extent": 0.24,
+      "water_visible": 0.19,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.203,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2C_13SCU_20260724_0_L2A",
+      "water_extent": 0.18,
+      "water_visible": 0.21,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.189,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ABQ",
+      "item": "S2C_13SCU_20260830_0_L2A",
+      "water_extent": 0.18,
+      "water_visible": 0.2,
+      "score_gap": null,
+      "ground_condition": "dry_bare",
+      "ndwi_mean": -0.19,
+      "water_fraction": 0.0,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ALB",
+      "item": "S2B_18TWN_20260822_0_L2A",
+      "water_extent": 1.02,
+      "water_visible": 0.94,
+      "score_gap": null,
+      "ground_condition": "vegetated",
+      "ndwi_mean": -0.58,
+      "water_fraction": 0.0173,
+      "local_cloud": 0.0
+    },
+    {
+      "station": "ALB",
+      "item": "S2C_18TWN_20260824_0_L2A",
+      "water_extent": 0.87,
+      "water_visible": 0.84,
+      "score_gap": null,
+      "ground_condition": "vegetated",
+      "ndwi_mean": -0.56,
+      "water_fraction": 0.0225,
+      "local_cloud": 0.069
+    }
+  ]
+}

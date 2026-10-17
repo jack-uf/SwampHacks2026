@@ -26,8 +26,7 @@ WINDOW = ('2026-07-01', '2026-10-14')
 FIT_END = '2026-08-31'
 GEO_TEST_START = '2026-09-01'
 WEATHER_XGBOOST = 'weather_xgboost'
-CANDIDATES = ('weather_xgboost', 'weather_sat_xgboost', 'weather_jev_xgboost',
-              'weather_sat_jev_xgboost', 'weather_sat_jev_tabpfn')
+CANDIDATES = ('weather_xgboost', 'weather_sat_xgboost', 'weather_sat_tabpfn')
 SAT_FEATURES = ['s2_days_since', 's2_scene_cloud', 's2_local_cloud', 's2_valid_fraction', 's2_ndvi_mean',
                 's2_ndvi_p10', 's2_ndvi_p90', 's2_ndwi_mean', 's2_ndwi_p10', 's2_ndwi_p90',
                 's2_water_fraction', 's2_vegetation_fraction', 's2_bare_fraction', 's2_missing']
@@ -42,7 +41,8 @@ def feature_sets():
                 weather_sat_xgboost=weather + SAT_FEATURES,
                 weather_jev_xgboost=weather + JEV_FEATURES,
                 weather_sat_jev_xgboost=weather + SAT_FEATURES + JEV_FEATURES,
-                weather_sat_jev_tabpfn=weather + SAT_FEATURES + JEV_FEATURES)
+                weather_sat_jev_tabpfn=weather + SAT_FEATURES + JEV_FEATURES,
+                weather_sat_tabpfn=weather + SAT_FEATURES)
 
 
 def dates_for(role):
@@ -63,7 +63,7 @@ def jev_evidence():
     return totals
 
 
-def build():
+def build(with_jev=True):
     """Render satellite windows and ask Jev once per scene; resume from cache."""
     (OUT / 'features/s2').mkdir(parents=True, exist_ok=True)
     (OUT / 'features/jev').mkdir(parents=True, exist_ok=True)
@@ -78,7 +78,7 @@ def build():
                 continue
             row = s2_pipeline.scene(sid, station['latitude'], station['longitude'], day)
             rows[day] = row
-            if row.get('item'):
+            if row.get('item') and with_jev:
                 jev_path = OUT / 'features/jev' / f"{sid}_{row['item']}.json"
                 if not jev_path.exists():
                     totals = jev_evidence()
@@ -259,6 +259,7 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['build', 'evidence', 'analyze'])
+    parser.add_argument('--skip-jev', action='store_true', help='render satellites only; Jev collection stopped after the quality gate failed')
     args = parser.parse_args()
-    dict(build=build, evidence=lambda: print(json.dumps(jev_evidence(), indent=2)), analyze=analyze)[args.command]()
+    dict(build=lambda: build(with_jev=not args.skip_jev), evidence=lambda: print(json.dumps(jev_evidence(), indent=2)), analyze=analyze)[args.command]()
 

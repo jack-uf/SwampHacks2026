@@ -84,14 +84,13 @@ def interpret(payload, requested_model):
         raise ValueError('Unexpected answer types')
     if extent.legend != {str(i): v for i, v in enumerate(LEGEND)} or set(extent.probabilities) != {str(i) for i in range(len(LEGEND))}:
         raise ValueError('Unexpected score legend')
-    if not math.isclose(extent.score, sum(int(k) * p for k, p in extent.probabilities.items()), abs_tol=.01):
-        raise ValueError('Inconsistent ordinal score')
+    score_gap = float(extent.score - sum(int(k) * p for k, p in extent.probabilities.items()))
     if set(ground.probabilities) != set(CHOICES) or ground.choice not in CHOICES:
         raise ValueError('Invalid choice answer')
     for answer in [extent, ground]:
         if not math.isclose(sum(answer.probabilities.values()), 1, abs_tol=.001):
             raise ValueError('Probabilities do not sum to one')
-    return dict(model=result.model, water_visible=water.noul, water_extent=extent.score,
+    return dict(model=result.model, water_visible=water.noul, water_extent=extent.score, score_gap=score_gap,
                 water_extent_probabilities=extent.probabilities, water_extent_confidence=extent.confidence,
                 ground_condition=ground.choice, ground_confidence=ground.confidence,
                 ground_probabilities=ground.probabilities, usage=result.usage)
@@ -117,7 +116,8 @@ def ask(image_path, model=None, timeout=120):
     try:
         result = interpret(response.json(), model)
     except (ValueError, ValidationError) as exc:
-        return dict(status='malformed', detail=str(exc)[:400], seconds=seconds, requested_model=model)
+        return dict(status='malformed', detail=str(exc)[:400], seconds=seconds, requested_model=model,
+                    raw=response.json())
     return dict(status='ok', seconds=seconds, requested_model=model, **result)
 
 

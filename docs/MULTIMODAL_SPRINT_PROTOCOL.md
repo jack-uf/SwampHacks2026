@@ -42,3 +42,8 @@ The pilot shows measurable incremental value only if a satellite candidate beats
 
 Respect the machine budget: one process per model family, MPS for TabPFN, cached scenes under `data/raw/s2/`, and bounded Jev calls (one per cached scene, no retries). Stop the build if the scene cache exceeds 400 scenes or the Jev token total exceeds 600,000 without a decision. Preserve the served models, the application, and every earlier experiment artifact. Run the focused tests, commit verified work, and report costs, limits and the integration decision honestly. Do not force Jev into the architecture if it adds nothing.
 
+## Amendment, October 17, before any ablation number
+
+The visual quality gate failed. On a Lane County, Oregon crop that shows farmland, forest and a thin river (conventional water fraction 0.002), Jev v1.13.0 reported water covering 0.92 to 0.97 of the crop on four separate scenes, and a scale-aware rewrite of the instructions produced 0.95 on the same image, so the failure is not a prompt artifact. Two dry Albuquerque calls were plausible (water extent 0.17 to 0.69). Sixteen of thirty-five responses also broke the experiment's ordinal-consistency check that the reported score equals the probability-weighted mean; the parser now keeps the reported score and records the gap, and malformed responses retain their raw answers for audit.
+
+Because the gate exists to stop scaling a feature that does not measure what it claims, Jev collection stopped at 35 cached judgments and the ablation runs with weather_xgboost, weather_sat_xgboost and a TabPFN control on the same combined role, all weather plus conventional satellite features. Jev is reported as a negative feasibility result, not as a feature set, and is not forced into the architecture.

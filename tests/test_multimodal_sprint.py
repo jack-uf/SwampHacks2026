@@ -30,7 +30,7 @@ def test_jev_image_interpret_accepts_the_recorded_shape():
 
 @pytest.mark.parametrize('mutate', [
     lambda payload: payload.update(model='jev-9.9.9'),
-    lambda payload: payload['answers']['water_extent'].update(score=1.5),
+    lambda payload: payload['answers']['water_extent'].update(score=2.5),
     lambda payload: payload['answers']['water_extent'].update(legend={'0': 'different'}),
     lambda payload: payload['answers']['ground_condition'].update(choice='flooded'),
     lambda payload: payload['answers']['ground_condition']['probabilities'].update(dry_bare=.5),
@@ -40,6 +40,13 @@ def test_jev_image_interpret_rejects_malformed_answers(mutate):
     mutate(payload)
     with pytest.raises(ValueError):
         jev_image.interpret(payload, 'jev-1.13.0')
+
+
+def test_jev_image_keeps_a_score_that_disagrees_with_its_probabilities():
+    payload = fake_jev_payload()
+    payload['answers']['water_extent']['score'] = .9          # probabilities imply 0.21
+    result = jev_image.interpret(payload, 'jev-1.13.0')
+    assert result['water_extent'] == .9 and round(result['score_gap'], 2) == .69
 
 
 def test_feature_sets_keep_the_weather_only_candidate_clean():
