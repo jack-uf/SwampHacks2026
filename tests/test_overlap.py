@@ -72,3 +72,10 @@ def test_mission_is_compared_against_public_plans_of_other_entities():
     matches = overlap.near_mission(projects, latitude=30.0, longitude=-82.05, start='2026-10-20T12:00:00+00:00', operator='Entity A')
     assert [m['project']['plant_id'] for m in matches] == ['2']
     assert matches[0]['months_apart'] == 1 and matches[0]['distance_miles'] < 8
+
+
+def test_regional_pairs_are_found_at_arctic_latitudes():
+    # At 70.2 N, 3.15 degrees of longitude are about 74 miles and here cross three grid-cell boundaries.
+    pairs = overlap.find_overlaps([project('1', 'A', 70.2, -148.90, '2027-03', state='AK', ba='AK'),
+                                   project('2', 'B', 70.2, -152.05, '2027-04', state='AK', ba='AK')])
+    assert len(pairs) == 1 and pairs[0]['kind'] == 'concurrent_in_region' and 73 < pairs[0]['distance_miles'] < 75

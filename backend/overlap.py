@@ -2,7 +2,7 @@
 import json
 from collections import defaultdict
 from functools import lru_cache
-from math import floor
+from math import ceil, cos, floor, radians
 from backend.domain import distance_miles, parse_time
 from scripts.common import ROOT
 
@@ -77,8 +77,10 @@ def find_overlaps(projects, utilities_only=False):
     pairs = []
     for i, a in enumerate(projects):
         row, col = floor(a['latitude']/cell), floor(a['longitude']/cell)
-        # Longitude cells shrink with latitude; two neighbours either side covers the continental US.
-        for key in [(row+dr, col+dc) for dr in (-1, 0, 1) for dc in (-2, -1, 0, 1, 2)]:
+        # A degree of longitude shrinks with latitude, so the column reach grows toward the poles.
+        poleward = min(89., abs(a['latitude'])+cell)
+        reach = ceil(REGION_MILES/(69*cos(radians(poleward)))/cell)
+        for key in [(row+dr, col+dc) for dr in (-1, 0, 1) for dc in range(-reach, reach+1)]:
             for j in grid.get(key, []):
                 b = projects[j]
                 if j <= i or a['entity_id'] == b['entity_id'] or a['plant_id'] == b['plant_id']:
