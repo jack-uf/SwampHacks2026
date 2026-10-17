@@ -69,7 +69,11 @@ The reasoning behind each design choice is in `docs/DECISIONS.md`.
 
 Behavior worth stating precisely:
 
-- A new JHA version is stored only when a hazard's rating or set of evidence IDs changes; forecast drift inside a rating band adds no version. Each version records its trigger and a diff. A decision goes stale when its hazard entry changes.
+- A new JHA version is stored only when a hazard's rating or set of evidence IDs changes; forecast drift inside a rating band adds no version. Each version records its trigger and a diff. A decision goes stale when its hazard entry changes. A decision must name the JHA version it was made on; if a newer version exists the API refuses it with HTTP 409.
+- Flood and wildfire lines come from live public feeds (`backend/missions.py`, `gauge_evidence` and `wildfire_evidence`): NWS river gauges within 10 miles via the NWPS map service, and active WFIGS wildfire incidents within 25 miles. Both rules are deterministic screening heuristics, not validated models. A missing, stale or cut-off feed is unavailable, never low. NASA FIRMS needs a key and is not used.
+- Every five minutes an alert watch reassesses each site with an open mission when its set of NWS alerts changes, so a mission JHA picks up a new or cancelled alert within about five minutes.
+- The facility watchlist ranks by the highest index score unknown inputs could reach (`score_max` in `backend/domain.py`), so missing data never sorts a site as safer.
+- Supervisor identity: with `PLANIT_SUPERVISOR_TOKENS` set, a personal token records its owner's name and the decision shows "personal token"; under the shared `PLANIT_ADMIN_TOKEN` the name is typed and shown as self-declared. Every supervisor mutation writes an append-only audit row (`GET /api/audit`). Tokens have no expiry or revocation.
 - Hazard Memory ranks records by geography .3, conditions .3, mission activity .2, season .1 and impact .1. It informs the supervisor and never changes a rating.
 - An overlap pair is two planned plants of different owners within 25 miles, or within 75 miles with planned operation within 6 months. Co-owners of one plant are excluded. "Possible affiliates" is a name heuristic; EIA does not publish parent companies.
 
@@ -83,7 +87,7 @@ Behavior worth stating precisely:
 
 Setup and run commands are in `README.md`. The backend runs without auto-reload, so restart it after backend changes or a frontend build. Supervisor actions need `PLANIT_ADMIN_TOKEN` entered under Supervisor access; read it from `.env` and keep it out of chat, screenshots and commits.
 
-- `.venv/bin/python -m pytest -q`: 88 passed. Before missions and overlaps, at `8cac1a6`, the suite had 57 tests.
+- `.venv/bin/python -m pytest -q`: 108 passed. Before the October 17 improvement round it had 88; before missions and overlaps, at `8cac1a6`, 57.
 - `npm --prefix frontend run build`: passes.
 
 ### Verified browser workflows
@@ -103,6 +107,8 @@ Run on 2026-10-16 between 23:39 and 23:48 EDT against a local server with live O
 
 Rejecting the report afterward produced v4 (back to Low), marked the decision stale and removed the report from Hazard Memory. No browser console errors; the server log showed only the expected 409. Both DEMO missions remain in `data/planit.sqlite`.
 
+These screenshots predate the river-gauge and wildfire lines, so a JHA on screen today has more lines than they show. A re-check on 2026-10-17 between 00:26 and 00:33 EDT ran against a copy of the database, with live feeds and a personal supervisor token. The Gavin mission moved to v6 on an environmental refresh, and its flood lines read Point Pleasant (POPW2) 6.4 miles away, observed and forecast no flooding. Grand Coulee's site panel listed the Kaiser Canyon fire, fully contained, as elevated. A decision on v6 recorded the token owner's name instead of the typed one; a decision sent for v5 got 409. Submitting and rejecting a fictional report wrote two audit rows without the report text.
+
 ### Jev before and after
 
 The v1 rule abstained whenever any answer was uncertain, including confident "no hazard" answers, so it abstained on 14 of 14 held-out responses. The v2 rule `hazard-decisive-v2` abstains only on an uncertain specific hazard, uncertain `other` with nothing accepted, or inbox confidence below 0.7. It abstained on 5 of 14; 7 of its 9 decisive answers matched the author labels and 2 were false positives (`resolved-water`, `hearsay-bear`). No review queue changed. Label metrics: micro precision .722, recall .867; routing 14 of 14.
@@ -111,7 +117,7 @@ Method: 16 new fictional cases, with corpus, model and rule hashes frozen in `do
 
 ### Sponsor integrations
 
-None of Gemini, Tiger Data, Auth0 or Vultr is integrated: no credentials for them exist in `.env` or the environment, so none could be shown end to end. Auth0 would add the most, since supervisor identity is currently a typed name behind a shared token (`docs/DECISIONS.md`). Name no sponsor prize for these.
+None of Gemini, Tiger Data, Auth0 or Vultr is integrated: no credentials for them exist in `.env` or the environment, so none could be shown end to end. Auth0 would add the most: supervisor identity is a typed name behind a shared token unless static personal tokens are configured (`docs/DECISIONS.md`). Name no sponsor prize for these.
 
 ### SwampHacks eligibility flags
 
