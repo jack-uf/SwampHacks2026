@@ -583,8 +583,10 @@ async def mission_detail(mission_id: str):
     jha = versions[-1]['payload']
     current = {e['hazard']: missions.entry_fingerprint(e) for e in jha['entries']}
     with db() as c:
-        decisions = [dict(r, stale=current.get(r['hazard']) != r['entry_fingerprint']) for r in
-                     c.execute('SELECT * FROM jha_decisions WHERE mission_id=? ORDER BY created_at DESC', (mission_id,))]
+        # Decisions from before identity was recorded have no identity row and were made under the shared token.
+        decisions = [dict(r, identity=r['identity'] or 'self-declared', stale=current.get(r['hazard']) != r['entry_fingerprint']) for r in
+                     c.execute('SELECT d.*, i.identity FROM jha_decisions d LEFT JOIN jha_decision_identity i ON i.decision_id=d.id '
+                               'WHERE d.mission_id=? ORDER BY d.created_at DESC', (mission_id,))]
         check = c.execute('SELECT checked_at, assessed_at, stale FROM jha_checks WHERE mission_id=?', (mission_id,)).fetchone()
     work_point = dict(site, latitude=mission['latitude'], longitude=mission['longitude'])
     noaa, crew = memory.site_records(site['id']), memory.crew_records(site_reports(site['id']))
@@ -632,7 +634,8 @@ def decide(mission_id: str, value: Decision, actor: dict = Depends(admin)):
                   rationale=value.rationale.strip(), supervisor=actor['name'] or value.supervisor.strip(),
                   entry_fingerprint=missions.entry_fingerprint(entry), created_at=now_utc().isoformat(), identity=actor['identity'])
     with db() as c:
-        c.execute('INSERT INTO jha_decisions VALUES (:id,:mission_id,:version,:hazard,:decision,:rating,:mitigation,:rationale,:supervisor,:entry_fingerprint,:created_at,:identity)', record)
+        c.execute('INSERT INTO jha_decisions VALUES (:id,:mission_id,:version,:hazard,:decision,:rating,:mitigation,:rationale,:supervisor,:entry_fingerprint,:created_at)', record)
+        c.execute('INSERT INTO jha_decision_identity VALUES (?,?)', (record['id'], record['identity']))
         audit(c, actor, 'decision.record', record['id'], typed_name=record['supervisor'], mission_id=mission_id, hazard=value.hazard,
               decision=value.decision, version=latest['version'])
     return record

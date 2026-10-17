@@ -90,6 +90,10 @@ def test_personal_tokens_set_the_recorded_supervisor_and_every_change_is_audited
     assert named['supervisor'] == 'A. Rivera' and named['identity'] == 'token'
     shared = client.post(f'/api/missions/{mid}/decisions', json=body, headers=AUTH).json()
     assert shared['supervisor'] == 'Somebody Else' and shared['identity'] == 'self-declared'
+    listed = client.get('/api/missions/'+mid).json()['decisions']
+    assert sorted((d['supervisor'], d['identity']) for d in listed) == [('A. Rivera', 'token'), ('Somebody Else', 'self-declared')]
+    with main.db() as c:
+        assert 'identity' not in {r['name'] for r in c.execute('PRAGMA table_info(jha_decisions)')}
     assert client.get('/api/audit').status_code == 401
     log = client.get('/api/audit', headers=AUTH).json()
     actions = [(e['action'], e['actor'], e['identity']) for e in reversed(log)]
