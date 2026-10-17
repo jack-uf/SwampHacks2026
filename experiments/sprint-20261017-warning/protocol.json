@@ -1,0 +1,28 @@
+{
+  "inputs": {
+    "docs/WARNING_RESEARCH_PROTOCOL.md": "29581f8d478f718052d80a78696eb00ad763ede1bf38caa44b51300a4721954c",
+    "experiments/sprint-20261017-warning/stations.json": "e997d4d944b7f496cc3ecf0ca4a8101f6d4ecf75e26cd0151a683764482d351d",
+    "experiments/sprint-20261017-warning/geography.json": "bf4428c2e0db9c5c37653cd2e3004d9f6af9606d62fd20674c8df554308b0f20",
+    "scripts/response_research.py": "9a29fe17f6e8ffd5e229e0c50d0e0a313c5d47736858b6bedf52ff69db798d94",
+    "scripts/response_network.py": "43a50e3fa6e6b3d672a2541441ac49eedbf05c09e36427f35b52b2b0dc2c2a1f",
+    "scripts/response_worker.py": "4130547de0daab33543768ee712f2e7468d75b475804174fc37acdeac600d47a",
+    "experiments/sprint-20261017-response/provenance.json": "d720422bbd9050eae91c63ae571cb1c20b4ddf7e25de6ffae4eeef5f295ceb9e",
+    "experiments/sprint-20261017-response/classic.selection.json": "11dea7bd2d8b337a7054ca9bcc1733c798ea4b0a28658df89972a059ad097cea",
+    "experiments/sprint-20261017-response/geography.json": "09114c98e32e9f03c57bfc6a496002d19a94bf85547ba7d0755b5351c272bee9",
+    "experiments/sprint-20261017-response/classic.audit.json": "03f4572e65dbe0ed1210a25c7bbb3e8dc1fd42f5c214e2cae06379f1db8d020d",
+    "experiments/sprint-20261017-response/neural.selection.json": "51ace33f70840c045c44d8d51415fe8a71b2ac3aee0c5314ac2c8b2b7dd68f98",
+    "experiments/sprint-20261017-response/neural.evaluation.json": "95129c8ed0d1764794299782ea3771902d65209257b2a411f1c6d0033d753b4c",
+    "experiments/sprint-20261017-response/stations.json": "296a31925275c3c319e33d3bbd34528fe27058bd26a0ccedefd42ae02c130a0e",
+    "experiments/sprint-20261017-response/classic.evaluation.json": "a39fc47f52a5a74eeb0a0db99f71615fb6bd2d330f82b756cffeba07242e61b7",
+    "experiments/sprint-20261017-response/selection.json": "9d61e0be032487436711f99ea6461f97767cb9f550a303416fb621b3fbfef8bd",
+    "experiments/sprint-20261017-response/protocol.json": "34ee2fe923e422d6c494f9b3864c741bd96e62a3d9c400b4c0e5f9e3b3c54538",
+    "experiments/sprint-20261017-response/evaluation.json": "bff732aa83b2ad3e2b5a1e7b603bddbb4a2ff982ba5449a659d9e1e0a0c2cb26",
+    "experiments/sprint-20261017-response/neural.audit.json": "93f413f5fe73bad352f43d8e34767715ded20d10087c7ebae098580cf725344f"
+  },
+  "uninspected_test": "Metadata only; no new flow records requested",
+  "seeds": [
+    42,
+    314,
+    2718
+  ]
+}

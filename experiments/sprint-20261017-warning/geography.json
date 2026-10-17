@@ -1,0 +1,53 @@
+{
+  "previous_stations": 183,
+  "candidates": 38,
+  "groups": [
+    "1408",
+    "0604",
+    "1507",
+    "1502",
+    "1029",
+    "1112",
+    "1711",
+    "1107",
+    "0504",
+    "1405",
+    "1008",
+    "0514",
+    "1404",
+    "0502",
+    "0706",
+    "1401",
+    "1207",
+    "1024"
+  ],
+  "exclusions": [
+    {
+      "station": "06468170",
+      "reason": "upstream polygon overlaps previous population"
+    },
+    {
+      "station": "06468250",
+      "reason": "upstream polygon overlaps previous population"
+    },
+    {
+      "station": "06903400",
+      "reason": "upstream polygon overlaps previous population"
+    },
+    {
+      "station": "05525500",
+      "reason": "upstream polygon overlaps previous population"
+    },
+    {
+      "station": "07148400",
+      "reason": "upstream polygon overlaps previous population"
+    },
+    {
+      "station": "07149000",
+      "reason": "upstream polygon overlaps previous population"
+    }
+  ],
+  "stations": 32,
+  "parent_geography_sha256": "09114c98e32e9f03c57bfc6a496002d19a94bf85547ba7d0755b5351c272bee9",
+  "note": "Metadata-only selection. Every accepted upstream polygon has zero positive-area intersection with prior gauges and earlier accepted HUC4 groups."
+}
