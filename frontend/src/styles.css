@@ -108,7 +108,7 @@ small {
   min-height: 100vh;
 }
 .sidebar {
-  width: 222px;
+  width: 240px;
   position: fixed;
   inset: 0 auto 0 0;
   z-index: 1000;
@@ -205,8 +205,8 @@ small {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 11px;
-  padding: 11px 12px;
+  gap: 10px;
+  padding: 11px 10px 11px 12px;
   color: #b4c2b6;
   font-size: 13.5px;
   text-align: left;
@@ -254,6 +254,12 @@ small {
   border-color: #465447;
   color: #a2b49b;
   font-size: 11px;
+  letter-spacing: 0.2px;
+  padding: 1px 5px;
+}
+.nav-item.active .tiny-tag {
+  border-color: #8fae74;
+  color: #1e3024;
 }
 .sidebar-bottom {
   margin-top: auto;
@@ -316,8 +322,8 @@ small {
   font-size: 13px;
 }
 .app-shell > main {
-  margin-left: 222px;
-  width: calc(100% - 222px);
+  margin-left: 240px;
+  width: calc(100% - 240px);
 }
 .topbar {
   height: 60px;
@@ -965,6 +971,9 @@ small {
   color: var(--text-2);
   font-size: 13px;
   line-height: 1.5;
+}
+.detail-safety svg {
+  flex-shrink: 0;
 }
 .detail-safety small {
   margin-left: auto;
@@ -1727,6 +1736,9 @@ td strong {
     width: 185px;
     padding: 30px 12px 0;
   }
+  .sidebar .tiny-tag {
+    display: none;
+  }
   .app-shell > main {
     margin-left: 185px;
     width: calc(100% - 185px);
@@ -2373,7 +2385,8 @@ p.overlap-note:not(.inline-note) { padding: 0; }
   .panel-header > div { flex: 1 1 240px; min-width: 0; }
   .mission-body { padding: 4px 14px 20px; }
   .overlap-pair { grid-template-columns: 1fr; }
-  .factor-bars > div, .overlap-card .factor-bars > div { grid-template-columns: 84px 52px 1fr; gap: 8px; }
+  .factor-bars > div, .overlap-card .factor-bars > div { grid-template-columns: minmax(0, 1fr) 72px; gap: 2px 10px; }
+  .factor-bars small { grid-column: 1 / -1; white-space: normal; margin-bottom: 4px; }
   .evidence-list li { flex-wrap: wrap; }
   .evidence-list li > .kind-badge { min-width: 0; }
   .decision-line { flex-direction: column; gap: 8px; }
