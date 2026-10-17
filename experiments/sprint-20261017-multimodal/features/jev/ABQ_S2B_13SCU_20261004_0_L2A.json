@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "seconds": 0.6,
+  "requested_model": "jev-1.13.0",
+  "model": "jev-1.13.0",
+  "water_visible": 0.49,
+  "water_extent": 0.37,
+  "water_extent_probabilities": {
+    "0": 0.64,
+    "1": 0.35,
+    "2": 0.01
+  },
+  "water_extent_confidence": 0.44,
+  "ground_condition": "dry_bare",
+  "ground_confidence": 1.0,
+  "ground_probabilities": {
+    "dry_bare": 1.0,
+    "vegetated": 0.0,
+    "water_dominant": 0.0,
+    "cloud_or_masked": 0.0
+  },
+  "usage": {
+    "input_tokens": 1465,
+    "output_tokens": 89
+  },
+  "station": "ABQ",
+  "item": "S2B_13SCU_20261004_0_L2A",
+  "day": "2026-10-06"
+}

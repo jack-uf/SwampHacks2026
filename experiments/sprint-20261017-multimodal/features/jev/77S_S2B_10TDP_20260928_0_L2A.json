@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "seconds": 0.5,
+  "requested_model": "jev-1.13.0",
+  "model": "jev-1.13.0",
+  "water_visible": 0.87,
+  "water_extent": 0.9,
+  "water_extent_probabilities": {
+    "0": 0.11,
+    "1": 0.88,
+    "2": 0.01
+  },
+  "water_extent_confidence": 0.82,
+  "ground_condition": "vegetated",
+  "ground_confidence": 0.85,
+  "ground_probabilities": {
+    "dry_bare": 0.11,
+    "vegetated": 0.89,
+    "water_dominant": 0.0,
+    "cloud_or_masked": 0.0
+  },
+  "usage": {
+    "input_tokens": 1465,
+    "output_tokens": 89
+  },
+  "station": "77S",
+  "item": "S2B_10TDP_20260928_0_L2A",
+  "day": "2026-09-30"
+}

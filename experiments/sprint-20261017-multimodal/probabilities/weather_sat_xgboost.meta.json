@@ -1,0 +1,11 @@
+{
+  "name": "weather_sat_xgboost",
+  "features": 30,
+  "rows": 927,
+  "fit_seconds": 0.7,
+  "train_rows": 927,
+  "test_rows": 660,
+  "geo_test_rows": 352,
+  "total_seconds": 0.7,
+  "checkpoint_sha256": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+}

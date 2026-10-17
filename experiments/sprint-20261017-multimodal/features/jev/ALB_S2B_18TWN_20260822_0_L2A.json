@@ -1,0 +1,29 @@
+{
+  "status": "ok",
+  "seconds": 0.8,
+  "requested_model": "jev-1.13.0",
+  "model": "jev-1.13.0",
+  "water_visible": 0.94,
+  "water_extent": 1.02,
+  "water_extent_probabilities": {
+    "0": 0.01,
+    "1": 0.96,
+    "2": 0.03
+  },
+  "water_extent_confidence": 0.94,
+  "ground_condition": "vegetated",
+  "ground_confidence": 0.97,
+  "ground_probabilities": {
+    "dry_bare": 0.02,
+    "vegetated": 0.98,
+    "water_dominant": 0.0,
+    "cloud_or_masked": 0.0
+  },
+  "usage": {
+    "input_tokens": 1465,
+    "output_tokens": 89
+  },
+  "station": "ALB",
+  "item": "S2B_18TWN_20260822_0_L2A",
+  "day": "2026-09-01"
+}

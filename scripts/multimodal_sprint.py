@@ -127,9 +127,14 @@ def analysis_table():
     fresh = pd.read_csv(TRANSFORMER / 'dataset-extension.csv.gz')
     weather = fresh[fresh.role.isin(['development', 'geographic_test'])
                     & fresh.target_date.between(*WINDOW)].copy()
+    # The frozen split puts geographic-test stations in the test slice only.
+    weather = weather[(weather.role.eq('development'))
+                      | (weather.role.eq('geographic_test') & (weather.target_date >= GEO_TEST_START))]
     table = weather.merge(satellite_rows(), on=['station', 'target_date', 'role'], how='left', validate='one_to_one')
     for column in SAT_FEATURES + JEV_FEATURES:
         table[column] = table[column].astype(float)
+    for column in ['s2_missing', 'jev_missing']:
+        table[column] = table[column].fillna(1.0)  # no cached satellite row means unknown, never zero
     if table.duplicated(['station', 'target_date']).any():
         raise ValueError('Duplicate station-day after the satellite join')
     return table
@@ -148,7 +153,17 @@ def prepare_frames(name, table):
         raise ValueError('Station roles cross the pilot split')
     features = feature_sets()[name]
     (features_dir / 'features.json').write_text(json.dumps(dict(features=features), indent=2) + '\n')
-    (features_dir / 'splits.json').write_text(json.dumps(dict(splits=['test', 'geo_test']), indent=2) + '\n')
+    (features_dir / 'splits.json').write_text(json.dumps(dict(splits=['train', 'test', 'geo_test']), indent=2) + '\n')
+    if name.endswith('_tabpfn'):
+        # TabPFN cannot consume missing values. The control keeps the missing indicator columns and
+        # median-fills the rest with fitting-slice statistics only; trees keep the raw NaNs.
+        train, test, geo = train.copy(), test.copy(), geo.copy()
+        # An all-missing column becomes a constant; the missing indicator still carries its signal.
+        medians = train[features].median().fillna(0.0)
+        for frame in [train, test, geo]:
+            frame[features] = frame[features].fillna(medians)
+        if any(frame[features].isna().any().any() for frame in [train, test, geo]):
+            raise ValueError('TabPFN control still has missing feature values')
     for label, frame in [('train', train), ('test', test), ('geo_test', geo)]:
         frame.to_csv(features_dir / f'{label}.csv', index=False)
     return dict(train=len(train), test=len(test), geo_test=len(geo),
@@ -241,7 +256,7 @@ def analyze():
             report['candidates'][name]['metrics'][f'{split}_matched'] = station_metrics(frame.exceedance, probability, threshold)
     failures = []
     best_satellite = None
-    for name in ['weather_sat_xgboost', 'weather_jev_xgboost', 'weather_sat_jev_xgboost', 'weather_sat_jev_tabpfn']:
+    for name in [candidate for candidate in CANDIDATES if candidate != baseline]:
         interval = report['candidates'][name].get('delta_vs_weather', {})
         gain = interval.get('delta_ap_95', [float('nan'), float('nan')])[0] > 0
         recall_ok = (report['candidates'][name]['metrics']['test_matched']['recall']

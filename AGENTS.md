@@ -87,7 +87,7 @@ Behavior worth stating precisely:
 
 Setup and run commands are in `README.md`. The backend runs without auto-reload, so restart it after backend changes or a frontend build. Supervisor actions need `PLANIT_ADMIN_TOKEN` entered under Supervisor access; read it from `.env` and keep it out of chat, screenshots and commits.
 
-- `.venv/bin/python -m pytest -q`: 140 passed. The measured wind-hazard experiment adds 13 of those and the transformer experiment 6 more; their artifacts stay in `experiments/sprint-20261017-wind/` and `experiments/sprint-20261017-transformer/`, they leave the served models untouched, and both retain the forecast threshold (`docs/WIND_SPRINT_RESULTS.md`, `docs/TRANSFORMER_SPRINT_RESULTS.md`). Before the October 17 improvement round the suite had 88; before missions and overlaps, at `8cac1a6`, 57.
+- `.venv/bin/python -m pytest -q`: 151 passed. The measured wind-hazard experiment adds 13 of those, the transformer experiment 6, and the multimodal pilot 11; their artifacts stay under `experiments/sprint-20261017-*`, they leave the served models untouched, and the wind and transformer sprints retain the forecast threshold (`docs/WIND_SPRINT_RESULTS.md`, `docs/TRANSFORMER_SPRINT_RESULTS.md`, `docs/MULTIMODAL_SPRINT_RESULTS.md`). Before the October 17 improvement round the suite had 88; before missions and overlaps, at `8cac1a6`, 57.
 - `npm --prefix frontend run build`: passes.
 
 ### Verified browser workflows

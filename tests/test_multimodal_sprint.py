@@ -77,6 +77,26 @@ def test_prepare_frames_refuses_cross_role_stations(tmp_path, monkeypatch):
         multimodal_sprint.prepare_frames('weather_xgboost', crossed)
 
 
+def test_tabpfn_control_fills_missing_only_for_the_control(tmp_path, monkeypatch):
+    monkeypatch.setattr(multimodal_sprint, 'OUT', tmp_path)
+    rows = []
+    for index, day in enumerate(['2026-08-01', '2026-08-02', '2026-09-15']):
+        row = dict(station='DEV', role='development', target_date=day, exceedance=index % 2)
+        row.update({feature: 1.0 for feature in multimodal_sprint.EXTENDED})
+        row.update({feature: (0.5 if index == 0 else np.nan) for feature in multimodal_sprint.SAT_FEATURES})
+        row['s2_missing'] = 0.0 if index == 0 else 1.0
+        rows.append(row)
+    table = pd.DataFrame(rows)
+    multimodal_sprint.prepare_frames('weather_sat_tabpfn', table)
+    filled = pd.read_csv(tmp_path / 'frames/weather_sat_tabpfn/train.csv')
+    assert not filled[multimodal_sprint.SAT_FEATURES].isna().any().any()
+    assert filled['s2_ndvi_mean'].tolist() == [0.5, 0.5]
+    assert filled['s2_missing'].tolist() == [0.0, 1.0]
+    multimodal_sprint.prepare_frames('weather_xgboost', table)
+    raw = pd.read_csv(tmp_path / 'frames/weather_xgboost/train.csv')
+    assert raw['s2_missing'].tolist() == [0.0, 1.0]
+
+
 def test_matched_threshold_tracks_the_baseline_budget():
     y = np.array([1, 1] + [0] * 8)
     scores = np.array([.9, .8, .7, .6, .5, .4, .3, .2, .1, .05])
