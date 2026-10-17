@@ -28,13 +28,17 @@ def audit(family):
         geography = json.loads((OUT / 'geography.json').read_text())
         polygons = {}
         for sid, checksum in geography['boundary_hashes'].items():
-            path = OUT / 'basins' / f'{sid}.upstream-4dp.json'
+            path = OUT / 'basins' / f'{sid}.gauge-basin.json'
             assert digest(path) == checksum
             polygons[sid] = shape(json.loads(path.read_text())['features'][0]['geometry'])
             assert polygons[sid].is_valid and polygons[sid].area > 0
-            assert digest(OUT / 'basins' / f'{sid}.location-4dp.json') == geography['location_hashes'][sid]
+            assert digest(OUT / 'basins' / f'{sid}.gauge-location.json') == geography['location_hashes'][sid]
+        previous_ids = {s['station'] for study in ['hydrology', 'onset']
+                        for s in json.loads((ROOT / f'experiments/sprint-20261017-{study}/stations.json').read_text())}
         for sid in test.station.unique():
             for other, polygon in polygons.items():
+                if other not in previous_ids and other not in registry:
+                    continue
                 if other in registry and registry[other]['role'] == 'fresh_test' and registry[other]['huc'][:4] == registry[sid]['huc'][:4]:
                     continue
                 assert polygons[sid].intersection(polygon).area == 0, (sid, other)

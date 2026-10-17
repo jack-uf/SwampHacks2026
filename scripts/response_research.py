@@ -79,20 +79,31 @@ def prepare():
     # Two deterministic metadata candidates per HUC4, before any outcome request.
     candidates = [s for h in sorted({s['huc'][:4] for s in candidates})
                   for s in sorted([s for s in candidates if s['huc'][:4] == h], key=lambda s: s['station'])[:2]]
+    mapping_exclusions = []
+    candidate_count = len(candidates)
     def basin(s):
         sid = s['station']
-        location_path = OUT / 'basins' / f'{sid}.location-4dp.json'
-        location = json.loads(fetch(location_path,
-            f"https://api.water.usgs.gov/nldi/linked-data/hydrolocation?coords=POINT({s['longitude']:.4f}%20{s['latitude']:.4f})"))
-        matched = [f for f in location['features'] if f['properties']['source'] == 'indexed']
-        if len(matched) != 1:
+        location_path = OUT / 'basins' / f'{sid}.gauge-location.json'
+        # NLDI has no indexed record for 04127918; this explicit coordinate match was verified before outcome access.
+        url = ('https://api.water.usgs.gov/nldi/linked-data/hydrolocation?coords=POINT(-84.59783%2046.18585)'
+               if sid == '04127918' else f'https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-{sid}')
+        location = json.loads(fetch(location_path, url))
+        matched = [f for f in location['features'] if f['properties']['source'] ==
+                   ('indexed' if sid == '04127918' else 'nwissite')]
+        if len(matched) != 1 or (sid != '04127918' and matched[0]['properties']['identifier'] != 'USGS-' + sid):
             raise ValueError('Ambiguous flowline mapping: ' + sid)
         feature = matched[0]; x, y = feature['geometry']['coordinates']
         distance_km = 111.2 * np.hypot((x - s['longitude']) * np.cos(np.deg2rad(y)), y - s['latitude'])
-        if distance_km > 1 or not feature['properties']['reachcode'].startswith(s['huc'][:4]):
-            raise ValueError('Flowline does not match gauge geography: ' + sid)
+        if distance_km > 1 or (sid == '04127918' and not feature['properties']['reachcode'].startswith(s['huc'][:4])):
+            if sid in previous:
+                raise ValueError('Prior gauge mapping cannot be verified: ' + sid)
+            mapping_exclusions.append(dict(station=sid, reason='indexed location disagrees with station metadata',
+                distance_km=float(distance_km), location_sha256=digest(location_path)))
+            return sid, None
         comid = feature['properties']['comid']
-        path = OUT / 'basins' / f'{sid}.upstream-4dp.json'
+        if sid == '04127918' and int(comid) != 12206226:
+            raise ValueError('Unexpected verified coordinate mapping')
+        path = OUT / 'basins' / f'{sid}.gauge-basin.json'
         raw = fetch(path, f'https://api.water.usgs.gov/nldi/linked-data/comid/{comid}/basin?simplified=true')
         data = json.loads(raw)
         if len(data['features']) != 1:
@@ -101,12 +112,14 @@ def prepare():
         if geometry.is_empty or not geometry.is_valid or geometry.area <= 0:
             raise ValueError('Invalid upstream basin: ' + sid)
         return sid, geometry
-    with ThreadPoolExecutor(max_workers=2) as pool:
+    with ThreadPoolExecutor(max_workers=6) as pool:
         geometries = dict(pool.map(basin, list(previous.values()) + candidates))
+    candidates = [s for s in candidates if geometries[s['station']] is not None]
+    geometries = {sid: g for sid, g in geometries.items() if g is not None}
     occupied = [geometries[sid] for sid in previous]
     rank = lambda h: hashlib.sha256(('response-20261017-' + h).encode()).hexdigest()
     groups = sorted({s['huc'][:4] for s in candidates}, key=rank)
-    selected, excluded, accepted_groups = [], [], []
+    selected, excluded, accepted_groups = [], sorted(mapping_exclusions, key=lambda s: s['station']), []
     for h in groups:
         group = []
         for s in [s for s in candidates if s['huc'][:4] == h]:
@@ -128,9 +141,14 @@ def prepare():
         raise ValueError('Insufficient disjoint groups')
     development = [s for s in json.loads((onset / 'stations.json').read_text()) if s['role'] != 'fresh_test']
     write_json(OUT / 'stations.json', development + selected)
-    write_json(OUT / 'geography.json', dict(previous_stations=len(previous), candidate_stations=len(candidates),
+    write_json(OUT / 'geography.json', dict(previous_stations=len(previous), candidate_stations=candidate_count,
         selected_groups=accepted_groups, exclusions=excluded,
-        new_stations=selected, location_hashes={sid: digest(OUT / 'basins' / f'{sid}.location-4dp.json') for sid in geometries}, boundary_hashes={sid: digest(OUT / 'basins' / f'{sid}.upstream-4dp.json') for sid in geometries},
+        huc_disagreements=[dict(station=s['station'], metadata_huc4=s['huc'][:4],
+            reach_huc4=json.loads((OUT / 'basins' / f"{s['station']}.gauge-location.json").read_text())['features'][0]['properties']['reachcode'][:4])
+            for s in list(previous.values()) + candidates
+            if not json.loads((OUT / 'basins' / f"{s['station']}.gauge-location.json").read_text())['features'][0]['properties']['reachcode'].startswith(s['huc'][:4])],
+        new_stations=selected, location_requests={sid: json.loads((OUT / 'basins' / f'{sid}.gauge-location.json.request.json').read_text()) for sid in geometries},
+        location_hashes={sid: digest(OUT / 'basins' / f'{sid}.gauge-location.json') for sid in geometries}, boundary_hashes={sid: digest(OUT / 'basins' / f'{sid}.gauge-basin.json') for sid in geometries},
         note='No positive-area intersection with previous populations or earlier selected HUC4 groups; simplified NLDI boundaries.'))
     print('Reserved', len(selected), 'new stations in', len(accepted_groups), 'disjoint groups', flush=True)
 

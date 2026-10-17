@@ -1,0 +1,31 @@
+{
+  "inputs": {
+    "docs/RESPONSE_RESEARCH_PROTOCOL.md": "af44a1cf096e01c52e30aca3ce1aef8d8e37368983bc57a9706f390947d71cf5",
+    "experiments/sprint-20261017-response/stations.json": "296a31925275c3c319e33d3bbd34528fe27058bd26a0ccedefd42ae02c130a0e",
+    "experiments/sprint-20261017-response/geography.json": "09114c98e32e9f03c57bfc6a496002d19a94bf85547ba7d0755b5351c272bee9",
+    "scripts/onset_research.py": "0f37363576d7f60bfca8e2d0f78df1ba80355031cdbbde110c92b02b74dbd6e6",
+    "scripts/onset_worker.py": "5125d5affdffc89ea09155fc1e31cd4539ba42c95c5a8baed99366aa72f858bc",
+    "experiments/sprint-20261017-hydrology/audit.json": "9c7a54ec743a8b6547423b7ca901d66dae2023d6ee51ab740003333548c23e55",
+    "experiments/sprint-20261017-hydrology/baseline-evaluation.json": "b0c8f70a47db77570ba597e3c192d6088334ea18065b94cc902c030f3412cc0f",
+    "experiments/sprint-20261017-hydrology/baseline-selection.json": "19f0eab9f6a9e7ecf2b3ed625ddf5a77fec383c39aa7adc5bd6b7085bfe1dfa6",
+    "experiments/sprint-20261017-hydrology/lightgbm-evaluation.json": "182f3bf40937d8ec9ad42a073b19b3976b2a4229331abf439aa6034fb87f2688",
+    "experiments/sprint-20261017-hydrology/lightgbm-selection.json": "7875a7d919fa526aee594e8fa6234cc9c5ca290da9d73e6db642520aa124b0c2",
+    "experiments/sprint-20261017-hydrology/logistic-evaluation.json": "1482659914ce1d7d05957b470b0c51c368606365d06a820191d94df0f33987de",
+    "experiments/sprint-20261017-hydrology/logistic-selection.json": "878758006d7427751c51fae42211b836b13d82d7db05ba5be931c8975af41ce0",
+    "experiments/sprint-20261017-hydrology/protocol.json": "7580342c46f168db022c511b18cc59ef86322cb26b9d52d168e288e013e00dbf",
+    "experiments/sprint-20261017-hydrology/provenance.json": "a728d4fe6a4bc4bfd028c60d1bbd5d652eb400aaa45147d676bdcd55d43794cd",
+    "experiments/sprint-20261017-hydrology/selection.json": "fe6eff5506477aae756ee82d330612eb15ce9e818f2ea5d624d744c444dc3ace",
+    "experiments/sprint-20261017-hydrology/stations.json": "4e26161a56015acde317f7dd5a8a1ad42a3630b1356860638c3e67ec0981f6d4",
+    "experiments/sprint-20261017-hydrology/uncertainty.json": "5fd85abad92dd7791a2e7f22c6ceb47a862bc25869eea94452e1684530ca68df",
+    "experiments/sprint-20261017-hydrology/xgboost-evaluation.json": "caafa7c9a9ff1a8c04a4dccc7876c9af3dff8f1301394d2f3a6fec40a54aa672",
+    "experiments/sprint-20261017-hydrology/xgboost-selection.json": "4b60dcf33df98763989141826a1c86e3e02a41258aa0e678f28eee8753b6843a",
+    "experiments/sprint-20261017-onset/audit.json": "b8a991f2c111938fbb3a092d26737f8c896bd8f574a4fcbe4cc616d5277f3b1a",
+    "experiments/sprint-20261017-onset/evaluation.json": "a44ca9a2ce3058c209d6eddc183b9492e69b957cd1c122baf4e8338cc93da20a",
+    "experiments/sprint-20261017-onset/protocol.json": "f81180e92b9718b63cf92d9f7dfb4a1f054da1653803a18c6476ab24f4989a7a",
+    "experiments/sprint-20261017-onset/provenance.json": "66176e408aa380607c742cda25d072eae92c86eb07a6b322606dca0f315bbc4f",
+    "experiments/sprint-20261017-onset/selection.json": "69bf8db5c4fbffcd49a72f104002139e0cbe443ed3d4e414416cb0b896db033d",
+    "experiments/sprint-20261017-onset/stations.json": "eeebc09bdabf71fad4ef1aefe71c07a34f60886d56f3f045b191569c17e7e9a3"
+  },
+  "seed": 42,
+  "uninspected_test": "No new flow records requested or final outcomes inspected before geographic and protocol freeze"
+}
