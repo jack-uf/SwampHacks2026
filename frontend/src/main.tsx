@@ -553,18 +553,18 @@ function App() {
               </div>
               <h1>
                 {view === "overview"
-                  ? "A clearer view of the field."
+                  ? "Operations overview"
                   : view === "model"
-                    ? "Evidence before confidence."
+                    ? "Model evaluation"
                     : view === "missions"
-                      ? "Plan the work. Cite the hazards."
+                      ? "Missions and job hazard analysis"
                       : view === "overlaps"
-                        ? "Build once, not twice."
-                        : "Tomorrow, prepared."}
+                        ? "Plan overlaps"
+                        : "Safety briefings"}
               </h1>
               <p>
                 {view === "overview"
-                  ? "Monitor environmental exposure. Prioritize your crews. Plan with context."
+                  ? "Environmental screening for each monitored EIA power plant. Select a site for its conditions, alerts and crew reports."
                   : view === "model"
                     ? "Real historical outcomes, measured performance, and visible limitations."
                     : view === "missions"
@@ -726,7 +726,7 @@ function App() {
                   <div className="panel-header">
                     <div>
                       <h2>Facility watchlist</h2>
-                      <p>Ranked by latest available screening index</p>
+                      <p>Ranked by the highest score unknown inputs could reach</p>
                     </div>
                     <ArrowDown size={17} />
                   </div>
@@ -800,10 +800,10 @@ function App() {
                       <MapPin size={24} />
                     </div>
                     <div>
-                      <h3>Every site has a story. Start with one.</h3>
+                      <h3>Select a facility</h3>
                       <p>
-                        Select a facility to inspect forecast conditions, risk
-                        contributions, alerts, and crew reports.
+                        Pick a map marker or a watchlist row to see forecast
+                        conditions, index contributions, alerts and crew reports.
                       </p>
                     </div>
                     <ArrowRight size={22} />
@@ -815,8 +815,8 @@ function App() {
                       <span>·</span> FEMA
                     </div>
                     <p>
-                      Source timestamps and availability travel with every
-                      assessment.
+                      Each assessment shows its source timestamps and which
+                      feeds were unavailable.
                     </p>
                   </div>
                 </div>
@@ -948,7 +948,7 @@ function App() {
                           </h3>
                           {detail.alerts.items === null ? (
                             <div className="inline-note warning">
-                              NWS feed unavailable — advisory status is unknown.
+                              NWS feed unavailable. Advisory status is unknown.
                             </div>
                           ) : detail.alerts.items.length ? (
                             detail.alerts.items.map((a: any) => (
@@ -1178,7 +1178,7 @@ function App() {
                           </button>
                         </div>
                         <div className="report-filters">
-                          <label className="field">Hazard — manual or Jev suggestion
+                          <label className="field">Hazard label or Jev suggestion
                             <select value={reportHazard} onChange={e => setReportHazard(e.target.value)}>
                               <option value="all">All hazards</option>
                               {CATEGORIES.map(c => <option key={c} value={c}>{hazardName(c)}</option>)}
@@ -1189,7 +1189,7 @@ function App() {
                               <option value="all">All reports and statuses</option>
                               <option value="urgent">Jev suggests urgent review</option>
                               <option value="clarification">Jev requests clarification / uncertain</option>
-                              <option value="manual">Manual review — Jev unavailable</option>
+                              <option value="manual">Manual review, Jev unavailable</option>
                             </select>
                           </label>
                         </div>
@@ -1339,7 +1339,7 @@ function App() {
                 </div>
                 <div>
                   <span className="eyebrow">THE NEXT-DAY BRIEF</span>
-                  <h2>One site. One local day. A clearer plan.</h2>
+                  <h2>Next-day briefing for one facility</h2>
                   <p>
                     The scheduler creates a persistent briefing after 18:00
                     local time. It catches up after restart while the
@@ -1456,7 +1456,7 @@ function App() {
               <div className="section-title">
                 <div>
                   <span className="eyebrow">REPRODUCIBLE BENCHMARK</span>
-                  <h2>Trained on history. Tested on later days.</h2>
+                  <h2>Trained on past days, tested on later ones</h2>
                   <p>
                     NOAA county-event labels · archived GFS forecasts ·
                     chronological held-out evaluation
@@ -1551,7 +1551,7 @@ function App() {
                       Final results are mixed: the original flood estimator was retained. The selected storm model did not improve ranking on the same ten original counties in 2026, and missed all three independent geographic-test events. Lower false-alert rates also sacrifice recall. Geographic validation contains only one flood and three storm positives.
                     </p>
                     <details>
-                      <summary>Storm regression investigation — unchanged saved models</summary>
+                      <summary>Storm regression investigation, saved models unchanged</summary>
                       <p>Matched average precision fell from 0.150 to 0.130. The paired calendar-week interval for the change is −0.091 to +0.029, so an improvement is not demonstrated. Recall fell from 81.3% to 66.7% as false alerts fell from 40.55 to 19.45 per 100 county-days. Changing the warning threshold cannot repair ranking.</p>
                       <p>The three missed geographic positives are county-days in Los Angeles (February 16 and 18, 2026) and Emery County, Utah (May 13, 2026), representing two NOAA episodes. Both counties lie west of all selected-model fitting coordinates. Geographic validation had just three positive days in one county; geographic transfer and selection stability remain uncertain.</p>
                       <p>Positive-slope calibration preserves the saved rankings; the selected model also overpredicts the matched event rate. Training geography, seasons, features and estimator changed together, so these diagnostics cannot isolate a cause. The predeclared selection and county restrictions remain intact; these known tests cannot independently validate future changes.</p>
@@ -1613,7 +1613,7 @@ function App() {
           <footer className="page-footer">
             <span>
               <Shield size={13} />
-              Built for informed supervisor review.
+              Decision support for supervisor review.
             </span>
             <span>
               PlanIT Control <span className="footer-divider">/</span>{" "}
@@ -1763,7 +1763,7 @@ function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSav
   return <div className="report-triage">
     <small>Classification source: {report.triage?.source || "manual"}. Human review status: {report.status}.</small>
     {provider?.status === "classified" ? <>
-      <p>Jev suggestions ({provider.model}): {provider.categories.map(hazardName).join(", ") || (provider.abstained ? "abstained" : "no hazard identified")}. {provider.abstained && (provider.abstention ? `Abstained on hazard labels: ${provider.abstention.reasons.join("; ").replaceAll("_", " ")}.` : "Uncertain — human clarification required.")} {provider.abstention?.possible_other && "A further unlisted hazard is possible."}</p>
+      <p>Jev suggestions ({provider.model}): {provider.categories.map(hazardName).join(", ") || (provider.abstained ? "abstained" : "no hazard identified")}. {provider.abstained && (provider.abstention ? `Abstained on hazard labels: ${provider.abstention.reasons.join("; ").replaceAll("_", " ")}.` : "Uncertain. Needs human clarification.")} {provider.abstention?.possible_other && "A further unlisted hazard is possible."}</p>
       <p>{provider.immediate_review === true ? "Suggests immediate supervisor review." : provider.immediate_review === null ? "Priority uncertain; supervisor review required." : "No immediate-priority suggestion; this does not clear work."} {provider.needs_clarification && "Clarify the report."}</p>
       <p>Suggested inbox: {provider.routing.choice.replaceAll("_", " ")}. Review queue: {provider.review_queue}. Urgency: {provider.urgency.score.toFixed(2)} / 2 (0 routine follow-up, 1 prompt review, 2 immediate review of current exposure).</p>
       <details><summary>Unverified Jev judgments and usage</summary><pre>{JSON.stringify({answers: provider.answers, uncertain: provider.uncertain, location_sufficient: provider.location_sufficient, usage: provider.usage},null,2)}</pre></details>
@@ -1776,7 +1776,7 @@ function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSav
       setError("");
       if (await onSave(values)) setEditing(false);
     }}>
-      <fieldset className="hazard-options"><legend>Supervisor classifications — select at least one</legend>{CATEGORIES.map(c => <label key={c}><input name="category" type="checkbox" value={c} defaultChecked={categories.includes(c)} /> {hazardName(c)}</label>)}</fieldset>
+      <fieldset className="hazard-options"><legend>Supervisor classifications. Select at least one.</legend>{CATEGORIES.map(c => <label key={c}><input name="category" type="checkbox" value={c} defaultChecked={categories.includes(c)} /> {hazardName(c)}</label>)}</fieldset>
       {error && <p role="alert" className="form-error">{error}</p>}
       <button disabled={busy} className="button secondary">Save classifications</button>
     </form>}
