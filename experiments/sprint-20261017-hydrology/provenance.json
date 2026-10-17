@@ -1,0 +1,1824 @@
+{
+  "dataset_sha256": "c6a22894980646bcba5033fc8721168a4da6780f1306728daba700e10b9dcf46",
+  "protocol_sha256": "7580342c46f168db022c511b18cc59ef86322cb26b9d52d168e288e013e00dbf",
+  "sources": [
+    {
+      "path": "sources/01013500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01013500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:31.633447+00:00",
+      "status": 200,
+      "bytes": 291723,
+      "sha256": "2ba4b7910ab11a83f5e67110810c9219821ad91aa73a0e84204a94660928fda6"
+    },
+    {
+      "path": "sources/01022500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01022500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:31.639693+00:00",
+      "status": 200,
+      "bytes": 287894,
+      "sha256": "d34f2c1b9848247c6d26ccbb8bcf66b3b2d58e33e9419363d4edb5ce470c7db9"
+    },
+    {
+      "path": "sources/01047000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01047000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:32.402327+00:00",
+      "status": 200,
+      "bytes": 290689,
+      "sha256": "c3b1bde667048d4a101cd943d37425dd7f45ea0e16afa03e7ef615ae6985f31d"
+    },
+    {
+      "path": "sources/01078000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01078000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:32.401116+00:00",
+      "status": 200,
+      "bytes": 288857,
+      "sha256": "c631b151f8a7bac7ac1927d092448d273e6db4bebaf6f069d103fddf7e5d250b"
+    },
+    {
+      "path": "sources/01134500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01134500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:32.951892+00:00",
+      "status": 200,
+      "bytes": 291730,
+      "sha256": "c82dcb002db21522e60dc155a86619de353bf7ee4ac75ee043ee4cb1d9e45f6f"
+    },
+    {
+      "path": "sources/01333000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01333000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:32.934762+00:00",
+      "status": 200,
+      "bytes": 290963,
+      "sha256": "b6a250981c4c4d76a133a23a7319e215707597a2553c16f5dd703c8ea215c034"
+    },
+    {
+      "path": "sources/01411300.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01411300&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:33.434104+00:00",
+      "status": 200,
+      "bytes": 272016,
+      "sha256": "10254f02dfa280fdb3123950a5375cc4b1c091be889510eea6e0faeb889a72e9"
+    },
+    {
+      "path": "sources/01485500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01485500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:33.433976+00:00",
+      "status": 200,
+      "bytes": 289995,
+      "sha256": "657faa0a6b214a3b4a744962ccc341e4cf84755fc9564143a852d7b208e9f753"
+    },
+    {
+      "path": "sources/01594950.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01594950&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:33.943353+00:00",
+      "status": 200,
+      "bytes": 242683,
+      "sha256": "54c2f7207a1fbbe79eb0ab9c6bc8a4e099fbf0f595c8a2354c8e0f7c8af12f82"
+    },
+    {
+      "path": "sources/02096846.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02096846&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:34.090007+00:00",
+      "status": 200,
+      "bytes": 292070,
+      "sha256": "73f05126671ffb1a88368c762e6c97f41706968d95f3019329614eda049f5aeb"
+    },
+    {
+      "path": "sources/02111180.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02111180&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:34.546330+00:00",
+      "status": 200,
+      "bytes": 288287,
+      "sha256": "9ddb06df2049ef43a1e0f19f5f27ea33d5ced0f1e301d7afe04d497e0e780923"
+    },
+    {
+      "path": "sources/02177000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02177000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:34.679346+00:00",
+      "status": 200,
+      "bytes": 283776,
+      "sha256": "9aa81f2f672d58b3844a3c96ff8f18f7062d95b83f97b0067c2c549002b6b9f7"
+    },
+    {
+      "path": "sources/02212600.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02212600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.015704+00:00",
+      "status": 200,
+      "bytes": 290726,
+      "sha256": "f9d6b583011b58c9d10b0c4d4d2cdc8dfc95862a31c95def9fa870860ac28378"
+    },
+    {
+      "path": "sources/02296500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02296500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.146067+00:00",
+      "status": 200,
+      "bytes": 288311,
+      "sha256": "1debe0e05922329b7041d43606a217627da0d753c87463b06e6088e5101c86de"
+    },
+    {
+      "path": "sources/02314500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02314500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.490034+00:00",
+      "status": 200,
+      "bytes": 287427,
+      "sha256": "34402b0cfc892ed235f0c0abb765cd4353434fdb656fa4676f48e7c9da6aae62"
+    },
+    {
+      "path": "sources/02327100.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02327100&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.590921+00:00",
+      "status": 200,
+      "bytes": 288801,
+      "sha256": "2d33e11dfb5d9ec3431cbe9a131c40224f687f61968f78b751da66efa6fb40ea"
+    },
+    {
+      "path": "sources/02342933.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02342933&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.870205+00:00",
+      "status": 200,
+      "bytes": 138711,
+      "sha256": "f002d0f7095ed0dc5bb89df476f1f02743d21ce032ee071ed0e1108443c6cd60"
+    },
+    {
+      "path": "sources/02361000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02361000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.995174+00:00",
+      "status": 200,
+      "bytes": 284760,
+      "sha256": "c0a61553c13371fade6f6ff83555302c091a77056c27f7bb344f139d34192acb"
+    },
+    {
+      "path": "sources/02381600.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02381600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.343125+00:00",
+      "status": 200,
+      "bytes": 291593,
+      "sha256": "9b75e97bd88002b37cfc245520c6ea18ad0dedb74b46404804627f3c58e538e6"
+    },
+    {
+      "path": "sources/02430085.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02430085&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.441207+00:00",
+      "status": 200,
+      "bytes": 291567,
+      "sha256": "c102a30cd251876571f01439d34f137399885234dbfdb7d9f24dcee1df91a6b1"
+    },
+    {
+      "path": "sources/02472000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02472000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.830586+00:00",
+      "status": 200,
+      "bytes": 284986,
+      "sha256": "72f878e18357ad27f77cb231fc17e5f3a981e51e1955a88c3f1f72b27cbe1b81"
+    },
+    {
+      "path": "sources/03010655.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03010655&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.881991+00:00",
+      "status": 200,
+      "bytes": 288723,
+      "sha256": "65c1120fed06dc060857f76ae6ea8e68e6b4ab4f8255c3899f097c600af3579d"
+    },
+    {
+      "path": "sources/03159540.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03159540&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.276815+00:00",
+      "status": 200,
+      "bytes": 289399,
+      "sha256": "351392c274e587147219a80b4435ee2b3e39d6237b9c9f7a706d81763002c88c"
+    },
+    {
+      "path": "sources/03161000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03161000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.326544+00:00",
+      "status": 200,
+      "bytes": 283347,
+      "sha256": "afc545b9edb8883367b5d3e5c49e5b690fb3ab944db8be23cda93b812337dad2"
+    },
+    {
+      "path": "sources/03213700.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03213700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.715282+00:00",
+      "status": 200,
+      "bytes": 285708,
+      "sha256": "6a5a308e93095a299038ef111341897e15a0fdf98b58803f16369e63d04a9c3c"
+    },
+    {
+      "path": "sources/03237280.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03237280&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.833338+00:00",
+      "status": 200,
+      "bytes": 293937,
+      "sha256": "ac6289ef2eaf1f967cee8d0745a6e3992fcb8c3d4bb252b2bf4f1beba886efec"
+    },
+    {
+      "path": "sources/03280700.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03280700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.135723+00:00",
+      "status": 200,
+      "bytes": 291858,
+      "sha256": "1ca5f871ac0403e6d2257417612c964c9a7681a262b31a3035a1edf95a1da28f"
+    },
+    {
+      "path": "sources/03338780.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03338780&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.180141+00:00",
+      "status": 200,
+      "bytes": 173684,
+      "sha256": "d73c7afe9ca4c16c3498000474b2466985cdfa7ad1422f0dcc94af63bc8972b2"
+    },
+    {
+      "path": "sources/03439000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03439000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.630075+00:00",
+      "status": 200,
+      "bytes": 283850,
+      "sha256": "a930b1f0766ad9009084b0c6fb6f7c5dc8ea8e6aa7df610412956bc444191dfd"
+    },
+    {
+      "path": "sources/04015330.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04015330&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.632939+00:00",
+      "status": 200,
+      "bytes": 296260,
+      "sha256": "8f87dae3fcce5cbe04d795a0b99f1d6e2bf72903536f4f02f14d08d05d0cc86b"
+    },
+    {
+      "path": "sources/04040500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04040500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:39.072757+00:00",
+      "status": 200,
+      "bytes": 292617,
+      "sha256": "eef57af5b326dd7ad67bcb406ff5128630b1ad06c1f949677488cd63858f5db2"
+    },
+    {
+      "path": "sources/04105700.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04105700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:39.111281+00:00",
+      "status": 200,
+      "bytes": 291447,
+      "sha256": "757e207b1f7157bcf300834ad292199c72ebefa8df510de0bd22f7fe3f0e6f4f"
+    },
+    {
+      "path": "sources/04127918.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04127918&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:39.398520+00:00",
+      "status": 200,
+      "bytes": 147496,
+      "sha256": "4aeb4b47feda4157c26f2fafab22549967797e5af1f21b1a777bbac3251e1165"
+    },
+    {
+      "path": "sources/04161580.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04161580&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:39.443258+00:00",
+      "status": 200,
+      "bytes": 167224,
+      "sha256": "f340621b70c3856ce72104e28c0f953cf651fb9a24dedf282ab435ea72090ad3"
+    },
+    {
+      "path": "sources/04185000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04185000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:39.894779+00:00",
+      "status": 200,
+      "bytes": 288870,
+      "sha256": "1c2baec23f8be527fdbd20956fdcae1f1feae09988996e2cdb862ab3434ec1ad"
+    },
+    {
+      "path": "sources/04256000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04256000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:39.908302+00:00",
+      "status": 200,
+      "bytes": 288890,
+      "sha256": "5d01f0df1dc17baf34fbaee8baf3be5fb4e12c64fbc76dcdced2bb401ca10945"
+    },
+    {
+      "path": "sources/05120500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05120500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.379127+00:00",
+      "status": 200,
+      "bytes": 300801,
+      "sha256": "ea14faa667b53d55c00f6a70f018a1ddfa769969dcfeb1f64b91f824aa805e2a"
+    },
+    {
+      "path": "sources/05362000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05362000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.379159+00:00",
+      "status": 200,
+      "bytes": 291498,
+      "sha256": "5be4a03a02151ff8106b6a2eb4590db039ec51aafd7c99c31aad3a05dc8718aa"
+    },
+    {
+      "path": "sources/05393500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05393500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.844838+00:00",
+      "status": 200,
+      "bytes": 295339,
+      "sha256": "fd693130c14b474d049f1f476ca292b3c1e6917e4dafc613d610290b03738c33"
+    },
+    {
+      "path": "sources/05444000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05444000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.787869+00:00",
+      "status": 200,
+      "bytes": 289329,
+      "sha256": "a8e632a3826ca4ccc90057dc65385fc946c300fc593180a39ab1e25cd2247a90"
+    },
+    {
+      "path": "sources/05591550.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05591550&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.267300+00:00",
+      "status": 200,
+      "bytes": 291860,
+      "sha256": "051f6d145e330e4b3be33664e6b7faeeb74e78dc4a6beb107ebfd77922b4ef81"
+    },
+    {
+      "path": "sources/06188000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06188000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.314527+00:00",
+      "status": 200,
+      "bytes": 291285,
+      "sha256": "4f6e10d9f7b93d0b387fb2a9fbdd6d6217cc47be5e09019f47f5983f2437b46f"
+    },
+    {
+      "path": "sources/06311000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06311000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.672132+00:00",
+      "status": 200,
+      "bytes": 247343,
+      "sha256": "bfa9b418ff7a0c0fcebc246d2f9d7ac9db1264a8fcd461ff3d086bd787ac2f1e"
+    },
+    {
+      "path": "sources/06332515.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06332515&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.794936+00:00",
+      "status": 200,
+      "bytes": 299489,
+      "sha256": "02266541a51f6a703b789257f176b19e289e4ff375a596b85282e6cc5ff50f9c"
+    },
+    {
+      "path": "sources/06339100.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06339100&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.164909+00:00",
+      "status": 200,
+      "bytes": 296581,
+      "sha256": "8daeae3152df3b38787ac06873a4d61120682bc6b54c155213a6218d4032d642"
+    },
+    {
+      "path": "sources/06404000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06404000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.234714+00:00",
+      "status": 200,
+      "bytes": 295027,
+      "sha256": "469ad451e17f89e4a06998ba22f094d46c2144469512312aeb090179bd87db6a"
+    },
+    {
+      "path": "sources/06601000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06601000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.569677+00:00",
+      "status": 200,
+      "bytes": 293558,
+      "sha256": "e091c164f3c3fdd33b5a829c59fb3b6b82d7f42028239c55ada0e6a2ed370903"
+    },
+    {
+      "path": "sources/06746095.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06746095&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.704629+00:00",
+      "status": 200,
+      "bytes": 289896,
+      "sha256": "434157aba710d5d05c883538ae57f9c36aa2d827ee9328185896c569aaaa77cb"
+    },
+    {
+      "path": "sources/06847900.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06847900&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.010060+00:00",
+      "status": 200,
+      "bytes": 292862,
+      "sha256": "b46a233ae7383ad1b5cd56d4c8a62e46313dfddc146809331092b2266d638aef"
+    },
+    {
+      "path": "sources/06876700.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06876700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.166118+00:00",
+      "status": 200,
+      "bytes": 291524,
+      "sha256": "e792904cf379da6310d4e45e2cc5cb7470f7c9ba725b21d59b195d829c4565af"
+    },
+    {
+      "path": "sources/06879650.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06879650&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.468615+00:00",
+      "status": 200,
+      "bytes": 291484,
+      "sha256": "bf165d3ccbdbb04baa7512830d743173d9c05edbf0ffdf1a08b494ac79a708e5"
+    },
+    {
+      "path": "sources/06906800.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06906800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.633841+00:00",
+      "status": 200,
+      "bytes": 288633,
+      "sha256": "ae3311e52bb69c8a5ffa2f3c27f5e131a07e5f2759f498f7998a9226ee2115f2"
+    },
+    {
+      "path": "sources/07056000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07056000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.910627+00:00",
+      "status": 200,
+      "bytes": 294243,
+      "sha256": "ee9223da642d4f1a43cb0bd1ba1256189f71a1ad3fd3a8264de6a18d1ef60c4a"
+    },
+    {
+      "path": "sources/07083000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07083000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.054980+00:00",
+      "status": 200,
+      "bytes": 298833,
+      "sha256": "314106ba259fb407035171591813e530fc002d96af5c58c2087c3dab33616159"
+    },
+    {
+      "path": "sources/07195800.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07195800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.376199+00:00",
+      "status": 200,
+      "bytes": 291180,
+      "sha256": "19184e11075fde51129fd2246b5e0c00e235d6c31f863291a1272365bc5bffab"
+    },
+    {
+      "path": "sources/07208500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07208500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.506563+00:00",
+      "status": 200,
+      "bytes": 295571,
+      "sha256": "dc0240d1d834c1850e6ad1b1e4b82d5133abd62acaf2c2e2cf2638ccd4109406"
+    },
+    {
+      "path": "sources/07290650.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07290650&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.767447+00:00",
+      "status": 200,
+      "bytes": 180385,
+      "sha256": "a9f39ceb9a2da710e9f8fb1dc6ba1d86c9645feb2dcca8d5e0183df5a87b2509"
+    },
+    {
+      "path": "sources/07335700.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07335700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.939546+00:00",
+      "status": 200,
+      "bytes": 289604,
+      "sha256": "950efa837a8fe4144d4be09d6ad119d97e0c2d8a34c629ebd027a49fb28fb306"
+    },
+    {
+      "path": "sources/07359610.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07359610&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.232714+00:00",
+      "status": 200,
+      "bytes": 286319,
+      "sha256": "139915877e6af6b8b2b6e54a19c2c1bcf49832ba0137054cfe1a36017aa01aa4"
+    },
+    {
+      "path": "sources/07375000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07375000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.368305+00:00",
+      "status": 200,
+      "bytes": 269948,
+      "sha256": "e89addaeabd9c46e0afe163da262cdc531a9c915d9d869abf30d619f33829cd1"
+    },
+    {
+      "path": "sources/07376000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07376000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.674358+00:00",
+      "status": 200,
+      "bytes": 284461,
+      "sha256": "fef8771496164b72404dcd9be7373b5fbd98dd3ec73394061aa03bd4f69d05dd"
+    },
+    {
+      "path": "sources/08023080.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08023080&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.799499+00:00",
+      "status": 200,
+      "bytes": 290425,
+      "sha256": "5b4ecdf69dc580dcbab4beb484971cff7f0cbb1f2409f591df4ad4ab1ff35a31"
+    },
+    {
+      "path": "sources/08050800.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08050800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.085678+00:00",
+      "status": 200,
+      "bytes": 290938,
+      "sha256": "de08665550975b97d2ce02d7836e37ddb306efbe76fb6b327084069e5ffdef34"
+    },
+    {
+      "path": "sources/08070000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08070000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.208036+00:00",
+      "status": 200,
+      "bytes": 289052,
+      "sha256": "81383f43ff8e0ad8146daf9d3b8748e0557591f36200b1130626fae7d62b9b21"
+    },
+    {
+      "path": "sources/08079600.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08079600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.523873+00:00",
+      "status": 200,
+      "bytes": 292827,
+      "sha256": "06af2623bd8c74633a916afc050ce7237a89ca733b3b92292968e19486b29e30"
+    },
+    {
+      "path": "sources/08164000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08164000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.636586+00:00",
+      "status": 200,
+      "bytes": 289317,
+      "sha256": "b8ad6ea84fd05beeb6c6024926f5913cca3cc36b353c2e905da719a397361cd0"
+    },
+    {
+      "path": "sources/08190000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08190000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.940908+00:00",
+      "status": 200,
+      "bytes": 288335,
+      "sha256": "b476ad01ab5409c9813c221cb91b665bbd4120cc2c4894ab9dcd5691d2395bab"
+    },
+    {
+      "path": "sources/08377900.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08377900&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.083992+00:00",
+      "status": 200,
+      "bytes": 296389,
+      "sha256": "1a29b50294a3609cb43bf2532cea88f1a538a5c5c7e9962192e17a9456b11f07"
+    },
+    {
+      "path": "sources/09107000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09107000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.380568+00:00",
+      "status": 200,
+      "bytes": 295331,
+      "sha256": "0b7a1c3b3cb9fdbb3c9f13ab5e32cd76f3f64d5c2f7e9ad4fd6c93026a896505"
+    },
+    {
+      "path": "sources/09312600.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09312600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.564817+00:00",
+      "status": 200,
+      "bytes": 297746,
+      "sha256": "066eec35494dfcf4db765ae50be17b8c2be287eaef5a221342377395bcc7f8d7"
+    },
+    {
+      "path": "sources/09404450.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09404450&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.799823+00:00",
+      "status": 200,
+      "bytes": 291366,
+      "sha256": "119a84548d999426dfc7b6a1f7f3767f45f7d0da371fe3c81cdda2120fc91f96"
+    },
+    {
+      "path": "sources/09430500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09430500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.020449+00:00",
+      "status": 200,
+      "bytes": 275765,
+      "sha256": "2034eb43d584c0d4f03753e2aa60143aaddef6b177b519c7512d88d369634a3b"
+    },
+    {
+      "path": "sources/09480000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09480000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.212154+00:00",
+      "status": 200,
+      "bytes": 235962,
+      "sha256": "95bdd7571918f96bec08c1435c93818bb73a61985f3ebb03806e471e7b8e8adf"
+    },
+    {
+      "path": "sources/10023000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10023000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.442832+00:00",
+      "status": 200,
+      "bytes": 296985,
+      "sha256": "1417c4e9f322ad9b3c4c8e680cda990d3ee3e4e36bc950022fd061696f220555"
+    },
+    {
+      "path": "sources/10166430.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10166430&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.678361+00:00",
+      "status": 200,
+      "bytes": 294985,
+      "sha256": "231c42815e1cd3886dc553c016b2b4a9179a076dfea545a9265359f90b0e7270"
+    },
+    {
+      "path": "sources/10244950.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10244950&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.878334+00:00",
+      "status": 200,
+      "bytes": 291495,
+      "sha256": "4e57b1046389cd3a2b1baa2b349cd88553f575dd2b5a6f3df7cdb548afaef39a"
+    },
+    {
+      "path": "sources/10258000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10258000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.146038+00:00",
+      "status": 200,
+      "bytes": 291378,
+      "sha256": "c9eddcdd1931822233b88ee74ac04f85625200745613c7cf8e112a5b5b17a92f"
+    },
+    {
+      "path": "sources/10263500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10263500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.334570+00:00",
+      "status": 200,
+      "bytes": 297458,
+      "sha256": "b746da93db971d7867d3a6c7683a378d10b251673480db6b39eb5ca76a33311f"
+    },
+    {
+      "path": "sources/10310500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10310500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.619659+00:00",
+      "status": 200,
+      "bytes": 291686,
+      "sha256": "547b3fcf0e8503f1b6e0c4f112b775e21570d9f035381a9bdb5bb4cd368f8fb8"
+    },
+    {
+      "path": "sources/10316500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10316500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.778409+00:00",
+      "status": 200,
+      "bytes": 294007,
+      "sha256": "98597423f9389cdd4d22622500f347feb096de1405b5e8a51bf1aa8fa45ba4f3"
+    },
+    {
+      "path": "sources/10396000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10396000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.058301+00:00",
+      "status": 200,
+      "bytes": 289215,
+      "sha256": "e9731101e5f126bb079aea45ef6bc4d8d630f434b9f0a6552c766a07a1eff38e"
+    },
+    {
+      "path": "sources/11098000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11098000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.188257+00:00",
+      "status": 200,
+      "bytes": 291850,
+      "sha256": "aae972377c7bc10f2f37dbaf6e88b60839472af881f6816a5360df7a64de211b"
+    },
+    {
+      "path": "sources/11124500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11124500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.483580+00:00",
+      "status": 200,
+      "bytes": 291574,
+      "sha256": "e45015085e2d6e6ddeb75738194a0465c6426f5ff20592a696d34b9495a79124"
+    },
+    {
+      "path": "sources/11162500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11162500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.628564+00:00",
+      "status": 200,
+      "bytes": 290518,
+      "sha256": "148bdc41abb89ffcd93d68dfa77a7b2c5e38b5b128f984ac313b8c04180560ba"
+    },
+    {
+      "path": "sources/11224500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11224500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.890674+00:00",
+      "status": 200,
+      "bytes": 291101,
+      "sha256": "e1d97c8374ce0240fe49e324f65fd083bef1683fa60bf689f9b17549b2a38b0f"
+    },
+    {
+      "path": "sources/11230500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11230500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.043232+00:00",
+      "status": 200,
+      "bytes": 292344,
+      "sha256": "0788a4e9d9a262bc631c3b9b6d20cc222bef17002716226944f54367489802b1"
+    },
+    {
+      "path": "sources/11468500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11468500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.319559+00:00",
+      "status": 200,
+      "bytes": 289317,
+      "sha256": "4c625ef507fa162e85f46fc4148b809ff8435ec2e0d94ac634c2dcdd8c4aebfe"
+    },
+    {
+      "path": "sources/12010000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12010000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.508772+00:00",
+      "status": 200,
+      "bytes": 310243,
+      "sha256": "4797db62e9eb8b07bc5b19f050b99c6743063e39aa82815fcc281dde36583066"
+    },
+    {
+      "path": "sources/12358500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12358500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.803356+00:00",
+      "status": 200,
+      "bytes": 287528,
+      "sha256": "f6431f8f4ba76f9de51fa624bc99ccd3f2d1b73f14731d5c6fd991d55f350e88"
+    },
+    {
+      "path": "sources/12447390.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12447390&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.957126+00:00",
+      "status": 200,
+      "bytes": 293582,
+      "sha256": "c66ab12efdf11be0fd324fe8b9162aede5fb23d22b632f032eeaa41308112683"
+    },
+    {
+      "path": "sources/12488500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12488500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.248705+00:00",
+      "status": 200,
+      "bytes": 286781,
+      "sha256": "29558e4e0cae4455017f2827a02c39385a6750517f55d5e89a381a554c0d9395"
+    },
+    {
+      "path": "sources/13161500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13161500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.410586+00:00",
+      "status": 200,
+      "bytes": 292238,
+      "sha256": "0aba53bbdf38996ffbd25b119cc21ceaa0161ca76f520ab30de43e1ea38042ee"
+    },
+    {
+      "path": "sources/13310700.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13310700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.672261+00:00",
+      "status": 200,
+      "bytes": 286405,
+      "sha256": "5dbaa9d85f8837554aed29cce51a7ed1e0d4aa791fbfc93a6defd4099332c440"
+    },
+    {
+      "path": "sources/14020000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14020000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.849041+00:00",
+      "status": 200,
+      "bytes": 286954,
+      "sha256": "928ca21916a13c34fa26eb15f6147a3f35abe3a9a927d1f3c6cd50c164a566dc"
+    },
+    {
+      "path": "sources/14137000.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14137000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:53.110515+00:00",
+      "status": 200,
+      "bytes": 287875,
+      "sha256": "78f607d3957adbe5bb1e6c2ec2e78ab4f39a0d86251755f958bee96d18e6a884"
+    },
+    {
+      "path": "sources/14154500.rdb.request.json",
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14154500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:53.307517+00:00",
+      "status": 200,
+      "bytes": 287155,
+      "sha256": "470f1232e1a5b5f250bb11486b128a48c868c1bd2f4693bcd00fc962178fd2d1"
+    },
+    {
+      "path": "sources/hres_temperature_2m-24.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/24.0.0",
+      "retrieved_utc": "2026-10-17T16:50:25.261881+00:00",
+      "status": 200,
+      "bytes": 12749272,
+      "sha256": "2c3f92ea79ec3522c0a7c4cced0c0d308d3998b930fc7a4051bb1e74c51ec8df"
+    },
+    {
+      "path": "sources/hres_temperature_2m-25.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:26.263252+00:00",
+      "status": 200,
+      "bytes": 12984871,
+      "sha256": "21308540795f1f9583ce8ad2a835f746f1c8fbdd66c22b4811665621f17ed375"
+    },
+    {
+      "path": "sources/hres_temperature_2m-26.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:27.380684+00:00",
+      "status": 200,
+      "bytes": 12974957,
+      "sha256": "d84bc5bab87273b9806ca9c295bc78bab8651d3ae80c838e9600723b976d7ea7"
+    },
+    {
+      "path": "sources/hres_temperature_2m-27.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:28.393354+00:00",
+      "status": 200,
+      "bytes": 13146979,
+      "sha256": "28126b4903385a8f682155235eeb9445cb49afd7fc823c92dc39eb7ad665310f"
+    },
+    {
+      "path": "sources/hres_temperature_2m-28.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:29.685835+00:00",
+      "status": 200,
+      "bytes": 12917349,
+      "sha256": "317addf673a86fc268f1e28f168f1a5506ceee7ff5e3a5aec96ed640fed935a5"
+    },
+    {
+      "path": "sources/hres_temperature_2m-29.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:30.789155+00:00",
+      "status": 200,
+      "bytes": 12901462,
+      "sha256": "d3b3ea7f499a7122f8223ed3a35a5a09c4a731033658e53cc6c05f1a47f3729c"
+    },
+    {
+      "path": "sources/hres_total_precipitation-24.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/24.0.0",
+      "retrieved_utc": "2026-10-17T16:50:18.760386+00:00",
+      "status": 200,
+      "bytes": 15410115,
+      "sha256": "2e9edb1a35410ee995bfd3931b3c9be2c1f3f16f53c06dec4c2f13e9d7f5f5e9"
+    },
+    {
+      "path": "sources/hres_total_precipitation-25.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:19.842141+00:00",
+      "status": 200,
+      "bytes": 15712584,
+      "sha256": "c658dfa75294d224363c62479e241cfc9c4458d49ce2db96a7582c9b9e694492"
+    },
+    {
+      "path": "sources/hres_total_precipitation-26.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:20.967541+00:00",
+      "status": 200,
+      "bytes": 15718951,
+      "sha256": "628682e9bffef7ef9649b3e80f4f7709a5b8a3232b42aef354871ea980670006"
+    },
+    {
+      "path": "sources/hres_total_precipitation-27.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:22.149204+00:00",
+      "status": 200,
+      "bytes": 15731272,
+      "sha256": "c7595f0784628c46ddb42a9abf3a90f941fb95228ab157517772c97a3b04ba74"
+    },
+    {
+      "path": "sources/hres_total_precipitation-28.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:23.173809+00:00",
+      "status": 200,
+      "bytes": 14846996,
+      "sha256": "0624e51e23c8623b0bee60631f005ff60ccf54f3c4dabaa84623cc5ad52708cc"
+    },
+    {
+      "path": "sources/hres_total_precipitation-29.bin.request.json",
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:24.244344+00:00",
+      "status": 200,
+      "bytes": 14525769,
+      "sha256": "cff1cdef2cef969738620945c5541e5da8d5d102f8a7ea7273e1b380ba53c015"
+    }
+  ],
+  "source_bytes": 196724632,
+  "coverage": [
+    {
+      "station": "01013500",
+      "role": "development",
+      "accepted_days": 6418,
+      "reference_days": 4205,
+      "rows_h1": 1779,
+      "rows_h2": 1769,
+      "reference_cfs": 6255.9999999999945,
+      "negative_rain_values_truncated": 517
+    },
+    {
+      "station": "01022500",
+      "role": "development",
+      "accepted_days": 7413,
+      "reference_days": 4777,
+      "rows_h1": 2042,
+      "rows_h2": 2032,
+      "reference_cfs": 1971.9999999999982,
+      "negative_rain_values_truncated": 714
+    },
+    {
+      "station": "01047000",
+      "role": "development",
+      "accepted_days": 6047,
+      "reference_days": 3932,
+      "rows_h1": 1668,
+      "rows_h2": 1659,
+      "reference_cfs": 3750.0,
+      "negative_rain_values_truncated": 542
+    },
+    {
+      "station": "01078000",
+      "role": "development",
+      "accepted_days": 8077,
+      "reference_days": 5282,
+      "rows_h1": 2014,
+      "rows_h2": 2006,
+      "reference_cfs": 621.8499999999995,
+      "negative_rain_values_truncated": 637
+    },
+    {
+      "station": "01134500",
+      "role": "development",
+      "accepted_days": 6659,
+      "reference_days": 4153,
+      "rows_h1": 1811,
+      "rows_h2": 1798,
+      "reference_cfs": 703.0,
+      "negative_rain_values_truncated": 498
+    },
+    {
+      "station": "01333000",
+      "role": "development",
+      "accepted_days": 7636,
+      "reference_days": 4705,
+      "rows_h1": 2332,
+      "rows_h2": 2325,
+      "reference_cfs": 304.0,
+      "negative_rain_values_truncated": 527
+    },
+    {
+      "station": "01411300",
+      "role": "development",
+      "accepted_days": 7901,
+      "reference_days": 5676,
+      "rows_h1": 1836,
+      "rows_h2": 1835,
+      "reference_cfs": 89.125,
+      "negative_rain_values_truncated": 819
+    },
+    {
+      "station": "01485500",
+      "role": "development",
+      "accepted_days": 8930,
+      "reference_days": 5775,
+      "rows_h1": 2704,
+      "rows_h2": 2701,
+      "reference_cfs": 192.30000000000018,
+      "negative_rain_values_truncated": 850
+    },
+    {
+      "station": "01594950",
+      "role": "development",
+      "accepted_days": 6792,
+      "reference_days": 5322,
+      "rows_h1": 945,
+      "rows_h2": 937,
+      "reference_cfs": 15.9,
+      "negative_rain_values_truncated": 266
+    },
+    {
+      "station": "02096846",
+      "role": "geographic_validation",
+      "accepted_days": 8484,
+      "reference_days": 5642,
+      "rows_h1": 2435,
+      "rows_h2": 2433,
+      "reference_cfs": 19.194999999999983,
+      "negative_rain_values_truncated": 407
+    },
+    {
+      "station": "02111180",
+      "role": "geographic_validation",
+      "accepted_days": 8714,
+      "reference_days": 5587,
+      "rows_h1": 2636,
+      "rows_h2": 2634,
+      "reference_cfs": 229.69999999999982,
+      "negative_rain_values_truncated": 648
+    },
+    {
+      "station": "02177000",
+      "role": "geographic_validation",
+      "accepted_days": 8817,
+      "reference_days": 5743,
+      "rows_h1": 2728,
+      "rows_h2": 2725,
+      "reference_cfs": 1388.9999999999964,
+      "negative_rain_values_truncated": 704
+    },
+    {
+      "station": "02212600",
+      "role": "geographic_validation",
+      "accepted_days": 8768,
+      "reference_days": 5708,
+      "rows_h1": 2618,
+      "rows_h2": 2615,
+      "reference_cfs": 188.0,
+      "negative_rain_values_truncated": 871
+    },
+    {
+      "station": "02296500",
+      "role": "geographic_validation",
+      "accepted_days": 8888,
+      "reference_days": 5839,
+      "rows_h1": 2552,
+      "rows_h2": 2549,
+      "reference_cfs": 1300.0,
+      "negative_rain_values_truncated": 524
+    },
+    {
+      "station": "02314500",
+      "role": "geographic_validation",
+      "accepted_days": 8623,
+      "reference_days": 5472,
+      "rows_h1": 2717,
+      "rows_h2": 2714,
+      "reference_cfs": 2634.499999999998,
+      "negative_rain_values_truncated": 673
+    },
+    {
+      "station": "02327100",
+      "role": "geographic_validation",
+      "accepted_days": 8662,
+      "reference_days": 5638,
+      "rows_h1": 2481,
+      "rows_h2": 2477,
+      "reference_cfs": 712.1499999999996,
+      "negative_rain_values_truncated": 666
+    },
+    {
+      "station": "02342933",
+      "role": "geographic_validation",
+      "accepted_days": 4171,
+      "reference_days": 4171,
+      "rows_h1": 0,
+      "rows_h2": 0,
+      "reference_cfs": 404.5,
+      "negative_rain_values_truncated": 812
+    },
+    {
+      "station": "02361000",
+      "role": "geographic_validation",
+      "accepted_days": 8888,
+      "reference_days": 5728,
+      "rows_h1": 2714,
+      "rows_h2": 2713,
+      "reference_cfs": 2360.0,
+      "negative_rain_values_truncated": 742
+    },
+    {
+      "station": "02381600",
+      "role": "geographic_validation",
+      "accepted_days": 8661,
+      "reference_days": 5643,
+      "rows_h1": 2605,
+      "rows_h2": 2600,
+      "reference_cfs": 37.5,
+      "negative_rain_values_truncated": 568
+    },
+    {
+      "station": "02430085",
+      "role": "geographic_validation",
+      "accepted_days": 8537,
+      "reference_days": 5378,
+      "rows_h1": 2732,
+      "rows_h2": 2730,
+      "reference_cfs": 82.12999999999992,
+      "negative_rain_values_truncated": 797
+    },
+    {
+      "station": "02472000",
+      "role": "geographic_validation",
+      "accepted_days": 8973,
+      "reference_days": 5793,
+      "rows_h1": 2767,
+      "rows_h2": 2766,
+      "reference_cfs": 4043.9999999999964,
+      "negative_rain_values_truncated": 736
+    },
+    {
+      "station": "03010655",
+      "role": "development",
+      "accepted_days": 8055,
+      "reference_days": 5057,
+      "rows_h1": 2420,
+      "rows_h2": 2410,
+      "reference_cfs": 564.0,
+      "negative_rain_values_truncated": 543
+    },
+    {
+      "station": "03159540",
+      "role": "development",
+      "accepted_days": 8338,
+      "reference_days": 5263,
+      "rows_h1": 2556,
+      "rows_h2": 2549,
+      "reference_cfs": 890.6999999999989,
+      "negative_rain_values_truncated": 771
+    },
+    {
+      "station": "03161000",
+      "role": "development",
+      "accepted_days": 8609,
+      "reference_days": 5479,
+      "rows_h1": 2688,
+      "rows_h2": 2683,
+      "reference_cfs": 933.0999999999995,
+      "negative_rain_values_truncated": 621
+    },
+    {
+      "station": "03213700",
+      "role": "development",
+      "accepted_days": 8880,
+      "reference_days": 5736,
+      "rows_h1": 2706,
+      "rows_h2": 2703,
+      "reference_cfs": 3530.0,
+      "negative_rain_values_truncated": 634
+    },
+    {
+      "station": "03237280",
+      "role": "development",
+      "accepted_days": 7430,
+      "reference_days": 4407,
+      "rows_h1": 2491,
+      "rows_h2": 2484,
+      "reference_cfs": 66.1,
+      "negative_rain_values_truncated": 692
+    },
+    {
+      "station": "03280700",
+      "role": "development",
+      "accepted_days": 7498,
+      "reference_days": 4922,
+      "rows_h1": 2090,
+      "rows_h2": 2079,
+      "reference_cfs": 311.89999999999964,
+      "negative_rain_values_truncated": 735
+    },
+    {
+      "station": "03338780",
+      "role": "development",
+      "accepted_days": 4933,
+      "reference_days": 4933,
+      "rows_h1": 0,
+      "rows_h2": 0,
+      "reference_cfs": 1213.9999999999964,
+      "negative_rain_values_truncated": 877
+    },
+    {
+      "station": "03439000",
+      "role": "development",
+      "accepted_days": 8938,
+      "reference_days": 5754,
+      "rows_h1": 2791,
+      "rows_h2": 2790,
+      "reference_cfs": 506.0,
+      "negative_rain_values_truncated": 637
+    },
+    {
+      "station": "04015330",
+      "role": "development",
+      "accepted_days": 5660,
+      "reference_days": 3755,
+      "rows_h1": 1592,
+      "rows_h2": 1583,
+      "reference_cfs": 514.7999999999984,
+      "negative_rain_values_truncated": 665
+    },
+    {
+      "station": "04040500",
+      "role": "development",
+      "accepted_days": 6280,
+      "reference_days": 4034,
+      "rows_h1": 1714,
+      "rows_h2": 1703,
+      "reference_cfs": 855.3499999999999,
+      "negative_rain_values_truncated": 547
+    },
+    {
+      "station": "04105700",
+      "role": "development",
+      "accepted_days": 8709,
+      "reference_days": 5597,
+      "rows_h1": 2675,
+      "rows_h2": 2672,
+      "reference_cfs": 77.73999999999997,
+      "negative_rain_values_truncated": 666
+    },
+    {
+      "station": "04127918",
+      "role": "development",
+      "accepted_days": 2960,
+      "reference_days": 2960,
+      "excluded": "insufficient_positive_reference"
+    },
+    {
+      "station": "04161580",
+      "role": "development",
+      "accepted_days": 4671,
+      "reference_days": 4671,
+      "rows_h1": 0,
+      "rows_h2": 0,
+      "reference_cfs": 50.0,
+      "negative_rain_values_truncated": 616
+    },
+    {
+      "station": "04185000",
+      "role": "development",
+      "accepted_days": 7861,
+      "reference_days": 4993,
+      "rows_h1": 2270,
+      "rows_h2": 2258,
+      "reference_cfs": 1720.0,
+      "negative_rain_values_truncated": 640
+    },
+    {
+      "station": "04256000",
+      "role": "development",
+      "accepted_days": 7151,
+      "reference_days": 4664,
+      "rows_h1": 1948,
+      "rows_h2": 1936,
+      "reference_cfs": 761.6999999999989,
+      "negative_rain_values_truncated": 483
+    },
+    {
+      "station": "05120500",
+      "role": "development",
+      "accepted_days": 3931,
+      "reference_days": 2569,
+      "excluded": "insufficient_positive_reference"
+    },
+    {
+      "station": "05362000",
+      "role": "development",
+      "accepted_days": 5981,
+      "reference_days": 3861,
+      "rows_h1": 1587,
+      "rows_h2": 1581,
+      "reference_cfs": 3010.0,
+      "negative_rain_values_truncated": 614
+    },
+    {
+      "station": "05393500",
+      "role": "development",
+      "accepted_days": 5902,
+      "reference_days": 3801,
+      "rows_h1": 1652,
+      "rows_h2": 1644,
+      "reference_cfs": 445.0,
+      "negative_rain_values_truncated": 627
+    },
+    {
+      "station": "05444000",
+      "role": "development",
+      "accepted_days": 8010,
+      "reference_days": 5089,
+      "rows_h1": 2280,
+      "rows_h2": 2271,
+      "reference_cfs": 308.0,
+      "negative_rain_values_truncated": 845
+    },
+    {
+      "station": "05591550",
+      "role": "development",
+      "accepted_days": 8245,
+      "reference_days": 5247,
+      "rows_h1": 2429,
+      "rows_h2": 2419,
+      "reference_cfs": 157.0,
+      "negative_rain_values_truncated": 895
+    },
+    {
+      "station": "06188000",
+      "role": "development",
+      "accepted_days": 5711,
+      "reference_days": 3677,
+      "rows_h1": 1575,
+      "rows_h2": 1567,
+      "reference_cfs": 5623.999999999996,
+      "negative_rain_values_truncated": 370
+    },
+    {
+      "station": "06311000",
+      "role": "development",
+      "accepted_days": 5922,
+      "reference_days": 4383,
+      "rows_h1": 1018,
+      "rows_h2": 1012,
+      "reference_cfs": 79.42999999999975,
+      "negative_rain_values_truncated": 525
+    },
+    {
+      "station": "06332515",
+      "role": "development",
+      "accepted_days": 4737,
+      "reference_days": 3186,
+      "rows_h1": 983,
+      "rows_h2": 968,
+      "reference_cfs": 20.0,
+      "negative_rain_values_truncated": 910
+    },
+    {
+      "station": "06339100",
+      "role": "development",
+      "accepted_days": 6115,
+      "reference_days": 3942,
+      "rows_h1": 1686,
+      "rows_h2": 1677,
+      "reference_cfs": 46.379999999999924,
+      "negative_rain_values_truncated": 901
+    },
+    {
+      "station": "06404000",
+      "role": "development",
+      "accepted_days": 6988,
+      "reference_days": 4396,
+      "rows_h1": 1833,
+      "rows_h2": 1819,
+      "reference_cfs": 39.5,
+      "negative_rain_values_truncated": 679
+    },
+    {
+      "station": "06601000",
+      "role": "development",
+      "accepted_days": 6987,
+      "reference_days": 4553,
+      "rows_h1": 1950,
+      "rows_h2": 1942,
+      "reference_cfs": 134.39999999999964,
+      "negative_rain_values_truncated": 933
+    },
+    {
+      "station": "06746095",
+      "role": "development",
+      "accepted_days": 3577,
+      "reference_days": 2345,
+      "excluded": "insufficient_positive_reference"
+    },
+    {
+      "station": "06847900",
+      "role": "development",
+      "accepted_days": 8076,
+      "reference_days": 5325,
+      "rows_h1": 2026,
+      "rows_h2": 2020,
+      "reference_cfs": 7.878000000000002,
+      "negative_rain_values_truncated": 950
+    },
+    {
+      "station": "06876700",
+      "role": "development",
+      "accepted_days": 8429,
+      "reference_days": 5408,
+      "rows_h1": 2398,
+      "rows_h2": 2394,
+      "reference_cfs": 134.64999999999964,
+      "negative_rain_values_truncated": 1020
+    },
+    {
+      "station": "06879650",
+      "role": "development",
+      "accepted_days": 8769,
+      "reference_days": 5807,
+      "rows_h1": 2445,
+      "rows_h2": 2440,
+      "reference_cfs": 5.36,
+      "negative_rain_values_truncated": 492
+    },
+    {
+      "station": "06906800",
+      "role": "development",
+      "accepted_days": 8811,
+      "reference_days": 5725,
+      "rows_h1": 2534,
+      "rows_h2": 2530,
+      "reference_cfs": 1716.0000000000036,
+      "negative_rain_values_truncated": 931
+    },
+    {
+      "station": "07056000",
+      "role": "development",
+      "accepted_days": 5168,
+      "reference_days": 4840,
+      "rows_h1": 311,
+      "rows_h2": 310,
+      "reference_cfs": 3721.5000000000055,
+      "negative_rain_values_truncated": 849
+    },
+    {
+      "station": "07083000",
+      "role": "development",
+      "accepted_days": 4809,
+      "reference_days": 3183,
+      "rows_h1": 1240,
+      "rows_h2": 1235,
+      "reference_cfs": 151.0,
+      "negative_rain_values_truncated": 447
+    },
+    {
+      "station": "07195800",
+      "role": "development",
+      "accepted_days": 8864,
+      "reference_days": 5695,
+      "rows_h1": 2754,
+      "rows_h2": 2752,
+      "reference_cfs": 38.7,
+      "negative_rain_values_truncated": 454
+    },
+    {
+      "station": "07208500",
+      "role": "development",
+      "accepted_days": 6623,
+      "reference_days": 4240,
+      "rows_h1": 1869,
+      "rows_h2": 1860,
+      "reference_cfs": 47.014999999999915,
+      "negative_rain_values_truncated": 706
+    },
+    {
+      "station": "07290650",
+      "role": "development",
+      "accepted_days": 5472,
+      "reference_days": 3711,
+      "rows_h1": 1154,
+      "rows_h2": 1154,
+      "reference_cfs": 4455.0,
+      "negative_rain_values_truncated": 748
+    },
+    {
+      "station": "07335700",
+      "role": "development",
+      "accepted_days": 8905,
+      "reference_days": 5792,
+      "rows_h1": 2621,
+      "rows_h2": 2615,
+      "reference_cfs": 275.0,
+      "negative_rain_values_truncated": 752
+    },
+    {
+      "station": "07359610",
+      "role": "development",
+      "accepted_days": 9040,
+      "reference_days": 5844,
+      "rows_h1": 2828,
+      "rows_h2": 2828,
+      "reference_cfs": 800.0,
+      "negative_rain_values_truncated": 893
+    },
+    {
+      "station": "07375000",
+      "role": "development",
+      "accepted_days": 8260,
+      "reference_days": 5702,
+      "rows_h1": 2132,
+      "rows_h2": 2129,
+      "reference_cfs": 404.9499999999998,
+      "negative_rain_values_truncated": 688
+    },
+    {
+      "station": "07376000",
+      "role": "development",
+      "accepted_days": 8951,
+      "reference_days": 5767,
+      "rows_h1": 2789,
+      "rows_h2": 2788,
+      "reference_cfs": 1250.0,
+      "negative_rain_values_truncated": 652
+    },
+    {
+      "station": "08023080",
+      "role": "geographic_validation",
+      "accepted_days": 8875,
+      "reference_days": 5704,
+      "rows_h1": 2749,
+      "rows_h2": 2748,
+      "reference_cfs": 357.6999999999989,
+      "negative_rain_values_truncated": 787
+    },
+    {
+      "station": "08050800",
+      "role": "geographic_validation",
+      "accepted_days": 8922,
+      "reference_days": 5808,
+      "rows_h1": 2653,
+      "rows_h2": 2649,
+      "reference_cfs": 29.064999999999966,
+      "negative_rain_values_truncated": 910
+    },
+    {
+      "station": "08070000",
+      "role": "geographic_validation",
+      "accepted_days": 8982,
+      "reference_days": 5811,
+      "rows_h1": 2733,
+      "rows_h2": 2731,
+      "reference_cfs": 807.5,
+      "negative_rain_values_truncated": 615
+    },
+    {
+      "station": "08079600",
+      "role": "geographic_validation",
+      "accepted_days": 7974,
+      "reference_days": 5152,
+      "rows_h1": 2031,
+      "rows_h2": 2025,
+      "reference_cfs": 100.89999999999964,
+      "negative_rain_values_truncated": 966
+    },
+    {
+      "station": "08164000",
+      "role": "geographic_validation",
+      "accepted_days": 8956,
+      "reference_days": 5780,
+      "rows_h1": 2784,
+      "rows_h2": 2783,
+      "reference_cfs": 1370.5000000000018,
+      "negative_rain_values_truncated": 558
+    },
+    {
+      "station": "08190000",
+      "role": "geographic_validation",
+      "accepted_days": 8915,
+      "reference_days": 5720,
+      "rows_h1": 2823,
+      "rows_h2": 2823,
+      "reference_cfs": 469.0,
+      "negative_rain_values_truncated": 805
+    },
+    {
+      "station": "08377900",
+      "role": "development",
+      "accepted_days": 6038,
+      "reference_days": 3801,
+      "rows_h1": 1733,
+      "rows_h2": 1723,
+      "reference_cfs": 132.0,
+      "negative_rain_values_truncated": 661
+    },
+    {
+      "station": "09107000",
+      "role": "development",
+      "accepted_days": 5766,
+      "reference_days": 3781,
+      "rows_h1": 1504,
+      "rows_h2": 1497,
+      "reference_cfs": 464.0,
+      "negative_rain_values_truncated": 542
+    },
+    {
+      "station": "09312600",
+      "role": "development",
+      "accepted_days": 5478,
+      "reference_days": 3556,
+      "rows_h1": 1417,
+      "rows_h2": 1406,
+      "reference_cfs": 101.25,
+      "negative_rain_values_truncated": 714
+    },
+    {
+      "station": "09404450",
+      "role": "development",
+      "accepted_days": 8823,
+      "reference_days": 5739,
+      "rows_h1": 2545,
+      "rows_h2": 2538,
+      "reference_cfs": 29.61999999999989,
+      "negative_rain_values_truncated": 933
+    },
+    {
+      "station": "09430500",
+      "role": "development",
+      "accepted_days": 8134,
+      "reference_days": 5717,
+      "rows_h1": 2022,
+      "rows_h2": 2019,
+      "reference_cfs": 425.1999999999998,
+      "negative_rain_values_truncated": 847
+    },
+    {
+      "station": "09480000",
+      "role": "development",
+      "accepted_days": 7084,
+      "reference_days": 5206,
+      "rows_h1": 1799,
+      "rows_h2": 1796,
+      "reference_cfs": 5.195,
+      "negative_rain_values_truncated": 871
+    },
+    {
+      "station": "10023000",
+      "role": "development",
+      "accepted_days": 5998,
+      "reference_days": 3857,
+      "rows_h1": 1621,
+      "rows_h2": 1614,
+      "reference_cfs": 37.4,
+      "negative_rain_values_truncated": 747
+    },
+    {
+      "station": "10166430",
+      "role": "development",
+      "accepted_days": 7061,
+      "reference_days": 4521,
+      "rows_h1": 1837,
+      "rows_h2": 1825,
+      "reference_cfs": 11.4,
+      "negative_rain_values_truncated": 703
+    },
+    {
+      "station": "10244950",
+      "role": "development",
+      "accepted_days": 8767,
+      "reference_days": 5573,
+      "rows_h1": 2818,
+      "rows_h2": 2818,
+      "reference_cfs": 14.4,
+      "negative_rain_values_truncated": 779
+    },
+    {
+      "station": "10258000",
+      "role": "geographic_test",
+      "accepted_days": 8822,
+      "reference_days": 5706,
+      "rows_h1": 2649,
+      "rows_h2": 2645,
+      "reference_cfs": 15.5,
+      "negative_rain_values_truncated": 754
+    },
+    {
+      "station": "10263500",
+      "role": "geographic_test",
+      "accepted_days": 5711,
+      "reference_days": 3731,
+      "rows_h1": 1065,
+      "rows_h2": 1045,
+      "reference_cfs": 51.45,
+      "negative_rain_values_truncated": 966
+    },
+    {
+      "station": "10310500",
+      "role": "development",
+      "accepted_days": 8699,
+      "reference_days": 5739,
+      "rows_h1": 2465,
+      "rows_h2": 2458,
+      "reference_cfs": 9.850999999999994,
+      "negative_rain_values_truncated": 778
+    },
+    {
+      "station": "10316500",
+      "role": "development",
+      "accepted_days": 6976,
+      "reference_days": 4642,
+      "rows_h1": 1470,
+      "rows_h2": 1456,
+      "reference_cfs": 226.94999999999982,
+      "negative_rain_values_truncated": 730
+    },
+    {
+      "station": "10396000",
+      "role": "geographic_test",
+      "accepted_days": 8582,
+      "reference_days": 5563,
+      "rows_h1": 2378,
+      "rows_h2": 2371,
+      "reference_cfs": 390.0,
+      "negative_rain_values_truncated": 837
+    },
+    {
+      "station": "11098000",
+      "role": "geographic_test",
+      "accepted_days": 8551,
+      "reference_days": 5413,
+      "rows_h1": 2682,
+      "rows_h2": 2678,
+      "reference_cfs": 28.839999999999964,
+      "negative_rain_values_truncated": 853
+    },
+    {
+      "station": "11124500",
+      "role": "geographic_test",
+      "accepted_days": 8580,
+      "reference_days": 5627,
+      "rows_h1": 2294,
+      "rows_h2": 2293,
+      "reference_cfs": 57.16999999999999,
+      "negative_rain_values_truncated": 907
+    },
+    {
+      "station": "11162500",
+      "role": "geographic_test",
+      "accepted_days": 8936,
+      "reference_days": 5768,
+      "rows_h1": 2748,
+      "rows_h2": 2748,
+      "reference_cfs": 139.0,
+      "negative_rain_values_truncated": 1001
+    },
+    {
+      "station": "11224500",
+      "role": "geographic_test",
+      "accepted_days": 8942,
+      "reference_days": 5779,
+      "rows_h1": 2749,
+      "rows_h2": 2747,
+      "reference_cfs": 8.933999999999978,
+      "negative_rain_values_truncated": 724
+    },
+    {
+      "station": "11230500",
+      "role": "geographic_test",
+      "accepted_days": 7289,
+      "reference_days": 4661,
+      "rows_h1": 2140,
+      "rows_h2": 2128,
+      "reference_cfs": 416.0,
+      "negative_rain_values_truncated": 858
+    },
+    {
+      "station": "11468500",
+      "role": "geographic_test",
+      "accepted_days": 8816,
+      "reference_days": 5646,
+      "rows_h1": 2769,
+      "rows_h2": 2767,
+      "reference_cfs": 781.5,
+      "negative_rain_values_truncated": 1031
+    },
+    {
+      "station": "12010000",
+      "role": "geographic_test",
+      "excluded": "Expected exactly one mean-discharge series"
+    },
+    {
+      "station": "12358500",
+      "role": "geographic_test",
+      "accepted_days": 8863,
+      "reference_days": 5784,
+      "rows_h1": 2511,
+      "rows_h2": 2502,
+      "reference_cfs": 11600.0,
+      "negative_rain_values_truncated": 431
+    },
+    {
+      "station": "12447390",
+      "role": "geographic_test",
+      "accepted_days": 7245,
+      "reference_days": 4340,
+      "rows_h1": 2528,
+      "rows_h2": 2521,
+      "reference_cfs": 175.0,
+      "negative_rain_values_truncated": 532
+    },
+    {
+      "station": "12488500",
+      "role": "geographic_test",
+      "accepted_days": 8554,
+      "reference_days": 5502,
+      "rows_h1": 2505,
+      "rows_h2": 2498,
+      "reference_cfs": 752.0,
+      "negative_rain_values_truncated": 626
+    },
+    {
+      "station": "13161500",
+      "role": "geographic_test",
+      "accepted_days": 7408,
+      "reference_days": 4837,
+      "rows_h1": 1913,
+      "rows_h2": 1904,
+      "reference_cfs": 415.1999999999998,
+      "negative_rain_values_truncated": 794
+    },
+    {
+      "station": "13310700",
+      "role": "geographic_test",
+      "accepted_days": 7636,
+      "reference_days": 5007,
+      "rows_h1": 1910,
+      "rows_h2": 1902,
+      "reference_cfs": 1990.0,
+      "negative_rain_values_truncated": 736
+    },
+    {
+      "station": "14020000",
+      "role": "geographic_test",
+      "accepted_days": 8808,
+      "reference_days": 5682,
+      "rows_h1": 2651,
+      "rows_h2": 2645,
+      "reference_cfs": 769.7999999999993,
+      "negative_rain_values_truncated": 785
+    },
+    {
+      "station": "14137000",
+      "role": "geographic_test",
+      "accepted_days": 8309,
+      "reference_days": 5222,
+      "rows_h1": 2615,
+      "rows_h2": 2607,
+      "reference_cfs": 3209.499999999998,
+      "negative_rain_values_truncated": 699
+    },
+    {
+      "station": "14154500",
+      "role": "geographic_test",
+      "accepted_days": 8865,
+      "reference_days": 5698,
+      "rows_h1": 2721,
+      "rows_h2": 2719,
+      "reference_cfs": 1940.0,
+      "negative_rain_values_truncated": 797
+    }
+  ],
+  "forecast_dates": [
+    "2016-01-01",
+    "2024-09-30"
+  ],
+  "availability": "Reconstructed approved inputs; per-record historical publication is unverified"
+}

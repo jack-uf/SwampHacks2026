@@ -1,7 +1,6 @@
 """Isolated forecast-memory experiment; see docs/HYDROLOGY_RESEARCH_PROTOCOL.md."""
 import csv
 import hashlib
-import io
 import json
 from pathlib import Path
 
@@ -19,6 +18,10 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+class IneligibleGauge(ValueError):
+    """An ambiguous series must be excluded rather than selected by guesswork."""
+
+
 def daily_discharge(text, station):
     """Parse one USGS mean-discharge series, excluding estimated/revised-quality flags."""
     lines = [line for line in text.splitlines() if line and not line.startswith('#')]
@@ -27,7 +30,7 @@ def daily_discharge(text, station):
     reader = csv.DictReader([lines[0]] + lines[2:], delimiter='\t')
     fields = [c for c in reader.fieldnames if c.endswith('_00060_00003')]
     if len(fields) != 1 or fields[0] + '_cd' not in reader.fieldnames:
-        raise ValueError('Expected exactly one mean-discharge series')
+        raise IneligibleGauge('Expected exactly one mean-discharge series')
     rows = list(reader)
     if any(r['site_no'] != station or r['agency_cd'] != 'USGS' for r in rows):
         raise ValueError('Unexpected agency or station')
@@ -142,6 +145,8 @@ def protocol():
     frozen = json.loads((OUT / 'protocol.json').read_text())
     if digest(ROOT / frozen['document']) != frozen['document_sha256'] or digest(OUT / 'stations.json') != frozen['stations_sha256']:
         raise ValueError('Frozen protocol or registry changed')
+    if digest(ROOT / frozen['amendment']) != frozen['amendment_sha256']:
+        raise ValueError('Frozen amendment changed')
     for path, checksum in frozen['preserved'].items():
         if digest(ROOT / path) != checksum:
             raise ValueError('Production artifact changed: ' + path)
@@ -189,7 +194,12 @@ def collect():
         observations = dict(pool.map(observation, stations))
     rows, coverage = [], []
     for station in stations:
-        sid = station['station']; q = daily_discharge(observations[sid], sid)
+        sid = station['station']
+        try:
+            q = daily_discharge(observations[sid], sid)
+        except IneligibleGauge as error:
+            coverage.append(dict(station=sid, role=station['role'], excluded=str(error)))
+            continue
         q.index = pd.to_datetime(q.index)
         reference = q[q.index < '2016-01-01']
         record = dict(station=sid, role=station['role'], accepted_days=len(q), reference_days=len(reference))
@@ -218,14 +228,6 @@ def collect():
         coverage=coverage, forecast_dates=[str(dates[0].date()), str(dates[-1].date())],
         availability='Reconstructed approved inputs; per-record historical publication is unverified'))
     print('Frozen dataset', len(frame), 'rows;', frame.station.nunique(), 'gauges', flush=True)
-
-
-if __name__ == '__main__':
-    import argparse
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['collect'])
-    args = parser.parse_args()
-    collect()
 
 
 def partitions(frame):
@@ -258,3 +260,98 @@ def budget_threshold(y, p, budget):
         return float(np.nextafter(p.max(), np.inf))
     best = sorted(feasible, key=lambda i: (-tp[i], fp[i], -sorted_p[ends[i]]))[0]
     return float(sorted_p[ends[best]])
+
+
+def run_workers(command):
+    import os
+    import subprocess
+    import sys
+    for family in ['baseline', 'logistic', 'xgboost', 'lightgbm']:
+        environment = dict(os.environ, OMP_NUM_THREADS='2', OPENBLAS_NUM_THREADS='2',
+                           MKL_NUM_THREADS='2', VECLIB_MAXIMUM_THREADS='2')
+        subprocess.run([sys.executable, '-m', 'scripts.hydrology_worker', command, family],
+                       cwd=ROOT, env=environment, check=True)
+
+
+def select():
+    protocol()
+    if (OUT / 'selection.json').exists():
+        raise FileExistsError('Selection is already frozen')
+    run_workers('select')
+    candidates = [c for family in ['baseline', 'logistic', 'xgboost', 'lightgbm']
+                  for c in json.loads((OUT / f'{family}-selection.json').read_text())['candidates']]
+    selected, combined = {}, {}
+    for horizon in (1, 2):
+        options = [c for c in candidates if c['horizon'] == horizon]
+        ranking = lambda c: (-c['selection_ap'], c['selection_brier'], c['name'])
+        selected[str(horizon)] = min(options, key=ranking)['name']
+        combined[str(horizon)] = min([c for c in options if c['kind'] == 'combined'], key=ranking)['name']
+    write_json(OUT / 'selection.json', dict(selected=selected, strongest_combined=combined,
+        candidates=candidates, dataset_sha256=digest(OUT / 'training.csv.gz'),
+        protocol_sha256=digest(OUT / 'protocol.json'), code={p: digest(ROOT / p) for p in
+        ['scripts/hydrology_research.py', 'scripts/hydrology_worker.py']}))
+    print('Frozen selection:', selected, flush=True)
+
+
+def weighted_ap(y, p, weights):
+    """Weighted ranking integral with tied scores kept together."""
+    y, p, weights = np.asarray(y), np.asarray(p), np.asarray(weights)
+    if (weights < 0).any() or not np.isfinite(weights).all() or weights.shape != y.shape:
+        raise ValueError('Invalid bootstrap weights')
+    order = np.argsort(-p, kind='stable')
+    ends = np.flatnonzero(np.r_[p[order][1:] != p[order][:-1], True])
+    tp = np.cumsum(weights[order] * y[order])[ends]
+    total = np.cumsum(weights[order])[ends]
+    if tp[-1] == 0 or total[-1] == tp[-1]:
+        return np.nan
+    return float(np.sum(np.diff(np.r_[0, tp / tp[-1]]) * np.divide(tp, total, out=np.zeros_like(tp, dtype=float), where=total > 0)))
+
+
+def paired_intervals(a, b, threshold_a, threshold_b, groups, repetitions=500):
+    if not a[['station', 'target_date', 'exceedance', 'onset']].equals(b[['station', 'target_date', 'exceedance', 'onset']]):
+        raise ValueError('Unpaired evaluation rows')
+    codes, names = pd.factorize(groups)
+    if len(names) < 2 or (codes < 0).any():
+        raise ValueError('Insufficient bootstrap clusters')
+    rng = np.random.default_rng(42); differences = []
+    y = a.exceedance.to_numpy(); pa = a.probability.to_numpy(); pb = b.probability.to_numpy()
+    for _ in range(repetitions):
+        counts = np.bincount(rng.integers(len(names), size=len(names)), minlength=len(names))
+        w = counts[codes]; positives = np.sum(w * y)
+        if not positives:
+            continue
+        ap = weighted_ap(y, pa, w) - weighted_ap(y, pb, w)
+        recall = np.sum(w * y * (pa >= threshold_a)) / positives - np.sum(w * y * (pb >= threshold_b)) / positives
+        if np.isfinite(ap):
+            differences.append([ap, recall])
+    if len(differences) < .9 * repetitions:
+        raise ValueError('Too many undefined bootstrap replicates')
+    intervals = np.quantile(differences, [.025, .5, .975], axis=0)
+    return dict(clusters=len(names), replicates=len(differences),
+                ap_difference=intervals[:, 0].tolist(), recall_difference=intervals[:, 1].tolist())
+
+
+def evaluate():
+    run_workers('evaluate')
+    selection = json.loads((OUT / 'selection.json').read_text())
+    candidates = {c['name']: c for c in selection['candidates']}
+    comparisons = []
+    for horizon in (1, 2):
+        name = selection['selected'][str(horizon)]
+        for baseline in dict.fromkeys([f'baseline_persistence_h{horizon}', selection['strongest_combined'][str(horizon)]]):
+            for split in ['forward_test', 'geographic_test']:
+                a, b = [pd.read_csv(OUT / 'predictions' / f'{n}.{split}.csv.gz', dtype={'station': str, 'huc': str}) for n in [name, baseline]]
+                record = dict(candidate=name, baseline=baseline, split=split)
+                for cluster, groups in [('huc4', a.huc.str[:4]), ('month', a.target_date.str[:7])]:
+                    record[cluster] = paired_intervals(a, b, candidates[name]['thresholds']['1'], candidates[baseline]['thresholds']['1'], groups)
+                comparisons.append(record)
+                print('Paired intervals:', name, baseline, split, flush=True)
+    write_json(OUT / 'uncertainty.json', dict(comparisons=comparisons, selection_sha256=digest(OUT / 'selection.json')))
+
+
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('command', choices=['collect', 'select', 'evaluate'])
+    args = parser.parse_args()
+    {'collect': collect, 'select': select, 'evaluate': evaluate}[args.command]()

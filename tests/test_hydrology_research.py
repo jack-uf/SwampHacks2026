@@ -80,3 +80,31 @@ def test_small_negative_forecast_totals_are_bounded_and_auditable():
     rain[280, 0] = -.2
     with pytest.raises(ValueError, match='Negative precipitation'):
         basin_features(dates, rain, temp, q, 10., station, 1)
+
+
+def test_paired_uncertainty_keeps_rows_aligned_and_weights_tied_predictions():
+    import numpy as np
+    import pandas as pd
+    from sklearn.metrics import average_precision_score
+    from scripts.hydrology_research import weighted_ap, paired_intervals
+    y = np.array([1, 0, 1, 0]); p = np.array([.9, .9, .8, .2]); w = np.array([2, 1, 0, 3])
+    assert weighted_ap(y, p, w) == pytest.approx(average_precision_score(y, p, sample_weight=w))
+    a = pd.DataFrame(dict(station=['a', 'a', 'b', 'b'], target_date=['2023-01-01']*4,
+        exceedance=[1, 0, 1, 0], onset=[True, False, True, False], probability=[.9, .1, .9, .1]))
+    b = a.assign(probability=[.1, .9, .1, .9])
+    interval = paired_intervals(a, b, .5, .5, a.station, repetitions=20)
+    assert interval['ap_difference'][0] > 0 and interval['recall_difference'][0] == 1
+    with pytest.raises(ValueError, match='Unpaired'):
+        paired_intervals(a, b.iloc[::-1], .5, .5, a.station, repetitions=20)
+
+
+def test_metrics_preserve_missing_class_and_count_only_certified_onsets():
+    import numpy as np
+    import pandas as pd
+    from scripts.hydrology_worker import metrics
+    frame = pd.DataFrame(dict(exceedance=[1, 1, 0, 0], onset=[True, False, False, False]))
+    measured = metrics(frame, np.array([.9, .1, .8, .1]), {'1': .5})
+    assert measured['alerts']['1']['recall'] == .5
+    assert measured['alerts']['1']['onset_recall'] == 1
+    assert measured['alerts']['1']['false_alerts_per_100'] == 25
+    assert metrics(frame.iloc[:2], np.array([.9, .1]), {'1': .5})['ap'] is None
