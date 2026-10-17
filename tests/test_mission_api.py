@@ -1,3 +1,4 @@
+import json
 from datetime import timedelta
 from backend import main, memory
 from backend.domain import now_utc
@@ -72,6 +73,32 @@ def test_crew_report_lifecycle_versions_the_mission_jha_with_attribution(client)
     client.patch('/api/reports/'+report['id'], json={'status': 'resolved'}, headers=AUTH)
     after = client.get('/api/missions/'+mid).json()
     assert after['decisions'][0]['stale'] is True and len(after['versions']) == 4
+
+
+def test_personal_tokens_set_the_recorded_supervisor_and_every_change_is_audited(client, monkeypatch):
+    monkeypatch.setenv('PLANIT_SUPERVISOR_TOKENS', 'A. Rivera=tok-rivera, B. Lee=tok-lee')
+    rivera = {'Authorization': 'Bearer tok-rivera'}
+    s = main.SITES[0]
+    assert client.post('/api/missions', json=mission_body(s), headers={'Authorization': 'Bearer tok-nobody'}).status_code == 401
+    mid = client.post('/api/missions', json=mission_body(s), headers=rivera).json()['id']
+    data = dict(classification='flood', description='DEMO TEST: water over the trench access road.', latitude=s['latitude'], longitude=s['longitude'])
+    report = client.post(f"/api/sites/{s['id']}/reports", data=data, headers=rivera).json()
+    assert client.patch('/api/reports/'+report['id'], json={'status': 'verified'}, headers=rivera).status_code == 200
+    version = client.get('/api/missions/'+mid).json()['versions'][-1]['version']
+    body = dict(hazard='flood', decision='accept', rationale='Pumps staged.', supervisor='Somebody Else', version=version)
+    named = client.post(f'/api/missions/{mid}/decisions', json=body, headers=rivera).json()
+    assert named['supervisor'] == 'A. Rivera' and named['identity'] == 'token'
+    shared = client.post(f'/api/missions/{mid}/decisions', json=body, headers=AUTH).json()
+    assert shared['supervisor'] == 'Somebody Else' and shared['identity'] == 'self-declared'
+    assert client.get('/api/audit').status_code == 401
+    log = client.get('/api/audit', headers=AUTH).json()
+    actions = [(e['action'], e['actor'], e['identity']) for e in reversed(log)]
+    assert actions == [('mission.create', 'A. Rivera', 'token'), ('report.submit', 'A. Rivera', 'token'),
+                       ('report.review', 'A. Rivera', 'token'), ('decision.record', 'A. Rivera', 'token'),
+                       ('decision.record', 'Somebody Else', 'self-declared')]
+    review = next(e for e in log if e['action'] == 'report.review')
+    assert review['target'] == report['id'] and review['detail'] == dict(status='verified', previous='pending')
+    assert 'water' not in json.dumps(log)
 
 
 def test_alert_watch_reassesses_only_sites_with_open_missions_when_alerts_change(client, monkeypatch):

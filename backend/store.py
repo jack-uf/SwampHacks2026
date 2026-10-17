@@ -55,7 +55,12 @@ def initialize():
           rating TEXT, mitigation TEXT, rationale TEXT NOT NULL, supervisor TEXT NOT NULL, entry_fingerprint TEXT NOT NULL, created_at TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS jha_checks (mission_id TEXT PRIMARY KEY REFERENCES missions(id), checked_at TEXT NOT NULL,
           assessed_at TEXT NOT NULL, stale INTEGER NOT NULL);
+        CREATE TABLE IF NOT EXISTS audit (seq INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT NOT NULL, actor TEXT, identity TEXT NOT NULL,
+          action TEXT NOT NULL, target TEXT NOT NULL, detail TEXT NOT NULL);
         ''')
+        # Additive column for databases created before supervisor identity existed; old rows stay NULL (shared token).
+        if 'identity' not in {r['name'] for r in c.execute('PRAGMA table_info(jha_decisions)')}:
+            c.execute('ALTER TABLE jha_decisions ADD COLUMN identity TEXT')
 
 
 def get_cache(key):

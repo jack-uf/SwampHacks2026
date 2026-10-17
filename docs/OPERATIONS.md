@@ -6,14 +6,15 @@ Run from the repository root with one Uvicorn worker. Lifespan starts separate b
 
 Each startup refreshes the portfolio using current assessment logic. After code-only changes, wait for that refresh or request authenticated `POST /api/refresh`; the model fingerprint does not identify Python source revisions. The combined ML index component remains unknown unless both county-scoped hazard estimates are available. Individual supported estimates can still appear in the forecast panel.
 
-Back up the database and uploads together while the server is stopped. Preserve `.env` separately in secure storage. There is one canonical schema and no automatic migration or historical-format compatibility. A schema/artifact mismatch should be diagnosed explicitly; do not delete the database to repair a cache problem. Preserve reports and briefings before any deliberate reset. The app currently has no retention/deletion UI or audit history.
+Back up the database and uploads together while the server is stopped. Preserve `.env` separately in secure storage. There is one canonical schema and no automatic migration or historical-format compatibility. A schema/artifact mismatch should be diagnosed explicitly; do not delete the database to repair a cache problem. Preserve reports and briefings before any deliberate reset. The app has no retention/deletion UI. Supervisor changes (mission creation, report submission, review and relabeling, decisions, lightning replays) append to the `audit` table in the same transaction as the change; `GET /api/audit` returns the latest entries to a supervisor. Audit entries hold labels, statuses and IDs, never report text.
 
 ## Configuration
 
 | Variable | Purpose |
 |---|---|
 | `PLANIT_DB` | SQLite path, default repository `data/planit.sqlite` |
-| `PLANIT_ADMIN_TOKEN` | Required shared bearer secret for supervisor mutations; missing configuration returns 503, incorrect/missing request token returns 401 |
+| `PLANIT_ADMIN_TOKEN` | Shared bearer secret for supervisor mutations; names typed under it are recorded as self-declared. With neither this nor personal tokens configured, mutations return 503; an incorrect/missing request token returns 401 |
+| `PLANIT_SUPERVISOR_TOKENS` | Optional comma-separated `Name=token` pairs. A request with a personal token records that name on decisions and in the audit log and ignores the typed name |
 | `PLANIT_USER_AGENT` | Identifying public-provider request header; include your contact |
 | `PLANIT_LIGHTNING_TOKEN` | Independent secret for real strike ingestion; blank disables ingestion |
 | `PLANIT_ENABLE_DELIVERY` | Exact `true` enables optional delivery; default disabled |
@@ -23,7 +24,7 @@ Back up the database and uploads together while the server is stopped. Preserve 
 | `PLANIT_JEV_MODEL` | Pinned documented stable version, default `jev-1.13.0`; reject unexpected response model |
 | `PLANIT_SCHEDULER` | Exact `true` starts jobs; defaults true, set false for isolated tests/manual operation |
 
-The browser stores the supervisor secret in session storage. It is a local shared secret, not a user account or authorization hierarchy. Reads and uploaded images are public to anyone who can reach the server. Keep loopback binding. Photos, descriptions and coordinates can expose sensitive site details; do not use real personal/sensitive material in a demo. Image EXIF stripping does not anonymize visible image content.
+The browser stores the supervisor secret in session storage. A personal token ties records to a configured name, but it is still a static local secret: no account, expiry, revocation list or authorization hierarchy. Real identity needs an identity provider such as Auth0, which is not configured. Reads and uploaded images are public to anyone who can reach the server. Keep loopback binding. Photos, descriptions and coordinates can expose sensitive site details; do not use real personal/sensitive material in a demo. Image EXIF stripping does not anonymize visible image content.
 
 ## Refresh, staleness and failures
 
@@ -67,7 +68,7 @@ A Haversine great-circle calculation uses Earth radius 3958.7613 miles. Strikes 
 
 `POST /api/sites/{id}/reports` uses multipart fields `classification`, `description`, `latitude`, `longitude` and optional `image`. Classes: heat, storm, flood, lightning, wildfire, wildlife, unstable_terrain, equipment_obstruction, other. `classification` is the primary manual class; optional `categories` is a JSON array of additional manual classes (at most nine). `jev_consent` defaults false. Primary and additional labels are deduplicated and persisted in an associated report-triage entity. A report without requested enrichment remains manually classified; no historical schema conversion occurs. Descriptions trim to 10–2,000 characters; coordinates must be valid and within 50 miles of the selected facility. Initial map coordinates are the facility's location and must be confirmed or replaced by actual observation coordinates. Browser geolocation is optional and permission-dependent.
 
-Images are limited to 5 MB, JPEG/PNG/WebP, and 20 megapixels. They are decoded, resized within 1600×1600, converted to RGB JPEG and saved under generated UUID names. Re-encoding removes embedded metadata. If persistence fails after image creation, the new file is removed. Reports start pending. `PATCH /api/reports/{id}` with `{"status":"verified"}`, `rejected`, or `resolved` changes review status and reassesses the site. Invalid identifiers return 404. Review has no user identity or status-transition audit log.
+Images are limited to 5 MB, JPEG/PNG/WebP, and 20 megapixels. They are decoded, resized within 1600×1600, converted to RGB JPEG and saved under generated UUID names. Re-encoding removes embedded metadata. If persistence fails after image creation, the new file is removed. Reports start pending. `PATCH /api/reports/{id}` with `{"status":"verified"}`, `rejected`, or `resolved` changes review status and reassesses the site. Invalid identifiers return 404. Each review is audited with the previous and new status and the acting supervisor.
 
 ### Optional Jev enrichment and correction
 
@@ -105,6 +106,7 @@ Delivery is disabled unless both explicit opt-in and an HTTPS webhook are config
 | POST | `/api/sites/{id}/reports` | Supervisor; validated multipart report |
 | PATCH | `/api/reports/{id}/triage` | Supervisor; correct multihazard labels while retaining AI evidence |
 | PATCH | `/api/reports/{id}` | Supervisor; review status |
+| GET | `/api/audit` | Supervisor; latest audit entries |
 | GET / POST | `/api/sites/{id}/briefings` | Public history / supervisor generation |
 | GET | `/uploads/{generated-name}.jpg` | Public local report photo |
 

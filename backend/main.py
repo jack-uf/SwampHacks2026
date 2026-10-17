@@ -41,12 +41,34 @@ def site_or_404(site_id):
     return SITE_BY_ID[site_id]
 
 
+def supervisor_tokens():
+    """PLANIT_SUPERVISOR_TOKENS holds comma-separated Name=token pairs; names may not contain '=' or ','."""
+    pairs = {}
+    for item in os.getenv('PLANIT_SUPERVISOR_TOKENS', '').split(','):
+        name, sep, token = item.partition('=')
+        if sep and name.strip() and token.strip():
+            pairs[token.strip()] = name.strip()
+    return pairs
+
+
 def admin(authorization: str = Header(default='')):
-    token = os.getenv('PLANIT_ADMIN_TOKEN', '')
-    if not token:
-        raise HTTPException(503, 'Set PLANIT_ADMIN_TOKEN before supervisor actions')
-    if not hmac.compare_digest(authorization, 'Bearer '+token):
-        raise HTTPException(401, 'Supervisor token required')
+    """The acting supervisor: a named personal token, or the shared token whose typed names are self-declared."""
+    personal = supervisor_tokens()
+    for token, name in personal.items():
+        if hmac.compare_digest(authorization, 'Bearer '+token):
+            return dict(name=name, identity='token')
+    shared = os.getenv('PLANIT_ADMIN_TOKEN', '')
+    if not shared and not personal:
+        raise HTTPException(503, 'Set PLANIT_ADMIN_TOKEN or PLANIT_SUPERVISOR_TOKENS before supervisor actions')
+    if shared and hmac.compare_digest(authorization, 'Bearer '+shared):
+        return dict(name=None, identity='self-declared')
+    raise HTTPException(401, 'Supervisor token required')
+
+
+def audit(c, actor, action, target, typed_name=None, **detail):
+    """Append-only record of a supervisor change, written in the same transaction. Never stores report text."""
+    c.execute('INSERT INTO audit (at, actor, identity, action, target, detail) VALUES (?,?,?,?,?,?)',
+              (now_utc().isoformat(), actor['name'] or typed_name, actor['identity'], action, target, json.dumps(detail)))
 
 
 def site_reports(site_id):
@@ -366,18 +388,20 @@ def ingest_strike(value: Strike, authorization: str=Header(default='')):
     return result
 
 
-@app.post('/api/sites/{site_id}/lightning-replay',dependencies=[Depends(admin)])
-def replay(site_id):
+@app.post('/api/sites/{site_id}/lightning-replay')
+def replay(site_id, actor: dict = Depends(admin)):
     s = site_or_404(site_id)
     record_strike(Strike(id=str(uuid.uuid4()),latitude=s['latitude'],longitude=s['longitude'],occurred_at=now_utc().isoformat()),'replay')
+    with db() as c:
+        audit(c, actor, 'lightning.replay', site_id)
     update_missions(s,'Labeled lightning replay at the facility (simulated, not a live observation)')
     return dict(source='LABELED REPLAY — NOT A LIVE OBSERVATION',**strike_states(s)['replay'])
 
 
-@app.post('/api/sites/{site_id}/reports',dependencies=[Depends(admin)])
+@app.post('/api/sites/{site_id}/reports')
 async def report(site_id: str, classification: str=Form(...), description: str=Form(...),
                  latitude: float=Form(...), longitude: float=Form(...), image: UploadFile | None=File(default=None),
-                 categories: str=Form('[]'), jev_consent: bool=Form(False)):
+                 categories: str=Form('[]'), jev_consent: bool=Form(False), actor: dict=Depends(admin)):
     s = site_or_404(site_id)
     if classification not in jev.CATEGORIES:
         raise HTTPException(422,'Unknown hazard classification')
@@ -420,6 +444,8 @@ async def report(site_id: str, classification: str=Form(...), description: str=F
             c.execute('INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?)',
                 (identifier,site_id,classification,description,latitude,longitude,now_utc().isoformat(),'pending',image_path))
             c.execute('INSERT INTO report_triage VALUES (?,?,?)',(identifier,json.dumps(triage),now_utc().isoformat()))
+            audit(c, actor, 'report.submit', identifier, site_id=site_id, categories=manual_categories, jev_consent=jev_consent,
+                  jev_status=triage['provider']['status'], image=bool(image_path))
     except Exception:
         if image_path:
             (UPLOADS/image_path).unlink(missing_ok=True)
@@ -432,13 +458,14 @@ class TriageCorrection(BaseModel):
     categories: list[Literal['heat','storm','flood','lightning','wildfire','wildlife','unstable_terrain','equipment_obstruction','other']] = Field(min_length=1,max_length=9)
 
 
-@app.patch('/api/reports/{report_id}/triage',dependencies=[Depends(admin)])
-def correct_triage(report_id: str, value: TriageCorrection):
+@app.patch('/api/reports/{report_id}/triage')
+def correct_triage(report_id: str, value: TriageCorrection, actor: dict = Depends(admin)):
     with db() as c:
         row=c.execute('SELECT id,site_id FROM reports WHERE id=?',(report_id,)).fetchone()
         if not row:raise HTTPException(404,'Report not found')
         prior=c.execute('SELECT payload FROM report_triage WHERE report_id=?',(report_id,)).fetchone()
         triage=json.loads(prior['payload']) if prior else {}
+        audit(c, actor, 'report.relabel', report_id, categories=list(dict.fromkeys(value.categories)), previous=triage.get('manual_categories'))
         triage.update(manual_categories=list(dict.fromkeys(value.categories)),source='manual_correction',corrected_at=now_utc().isoformat())
         c.execute('UPDATE reports SET classification=? WHERE id=?',(value.categories[0],report_id))
         c.execute('INSERT OR REPLACE INTO report_triage VALUES (?,?,?)',(report_id,json.dumps(triage),now_utc().isoformat()))
@@ -450,13 +477,14 @@ class Review(BaseModel):
     status: Literal['verified','rejected','resolved']
 
 
-@app.patch('/api/reports/{report_id}',dependencies=[Depends(admin)])
-async def review(report_id: str, value: Review):
+@app.patch('/api/reports/{report_id}')
+async def review(report_id: str, value: Review, actor: dict = Depends(admin)):
     with db() as c:
-        row = c.execute('SELECT site_id FROM reports WHERE id=?',(report_id,)).fetchone()
+        row = c.execute('SELECT site_id, status FROM reports WHERE id=?',(report_id,)).fetchone()
         if not row:
             raise HTTPException(404,'Report not found')
         c.execute('UPDATE reports SET status=? WHERE id=?',(value.status,report_id))
+        audit(c, actor, 'report.review', report_id, status=value.status, previous=row['status'])
     await assess(site_or_404(row['site_id']),f'Crew report {report_id[:8]} marked {value.status} by supervisor')
     return dict(id=report_id,status=value.status)
 
@@ -492,8 +520,8 @@ class MissionBody(BaseModel):
     supervisor: str = Field(min_length=2, max_length=80)
 
 
-@app.post('/api/missions', dependencies=[Depends(admin)])
-async def create_mission(value: MissionBody):
+@app.post('/api/missions')
+async def create_mission(value: MissionBody, actor: dict = Depends(admin)):
     site = site_or_404(value.site_id)
     try:
         start, end = parse_time(value.shift_start), parse_time(value.shift_end)
@@ -509,6 +537,8 @@ async def create_mission(value: MissionBody):
                    shift_start=start.isoformat(), shift_end=end.isoformat(), created_at=now_utc().isoformat())
     with db() as c:
         c.execute('INSERT INTO missions VALUES (:id,:site_id,:name,:activity,:latitude,:longitude,:shift_start,:shift_end,:crew_size,:supervisor,:created_at)', mission)
+        audit(c, actor, 'mission.create', mission['id'], name=mission['name'], site_id=mission['site_id'], activity=mission['activity'],
+              responsible=mission['supervisor'])
     record_jha(mission, site, await current_assessment(site, 'Mission created'), 'Mission created')
     return mission
 
@@ -580,8 +610,8 @@ class Decision(BaseModel):
     version: int = Field(ge=1)
 
 
-@app.post('/api/missions/{mission_id}/decisions', dependencies=[Depends(admin)])
-def decide(mission_id: str, value: Decision):
+@app.post('/api/missions/{mission_id}/decisions')
+def decide(mission_id: str, value: Decision, actor: dict = Depends(admin)):
     mission_or_404(mission_id)
     latest = versions_for(mission_id)[-1]
     if value.version != latest['version']:
@@ -597,10 +627,12 @@ def decide(mission_id: str, value: Decision):
         raise HTTPException(409, 'Lightning stop work is a deterministic rule and cannot be overridden. Record a mitigation or wait for the timer review.')
     record = dict(id=str(uuid.uuid4()), mission_id=mission_id, version=latest['version'], hazard=value.hazard, decision=value.decision,
                   rating=value.rating if value.decision == 'override' else None, mitigation=(value.mitigation or '').strip() or None,
-                  rationale=value.rationale.strip(), supervisor=value.supervisor.strip(),
-                  entry_fingerprint=missions.entry_fingerprint(entry), created_at=now_utc().isoformat())
+                  rationale=value.rationale.strip(), supervisor=actor['name'] or value.supervisor.strip(),
+                  entry_fingerprint=missions.entry_fingerprint(entry), created_at=now_utc().isoformat(), identity=actor['identity'])
     with db() as c:
-        c.execute('INSERT INTO jha_decisions VALUES (:id,:mission_id,:version,:hazard,:decision,:rating,:mitigation,:rationale,:supervisor,:entry_fingerprint,:created_at)', record)
+        c.execute('INSERT INTO jha_decisions VALUES (:id,:mission_id,:version,:hazard,:decision,:rating,:mitigation,:rationale,:supervisor,:entry_fingerprint,:created_at,:identity)', record)
+        audit(c, actor, 'decision.record', record['id'], typed_name=record['supervisor'], mission_id=mission_id, hazard=value.hazard,
+              decision=value.decision, version=latest['version'])
     return record
 
 
@@ -608,6 +640,13 @@ def decide(mission_id: str, value: Decision):
 def cached_overlaps(utilities_only):
     data = overlap.dataset()
     return overlap.find_overlaps(data['projects'], utilities_only=utilities_only) if data else None
+
+
+@app.get('/api/audit', dependencies=[Depends(admin)])
+def audit_log(limit: int = 200):
+    with db() as c:
+        rows = c.execute('SELECT * FROM audit ORDER BY seq DESC LIMIT ?', (max(1, min(limit, 1000)),)).fetchall()
+    return [dict(r, detail=json.loads(r['detail'])) for r in rows]
 
 
 @app.get('/api/plan-overlaps')

@@ -470,7 +470,9 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
                   {decision ? (
                     <span className={decision.stale ? "decision stale" : "decision"}>
                       {decision.decision === "override" ? `Override to ${RATING_LABEL[decision.rating]}` : decision.decision === "mitigate" ? "Mitigated" : "Accepted"} by{" "}
-                      {decision.supervisor} on v{decision.version}, {zoned(decision.created_at, tz)}: "{decision.rationale}"
+                      {decision.supervisor}
+                      {decision.identity === "token" ? " (personal token)" : " (name typed under the shared token)"} on v{decision.version},{" "}
+                      {zoned(decision.created_at, tz)}: "{decision.rationale}"
                       {decision.mitigation && ` Controls: ${decision.mitigation}`}
                       {decision.stale && " · conditions changed since, review again"}
                     </span>
