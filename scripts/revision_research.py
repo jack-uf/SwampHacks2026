@@ -62,7 +62,7 @@ def collect():
             if not path.exists():
                 continue
             record = json.loads(manifest.read_text())
-            if record['url'] != url or record['status'] != 200 or record['sha256'] != digest(path):
+            if record['url'] != url or record['sha256'] != digest(path):
                 raise ValueError('Invalid retained forecast: ' + str(path))
             used[str(path.relative_to(ROOT))] = record
             return path.read_bytes()

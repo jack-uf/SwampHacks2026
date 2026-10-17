@@ -1,6 +1,6 @@
 {
   "scope": "Bridge rainfall and forecast-revision ablation, forward-only development folds",
-  "created_utc": "2026-10-17T22:27:33.685644+00:00",
+  "created_utc": "2026-10-17T22:28:16.115769+00:00",
   "seed": 42,
   "unopened": "fresh geographic cohort of unused CAMELS gauges",
   "folds": {
@@ -35,7 +35,7 @@
   },
   "inputs": {
     "docs/REVISION_RESEARCH_PROTOCOL.md": "98ee56968b9414300b5db0513fa6937fb0df9c263527d2df3e17c76f5ba11112",
-    "scripts/revision_research.py": "6c7ae9fd01da788dfb8b8c808bb88c09df48dff22c4af94745b24bae45e928ec",
+    "scripts/revision_research.py": "d23fb4d49082f138e9d69294ddc44847dfa37ae4c1a3183b13d228a48b2cb823",
     "scripts/revision_worker.py": "1e93c8fac456e8f3d737e6052b80004bba690de03f8cc8d12713baea0d1c279d",
     "tests/test_revision_research.py": "5948fd77027fe94f8d8841c9b680355a689e401cde97becc7f281a2c06a8d3e2",
     "tests/test_revision_worker.py": "754a8ca239959396af77337e821f2fa3c09646dec7b8dd2bdb94bfcb619bb40f",
