@@ -18,6 +18,8 @@ See RESEARCH_PLAN.md for the predeclared design. Final test is January–June 20
 
 The original threshold is unchanged in this comparison; the updated threshold comes only from 2025 validation. Differences combine expanded fitting, calibration, features and threshold policy; they do not isolate one intervention. Original 2025 metrics cannot be directly compared with a different 2026 population. Paired week-block intervals, all candidate results (including failures), prevalence, reliability counts, geographic tests and quarterly/county variability are in models/evaluation.json. Confusion matrices are [[TN, FP], [FN, TP]]. AP means average precision.
 
+Geographic transfer without inspected holdouts: the leave-one-state-out diagnostic in [MODEL_CARD.md](MODEL_CARD.md#geographic-transfer-leave-one-state-out) and `models/spatial-cv.json`.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

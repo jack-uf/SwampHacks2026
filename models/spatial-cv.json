@@ -1,0 +1,988 @@
+{
+  "created_at": "2026-10-17T04:17:18.622011+00:00",
+  "protocol": "docs/SPATIAL_CV_PROTOCOL.md",
+  "dataset_sha256": "dc4cebada4a66fbfc6e72cea7a66d71b36d4f022669c05a7924f3d069479d9a9",
+  "states": [
+    "AL",
+    "FL",
+    "IL",
+    "LA",
+    "MN",
+    "NC",
+    "OH",
+    "OK",
+    "PA",
+    "SC",
+    "TN",
+    "TX"
+  ],
+  "counties": 18,
+  "hazards": {
+    "flood": {
+      "recipe": "balanced logistic, base features (served frozen-baseline recipe)",
+      "threshold": 0.030639765827391585,
+      "folds": {
+        "AL": {
+          "status": "ok",
+          "fit_states": [
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "FL": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "IL": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "LA": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "MN": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "NC": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "OH": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "OK": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "PA": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "SC": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "TN",
+            "TX"
+          ]
+        },
+        "TN": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TX"
+          ]
+        },
+        "TX": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN"
+          ]
+        }
+      },
+      "seen_state": {
+        "rows": 3312,
+        "positives": 34,
+        "average_precision": 0.058498708777814094,
+        "brier": 0.009966329010422926,
+        "expected_positives": 35.689620085007434,
+        "recall": 0.3235294117647059,
+        "false_alerts_per_100_county_days": 6.853864734299517
+      },
+      "left_out_state": {
+        "rows": 3312,
+        "positives": 34,
+        "average_precision": 0.05586822366470587,
+        "brier": 0.01001188041604638,
+        "expected_positives": 31.169655656160764,
+        "recall": 0.29411764705882354,
+        "false_alerts_per_100_county_days": 5.585748792270532
+      },
+      "per_state": {
+        "AL": {
+          "rows": 184,
+          "positives": 3,
+          "seen_ap": 0.1584574264986636,
+          "left_out_ap": 0.15650810875987217,
+          "seen_brier": 0.015349648449265842,
+          "left_out_brier": 0.015268855670810771
+        },
+        "FL": {
+          "rows": 552,
+          "positives": 6,
+          "seen_ap": 0.11074735449735448,
+          "left_out_ap": 0.07124101093793003,
+          "seen_brier": 0.010482024373787919,
+          "left_out_brier": 0.010625280942817094
+        },
+        "IL": {
+          "rows": 184,
+          "positives": 4,
+          "seen_ap": 0.19318181818181818,
+          "left_out_ap": 0.2391033026113671,
+          "seen_brier": 0.02091693201779344,
+          "left_out_brier": 0.020794598381823952
+        },
+        "LA": {
+          "rows": 184,
+          "positives": 2,
+          "seen_ap": 0.3333333333333333,
+          "left_out_ap": 0.34090909090909094,
+          "seen_brier": 0.009358441957515298,
+          "left_out_brier": 0.009475210218197937
+        },
+        "MN": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.00022372379601528312,
+          "left_out_brier": 0.0003247300288219376
+        },
+        "NC": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.001667664964178953,
+          "left_out_brier": 0.0017422474229892848
+        },
+        "OH": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.00016533129941556526,
+          "left_out_brier": 0.000217230921786293
+        },
+        "OK": {
+          "rows": 368,
+          "positives": 4,
+          "seen_ap": 0.07268361399786254,
+          "left_out_ap": 0.07140151515151515,
+          "seen_brier": 0.010654316197693636,
+          "left_out_brier": 0.01064208984950598
+        },
+        "PA": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.00017624617132626708,
+          "left_out_brier": 0.00019631742574819196
+        },
+        "SC": {
+          "rows": 184,
+          "positives": 1,
+          "seen_ap": 0.05263157894736842,
+          "left_out_ap": 0.05,
+          "seen_brier": 0.005456336424087225,
+          "left_out_brier": 0.005400783581656304
+        },
+        "TN": {
+          "rows": 368,
+          "positives": 7,
+          "seen_ap": 0.0748003695346895,
+          "left_out_ap": 0.07574761509050225,
+          "seen_brier": 0.01858269151125321,
+          "left_out_brier": 0.01866579059758164
+        },
+        "TX": {
+          "rows": 552,
+          "positives": 7,
+          "seen_ap": 0.1409241216228196,
+          "left_out_ap": 0.14430923112526883,
+          "seen_brier": 0.012053169522919115,
+          "left_out_brier": 0.012100756704791212
+        }
+      },
+      "paired_difference": {
+        "method": "300 paired calendar-week block resamples; spatial rows within week retained; descriptive 95% interval",
+        "weeks": 27,
+        "replicates": 300,
+        "delta_ap_95": [
+          -0.02066673417806426,
+          0.024632487297851956
+        ],
+        "delta_brier_95": [
+          -4.0809804563024346e-05,
+          0.00016248350043962707
+        ]
+      }
+    },
+    "storm": {
+      "recipe": "balanced LightGBM, enhanced features (served lightgbm_enhanced recipe)",
+      "threshold": 0.07567978303996738,
+      "folds": {
+        "AL": {
+          "status": "ok",
+          "fit_states": [
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "FL": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "IL": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "LA": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "MN": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "NC": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "OH": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OK",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "OK": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "PA",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "PA": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "SC",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "SC",
+            "TN",
+            "TX"
+          ]
+        },
+        "SC": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "TN",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "TN",
+            "TX"
+          ]
+        },
+        "TN": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TX"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TX"
+          ]
+        },
+        "TX": {
+          "status": "ok",
+          "fit_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN"
+          ],
+          "calibration_states": [
+            "AL",
+            "FL",
+            "IL",
+            "LA",
+            "MN",
+            "NC",
+            "OH",
+            "OK",
+            "PA",
+            "SC",
+            "TN"
+          ]
+        }
+      },
+      "seen_state": {
+        "rows": 3312,
+        "positives": 57,
+        "average_precision": 0.09053643118255997,
+        "brier": 0.016323757488800137,
+        "expected_positives": 65.68777605334395,
+        "recall": 0.3508771929824561,
+        "false_alerts_per_100_county_days": 5.736714975845411
+      },
+      "left_out_state": {
+        "rows": 3312,
+        "positives": 57,
+        "average_precision": 0.06589102945778665,
+        "brier": 0.016669627847171704,
+        "expected_positives": 60.49901078832181,
+        "recall": 0.24561403508771928,
+        "false_alerts_per_100_county_days": 5.555555555555555
+      },
+      "per_state": {
+        "AL": {
+          "rows": 184,
+          "positives": 11,
+          "seen_ap": 0.18055377111190113,
+          "left_out_ap": 0.16088599288311886,
+          "seen_brier": 0.055511620418291024,
+          "left_out_brier": 0.058072549462150416
+        },
+        "FL": {
+          "rows": 552,
+          "positives": 5,
+          "seen_ap": 0.026021548387574676,
+          "left_out_ap": 0.034504155881952374,
+          "seen_brier": 0.009338748681774919,
+          "left_out_brier": 0.008975381525550268
+        },
+        "IL": {
+          "rows": 184,
+          "positives": 6,
+          "seen_ap": 0.16426417259750592,
+          "left_out_ap": 0.21330453363062057,
+          "seen_brier": 0.029353321841732647,
+          "left_out_brier": 0.02895040146319769
+        },
+        "LA": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.00042245347613124277,
+          "left_out_brier": 0.001547939899524909
+        },
+        "MN": {
+          "rows": 184,
+          "positives": 5,
+          "seen_ap": 0.2894927536231884,
+          "left_out_ap": 0.2783093600166771,
+          "seen_brier": 0.025191944492745876,
+          "left_out_brier": 0.025304964854778216
+        },
+        "NC": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.0015772801201862994,
+          "left_out_brier": 0.003117723239500615
+        },
+        "OH": {
+          "rows": 184,
+          "positives": 0,
+          "seen_ap": null,
+          "left_out_ap": null,
+          "seen_brier": 0.0008141090428675109,
+          "left_out_brier": 0.0006638979340293489
+        },
+        "OK": {
+          "rows": 368,
+          "positives": 12,
+          "seen_ap": 0.1830051863038959,
+          "left_out_ap": 0.1518946541883343,
+          "seen_brier": 0.02870022126699328,
+          "left_out_brier": 0.029576234514627
+        },
+        "PA": {
+          "rows": 184,
+          "positives": 1,
+          "seen_ap": 0.04,
+          "left_out_ap": 0.05,
+          "seen_brier": 0.005605087571480821,
+          "left_out_brier": 0.005609396354080907
+        },
+        "SC": {
+          "rows": 184,
+          "positives": 1,
+          "seen_ap": 0.25,
+          "left_out_ap": 0.3333333333333333,
+          "seen_brier": 0.00586187750451904,
+          "left_out_brier": 0.006389143229016742
+        },
+        "TN": {
+          "rows": 368,
+          "positives": 9,
+          "seen_ap": 0.07621336549749425,
+          "left_out_ap": 0.11133577184678767,
+          "seen_brier": 0.023596125952501202,
+          "left_out_brier": 0.023446833683463317
+        },
+        "TX": {
+          "rows": 552,
+          "positives": 7,
+          "seen_ap": 0.06701532594389738,
+          "left_out_ap": 0.04050600933442684,
+          "seen_brier": 0.012293666615378111,
+          "left_out_brier": 0.012475001279993458
+        }
+      },
+      "paired_difference": {
+        "method": "300 paired calendar-week block resamples; spatial rows within week retained; descriptive 95% interval",
+        "weeks": 27,
+        "replicates": 300,
+        "delta_ap_95": [
+          -0.056656130108141314,
+          -0.0033266729201112365
+        ],
+        "delta_brier_95": [
+          4.847875437330659e-05,
+          0.0007281487107760469
+        ]
+      }
+    }
+  }
+}

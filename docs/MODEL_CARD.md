@@ -51,6 +51,21 @@ All candidate metrics, [[TN,FP],[FN,TP]] matrices, prevalence, alert rate, false
 
 Compatible comparisons use paired calendar-week bootstrap resampling, 300 replicates/seed42, keeping all same-week counties together. These descriptive 95% intervals do not capture archive uncertainty, inter-week dependence or selection uncertainty. Flood AP/Brier delta intervals are exactly zero (same estimator). Storm delta AP interval is [-.0913,.0287], Brier [-.00134,.00266]; neither establishes a reliable gain.
 
+## Geographic transfer: leave one state out
+
+The question was how much the served recipes lose in a state they never saw, measured without touching any inspected holdout. [The protocol](SPATIAL_CV_PROTOCOL.md) was committed (393ef39) before the only run. It used the 18 development counties in 12 states, fitting on 2024 and calibrating on January to June 2025. Both arms scored the same 3,312 July to December 2025 county-days: one with a model fitted on every state, one with a model fitted without the scored row's state. No 2026 row and no holdout state was read. Output: `models/spatial-cv.json`; rerun with `.venv/bin/python -m scripts.spatial_cv`.
+
+| Hazard | Arm | Positives | AP | Brier | Expected positives | Recall at served threshold | False alerts /100 county-days |
+|---|---|---:|---:|---:|---:|---:|---:|
+| flood | state seen | 34 | 0.059 | 0.0100 | 35.7 | 0.32 | 6.85 |
+| flood | state left out | 34 | 0.056 | 0.0100 | 31.2 | 0.29 | 5.59 |
+| storm | state seen | 57 | 0.091 | 0.0163 | 65.7 | 0.35 | 5.74 |
+| storm | state left out | 57 | 0.066 | 0.0167 | 60.5 | 0.25 | 5.56 |
+
+Paired calendar-week bootstrap (300 resamples) of left-out minus seen: flood AP [-0.021, 0.025], so no loss is detectable; storm AP [-0.057, -0.003] and Brier [+0.00005, +0.00073], a loss in both. Prevalence is 1.0% for flood and 1.7% for storm, so even the seen-state AP is only 4 to 6 times the base rate.
+
+Per-state storm AP moves in both directions (Texas 0.067 to 0.041, Illinois 0.164 to 0.213) on 0 to 12 positives per state. The pooled drop therefore looks more like left-out probabilities that compare badly across states than uniformly worse ranking within each state. That matters because the portfolio compares sites. The result supports the exact-county serving restriction. As the protocol required, it changes no model, threshold or scope. Limits: July to December 2025 was the selection period, so the seen-state threshold metrics are optimistic, and neighbouring states share weather, so a genuinely new region could lose more.
+
 ## Serving scope, explanations and lifecycle
 
 Serving matches the EIA county/state **exactly** to each selected bundle's actual fitting inventory, using case-insensitive county names. No distance-radius extrapolation or fuzzy county mapping remains. Flood supports its eleven original fitted counties (including Arizona); storm supports eighteen development counties. A county name mismatch is explicit unknown. Predictions use the same county representative coordinates as training, not each plant's coordinates. Geographic tests do not become supported because a retrospective score looks favorable. Matching a fitting county is a conservative population restriction, not proof of site validity.
