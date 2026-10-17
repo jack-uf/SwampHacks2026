@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "code_sha256": "1b6628cf082e130c96dab80e0de0e8af412478c1328bb0063d257066a5002aa6",
+  "source_files": 143,
+  "source_bytes": 204247324,
+  "new_source_bytes": 8912419,
+  "development_rows": 107689,
+  "test_rows": 12389,
+  "test_gauges": 28,
+  "reserved_basins": 31,
+  "reference_boundary_files": 223,
+  "reconstructed_labels": 12389,
+  "analog_queries_checked": 84,
+  "predictions": {
+    "rainfall": "0cdfe99de275c2d16d07e057e6b2b426c36efa3734f23f6dbaf0e2c92493b040",
+    "logistic": "2494330a360392b5251eef9c671f023e42de97c76e5ee0a61f935aa25af68724",
+    "direct": "c422e1c63bc9f12ecb1a3649db22238c5e36dd3c99a273c9f119001add9d76ec",
+    "proximity": "c53fdbc53d47d5a381f584f808e2ebff7adf8a37172c681f746d6dcfa622a0e7",
+    "prior": "cc5417ead58d5af35a703ff9a92aa5abcac9bd7cf540ea2fcad84eda0d3278cf",
+    "hydro_analog": "175e5898e0555b45607ec432de79a789d29f43056ba6a2dd4f641dfb577c7a59",
+    "combined_analog": "fb6888951a3d23ef50c1bb25483822f1cf47513be2290b8986e56dcaf1a2aa58",
+    "offset": "18cddaddc208fafafb122e26f15f036beb52f7a0a432399b7ccd24a0eaa2e22c",
+    "pooled": "88fdd789f7b8c538c6be77cb145ff1d7031aafbd2acf3052a9d3b380b6402366"
+  },
+  "evaluation_sha256": "cf706025fa3d11aa9fbc4c69713fd611a4a4b8e8de3fd1b5a6d4ea5aa09fa496"
+}

@@ -32,6 +32,8 @@ The separate [onset-supervision and warning-budget study](WARNING_RESEARCH_RESUL
 
 The separate [connected-river feasibility study](UPSTREAM_RESEARCH_RESULTS.md) stopped before fitting because a frozen upstream gauge lacked historical discharge. It preserves potential geographic test outcomes and provides no new predictive-performance claim.
 
+The separate [historical-transition and weather-correction study](ANALOG_RESEARCH_RESULTS.md) improves AP on fresh watersheds using local pre-evaluation flow histories. Its event-recall and false-alert criteria fail, so the selected model remains experimental.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

@@ -1,0 +1,775 @@
+{
+  "dataset_sha256": "20e2d8cc54aa17c8c0ae06ffa0757ba663e878b4aebb535ac117cf7e26757486",
+  "coverage": [
+    {
+      "station": "13340000",
+      "huc": "17060306",
+      "reference": {
+        "reference_days": 5631,
+        "reference_cfs": 30400.0,
+        "library_windows": 4698,
+        "positive_windows": 70,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 523,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "06360500",
+      "huc": "101303061402",
+      "reference": {
+        "reference_days": 3818,
+        "reference_cfs": 1621.4999999999964,
+        "library_windows": 2893,
+        "positive_windows": 56,
+        "last_library_target": "2015-11-12"
+      },
+      "rows": 302,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "06934000",
+      "huc": "10290203",
+      "reference": {
+        "reference_days": 5775,
+        "reference_cfs": 9635.00000000001,
+        "library_windows": 4957,
+        "positive_windows": 130,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 336,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "07226500",
+      "huc": "11080007",
+      "reference": {
+        "reference_days": 4730,
+        "reference_cfs": 9.941000000000003,
+        "library_windows": 3746,
+        "positive_windows": 95,
+        "last_library_target": "2015-12-12"
+      },
+      "rows": 158,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "05123400",
+      "huc": "090100040709",
+      "reference": {
+        "reference_days": 3753,
+        "reference_cfs": 656.0,
+        "library_windows": 3033,
+        "positive_windows": 15,
+        "last_library_target": "2015-11-14"
+      },
+      "rows": 433,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "12414500",
+      "huc": "17010304",
+      "reference": {
+        "reference_days": 4995,
+        "reference_cfs": 8330.0,
+        "library_windows": 3777,
+        "positive_windows": 77,
+        "last_library_target": "2015-11-20"
+      },
+      "rows": 404,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "05062500",
+      "huc": "090201080902",
+      "reference": {
+        "reference_days": 3440,
+        "reference_cfs": 1380.0,
+        "library_windows": 2556,
+        "positive_windows": 33,
+        "last_library_target": "2015-11-09"
+      },
+      "rows": 349,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "05514500",
+      "huc": "07110008",
+      "reference": {
+        "reference_days": 5668,
+        "reference_cfs": 3630.0,
+        "library_windows": 4465,
+        "positive_windows": 221,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 337,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "07292500",
+      "huc": "08060205",
+      "reference": {
+        "reference_days": 5593,
+        "reference_cfs": 3343.9999999999964,
+        "library_windows": 4274,
+        "positive_windows": 227,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 464,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "11528700",
+      "huc": "18010212",
+      "reference": {
+        "reference_days": 5783,
+        "reference_cfs": 4310.0,
+        "library_windows": 5101,
+        "positive_windows": 113,
+        "last_library_target": "2015-12-26"
+      },
+      "rows": 476,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "03281500",
+      "huc": "05100203",
+      "reference": {
+        "reference_days": 5577,
+        "reference_cfs": 4171.999999999998,
+        "library_windows": 4351,
+        "positive_windows": 211,
+        "last_library_target": "2015-12-30"
+      },
+      "rows": 372,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "12189500",
+      "huc": "17110006",
+      "reference": {
+        "reference_days": 5793,
+        "reference_cfs": 10400.0,
+        "library_windows": 4859,
+        "positive_windows": 184,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 566,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "02231000",
+      "huc": "03070204",
+      "reference": {
+        "reference_days": 5806,
+        "reference_cfs": 1810.0,
+        "library_windows": 5235,
+        "positive_windows": 87,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 544,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "08190500",
+      "huc": "12110102",
+      "reference": {
+        "reference_days": 5810,
+        "reference_cfs": 44.51000000000003,
+        "library_windows": 5332,
+        "positive_windows": 33,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 616,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "01144000",
+      "huc": "01080105",
+      "reference": {
+        "reference_days": 4587,
+        "reference_cfs": 4956.999999999998,
+        "library_windows": 3233,
+        "positive_windows": 121,
+        "last_library_target": "2015-12-27"
+      },
+      "rows": 403,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "08189500",
+      "huc": "12100406",
+      "reference": {
+        "reference_days": 5778,
+        "reference_cfs": 298.2999999999993,
+        "library_windows": 4937,
+        "positive_windows": 148,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 501,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "14301000",
+      "huc": "17100202",
+      "reference": {
+        "reference_days": 5772,
+        "reference_cfs": 9818.999999999996,
+        "library_windows": 4912,
+        "positive_windows": 125,
+        "last_library_target": "2015-12-09"
+      },
+      "rows": 245,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "01606500",
+      "huc": "02070001",
+      "reference": {
+        "reference_days": 5626,
+        "reference_cfs": 2620.0,
+        "library_windows": 4455,
+        "positive_windows": 186,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 561,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "01664000",
+      "huc": "02080103",
+      "reference": {
+        "reference_days": 5660,
+        "reference_cfs": 1900.0,
+        "library_windows": 4336,
+        "positive_windows": 223,
+        "last_library_target": "2015-12-29"
+      },
+      "rows": 564,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "02108000",
+      "huc": "03030007",
+      "reference": {
+        "reference_days": 5797,
+        "reference_cfs": 2230.0,
+        "library_windows": 5065,
+        "positive_windows": 113,
+        "last_library_target": "2015-12-23"
+      },
+      "rows": 560,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "04027000",
+      "huc": "04010302",
+      "reference": {
+        "reference_days": 3755,
+        "reference_cfs": 2781.999999999989,
+        "library_windows": 3100,
+        "positive_windows": 47,
+        "last_library_target": "2015-12-16"
+      },
+      "rows": 438,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "07315700",
+      "huc": "11130201",
+      "reference": {
+        "reference_days": 4360,
+        "reference_cfs": 816.3000000000011,
+        "library_windows": 3275,
+        "positive_windows": 112,
+        "last_library_target": "2015-11-04"
+      },
+      "rows": 322,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "02479560",
+      "huc": "03170008",
+      "reference": {
+        "reference_days": 5790,
+        "reference_cfs": 3391.0000000000036,
+        "library_windows": 4973,
+        "positive_windows": 139,
+        "last_library_target": "2015-12-23"
+      },
+      "rows": 0,
+      "incomplete_issues": 0,
+      "excluded": "no eligible complete decisions"
+    },
+    {
+      "station": "02196000",
+      "huc": "03060107",
+      "excluded": "Expected exactly one mean-discharge series"
+    },
+    {
+      "station": "02350900",
+      "huc": "03130007",
+      "reference": {
+        "reference_days": 5827,
+        "reference_cfs": 1330.0,
+        "library_windows": 5184,
+        "positive_windows": 115,
+        "last_library_target": "2015-12-29"
+      },
+      "rows": 521,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "02371500",
+      "huc": "03140301",
+      "reference": {
+        "reference_days": 5717,
+        "reference_cfs": 2000.0,
+        "library_windows": 4847,
+        "positive_windows": 97,
+        "last_library_target": "2015-12-28"
+      },
+      "rows": 582,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "08324000",
+      "huc": "13020202",
+      "reference": {
+        "reference_days": 5616,
+        "reference_cfs": 193.0,
+        "library_windows": 4663,
+        "positive_windows": 45,
+        "last_library_target": "2015-12-17"
+      },
+      "rows": 0,
+      "incomplete_issues": 0,
+      "excluded": "no eligible complete decisions"
+    },
+    {
+      "station": "09484600",
+      "huc": "15050302",
+      "reference": {
+        "reference_days": 5081,
+        "reference_cfs": 4.4,
+        "library_windows": 3870,
+        "positive_windows": 74,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 550,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "13023000",
+      "huc": "17040103",
+      "reference": {
+        "reference_days": 4207,
+        "reference_cfs": 2283.9999999999964,
+        "library_windows": 3299,
+        "positive_windows": 37,
+        "last_library_target": "2015-12-23"
+      },
+      "rows": 358,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "13235000",
+      "huc": "17050120",
+      "reference": {
+        "reference_days": 5036,
+        "reference_cfs": 2725.0,
+        "library_windows": 3857,
+        "positive_windows": 41,
+        "last_library_target": "2015-11-20"
+      },
+      "rows": 463,
+      "incomplete_issues": 0
+    },
+    {
+      "station": "05466500",
+      "huc": "07080104",
+      "reference": {
+        "reference_days": 5068,
+        "reference_cfs": 1716.4999999999964,
+        "library_windows": 3940,
+        "positive_windows": 103,
+        "last_library_target": "2015-12-31"
+      },
+      "rows": 441,
+      "incomplete_issues": 0
+    }
+  ],
+  "sources": {
+    "experiments/sprint-20261017-hydrology/research/hres-metadata.json": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/.zmetadata",
+      "status": 200,
+      "retrieved_utc": "2026-10-17T16:41:21.117485+00:00",
+      "bytes": 7094,
+      "sha256": "4597ba02bbea8b1cd5aaa6eb98190897455baa654085141bca378e33048ec1b6"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/0",
+      "sha256": "17fa90282e35978670dbd51dd46594ba6ac91af5519653e1dd13260772e65eb2",
+      "bytes": 8891,
+      "retrieved_utc": "2026-10-17T16:44:14.758796+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-1.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/1",
+      "sha256": "890ecdd54d0a4a863af1ed29471fa1980fa4b4add5bfcff1ccc7a729c455abb8",
+      "bytes": 8238,
+      "retrieved_utc": "2026-10-17T16:44:16.059322+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-2.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/2",
+      "sha256": "24d8b8a7ae55cf08895329c3470a1a2b02a0ec2eb6ccc863261cbf77da69cfe4",
+      "bytes": 6345,
+      "retrieved_utc": "2026-10-17T16:44:16.327575+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-3.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/3",
+      "sha256": "584955436db71816c825a9a6de985cf65761bbca8d11f4c877a9a92bfdc9697a",
+      "bytes": 9819,
+      "retrieved_utc": "2026-10-17T16:44:16.640486+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-4.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/4",
+      "sha256": "929a8bcbf37d09e89edb329bd47e1f44ac735c3cfeb7d7101a04f17445660a2b",
+      "bytes": 9801,
+      "retrieved_utc": "2026-10-17T16:44:16.915435+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-5.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/5",
+      "sha256": "332244550187557d20ebfb9390beced30a892c772e84d95d378a817441d2935f",
+      "bytes": 9671,
+      "retrieved_utc": "2026-10-17T16:44:17.300046+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-6.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/6",
+      "sha256": "fb709c03d69aac8d163b790a5f87d4ad6bb690085f0ab7f614b69092fa665b4e",
+      "bytes": 9449,
+      "retrieved_utc": "2026-10-17T16:44:17.526019+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-7.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/7",
+      "sha256": "69aed2564cba24344c3e9a36a60843c3574444fe8dba7b7f7a45e041536826dd",
+      "bytes": 9675,
+      "retrieved_utc": "2026-10-17T16:44:17.869236+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/date-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/date/0",
+      "sha256": "30cab1e110e267c2417fd4f60999a9a385a2a033574aaddfd8773e37fc671fd0",
+      "bytes": 600,
+      "retrieved_utc": "2026-10-17T16:44:18.158237+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/lead_time-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/lead_time/0",
+      "sha256": "6f0be590e2cb997d157685ba6e4f963323963469f758e275f9f22b516a9b04b7",
+      "bytes": 96,
+      "retrieved_utc": "2026-10-17T16:44:18.413314+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-24.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/24.0.0",
+      "retrieved_utc": "2026-10-17T16:50:18.760386+00:00",
+      "status": 200,
+      "bytes": 15410115,
+      "sha256": "2e9edb1a35410ee995bfd3931b3c9be2c1f3f16f53c06dec4c2f13e9d7f5f5e9"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-25.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:19.842141+00:00",
+      "status": 200,
+      "bytes": 15712584,
+      "sha256": "c658dfa75294d224363c62479e241cfc9c4458d49ce2db96a7582c9b9e694492"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-26.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:20.967541+00:00",
+      "status": 200,
+      "bytes": 15718951,
+      "sha256": "628682e9bffef7ef9649b3e80f4f7709a5b8a3232b42aef354871ea980670006"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-27.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:22.149204+00:00",
+      "status": 200,
+      "bytes": 15731272,
+      "sha256": "c7595f0784628c46ddb42a9abf3a90f941fb95228ab157517772c97a3b04ba74"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-28.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:23.173809+00:00",
+      "status": 200,
+      "bytes": 14846996,
+      "sha256": "0624e51e23c8623b0bee60631f005ff60ccf54f3c4dabaa84623cc5ad52708cc"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-29.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:24.244344+00:00",
+      "status": 200,
+      "bytes": 14525769,
+      "sha256": "cff1cdef2cef969738620945c5541e5da8d5d102f8a7ea7273e1b380ba53c015"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-24.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/24.0.0",
+      "retrieved_utc": "2026-10-17T16:50:25.261881+00:00",
+      "status": 200,
+      "bytes": 12749272,
+      "sha256": "2c3f92ea79ec3522c0a7c4cced0c0d308d3998b930fc7a4051bb1e74c51ec8df"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-25.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:26.263252+00:00",
+      "status": 200,
+      "bytes": 12984871,
+      "sha256": "21308540795f1f9583ce8ad2a835f746f1c8fbdd66c22b4811665621f17ed375"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-26.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:27.380684+00:00",
+      "status": 200,
+      "bytes": 12974957,
+      "sha256": "d84bc5bab87273b9806ca9c295bc78bab8651d3ae80c838e9600723b976d7ea7"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-27.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:28.393354+00:00",
+      "status": 200,
+      "bytes": 13146979,
+      "sha256": "28126b4903385a8f682155235eeb9445cb49afd7fc823c92dc39eb7ad665310f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-28.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:29.685835+00:00",
+      "status": 200,
+      "bytes": 12917349,
+      "sha256": "317addf673a86fc268f1e28f168f1a5506ceee7ff5e3a5aec96ed640fed935a5"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-29.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:30.789155+00:00",
+      "status": 200,
+      "bytes": 12901462,
+      "sha256": "d3b3ea7f499a7122f8223ed3a35a5a09c4a731033658e53cc6c05f1a47f3729c"
+    },
+    "experiments/sprint-20261017-analog/sources/13340000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13340000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:35.312252+00:00",
+      "status": 200,
+      "bytes": 293977,
+      "sha256": "ae2817cf812a23c74a956895264a10cc5fd1a0120ff2f63d66415af3153031db"
+    },
+    "experiments/sprint-20261017-analog/sources/06360500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06360500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:35.319470+00:00",
+      "status": 200,
+      "bytes": 295828,
+      "sha256": "16f24bde8e1eb9ff9636ee63fbbadd2c999f242eb1ffd873299529b435a0f179"
+    },
+    "experiments/sprint-20261017-analog/sources/07226500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07226500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:35.966865+00:00",
+      "status": 200,
+      "bytes": 276917,
+      "sha256": "8878b6f0ee572e42f528759aa96028ccd63af122a69751697bb49dbe72cce274"
+    },
+    "experiments/sprint-20261017-analog/sources/06934000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06934000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:36.069399+00:00",
+      "status": 200,
+      "bytes": 288519,
+      "sha256": "5dd000cb23cce9b0a4b9735a7f9e1c735acdd131f97d0a60abed71b645d9d421"
+    },
+    "experiments/sprint-20261017-analog/sources/05123400.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05123400&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:36.387044+00:00",
+      "status": 200,
+      "bytes": 295025,
+      "sha256": "4a3429b66dabbf831a084299904864b007192378a9af3c8ac54e9744439fb511"
+    },
+    "experiments/sprint-20261017-analog/sources/12414500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12414500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:36.511949+00:00",
+      "status": 200,
+      "bytes": 289012,
+      "sha256": "870e816b79546008b668f4c23112e4161d0ee21d24263fd077fd64a5ec5e92b5"
+    },
+    "experiments/sprint-20261017-analog/sources/05062500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05062500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:36.825694+00:00",
+      "status": 200,
+      "bytes": 293080,
+      "sha256": "4c0754092be9e1022b74be521586533c8209f11d92e049cf9dc1bcff15e3159b"
+    },
+    "experiments/sprint-20261017-analog/sources/05514500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05514500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:36.951224+00:00",
+      "status": 200,
+      "bytes": 288313,
+      "sha256": "e1da7c7532a9d1717d7d3c0e80db2dbd7241b6a7ffe519460b55b49318a42caf"
+    },
+    "experiments/sprint-20261017-analog/sources/07292500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07292500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:37.258862+00:00",
+      "status": 200,
+      "bytes": 287849,
+      "sha256": "d9c58cc6d2e60434ac51bc1639359d52727f820017bb992627ba899d07642ef3"
+    },
+    "experiments/sprint-20261017-analog/sources/11528700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11528700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:37.391319+00:00",
+      "status": 200,
+      "bytes": 287443,
+      "sha256": "f1c90f8a516c4fab93498c4e86f9b9baaef1e97186eaaaec042bfa8a3ccd24b6"
+    },
+    "experiments/sprint-20261017-analog/sources/03281500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03281500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:37.856210+00:00",
+      "status": 200,
+      "bytes": 287203,
+      "sha256": "c349649aac0bf9c4831832ecfc6c92bc88831c686c53ccb7724e509a9eeab2ec"
+    },
+    "experiments/sprint-20261017-analog/sources/12189500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12189500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:38.090663+00:00",
+      "status": 200,
+      "bytes": 291413,
+      "sha256": "fd445e7f1fbd337243eab429726ef440550d6a21bde311c28b59321f5f4756f7"
+    },
+    "experiments/sprint-20261017-analog/sources/02231000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02231000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:38.421604+00:00",
+      "status": 200,
+      "bytes": 286774,
+      "sha256": "cbad6c30e75aaaabd204eb64776e30d83a178c06ea5cb5fae2294193760f563a"
+    },
+    "experiments/sprint-20261017-analog/sources/08190500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08190500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:38.658311+00:00",
+      "status": 200,
+      "bytes": 290795,
+      "sha256": "0d526d8bda5da86d7b5f185f350e7413d7d1ee163e28e7f88741ef14380e639b"
+    },
+    "experiments/sprint-20261017-analog/sources/01144000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01144000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:38.884847+00:00",
+      "status": 200,
+      "bytes": 289514,
+      "sha256": "af438d26413ff73762d566a7f6e45eda2a3861b890769eeabe47faafd879f9bd"
+    },
+    "experiments/sprint-20261017-analog/sources/08189500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08189500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:39.147388+00:00",
+      "status": 200,
+      "bytes": 290974,
+      "sha256": "f4ded2eb062753abbbb7aa3dd75b76591e5beda9eb7778bd17600d8b7fb24c66"
+    },
+    "experiments/sprint-20261017-analog/sources/14301000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14301000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:39.331221+00:00",
+      "status": 200,
+      "bytes": 288018,
+      "sha256": "d54643a2b69c438b64e799a85374b98e0b457e714831205fe1ae1016138d83a6"
+    },
+    "experiments/sprint-20261017-analog/sources/01606500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01606500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:39.557107+00:00",
+      "status": 200,
+      "bytes": 285381,
+      "sha256": "1d2587500a7fdff2c07fcdd44525397d79dea6f1364962d468cd48ecf0365855"
+    },
+    "experiments/sprint-20261017-analog/sources/01664000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=01664000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:39.838187+00:00",
+      "status": 200,
+      "bytes": 285309,
+      "sha256": "242d64aa428efec2c5ce276300b5a87f86a3593873b1fff4e1fa0e308d856a39"
+    },
+    "experiments/sprint-20261017-analog/sources/02108000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02108000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:40.019847+00:00",
+      "status": 200,
+      "bytes": 285554,
+      "sha256": "e8d219506189dc355c8db42eb7050648407771cd69bc95f5684fc660fc5683b4"
+    },
+    "experiments/sprint-20261017-analog/sources/04027000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=04027000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:40.237731+00:00",
+      "status": 200,
+      "bytes": 289780,
+      "sha256": "118fb5ecbcf1bdfc875f443c2bbc013892af0fa7786011e6ef479e525cb53cf1"
+    },
+    "experiments/sprint-20261017-analog/sources/07315700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07315700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:40.457180+00:00",
+      "status": 200,
+      "bytes": 295251,
+      "sha256": "cc96a6b44bcb74fb579f3a232b896f38760c79797d6c41b7cb4ec4a9c31534fc"
+    },
+    "experiments/sprint-20261017-analog/sources/02479560.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02479560&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:40.643272+00:00",
+      "status": 200,
+      "bytes": 239541,
+      "sha256": "11044af1848800bbecbd7a94d0207d4fbcd655d38cab000bfd34013aa667fb6c"
+    },
+    "experiments/sprint-20261017-analog/sources/02196000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02196000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:40.966335+00:00",
+      "status": 200,
+      "bytes": 317085,
+      "sha256": "5db4cb6654f594a7ac93dc8ec4abcfbcdc384eae3eccc4e0238613377e40b098"
+    },
+    "experiments/sprint-20261017-analog/sources/02350900.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02350900&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:41.085099+00:00",
+      "status": 200,
+      "bytes": 283990,
+      "sha256": "f5579ab1a0b882613bd3dcbea3a136e60c5d2f838da81b4b96e3fa2e04ba65c2"
+    },
+    "experiments/sprint-20261017-analog/sources/02371500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02371500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:41.410801+00:00",
+      "status": 200,
+      "bytes": 285931,
+      "sha256": "9948f56de9a31380a98825aa74b49e2471fc707900e888a964a16ddfa673065e"
+    },
+    "experiments/sprint-20261017-analog/sources/08324000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08324000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:41.501166+00:00",
+      "status": 200,
+      "bytes": 267351,
+      "sha256": "70f6ec2fba43a99a4f0cd3a507c90edf01ad50f260f6b4668a7e4bb474f57250"
+    },
+    "experiments/sprint-20261017-analog/sources/09484600.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09484600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:41.824404+00:00",
+      "status": 200,
+      "bytes": 294079,
+      "sha256": "ae6ad8b44b088a75f6e82731a16c27e66eadd59004ab1f86a8718603af1b151e"
+    },
+    "experiments/sprint-20261017-analog/sources/13023000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13023000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:41.980017+00:00",
+      "status": 200,
+      "bytes": 288401,
+      "sha256": "0cae23ae8b20a91ad65bb9a6c4e5d73fe6ab0e60bd154a8df7e1dab8eaea963b"
+    },
+    "experiments/sprint-20261017-analog/sources/13235000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13235000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:42.326535+00:00",
+      "status": 200,
+      "bytes": 286282,
+      "sha256": "199a3a5e455b1cf66fa9992bfd662399652494818583ab166c04733066f18d32"
+    },
+    "experiments/sprint-20261017-analog/sources/05466500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05466500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T21:04:42.499105+00:00",
+      "status": 200,
+      "bytes": 287830,
+      "sha256": "7b0b53fdae5878c52cc40a1e8f91ecb6ccc187a6f65d992fd2669381f77786b4"
+    }
+  },
+  "protocol_sha256": "fbc468c8278a53ab8f96d605f9e9aa1569d3abfd6aa8b4e31391a37d8aa867a0",
+  "rows": 12389,
+  "gauges": 28
+}
