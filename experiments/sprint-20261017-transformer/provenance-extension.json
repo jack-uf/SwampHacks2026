@@ -1,0 +1,669 @@
+{
+  "created_at": "2026-10-17T07:35:24.398603+00:00",
+  "sources": [
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=77S&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:29:16.882983+00:00",
+      "sha256": "d8ba0589b491e169c740cc86e1cf81e6ec1638b5b77e7631133b2a4902142a5e",
+      "bytes": 180270
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.9308&longitude=-123.0067&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:29:18.164129+00:00",
+      "sha256": "aee942b57a88df1a036d31641584bee50bdd258fbbd8502bf1353e5c82fcda45",
+      "bytes": 126404
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=ABQ&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:29:28.787491+00:00",
+      "sha256": "f31a9c41008823b23371926fb54364cac8f1fc227188ddba75755e4ac401bf56",
+      "bytes": 67566
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=35.0419&longitude=-106.6155&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:29:29.711547+00:00",
+      "sha256": "79bab1d705c490e84d3f69b174621e3c29e1fd1efde971b77c8e0706b595088d",
+      "bytes": 130078
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=ALB&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:29:40.626547+00:00",
+      "sha256": "a035dc6f659344ccba05fdca62058a238ae3d0b80380fce13ce94990112f95e0",
+      "bytes": 75395
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.7576&longitude=-73.8036&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:29:41.621952+00:00",
+      "sha256": "9988c89feef7a409792d7802c5cceb42b1f25705213c813078649afe26db1bc6",
+      "bytes": 128813
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=BIL&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:29:52.410111+00:00",
+      "sha256": "fab8558f9a27f1df80fbd80cc545b54f738e83cfb4fee70a3f2a179afbfc6c58",
+      "bytes": 68392
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=45.8069&longitude=-108.5422&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:29:53.296359+00:00",
+      "sha256": "390893eeca7c275d229797e8bd65017937c2497c1910a72bb35bae5b7f458d47",
+      "bytes": 128100
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=BIS&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:30:04.037782+00:00",
+      "sha256": "593647d9353fdcae897d91c02b0a8206646ec8763cada94c8cd93b21966775b7",
+      "bytes": 73106
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=46.7727&longitude=-100.7458&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:30:05.868336+00:00",
+      "sha256": "5c9406b577b94dcb23eb5858ee5bc14dda3f0e6879f27a17f4c44d59593021b2",
+      "bytes": 128939
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=BOI&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:30:16.511516+00:00",
+      "sha256": "a724491efef70c6c637ccd863b0076a8802826611ecf059f710513a3f08a13d5",
+      "bytes": 64641
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.5667&longitude=-116.2406&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:30:17.457771+00:00",
+      "sha256": "dc04263fa9258fea35d3c37de94abd10968cef6b326e562e1c787b792dfe4846",
+      "bytes": 127617
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=BUF&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:30:28.278770+00:00",
+      "sha256": "e061a4a1f3d75129bf595aecb3015d9c5ed24c33398b58b5b9f6917043b2e9d4",
+      "bytes": 73414
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.9408&longitude=-78.7358&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:30:29.172721+00:00",
+      "sha256": "8901b3ddada07082d2e69592f2d28935425c330137af8cff9bd6caa4d1bc56f6",
+      "bytes": 129440
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=CID&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:30:40.104446+00:00",
+      "sha256": "d6e5ea63b21eab9eac3f388e05d4abf18b234dbfd4c8bfa8bee79ea9b2c4a2fa",
+      "bytes": 78452
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.8829&longitude=-91.7246&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:30:41.006197+00:00",
+      "sha256": "2563d838242d202b9c53e9fab1853e2e5e7ec426de6ea3db66e2733fea657b40",
+      "bytes": 130674
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=DAA&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:30:51.691064+00:00",
+      "sha256": "ea4f98893c29877a75096bd4004fe5cb40879c8d9de93ec42c4d9f64fc1530aa",
+      "bytes": 95533
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.715&longitude=-77.181&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:30:52.665479+00:00",
+      "sha256": "68f0b01434871be122c9780b64424a1cf854cf807694ca2216bdff4efb7517db",
+      "bytes": 130051
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=DTW&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:31:03.402737+00:00",
+      "sha256": "275ee0b482bb6bb7bb2dd37a9773959345428b6585e4990ed226b61f42136375",
+      "bytes": 70315
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.23&longitude=-83.33&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:31:04.457344+00:00",
+      "sha256": "779f1221df7ad0bb1f03eae9fe8bb03254110983fe8c289f6f050a45e0f753c0",
+      "bytes": 129907
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=FAR&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:31:15.139028+00:00",
+      "sha256": "c4052d419d1d8f9ecee01fb22b7d6dda61d6fdd07531cdc077b142d3deb0396b",
+      "bytes": 70614
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=46.9253&longitude=-96.8111&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:31:16.010704+00:00",
+      "sha256": "0f136eae09c8b11251cd04b9aa15028ff78a71a5e7c49512e5b34218db783223",
+      "bytes": 129349
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=FSD&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:31:26.719711+00:00",
+      "sha256": "706259265df6cec45472ccaaf4bd3b4d4e016044a78cd400f22dd821d0045590",
+      "bytes": 75536
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.5769&longitude=-96.7536&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:31:27.662797+00:00",
+      "sha256": "b67ffdbc223a0807c2481b09cb6476d5e4b4fa18b949e96a97c740783a6fbd54",
+      "bytes": 130291
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=GRR&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:31:38.870591+00:00",
+      "sha256": "f6f41261163c0c5a4c05bdde818f4a901a96b7b3c9f513daa04594044755c0bd",
+      "bytes": 71221
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.8821&longitude=-85.523&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:31:39.749258+00:00",
+      "sha256": "57672864a8b6963bd9ac82e1084caefdf1384b7174afca17271d023175c535d2",
+      "bytes": 129491
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=ICT&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:31:50.645496+00:00",
+      "sha256": "07008879d79a7c7ca85f319c52096c5ba24ba6df388afc1522b20e8e3830603e",
+      "bytes": 67769
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=37.65&longitude=-97.43&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:31:51.642374+00:00",
+      "sha256": "d5e1798641fd4caf3edde6bcdc518434e9fdd766ccc371bda38803438d316ce8",
+      "bytes": 131463
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=IKV&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:32:04.811442+00:00",
+      "sha256": "bec2f0617727d5e0c56db71d78a9c01e4fa25cb1182241961e33720e5db38434",
+      "bytes": 184245
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.6878&longitude=-93.5695&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:32:05.816702+00:00",
+      "sha256": "23b6172260e92876edbccf341ce2575012548f71b6b9f9c34ec5988040841fcd",
+      "bytes": 130880
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=LEX&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:32:16.522353+00:00",
+      "sha256": "0785dbe49fec256bc60a5af74270e87f660f8c183947d5e8346f4b3d6c114c9b",
+      "bytes": 76051
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.0408&longitude=-84.6058&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:32:17.558580+00:00",
+      "sha256": "ec751095c7b2828d53633967f7fdb5afc7dfbc184be95d8e54f54ea1c4d8f478",
+      "bytes": 131101
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=LNK&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:32:28.399063+00:00",
+      "sha256": "4ee3f3df97f9b554dcbc1e6c5ac57065c53afbe76e40d4b2915f5aa64686eace",
+      "bytes": 80058
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.8312&longitude=-96.7633&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:32:29.404485+00:00",
+      "sha256": "e72639349b897e6c06176d688159263154fd8d6744515fff9396ebe27145cde3",
+      "bytes": 131066
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=LOU&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:32:40.134604+00:00",
+      "sha256": "087f8e690733854feb30e989073bc7553372e79b9c609ec4a61672ed8b2ebe0f",
+      "bytes": 74410
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.228&longitude=-85.6637&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:32:41.048780+00:00",
+      "sha256": "321e315abbd3949fe291c195245708d9ee000123cf087b3e7d0c6b222fda7ce8",
+      "bytes": 131069
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=LRU&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:32:52.176582+00:00",
+      "sha256": "c4536ffd940c04ce60d387cf7580d7cad5747fdfc082b76f66f8e8ff0eb049fa",
+      "bytes": 180772
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=32.2894&longitude=-106.922&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:32:53.208249+00:00",
+      "sha256": "2c4964238e260c4959065017142145250759d208d0ae2788c70500f355d4614b",
+      "bytes": 130939
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=LSV&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:33:03.956420+00:00",
+      "sha256": "99ba762187e5c5754de11671b9bac2911e05f09f0e0cb352f762476ec73b808a",
+      "bytes": 71469
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=36.2362&longitude=-115.0342&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:33:04.877320+00:00",
+      "sha256": "a754ad59fc308707fce292219bc398b672767a3f97e40c8bc1d6fe661824ca0e",
+      "bytes": 127824
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=LXT&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:33:15.667124+00:00",
+      "sha256": "df473f3e449a9be11ff2a8d00feeeacc12695fcea851d81ec002495b23cbc9ea",
+      "bytes": 74522
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.9597&longitude=-94.3714&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:33:16.581831+00:00",
+      "sha256": "7af8ad76cc9ad13b65ab98c48be05a8524a2ab22091c2bd42efc967e32842c00",
+      "bytes": 131516
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=MKE&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:33:27.538599+00:00",
+      "sha256": "4b85de8ad7dc5bd3ccca60595747645a0cad0fe36386da262a75d6bb16a32fde",
+      "bytes": 71315
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.9472&longitude=-87.8967&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:33:28.539407+00:00",
+      "sha256": "da9da62d8f14ca58c405bb3e46516dee0ba6c0ad5fc49189ee3ecef9c11f5d4a",
+      "bytes": 130115
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=MLE&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:33:39.479574+00:00",
+      "sha256": "b0c5bda25f1e2129dfcef21f3dca1deaad7d7bb50d3a4df43534d747e32f71a4",
+      "bytes": 180797
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.196&longitude=-96.112&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:33:40.304797+00:00",
+      "sha256": "75df5c0e68c764fd47adcad2e37a62a9c7dc8ba20c7cfe99248ba3065bfbf170",
+      "bytes": 131078
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=MSN&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:33:51.185457+00:00",
+      "sha256": "7642264001fee75626d843ea4eaaf2ed19e3a33dc89b1cb3e13b0e267672aa17",
+      "bytes": 73967
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.1406&longitude=-89.3453&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:33:52.068006+00:00",
+      "sha256": "205d5e2c4e1686ada029d762df6f7c329a8adcfbeb7d71979560da0650cd129d",
+      "bytes": 130329
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=MSO&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:34:02.727774+00:00",
+      "sha256": "ebd06436f224c238912bd342f3c3215cd2f1b6d79ae494714f104a44dc1faafa",
+      "bytes": 67577
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=46.9208&longitude=-114.0925&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:34:03.595279+00:00",
+      "sha256": "11b582bef707e8ac413f608a01602fca59a98bae80eb9bf806e3d7b9517c99a5",
+      "bytes": 127111
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=PIH&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:34:14.320862+00:00",
+      "sha256": "6cbaaa7f1b9af3d3a9de414adfbb621fdaac4d47d3284d3a87672f51e03a58cd",
+      "bytes": 66542
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.9098&longitude=-112.5959&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:34:15.359611+00:00",
+      "sha256": "df52c3a1d44fc19551bd2983a374bc33d31555396d2a6db17026ad87f630eca5",
+      "bytes": 127940
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=RAP&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:34:26.305833+00:00",
+      "sha256": "329d7bf72ee51b7a4fd23c4eb524f7b879d85057811cab7ec959402f859f54d1",
+      "bytes": 74727
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=44.0453&longitude=-103.0574&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:34:27.191676+00:00",
+      "sha256": "09946faa9660efa1c24ef73399eb4453748d586665a76dc2fe6903572fd4788d",
+      "bytes": 129331
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=RIC&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:34:37.976052+00:00",
+      "sha256": "5c16ccd63ac950d70460960ae0ec3091b4e59200190a6c1e3e64e4676dc6813c",
+      "bytes": 73947
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=37.5115&longitude=-77.3234&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:34:38.862254+00:00",
+      "sha256": "482c59e81c7cf6e2cbf6f8df9ba844dcc5d9df5a91cf82c6dd4c0e806b14dca9",
+      "bytes": 130528
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=SGF&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:34:49.533886+00:00",
+      "sha256": "bac82f9a6ea6efcdd89b59f59b6c93f03fb8bc5e8e481aa421e7438704dbf350",
+      "bytes": 67546
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=37.2397&longitude=-93.3897&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:34:50.391184+00:00",
+      "sha256": "2d7ab524983abe52342e21de2bf490564e37d81bcb8875d5af0a31d69bdbb525",
+      "bytes": 131371
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=TOP&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:35:01.142919+00:00",
+      "sha256": "82323458b328b6ec0be57d756e7206d40b4c1c59253ba80936676d6395b8f36e",
+      "bytes": 79030
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=39.07&longitude=-95.62&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:35:01.999129+00:00",
+      "sha256": "27e7189b36dcf7ae500008860dd05ede4354467d5612dda5d9bd70d1d83a7e12",
+      "bytes": 131467
+    },
+    {
+      "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=TTD&data=gust&report_type=3&report_type=4&year1=2026&month1=6&day1=27&year2=2026&month2=10&day2=15&tz=UTC&format=onlycomma&latlon=no&direct=no",
+      "retrieved_at": "2026-10-17T07:35:13.044786+00:00",
+      "sha256": "bad17584bf44b473a4ba44aa4fa5c9f8b512e80b07d46b5afe4526656753d737",
+      "bytes": 69157
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=45.551&longitude=-122.4098&start_date=2026-06-27&end_date=2026-10-15&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T07:35:14.231341+00:00",
+      "sha256": "5ae975d8b0be09abd2e6a250d069e73930e406f720ce788a061de6ff95611f57",
+      "bytes": 127119
+    }
+  ],
+  "coverage": [
+    {
+      "station": "77S",
+      "role": "geographic_test",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "ABQ",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "ALB",
+      "role": "geographic_test",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "BIL",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "BIS",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "BOI",
+      "role": "geographic_validation",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "BUF",
+      "role": "geographic_test",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "CID",
+      "role": "geographic_validation",
+      "observed_days": 97,
+      "complete_forecast_days": 108,
+      "merged_days": 93,
+      "first": "2026-06-27",
+      "last": "2026-10-01"
+    },
+    {
+      "station": "DAA",
+      "role": "geographic_test",
+      "observed_days": 108,
+      "complete_forecast_days": 108,
+      "merged_days": 104,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "DTW",
+      "role": "geographic_validation",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "FAR",
+      "role": "development",
+      "observed_days": 108,
+      "complete_forecast_days": 108,
+      "merged_days": 104,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "FSD",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "GRR",
+      "role": "geographic_validation",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "ICT",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "IKV",
+      "role": "geographic_validation",
+      "observed_days": 109,
+      "complete_forecast_days": 108,
+      "merged_days": 105,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "LEX",
+      "role": "geographic_test",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "LNK",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "LOU",
+      "role": "geographic_test",
+      "observed_days": 109,
+      "complete_forecast_days": 108,
+      "merged_days": 105,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "LRU",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "LSV",
+      "role": "development",
+      "observed_days": 109,
+      "complete_forecast_days": 108,
+      "merged_days": 105,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "LXT",
+      "role": "geographic_validation",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "MKE",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "MLE",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "MSN",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "MSO",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "PIH",
+      "role": "geographic_validation",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "RAP",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "RIC",
+      "role": "geographic_test",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "SGF",
+      "role": "geographic_validation",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "TOP",
+      "role": "development",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    },
+    {
+      "station": "TTD",
+      "role": "geographic_test",
+      "observed_days": 110,
+      "complete_forecast_days": 108,
+      "merged_days": 106,
+      "first": "2026-06-27",
+      "last": "2026-10-14"
+    }
+  ],
+  "dataset_sha256": "86dc4632c6792128b93958d1a17b1012b3f24a4634104ef7b2d03909f9c85e22",
+  "protocol_document_sha256": "f01ed603396ea75bf8f88795663fef1ae37611cd9d0bca32d917b01ca4375291",
+  "window": {
+    "requested": [
+      "2026-06-27",
+      "2026-10-15"
+    ],
+    "fresh_from": "2026-07-01",
+    "frozen_through": "2026-06-30"
+  },
+  "contracts": "Same frozen parsing, completeness and issue-time contracts as scripts/wind_sprint.py"
+}
