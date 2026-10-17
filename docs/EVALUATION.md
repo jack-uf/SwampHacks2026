@@ -22,6 +22,8 @@ Geographic transfer without inspected holdouts: the leave-one-state-out diagnost
 
 The separate [measured river flood audit](FLOOD_SPRINT_RESULTS.md) stopped before modeling because historical threshold and gauge-reference validity remained unverified. It does not change the county-report results above or the production models.
 
+The separate [forecast-memory hydrology experiment](HYDROLOGY_RESEARCH_RESULTS.md) evaluates measured high discharge at held-out watersheds. It retains experimental candidates only; a discharge percentile is not a certified flood threshold or site-safety outcome.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.
