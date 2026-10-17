@@ -1,0 +1,40 @@
+{
+  "scope": "Expert complementarity and learned combination, forward fold evaluation",
+  "created_utc": "2026-10-17T23:08:58.351680+00:00",
+  "seed": 42,
+  "unopened": "no fresh cohort; fold 2022 is inspected development history",
+  "fit": {
+    "fold": "2021",
+    "train": [
+      "2017-01-08",
+      "2019-12-24"
+    ],
+    "calibration": [
+      "2020-01-08",
+      "2020-12-24"
+    ]
+  },
+  "evaluation": {
+    "fold": "2022",
+    "train": [
+      "2017-01-08",
+      "2020-12-24"
+    ],
+    "calibration": [
+      "2021-01-08",
+      "2021-12-24"
+    ]
+  },
+  "inputs": {
+    "docs/HYBRID_RESEARCH_PROTOCOL.md": "d96a7d509f592f24385b441e35694123d2ad4deb5916891401e1636c25e2e4bf",
+    "scripts/hybrid_research.py": "2aa6b506e582cf60049bd569f2dd426353510ef7b8dcad9f9e9ec04aebc2a5c2",
+    "tests/test_hybrid_research.py": "1f9e943b7b7cd7b010422f298767e2be33045fc695b856b7cab8b9c31aa107ba",
+    "scripts/revision_worker.py": "2ea6242ee69da0d6ee492e8c95864b6802544266331c1f6521c6469c57878deb",
+    "scripts/response_network.py": "43a50e3fa6e6b3d672a2541441ac49eedbf05c09e36427f35b52b2b0dc2c2a1f",
+    "scripts/response_research.py": "9a29fe17f6e8ffd5e229e0c50d0e0a313c5d47736858b6bedf52ff69db798d94",
+    "scripts/onset_worker.py": "5125d5affdffc89ea09155fc1e31cd4539ba42c95c5a8baed99366aa72f858bc",
+    "scripts/response_worker.py": "4130547de0daab33543768ee712f2e7468d75b475804174fc37acdeac600d47a",
+    "experiments/sprint-20261017-revision/training.csv.gz": "9fc9c6ff0e18ba1fd95667a5e662b3696d9ffd0704f8cc7b35d4c24fed9e16fc",
+    "experiments/sprint-20261017-revision/training.provenance.json": "e1ff71551a5ccac62e6031f447e526d6632c5b7e10d15fc29054d0d93514b587"
+  }
+}
