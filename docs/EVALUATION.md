@@ -28,6 +28,8 @@ The separate [emerging high-flow study](ONSET_RESEARCH_RESULTS.md) evaluates new
 
 The separate [catchment-response study](RESPONSE_RESEARCH_RESULTS.md) tests day-of-onset neural models, response conditioning and auxiliary trajectories on polygon-screened fresh watersheds. A prespecified neural comparator improves event detection, but AP uncertainty and regional false alerts prevent integration.
 
+The separate [onset-supervision and warning-budget study](WARNING_RESEARCH_RESULTS.md) compares matched neural objectives and delayed-feedback regional warning budgets on another fresh watershed population. Neither frozen improvement claim passes, so all candidates remain experimental.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.
