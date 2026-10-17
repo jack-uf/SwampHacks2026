@@ -1,0 +1,10 @@
+# Install with uv pip install --python .venv/bin/python -r this-file
+numpy==2.2.6
+pandas==2.3.3
+scikit-learn==1.8.0
+lightgbm==4.6.0
+joblib==1.5.3
+numcodecs==0.16.5
+httpx==0.28.1
+shapely==2.1.2
+torch==2.14.1
