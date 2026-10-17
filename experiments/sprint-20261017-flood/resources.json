@@ -1,0 +1,10 @@
+{
+  "command": "/usr/bin/time -l .venv/bin/python -m scripts.flood_sprint summarize",
+  "scope": "One offline summary run, not collection or model training",
+  "elapsed_seconds": 0.13,
+  "maximum_resident_set_bytes": 36257792,
+  "peak_memory_footprint_bytes": 22364928,
+  "process_swaps": 0,
+  "new_satellite_download_bytes": 0,
+  "new_models_trained": 0
+}

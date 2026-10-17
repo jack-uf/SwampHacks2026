@@ -1,0 +1,65 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "b3a33d0c2c134182af86941e55164cb0-NCRD-201904171200000500",
+        "time_series_id": "b3a33d0c2c134182af86941e55164cb0",
+        "begin": "2019-04-17T12:00:00+00:00",
+        "end": "2022-06-07T08:45:00+00:00",
+        "method_id": "NCRD",
+        "method_category": "UNKWN"
+      },
+      "id": "b3a33d0c2c134182af86941e55164cb0-NCRD-201904171200000500",
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "b3a33d0c2c134182af86941e55164cb0-NTRAN-202206070845000500",
+        "time_series_id": "b3a33d0c2c134182af86941e55164cb0",
+        "begin": "2022-06-07T08:45:00+00:00",
+        "end": "9999-12-31T23:59:59.999999+00:00",
+        "method_id": "NTRAN",
+        "method_category": "UNKWN"
+      },
+      "id": "b3a33d0c2c134182af86941e55164cb0-NTRAN-202206070845000500",
+      "geometry": null
+    }
+  ],
+  "numberReturned": 2,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-methods/items?f=json&time_series_id=b3a33d0c2c134182af86941e55164cb0&limit=100"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-methods/items?f=jsonld&time_series_id=b3a33d0c2c134182af86941e55164cb0&limit=100"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-methods/items?f=html&time_series_id=b3a33d0c2c134182af86941e55164cb0&limit=100"
+    },
+    {
+      "type": "text/csv; charset=utf-8",
+      "rel": "alternate",
+      "title": "This document as CSV",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-methods/items?f=csv&time_series_id=b3a33d0c2c134182af86941e55164cb0&limit=100"
+    },
+    {
+      "type": "application/json",
+      "title": "Time series methods",
+      "rel": "collection",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-methods"
+    }
+  ],
+  "timeStamp": "2026-10-17T16:25:04.362106Z"
+}

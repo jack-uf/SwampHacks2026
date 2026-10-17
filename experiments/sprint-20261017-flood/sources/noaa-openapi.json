@@ -1,0 +1,1810 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "National Water Prediction Service API",
+    "description": "API for the National Water Prediction Service's hydrologic products.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "National Water Center",
+      "url": "https://water.noaa.gov/",
+      "email": "nws.nwc.ops@noaa.gov"
+    }
+  },
+  "tags": [
+    {
+      "name": "Gauges"
+    },
+    {
+      "name": "Reaches"
+    },
+    {
+      "name": "Products"
+    },
+    {
+      "name": "Health"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/nwps/v1/gauges": {
+      "get": {
+        "summary": "Gets a list of gauges.",
+        "operationId": "Gauges_ListGauges",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeListGaugesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bbox.xmin",
+            "description": "Bottom-left X coordinate of a bounding box geometry.",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "bbox.ymin",
+            "description": "Bottom-left Y coordinate of a bounding box geometry.",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "bbox.xmax",
+            "description": "Top-right X coordinate of a bounding box geometry.",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "bbox.ymax",
+            "description": "Top-right Y coordinate of a bounding box geometry.",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "srid",
+            "description": "Spatial reference system ID for input bbox geometry.\n\n - SRID_UNSPECIFIED: Not specified.\n - EPSG_3857: Web Mercator - Google Maps, Esri (102100), Mapbox, etc.\n - EPSG_4326: WGS84 - World Geodetic System 1984, used in GPS.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "SRID_UNSPECIFIED",
+              "EPSG_3857",
+              "EPSG_4326"
+            ],
+            "default": "SRID_UNSPECIFIED"
+          },
+          {
+            "name": "catfim",
+            "description": "Filter gauges based on CatFIM configuration. Default: false",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/gauges/raag": {
+      "post": {
+        "operationId": "Gauges_GetRiverAtAGlanceData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeRaagResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/gaugeLIDS"
+            }
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/gauges/{identifier}": {
+      "get": {
+        "summary": "Gets a gauge and it's metadata.",
+        "operationId": "Gauges_GetGauge",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeGauge"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "identifier",
+            "description": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/gauges/{identifier}/ratings": {
+      "get": {
+        "summary": "Get ratings for a gauge (sort is based off of STAGE data, limit defaults to 10,000 records, all defaults true)",
+        "operationId": "Gauges_GetRatings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeRatings"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "identifier",
+            "description": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "description": "Limit number of returned results. Default: 10,000",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "description": "Sort results by Ascending (ASC) or Descending stage value (DESC). Default: ASC",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "onlyTenths",
+            "description": "Filter the ratings returned to only tenths of a foot increments. Default: false",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/gauges/{identifier}/riverflow": {
+      "get": {
+        "summary": "Get upstream and downstream gauges from a starting point",
+        "operationId": "Gauges_GetUpstreamDownstream",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeUpstreamDownstream"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "identifier",
+            "description": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/gauges/{identifier}/stageflow": {
+      "get": {
+        "summary": "Gets observed and forecast stage/flow product data for a gauge.",
+        "operationId": "Gauges_GetStageFlowAll",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeGetStageFlowAllResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "identifier",
+            "description": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/gauges/{identifier}/stageflow/{product}": {
+      "get": {
+        "summary": "Gets observed or forecast stage/flow product data for a gauge.",
+        "operationId": "Gauges_GetStageFlow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeStageFlow"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "identifier",
+            "description": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "product",
+            "description": "The type to product to query.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "observed",
+              "forecast"
+            ]
+          }
+        ],
+        "tags": [
+          "Gauges"
+        ]
+      }
+    },
+    "/nwps/v1/monitor": {
+      "get": {
+        "summary": "NWPS internal monitoring and data status",
+        "operationId": "Health_Monitor",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/healthMonitorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Health"
+        ]
+      }
+    },
+    "/nwps/v1/products/stageflow/{identifier}/{pedts}": {
+      "get": {
+        "summary": "Get Stage/Flow for a specific gauge.",
+        "operationId": "Products_GetStageFlow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/gaugeStageFlow"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "identifier",
+            "description": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pedts",
+            "description": "The Standard Hydrometeorological Exchange Format parameter codes for the product. Example: HGIRG",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Products"
+        ]
+      }
+    },
+    "/nwps/v1/reaches/{reachId}": {
+      "get": {
+        "summary": "Get metadata for a specific reach.",
+        "operationId": "Reaches_GetReach",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/reachReach"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "reachId",
+            "description": "The reach's unique Reach ID. Example: 23021904",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Reaches"
+        ]
+      }
+    },
+    "/nwps/v1/reaches/{reachId}/streamflow": {
+      "get": {
+        "summary": "Returns streamflow forecast values for a specific reach.",
+        "operationId": "Reaches_GetStreamflow",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/reachGetStreamflowResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "reachId",
+            "description": "The reach's unique Reach ID. Example: 23021904",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "series",
+            "description": "Filter by National Water Model series type.\n\n - analysis_assimilation: Analysis and Assimilation\n - short_range: Short Range\n - medium_range: Medium Range\n - long_range: Long Range\n - medium_range_blend: Medium Range Blend",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "analysis_assimilation",
+              "short_range",
+              "medium_range",
+              "long_range",
+              "medium_range_blend"
+            ],
+            "default": "analysis_assimilation"
+          }
+        ],
+        "tags": [
+          "Reaches"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "DatumsHorizontal": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeDatumsValue"
+          }
+        }
+      }
+    },
+    "DatumsNotes": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DatumsVertical": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeDatumsValue"
+          }
+        }
+      }
+    },
+    "FloodCategories": {
+      "type": "object",
+      "properties": {
+        "major": {
+          "$ref": "#/definitions/FloodCategoriesDatum"
+        },
+        "moderate": {
+          "$ref": "#/definitions/FloodCategoriesDatum"
+        },
+        "minor": {
+          "$ref": "#/definitions/FloodCategoriesDatum"
+        },
+        "action": {
+          "$ref": "#/definitions/FloodCategoriesDatum"
+        }
+      }
+    },
+    "FloodCategoriesDatum": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "number",
+          "format": "double"
+        },
+        "flow": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "FloodCrests": {
+      "type": "object",
+      "properties": {
+        "historic": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/FloodCrestsDatum"
+          }
+        },
+        "recent": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/FloodCrestsDatum"
+          }
+        }
+      }
+    },
+    "FloodCrestsDatum": {
+      "type": "object",
+      "properties": {
+        "occurredTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stage": {
+          "type": "number",
+          "format": "double"
+        },
+        "flow": {
+          "type": "number",
+          "format": "double"
+        },
+        "preliminary": {
+          "type": "string"
+        },
+        "olddatum": {
+          "type": "boolean"
+        }
+      }
+    },
+    "FloodImpact": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "number",
+          "format": "double"
+        },
+        "statement": {
+          "type": "string"
+        }
+      }
+    },
+    "FloodLowWaters": {
+      "type": "object",
+      "properties": {
+        "historic": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/FloodLowWatersDatum"
+          }
+        }
+      }
+    },
+    "FloodLowWatersDatum": {
+      "type": "object",
+      "properties": {
+        "occurredTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stage": {
+          "type": "number",
+          "format": "double"
+        },
+        "flow": {
+          "type": "number",
+          "format": "double"
+        },
+        "statement": {
+          "type": "string"
+        }
+      }
+    },
+    "GaugeInService": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "GaugeLowThreshold": {
+      "type": "object",
+      "properties": {
+        "units": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "GaugeStatusForecast": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "number",
+          "format": "double"
+        },
+        "primaryUnit": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "number",
+          "format": "double"
+        },
+        "secondaryUnit": {
+          "type": "string"
+        },
+        "floodCategory": {
+          "type": "string"
+        },
+        "validTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "GaugeStatusObserved": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "number",
+          "format": "double"
+        },
+        "primaryUnit": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "number",
+          "format": "double"
+        },
+        "secondaryUnit": {
+          "type": "string"
+        },
+        "floodCategory": {
+          "type": "string"
+        },
+        "validTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ImagesHydrograph": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "string"
+        },
+        "floodcat": {
+          "type": "string"
+        }
+      }
+    },
+    "ImagesProbability": {
+      "type": "object",
+      "properties": {
+        "weekint": {
+          "$ref": "#/definitions/ProbabilityWeekint"
+        },
+        "entperiod": {
+          "$ref": "#/definitions/ProbabilityEntperiod"
+        },
+        "shortrange": {
+          "type": "string"
+        }
+      }
+    },
+    "ListGaugesRequestBoundingBox": {
+      "type": "object",
+      "properties": {
+        "xmin": {
+          "type": "number",
+          "format": "double",
+          "description": "Bottom-left X coordinate of a bounding box geometry."
+        },
+        "ymin": {
+          "type": "number",
+          "format": "double",
+          "description": "Bottom-left Y coordinate of a bounding box geometry."
+        },
+        "xmax": {
+          "type": "number",
+          "format": "double",
+          "description": "Top-right X coordinate of a bounding box geometry."
+        },
+        "ymax": {
+          "type": "number",
+          "format": "double",
+          "description": "Top-right Y coordinate of a bounding box geometry."
+        }
+      }
+    },
+    "ListGaugesRequestSRID": {
+      "type": "string",
+      "enum": [
+        "SRID_UNSPECIFIED",
+        "EPSG_3857",
+        "EPSG_4326"
+      ],
+      "default": "SRID_UNSPECIFIED",
+      "description": " - SRID_UNSPECIFIED: Not specified.\n - EPSG_3857: Web Mercator - Google Maps, Esri (102100), Mapbox, etc.\n - EPSG_4326: WGS84 - World Geodetic System 1984, used in GPS."
+    },
+    "ProbabilityEntperiod": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "string"
+        },
+        "flow": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "ProbabilityWeekint": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "string"
+        },
+        "flow": {
+          "type": "string"
+        },
+        "volume": {
+          "type": "string"
+        }
+      }
+    },
+    "RatingsRating": {
+      "type": "object",
+      "properties": {
+        "stage": {
+          "type": "number",
+          "format": "double"
+        },
+        "flow": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "ReachRouteReachSegment": {
+      "type": "object",
+      "properties": {
+        "reachId": {
+          "type": "string"
+        },
+        "streamOrder": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "gaugeDataAttribution": {
+      "type": "object",
+      "properties": {
+        "abbrev": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeDatum": {
+      "type": "object",
+      "properties": {
+        "validTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date/time when the observation was made or when the forecast will be\nvalid."
+        },
+        "generatedTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date/time when the product was generated."
+        },
+        "primary": {
+          "type": "number",
+          "format": "double",
+          "description": "The primary value reported at the gauge."
+        },
+        "secondary": {
+          "type": "number",
+          "format": "double",
+          "description": "The secondary value reported at the gauge."
+        }
+      },
+      "description": "Specifies the contents of a single reported data point."
+    },
+    "gaugeDatums": {
+      "type": "object",
+      "properties": {
+        "vertical": {
+          "$ref": "#/definitions/DatumsVertical"
+        },
+        "horizontal": {
+          "$ref": "#/definitions/DatumsHorizontal"
+        },
+        "notes": {
+          "$ref": "#/definitions/DatumsNotes"
+        }
+      }
+    },
+    "gaugeDatumsValue": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "abbrev": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "gaugeDownloads": {
+      "type": "object",
+      "properties": {
+        "depthGrids": {
+          "type": "string"
+        },
+        "images": {
+          "type": "string"
+        },
+        "kmz": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeFlood": {
+      "type": "object",
+      "properties": {
+        "stageUnits": {
+          "type": "string"
+        },
+        "flowUnits": {
+          "type": "string"
+        },
+        "categories": {
+          "$ref": "#/definitions/FloodCategories"
+        },
+        "lro": {
+          "$ref": "#/definitions/gaugeLRO"
+        },
+        "crests": {
+          "$ref": "#/definitions/FloodCrests"
+        },
+        "lowWaters": {
+          "$ref": "#/definitions/FloodLowWaters"
+        },
+        "impacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/FloodImpact"
+          }
+        }
+      }
+    },
+    "gaugeFloodStatements": {
+      "type": "object",
+      "properties": {
+        "impact": {
+          "type": "number",
+          "format": "float"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeGauge": {
+      "type": "object",
+      "properties": {
+        "lid": {
+          "type": "string",
+          "title": "The gauge's unique identifier, LID or USGS ID. Example: ANAW1 or 13334300"
+        },
+        "usgsId": {
+          "type": "string",
+          "description": "The gauges's USGS ID. Example: 13334300."
+        },
+        "reachId": {
+          "type": "string",
+          "description": "The NWM Reach ID."
+        },
+        "name": {
+          "type": "string",
+          "title": "The name of the gauge. Example: Anatone"
+        },
+        "description": {
+          "type": "string",
+          "title": "The gauge description. Example: Snake River near Anatone"
+        },
+        "rfc": {
+          "$ref": "#/definitions/gaugeGaugeRFC"
+        },
+        "wfo": {
+          "$ref": "#/definitions/gaugeGaugeWFO"
+        },
+        "state": {
+          "$ref": "#/definitions/gaugeGaugeSTATE"
+        },
+        "county": {
+          "type": "string",
+          "description": "The county."
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "The local time zone."
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "pedts": {
+          "$ref": "#/definitions/gaugeGaugePEDTS"
+        },
+        "status": {
+          "$ref": "#/definitions/gaugeGaugeStatus"
+        },
+        "flood": {
+          "$ref": "#/definitions/gaugeFlood"
+        },
+        "images": {
+          "$ref": "#/definitions/gaugeImages"
+        },
+        "dataAttribution": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeDataAttribution"
+          }
+        },
+        "impactsLowWaters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeImpactsLowWaters"
+          }
+        },
+        "normalThreshold": {
+          "$ref": "#/definitions/gaugeNormalThreshold"
+        },
+        "hydronotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeHydronotes"
+          }
+        },
+        "datums": {
+          "$ref": "#/definitions/gaugeDatums"
+        },
+        "inundation": {
+          "$ref": "#/definitions/gaugeInundation"
+        },
+        "upstreamLid": {
+          "type": "string",
+          "title": "The upstream lid"
+        },
+        "downstreamLid": {
+          "type": "string",
+          "title": "The downstream lid"
+        },
+        "inService": {
+          "$ref": "#/definitions/GaugeInService"
+        },
+        "lowThreshold": {
+          "$ref": "#/definitions/GaugeLowThreshold"
+        },
+        "forecastReliability": {
+          "type": "string"
+        },
+        "TruncateObs": {
+          "type": "string",
+          "format": "int64"
+        },
+        "TruncateFcst": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ObservedFloodCategory": {
+          "type": "string"
+        },
+        "ForecastFloodCategory": {
+          "type": "string"
+        }
+      },
+      "description": "Represents a single gauge's metadata."
+    },
+    "gaugeGaugePEDTS": {
+      "type": "object",
+      "properties": {
+        "observed": {
+          "type": "string"
+        },
+        "forecast": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeGaugePhotoOut": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "geometry": {
+          "$ref": "#/definitions/gaugeGaugePhotoOutGeometry"
+        },
+        "properties": {
+          "$ref": "#/definitions/gaugeGaugePhotoOutProperties"
+        }
+      }
+    },
+    "gaugeGaugePhotoOutGeometry": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    },
+    "gaugeGaugePhotoOutProperties": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeGaugeRFC": {
+      "type": "object",
+      "properties": {
+        "abbreviation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "description": "The River Forecast Center identifier."
+    },
+    "gaugeGaugeSTATE": {
+      "type": "object",
+      "properties": {
+        "abbreviation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "description": "The U.S. state or territory."
+    },
+    "gaugeGaugeStatus": {
+      "type": "object",
+      "properties": {
+        "observed": {
+          "$ref": "#/definitions/GaugeStatusObserved"
+        },
+        "forecast": {
+          "$ref": "#/definitions/GaugeStatusForecast"
+        }
+      }
+    },
+    "gaugeGaugeWFO": {
+      "type": "object",
+      "properties": {
+        "abbreviation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "description": "The Weather Forecast Office identifier."
+    },
+    "gaugeGetStageFlowAllResponse": {
+      "type": "object",
+      "properties": {
+        "observed": {
+          "$ref": "#/definitions/gaugeStageFlow"
+        },
+        "forecast": {
+          "$ref": "#/definitions/gaugeStageFlow"
+        }
+      }
+    },
+    "gaugeHydronotes": {
+      "type": "object",
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "effective": {
+          "type": "string"
+        },
+        "expiration": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeImages": {
+      "type": "object",
+      "properties": {
+        "probability": {
+          "$ref": "#/definitions/ImagesProbability"
+        },
+        "hydrograph": {
+          "$ref": "#/definitions/ImagesHydrograph"
+        },
+        "photos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeGaugePhotoOut"
+          }
+        }
+      }
+    },
+    "gaugeImpactsLowWaters": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "impact": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeInundation": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string"
+        },
+        "zeroDatum": {
+          "$ref": "#/definitions/gaugeZeroDatum"
+        },
+        "downloads": {
+          "$ref": "#/definitions/gaugeDownloads"
+        },
+        "siteSpecificInfo": {
+          "type": "string"
+        },
+        "dataAttribution": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeInundationDataAttribution"
+          }
+        }
+      }
+    },
+    "gaugeInundationDataAttribution": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeLIDS": {
+      "type": "object",
+      "properties": {
+        "rivers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "gaugeLRO": {
+      "type": "object",
+      "properties": {
+        "minorCS": {
+          "type": "string"
+        },
+        "moderateCS": {
+          "type": "string"
+        },
+        "majorCS": {
+          "type": "string"
+        },
+        "producedTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "interval": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeListGaugesResponse": {
+      "type": "object",
+      "properties": {
+        "gauges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeListGaugesResponseGauge"
+          }
+        }
+      }
+    },
+    "gaugeListGaugesResponseGauge": {
+      "type": "object",
+      "properties": {
+        "lid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rfc": {
+          "$ref": "#/definitions/gaugeRFC"
+        },
+        "wfo": {
+          "$ref": "#/definitions/gaugeWFO"
+        },
+        "state": {
+          "$ref": "#/definitions/gaugeSTATE"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "pedts": {
+          "$ref": "#/definitions/gaugePEDTS"
+        },
+        "status": {
+          "$ref": "#/definitions/gaugeGaugeStatus"
+        }
+      }
+    },
+    "gaugeNormalThreshold": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double"
+        },
+        "units": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugePEDTS": {
+      "type": "object",
+      "properties": {
+        "observed": {
+          "type": "string"
+        },
+        "forecast": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeRFC": {
+      "type": "object",
+      "properties": {
+        "abbreviation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeRaagGaugeInfo": {
+      "type": "object",
+      "properties": {
+        "lid": {
+          "type": "string"
+        },
+        "wfo": {
+          "type": "string"
+        },
+        "rfc": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "floodStatements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeFloodStatements"
+          }
+        }
+      }
+    },
+    "gaugeRaagResponse": {
+      "type": "object",
+      "properties": {
+        "rivers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeRaagGaugeInfo"
+          }
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "gaugeRatings": {
+      "type": "object",
+      "properties": {
+        "stageUnits": {
+          "type": "string"
+        },
+        "flowUnits": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/RatingsRating"
+          }
+        }
+      }
+    },
+    "gaugeSTATE": {
+      "type": "object",
+      "properties": {
+        "abbreviation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeStageFlow": {
+      "type": "object",
+      "properties": {
+        "pedts": {
+          "type": "string",
+          "description": "The Standard Hydrometeorological Exchange Format parameter codes for the product."
+        },
+        "issuedTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date/time the product is issued. Does not to apply to observed data."
+        },
+        "wfo": {
+          "type": "string",
+          "description": "The Weather Forecast Office identifier."
+        },
+        "timeZone": {
+          "type": "string",
+          "description": "The local time zone."
+        },
+        "primaryName": {
+          "type": "string"
+        },
+        "primaryUnits": {
+          "type": "string"
+        },
+        "secondaryName": {
+          "type": "string"
+        },
+        "secondaryUnits": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeDatum"
+          }
+        }
+      }
+    },
+    "gaugeStageFlowType": {
+      "type": "string",
+      "enum": [
+        "observed",
+        "forecast"
+      ],
+      "default": "observed",
+      "title": "- observed: observed\n - forecast: forecast"
+    },
+    "gaugeStream": {
+      "type": "object",
+      "properties": {
+        "LID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeUpstreamDownstream": {
+      "type": "object",
+      "properties": {
+        "startingPoint": {
+          "$ref": "#/definitions/gaugeStream",
+          "title": "The gauge's unique identifier, LID . Example: ANAW1"
+        },
+        "upstream": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeStream"
+          }
+        },
+        "downstream": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/gaugeStream"
+          }
+        }
+      },
+      "title": "UpstreamDownstream is used for results for river at a glance\nit contains a stream"
+    },
+    "gaugeWFO": {
+      "type": "object",
+      "properties": {
+        "abbreviation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "gaugeZeroDatum": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double"
+        },
+        "datum": {
+          "type": "string"
+        }
+      }
+    },
+    "healthGaugeFloodStats": {
+      "type": "object",
+      "properties": {
+        "observed": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "forecast": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      }
+    },
+    "healthHMLStats": {
+      "type": "object",
+      "properties": {
+        "jobQueue": {
+          "type": "number",
+          "format": "double"
+        },
+        "productCounts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "lastHMLReceived": {
+          "$ref": "#/definitions/healthLastHMLReceived"
+        }
+      }
+    },
+    "healthLROStats": {
+      "type": "object",
+      "properties": {
+        "currentLros": {
+          "type": "number",
+          "format": "double"
+        },
+        "currentInterval": {
+          "type": "string"
+        }
+      }
+    },
+    "healthLastHMLReceived": {
+      "type": "object",
+      "properties": {
+        "fromAny": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "wfo": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "healthMonitorResponse": {
+      "type": "object",
+      "properties": {
+        "gauge": {
+          "$ref": "#/definitions/healthGaugeFloodStats"
+        },
+        "hml": {
+          "$ref": "#/definitions/healthHMLStats"
+        },
+        "lro": {
+          "$ref": "#/definitions/healthLROStats"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "reachForecastSeries": {
+      "type": "string",
+      "enum": [
+        "analysis_assimilation",
+        "short_range",
+        "medium_range",
+        "long_range",
+        "medium_range_blend"
+      ],
+      "default": "analysis_assimilation",
+      "title": "- analysis_assimilation: Analysis and Assimilation\n - short_range: Short Range\n - medium_range: Medium Range\n - long_range: Long Range\n - medium_range_blend: Medium Range Blend"
+    },
+    "reachGetStreamflowResponse": {
+      "type": "object",
+      "properties": {
+        "reach": {
+          "$ref": "#/definitions/reachReach"
+        },
+        "analysisAssimilation": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/reachStreamflow"
+          }
+        },
+        "shortRange": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/reachStreamflow"
+          }
+        },
+        "mediumRange": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/reachStreamflow"
+          }
+        },
+        "longRange": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/reachStreamflow"
+          }
+        },
+        "mediumRangeBlend": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/reachStreamflow"
+          }
+        }
+      }
+    },
+    "reachReach": {
+      "type": "object",
+      "properties": {
+        "reachId": {
+          "type": "string",
+          "description": "The reach's unique Reach ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the reach."
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "streamflow": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reachForecastSeries"
+          }
+        },
+        "route": {
+          "$ref": "#/definitions/reachReachRoute"
+        }
+      },
+      "description": "Represents a single reach's metadata."
+    },
+    "reachReachRoute": {
+      "type": "object",
+      "properties": {
+        "upstream": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ReachRouteReachSegment"
+          }
+        },
+        "downstream": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ReachRouteReachSegment"
+          }
+        }
+      }
+    },
+    "reachStreamflow": {
+      "type": "object",
+      "properties": {
+        "referenceTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "units": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/reachStreamflowDatum"
+          }
+        }
+      }
+    },
+    "reachStreamflowDatum": {
+      "type": "object",
+      "properties": {
+        "validTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "flow": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "BasicAuth": {
+      "type": "basic"
+    }
+  }
+}

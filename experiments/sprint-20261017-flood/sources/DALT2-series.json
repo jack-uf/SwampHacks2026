@@ -1,0 +1,1497 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "092a528e06d1411396cbf28a13d407ee",
+        "unit_of_measure": "in",
+        "parameter_name": "Precipitation",
+        "parameter_code": "00045",
+        "statistic_id": null,
+        "last_modified": "2026-10-17T07:14:42.281436",
+        "begin": "2026-06-15T00:00:00+00:00",
+        "end": "2026-10-17T07:00:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Decumulated",
+        "thresholds": [
+          {
+            "Name": "VERY LOW",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2002-10-01T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:55.2128951Z",
+                "SuppressData": true,
+                "ReferenceValue": -0.01
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#800000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "VERY HIGH",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2002-10-01T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:55.3766719Z",
+                "SuppressData": true,
+                "ReferenceValue": 328
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#FF0000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": null,
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Precipitation, total, inches",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "092a528e06d1411396cbf28a13d407ee",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "0946ad249b03418295fcd99645e7c803",
+        "unit_of_measure": "ft",
+        "parameter_name": "Gage height",
+        "parameter_code": "00065",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T06:43:15.620107",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2026-10-17T06:30:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [
+          {
+            "Name": "Operational limit (maximum)",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-02-07T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:53.9400175Z",
+                "SuppressData": true,
+                "ReferenceValue": 60,
+                "SecondaryReferenceValue": 54
+              }
+            ],
+            "Severity": 0,
+            "Description": "Values above a specified threshold limit",
+            "DisplayColor": "#CCCCCC",
+            "ReferenceCode": "Operational limit - high-Public",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "Operational limit (minimum)",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "2018-07-25T00:00:00.0000000-06:00",
+                "StartTime": "2017-02-07T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:54.4796749Z",
+                "SuppressData": true,
+                "ReferenceValue": 12,
+                "SecondaryReferenceValue": 12.2
+              }
+            ],
+            "Severity": 0,
+            "Description": "Values below a specified threshold limit",
+            "DisplayColor": "#666666",
+            "ReferenceCode": "Operational limit - low-Public",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "Lower Operational Limit",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2018-07-25T00:30:00.0000000-06:00",
+                "AppliedTime": "2018-08-29T01:39:56.08929Z",
+                "SuppressData": true,
+                "ReferenceValue": 11,
+                "SecondaryReferenceValue": 11.5
+              }
+            ],
+            "Severity": 0,
+            "Description": "Values below a specified threshold limit",
+            "DisplayColor": "#990600",
+            "ReferenceCode": "Operational limit - low-Public",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "NWS Flood Stage",
+            "Type": "None",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "0001-01-01T00:00:00.0000000+00:00",
+                "AppliedTime": "2019-04-15T01:08:04.5672472Z",
+                "SuppressData": false,
+                "ReferenceValue": 30,
+                "SecondaryReferenceValue": 26
+              }
+            ],
+            "Severity": 0,
+            "Description": "Display reference value",
+            "DisplayColor": "#990600",
+            "ReferenceCode": "NWISWeb ref level - Public",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Gage height, feet",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "0946ad249b03418295fcd99645e7c803",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "095e9a9a770d42a6af3ce4c6ecec1444",
+        "unit_of_measure": "ft^3/s",
+        "parameter_name": "Discharge",
+        "parameter_code": "00060",
+        "statistic_id": null,
+        "last_modified": "2026-10-02T21:56:56.511228",
+        "begin": "1904-03-27T06:00:00+00:00",
+        "end": "2025-01-30T06:00:00+00:00",
+        "computation_period_identifier": "Water Year",
+        "computation_identifier": "Max At Event Time",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Discharge, cubic feet per second",
+        "parent_time_series_id": "3d1c3237edfb4cd5bfd8abc3daf7968c",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "095e9a9a770d42a6af3ce4c6ecec1444",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "0f5a74bdb34c4d7ea329e10e572fe328",
+        "unit_of_measure": "ft^3/s",
+        "parameter_name": "Discharge",
+        "parameter_code": "00060",
+        "statistic_id": "00003",
+        "last_modified": "2026-10-17T06:43:26.718703",
+        "begin": "1903-10-01T06:00:00+00:00",
+        "end": "2026-10-15T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Mean",
+        "thresholds": [],
+        "sublocation_identifier": "Radar",
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Discharge, cubic feet per second",
+        "parent_time_series_id": "3d1c3237edfb4cd5bfd8abc3daf7968c",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "0f5a74bdb34c4d7ea329e10e572fe328",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "14c2565e9dcb4ec5bacd186fd7a305f7",
+        "unit_of_measure": "_FNU",
+        "parameter_name": "Turbidity, FNU",
+        "parameter_code": "63680",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:44:40.855268",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2026-10-10T12:15:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [
+          {
+            "Name": "VERY HIGH",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "2024-09-02T00:00:00.0000000-06:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:52.8437405Z",
+                "SuppressData": true,
+                "ReferenceValue": 1400
+              },
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2024-09-02T00:15:00.0000000-06:00",
+                "AppliedTime": "2024-09-04T14:08:46.5688592Z",
+                "SuppressData": false,
+                "ReferenceValue": 2000
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#FF0000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "VERY LOW",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:52.6465556Z",
+                "SuppressData": true,
+                "ReferenceValue": 1
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#800000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Turbidity, water, unfiltered, monochrome near infra-red LED light, 780-900 nm, detection angle 90 +-2.5 degrees, formazin nephelometric units (FNU)",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "14c2565e9dcb4ec5bacd186fd7a305f7",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1f8c235416eb4cb3afc65d1cbdb013f5",
+        "unit_of_measure": "pH Units",
+        "parameter_name": "pH",
+        "parameter_code": "00400",
+        "statistic_id": "00008",
+        "last_modified": "2025-07-23T20:01:11.340692",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Median",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "pH, water, unfiltered, field, standard units",
+        "parent_time_series_id": "32b2563a76ab4431b62bdb92b36aa73d",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "1f8c235416eb4cb3afc65d1cbdb013f5",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "21e1b8a3de174b3c889a22f26a2aa679",
+        "unit_of_measure": "ft^3/s",
+        "parameter_name": "Discharge",
+        "parameter_code": "00060",
+        "statistic_id": "00002",
+        "last_modified": "2026-10-17T06:43:25.970911",
+        "begin": "2001-10-01T05:00:00+00:00",
+        "end": "2026-10-15T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": "Radar",
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Discharge, cubic feet per second",
+        "parent_time_series_id": "3d1c3237edfb4cd5bfd8abc3daf7968c",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "21e1b8a3de174b3c889a22f26a2aa679",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "293d8e27f7d94f079a924a2bda916a92",
+        "unit_of_measure": "ft",
+        "parameter_name": "Gage height",
+        "parameter_code": "00065",
+        "statistic_id": "00002",
+        "last_modified": "2026-01-20T18:41:13.604801",
+        "begin": "1987-07-07T05:00:00+00:00",
+        "end": "2015-12-14T06:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Gage height, feet",
+        "parent_time_series_id": "642b2fd0ca4a4eef97fab852cb6e9861",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "293d8e27f7d94f079a924a2bda916a92",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2bc12f89d7c24bc99f932df6150a2d9e",
+        "unit_of_measure": "hPa",
+        "parameter_name": "Air pressure",
+        "parameter_code": "72412",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T07:14:20.732127",
+        "begin": "2026-06-15T00:00:00+00:00",
+        "end": "2026-10-17T07:00:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": null,
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Barometric pressure, uncorrected, hectopascals",
+        "parent_time_series_id": null,
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "2bc12f89d7c24bc99f932df6150a2d9e",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2ffe6f7dc8cc4cf5b2c6cd2330facfc0",
+        "unit_of_measure": "degC",
+        "parameter_name": "Temperature, water",
+        "parameter_code": "00010",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:44:40.781421",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2026-10-17T08:30:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [
+          {
+            "Name": "VERY HIGH",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:50.8407265Z",
+                "SuppressData": true,
+                "ReferenceValue": 35
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#FF0000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "VERY LOW",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:50.9794666Z",
+                "SuppressData": true,
+                "ReferenceValue": 0.5
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#800000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Temperature, water, degrees Celsius",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "2ffe6f7dc8cc4cf5b2c6cd2330facfc0",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "32b2563a76ab4431b62bdb92b36aa73d",
+        "unit_of_measure": "pH Units",
+        "parameter_name": "pH",
+        "parameter_code": "00400",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T06:43:15.704285",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2026-10-17T06:30:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [
+          {
+            "Name": "VERY LOW",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:49.6117901Z",
+                "SuppressData": true,
+                "ReferenceValue": 6.2
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#800000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "VERY HIGH",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:49.303331Z",
+                "SuppressData": true,
+                "ReferenceValue": 9.2
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#FF0000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "pH, water, unfiltered, field, standard units",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "32b2563a76ab4431b62bdb92b36aa73d",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "3d1c3237edfb4cd5bfd8abc3daf7968c",
+        "unit_of_measure": "ft^3/s",
+        "parameter_name": "Discharge",
+        "parameter_code": "00060",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T06:43:18.222202",
+        "begin": "1988-01-04T06:15:00+00:00",
+        "end": "2026-10-17T06:30:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Discharge, cubic feet per second",
+        "parent_time_series_id": "0946ad249b03418295fcd99645e7c803",
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": "1935"
+      },
+      "id": "3d1c3237edfb4cd5bfd8abc3daf7968c",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "46a756f74cac4065a65bafe86190e163",
+        "unit_of_measure": "_FNU",
+        "parameter_name": "Turbidity, FNU",
+        "parameter_code": "63680",
+        "statistic_id": "00002",
+        "last_modified": "2025-07-23T20:01:23.709438",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-10T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Turbidity, water, unfiltered, monochrome near infra-red LED light, 780-900 nm, detection angle 90 +-2.5 degrees, formazin nephelometric units (FNU)",
+        "parent_time_series_id": "14c2565e9dcb4ec5bacd186fd7a305f7",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "46a756f74cac4065a65bafe86190e163",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "46b21ca9c50c451f9dad0f71ea377205",
+        "unit_of_measure": "uS/cm",
+        "parameter_name": "Specific cond at 25C",
+        "parameter_code": "00095",
+        "statistic_id": "00001",
+        "last_modified": "2025-07-23T20:01:56.883926",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius",
+        "parent_time_series_id": "f738bdd9080840c7b31731d3dc215124",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "46b21ca9c50c451f9dad0f71ea377205",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "4f61ec14cd0847c6bb8067d46b13144b",
+        "unit_of_measure": "mph",
+        "parameter_name": "Wind speed",
+        "parameter_code": "00035",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:13:51.698055",
+        "begin": "2026-06-15T00:00:00+00:00",
+        "end": "2026-10-17T08:00:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": null,
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Wind speed, miles per hour",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT2H1M",
+        "statistics_begin": null
+      },
+      "id": "4f61ec14cd0847c6bb8067d46b13144b",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "6b0ae74c235c4ca6ae4e1eb3f54183d2",
+        "unit_of_measure": "degF",
+        "parameter_name": "Temperature, air",
+        "parameter_code": "00021",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:13:50.734467",
+        "begin": "2026-06-15T00:00:00+00:00",
+        "end": "2026-10-17T08:00:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": null,
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Temperature, air, degrees Fahrenheit",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT2H1M",
+        "statistics_begin": null
+      },
+      "id": "6b0ae74c235c4ca6ae4e1eb3f54183d2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "72ca85c509e74875afc55bc98d5cf6cb",
+        "unit_of_measure": "ft^3/s",
+        "parameter_name": "Discharge",
+        "parameter_code": "00060",
+        "statistic_id": "00001",
+        "last_modified": "2026-10-17T06:43:25.780557",
+        "begin": "2001-10-01T05:00:00+00:00",
+        "end": "2026-10-15T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": "Radar",
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Discharge, cubic feet per second",
+        "parent_time_series_id": "3d1c3237edfb4cd5bfd8abc3daf7968c",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "72ca85c509e74875afc55bc98d5cf6cb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "7419f17dd0824d9e8aef2705d78e5285",
+        "unit_of_measure": "mg/l",
+        "parameter_name": "Dissolved oxygen",
+        "parameter_code": "00300",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:44:41.006848",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2026-10-17T08:30:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [
+          {
+            "Name": "VERY LOW",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:47.9630453Z",
+                "SuppressData": true,
+                "ReferenceValue": 1
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#800000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "VERY HIGH",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:47.9591135Z",
+                "SuppressData": true,
+                "ReferenceValue": 20
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#FF0000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Dissolved oxygen, water, unfiltered, milligrams per liter",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "7419f17dd0824d9e8aef2705d78e5285",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "764d0b4d5fd04765bc54fb5c7fe99491",
+        "unit_of_measure": "degC",
+        "parameter_name": "Temperature, water",
+        "parameter_code": "00010",
+        "statistic_id": "00001",
+        "last_modified": "2025-07-23T20:01:37.934784",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Temperature, water, degrees Celsius",
+        "parent_time_series_id": "2ffe6f7dc8cc4cf5b2c6cd2330facfc0",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "764d0b4d5fd04765bc54fb5c7fe99491",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "869d9d0f4c214ccc881c44a4e2f85b59",
+        "unit_of_measure": "degC",
+        "parameter_name": "Temperature, water",
+        "parameter_code": "00010",
+        "statistic_id": "00003",
+        "last_modified": "2025-07-23T20:01:37.952622",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Mean",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Temperature, water, degrees Celsius",
+        "parent_time_series_id": "2ffe6f7dc8cc4cf5b2c6cd2330facfc0",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "869d9d0f4c214ccc881c44a4e2f85b59",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "9a19b522db574b43b596811c216213d4",
+        "unit_of_measure": "ft",
+        "parameter_name": "Gage height",
+        "parameter_code": "00065",
+        "statistic_id": "00001",
+        "last_modified": "2026-01-20T18:41:13.597407",
+        "begin": "1987-07-07T05:00:00+00:00",
+        "end": "2015-12-14T06:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Gage height, feet",
+        "parent_time_series_id": "642b2fd0ca4a4eef97fab852cb6e9861",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "9a19b522db574b43b596811c216213d4",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "9af1b24e283c418da3200ec1f6523977",
+        "unit_of_measure": "uS/cm",
+        "parameter_name": "Specific cond at 25C",
+        "parameter_code": "00095",
+        "statistic_id": "00002",
+        "last_modified": "2025-07-23T20:01:56.897787",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius",
+        "parent_time_series_id": "f738bdd9080840c7b31731d3dc215124",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "9af1b24e283c418da3200ec1f6523977",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "9e81a7ecb3444d6b99ba1e5fece1e91a",
+        "unit_of_measure": "_FNU",
+        "parameter_name": "Turbidity, FNU",
+        "parameter_code": "63680",
+        "statistic_id": "00001",
+        "last_modified": "2025-07-23T20:01:23.700944",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-10T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Turbidity, water, unfiltered, monochrome near infra-red LED light, 780-900 nm, detection angle 90 +-2.5 degrees, formazin nephelometric units (FNU)",
+        "parent_time_series_id": "14c2565e9dcb4ec5bacd186fd7a305f7",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "9e81a7ecb3444d6b99ba1e5fece1e91a",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "aceb685ca2514b4291cac952231c8054",
+        "unit_of_measure": "%",
+        "parameter_name": "Relative humidity",
+        "parameter_code": "00052",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:13:51.373891",
+        "begin": "2026-06-15T00:00:00+00:00",
+        "end": "2026-10-17T08:00:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": null,
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Relative humidity, percent",
+        "parent_time_series_id": "8c6ca5c20bd5425ead8f00fa65cdf339",
+        "data_gap_interval": "PT2H1M",
+        "statistics_begin": null
+      },
+      "id": "aceb685ca2514b4291cac952231c8054",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "b22ac811ff0c4037b9fd30260cb03092",
+        "unit_of_measure": "_FNU",
+        "parameter_name": "Turbidity, FNU",
+        "parameter_code": "63680",
+        "statistic_id": "00003",
+        "last_modified": "2025-07-23T20:01:23.716513",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-10T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Mean",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Turbidity, water, unfiltered, monochrome near infra-red LED light, 780-900 nm, detection angle 90 +-2.5 degrees, formazin nephelometric units (FNU)",
+        "parent_time_series_id": "14c2565e9dcb4ec5bacd186fd7a305f7",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "b22ac811ff0c4037b9fd30260cb03092",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "d0806973fbb14454a479243f2cb5a6fa",
+        "unit_of_measure": "deg",
+        "parameter_name": "Wind direction",
+        "parameter_code": "00036",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:13:51.396307",
+        "begin": "2026-06-15T00:00:00+00:00",
+        "end": "2026-10-17T08:00:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": null,
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Wind direction, degrees clockwise from true north",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT2H1M",
+        "statistics_begin": null
+      },
+      "id": "d0806973fbb14454a479243f2cb5a6fa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "da5d36974a794075ade41144b0566bbb",
+        "unit_of_measure": "mg/l",
+        "parameter_name": "Dissolved oxygen",
+        "parameter_code": "00300",
+        "statistic_id": "00002",
+        "last_modified": "2025-07-23T20:02:05.120712",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Dissolved oxygen, water, unfiltered, milligrams per liter",
+        "parent_time_series_id": "7419f17dd0824d9e8aef2705d78e5285",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "da5d36974a794075ade41144b0566bbb",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "e2e5908c1cc8486ca56bbda83b92f81c",
+        "unit_of_measure": "pH Units",
+        "parameter_name": "pH",
+        "parameter_code": "00400",
+        "statistic_id": "00001",
+        "last_modified": "2025-07-23T20:01:11.315462",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "pH, water, unfiltered, field, standard units",
+        "parent_time_series_id": "32b2563a76ab4431b62bdb92b36aa73d",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "e2e5908c1cc8486ca56bbda83b92f81c",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "e49dbc39c8f444f6930acd5519b87781",
+        "unit_of_measure": "ft",
+        "parameter_name": "Gage height",
+        "parameter_code": "00065",
+        "statistic_id": "00003",
+        "last_modified": "2026-01-20T18:41:13.612864",
+        "begin": "1987-07-07T05:00:00+00:00",
+        "end": "2015-12-14T06:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Mean",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Gage height, feet",
+        "parent_time_series_id": "642b2fd0ca4a4eef97fab852cb6e9861",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "e49dbc39c8f444f6930acd5519b87781",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "edad9015fc7f4b33a1139e8323090597",
+        "unit_of_measure": "ft",
+        "parameter_name": "Gage height",
+        "parameter_code": "00065",
+        "statistic_id": null,
+        "last_modified": "2026-10-02T21:56:42.465265",
+        "begin": "1904-03-27T06:00:00+00:00",
+        "end": "2025-01-30T06:00:00+00:00",
+        "computation_period_identifier": "Water Year",
+        "computation_identifier": "Max At Event Time",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Gage height, feet",
+        "parent_time_series_id": "0946ad249b03418295fcd99645e7c803",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "edad9015fc7f4b33a1139e8323090597",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "f19a9477d25644948f419382340332bd",
+        "unit_of_measure": "mg/l",
+        "parameter_name": "Dissolved oxygen",
+        "parameter_code": "00300",
+        "statistic_id": "00003",
+        "last_modified": "2025-07-23T20:02:05.130850",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Mean",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Dissolved oxygen, water, unfiltered, milligrams per liter",
+        "parent_time_series_id": "7419f17dd0824d9e8aef2705d78e5285",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "f19a9477d25644948f419382340332bd",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "f570e87335a949a38e9b85876c5ae36f",
+        "unit_of_measure": "mg/l",
+        "parameter_name": "Dissolved oxygen",
+        "parameter_code": "00300",
+        "statistic_id": "00001",
+        "last_modified": "2025-07-23T20:02:05.110576",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Max",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Dissolved oxygen, water, unfiltered, milligrams per liter",
+        "parent_time_series_id": "7419f17dd0824d9e8aef2705d78e5285",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "f570e87335a949a38e9b85876c5ae36f",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "f605ef0de4f343aeac3844d2a0655757",
+        "unit_of_measure": "pH Units",
+        "parameter_name": "pH",
+        "parameter_code": "00400",
+        "statistic_id": "00002",
+        "last_modified": "2025-07-23T20:01:11.328615",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "pH, water, unfiltered, field, standard units",
+        "parent_time_series_id": "32b2563a76ab4431b62bdb92b36aa73d",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "f605ef0de4f343aeac3844d2a0655757",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "f738bdd9080840c7b31731d3dc215124",
+        "unit_of_measure": "uS/cm",
+        "parameter_name": "Specific cond at 25C",
+        "parameter_code": "00095",
+        "statistic_id": "00011",
+        "last_modified": "2026-10-17T08:44:40.714088",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2026-10-17T08:30:00+00:00",
+        "computation_period_identifier": "Points",
+        "computation_identifier": "Instantaneous",
+        "thresholds": [
+          {
+            "Name": "VERY HIGH",
+            "Type": "ThresholdAbove",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:46.6350959Z",
+                "SuppressData": true,
+                "ReferenceValue": 1800
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#FF0000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          },
+          {
+            "Name": "VERY LOW",
+            "Type": "ThresholdBelow",
+            "Periods": [
+              {
+                "EndTime": "9999-12-31T23:59:59.9999999+00:00",
+                "StartTime": "2017-01-05T00:00:00.0000000-06:00",
+                "AppliedTime": "2017-05-16T18:43:46.7373663Z",
+                "SuppressData": true,
+                "ReferenceValue": 50
+              }
+            ],
+            "Severity": 0,
+            "Description": "Unspecified threshold value",
+            "DisplayColor": "#800000",
+            "ReferenceCode": "AQUARIUS only",
+            "ProcessingOrder": "Suppression"
+          }
+        ],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius",
+        "parent_time_series_id": null,
+        "data_gap_interval": "PT1H12M",
+        "statistics_begin": null
+      },
+      "id": "f738bdd9080840c7b31731d3dc215124",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "f9bf46041794455bb0f22f5c5f0eae1a",
+        "unit_of_measure": "uS/cm",
+        "parameter_name": "Specific cond at 25C",
+        "parameter_code": "00095",
+        "statistic_id": "00003",
+        "last_modified": "2025-07-23T20:01:56.910494",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Mean",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Specific conductance, water, unfiltered, microsiemens per centimeter at 25 degrees Celsius",
+        "parent_time_series_id": "f738bdd9080840c7b31731d3dc215124",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "f9bf46041794455bb0f22f5c5f0eae1a",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "f9db85b66d20430aa9e8aed5f1bd4c57",
+        "unit_of_measure": "degC",
+        "parameter_name": "Temperature, water",
+        "parameter_code": "00010",
+        "statistic_id": "00002",
+        "last_modified": "2025-07-23T20:01:37.943901",
+        "begin": "2014-10-31T05:00:00+00:00",
+        "end": "2025-03-11T05:00:00+00:00",
+        "computation_period_identifier": "Daily",
+        "computation_identifier": "Min",
+        "thresholds": [],
+        "sublocation_identifier": null,
+        "primary": "Primary",
+        "monitoring_location_id": "USGS-08057000",
+        "web_description": null,
+        "parameter_description": "Temperature, water, degrees Celsius",
+        "parent_time_series_id": "2ffe6f7dc8cc4cf5b2c6cd2330facfc0",
+        "data_gap_interval": null,
+        "statistics_begin": null
+      },
+      "id": "f9db85b66d20430aa9e8aed5f1bd4c57",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8219463868768,
+          32.7748517183903
+        ]
+      }
+    }
+  ],
+  "numberReturned": 36,
+  "links": [
+    {
+      "type": "application/geo+json",
+      "rel": "self",
+      "title": "This document as GeoJSON",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-metadata/items?f=json&monitoring_location_id=USGS-08057000&limit=100"
+    },
+    {
+      "rel": "alternate",
+      "type": "application/ld+json",
+      "title": "This document as RDF (JSON-LD)",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-metadata/items?f=jsonld&monitoring_location_id=USGS-08057000&limit=100"
+    },
+    {
+      "type": "text/html",
+      "rel": "alternate",
+      "title": "This document as HTML",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-metadata/items?f=html&monitoring_location_id=USGS-08057000&limit=100"
+    },
+    {
+      "type": "text/csv; charset=utf-8",
+      "rel": "alternate",
+      "title": "This document as CSV",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-metadata/items?f=csv&monitoring_location_id=USGS-08057000&limit=100"
+    },
+    {
+      "type": "application/json",
+      "title": "Time series metadata",
+      "rel": "collection",
+      "href": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/time-series-metadata"
+    }
+  ],
+  "timeStamp": "2026-10-17T16:24:20.251693Z"
+}

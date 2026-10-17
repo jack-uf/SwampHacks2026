@@ -1,0 +1,94 @@
+{
+    "type":"Feature",
+    "properties":{
+        "id":"USGS-01638500",
+        "agency_code":"USGS",
+        "agency_name":"U.S. Geological Survey",
+        "monitoring_location_number":"01638500",
+        "monitoring_location_name":"POTOMAC RIVER AT POINT OF ROCKS, MD",
+        "district_code":"24",
+        "country_code":"US",
+        "country_name":"United States of America",
+        "state_code":"24",
+        "state_name":"Maryland",
+        "county_code":"021",
+        "county_name":"Frederick County",
+        "minor_civil_division_code":"90040",
+        "site_type_code":"ST",
+        "site_type":"Stream",
+        "hydrologic_unit_code":"020700080401",
+        "basin_code":null,
+        "altitude":199.91,
+        "altitude_accuracy":0.02,
+        "altitude_method_code":"L",
+        "altitude_method_name":"Level or other surveyed method.",
+        "vertical_datum":"NAVD88",
+        "vertical_datum_name":"North American Vertical Datum of 1988",
+        "horizontal_positional_accuracy_code":"S",
+        "horizontal_positional_accuracy":"Accurate to + or - 1 sec.",
+        "horizontal_position_method_code":"M",
+        "horizontal_position_method_name":"Interpolated from MAP.",
+        "original_horizontal_datum":"NAD83",
+        "original_horizontal_datum_name":"North American Datum of 1983",
+        "drainage_area":9651.0,
+        "contributing_drainage_area":null,
+        "time_zone_abbreviation":"EST",
+        "uses_daylight_savings":"Y",
+        "construction_date":null,
+        "aquifer_code":null,
+        "national_aquifer_code":null,
+        "aquifer_type_code":null,
+        "well_constructed_depth":null,
+        "hole_constructed_depth":null,
+        "depth_source_code":null,
+        "revision_note":"WSP 192: 1895-1905. WSP 1432: 1899, 1901-2, 1904-5, 1912, 1914(M), 1915, 1917(M), 1918, 1919(M), 1920, 1921-23(M), 1924, 1925-28(M), 1930(M).",
+        "revision_created":"2017-11-13T06:00:00+00:00",
+        "revision_modified":null
+    },
+    "id":"USGS-01638500",
+    "geometry":{
+        "type":"Point",
+        "coordinates":[
+            -77.5431111111111,
+            39.273583333333335
+        ]
+    },
+    "links":[
+        {
+            "type":"application/json",
+            "rel":"root",
+            "title":"The landing page of this server as JSON",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"root",
+            "title":"The landing page of this server as HTML",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1?f=html"
+        },
+        {
+            "rel":"self",
+            "type":"application/geo+json",
+            "title":"This document as JSON",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items/USGS-01638500?f=json"
+        },
+        {
+            "rel":"alternate",
+            "type":"application/ld+json",
+            "title":"This document as RDF (JSON-LD)",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items/USGS-01638500?f=jsonld"
+        },
+        {
+            "rel":"alternate",
+            "type":"text/html",
+            "title":"This document as HTML",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items/USGS-01638500?f=html"
+        },
+        {
+            "rel":"collection",
+            "type":"application/json",
+            "title":"Monitoring locations",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations"
+        }
+    ]
+}
