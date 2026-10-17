@@ -26,6 +26,8 @@ The separate [forecast-memory hydrology experiment](HYDROLOGY_RESEARCH_RESULTS.m
 
 The separate [emerging high-flow study](ONSET_RESEARCH_RESULTS.md) evaluates newly emerging measured-discharge episodes at fresh watersheds. Its onset target and warning policies remain experimental and are not comparable with persistent-high-flow AP. Production models are unchanged.
 
+The separate [catchment-response study](RESPONSE_RESEARCH_RESULTS.md) tests day-of-onset neural models, response conditioning and auxiliary trajectories on polygon-screened fresh watersheds. A prespecified neural comparator improves event detection, but AP uncertainty and regional false alerts prevent integration.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

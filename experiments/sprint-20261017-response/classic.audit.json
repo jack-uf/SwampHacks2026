@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "label_rows_reconstructed": 15234,
+  "candidates_reproduced": [
+    "rainfall",
+    "logistic",
+    "direct",
+    "response"
+  ],
+  "evaluation_sha256": "bff732aa83b2ad3e2b5a1e7b603bddbb4a2ff982ba5449a659d9e1e0a0c2cb26",
+  "audit_code_sha256": "6a1bd68ac50cec6e888ff3ec1e5434fc9a153391aa7b8175325a42c0563e91d3",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.7",
+  "production_preserved": true
+}
