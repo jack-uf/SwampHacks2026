@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 from lightgbm import LGBMClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import average_precision_score
+from sklearn.metrics import average_precision_score, confusion_matrix
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
@@ -255,10 +255,17 @@ def fitted(model, features, train, calibration, name):
 
 
 def rule_metrics(y, score, threshold):
-    result = metrics(y, score, threshold)
-    for key in ['brier', 'calibration', 'calibration_ece', 'roc_auc']:
-        result[key] = None
-    return result
+    # The forecast rule scores in km/h, so probability-only metrics do not apply.
+    y = np.asarray(y)
+    predicted = np.asarray(score) >= threshold
+    tn, fp, fn, tp = confusion_matrix(y, predicted, labels=[0, 1]).ravel()
+    return dict(n=len(y), positives=int(y.sum()), prevalence=float(y.mean()),
+                precision=float(tp / max(tp + fp, 1)), recall=float(tp / max(int(y.sum()), 1)),
+                pr_auc=float(average_precision_score(y, score)) if y.sum() else None,
+                confusion_matrix=[[int(tn), int(fp)], [int(fn), int(tp)]],
+                false_alerts_per_100_station_days=float(fp * 100 / len(y)),
+                false_positive_rate=float(fp / (fp + tn)) if fp + tn else None,
+                alert_rate=float(predicted.mean()), threshold=float(threshold))
 
 
 def station_metrics(y, probability, threshold):

@@ -1,0 +1,1911 @@
+{
+  "created_at": "2026-10-17T07:09:55.728021+00:00",
+  "selected": "xgboost_extended",
+  "eligible_candidates": [
+    "logistic_forecast",
+    "xgboost_forecast",
+    "lightgbm_forecast",
+    "logistic_extended",
+    "xgboost_extended",
+    "lightgbm_extended"
+  ],
+  "candidates": {
+    "logistic_forecast": {
+      "validation": {
+        "n": 2747,
+        "positives": 288,
+        "prevalence": 0.10484164543137969,
+        "precision": 0.3901639344262295,
+        "recall": 0.4131944444444444,
+        "pr_auc": 0.4016660601616532,
+        "roc_auc": 0.8183176313768017,
+        "brier": 0.0780229530617741,
+        "confusion_matrix": [
+          [
+            2273,
+            186
+          ],
+          [
+            169,
+            119
+          ]
+        ],
+        "false_positive_rate": 0.07564050427002847,
+        "alert_rate": 0.11103021477975973,
+        "threshold": 0.26001892248906217,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1954,
+            "predicted": 0.03143170630433918,
+            "observed": 0.040429887410440124
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 374,
+            "predicted": 0.14300061956520735,
+            "observed": 0.18716577540106952
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 183,
+            "predicted": 0.24740186992509694,
+            "observed": 0.18579234972677597
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 105,
+            "predicted": 0.34707553803426844,
+            "observed": 0.3238095238095238
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 48,
+            "predicted": 0.44719389476454946,
+            "observed": 0.4583333333333333
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 36,
+            "predicted": 0.5479101888844357,
+            "observed": 0.5555555555555556
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 25,
+            "predicted": 0.655696972584385,
+            "observed": 0.4
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 14,
+            "predicted": 0.7486443084757323,
+            "observed": 0.7857142857142857
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 4,
+            "predicted": 0.8401949082969893,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 4,
+            "predicted": 0.962409644113529,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.020505496866251856,
+        "false_alerts_per_100_station_days": 6.771022934109938
+      },
+      "geographic_validation": {
+        "n": 1470,
+        "positives": 119,
+        "prevalence": 0.08095238095238096,
+        "precision": 0.40869565217391307,
+        "recall": 0.3949579831932773,
+        "pr_auc": 0.43531090761598024,
+        "roc_auc": 0.8462203534263445,
+        "brier": 0.0588997855916028,
+        "confusion_matrix": [
+          [
+            1283,
+            68
+          ],
+          [
+            72,
+            47
+          ]
+        ],
+        "false_positive_rate": 0.050333086602516654,
+        "alert_rate": 0.0782312925170068,
+        "threshold": 0.26001892248906217,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1117,
+            "predicted": 0.03219246391256332,
+            "observed": 0.02864816472694718
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 189,
+            "predicted": 0.1410241181338123,
+            "observed": 0.13756613756613756
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 78,
+            "predicted": 0.24414148929880505,
+            "observed": 0.2564102564102564
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 42,
+            "predicted": 0.3520061907999066,
+            "observed": 0.30952380952380953
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 18,
+            "predicted": 0.4513453706233588,
+            "observed": 0.5
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 14,
+            "predicted": 0.5356648749388486,
+            "observed": 0.6428571428571429
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 9,
+            "predicted": 0.6686069557561032,
+            "observed": 0.7777777777777778
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 2,
+            "predicted": 0.7143478852766285,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 1,
+            "predicted": 0.9262886029500529,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.007726389435537728,
+        "false_alerts_per_100_station_days": 4.625850340136054
+      },
+      "features": [
+        "forecast_gust_max_kmh",
+        "forecast_gust_mean_kmh",
+        "season_sin",
+        "season_cos"
+      ],
+      "threshold": 0.26001892248906217,
+      "warning_supported": true,
+      "pooled_validation": {
+        "n": 4217,
+        "positives": 407,
+        "prevalence": 0.09651410955655679,
+        "precision": 0.3952380952380952,
+        "recall": 0.40786240786240785,
+        "pr_auc": 0.40579570168629164,
+        "roc_auc": 0.827864084556998,
+        "brier": 0.07135682638851068,
+        "confusion_matrix": [
+          [
+            3556,
+            254
+          ],
+          [
+            241,
+            166
+          ]
+        ],
+        "false_positive_rate": 0.06666666666666667,
+        "alert_rate": 0.09959686981266302,
+        "threshold": 0.26001892248906217,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 3071,
+            "predicted": 0.03170841299544513,
+            "observed": 0.03614457831325301
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 563,
+            "predicted": 0.14233710487509427,
+            "observed": 0.1705150976909414
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 261,
+            "predicted": 0.24642750330114768,
+            "observed": 0.20689655172413793
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 147,
+            "predicted": 0.3484842959673079,
+            "observed": 0.3197278911564626
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 66,
+            "predicted": 0.44832611545331563,
+            "observed": 0.4696969696969697
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 50,
+            "predicted": 0.5444815009796713,
+            "observed": 0.58
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 34,
+            "predicted": 0.6591143210710163,
+            "observed": 0.5
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 16,
+            "predicted": 0.7443572555758443,
+            "observed": 0.8125
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 4,
+            "predicted": 0.8401949082969893,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 5,
+            "predicted": 0.9551854358808338,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.012943397880201627,
+        "false_alerts_per_100_station_days": 6.023239269622954
+      },
+      "selection_ap": 0.4184884838888167,
+      "selection_brier": 0.06846136932668845
+    },
+    "xgboost_forecast": {
+      "validation": {
+        "n": 2747,
+        "positives": 288,
+        "prevalence": 0.10484164543137969,
+        "precision": 0.4197080291970803,
+        "recall": 0.3993055555555556,
+        "pr_auc": 0.4070521092666139,
+        "roc_auc": 0.8060829549048846,
+        "brier": 0.07763189243553202,
+        "confusion_matrix": [
+          [
+            2300,
+            159
+          ],
+          [
+            173,
+            115
+          ]
+        ],
+        "false_positive_rate": 0.06466043106954046,
+        "alert_rate": 0.09974517655624317,
+        "threshold": 0.26099578468128926,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1870,
+            "predicted": 0.03606248731083365,
+            "observed": 0.04438502673796792
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 499,
+            "predicted": 0.13890007818388478,
+            "observed": 0.14428857715430862
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 143,
+            "predicted": 0.24386053896665646,
+            "observed": 0.1958041958041958
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 98,
+            "predicted": 0.3424253937772342,
+            "observed": 0.29591836734693877
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 48,
+            "predicted": 0.44046816600009747,
+            "observed": 0.4375
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 21,
+            "predicted": 0.5481932479824033,
+            "observed": 0.42857142857142855
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 34,
+            "predicted": 0.6561786876384287,
+            "observed": 0.5882352941176471
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 20,
+            "predicted": 0.7530681250792576,
+            "observed": 0.7
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 14,
+            "predicted": 0.8443836547355722,
+            "observed": 0.8571428571428571
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.01306383409829351,
+        "false_alerts_per_100_station_days": 5.7881325081907535
+      },
+      "geographic_validation": {
+        "n": 1470,
+        "positives": 119,
+        "prevalence": 0.08095238095238096,
+        "precision": 0.4112903225806452,
+        "recall": 0.42857142857142855,
+        "pr_auc": 0.47385081925189504,
+        "roc_auc": 0.8285583663517221,
+        "brier": 0.0575415515123969,
+        "confusion_matrix": [
+          [
+            1278,
+            73
+          ],
+          [
+            68,
+            51
+          ]
+        ],
+        "false_positive_rate": 0.0540340488527017,
+        "alert_rate": 0.08435374149659863,
+        "threshold": 0.26099578468128926,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1068,
+            "predicted": 0.03797503118097917,
+            "observed": 0.028089887640449437
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 244,
+            "predicted": 0.13724037868294958,
+            "observed": 0.12704918032786885
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 50,
+            "predicted": 0.24327006496701117,
+            "observed": 0.18
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 39,
+            "predicted": 0.3409360735210082,
+            "observed": 0.23076923076923078
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 26,
+            "predicted": 0.4420547920010758,
+            "observed": 0.4230769230769231
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 14,
+            "predicted": 0.5376422048278665,
+            "observed": 0.21428571428571427
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 12,
+            "predicted": 0.6571725429034755,
+            "observed": 0.75
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 8,
+            "predicted": 0.7507351687672388,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 9,
+            "predicted": 0.8422280458340936,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.02044381428416801,
+        "false_alerts_per_100_station_days": 4.965986394557823
+      },
+      "features": [
+        "forecast_gust_max_kmh",
+        "forecast_gust_mean_kmh",
+        "season_sin",
+        "season_cos"
+      ],
+      "threshold": 0.26099578468128926,
+      "warning_supported": true,
+      "pooled_validation": {
+        "n": 4217,
+        "positives": 407,
+        "prevalence": 0.09651410955655679,
+        "precision": 0.41708542713567837,
+        "recall": 0.40786240786240785,
+        "pr_auc": 0.42534721525115404,
+        "roc_auc": 0.8137579239941445,
+        "brier": 0.07062861969258476,
+        "confusion_matrix": [
+          [
+            3578,
+            232
+          ],
+          [
+            241,
+            166
+          ]
+        ],
+        "false_positive_rate": 0.06089238845144357,
+        "alert_rate": 0.09437989091771401,
+        "threshold": 0.26099578468128926,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 2938,
+            "predicted": 0.03675772109344611,
+            "observed": 0.038461538461538464
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 743,
+            "predicted": 0.13835503554831521,
+            "observed": 0.1386271870794078
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 193,
+            "predicted": 0.24370756642788827,
+            "observed": 0.19170984455958548
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 137,
+            "predicted": 0.3420014266969947,
+            "observed": 0.2773722627737226
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 74,
+            "predicted": 0.4410256291896304,
+            "observed": 0.43243243243243246
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 35,
+            "predicted": 0.5439728307205887,
+            "observed": 0.34285714285714286
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 46,
+            "predicted": 0.6564379542293104,
+            "observed": 0.6304347826086957
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 28,
+            "predicted": 0.7524015661329664,
+            "observed": 0.7857142857142857
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 23,
+            "predicted": 0.8435401556002108,
+            "observed": 0.9130434782608695
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.00841835520332024,
+        "false_alerts_per_100_station_days": 5.501541380128053
+      },
+      "selection_ap": 0.44045146425925447,
+      "selection_brier": 0.06758672197396445
+    },
+    "lightgbm_forecast": {
+      "validation": {
+        "n": 2747,
+        "positives": 288,
+        "prevalence": 0.10484164543137969,
+        "precision": 0.4216417910447761,
+        "recall": 0.3923611111111111,
+        "pr_auc": 0.40234873620859746,
+        "roc_auc": 0.8075091218200714,
+        "brier": 0.07728012460757971,
+        "confusion_matrix": [
+          [
+            2304,
+            155
+          ],
+          [
+            175,
+            113
+          ]
+        ],
+        "false_positive_rate": 0.06303375355835705,
+        "alert_rate": 0.0975609756097561,
+        "threshold": 0.2592774406485251,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1929,
+            "predicted": 0.03821492087611488,
+            "observed": 0.04302747537584241
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 430,
+            "predicted": 0.14143195980928466,
+            "observed": 0.1511627906976744
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 157,
+            "predicted": 0.24000076938376935,
+            "observed": 0.2229299363057325
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 105,
+            "predicted": 0.34871507225335713,
+            "observed": 0.3047619047619048
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 41,
+            "predicted": 0.4410537398139406,
+            "observed": 0.36585365853658536
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 21,
+            "predicted": 0.545445094825881,
+            "observed": 0.6666666666666666
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 31,
+            "predicted": 0.6566796892831578,
+            "observed": 0.5806451612903226
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 20,
+            "predicted": 0.7527745323671103,
+            "observed": 0.75
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 13,
+            "predicted": 0.8349701041309225,
+            "observed": 0.8461538461538461
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.010538654639345628,
+        "false_alerts_per_100_station_days": 5.642519111758282
+      },
+      "geographic_validation": {
+        "n": 1470,
+        "positives": 119,
+        "prevalence": 0.08095238095238096,
+        "precision": 0.43089430894308944,
+        "recall": 0.44537815126050423,
+        "pr_auc": 0.4733976124932538,
+        "roc_auc": 0.830853584957299,
+        "brier": 0.05732700531735552,
+        "confusion_matrix": [
+          [
+            1281,
+            70
+          ],
+          [
+            66,
+            53
+          ]
+        ],
+        "false_positive_rate": 0.05181347150259067,
+        "alert_rate": 0.0836734693877551,
+        "threshold": 0.2592774406485251,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1103,
+            "predicted": 0.040035271755893415,
+            "observed": 0.029918404351767906
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 199,
+            "predicted": 0.13930007429198799,
+            "observed": 0.12060301507537688
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 66,
+            "predicted": 0.2445455785150347,
+            "observed": 0.19696969696969696
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 43,
+            "predicted": 0.35143097276747204,
+            "observed": 0.3023255813953488
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 26,
+            "predicted": 0.4525396315315851,
+            "observed": 0.34615384615384615
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 8,
+            "predicted": 0.5649436340072966,
+            "observed": 0.625
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 10,
+            "predicted": 0.6430933484120798,
+            "observed": 0.7
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 7,
+            "predicted": 0.7450932444212912,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 8,
+            "predicted": 0.8387841381465206,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.018381484074401683,
+        "false_alerts_per_100_station_days": 4.761904761904762
+      },
+      "features": [
+        "forecast_gust_max_kmh",
+        "forecast_gust_mean_kmh",
+        "season_sin",
+        "season_cos"
+      ],
+      "threshold": 0.2592774406485251,
+      "warning_supported": true,
+      "pooled_validation": {
+        "n": 4217,
+        "positives": 407,
+        "prevalence": 0.09651410955655679,
+        "precision": 0.42455242966751916,
+        "recall": 0.40786240786240785,
+        "pr_auc": 0.4212815979809304,
+        "roc_auc": 0.8156596825888165,
+        "brier": 0.07032468582251224,
+        "confusion_matrix": [
+          [
+            3585,
+            225
+          ],
+          [
+            241,
+            166
+          ]
+        ],
+        "false_positive_rate": 0.05905511811023622,
+        "alert_rate": 0.09271994308750296,
+        "threshold": 0.2592774406485251,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 3032,
+            "predicted": 0.03887713955038787,
+            "observed": 0.03825857519788918
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 629,
+            "predicted": 0.1407574841050843,
+            "observed": 0.14149443561208266
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 223,
+            "predicted": 0.24134586984414383,
+            "observed": 0.21524663677130046
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 148,
+            "predicted": 0.3495041514567825,
+            "observed": 0.30405405405405406
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 67,
+            "predicted": 0.4455109515252654,
+            "observed": 0.3582089552238806
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 29,
+            "predicted": 0.5508240021862715,
+            "observed": 0.6551724137931034
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 41,
+            "predicted": 0.6533659476072852,
+            "observed": 0.6097560975609756
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 27,
+            "predicted": 0.7507830873441201,
+            "observed": 0.8148148148148148
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 21,
+            "predicted": 0.8364230694701982,
+            "observed": 0.9047619047619048
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.0068088894306497704,
+        "false_alerts_per_100_station_days": 5.335546597106948
+      },
+      "selection_ap": 0.43787317435092565,
+      "selection_brier": 0.06730356496246762
+    },
+    "logistic_extended": {
+      "validation": {
+        "n": 2747,
+        "positives": 288,
+        "prevalence": 0.10484164543137969,
+        "precision": 0.5428571428571428,
+        "recall": 0.3958333333333333,
+        "pr_auc": 0.4897907473852406,
+        "roc_auc": 0.8611958338981518,
+        "brier": 0.07118658042659469,
+        "confusion_matrix": [
+          [
+            2363,
+            96
+          ],
+          [
+            174,
+            114
+          ]
+        ],
+        "false_positive_rate": 0.03904026026840179,
+        "alert_rate": 0.07644703312704769,
+        "threshold": 0.31317333200375636,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1986,
+            "predicted": 0.02777783863254881,
+            "observed": 0.03726082578046324
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 359,
+            "predicted": 0.14095760600638016,
+            "observed": 0.1309192200557103
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 171,
+            "predicted": 0.24284421119397745,
+            "observed": 0.2631578947368421
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 82,
+            "predicted": 0.34485229977231185,
+            "observed": 0.43902439024390244
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 53,
+            "predicted": 0.4445057911170542,
+            "observed": 0.41509433962264153
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 33,
+            "predicted": 0.5562170029748688,
+            "observed": 0.48484848484848486
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 23,
+            "predicted": 0.6507783474858385,
+            "observed": 0.6956521739130435
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 19,
+            "predicted": 0.7490172218959271,
+            "observed": 0.6842105263157895
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 12,
+            "predicted": 0.8507009396255024,
+            "observed": 0.8333333333333334
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 9,
+            "predicted": 0.954893049824245,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.014715876015602296,
+        "false_alerts_per_100_station_days": 3.494721514379323
+      },
+      "geographic_validation": {
+        "n": 1470,
+        "positives": 119,
+        "prevalence": 0.08095238095238096,
+        "precision": 0.5652173913043478,
+        "recall": 0.4369747899159664,
+        "pr_auc": 0.5281459253145097,
+        "roc_auc": 0.8751500600240095,
+        "brier": 0.05314667136614504,
+        "confusion_matrix": [
+          [
+            1311,
+            40
+          ],
+          [
+            67,
+            52
+          ]
+        ],
+        "false_positive_rate": 0.029607698001480384,
+        "alert_rate": 0.06258503401360545,
+        "threshold": 0.31317333200375636,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1160,
+            "predicted": 0.021415652912992165,
+            "observed": 0.028448275862068967
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 142,
+            "predicted": 0.1398219060903049,
+            "observed": 0.11971830985915492
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 72,
+            "predicted": 0.24803781578782613,
+            "observed": 0.19444444444444445
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 41,
+            "predicted": 0.3526078065703774,
+            "observed": 0.3902439024390244
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 17,
+            "predicted": 0.4457482857641605,
+            "observed": 0.6470588235294118
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 16,
+            "predicted": 0.5489039561018489,
+            "observed": 0.625
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 9,
+            "predicted": 0.6495878980354495,
+            "observed": 0.6666666666666666
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 7,
+            "predicted": 0.748318230702329,
+            "observed": 0.8571428571428571
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 5,
+            "predicted": 0.8367461904707533,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 1,
+            "predicted": 0.9784671797628697,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.015515275488515714,
+        "false_alerts_per_100_station_days": 2.7210884353741496
+      },
+      "features": [
+        "forecast_gust_max_kmh",
+        "forecast_gust_mean_kmh",
+        "season_sin",
+        "season_cos",
+        "forecast_rain_mm",
+        "forecast_rain_max_hour_mm",
+        "forecast_wet_hours",
+        "antecedent_forecast_rain_72h_mm",
+        "forecast_temp_max_c",
+        "forecast_humidity_pct",
+        "forecast_pressure_min_hpa",
+        "forecast_pressure_change_24h_hpa",
+        "forecast_cape_max_jkg",
+        "latitude",
+        "longitude",
+        "elevation_m"
+      ],
+      "threshold": 0.31317333200375636,
+      "warning_supported": true,
+      "pooled_validation": {
+        "n": 4217,
+        "positives": 407,
+        "prevalence": 0.09651410955655679,
+        "precision": 0.5496688741721855,
+        "recall": 0.40786240786240785,
+        "pr_auc": 0.4984251725000721,
+        "roc_auc": 0.8670697182508206,
+        "brier": 0.06489806576715408,
+        "confusion_matrix": [
+          [
+            3674,
+            136
+          ],
+          [
+            241,
+            166
+          ]
+        ],
+        "false_positive_rate": 0.03569553805774278,
+        "alert_rate": 0.07161489210339103,
+        "threshold": 0.31317333200375636,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 3146,
+            "predicted": 0.025431959600544455,
+            "observed": 0.03401144310235219
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 501,
+            "predicted": 0.14063571102018718,
+            "observed": 0.1277445109780439
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 243,
+            "predicted": 0.24438305699956225,
+            "observed": 0.24279835390946503
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 123,
+            "predicted": 0.34743746870500036,
+            "observed": 0.42276422764227645
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 70,
+            "predicted": 0.44480753981706567,
+            "observed": 0.4714285714285714
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 49,
+            "predicted": 0.553829069302046,
+            "observed": 0.5306122448979592
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 32,
+            "predicted": 0.6504435335779167,
+            "observed": 0.6875
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 26,
+            "predicted": 0.748829031959189,
+            "observed": 0.7307692307692307
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 17,
+            "predicted": 0.8465966016388116,
+            "observed": 0.8823529411764706
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 10,
+            "predicted": 0.9572504628181076,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.011570223387951118,
+        "false_alerts_per_100_station_days": 3.2250414986957554
+      },
+      "selection_ap": 0.5089683363498752,
+      "selection_brier": 0.06216662589636986
+    },
+    "xgboost_extended": {
+      "validation": {
+        "n": 2747,
+        "positives": 288,
+        "prevalence": 0.10484164543137969,
+        "precision": 0.5555555555555556,
+        "recall": 0.4340277777777778,
+        "pr_auc": 0.5264222364080214,
+        "roc_auc": 0.8829794744927928,
+        "brier": 0.06808676663269415,
+        "confusion_matrix": [
+          [
+            2359,
+            100
+          ],
+          [
+            163,
+            125
+          ]
+        ],
+        "false_positive_rate": 0.040666937779585195,
+        "alert_rate": 0.08190753549326538,
+        "threshold": 0.37823119352124474,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1905,
+            "predicted": 0.022880132982951242,
+            "observed": 0.026771653543307086
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 341,
+            "predicted": 0.14260711755366434,
+            "observed": 0.12609970674486803
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 179,
+            "predicted": 0.24746374832889959,
+            "observed": 0.24581005586592178
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 121,
+            "predicted": 0.3464593263682655,
+            "observed": 0.2727272727272727
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 75,
+            "predicted": 0.4500951444548109,
+            "observed": 0.48
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 37,
+            "predicted": 0.5550781048096204,
+            "observed": 0.4594594594594595
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 30,
+            "predicted": 0.6469252235934443,
+            "observed": 0.5666666666666667
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 29,
+            "predicted": 0.7533159695207767,
+            "observed": 0.6551724137931034
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 19,
+            "predicted": 0.8515945509765189,
+            "observed": 0.8947368421052632
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 11,
+            "predicted": 0.9225806379201777,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.01272877814953977,
+        "false_alerts_per_100_station_days": 3.6403349108117946
+      },
+      "geographic_validation": {
+        "n": 1470,
+        "positives": 119,
+        "prevalence": 0.08095238095238096,
+        "precision": 0.6833333333333333,
+        "recall": 0.3445378151260504,
+        "pr_auc": 0.5478331757504279,
+        "roc_auc": 0.8799613109492502,
+        "brier": 0.05272475220339971,
+        "confusion_matrix": [
+          [
+            1332,
+            19
+          ],
+          [
+            78,
+            41
+          ]
+        ],
+        "false_positive_rate": 0.014063656550703183,
+        "alert_rate": 0.04081632653061224,
+        "threshold": 0.37823119352124474,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1248,
+            "predicted": 0.01820369829196191,
+            "observed": 0.032852564102564104
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 109,
+            "predicted": 0.140795071884405,
+            "observed": 0.1651376146788991
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 35,
+            "predicted": 0.24423533815317425,
+            "observed": 0.34285714285714286
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 24,
+            "predicted": 0.3464580007069665,
+            "observed": 0.3333333333333333
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 12,
+            "predicted": 0.44287994672017184,
+            "observed": 0.5
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 18,
+            "predicted": 0.5461150825353942,
+            "observed": 0.7222222222222222
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 12,
+            "predicted": 0.648765379123935,
+            "observed": 0.8333333333333334
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 9,
+            "predicted": 0.7435929149377798,
+            "observed": 0.8888888888888888
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 3,
+            "predicted": 0.8602895697357053,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.022108065672397266,
+        "false_alerts_per_100_station_days": 1.2925170068027212
+      },
+      "features": [
+        "forecast_gust_max_kmh",
+        "forecast_gust_mean_kmh",
+        "season_sin",
+        "season_cos",
+        "forecast_rain_mm",
+        "forecast_rain_max_hour_mm",
+        "forecast_wet_hours",
+        "antecedent_forecast_rain_72h_mm",
+        "forecast_temp_max_c",
+        "forecast_humidity_pct",
+        "forecast_pressure_min_hpa",
+        "forecast_pressure_change_24h_hpa",
+        "forecast_cape_max_jkg",
+        "latitude",
+        "longitude",
+        "elevation_m"
+      ],
+      "threshold": 0.37823119352124474,
+      "warning_supported": true,
+      "pooled_validation": {
+        "n": 4217,
+        "positives": 407,
+        "prevalence": 0.09651410955655679,
+        "precision": 0.5824561403508772,
+        "recall": 0.40786240786240785,
+        "pr_auc": 0.5246402631427748,
+        "roc_auc": 0.8821003179270895,
+        "brier": 0.06273173670358276,
+        "confusion_matrix": [
+          [
+            3691,
+            119
+          ],
+          [
+            241,
+            166
+          ]
+        ],
+        "false_positive_rate": 0.031233595800524934,
+        "alert_rate": 0.06758359023002135,
+        "threshold": 0.37823119352124474,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 3153,
+            "predicted": 0.021029136949219974,
+            "observed": 0.029178560101490645
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 450,
+            "predicted": 0.1421681998248882,
+            "observed": 0.13555555555555557
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 214,
+            "predicted": 0.24693573731885107,
+            "observed": 0.2616822429906542
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 145,
+            "predicted": 0.3464591069484644,
+            "observed": 0.2827586206896552
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 87,
+            "predicted": 0.44909994476727455,
+            "observed": 0.4827586206896552
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 55,
+            "predicted": 0.5521447520653282,
+            "observed": 0.5454545454545454
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 42,
+            "predicted": 0.6474509823164415,
+            "observed": 0.6428571428571429
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 38,
+            "predicted": 0.7510131408037509,
+            "observed": 0.7105263157894737
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 22,
+            "predicted": 0.8527802353527715,
+            "observed": 0.9090909090909091
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 11,
+            "predicted": 0.9225806379201777,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.01142549168209453,
+        "false_alerts_per_100_station_days": 2.821911311358786
+      },
+      "selection_ap": 0.5371277060792247,
+      "selection_brier": 0.060405759418046934
+    },
+    "lightgbm_extended": {
+      "validation": {
+        "n": 2747,
+        "positives": 288,
+        "prevalence": 0.10484164543137969,
+        "precision": 0.49407114624505927,
+        "recall": 0.4340277777777778,
+        "pr_auc": 0.5200730457467968,
+        "roc_auc": 0.87986944218517,
+        "brier": 0.06884111421607107,
+        "confusion_matrix": [
+          [
+            2331,
+            128
+          ],
+          [
+            163,
+            125
+          ]
+        ],
+        "false_positive_rate": 0.05205368035786905,
+        "alert_rate": 0.0921004732435384,
+        "threshold": 0.34295363588501676,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1900,
+            "predicted": 0.0228071761791455,
+            "observed": 0.025789473684210525
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 373,
+            "predicted": 0.14346988770560903,
+            "observed": 0.13136729222520108
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 153,
+            "predicted": 0.24394997677920724,
+            "observed": 0.24836601307189543
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 121,
+            "predicted": 0.34157110584578587,
+            "observed": 0.36363636363636365
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 66,
+            "predicted": 0.44531195959480563,
+            "observed": 0.36363636363636365
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 48,
+            "predicted": 0.5407344606141397,
+            "observed": 0.4583333333333333
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 32,
+            "predicted": 0.6572505259758264,
+            "observed": 0.65625
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 22,
+            "predicted": 0.7493814364589284,
+            "observed": 0.5
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 20,
+            "predicted": 0.8395004011998927,
+            "observed": 0.9
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 12,
+            "predicted": 0.9345237649378504,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.011061573277052643,
+        "false_alerts_per_100_station_days": 4.659628685839097
+      },
+      "geographic_validation": {
+        "n": 1470,
+        "positives": 119,
+        "prevalence": 0.08095238095238096,
+        "precision": 0.7192982456140351,
+        "recall": 0.3445378151260504,
+        "pr_auc": 0.5443551585181085,
+        "roc_auc": 0.8772928860663435,
+        "brier": 0.05351020142876667,
+        "confusion_matrix": [
+          [
+            1335,
+            16
+          ],
+          [
+            78,
+            41
+          ]
+        ],
+        "false_positive_rate": 0.011843079200592153,
+        "alert_rate": 0.03877551020408163,
+        "threshold": 0.34295363588501676,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 1254,
+            "predicted": 0.018771160750347647,
+            "observed": 0.03349282296650718
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 106,
+            "predicted": 0.1393362106356895,
+            "observed": 0.1792452830188679
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 43,
+            "predicted": 0.24117212866729074,
+            "observed": 0.3488372093023256
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 21,
+            "predicted": 0.349128432692392,
+            "observed": 0.38095238095238093
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 11,
+            "predicted": 0.45426915725184824,
+            "observed": 0.5454545454545454
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 14,
+            "predicted": 0.5438296680413618,
+            "observed": 0.7142857142857143
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 10,
+            "predicted": 0.6380876357233652,
+            "observed": 0.8
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 8,
+            "predicted": 0.7413313502422381,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 3,
+            "predicted": 0.8452911423218378,
+            "observed": 1.0
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 0,
+            "predicted": null,
+            "observed": null
+          }
+        ],
+        "calibration_ece": 0.024170918914259026,
+        "false_alerts_per_100_station_days": 1.08843537414966
+      },
+      "features": [
+        "forecast_gust_max_kmh",
+        "forecast_gust_mean_kmh",
+        "season_sin",
+        "season_cos",
+        "forecast_rain_mm",
+        "forecast_rain_max_hour_mm",
+        "forecast_wet_hours",
+        "antecedent_forecast_rain_72h_mm",
+        "forecast_temp_max_c",
+        "forecast_humidity_pct",
+        "forecast_pressure_min_hpa",
+        "forecast_pressure_change_24h_hpa",
+        "forecast_cape_max_jkg",
+        "latitude",
+        "longitude",
+        "elevation_m"
+      ],
+      "threshold": 0.34295363588501676,
+      "warning_supported": true,
+      "pooled_validation": {
+        "n": 4217,
+        "positives": 407,
+        "prevalence": 0.09651410955655679,
+        "precision": 0.535483870967742,
+        "recall": 0.40786240786240785,
+        "pr_auc": 0.5175483500171483,
+        "roc_auc": 0.8793211966440314,
+        "brier": 0.06349692597861852,
+        "confusion_matrix": [
+          [
+            3666,
+            144
+          ],
+          [
+            241,
+            166
+          ]
+        ],
+        "false_positive_rate": 0.03779527559055118,
+        "alert_rate": 0.07351197533791795,
+        "threshold": 0.34295363588501676,
+        "calibration": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "n": 3154,
+            "predicted": 0.021202495346009004,
+            "observed": 0.028852251109701965
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "n": 479,
+            "predicted": 0.14255512827051206,
+            "observed": 0.1419624217118998
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.30000000000000004,
+            "n": 196,
+            "predicted": 0.24334055091791945,
+            "observed": 0.27040816326530615
+          },
+          {
+            "lower": 0.30000000000000004,
+            "upper": 0.4,
+            "n": 142,
+            "predicted": 0.34268873868929806,
+            "observed": 0.36619718309859156
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "n": 77,
+            "predicted": 0.44659155926009747,
+            "observed": 0.38961038961038963
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6000000000000001,
+            "n": 62,
+            "predicted": 0.5414333784202866,
+            "observed": 0.5161290322580645
+          },
+          {
+            "lower": 0.6000000000000001,
+            "upper": 0.7000000000000001,
+            "n": 42,
+            "predicted": 0.6526879330585738,
+            "observed": 0.6904761904761905
+          },
+          {
+            "lower": 0.7000000000000001,
+            "upper": 0.8,
+            "n": 30,
+            "predicted": 0.7472347468011443,
+            "observed": 0.6333333333333333
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "n": 23,
+            "predicted": 0.8402557152592769,
+            "observed": 0.9130434782608695
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "n": 12,
+            "predicted": 0.9345237649378504,
+            "observed": 1.0
+          }
+        ],
+        "calibration_ece": 0.011020889105267318,
+        "false_alerts_per_100_station_days": 3.4147498221484467
+      },
+      "selection_ap": 0.5322141021324527,
+      "selection_brier": 0.06117565782241887
+    }
+  },
+  "baseline_validation": {
+    "n": 4217,
+    "positives": 407,
+    "prevalence": 0.09651410955655679,
+    "precision": 0.4213197969543147,
+    "recall": 0.40786240786240785,
+    "pr_auc": 0.4225202109284176,
+    "confusion_matrix": [
+      [
+        3582,
+        228
+      ],
+      [
+        241,
+        166
+      ]
+    ],
+    "false_alerts_per_100_station_days": 5.406687218401707,
+    "false_positive_rate": 0.05984251968503937,
+    "alert_rate": 0.09343134930045056,
+    "threshold": 60.0
+  },
+  "dataset_sha256": "2e64b432e77c236963cdf2cc541e02ea97803acbaef9e63830043d09beb3ca4e",
+  "model_sha256": "ee72114a32cf3e65e25a68f4f2ad50e774052940866e039144a5246c3de26a40",
+  "protocol_sha256": "d008e37995aaad72261796fc5e296fe4af9061c909e22dbf3cd6ff5a5842ec8c",
+  "protocol_document_sha256": "1b1a67d5d90906d09bc95a700213082fe3fcf8fb5ca24bad02189bc819d28066",
+  "code_sha256": "bc56d43bb7031decc56246d28f213c0092ccacfba224a3f03cfa733872f8ed71",
+  "dependencies": {
+    "scripts/train.py": "9711ca34e2847b5abcbb96a7d5ff70e59931dfd013c0813d91169135311eb525",
+    "scripts/ml_sprint.py": "eaf10e329b15550da8d7811afb379be6b8f4e718dc259f483698bf874af3946f",
+    "scripts/common.py": "ddd29c37fb6bf5f477e6067c4d9f2af57338021ea4531846a3552c3e0bb9d25a"
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "lightgbm": "4.6.0",
+    "joblib": "1.5.3",
+    "scipy": "1.18.1"
+  },
+  "selection_rule": "Supported candidates first; equal temporal/geographic validation AP, mean Brier tie-break, then name",
+  "test_outcomes_inspected": false
+}
