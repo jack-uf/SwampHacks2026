@@ -53,7 +53,7 @@ For frontend development, keep the backend running and run `npm --prefix fronten
 - Geolocated multi-hazard photo reports, persistent review status and manual corrections, consent-gated optional Jev text suggestions, and verified-report index contributions.
 - Persistent, idempotent next-day briefings scheduled after 18:00 in each facility's IANA timezone, plus an immediately testable generation button.
 
-Heat, rain, and soil values are screening inputs. Wildfire coverage is limited to relevant NWS alerts and crew reports; wildlife comes from crew reports. There is no active-fire perimeter feed. A commercial live lightning feed has not been connected. Jev has a documented, version-pinned HTTP integration with tested manual handling of outages. Live inference and semantic accuracy remain unverified; text sharing and API costs are disabled by default, and photos are never sent.
+Heat, rain, and soil values are screening inputs. Wildfire coverage is limited to relevant NWS alerts and crew reports; wildlife comes from crew reports. There is no active-fire perimeter feed. A commercial live lightning feed has not been connected. Jev text inference is live-verified with the version-pinned official API and tested manual handling of outages. A ten-case synthetic evaluation measured precision .75 and recall .90; authentic field reliability remains unvalidated. Text sharing and API costs are disabled by default, and photos are never sent.
 
 ## Evidence and reproduction
 
@@ -65,6 +65,8 @@ The original 8,532-row benchmark was reproduced and preserved under `experiments
 | Storm · enhanced LightGBM | .088 | .613 | .130 | .0234 | 15.56 |
 
 These numbers are a **new benchmark**, not directly comparable with the original 2025 scores. On identical original ten counties and Jan–Jun 2026 dates, flood AP stays .120; a higher threshold reduces false alerts (41.49→13.37) and recall (.875→.625). Storm AP worsens .150→.130 while false alerts fall 40.55→19.45 and recall .812→.667. Paired uncertainty does not establish an improved storm ranking. All three independent geographic storm events were missed at its threshold. Geographic selection has only one flood and three storm events. See [full measured evaluation](docs/EVALUATION.md) and [model card](docs/MODEL_CARD.md).
+
+The [storm investigation](docs/STORM_DIAGNOSTICS.md) reproduces the regression without refitting or changing selection. Positive-slope calibration preserves AP ranking. Selection relies on only three geographic-validation positives in one county, and the three missed test county-days represent two NOAA episodes west of all selected-model fitting coordinates. Feature/SHAP diagnostics identify plausible transfer and event-proxy problems, without establishing a single cause or an improvement. Existing artifacts and serving restrictions are preserved.
 
 Serving is restricted to the actual fitted county/state inventory per hazard: eleven original flood counties and eighteen storm development counties. It uses the evaluated county representative point and genuine SHAP of calibrated probability. Unsupported locations stay unknown. No national or plant-level validity is claimed. No index weight was statistically validated or changed to make a score look better.
 
@@ -85,9 +87,11 @@ Raw downloads are cached under `data/raw/` with URL, retrieval timestamp, byte c
 
 ## Optional Jev text triage
 
-Jev is disabled by default. Keep `PLANIT_JEV_ENABLED=false` until an operator has explicitly authorized provider costs; then configure server-only `TYPESAFE_API_KEY`, pinned `PLANIT_JEV_MODEL=jev-1.13.0`, and enable it. A report's separate unchecked consent box must authorize sharing its observation text. No paid inference was used during implementation. Images and coordinates are never sent. See [operations](docs/OPERATIONS.md) for the exact request, triage cutoffs, failure handling and correction API.
+Jev is disabled by default. Keep `PLANIT_JEV_ENABLED=false` until an operator has explicitly authorized provider costs; then configure server-only `TYPESAFE_API_KEY`, pinned `PLANIT_JEV_MODEL=jev-1.13.0`, and enable it. A report's separate unchecked consent box must authorize sharing its observation text. Twelve authorized text-only inference calls were verified: one connection check, ten frozen synthetic scenarios, and one browser report. Returned token usage implies an estimated $0.00064659 at the retrieved price, not an invoice. Images and coordinate fields are never sent.
 
-Six hypothetical workflow fixtures cover normal, ambiguous, multi-hazard, lightning, negated and instruction-containing observations. Their probabilities are hand-authored API doubles: they test schema/abstention/display contracts, **not semantic classification quality**. Live output, latency, cost and accuracy require a separately authorized prospective evaluation. AI suggestions never verify a report, alter lightning holds, authorize work or enter the index automatically.
+Nine independent hazard judgments use Noul, inbox routing uses Choice, and a defined 0–2 urgency scale uses Score. The dashboard filters manual labels or accepted Jev suggestions, and pending urgent/clarification/manual queues. Corrections preserve original text, AI evidence and separate review status. All ten synthetic cases abstained under the current conservative rule, which also counts no accepted hazard; 9/10 contained an uncertain judgment. These are small author-labeled examples, not field validation or calibrated safety confidence. See [implementation and measured validation](docs/JEV_VALIDATION.md) and [operations](docs/OPERATIONS.md).
+
+Six hypothetical workflow fixtures cover normal, ambiguous, multi-hazard, lightning, negated and instruction-containing observations. Their probabilities are hand-authored API doubles: they test schema/abstention/display contracts, **not semantic classification quality**. Actual outputs, latency, usage and synthetic accuracy are recorded separately in the live evaluation above; authentic field accuracy still requires an authorized prospective evaluation. AI suggestions never verify a report, alter lightning holds, authorize work or enter the index automatically.
 
 ## Project guide
 
@@ -105,10 +109,10 @@ Six hypothetical workflow fixtures cover normal, ambiguous, multi-hazard, lightn
 | `data/`, `models/` | Committed inventory, training data, provenance and trained artifacts |
 | `tests/` | Critical domain, API, persistence, provider and dataset checks |
 
-Read [research findings](docs/RESEARCH.md), [frozen experiment protocol](docs/RESEARCH_PLAN.md), [Jev contract audit](docs/JEV_RESEARCH.md), [sources and licensing](docs/SOURCES.md), [model methodology](docs/MODEL_CARD.md), [operations and API](docs/OPERATIONS.md), [generated evaluation](docs/EVALUATION.md), and the [demo and verification record](docs/DEMO.md). `PLAN.md` records milestone completion.
+Read [research findings](docs/RESEARCH.md), [frozen experiment protocol](docs/RESEARCH_PLAN.md), [Jev validation](docs/JEV_VALIDATION.md), [earlier Jev contract audit](docs/JEV_RESEARCH.md), [storm diagnostics](docs/STORM_DIAGNOSTICS.md), [sources and licensing](docs/SOURCES.md), [model methodology](docs/MODEL_CARD.md), [operations and API](docs/OPERATIONS.md), [generated evaluation](docs/EVALUATION.md), and the [demo and verification record](docs/DEMO.md). `PLAN.md` records milestone completion.
 
 ## Deployment boundary
 
 The canonical deployment is a local single-supervisor process bound to loopback. Reads, uploaded photos and API docs have no authentication; the shared supervisor token is not a multi-user identity system. There is no TLS termination, account management, audit log, distributed scheduler, retention policy, or production abuse protection. Do not expose this service publicly without designing those controls.
 
-Free Open-Meteo service is for noncommercial use and has request limits; commercial utility use requires appropriate service terms. Public OSM tiles are a community service, not a production SLA. Webhook delivery and real strike ingestion require separately configured services and have not been tested against an external provider. No paid service or public deployment was used.
+Free Open-Meteo service is for noncommercial use and has request limits; commercial utility use requires appropriate service terms. Public OSM tiles are a community service, not a production SLA. Webhook delivery and real strike ingestion require separately configured services and have not been tested against an external provider. Paid Jev usage was limited to the twelve authorized test calls above. No public deployment was performed.

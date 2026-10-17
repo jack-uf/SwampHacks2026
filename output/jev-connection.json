@@ -1,0 +1,137 @@
+{
+  "data_kind": "nonsensitive synthetic connection check",
+  "result": {
+    "status": "classified",
+    "source": "jev",
+    "model": "jev-1.13.0",
+    "probabilities": {
+      "heat": 0.02,
+      "storm": 0.02,
+      "flood": 0.02,
+      "lightning": 0.02,
+      "wildfire": 0.02,
+      "wildlife": 0.02,
+      "unstable_terrain": 0.02,
+      "equipment_obstruction": 0.03,
+      "other": 0.05,
+      "immediate_review": 0.05,
+      "location_sufficient": 0.15,
+      "needs_clarification": 0.77
+    },
+    "answers": {
+      "heat": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "storm": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "flood": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "lightning": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "wildfire": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "wildlife": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "unstable_terrain": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "equipment_obstruction": {
+        "type": "noul",
+        "noul": 0.03
+      },
+      "other": {
+        "type": "noul",
+        "noul": 0.05
+      },
+      "immediate_review": {
+        "type": "noul",
+        "noul": 0.05
+      },
+      "location_sufficient": {
+        "type": "noul",
+        "noul": 0.15
+      },
+      "needs_clarification": {
+        "type": "noul",
+        "noul": 0.77
+      },
+      "routing": {
+        "type": "choice",
+        "choice": "routine_log",
+        "probabilities": {
+          "hazard_review": 0.0,
+          "clarify_report": 0.0,
+          "routine_log": 1.0
+        },
+        "confidence": 1.0
+      },
+      "urgency": {
+        "type": "score",
+        "score": 0.0,
+        "legend": {
+          "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+          "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+          "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+        },
+        "probabilities": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0
+        },
+        "confidence": 1.0
+      }
+    },
+    "routing": {
+      "type": "choice",
+      "choice": "routine_log",
+      "probabilities": {
+        "hazard_review": 0.0,
+        "clarify_report": 0.0,
+        "routine_log": 1.0
+      },
+      "confidence": 1.0
+    },
+    "urgency": {
+      "type": "score",
+      "score": 0.0,
+      "legend": {
+        "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+        "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+        "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+      },
+      "probabilities": {
+        "0": 1.0,
+        "1": 0.0,
+        "2": 0.0
+      },
+      "confidence": 1.0
+    },
+    "review_queue": "clarification",
+    "categories": [],
+    "uncertain": [],
+    "immediate_review": false,
+    "location_sufficient": false,
+    "needs_clarification": true,
+    "abstained": true,
+    "usage": {
+      "input_tokens": 1270,
+      "output_tokens": 274
+    },
+    "reviewed": false,
+    "notice": "Unverified-domain AI suggestions; human review required. Never clears work or dismisses a report.",
+    "attempted_at": "2026-10-17T02:36:36.045701+00:00",
+    "requested_model": "jev-1.13.0"
+  }
+}

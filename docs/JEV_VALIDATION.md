@@ -51,7 +51,44 @@ Metrics include multi-label micro/per-class precision and recall, macro averages
 
 ## Validation status
 
-The typed contract, persistence/corrections and failure handling have passing offline tests. Live inference, measured synthetic results and browser evidence are recorded here after execution; no mocked output is a semantic performance measurement.
+Verified on **October 16, 2026 EDT** (the UTC records are October 17). Twelve actual authenticated `systemone` requests succeeded with `jev-1.13.0`: one small connection check, the ten frozen scenarios, and one consented fictional browser report. Each returned validated Noul, Choice and Score answers. None sent a photo or coordinate field. No automatic retry, model-list probe or deliberate paid error request was made.
+
+| Evidence | Calls | Returned input / output tokens | Estimated USD |
+| --- | ---: | ---: | ---: |
+| `output/jev-connection.json` | 1 | 1,270 / 274 | 0.00005334 |
+| `output/jev-evaluation.jsonl` | 10 | 12,815 / 2,747 | 0.00053823 |
+| `output/jev-browser-verification.json` | 1 | 1,310 / 274 | 0.00005502 |
+| Total | 12 | 15,395 / 3,295 | **0.00064659** |
+
+These are estimates from returned usage and the retrieved input-token price, not account billing verification. The connection check and browser report are workflow evidence and are excluded from the frozen evaluation metrics.
+
+### Measured synthetic results
+
+All ten planned responses succeeded. The accepted hazard labels produced 9 true positives, 3 false positives and 1 false negative: **micro precision .75, recall .90**. Macro precision was .7963 and recall .8889. Choice routing agreed with all ten author labels; urgency mean absolute error was .006 on the 0–2 scale. Mean request latency was .2634 seconds in this single sequential run.
+
+| Hazard | TP / FP / FN | Precision | Recall |
+| --- | ---: | ---: | ---: |
+| Heat | 1 / 1 / 0 | .50 | 1.00 |
+| Storm | 1 / 0 / 0 | 1.00 | 1.00 |
+| Flood | 1 / 0 / 0 | 1.00 | 1.00 |
+| Lightning | 1 / 0 / 0 | 1.00 | 1.00 |
+| Wildfire | 1 / 0 / 0 | 1.00 | 1.00 |
+| Wildlife | 1 / 0 / 0 | 1.00 | 1.00 |
+| Unstable terrain | 1 / 0 / 0 | 1.00 | 1.00 |
+| Equipment/access obstruction | 2 / 1 / 0 | .6667 | 1.00 |
+| Other | 0 / 1 / 1 | .00 | .00 |
+
+The disagreements were an additional `other` label on the multi-hazard report, an additional `heat` label on advancing wildfire, and `equipment_obstruction` instead of `other` for broken glass across a pedestrian doorway. Category boundaries and urgency labels were authored locally and not independently adjudicated; some overlap is arguable. Expected labels remain unchanged after inference.
+
+**Abstention was 10/10, uncertainty 9/10, and the clarification queue 6/10**; the other four entered urgent review and also required clarification. The no-hazard cases contribute to abstention by definition. Vague fictional locations, the broad `other` question and additional review judgments contributed to uncertainty. Thus apparent routing agreement and very small urgency error do not establish useful field reliability. Do not adjust cutoffs or question wording against these cases and reuse their scores as independent evidence. A future experiment needs new preregistered cases, independently adjudicated authentic field observations with sharing authorization, and a separately held-out evaluation.
+
+### Workflow and failure checks
+
+The browser report returned five hazard suggestions, a low-confidence routine inbox and a clarification queue. Its explicit fictional framing may affect routing; that observation is not part of the measured ten-case suite. The UI retained all accepted suggestions, displayed the different inbox and urgency judgments, and left it pending. A supervisor added flood and equipment obstruction to the manual labels. Reloading preserved the correction, original text and exact original provider object while status remained pending. Filtering on `other`, which was only an AI suggestion, included the report and its map pin; wildfire gave an explicit empty state. Clarification and manual-only queues were exercised separately. The fictional test reports were rejected afterward, retaining their audit records and removing their map pins.
+
+The consent box started unchecked. A separate no-consent browser submission preserved manual labels and an unavailable reason without a provider result. Offline tests intercept HTTP and verify zero requests for missing consent, disabled configuration or missing credentials; strict parsing and one-shot handling of 401/403, 429, 529, connection failures, timeouts and malformed/unexpected-model responses; and atomic report/triage persistence and corrections. These simulated failures verify application behavior, not the provider's deployed error behavior. No failure was deliberately induced against the paid service.
+
+Desktop (1,440 pixels) and mobile (390 pixels) views fit their viewport widths, and browser console checks returned no errors or warnings. Evidence is in `output/playwright/jev-live-desktop.png`, `jev-live-mobile.png` and `jev-live-mobile-detail.png`; `output/jev-browser-verification.json` retains before/after provider and human records. See `docs/DEMO.md` for the complete regression verification record and commands.
 
 ## Official documentation checked
 

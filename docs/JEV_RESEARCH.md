@@ -2,6 +2,8 @@
 
 Research date: **October 16, 2026** (America/New_York). Public documentation was retrieved during this session; local time was checked at 21:01 EDT. This is an integration research note, not an implementation or a successful API test.
 
+**Historical research snapshot:** the no-live-call statements below describe this earlier documentation audit. The later implementation successfully exercised twelve authorized text requests, including Noul, Choice and Score. See [current implementation and measured validation](JEV_VALIDATION.md) for the actual evidence, costs, limitations and browser verification.
+
 ## Scope and evidence standard
 
 Only public HTTPS documentation at `https://docs.typesafe.ai/` was requested. The root HTML identified the canonical introduction and Markdown representation; the public `llms.txt` index supplied the page URLs below. The root and Markdown retrievals succeeded using curl after sandbox DNS resolution initially failed and network escalation was approved. No credentials were attached to these GET requests.

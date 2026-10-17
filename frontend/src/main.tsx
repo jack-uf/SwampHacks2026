@@ -1475,6 +1475,12 @@ function App() {
                     <p className="inline-note warning">
                       Final results are mixed: the original flood estimator was retained. The selected storm model did not improve ranking on the same ten original counties in 2026, and missed all three independent geographic-test events. Lower false-alert rates also sacrifice recall. Geographic validation contains only one flood and three storm positives.
                     </p>
+                    <details>
+                      <summary>Storm regression investigation — unchanged saved models</summary>
+                      <p>Matched average precision fell from 0.150 to 0.130. The paired calendar-week interval for the change is −0.091 to +0.029, so an improvement is not demonstrated. Recall fell from 81.3% to 66.7% as false alerts fell from 40.55 to 19.45 per 100 county-days. Changing the warning threshold cannot repair ranking.</p>
+                      <p>The three missed geographic positives are county-days in Los Angeles (February 16 and 18, 2026) and Emery County, Utah (May 13, 2026), representing two NOAA episodes. Both counties lie west of all selected-model fitting coordinates. Geographic validation had just three positive days in one county; geographic transfer and selection stability remain uncertain.</p>
+                      <p>Positive-slope calibration preserves the saved rankings; the selected model also overpredicts the matched event rate. Training geography, seasons, features and estimator changed together, so these diagnostics cannot isolate a cause. The predeclared selection and county restrictions remain intact; these known tests cannot independently validate future changes.</p>
+                    </details>
                     <h3>Same-test comparison and uncertainty</h3>
                     <p>Both versions below use identical original ten county locations, labels and January–June 2026 dates. The original threshold stays unchanged; updated thresholds use only 2025 validation. AP is average precision; the paired intervals resample calendar weeks with counties kept together.</p>
                     <div className="table-scroll"><table>

@@ -1,0 +1,538 @@
+{
+  "scope": "One nonsensitive fictional report submitted through the browser with explicit text consent; not an independently labeled evaluation case.",
+  "before_correction": {
+    "id": "ef2e8f40-bd20-4ed8-ac3e-e21abe4cf86c",
+    "site_id": "3470",
+    "classification": "wildlife",
+    "description": "FICTIONAL BROWSER TEST ONLY, not an actual incident: At a made-up access road, an alligator is beside the track. Water covers the road; the saturated ground is sinking and trucks are stuck. Everyone has moved to a dry staging area.",
+    "latitude": 29.4828,
+    "longitude": -95.6311,
+    "created_at": "2026-10-17T02:41:04.193195+00:00",
+    "status": "pending",
+    "image": null,
+    "triage": {
+      "manual_categories": [
+        "wildlife",
+        "unstable_terrain"
+      ],
+      "source": "manual",
+      "provider": {
+        "status": "classified",
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "probabilities": {
+          "heat": 0.02,
+          "storm": 0.04,
+          "flood": 0.98,
+          "lightning": 0.02,
+          "wildfire": 0.01,
+          "wildlife": 0.89,
+          "unstable_terrain": 0.97,
+          "equipment_obstruction": 0.98,
+          "other": 0.74,
+          "immediate_review": 0.42,
+          "location_sufficient": 0.36,
+          "needs_clarification": 0.9
+        },
+        "answers": {
+          "heat": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "storm": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "flood": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "lightning": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "wildfire": {
+            "type": "noul",
+            "noul": 0.01
+          },
+          "wildlife": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "unstable_terrain": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "equipment_obstruction": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "other": {
+            "type": "noul",
+            "noul": 0.74
+          },
+          "immediate_review": {
+            "type": "noul",
+            "noul": 0.42
+          },
+          "location_sufficient": {
+            "type": "noul",
+            "noul": 0.36
+          },
+          "needs_clarification": {
+            "type": "noul",
+            "noul": 0.9
+          },
+          "routing": {
+            "type": "choice",
+            "choice": "routine_log",
+            "probabilities": {
+              "hazard_review": 0.21,
+              "clarify_report": 0.31,
+              "routine_log": 0.48
+            },
+            "confidence": 0.22
+          },
+          "urgency": {
+            "type": "score",
+            "score": 0.98,
+            "legend": {
+              "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+              "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+              "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.98,
+              "2": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "routing": {
+          "type": "choice",
+          "choice": "routine_log",
+          "probabilities": {
+            "hazard_review": 0.21,
+            "clarify_report": 0.31,
+            "routine_log": 0.48
+          },
+          "confidence": 0.22
+        },
+        "urgency": {
+          "type": "score",
+          "score": 0.98,
+          "legend": {
+            "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+            "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+            "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+          },
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.98,
+            "2": 0.0
+          },
+          "confidence": 0.97
+        },
+        "review_queue": "clarification",
+        "categories": [
+          "flood",
+          "wildlife",
+          "unstable_terrain",
+          "equipment_obstruction",
+          "other"
+        ],
+        "uncertain": [
+          "immediate_review",
+          "location_sufficient",
+          "routing"
+        ],
+        "immediate_review": null,
+        "location_sufficient": null,
+        "needs_clarification": true,
+        "abstained": true,
+        "usage": {
+          "input_tokens": 1310,
+          "output_tokens": 274
+        },
+        "reviewed": false,
+        "notice": "Unverified-domain AI suggestions; human review required. Never clears work or dismisses a report.",
+        "attempted_at": "2026-10-17T02:41:04.007427+00:00",
+        "requested_model": "jev-1.13.0"
+      }
+    }
+  },
+  "after_correction": {
+    "id": "ef2e8f40-bd20-4ed8-ac3e-e21abe4cf86c",
+    "site_id": "3470",
+    "classification": "flood",
+    "description": "FICTIONAL BROWSER TEST ONLY, not an actual incident: At a made-up access road, an alligator is beside the track. Water covers the road; the saturated ground is sinking and trucks are stuck. Everyone has moved to a dry staging area.",
+    "latitude": 29.4828,
+    "longitude": -95.6311,
+    "created_at": "2026-10-17T02:41:04.193195+00:00",
+    "status": "pending",
+    "image": null,
+    "triage": {
+      "manual_categories": [
+        "flood",
+        "wildlife",
+        "unstable_terrain",
+        "equipment_obstruction"
+      ],
+      "source": "manual_correction",
+      "provider": {
+        "status": "classified",
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "probabilities": {
+          "heat": 0.02,
+          "storm": 0.04,
+          "flood": 0.98,
+          "lightning": 0.02,
+          "wildfire": 0.01,
+          "wildlife": 0.89,
+          "unstable_terrain": 0.97,
+          "equipment_obstruction": 0.98,
+          "other": 0.74,
+          "immediate_review": 0.42,
+          "location_sufficient": 0.36,
+          "needs_clarification": 0.9
+        },
+        "answers": {
+          "heat": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "storm": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "flood": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "lightning": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "wildfire": {
+            "type": "noul",
+            "noul": 0.01
+          },
+          "wildlife": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "unstable_terrain": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "equipment_obstruction": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "other": {
+            "type": "noul",
+            "noul": 0.74
+          },
+          "immediate_review": {
+            "type": "noul",
+            "noul": 0.42
+          },
+          "location_sufficient": {
+            "type": "noul",
+            "noul": 0.36
+          },
+          "needs_clarification": {
+            "type": "noul",
+            "noul": 0.9
+          },
+          "routing": {
+            "type": "choice",
+            "choice": "routine_log",
+            "probabilities": {
+              "hazard_review": 0.21,
+              "clarify_report": 0.31,
+              "routine_log": 0.48
+            },
+            "confidence": 0.22
+          },
+          "urgency": {
+            "type": "score",
+            "score": 0.98,
+            "legend": {
+              "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+              "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+              "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.98,
+              "2": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "routing": {
+          "type": "choice",
+          "choice": "routine_log",
+          "probabilities": {
+            "hazard_review": 0.21,
+            "clarify_report": 0.31,
+            "routine_log": 0.48
+          },
+          "confidence": 0.22
+        },
+        "urgency": {
+          "type": "score",
+          "score": 0.98,
+          "legend": {
+            "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+            "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+            "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+          },
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.98,
+            "2": 0.0
+          },
+          "confidence": 0.97
+        },
+        "review_queue": "clarification",
+        "categories": [
+          "flood",
+          "wildlife",
+          "unstable_terrain",
+          "equipment_obstruction",
+          "other"
+        ],
+        "uncertain": [
+          "immediate_review",
+          "location_sufficient",
+          "routing"
+        ],
+        "immediate_review": null,
+        "location_sufficient": null,
+        "needs_clarification": true,
+        "abstained": true,
+        "usage": {
+          "input_tokens": 1310,
+          "output_tokens": 274
+        },
+        "reviewed": false,
+        "notice": "Unverified-domain AI suggestions; human review required. Never clears work or dismisses a report.",
+        "attempted_at": "2026-10-17T02:41:04.007427+00:00",
+        "requested_model": "jev-1.13.0"
+      },
+      "corrected_at": "2026-10-17T02:41:59.483462+00:00"
+    }
+  },
+  "after_rejection": {
+    "id": "ef2e8f40-bd20-4ed8-ac3e-e21abe4cf86c",
+    "site_id": "3470",
+    "classification": "flood",
+    "description": "FICTIONAL BROWSER TEST ONLY, not an actual incident: At a made-up access road, an alligator is beside the track. Water covers the road; the saturated ground is sinking and trucks are stuck. Everyone has moved to a dry staging area.",
+    "latitude": 29.4828,
+    "longitude": -95.6311,
+    "created_at": "2026-10-17T02:41:04.193195+00:00",
+    "status": "rejected",
+    "image": null,
+    "triage": {
+      "manual_categories": [
+        "flood",
+        "wildlife",
+        "unstable_terrain",
+        "equipment_obstruction"
+      ],
+      "source": "manual_correction",
+      "provider": {
+        "status": "classified",
+        "source": "jev",
+        "model": "jev-1.13.0",
+        "probabilities": {
+          "heat": 0.02,
+          "storm": 0.04,
+          "flood": 0.98,
+          "lightning": 0.02,
+          "wildfire": 0.01,
+          "wildlife": 0.89,
+          "unstable_terrain": 0.97,
+          "equipment_obstruction": 0.98,
+          "other": 0.74,
+          "immediate_review": 0.42,
+          "location_sufficient": 0.36,
+          "needs_clarification": 0.9
+        },
+        "answers": {
+          "heat": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "storm": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "flood": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "lightning": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "wildfire": {
+            "type": "noul",
+            "noul": 0.01
+          },
+          "wildlife": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "unstable_terrain": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "equipment_obstruction": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "other": {
+            "type": "noul",
+            "noul": 0.74
+          },
+          "immediate_review": {
+            "type": "noul",
+            "noul": 0.42
+          },
+          "location_sufficient": {
+            "type": "noul",
+            "noul": 0.36
+          },
+          "needs_clarification": {
+            "type": "noul",
+            "noul": 0.9
+          },
+          "routing": {
+            "type": "choice",
+            "choice": "routine_log",
+            "probabilities": {
+              "hazard_review": 0.21,
+              "clarify_report": 0.31,
+              "routine_log": 0.48
+            },
+            "confidence": 0.22
+          },
+          "urgency": {
+            "type": "score",
+            "score": 0.98,
+            "legend": {
+              "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+              "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+              "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+            },
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.98,
+              "2": 0.0
+            },
+            "confidence": 0.97
+          }
+        },
+        "routing": {
+          "type": "choice",
+          "choice": "routine_log",
+          "probabilities": {
+            "hazard_review": 0.21,
+            "clarify_report": 0.31,
+            "routine_log": 0.48
+          },
+          "confidence": 0.22
+        },
+        "urgency": {
+          "type": "score",
+          "score": 0.98,
+          "legend": {
+            "0": "No current exposure or obstruction is described; routine human follow-up. This is not evidence of safe conditions.",
+            "1": "A current hazard or access problem is described, but no person is explicitly in immediate danger; prompt supervisor review.",
+            "2": "People are explicitly exposed now to lightning, advancing fire, moving floodwater, collapse or acute heat symptoms; immediate supervisor review."
+          },
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.98,
+            "2": 0.0
+          },
+          "confidence": 0.97
+        },
+        "review_queue": "clarification",
+        "categories": [
+          "flood",
+          "wildlife",
+          "unstable_terrain",
+          "equipment_obstruction",
+          "other"
+        ],
+        "uncertain": [
+          "immediate_review",
+          "location_sufficient",
+          "routing"
+        ],
+        "immediate_review": null,
+        "location_sufficient": null,
+        "needs_clarification": true,
+        "abstained": true,
+        "usage": {
+          "input_tokens": 1310,
+          "output_tokens": 274
+        },
+        "reviewed": false,
+        "notice": "Unverified-domain AI suggestions; human review required. Never clears work or dismisses a report.",
+        "attempted_at": "2026-10-17T02:41:04.007427+00:00",
+        "requested_model": "jev-1.13.0"
+      },
+      "corrected_at": "2026-10-17T02:41:59.483462+00:00"
+    }
+  },
+  "manual_without_consent": {
+    "id": "4403d975-fc79-4f50-b8dd-4e0a162fac76",
+    "site_id": "3470",
+    "classification": "wildlife",
+    "description": "FICTIONAL MANUAL BROWSER TEST ONLY. No actual field hazard observed. Verify manual wildlife and terrain labels without sharing text with Jev.",
+    "latitude": 29.4828,
+    "longitude": -95.6311,
+    "created_at": "2026-10-17T02:45:56.646583+00:00",
+    "status": "rejected",
+    "image": null,
+    "triage": {
+      "manual_categories": [
+        "wildlife",
+        "unstable_terrain"
+      ],
+      "source": "manual",
+      "provider": {
+        "status": "unavailable",
+        "source": "manual",
+        "reason": "Text-sharing consent not supplied; use manual classification.",
+        "attempted_at": "2026-10-17T02:45:56.645754+00:00"
+      }
+    }
+  },
+  "database_counts": {
+    "reports": 4,
+    "briefings": 60,
+    "photos": 1
+  },
+  "original_records_unchanged": true,
+  "browser_checks": {
+    "mobile_viewport_and_page_width": 390,
+    "desktop_viewport_and_page_width": 1440,
+    "jev_only_other_filter_with_clarification": "1 of 2 reports; 1 report pin",
+    "wildfire_filter_with_clarification": "0 of 2 reports; explicit empty state",
+    "pending_manual_queue": "1 of 3 reports; manual labels and missing-consent reason",
+    "after_both_test_reports_rejected": "2 rejected reports visible under all statuses; only 1 pre-existing resolved-report pin",
+    "reload_preserved_correction_and_pending_status": true,
+    "model_intelligence_diagnostic": "Expanded storm investigation rendered with unchanged-model, recall, false-alert, calibration and geographic-transfer limits.",
+    "saved_briefing_navigation": "W A Parish briefing for 2026-10-17 loaded; no new generation or delivery requested.",
+    "console_errors": 0,
+    "console_warnings": 0
+  }
+}
