@@ -251,11 +251,12 @@ def gate(record, control, intervals):
 
 def entry(frame, score, cuts):
     alerts = {key: score >= value for key, value in cuts.items()}
-    boundary = len(frame) - len(frame[frame.role.eq('geographic_validation')])
-    subsets = {'temporal': frame.iloc[:boundary].reset_index(drop=True), 'geographic': frame.iloc[boundary:].reset_index(drop=True)}
+    geographic = frame.role.eq('geographic_validation').to_numpy()
     return dict(pooled=metrics(frame, score, alerts),
-                subsets={key: metrics(part, score[part.index], {k: alerts[k][part.index] for k in alerts})
-                         for key, part in subsets.items()},
+                subsets={key: metrics(frame.iloc[index].reset_index(drop=True), score[index],
+                    {name: value[index] for name, value in alerts.items()})
+                    for key, index in [('temporal', np.flatnonzero(~geographic)),
+                                       ('geographic', np.flatnonzero(geographic))]},
                 regions={huc2: dict(policies=metrics(group, score[group.index],
                     {k: alerts[k][group.index] for k in alerts})['policies'])
                     for huc2, group in frame.groupby(frame.huc.str[:2])},

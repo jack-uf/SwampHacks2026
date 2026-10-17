@@ -1,0 +1,7 @@
+# Amendment 2: subset reporting used pooled row positions
+
+This amendment records a reporting fix made after the selection was frozen and after the first evaluation ran, and why it changes no decision.
+
+The evaluation stage splits the pooled validation frame into its temporal and geographic subsets for reporting. The first implementation reset each subset's index and then indexed the pooled score array with those reset positions, so the geographic subset metrics were computed from the temporal rows' scores. Average precision for that subset came out near .03 instead of the .2 to .3 range the earlier studies report, which is what exposed the mistake. Pooled metrics, per-region metrics and everything the gate reads are computed on the full frame with its original positions and were never affected.
+
+The fix indexes both subsets by their true positions. Selection, thresholds, combiner definition and all eight gate criteria are unchanged. Rerunning the study after the fix reproduced the frozen thresholds and selection metrics bit for bit for the mean and gated combiners and for the control, and selected the same combiner. The stack combiner's logistic coefficients moved in the last floating-point digits between runs, so its thresholds and metrics differed slightly and no byte-identity is claimed for serialized artifacts. Serialized file checksums therefore are not evidence of reproduction here; comparable metrics are.
