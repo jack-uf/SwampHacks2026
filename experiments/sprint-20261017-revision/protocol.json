@@ -1,0 +1,54 @@
+{
+  "scope": "Bridge rainfall and forecast-revision ablation, forward-only development folds",
+  "created_utc": "2026-10-17T22:27:33.685644+00:00",
+  "seed": 42,
+  "unopened": "fresh geographic cohort of unused CAMELS gauges",
+  "folds": {
+    "2021": {
+      "train": [
+        "2017-01-08",
+        "2019-12-24"
+      ],
+      "calibration": [
+        "2020-01-08",
+        "2020-12-24"
+      ],
+      "validation": [
+        "2021-01-08",
+        "2021-12-24"
+      ]
+    },
+    "2022": {
+      "train": [
+        "2017-01-08",
+        "2020-12-24"
+      ],
+      "calibration": [
+        "2021-01-08",
+        "2021-12-24"
+      ],
+      "validation": [
+        "2022-01-08",
+        "2022-12-24"
+      ]
+    }
+  },
+  "inputs": {
+    "docs/REVISION_RESEARCH_PROTOCOL.md": "98ee56968b9414300b5db0513fa6937fb0df9c263527d2df3e17c76f5ba11112",
+    "scripts/revision_research.py": "6c7ae9fd01da788dfb8b8c808bb88c09df48dff22c4af94745b24bae45e928ec",
+    "scripts/revision_worker.py": "1e93c8fac456e8f3d737e6052b80004bba690de03f8cc8d12713baea0d1c279d",
+    "tests/test_revision_research.py": "5948fd77027fe94f8d8841c9b680355a689e401cde97becc7f281a2c06a8d3e2",
+    "tests/test_revision_worker.py": "754a8ca239959396af77337e821f2fa3c09646dec7b8dd2bdb94bfcb619bb40f",
+    "scripts/hydrology_research.py": "3cd150dae537cb5a3e209fef5414e0a2c2651fc94238479b224a6b86fda66c22",
+    "scripts/onset_research.py": "0f37363576d7f60bfca8e2d0f78df1ba80355031cdbbde110c92b02b74dbd6e6",
+    "scripts/onset_worker.py": "5125d5affdffc89ea09155fc1e31cd4539ba42c95c5a8baed99366aa72f858bc",
+    "scripts/analog_research.py": "a6f078b55530a48da319792dccf069419b717c0f1059bf0a86ee827484c843e1",
+    "scripts/response_worker.py": "4130547de0daab33543768ee712f2e7468d75b475804174fc37acdeac600d47a",
+    "experiments/sprint-20261017-analog/training.csv.gz": "1b9699a9d1cebd9d80cc3067827afe93cae8fc06b23d9194bea9d1fdc51c6804",
+    "experiments/sprint-20261017-analog/training.provenance.json": "19c3850b2376766fcf547519003946f329b869f512c51995516eb171a8d2ad32",
+    "experiments/sprint-20261017-hydrology/research/hres-metadata.json": "4597ba02bbea8b1cd5aaa6eb98190897455baa654085141bca378e33048ec1b6",
+    "experiments/sprint-20261017-hydrology/research/basin.json": "ea3b257457130637a62a4ddb76a13abe92756be261cb154970d3b33a9c00962e",
+    "experiments/sprint-20261017-hydrology/research/date.json": "62e9745097a919964fa077de8735647ee33a24c4073fdf58592915f9c4b5a15f",
+    "experiments/sprint-20261017-hydrology/research/lead_time.json": "9d9207c10ef7979c7edbdc2cd05060ff882271b8ad378d5aa3f7307491f0dafb"
+  }
+}
