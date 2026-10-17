@@ -513,13 +513,6 @@ function App() {
             planit<span className="brand-control">CONTROL</span>
           </span>
         </a>
-        <div className="workspace">
-          <span className="workspace-logo">P</span>
-          <div>
-            Field operations<small>United States portfolio</small>
-          </div>
-          <span className="workspace-dot" />
-        </div>
         <div className="nav-label">WORKSPACE</div>
         <nav aria-label="Main navigation">
           <button
@@ -529,7 +522,7 @@ function App() {
             onClick={() => setView("overview")}
           >
             <Layers size={18} />
-            Overview<span className="nav-count">60</span>
+            Overview
           </button>
           <button
             className={view === "briefings" ? "nav-item active" : "nav-item"}
@@ -565,32 +558,14 @@ function App() {
             onClick={() => setView("model")}
           >
             <Activity size={18} />
-            Model intelligence<span className="tiny-tag">ML</span>
+            Model intelligence
           </button>
         </nav>
         <div className="sidebar-bottom">
-          <div className="system-status">
-            <span className="status-dot" />
-            <div>
-              Source-aware monitoring
-              <small>
-                {refresh.running
-                  ? `Refreshing ${refresh.completed} / ${refresh.total}`
-                  : "Refresh every 30 minutes"}
-              </small>
-            </div>
-          </div>
           <button className="nav-item" title="Supervisor access" onClick={() => setModal("settings")}>
             <Settings2 size={18} />
             Supervisor access
           </button>
-          <div className="profile">
-            <div className="avatar">FS</div>
-            <div>
-              Field supervisor<small>Local workspace</small>
-            </div>
-            <Shield size={16} />
-          </div>
         </div>
       </aside>
       <main>
@@ -617,11 +592,6 @@ function App() {
                 year: "numeric",
               })}
             </span>
-            <span className="vertical-line" />
-            <span className="research-badge">
-              <span />
-              RESEARCH MVP
-            </span>
             <button
               className="icon-button"
               aria-label="Open supervisor access settings"
@@ -634,10 +604,6 @@ function App() {
         <div className="page-content">
           <div className="page-heading">
             <div>
-              <div className="eyebrow">
-                <span />
-                ENVIRONMENTAL INTELLIGENCE
-              </div>
               <h1>
                 {view === "overview"
                   ? "Operations overview"
@@ -655,7 +621,7 @@ function App() {
                   : view === "model"
                     ? "Real historical outcomes, measured performance, and visible limitations."
                     : view === "missions"
-                      ? "Each mission's hazard analysis updates when conditions or crew reports change, and keeps every version."
+                      ? "Plan a shift and track its hazard analysis as conditions change. Every version is saved."
                       : view === "overlaps"
                         ? "Compare utilities' public construction plans and flag work that is close in space or time."
                         : "Site-specific safety briefings, generated at 6 PM in each facility’s local time."}
@@ -1698,16 +1664,6 @@ function App() {
               )}
             </section>
           )}
-          <footer className="page-footer">
-            <span>
-              <Shield size={13} />
-              Decision support for supervisor review.
-            </span>
-            <span>
-              PlanIT Control <span className="footer-divider">/</span>{" "}
-              Environmental safety intelligence
-            </span>
-          </footer>
         </div>
       </main>
       {modal && (

@@ -89,32 +89,44 @@ export function MissionsView({
   const [detail, setDetail] = useState<any>(null);
   const [planning, setPlanning] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [detailError, setDetailError] = useState("");
   const currentRef = useRef(current);
   currentRef.current = current;
   async function loadList() {
+    setLoading(true);
+    setError("");
     try {
-      setList(await api("/missions"));
+      const [missions, options] = await Promise.all([api("/missions"), api("/activities")]);
+      setList(missions);
+      setActivities(options);
     } catch (e) {
-      setError(String(e));
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setLoading(false);
     }
   }
   async function loadDetail(id: string) {
     try {
       const d = await api("/missions/" + id);
-      if (currentRef.current === id) setDetail(d);
+      if (currentRef.current === id) {
+        setDetail(d);
+        setList(items => items.map(m => m.id === id
+          ? { ...m, ...d.mission, version: d.versions[d.versions.length - 1].version, readiness: d.jha.readiness }
+          : m));
+        setDetailError("");
+      }
     } catch (e) {
-      setError(String(e));
+      if (currentRef.current === id) setDetailError(e instanceof Error ? e.message : String(e));
     }
   }
-  useEffect(() => {
-    api("/activities").then(setActivities).catch((e) => setError(String(e)));
-  }, []);
   useEffect(() => {
     loadList();
     if (current) loadDetail(current);
   }, [revision]);
   useEffect(() => {
     setDetail(null);
+    setDetailError("");
     if (!current) return;
     loadDetail(current);
     const timer = setInterval(() => loadDetail(current), 30000);
@@ -123,6 +135,18 @@ export function MissionsView({
   useEffect(() => {
     if (!current && list.length) setCurrent(list[list.length - 1].id);
   }, [list]);
+  if (error) return (
+    <section className="panel">
+      <div className="panel-header">
+        <h2>Could not load missions</h2>
+        <button className="button secondary" onClick={loadList}><RefreshCw size={15} />Try again</button>
+      </div>
+      <div className="message error panel-message" role="alert"><TriangleAlert size={18} /><span>{error}</span></div>
+    </section>
+  );
+  if (loading && !list.length) return (
+    <section className="panel loading" role="status"><RefreshCw className="spin" size={20} />Loading missions…</section>
+  );
   return (
     <div className="missions-layout">
       <section className="panel mission-list">
@@ -138,11 +162,6 @@ export function MissionsView({
             Plan mission
           </button>
         </div>
-        {error && (
-          <p className="form-error" role="alert">
-            {error}
-          </p>
-        )}
         {planning && (
           <MissionForm
             sites={sites}
@@ -175,13 +194,22 @@ export function MissionsView({
               <span className="tiny-tag">v{m.version ?? "—"}</span>
             </button>
           ))}
-          {!list.length && <p className="empty">No missions yet. Plan one to build its hazard analysis.</p>}
+          {!list.length && <p className="empty">No missions planned.</p>}
         </div>
       </section>
       <section className="panel mission-detail">
+        {detailError && <div className="message error panel-message" role="alert">
+          <TriangleAlert size={18} /><span>Could not update this mission. {detailError}</span>
+          <button className="text-button" onClick={() => current && loadDetail(current)}>Try again</button>
+        </div>}
         {!current ? (
-          <div className="empty">Select or plan a mission.</div>
+          <div className="empty mission-placeholder">
+            <ClipboardList size={28} aria-hidden="true" />
+            <h3>{list.length ? "Select a mission" : "Plan your first mission"}</h3>
+            <p>Choose a facility, activity and shift to review its job hazard analysis.</p>
+          </div>
         ) : !detail ? (
+          !detailError &&
           <div className="loading">
             <RefreshCw className="spin" size={20} />
             Loading the mission's hazard analysis…
@@ -722,12 +750,16 @@ export function OverlapsView({ api }: { api: Api }) {
     [kind, setKind] = useState("");
   const [data, setData] = useState<any>(null),
     [error, setError] = useState("");
+  const [retry, setRetry] = useState(0);
   useEffect(() => {
+    let active = true;
     setData(null);
+    setError("");
     api(`/plan-overlaps?utilities_only=${utilities}&cross_state=${crossState}&limit=60${kind ? "&kind=" + kind : ""}`)
-      .then(setData)
-      .catch((e) => setError(String(e)));
-  }, [utilities, crossState, kind]);
+      .then((result) => { if (active) setData(result); })
+      .catch((e) => { if (active) setError(e instanceof Error ? e.message : String(e)); });
+    return () => { active = false; };
+  }, [utilities, crossState, kind, retry]);
   return (
     <section className="panel overlap-page">
       <div className="panel-header">
@@ -757,8 +789,11 @@ export function OverlapsView({ api }: { api: Api }) {
           </select>
         </label>
       </div>
-      {error && <p className="form-error">{error}</p>}
-      {!data ? (
+      {error && <div className="message error panel-message" role="alert">
+        <TriangleAlert size={18} /><span>Could not load plan overlaps. {error}</span>
+        <button className="text-button" onClick={() => setRetry(retry + 1)}>Try again</button>
+      </div>}
+      {!data ? !error && (
         <div className="loading">
           <RefreshCw className="spin" size={20} />
           Comparing planned projects…
