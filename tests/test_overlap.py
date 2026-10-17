@@ -54,6 +54,18 @@ def test_sector_filter_and_ranking():
     assert len(everything) == 3 and everything[0]['score'] >= everything[-1]['score']
 
 
+def test_coordinates_shared_across_states_are_suspect_and_never_compared_by_distance():
+    # EIA-860M August 2026 gives McNew (Reno, KS) and Mullin Creek #1 (Nodaway, MO) identical coordinates.
+    kansas, missouri = project('1', 'A', 38.0, -97.9, '2030-01', state='KS'), project('2', 'B', 38.0, -97.9, '2030-01', state='MO')
+    nearby = project('3', 'C', 38.05, -97.9, '2030-01', state='KS')
+    colocated = [project('4', 'D', 30.0, -82.0, '2027-03'), project('5', 'E', 30.0, -82.0, '2027-03')]
+    assert overlap.suspect_coordinates([kansas, missouri, nearby]+colocated) == {'1', '2'}
+    assert overlap.find_overlaps([kansas, missouri, nearby]) == []
+    assert len(overlap.find_overlaps(colocated)) == 1
+    assert overlap.near_mission([kansas, missouri, nearby], 38.0, -97.9, '2029-12-01T12:00:00+00:00')[0]['project']['plant_id'] == '3'
+    assert len(overlap.near_mission([kansas, missouri, nearby], 38.0, -97.9, '2029-12-01T12:00:00+00:00')) == 1
+
+
 def test_mission_is_compared_against_public_plans_of_other_entities():
     projects = [project('1', 'A', 30.0, -82.0, '2027-03'), project('2', 'B', 30.1, -82.0, '2026-11'),
                 project('3', 'B', 32.0, -82.0, '2026-11')]

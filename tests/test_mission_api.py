@@ -91,3 +91,6 @@ def test_plan_overlaps_compare_entities_with_factors(client):
     pair = result['pairs'][0]
     assert pair['a']['entity_id'] != pair['b']['entity_id'] and pair['a']['sector'] == pair['b']['sector'] == 'Electric Utility'
     assert set(pair['factors']) >= {'proximity', 'timing'}
+    excluded = {p['plant_name'] for p in result['suspect_coordinates']}
+    assert 'Mullin Creek #1 Generating Station' in excluded
+    assert not any(excluded & {p['a']['plant_name'], p['b']['plant_name']} for p in result['pairs'])

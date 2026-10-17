@@ -58,9 +58,18 @@ def _classify(distance, months):
     return 'close' if close else 'concurrent_in_region' if concurrent else None
 
 
+def suspect_coordinates(projects):
+    """Plant IDs whose exact coordinates also belong to a plant in another state; one point cannot lie in two states."""
+    states = defaultdict(set)
+    for p in projects:
+        states[(p['latitude'], p['longitude'])].add(p['state'])
+    return {p['plant_id'] for p in projects if len(states[(p['latitude'], p['longitude'])]) > 1}
+
+
 def find_overlaps(projects, utilities_only=False):
     """Pairs of plants owned by different entities that are close, or concurrent within a region."""
-    projects = [p for p in projects if not utilities_only or p['sector'] == 'Electric Utility']
+    suspect = suspect_coordinates(projects)
+    projects = [p for p in projects if (not utilities_only or p['sector'] == 'Electric Utility') and p['plant_id'] not in suspect]
     cell = REGION_MILES/69  # degrees of latitude spanned by the regional radius
     grid = defaultdict(list)
     for i, p in enumerate(projects):
@@ -93,9 +102,10 @@ def find_overlaps(projects, utilities_only=False):
 def near_mission(projects, latitude, longitude, start, operator=''):
     """Public plans of other entities that are close to, or concurrent near, a supervisor mission."""
     mission_month = month_index(parse_time(start).date().isoformat())
+    suspect = suspect_coordinates(projects)
     matches = []
     for p in projects:
-        if operator and p['entity_name'].casefold() == operator.casefold():
+        if p['plant_id'] in suspect or (operator and p['entity_name'].casefold() == operator.casefold()):
             continue
         distance = distance_miles(latitude, longitude, p['latitude'], p['longitude'])
         if distance > REGION_MILES:

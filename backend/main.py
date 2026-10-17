@@ -569,8 +569,10 @@ def plan_overlaps(utilities_only: bool = False, kind: str | None = None, cross_s
         raise HTTPException(503, 'Run scripts.build_planned_projects to extract EIA-860M planned generators')
     pairs = [p for p in cached_overlaps(utilities_only) if (not kind or p['kind'] == kind) and (not cross_state or p['cross_state'])]
     projects = [p for p in data['projects'] if not utilities_only or p['sector'] == 'Electric Utility']
+    suspect = overlap.suspect_coordinates(data['projects'])
     return dict(source=data['source'], inventory=data['inventory'], note=data['note'], projects=len(projects),
                 entities=len({p['entity_id'] for p in projects}), total=len(pairs), pairs=pairs[:max(1, min(limit, 500))],
+                suspect_coordinates=[p for p in projects if p['plant_id'] in suspect],
                 thresholds=dict(close_miles=overlap.CLOSE_MILES, region_miles=overlap.REGION_MILES, concurrent_months=overlap.CONCURRENT_MONTHS))
 
 
