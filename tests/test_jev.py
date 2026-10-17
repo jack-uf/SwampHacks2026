@@ -22,6 +22,7 @@ def test_hypothetical_triage_workflow_fixtures():
         result=jev.interpret(payload(example['fixture_probabilities']))
         assert result['categories']==example['expected_categories'],example['id']
         assert result['abstained']==example['expected_abstention']
+        assert result['abstained_v1']==example['expected_abstention_v1']
         assert result['needs_clarification']==example['expected_clarification']
         assert result['reviewed'] is False
 
@@ -77,6 +78,34 @@ def test_provider_failure_is_manual_and_text_only(monkeypatch,mode):
     assert set(calls[0]['json'])=={'model','state','questions'}
     assert result['status']==('classified' if mode=='ok' else 'unavailable')
     assert 'fixture-secret' not in json.dumps(result)
+
+
+def test_confident_no_hazard_is_decisive_but_still_unreviewed():
+    result=jev.interpret(payload({'location_sufficient':.9}))
+    assert result['categories']==[] and result['abstained'] is False and result['abstained_v1'] is True
+    assert result['abstention']['reasons']==[] and result['reviewed'] is False
+
+
+def test_auxiliary_uncertainty_keeps_clarification_queue_without_abstaining():
+    result=jev.interpret(payload({'flood':.95,'location_sufficient':.5,'needs_clarification':.5}))
+    assert result['abstained'] is False and result['review_queue']=='clarification' and result['needs_clarification']
+
+
+def test_uncertain_specific_hazard_or_unresolved_other_abstains():
+    result=jev.interpret(payload({'flood':.95,'wildlife':.5}))
+    assert result['abstained'] and result['abstention']['reasons']==['wildlife uncertain']
+    assert jev.interpret(payload({'other':.6}))['abstention']['reasons']==['other uncertain and no specific hazard accepted']
+    flagged=jev.interpret(payload({'lightning':.98,'other':.6}))
+    assert flagged['abstained'] is False and flagged['abstention']['possible_other'] is True
+
+
+def test_v2_rule_reproduces_stored_live_responses_and_changes_only_abstention():
+    rows=[json.loads(line) for line in (ROOT/'output/jev-evaluation.jsonl').read_text().splitlines()]
+    for row in [r for r in rows if r['kind']=='response']:
+        stored=row['result']
+        result=jev.interpret(dict(model=stored['model'],answers=stored['answers'],usage=stored['usage']))
+        assert result['abstained_v1']==stored['abstained'] and result['review_queue']==stored['review_queue']
+        assert result['categories']==stored['categories'] and result['uncertain']==stored['uncertain']
 
 
 def test_typed_routing_uncertainty_and_urgency():

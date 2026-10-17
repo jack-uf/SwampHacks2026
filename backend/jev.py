@@ -75,6 +75,20 @@ class Response(BaseModel):
     usage: dict[str,int]
 
 
+SPECIFIC = [key for key in CATEGORIES if key!='other']
+ABSTENTION_RULE = 'hazard-decisive-v2'
+
+
+def abstention(probabilities, routing_confidence):
+    """Abstain on the hazard label set only. Auxiliary uncertainty still routes to clarification."""
+    uncertain=lambda key:.3<probabilities[key]<.7
+    accepted=[key for key in SPECIFIC if probabilities[key]>=.7]
+    reasons=[f'{key} uncertain' for key in SPECIFIC if uncertain(key)]
+    if uncertain('other') and not accepted:reasons.append('other uncertain and no specific hazard accepted')
+    if routing_confidence<.7:reasons.append('inbox choice confidence below 0.7')
+    return dict(rule=ABSTENTION_RULE,abstained=bool(reasons),reasons=reasons,possible_other=uncertain('other') and bool(accepted))
+
+
 def interpret(payload):
     result=Response.model_validate(payload)
     if set(result.answers)!=set(INSTRUCTIONS)|{'routing','urgency'}:raise ValueError('Answer IDs do not match requested questions')
@@ -99,8 +113,8 @@ def interpret(payload):
         categories=[key for key in CATEGORIES if probabilities[key]>=.7],uncertain=uncertain,
         immediate_review=True if probabilities['immediate_review']>=.7 else False if probabilities['immediate_review']<=.3 else None,
         location_sufficient=True if probabilities['location_sufficient']>=.7 else False if probabilities['location_sufficient']<=.3 else None,
-        needs_clarification=clarification,
-        abstained=bool(uncertain) or not any(probabilities[key]>=.7 for key in CATEGORIES),usage=result.usage,
+        needs_clarification=clarification,abstention=(decision:=abstention(probabilities,routing.confidence)),
+        abstained=decision['abstained'],abstained_v1=bool(uncertain) or not any(probabilities[key]>=.7 for key in CATEGORIES),usage=result.usage,
         reviewed=False,notice='Unverified-domain AI suggestions; human review required. Never clears work or dismisses a report.')
 
 

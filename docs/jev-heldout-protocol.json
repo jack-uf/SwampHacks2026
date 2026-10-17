@@ -1,0 +1,18 @@
+{
+  "corpus_sha256": "3e93a7f495901d2881e9c69955c48c4180d0e451415a2bdff5cf8f212954d5f4",
+  "questions_sha256": "60897b3a8ae2b90e92c55a408d8a3b635e379fdbd1bb6ad3b52bb77c3b792344",
+  "model": "jev-1.13.0",
+  "scenarios": 16,
+  "data_kind": "author-labeled synthetic scenarios; not independently labeled field observations",
+  "acceptance": 0.7,
+  "rejection": 0.3,
+  "typed_confidence_review_below": 0.7,
+  "estimated_input_tokens_per_call": 5000,
+  "estimated_total_usd": 0.00336,
+  "maximum_calls": 16,
+  "automatic_retries": 0,
+  "abstention_rule": "hazard-decisive-v2",
+  "abstention_rule_sha256": "18217b563def6709244eb2740bbd2de9602a5985950dd6ebea669891058d1ac3",
+  "comparison": "v1 and v2 abstention scored on the same responses; review queue logic unchanged",
+  "provenance": "Cases and labels written after inspecting the frozen ten-case results and before any held-out inference."
+}
