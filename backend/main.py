@@ -296,7 +296,11 @@ def sites():
         strikes = strike_states(s)
         rows.append(dict(s,index=a['index'] if a else None, assessed_at=a['assessed_at'] if a else None,
                          stale=a.get('stale',False) if a else False,lightning=strikes))
-    return dict(sites=sorted(rows,key=lambda s: (not s['lightning']['live']['active'], -(s['index']['score'] or 0) if s['index'] else 1)),
+    def upper(index):
+        """Score with every unknown component at full severity; missing data must not rank a site as calm."""
+        return (index['score'] or 0)+sum(10*c['weight'] for c in index['components'] if c['points'] is None)
+    return dict(sites=sorted(rows,key=lambda s: (not s['lightning']['live']['active'], -upper(s['index']) if s['index'] else 1,
+                                                 -(s['index']['score'] or 0) if s['index'] else 0)),
                 refresh=refresh_status,source='EIA-860M December 2024')
 
 

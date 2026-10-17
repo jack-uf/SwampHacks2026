@@ -107,6 +107,20 @@ def test_briefing_history_is_persistent_and_idempotent(client):
     assert saved[0]['delivery']=='not configured'
 
 
+def test_portfolio_ranks_partial_sites_by_what_their_unknown_inputs_could_add(client):
+    from backend.domain import hazard_index
+    full_site,partial_site=main.SITES[0],main.SITES[1]
+    weather=dict(summary=dict(apparent_max_c=33,rain_24h_mm=10,gust_max_kmh=40,soil_moisture=.3,rain_72h_mm=20))
+    model=dict(flood=dict(probability=.1,in_domain=True),storm=dict(probability=.1,in_domain=True))
+    full=hazard_index(weather,[dict(severity='Minor')],[],model,dict(zones=[dict(SFHA_TF='F')],feed=dict(available=True)))
+    partial=hazard_index(None,[dict(severity='Moderate')],[],{},None)
+    assert full['score']>partial['score'] and partial['score_max']>full['score_max']
+    for site,index in [(full_site,full),(partial_site,partial)]:
+        put_cache('assessment:'+main.MODEL_REVISION+':'+site['id'],dict(index=index,assessed_at=now_utc().isoformat()),now_utc().isoformat())
+    ranked=[s['id'] for s in client.get('/api/sites').json()['sites']]
+    assert ranked.index(partial_site['id'])<ranked.index(full_site['id'])
+
+
 def test_site_detail_rates_nearby_wildfire_and_keeps_only_regional_incidents(client, monkeypatch):
     s=main.SITES[0]
     def incident(id,dlat):

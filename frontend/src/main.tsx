@@ -56,6 +56,8 @@ type Site = {
 type Index = {
   score: number | null;
   coverage: number;
+  score_max?: number;
+  missing?: string[];
   complete: boolean;
   label: string;
   components: {
@@ -755,7 +757,10 @@ function App() {
                                 ? "stale"
                                 : s.index
                                   ? Math.round(s.index.coverage * 100) +
-                                    "% inputs"
+                                    "% inputs" +
+                                    (s.index.coverage < 1 && s.index.score_max != null
+                                      ? " · up to " + fmt(s.index.score_max)
+                                      : "")
                                   : "unassessed"}
                             </span>
                           </small>
@@ -1012,6 +1017,9 @@ function App() {
                           <p className="body-note">
                             {detail.index.label}. Missing inputs are not zero
                             risk.
+                            {detail.index.missing?.length
+                              ? ` Unknown: ${detail.index.missing.join(", ")}. With those at full severity the score could reach ${fmt(detail.index.score_max)}; the portfolio ranks sites by that upper bound.`
+                              : ""}
                           </p>
                           <div className="contributions">
                             {detail.index.components.map((c) => (

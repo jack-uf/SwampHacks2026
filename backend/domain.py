@@ -72,6 +72,8 @@ def hazard_index(weather, alerts, reports, predictions, exposure):
     known = [c for c in components if c['points'] is not None]
     points = round(sum(c['points'] for c in known), 1) if known else None
     coverage = round(sum(c['weight'] for c in known), 2)
+    unknown = [c for c in components if c['points'] is None]
     return dict(score=points, coverage=coverage, complete=coverage >= .999, components=components,
+                score_max=round((points or 0)+sum(10*c['weight'] for c in unknown), 1), missing=[c['name'] for c in unknown],
                 label='Partial screening index' if coverage < .999 else 'Operational screening index',
                 interpretation='0–10 weighted environmental severity, not injury probability or work clearance.')

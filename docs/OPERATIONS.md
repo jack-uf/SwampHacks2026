@@ -39,7 +39,7 @@ If startup shows no scores, inspect `/api/health`, allow the first refresh to fi
 
 ## Screening index
 
-Each available component contributes `10 × weight × clamp(severity, 0, 1)`, rounded to two decimals; the displayed sum is rounded to one decimal. Weights are fixed and never redistributed. Coverage is the sum of known component weights. An unknown component contributes no numeric points but remains visibly missing; compare scores only with their coverage and timestamps. Coverage is data completeness, not confidence or safety.
+Each available component contributes `10 × weight × clamp(severity, 0, 1)`, rounded to two decimals; the displayed sum is rounded to one decimal. Weights are fixed and never redistributed. Coverage is the sum of known component weights. An unknown component contributes no numeric points but remains visibly missing; compare scores only with their coverage and timestamps. Coverage is data completeness, not confidence or safety. Each index also returns `missing` (the unknown component names) and `score_max`, the score with every unknown component at full severity. The portfolio sorts by `score_max`, then by score, so a site with little data ranks as high as its unknowns allow instead of looking calm. Active live lightning holds still sort first.
 
 | Component | Weight | Severity before clamping |
 |---|---:|---|

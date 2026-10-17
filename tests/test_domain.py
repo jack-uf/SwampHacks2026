@@ -65,3 +65,14 @@ def test_incomplete_rain_inputs_reduce_coverage():
         result = hazard_index(dict(summary=partial), None, [], {}, None)
         rain = next(c for c in result['components'] if c['name']=='Rain & saturation')
         assert rain['points'] is None and result['coverage'] == .05
+
+
+def test_partial_index_reports_how_high_its_unknown_components_could_take_it():
+    partial=hazard_index(None,[],[],{},None)
+    assert partial['score']==0 and partial['coverage']==.25
+    assert partial['score_max']==7.5
+    assert partial['missing']==['Heat screening','Rain & saturation','Wind & storms','County event model','Mapped flood exposure']
+    weather=dict(summary=dict(apparent_max_c=45,rain_24h_mm=150,gust_max_kmh=100,soil_moisture=.5,rain_72h_mm=150))
+    full=hazard_index(weather,[dict(severity='Extreme')],[dict(status='verified')]*3,
+                      dict(flood=dict(probability=1,in_domain=True),storm=dict(probability=.5,in_domain=True)),dict(zones=[dict(SFHA_TF='T')],feed=dict(available=True)))
+    assert full['score_max']==full['score']==10 and full['missing']==[]
