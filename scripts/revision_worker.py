@@ -165,7 +165,9 @@ def gate(records, intervals, selected, control):
 
 
 def predictions(name):
-    frame = pd.read_csv(OUT / 'predictions' / f'{name}.csv.gz', dtype={'station': str, 'huc': str})
+    # The default float parser is not round-trip exact; boundary ties must replay identically.
+    frame = pd.read_csv(OUT / 'predictions' / f'{name}.csv.gz', dtype={'station': str, 'huc': str},
+                        float_precision='round_trip')
     return frame.fillna({'event_date': ''})
 
 
