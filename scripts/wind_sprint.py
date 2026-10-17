@@ -44,6 +44,7 @@ def digest(path):
 
 
 def write_json(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
 
 
@@ -113,14 +114,16 @@ def observation_days(text):
     frame = pd.DataFrame([line.split(',') for line in lines[1:]], columns=['station', 'valid', 'gust'])
     frame['valid'] = pd.to_datetime(frame.valid, format='%Y-%m-%d %H:%M')
     frame['gust_kmh'] = pd.to_numeric(frame.gust.replace({'M': None, '': None}), errors='coerce') * KNOT_KMH
-    frame = frame.dropna(subset=['gust_kmh']).groupby('valid', as_index=False).gust_kmh.max()
+    # A missing gust value is a report without a gust, not a missing observation.
+    frame = frame.groupby('valid', as_index=False).gust_kmh.max()
     rows = []
     for day, group in frame.groupby(frame.valid.dt.floor('D')):
         hours = group.valid.dt.hour
         if len(group) < 18 or (hours // 6).nunique() < 4:
             continue
         exceed = group[group.gust_kmh >= THRESHOLD_KMH]
-        rows.append(dict(target_date=str(day.date()), max_gust_kmh=float(group.gust_kmh.max()),
+        rows.append(dict(target_date=str(day.date()),
+                         max_gust_kmh=float(group.gust_kmh.max()) if group.gust_kmh.notna().any() else None,
                          exceedance=int(len(exceed) > 0),
                          first_exceed_hour_utc=int(exceed.valid.dt.hour.min()) if len(exceed) else None))
     return rows
@@ -171,6 +174,7 @@ def ingest():
     protocol = load_protocol()
     if (OUT / 'training.csv.gz').exists():
         raise FileExistsError('Dataset already frozen; use select or verify')
+    OUT.mkdir(parents=True, exist_ok=True)
     rows, coverage, sources = [], [], []
     for station in protocol['stations']:
         params = [('station', station['sid']), ('data', 'gust'), ('report_type', 3), ('report_type', 4),
@@ -191,8 +195,10 @@ def ingest():
         for values in daily:
             if values['target_date'] not in observed:
                 continue
-            rows.append(dict(**values, **observed[values['target_date']], station=station['sid'], name=station['name'],
-                             state=station['state'], role=station['role'], elevation_m=station['elevation_m']))
+            day = observed[values['target_date']]
+            rows.append(dict(**values, max_gust_kmh=day['max_gust_kmh'], exceedance=day['exceedance'],
+                             first_exceed_hour_utc=day['first_exceed_hour_utc'], station=station['sid'],
+                             name=station['name'], state=station['state'], role=station['role']))
         coverage.append(dict(station=station['sid'], name=station['name'], state=station['state'], role=station['role'],
                              observed_days=len(observed), complete_forecast_days=len(daily), merged_days=len([v for v in daily if v['target_date'] in observed]),
                              first=min(observed) if observed else None, last=max(observed) if observed else None))

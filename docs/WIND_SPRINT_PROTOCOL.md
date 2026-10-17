@@ -28,6 +28,8 @@ A station-day requires at least 18 reported hours and at least one report in eac
 
 A station-day is positive when the maximum reported gust reaches **60 km/h** (1 knot = 1.852 km/h exactly). This matches a common gust stop-work range for elevated work and sits inside the app's existing storm band. The unit conversion is applied to the knots in the archive; no rounding to whole knots beyond what METAR already publishes.
 
+Pre-ingestion correction, October 17: the first ingestion attempt crashed on a duplicate keyword before writing a dataset, and its day builder treated a report without a gust value as a missing observation. METAR omits the gust group when no gust occurs, so a missing gust value is a report below the threshold, not a missing observation. From the corrected ingestion onward, day completeness counts reports, and a report without a gust counts as below threshold. No station, threshold, split, feature, recipe or selection rule changed, and no model was fitted before this correction.
+
 ## Feature sets and recipes
 
 Fit on development stations, 2024-01-04 through 2024-12-31. Sigmoid-calibrate logit probabilities on development stations, January to June 2025, at natural prevalence. Choose on development stations July to December 2025 pooled with geographic-validation stations July to December 2025.

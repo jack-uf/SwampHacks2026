@@ -23,16 +23,17 @@ def full_day(day, gusts=None):
 def test_measured_gusts_label_the_day_and_withhold_incomplete_days():
     rows = full_day(1)
     rows += full_day(2, ['12'] * 3 + ['35'] + ['10'] * 20)
-    rows += [('JFK', '2024-01-03 00:53', 'M')] * 20
+    rows += [('JFK', f'2024-01-03 {hour:02d}:53', 'M') for hour in range(24)]
     rows += full_day(4)[:12]
     rows += [('JFK', f'2024-01-05 {hour:02d}:53', '20') for hour in list(range(6)) + list(range(12, 24))]
     days = observation_days(asos_days(rows))
-    assert [row['target_date'] for row in days] == ['2024-01-01', '2024-01-02']
-    quiet, gusty = days
+    assert [row['target_date'] for row in days] == ['2024-01-01', '2024-01-02', '2024-01-03']
+    quiet, gusty, reported = days
     assert quiet == dict(target_date='2024-01-01', max_gust_kmh=pytest.approx(18.52), exceedance=0, first_exceed_hour_utc=None)
     assert gusty['exceedance'] == 1
     assert gusty['max_gust_kmh'] == pytest.approx(64.82)
     assert gusty['first_exceed_hour_utc'] == 3
+    assert reported == dict(target_date='2024-01-03', max_gust_kmh=None, exceedance=0, first_exceed_hour_utc=None)
 
 
 def test_threshold_uses_the_exact_kmh_conversion_and_duplicate_reports_collapse():
@@ -45,7 +46,8 @@ def test_threshold_uses_the_exact_kmh_conversion_and_duplicate_reports_collapse(
     assert observation_days(asos_days(rows))[0]['exceedance'] == 0
     rows = [('JFK', f'2024-02-03 {hour:02d}:53', '32') for hour in hours[:6]]
     rows += [('JFK', f'2024-02-03 {hour:02d}:53', 'M') for hour in hours[6:]]
-    assert observation_days(asos_days(rows)) == []
+    days = observation_days(asos_days(rows))
+    assert len(days) == 1 and days[0]['exceedance'] == 0 and days[0]['max_gust_kmh'] == pytest.approx(59.264)
 
 
 def forecast():
