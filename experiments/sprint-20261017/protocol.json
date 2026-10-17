@@ -1,0 +1,265 @@
+{
+  "id": "sprint-20261017",
+  "document": "docs/ML_SPRINT_PROTOCOL.md",
+  "seed": 42,
+  "start": "2024-01-01",
+  "end": "2026-06-30",
+  "new_counties": [
+    {
+      "region": "Bernalillo County, NM",
+      "state": "NM",
+      "county_fips": 35001,
+      "latitude": 35.053628,
+      "longitude": -106.66908,
+      "role": "development"
+    },
+    {
+      "region": "Do\u00f1a Ana County, NM",
+      "state": "NM",
+      "county_fips": 35013,
+      "latitude": 32.349919,
+      "longitude": -106.834968,
+      "role": "development"
+    },
+    {
+      "region": "Clark County, NV",
+      "state": "NV",
+      "county_fips": 32003,
+      "latitude": 36.21413,
+      "longitude": -115.014398,
+      "role": "development"
+    },
+    {
+      "region": "Washoe County, NV",
+      "state": "NV",
+      "county_fips": 32031,
+      "latitude": 40.73132,
+      "longitude": -119.663269,
+      "role": "development"
+    },
+    {
+      "region": "Yellowstone County, MT",
+      "state": "MT",
+      "county_fips": 30111,
+      "latitude": 45.936987,
+      "longitude": -108.276656,
+      "role": "development"
+    },
+    {
+      "region": "Missoula County, MT",
+      "state": "MT",
+      "county_fips": 30063,
+      "latitude": 47.027263,
+      "longitude": -113.892691,
+      "role": "development"
+    },
+    {
+      "region": "Cass County, ND",
+      "state": "ND",
+      "county_fips": 38017,
+      "latitude": 46.927003,
+      "longitude": -97.252375,
+      "role": "development"
+    },
+    {
+      "region": "Burleigh County, ND",
+      "state": "ND",
+      "county_fips": 38015,
+      "latitude": 46.978829,
+      "longitude": -100.469533,
+      "role": "development"
+    },
+    {
+      "region": "Minnehaha County, SD",
+      "state": "SD",
+      "county_fips": 46099,
+      "latitude": 43.667472,
+      "longitude": -96.795726,
+      "role": "development"
+    },
+    {
+      "region": "Pennington County, SD",
+      "state": "SD",
+      "county_fips": 46103,
+      "latitude": 44.002349,
+      "longitude": -102.823801,
+      "role": "development"
+    },
+    {
+      "region": "Douglas County, NE",
+      "state": "NE",
+      "county_fips": 31055,
+      "latitude": 41.297091,
+      "longitude": -96.154066,
+      "role": "development"
+    },
+    {
+      "region": "Lancaster County, NE",
+      "state": "NE",
+      "county_fips": 31109,
+      "latitude": 40.783547,
+      "longitude": -96.688658,
+      "role": "development"
+    },
+    {
+      "region": "Sedgwick County, KS",
+      "state": "KS",
+      "county_fips": 20173,
+      "latitude": 37.681045,
+      "longitude": -97.461054,
+      "role": "development"
+    },
+    {
+      "region": "Shawnee County, KS",
+      "state": "KS",
+      "county_fips": 20177,
+      "latitude": 39.041805,
+      "longitude": -95.755664,
+      "role": "development"
+    },
+    {
+      "region": "Dane County, WI",
+      "state": "WI",
+      "county_fips": 55025,
+      "latitude": 43.067468,
+      "longitude": -89.417852,
+      "role": "development"
+    },
+    {
+      "region": "Milwaukee County, WI",
+      "state": "WI",
+      "county_fips": 55079,
+      "latitude": 42.912643,
+      "longitude": -87.862312,
+      "role": "development"
+    },
+    {
+      "region": "Ada County, ID",
+      "state": "ID",
+      "county_fips": 16001,
+      "latitude": 43.451476,
+      "longitude": -116.244376,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Bannock County, ID",
+      "state": "ID",
+      "county_fips": 16005,
+      "latitude": 42.692921,
+      "longitude": -112.228982,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Polk County, IA",
+      "state": "IA",
+      "county_fips": 19153,
+      "latitude": 41.684816,
+      "longitude": -93.568971,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Linn County, IA",
+      "state": "IA",
+      "county_fips": 19113,
+      "latitude": 42.077951,
+      "longitude": -91.597674,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Jackson County, MO",
+      "state": "MO",
+      "county_fips": 29095,
+      "latitude": 39.005364,
+      "longitude": -94.343211,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Greene County, MO",
+      "state": "MO",
+      "county_fips": 29077,
+      "latitude": 37.258196,
+      "longitude": -93.340641,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Wayne County, MI",
+      "state": "MI",
+      "county_fips": 26163,
+      "latitude": 42.284664,
+      "longitude": -83.261953,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Kent County, MI",
+      "state": "MI",
+      "county_fips": 26081,
+      "latitude": 43.032497,
+      "longitude": -85.547446,
+      "role": "geographic_validation"
+    },
+    {
+      "region": "Multnomah County, OR",
+      "state": "OR",
+      "county_fips": 41051,
+      "latitude": 45.547711,
+      "longitude": -122.417363,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Lane County, OR",
+      "state": "OR",
+      "county_fips": 41039,
+      "latitude": 43.928334,
+      "longitude": -122.897581,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Jefferson County, KY",
+      "state": "KY",
+      "county_fips": 21111,
+      "latitude": 38.189532,
+      "longitude": -85.657624,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Fayette County, KY",
+      "state": "KY",
+      "county_fips": 21067,
+      "latitude": 38.040678,
+      "longitude": -84.458272,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Fairfax County, VA",
+      "state": "VA",
+      "county_fips": 51059,
+      "latitude": 38.82952,
+      "longitude": -77.273252,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Henrico County, VA",
+      "state": "VA",
+      "county_fips": 51087,
+      "latitude": 37.43752,
+      "longitude": -77.300333,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Erie County, NY",
+      "state": "NY",
+      "county_fips": 36029,
+      "latitude": 42.752759,
+      "longitude": -78.778192,
+      "role": "geographic_test"
+    },
+    {
+      "region": "Albany County, NY",
+      "state": "NY",
+      "county_fips": 36001,
+      "latitude": 42.58824,
+      "longitude": -73.97401,
+      "role": "geographic_test"
+    }
+  ]
+}
