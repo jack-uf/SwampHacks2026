@@ -1,0 +1,20 @@
+{
+  "document": "docs/HYDROLOGY_RESEARCH_PROTOCOL.md",
+  "document_sha256": "139f951f49c0cc68594fd3a67dfe11a8aca75e985d302533d492ac167ea1b021",
+  "stations_sha256": "4e26161a56015acde317f7dd5a8a1ad42a3630b1356860638c3e67ec0981f6d4",
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5",
+    "data/training-provenance.json": "ca5fb077f746d7b47d73ee0a909834e2aaec9da9625ec991f39e3db284011ad6",
+    "data/training.csv": "dc4cebada4a66fbfc6e72cea7a66d71b36d4f022669c05a7924f3d069479d9a9",
+    "data/noaa-geography-audit.json": "d0553f09f488f2626c4b0a4ac7e4f0af0caf3684afd7bde0cb7c24923cf40574",
+    "data/hazard-memory.json": "202feb80996b4a577c2c4a589234a33016e63934da8ea4f1877afe5f728c633f",
+    "data/planned-projects.json": "8c9e8feb8f14d58b583e71fda9e04ed86340fac005441becc273c1aabc609c92",
+    "data/regions.json": "68f8f022bb5cfb5a2fa787c720f35807b53cde9826e60709b28515b5bd622047",
+    "data/sites.json": "0bba80a9be519a8cbb1b21c205ea557257472683571ad3b18963d2c3a5daf35b"
+  },
+  "seed": 42,
+  "outcomes_inspected": "Only the five-day 2010 sample at 01013500; no modeling or final-period outcomes inspected"
+}

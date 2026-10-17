@@ -1,0 +1,4 @@
+# Exact source responses are reproducible from request manifests; keep bulky caches local.
+research/*
+!research/*.request.json
+sources/
