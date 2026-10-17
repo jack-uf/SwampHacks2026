@@ -1,0 +1,526 @@
+{
+  "created_at": "2026-10-17T00:06:06.077221+00:00",
+  "features": [
+    "forecast_rain_mm",
+    "forecast_temp_c",
+    "forecast_humidity_pct",
+    "forecast_gust_kmh",
+    "latitude",
+    "longitude",
+    "season_sin",
+    "season_cos"
+  ],
+  "partitions": {
+    "train": {
+      "rows": 2464,
+      "start": "2024-01-21",
+      "end": "2024-08-31",
+      "flood_positives": 51,
+      "storm_positives": 102
+    },
+    "calibration": {
+      "rows": 671,
+      "start": "2024-09-01",
+      "end": "2024-10-31",
+      "flood_positives": 4,
+      "storm_positives": 4
+    },
+    "validation": {
+      "rows": 671,
+      "start": "2024-11-01",
+      "end": "2024-12-31",
+      "flood_positives": 9,
+      "storm_positives": 7
+    },
+    "test": {
+      "rows": 4015,
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "flood_positives": 101,
+      "storm_positives": 115
+    },
+    "geographic_test": {
+      "rows": 365,
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "flood_positives": 5,
+      "storm_positives": 3
+    }
+  },
+  "hazards": {
+    "flood": {
+      "selected": "logistic",
+      "selection": "highest validation PR-AUC; Brier tie-break",
+      "candidates": {
+        "xgboost": {
+          "validation": {
+            "n": 671,
+            "positives": 9,
+            "precision": 0.0625,
+            "recall": 0.5555555555555556,
+            "pr_auc": 0.05500696702553651,
+            "roc_auc": 0.7536085934877476,
+            "brier": 0.013083239653394366,
+            "confusion_matrix": [
+              [
+                587,
+                75
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "false_alerts_per_100_county_days": 11.177347242921014,
+            "false_positive_rate": 0.11329305135951662,
+            "threshold": 0.020588199751261842
+          },
+          "test": {
+            "n": 4015,
+            "positives": 101,
+            "precision": 0.06746987951807229,
+            "recall": 0.5544554455445545,
+            "pr_auc": 0.08439200976138277,
+            "roc_auc": 0.794594929600267,
+            "brier": 0.025700603238527728,
+            "confusion_matrix": [
+              [
+                3140,
+                774
+              ],
+              [
+                45,
+                56
+              ]
+            ],
+            "false_alerts_per_100_county_days": 19.277708592777085,
+            "false_positive_rate": 0.19775166070516095,
+            "threshold": 0.020588199751261842
+          },
+          "geographic_test": {
+            "n": 365,
+            "positives": 5,
+            "precision": 0.05555555555555555,
+            "recall": 0.8,
+            "pr_auc": 0.08178395200340859,
+            "roc_auc": 0.7883333333333334,
+            "brier": 0.01335006429836455,
+            "confusion_matrix": [
+              [
+                292,
+                68
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "false_alerts_per_100_county_days": 18.63013698630137,
+            "false_positive_rate": 0.18888888888888888,
+            "threshold": 0.020588199751261842
+          }
+        },
+        "lightgbm": {
+          "validation": {
+            "n": 671,
+            "positives": 9,
+            "precision": 0.11538461538461539,
+            "recall": 0.3333333333333333,
+            "pr_auc": 0.05936532842654233,
+            "roc_auc": 0.816045652903659,
+            "brier": 0.013045312161337197,
+            "confusion_matrix": [
+              [
+                639,
+                23
+              ],
+              [
+                6,
+                3
+              ]
+            ],
+            "false_alerts_per_100_county_days": 3.427719821162444,
+            "false_positive_rate": 0.03474320241691843,
+            "threshold": 0.029820241923309388
+          },
+          "test": {
+            "n": 4015,
+            "positives": 101,
+            "precision": 0.08629441624365482,
+            "recall": 0.33663366336633666,
+            "pr_auc": 0.08664594850862821,
+            "roc_auc": 0.8078464208199052,
+            "brier": 0.024089856183159817,
+            "confusion_matrix": [
+              [
+                3554,
+                360
+              ],
+              [
+                67,
+                34
+              ]
+            ],
+            "false_alerts_per_100_county_days": 8.966376089663761,
+            "false_positive_rate": 0.09197751660705161,
+            "threshold": 0.029820241923309388
+          },
+          "geographic_test": {
+            "n": 365,
+            "positives": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "pr_auc": 0.024030609594624823,
+            "roc_auc": 0.63,
+            "brier": 0.013510769622723585,
+            "confusion_matrix": [
+              [
+                339,
+                21
+              ],
+              [
+                5,
+                0
+              ]
+            ],
+            "false_alerts_per_100_county_days": 5.7534246575342465,
+            "false_positive_rate": 0.058333333333333334,
+            "threshold": 0.029820241923309388
+          }
+        },
+        "logistic": {
+          "validation": {
+            "n": 671,
+            "positives": 9,
+            "precision": 0.11363636363636363,
+            "recall": 0.5555555555555556,
+            "pr_auc": 0.10935852781750237,
+            "roc_auc": 0.9021483719368917,
+            "brier": 0.013268695445008366,
+            "confusion_matrix": [
+              [
+                623,
+                39
+              ],
+              [
+                4,
+                5
+              ]
+            ],
+            "false_alerts_per_100_county_days": 5.812220566318927,
+            "false_positive_rate": 0.05891238670694864,
+            "threshold": 0.007801698694815577
+          },
+          "test": {
+            "n": 4015,
+            "positives": 101,
+            "precision": 0.05180327868852459,
+            "recall": 0.7821782178217822,
+            "pr_auc": 0.14363329372480954,
+            "roc_auc": 0.8014160894883561,
+            "brier": 0.02348230784346239,
+            "confusion_matrix": [
+              [
+                2468,
+                1446
+              ],
+              [
+                22,
+                79
+              ]
+            ],
+            "false_alerts_per_100_county_days": 36.01494396014944,
+            "false_positive_rate": 0.369443025038324,
+            "threshold": 0.007801698694815577
+          },
+          "geographic_test": {
+            "n": 365,
+            "positives": 5,
+            "precision": 0.01818181818181818,
+            "recall": 1.0,
+            "pr_auc": 0.10690814561782302,
+            "roc_auc": 0.7805555555555556,
+            "brier": 0.015469012180676995,
+            "confusion_matrix": [
+              [
+                90,
+                270
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "false_alerts_per_100_county_days": 73.97260273972603,
+            "false_positive_rate": 0.75,
+            "threshold": 0.007801698694815577
+          }
+        }
+      },
+      "climatology_test": {
+        "n": 4015,
+        "positives": 101,
+        "precision": 0.0,
+        "recall": 0.0,
+        "pr_auc": 0.02515566625155666,
+        "roc_auc": 0.5,
+        "brier": 0.024542729032275758,
+        "confusion_matrix": [
+          [
+            3914,
+            0
+          ],
+          [
+            101,
+            0
+          ]
+        ],
+        "false_alerts_per_100_county_days": 0.0,
+        "false_positive_rate": 0.0,
+        "threshold": 0.5
+      }
+    },
+    "storm": {
+      "selected": "logistic",
+      "selection": "highest validation PR-AUC; Brier tie-break",
+      "candidates": {
+        "xgboost": {
+          "validation": {
+            "n": 671,
+            "positives": 7,
+            "precision": 0.3333333333333333,
+            "recall": 0.42857142857142855,
+            "pr_auc": 0.21863287250384023,
+            "roc_auc": 0.9324440619621343,
+            "brier": 0.010151414631689986,
+            "confusion_matrix": [
+              [
+                658,
+                6
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "false_alerts_per_100_county_days": 0.8941877794336811,
+            "false_positive_rate": 0.009036144578313253,
+            "threshold": 0.021444545530992915
+          },
+          "test": {
+            "n": 4015,
+            "positives": 115,
+            "precision": 0.09059233449477352,
+            "recall": 0.6782608695652174,
+            "pr_auc": 0.16258032363445035,
+            "roc_auc": 0.8237134894091416,
+            "brier": 0.02584694980081678,
+            "confusion_matrix": [
+              [
+                3117,
+                783
+              ],
+              [
+                37,
+                78
+              ]
+            ],
+            "false_alerts_per_100_county_days": 19.50186799501868,
+            "false_positive_rate": 0.20076923076923076,
+            "threshold": 0.021444545530992915
+          },
+          "geographic_test": {
+            "n": 365,
+            "positives": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "pr_auc": 0.008455829093914837,
+            "roc_auc": 0.3738489871086556,
+            "brier": 0.008391608169857448,
+            "confusion_matrix": [
+              [
+                315,
+                47
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "false_alerts_per_100_county_days": 12.876712328767123,
+            "false_positive_rate": 0.1298342541436464,
+            "threshold": 0.021444545530992915
+          }
+        },
+        "lightgbm": {
+          "validation": {
+            "n": 671,
+            "positives": 7,
+            "precision": 0.06086956521739131,
+            "recall": 1.0,
+            "pr_auc": 0.07339242156993056,
+            "roc_auc": 0.9109294320137693,
+            "brier": 0.010269945273071533,
+            "confusion_matrix": [
+              [
+                556,
+                108
+              ],
+              [
+                0,
+                7
+              ]
+            ],
+            "false_alerts_per_100_county_days": 16.09538002980626,
+            "false_positive_rate": 0.16265060240963855,
+            "threshold": 0.003812843141810697
+          },
+          "test": {
+            "n": 4015,
+            "positives": 115,
+            "precision": 0.04604130808950086,
+            "recall": 0.9304347826086956,
+            "pr_auc": 0.1655240655723671,
+            "roc_auc": 0.8148483835005573,
+            "brier": 0.02581786258864463,
+            "confusion_matrix": [
+              [
+                1683,
+                2217
+              ],
+              [
+                8,
+                107
+              ]
+            ],
+            "false_alerts_per_100_county_days": 55.21793275217933,
+            "false_positive_rate": 0.5684615384615385,
+            "threshold": 0.003812843141810697
+          },
+          "geographic_test": {
+            "n": 365,
+            "positives": 3,
+            "precision": 0.008298755186721992,
+            "recall": 0.6666666666666666,
+            "pr_auc": 0.011817239992838926,
+            "roc_auc": 0.5248618784530387,
+            "brier": 0.008490088273019409,
+            "confusion_matrix": [
+              [
+                123,
+                239
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "false_alerts_per_100_county_days": 65.47945205479452,
+            "false_positive_rate": 0.6602209944751382,
+            "threshold": 0.003812843141810697
+          }
+        },
+        "logistic": {
+          "validation": {
+            "n": 671,
+            "positives": 7,
+            "precision": 0.22727272727272727,
+            "recall": 0.7142857142857143,
+            "pr_auc": 0.24582758779187347,
+            "roc_auc": 0.9647160068846816,
+            "brier": 0.009995349225401047,
+            "confusion_matrix": [
+              [
+                647,
+                17
+              ],
+              [
+                2,
+                5
+              ]
+            ],
+            "false_alerts_per_100_county_days": 2.5335320417287632,
+            "false_positive_rate": 0.025602409638554216,
+            "threshold": 0.01314132653530673
+          },
+          "test": {
+            "n": 4015,
+            "positives": 115,
+            "precision": 0.07361376673040153,
+            "recall": 0.6695652173913044,
+            "pr_auc": 0.10949318821859164,
+            "roc_auc": 0.7912196209587514,
+            "brier": 0.027511362765814604,
+            "confusion_matrix": [
+              [
+                2931,
+                969
+              ],
+              [
+                38,
+                77
+              ]
+            ],
+            "false_alerts_per_100_county_days": 24.134495641344955,
+            "false_positive_rate": 0.24846153846153846,
+            "threshold": 0.01314132653530673
+          },
+          "geographic_test": {
+            "n": 365,
+            "positives": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "pr_auc": 0.08611111111111111,
+            "roc_auc": 0.9392265193370166,
+            "brier": 0.008121153849773072,
+            "confusion_matrix": [
+              [
+                355,
+                7
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "false_alerts_per_100_county_days": 1.917808219178082,
+            "false_positive_rate": 0.019337016574585635,
+            "threshold": 0.01314132653530673
+          }
+        }
+      },
+      "climatology_test": {
+        "n": 4015,
+        "positives": 115,
+        "precision": 0.0,
+        "recall": 0.0,
+        "pr_auc": 0.028642590286425903,
+        "roc_auc": 0.5,
+        "brier": 0.027984844417502097,
+        "confusion_matrix": [
+          [
+            3900,
+            0
+          ],
+          [
+            115,
+            0
+          ]
+        ],
+        "false_alerts_per_100_county_days": 0.0,
+        "false_positive_rate": 0.0,
+        "threshold": 0.5
+      }
+    }
+  },
+  "limitations": [
+    "County-day event reporting is incomplete and spatially coarse; no reported event is not proof of no hazard.",
+    "Twelve convenience-sampled US counties in 2024\u20132025; no nationwide or site-level validation.",
+    "GFS forecasts sampled at one representative county point, with >=48-hour lead, not one fixed model run.",
+    "Predicts tomorrow UTC (24\u201348h from issue midnight), not the next rolling 24h or local work shift.",
+    "No realized target-day weather or retrospective reanalysis used as a predictor.",
+    "Floodplain, antecedent rain and soil moisture excluded from ML until an issue-time-consistent archive is added.",
+    "Small validation event counts make threshold, calibration and model ranking uncertain.",
+    "Local explanations are reference-feature sensitivity, not causal or additive SHAP attributions."
+  ]
+}

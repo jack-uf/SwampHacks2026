@@ -15,6 +15,9 @@ def download(url: str, name: str, params=None) -> Path:
     RAW.mkdir(parents=True, exist_ok=True)
     path = RAW / name
     if path.exists() and path.with_suffix(path.suffix + '.source.json').exists():
+        source = json.loads(path.with_suffix(path.suffix + '.source.json').read_text())
+        if hashlib.sha256(path.read_bytes()).hexdigest() != source['sha256']:
+            raise ValueError(f'Cached source checksum mismatch: {path}; remove this file and its manifest, then rerun ingestion')
         return path
     for attempt in range(4):
         try:
