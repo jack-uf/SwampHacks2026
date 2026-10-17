@@ -28,7 +28,7 @@ Predictors: archived GFS seamless Previous Runs `_previous_day2` hourly values a
 | Positive station-days | 3,221 (11.8 percent) |
 | Date range | 2024-01-24 to 2026-06-29 |
 
-The first requested day is 2024-01-01, but the archived previous-runs forecast has no finite values before 2024-01-20 12:00 UTC. With a 72-hour antecedent window the first complete target day is 2024-01-24. This matches the 27 withheld days reported for the same provider in the county sprint. Station and day coverage per station are in `provenance.json`.
+The first requested day is 2024-01-01, but the archived previous-runs forecast response begins finite values at 2024-01-20 12:00 UTC (inspection of the cached ABQ response). With a 72-hour antecedent window the first complete target day is 2024-01-24, matching the withheld start reported for the same provider in the county sprint. Station and day coverage per station are in `provenance.json`.
 
 | Partition | Rows | Positives | Stations | States |
 | --- | ---: | ---: | ---: | --- |
