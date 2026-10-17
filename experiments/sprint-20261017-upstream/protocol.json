@@ -1,0 +1,14 @@
+{
+  "inputs": {
+    "docs/UPSTREAM_RESEARCH_PROTOCOL.md": "5ede90e4dd6ccea7566ba7d87be3f9b3e851fce0c9955bf6a8b5ef576676f7fb",
+    "experiments/sprint-20261017-upstream/expanded-pairs.json": "63d88d8eb18bb847a864bcbfbf1a0c60b6f9cc614adf0add294d1bc0163cff5d",
+    "experiments/sprint-20261017-upstream/expanded-metadata.json": "095d7354e0f9000d9b6d862af219951de23d31b8e06a679767bb440b5ab15b51",
+    "experiments/sprint-20261017-onset/training.csv.gz": "a1080406ef7322fce812d684f8d1be2342eaba5328e14c475f1dd7530363ae71",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5",
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da"
+  },
+  "geographic_test_opened": false,
+  "scope": "development-only feasibility and transport pilot"
+}
