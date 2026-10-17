@@ -417,6 +417,9 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
           {zoned(conditions.fetched_at, tz)}. {conditions.note} Missing hours stay unknown.
         </p>
 
+        <h3 className="section-subtitle">Work windows</h3>
+        <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} />
+
         <div className="section-title jha-title">
           <div>
             <h3>
@@ -616,6 +619,67 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
     </>
   );
 }
+
+function WorkWindows({ api, missionId, revision }: { api: Api; missionId: string; revision: number }) {
+  const [data, setData] = useState<any>(null);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    let live = true;
+    setData(null);
+    setError("");
+    api(`/api/missions/${missionId}/work-windows?hours=48&step_hours=3`)
+      .then((d) => live && setData(d))
+      .catch((e) => live && setError(String(e?.message || e)));
+    return () => {
+      live = false;
+    };
+  }, [missionId, revision]);
+  if (error) return <p className="body-note">Work-window comparison unavailable. {error}</p>;
+  if (!data) return <p className="body-note">Comparing candidate windows…</p>;
+  if (!data.candidate_count)
+    return <p className="body-note">No window in the next {data.horizon_hours} hours has enough forecast coverage to compare.</p>;
+  return (
+    <>
+      <div className="work-windows">
+        {data.windows.map((w: any, index: number) => (
+          <div key={w.start} className={"work-window" + (index === data.recommended ? " recommended" : "")}>
+            <div className="window-head">
+              <span className={"rating-dot rating-" + (w.label === "restricted" ? "high" : w.label)} />
+              <strong>
+                {zoned(w.start)} → {new Date(w.end).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+              </strong>
+              <span className="window-class">
+                {w.label}
+                {index === data.recommended ? " · lowest exposure" : ""}
+              </span>
+              {w.uncertainty?.gust_high_probability != null && (
+                <span
+                  className="window-prob"
+                  title={`${w.uncertainty.members} weather-model members; share crossing the ${w.uncertainty.gust_limit_kmh} km/h activity limit`}
+                >
+                  {Math.round(w.uncertainty.gust_high_probability * 100)}% over gust limit
+                </span>
+              )}
+            </div>
+            <small>
+              apparent {fmt(w.apparent_max_c)}°C · gust {fmt(w.gust_max_kmh, 0)} km/h · rain {fmt(w.rain_mm)} mm
+              {w.soil_deep_max != null ? ` · deep soil ${fmt(w.soil_deep_max, 2)} m³/m³` : ""}
+              {w.unknown.length ? ` · unknown ${w.unknown.join(", ")}` : ""}
+            </small>
+            {w.drivers.length > 0 && <small className="window-drivers">Drivers: {w.drivers.join(", ")}</small>}
+          </div>
+        ))}
+      </div>
+      <p className="body-note">
+        {data.candidate_count} windows of {data.duration_hours} h across {data.horizon_hours} h from {zoned(data.anchor)}.
+        {data.recommended_start ? ` Lowest-exposure start ${zoned(data.recommended_start)}.` : " No unrestricted window in this horizon."}{" "}
+        {data.skipped ? `${data.skipped} window(s) skipped for missing hours. ` : ""}
+        {data.notes[1]}
+      </p>
+    </>
+  );
+}
+
 
 function Card({ icon, label, value, note }: { icon: React.ReactNode; label: string; value: string; note: string }) {
   return (

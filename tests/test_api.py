@@ -30,6 +30,13 @@ def client(tmp_path, monkeypatch):
         return dict(gauges=[],feed=dict(available=True,fetched_at=now_utc().isoformat()))
     async def wildfires():
         return dict(incidents=[],complete=True,feed=dict(available=True,fetched_at=now_utc().isoformat()))
+    async def terrain(site):
+        return dict(source='USGS 3DEP Elevation Point Query Service', available=True, samples={'centre': 200.0},
+                    elevation_m=200.0, relief_m=6.0, slope_pct=1.2, missing=[], note='Test stub')
+    async def ensemble(site, days=3):
+        return dict(source='NOAA GFS ensemble via Open-Meteo', available=False, times=[], members={}, feed=dict(available=False))
+    monkeypatch.setattr(main.providers,'ensemble',ensemble)
+    monkeypatch.setattr(main.providers,'terrain',terrain)
     monkeypatch.setattr(main.providers,'river_gauges',river_gauges)
     monkeypatch.setattr(main.providers,'wildfires',wildfires)
     monkeypatch.setattr(main.providers,'weather',weather)

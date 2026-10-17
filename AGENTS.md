@@ -63,6 +63,7 @@ Credit exactly these, in both the README and Devpost, and ask the team whether t
 | Missions with a versioned, cited JHA and supervisor decisions | `backend/missions.py`, `backend/main.py` (`/api/missions*`), tables in `backend/store.py` | `frontend/src/missions.tsx` (`MissionsView`) | `tests/test_missions.py`, `tests/test_mission_api.py` |
 | Site Hazard Memory with per-factor relevance | `backend/memory.py`, `scripts/build_hazard_memory.py` | Mission detail, "Site Hazard Memory" | `tests/test_memory.py` |
 | Cross-entity plan overlaps (Sperry) | `backend/overlap.py`, `scripts/build_planned_projects.py`, `/api/plan-overlaps` | `frontend/src/missions.tsx` (`OverlapsView`) | `tests/test_overlap.py` |
+| Work-window comparison with ensemble spread | `backend/planner.py`, `/api/missions/{id}/work-windows`, terrain and ensemble providers in `backend/providers.py` | Mission detail, "Work windows" | `tests/test_planner.py` |
 | Jev abstention v2 and held-out evaluation | `backend/jev.py` (`abstention`), `scripts/evaluate_jev.py` | Report triage text in `frontend/src/main.tsx` | `tests/test_jev.py`, `tests/test_jev_evaluation.py` |
 
 The reasoning behind each design choice is in `docs/DECISIONS.md`.

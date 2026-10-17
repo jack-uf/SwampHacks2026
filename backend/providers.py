@@ -3,6 +3,7 @@ import asyncio
 import os
 from datetime import datetime, timedelta, timezone
 import httpx
+from math import cos, hypot, radians
 from backend.domain import now_utc, parse_time
 from backend.store import get_cache, put_cache
 
@@ -45,7 +46,7 @@ async def weather(site):
     result = await fetch('weather:'+site['id'], 'https://api.open-meteo.com/v1/forecast', dict(
         latitude=site['latitude'], longitude=site['longitude'], timezone='GMT', past_days=7, forecast_days=3,
         current='temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,wind_gusts_10m',
-        hourly='temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_gusts_10m,soil_moisture_0_to_1cm'))
+        hourly='temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,wind_gusts_10m,soil_moisture_0_to_1cm,soil_moisture_0_to_100cm'))
     if not result['available']:
         return dict(source='Open-Meteo numerical weather models', feed=result, summary={}, forecast=[], current=None)
     data = result['data']
@@ -67,6 +68,63 @@ async def weather(site):
     current = dict(data['current'], time=data['current']['time']+'Z', kind='Modeled current conditions')
     return dict(source='Open-Meteo numerical weather models', feed={k:v for k,v in result.items() if k!='data'},
                 summary=summary, current=current, forecast=rows, units=data['hourly_units'])
+
+
+EPQS = 'https://epqs.nationalmap.gov/v1/json'
+ENSEMBLE = 'https://ensemble-api.open-meteo.com/v1/ensemble'
+TERRAIN_OFFSET_DEGREES = 0.0045  # roughly 500 m at mid latitudes
+
+
+async def terrain(site):
+    """Five-point 3DEP sample: the facility point plus 500 m north, south, east and west."""
+    latitude, longitude = site['latitude'], site['longitude']
+    scale = TERRAIN_OFFSET_DEGREES / max(cos(radians(latitude)), .2)
+    offsets = dict(centre=(0.,0.), north=(TERRAIN_OFFSET_DEGREES,0.), south=(-TERRAIN_OFFSET_DEGREES,0.),
+                   east=(0.,scale), west=(0.,-scale))
+    samples, missing = {}, []
+    for name, (dy, dx) in offsets.items():
+        params = dict(x=round(longitude+dx, 6), y=round(latitude+dy, 6), units='Meters', wkid=4326, includeDate='false')
+        result = await fetch('terrain:'+site['id']+':'+name, EPQS, params, ttl=604800)
+        try:
+            value = float(result['data']['value']) if result['available'] else None
+        except (KeyError, TypeError, ValueError):
+            value = None
+        if value is None:
+            missing.append(name)
+        else:
+            samples[name] = value
+    source = 'USGS 3DEP Elevation Point Query Service'
+    if len(samples) < 5:
+        return dict(source=source, available=False, samples=samples, missing=missing, note='Terrain samples incomplete; relief not estimated')
+    gradient = hypot(abs(samples['north']-samples['south'])/1000, abs(samples['east']-samples['west'])/1000)
+    return dict(source=source, available=True, samples={k:round(v,1) for k,v in samples.items()},
+                elevation_m=round(samples['centre'],1), relief_m=round(max(samples.values())-min(samples.values()),1),
+                slope_pct=round(100*gradient,2), missing=[],
+                note='Five-point sample across about one kilometre; a screening proxy, not a survey')
+
+
+async def ensemble(site, days=3):
+    """Member spread for the thresholds the deterministic planner screens against."""
+    variables = ['wind_gusts_10m','apparent_temperature','precipitation']
+    result = await fetch('ensemble:'+site['id'], ENSEMBLE, dict(latitude=site['latitude'], longitude=site['longitude'],
+        timezone='GMT', forecast_days=max(2, min(days, 7)), models='gfs_seamless', hourly=','.join(variables)))
+    if not result['available']:
+        return dict(source='NOAA GFS ensemble via Open-Meteo', feed=result, available=False, times=[], members={})
+    hourly = result['data'].get('hourly') or {}
+    times = [t+'Z' for t in hourly.get('time', [])]
+    members = {}
+    for variable in variables:
+        columns = [hourly[key] for key in hourly
+                   if key == variable or key.startswith(variable + '_member')]
+        if len(columns) > 1:
+            members[variable] = columns
+    if not times or not members:
+        return dict(source='NOAA GFS ensemble via Open-Meteo', feed=result, available=False, times=[], members={},
+                    note='Ensemble response carried no member columns')
+    return dict(source='NOAA GFS ensemble via Open-Meteo', feed={k:v for k,v in result.items() if k!='data'},
+                available=True, times=times, members=members,
+                member_count=min(len(c) for c in members.values()), model='gfs_seamless',
+                note='Weather-model ensemble spread, not a calibrated probability of damage')
 
 
 async def alerts(site):

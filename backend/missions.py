@@ -165,6 +165,12 @@ def build_jha(mission, ctx):
             if wet is None else evidence(f'forecast:terrain:{"elevated" if wet else "low"}', 'predicted', c['source'],
                 f'Soil moisture max {c["soil_moisture_max"]} m³/m³, shift rain {c["rain_mm"]} mm, prior 72 h {prior} mm',
                 rating='elevated' if wet else 'low', at=c['fetched_at']))
+        terrain = ctx.get('terrain') or {}
+        if terrain.get('available'):
+            add('unstable_terrain', evidence('terrain:relief', 'predicted', terrain['source'],
+                f"Sampled relief {terrain['relief_m']} m and {terrain['slope_pct']}% gradient across about one kilometre; "
+                f"deep soil moisture (0-100 cm) max {c.get('soil_deep_max')} m\u00b3/m\u00b3. "
+                f"{terrain['note']}.", counts=False))
     start, end = parse_time(mission['shift_start']), parse_time(mission['shift_end'])
     def reaches_shift(state):
         return bool(state and state.get('active') and parse_time(state['review_after']) > start and ctx['now'] < end)
@@ -304,6 +310,7 @@ def window_conditions(weather, start, end):
                 apparent_max_c=aggregate('apparent_temperature', max), gust_max_kmh=aggregate('wind_gusts_10m', max),
                 rain_mm=aggregate('precipitation', sum), wet_hours=len([v for v in values('precipitation') if v >= .1]) if rows else None,
                 soil_moisture_max=aggregate('soil_moisture_0_to_1cm', max),
+                soil_deep_max=aggregate('soil_moisture_0_to_100cm', max),
                 first_hour=rows[0]['time'] if rows else None, last_hour=rows[-1]['time'] if rows else None,
                 source='Open-Meteo numerical weather models', fetched_at=feed.get('fetched_at'), feed_available=bool(feed.get('available')),
                 note='Model forecast for the facility point, not a site measurement. Hours before now are model estimates.')

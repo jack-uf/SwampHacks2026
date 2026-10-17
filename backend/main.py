@@ -9,6 +9,7 @@ import os
 import uuid
 from contextlib import asynccontextmanager
 from datetime import timedelta
+from math import ceil
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -19,7 +20,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from PIL import Image, UnidentifiedImageError
-from backend import providers, jev, missions, memory, overlap
+from backend import providers, jev, missions, memory, overlap, planner
 from backend.domain import now_utc, parse_time, lightning_state, hazard_index, briefing_due, distance_miles
 from backend.store import initialize, db, get_cache, put_cache
 from backend.predict import predictions
@@ -89,7 +90,7 @@ def mission_context(mission, site, assessment):
     return dict(now=now_utc(), conditions=missions.window_conditions(weather, mission['shift_start'], mission['shift_end']),
                 weather=weather, alerts=assessment['alerts']['items'], model=assessment['model'], floodplain=assessment['floodplain'],
                 reports=site_reports(site['id']), lightning=strike_states(work_point),
-                gauges=assessment.get('gauges'), wildfires=assessment.get('wildfires'),
+                gauges=assessment.get('gauges'), wildfires=assessment.get('wildfires'), terrain=assessment.get('terrain'),
                 live_feed_configured=bool(os.getenv('PLANIT_LIGHTNING_TOKEN')))
 
 
@@ -128,9 +129,9 @@ def update_missions(site, trigger, assessment=None):
 
 
 async def assess(site, trigger='Environmental refresh'):
-    weather, alerts, model, exposure, gauges, fires = await asyncio.gather(
+    weather, alerts, model, exposure, gauges, fires, terrain = await asyncio.gather(
         providers.weather(site), providers.alerts(site), predictions(site), providers.floodplain(site),
-        providers.river_gauges(site), providers.wildfires())
+        providers.river_gauges(site), providers.wildfires(), providers.terrain(site), return_exceptions=False)
     if fires.get('incidents') is not None:
         fires = dict(fires, incidents=[f for f in fires['incidents']
                                        if distance_miles(site['latitude'], site['longitude'], f['latitude'], f['longitude']) <= 150])
@@ -138,7 +139,7 @@ async def assess(site, trigger='Environmental refresh'):
     active_reports = [r for r in reports if parse_time(r['created_at']) > now_utc()-timedelta(hours=48)]
     index = hazard_index(weather, alerts['items'], active_reports, model['hazards'], exposure)
     result = dict(site=site, weather=weather, alerts=alerts, model=model, index=index, floodplain=exposure,
-                  gauges=gauges, wildfires=fires, assessed_at=now_utc().isoformat())
+                  gauges=gauges, wildfires=fires, terrain=terrain, assessed_at=now_utc().isoformat())
     put_cache('assessment:'+MODEL_REVISION+':'+site['id'], result, result['assessed_at'])
     with db() as c:
         c.execute('INSERT OR IGNORE INTO history VALUES (?,?,?,?)',
@@ -612,6 +613,28 @@ class Decision(BaseModel):
     rating: Literal['low', 'elevated', 'high'] | None = None
     mitigation: str | None = Field(default=None, max_length=1000)
     version: int = Field(ge=1)
+
+
+@app.get('/api/missions/{mission_id}/work-windows')
+async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int = 3):
+    """Rank candidate windows of the mission's shift length against the forecast the JHA cites."""
+    mission = mission_or_404(mission_id)
+    if not 12 <= hours <= 120 or not 1 <= step_hours <= 12:
+        raise HTTPException(422, 'Horizon must be 12 to 120 hours and the step 1 to 12 hours')
+    site = SITE_BY_ID[mission['site_id']]
+    activity = missions.ACTIVITIES[mission['activity']]
+    start, end = parse_time(mission['shift_start']), parse_time(mission['shift_end'])
+    duration = max(1, ceil((end-start).total_seconds()/3600))
+    # Look one day either side of the planned shift so a supervisor can move it earlier as well as later.
+    anchor = max(now_utc(), start - timedelta(hours=24))
+    weather = await providers.weather(site)
+    ensemble = await providers.ensemble(site, days=ceil(hours/24))
+    terrain = await providers.terrain(site)
+    plan = planner.plan(weather, activity, duration, terrain=terrain, ensemble=ensemble,
+                        now=anchor.isoformat(), hours=hours, step_hours=step_hours)
+    return dict(mission_id=mission_id, activity=dict(id=mission['activity'], **activity),
+                anchor=anchor.isoformat(), planned_start=mission['shift_start'], generated_at=now_utc().isoformat(),
+                conditions_source=weather.get('source'), **plan)
 
 
 @app.post('/api/missions/{mission_id}/decisions')
