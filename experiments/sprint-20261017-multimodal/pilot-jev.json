@@ -1,0 +1,37 @@
+{
+  "pilot_note": "Feasibility checks before the protocol freeze, recorded from the actual responses.",
+  "call_1": {
+    "status": "unavailable",
+    "http": 422,
+    "detail": "questions.water_extent.score.criteria expected a list, received a map",
+    "seconds": 0.4,
+    "requested_model": "jev-1.13.0"
+  },
+  "call_2": {
+    "status": "ok",
+    "seconds": 0.5,
+    "requested_model": "jev-1.13.0",
+    "model": "jev-1.13.0",
+    "water_visible": 0.19,
+    "water_extent": 0.2,
+    "water_extent_probabilities": {
+      "0": 0.8,
+      "1": 0.19,
+      "2": 0.01
+    },
+    "water_extent_confidence": 0.69,
+    "ground_condition": "dry_bare",
+    "ground_confidence": 1,
+    "ground_probabilities": {
+      "dry_bare": 1,
+      "vegetated": 0,
+      "water_dominant": 0,
+      "cloud_or_masked": 0
+    },
+    "usage": {
+      "input_tokens": 1465,
+      "output_tokens": 89
+    },
+    "image": "data/raw/s2/ABQ_S2B_13SCU_20260808_0_L2A.png"
+  }
+}
