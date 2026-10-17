@@ -1,0 +1,56 @@
+"""Single canonical SQLite schema for this local MVP. No historical-state migration."""
+import json
+import os
+import sqlite3
+from contextlib import contextmanager
+from pathlib import Path
+from scripts.common import ROOT
+
+
+def db_path():
+    return Path(os.getenv('PLANIT_DB', str(ROOT/'data/planit.sqlite')))
+
+
+@contextmanager
+def db():
+    path = db_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    connection = sqlite3.connect(path, timeout=30)
+    connection.row_factory = sqlite3.Row
+    connection.execute('PRAGMA foreign_keys=ON')
+    try:
+        yield connection
+        connection.commit()
+    except Exception:
+        connection.rollback()
+        raise
+    finally:
+        connection.close()
+
+
+def initialize():
+    with db() as c:
+        c.executescript('''
+        CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, payload TEXT NOT NULL, fetched_at TEXT NOT NULL, error TEXT);
+        CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, site_id TEXT NOT NULL, classification TEXT NOT NULL,
+          description TEXT NOT NULL, latitude REAL NOT NULL, longitude REAL NOT NULL, created_at TEXT NOT NULL,
+          status TEXT NOT NULL CHECK(status IN ('pending','verified','rejected','resolved')), image TEXT);
+        CREATE TABLE IF NOT EXISTS strikes (id TEXT PRIMARY KEY, latitude REAL NOT NULL, longitude REAL NOT NULL,
+          occurred_at TEXT NOT NULL, source TEXT NOT NULL CHECK(source IN ('live','replay')));
+        CREATE TABLE IF NOT EXISTS briefings (id TEXT PRIMARY KEY, site_id TEXT NOT NULL, local_date TEXT NOT NULL,
+          generated_at TEXT NOT NULL, payload TEXT NOT NULL, delivery TEXT NOT NULL DEFAULT 'not configured',
+          UNIQUE(site_id, local_date));
+        CREATE TABLE IF NOT EXISTS history (site_id TEXT NOT NULL, recorded_at TEXT NOT NULL, score REAL,
+          coverage REAL NOT NULL, PRIMARY KEY(site_id, recorded_at));
+        ''')
+
+
+def get_cache(key):
+    with db() as c:
+        row = c.execute('SELECT * FROM cache WHERE key=?', (key,)).fetchone()
+    return dict(row, payload=json.loads(row['payload'])) if row else None
+
+
+def put_cache(key, payload, fetched_at, error=None):
+    with db() as c:
+        c.execute('INSERT OR REPLACE INTO cache VALUES (?,?,?,?)', (key, json.dumps(payload), fetched_at, error))

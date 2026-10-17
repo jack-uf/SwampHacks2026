@@ -1,0 +1,11 @@
+.venv/
+node_modules/
+frontend/dist/
+__pycache__/
+.pytest_cache/
+.env
+data/*.sqlite*
+data/uploads/
+data/raw/
+*.log
+.DS_Store
