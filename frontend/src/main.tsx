@@ -31,8 +31,10 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { ClipboardList, GitCompare } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 import "./styles.css";
+import { MissionsView, OverlapsView } from "./missions";
 
 type Site = {
   id: string;
@@ -264,7 +266,8 @@ function App() {
     [briefings, setBriefings] = useState<any[]>([]),
     [refresh, setRefresh] = useState<any>({});
   const [busy, setBusy] = useState(false),
-    [clock, setClock] = useState(Date.now());
+    [clock, setClock] = useState(Date.now()),
+    [revision, setRevision] = useState(0);
   const [reportHazard, setReportHazard] = useState("all"),
     [reportQueue, setReportQueue] = useState("all");
   const selectedRef = useRef(selected);
@@ -361,6 +364,7 @@ function App() {
     try {
       await fn();
       setNotice(message);
+      setRevision((r) => r + 1);
       if (selected) await loadDetail(selected);
       await loadSites();
       return true;
@@ -445,6 +449,20 @@ function App() {
             Safety briefings
           </button>
           <button
+            className={view === "missions" ? "nav-item active" : "nav-item"}
+            onClick={() => setView("missions")}
+          >
+            <ClipboardList size={18} />
+            Missions & JHA
+          </button>
+          <button
+            className={view === "overlaps" ? "nav-item active" : "nav-item"}
+            onClick={() => setView("overlaps")}
+          >
+            <GitCompare size={18} />
+            Plan overlaps
+          </button>
+          <button
             className={view === "model" ? "nav-item active" : "nav-item"}
             onClick={() => setView("model")}
           >
@@ -486,7 +504,11 @@ function App() {
                 ? "Operations overview"
                 : view === "model"
                   ? "Model intelligence"
-                  : "Safety briefings"}
+                  : view === "missions"
+                    ? "Missions & JHA"
+                    : view === "overlaps"
+                      ? "Plan overlaps"
+                      : "Safety briefings"}
             </span>
           </div>
           <div className="topbar-right">
@@ -523,14 +545,22 @@ function App() {
                   ? "A clearer view of the field."
                   : view === "model"
                     ? "Evidence before confidence."
-                    : "Tomorrow, prepared."}
+                    : view === "missions"
+                      ? "Plan the work. Cite the hazards."
+                      : view === "overlaps"
+                        ? "Build once, not twice."
+                        : "Tomorrow, prepared."}
               </h1>
               <p>
                 {view === "overview"
                   ? "Monitor environmental exposure. Prioritize your crews. Plan with context."
                   : view === "model"
                     ? "Real historical outcomes, measured performance, and visible limitations."
-                    : "Site-specific safety briefings, generated at 6 PM in each facility’s local time."}
+                    : view === "missions"
+                      ? "Each mission's hazard analysis updates when conditions or crew reports change, and keeps every version."
+                      : view === "overlaps"
+                        ? "Compare utilities' public construction plans and flag work that is close in space or time."
+                        : "Site-specific safety briefings, generated at 6 PM in each facility’s local time."}
               </p>
             </div>
             <button
@@ -1376,6 +1406,21 @@ function App() {
               )}
             </section>
           )}
+          {view === "missions" && (
+            <MissionsView
+              api={api}
+              action={action}
+              busy={busy}
+              sites={sites}
+              selectedSite={selected}
+              revision={revision}
+              onReport={(siteId) => {
+                setSelected(siteId);
+                setModal("report");
+              }}
+            />
+          )}
+          {view === "overlaps" && <OverlapsView api={api} />}
           {view === "model" && (
             <section className="panel evaluation-page">
               <div className="section-title">
@@ -1688,7 +1733,7 @@ function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSav
   return <div className="report-triage">
     <small>Classification source: {report.triage?.source || "manual"}. Human review status: {report.status}.</small>
     {provider?.status === "classified" ? <>
-      <p>Jev suggestions ({provider.model}): {provider.categories.map(hazardName).join(", ") || "abstained"}. {provider.abstained && "Uncertain — human clarification required."}</p>
+      <p>Jev suggestions ({provider.model}): {provider.categories.map(hazardName).join(", ") || (provider.abstained ? "abstained" : "no hazard identified")}. {provider.abstained && (provider.abstention ? `Abstained on hazard labels: ${provider.abstention.reasons.join("; ").replaceAll("_", " ")}.` : "Uncertain — human clarification required.")} {provider.abstention?.possible_other && "A further unlisted hazard is possible."}</p>
       <p>{provider.immediate_review === true ? "Suggests immediate supervisor review." : provider.immediate_review === null ? "Priority uncertain; supervisor review required." : "No immediate-priority suggestion; this does not clear work."} {provider.needs_clarification && "Clarify the report."}</p>
       <p>Suggested inbox: {provider.routing.choice.replaceAll("_", " ")}. Review queue: {provider.review_queue}. Urgency: {provider.urgency.score.toFixed(2)} / 2 (0 routine follow-up, 1 prompt review, 2 immediate review of current exposure).</p>
       <details><summary>Unverified Jev judgments and usage</summary><pre>{JSON.stringify({answers: provider.answers, uncertain: provider.uncertain, location_sufficient: provider.location_sufficient, usage: provider.usage},null,2)}</pre></details>
