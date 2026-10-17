@@ -20,6 +20,8 @@ The original threshold is unchanged in this comparison; the updated threshold co
 
 Geographic transfer without inspected holdouts: the leave-one-state-out diagnostic in [MODEL_CARD.md](MODEL_CARD.md#geographic-transfer-leave-one-state-out) and `models/spatial-cv.json`.
 
+The separate [measured river flood audit](FLOOD_SPRINT_RESULTS.md) stopped before modeling because historical threshold and gauge-reference validity remained unverified. It does not change the county-report results above or the production models.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.
