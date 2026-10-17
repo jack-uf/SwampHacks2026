@@ -1,8 +1,9 @@
 {
   "splits": [
-    "train",
-    "calibration",
-    "validation",
-    "geographic_validation"
+    "fresh_temporal",
+    "fresh_geographic_validation",
+    "fresh_geographic_test",
+    "inspected_temporal",
+    "inspected_geographic_test"
   ]
 }

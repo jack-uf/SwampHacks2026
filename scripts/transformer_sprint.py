@@ -49,6 +49,10 @@ def predictions_dir():
     return OUT / 'probabilities'
 
 
+def cohorts_dir():
+    return OUT / 'cohorts'
+
+
 def artifacts_digest():
     files = sorted(path for path in predictions_dir().glob('*') if path.is_file())
     if not files:
@@ -78,8 +82,8 @@ def run_worker(name, reuse=False, out_dir=None, models_dir=None):
     return json.loads((out_dir / f'{name}.meta.json').read_text())
 
 
-def load_probability(name, split):
-    return np.load(predictions_dir() / f'{name}.{split}.npy')
+def load_probability(name, split, directory=None):
+    return np.load((Path(directory) if directory else predictions_dir()) / f'{name}.{split}.npy')
 
 
 def matched_budget_threshold(scores, y, budget_fraction):
@@ -233,8 +237,8 @@ def evaluate():
     prepare_frames(cohorts)
     probabilities = {}
     for name in CANDIDATE_NAMES:
-        run_worker(name, reuse=True)
-        probabilities[name] = {cohort: load_probability(name, cohort) for cohort in cohorts}
+        run_worker(name, reuse=True, out_dir=cohorts_dir())
+        probabilities[name] = {cohort: load_probability(name, cohort, cohorts_dir()) for cohort in cohorts}
         print('predicted', name, flush=True)
     report = dict(created_at=datetime.now(timezone.utc).isoformat(), selected=selection['selected'],
                   selection_sha256=digest(OUT / 'selection.json'), protocol='docs/TRANSFORMER_SPRINT_PROTOCOL.md',

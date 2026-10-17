@@ -1216,7 +1216,7 @@
   "artifacts_sha256": "b0c06e5c1329ef39b4571a4f2dc541e8ba275ff6aebc4dc4ca188996b62132ab",
   "protocol_document_sha256": "248fde4ac03d281143c20cab405c351094f85bbb292e8b30f2d25d5f60e43c2a",
   "checkpoint_sha256": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49",
-  "code_sha256": "f78ecef3f086f3269cae7630e310a043280525c12d4bb3c05f2dd4f58a3a529d",
+  "code_sha256": "bdb84c823700dca0154ef4947a6dc630445ea17a8f0d79891d4e7e3e1921b4d1",
   "worker_sha256": "f053f18ce6e9c0b5b6ff08909931543bc12d44e0118b755a89d3a577146e5431",
   "versions": {
     "tabpfn": "9.2.0",
@@ -1232,5 +1232,6 @@
   },
   "selection_rule": "Supported candidates first; equal temporal/geographic validation AP, mean Brier tie-break, then name",
   "execution": "One worker process per candidate; the coordinator never imports a model library",
-  "test_outcomes_inspected": false
+  "test_outcomes_inspected": false,
+  "code_revision": "Post-evaluation housekeeping: cohort prediction files moved to the cohorts directory; models, thresholds, features, gates and metrics unchanged."
 }
