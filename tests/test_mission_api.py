@@ -1,5 +1,5 @@
 from datetime import timedelta
-from backend import main
+from backend import main, memory
 from backend.domain import now_utc
 from test_api import client, AUTH  # noqa: F401  (shared fixture with stubbed providers)
 
@@ -51,6 +51,7 @@ def test_crew_report_lifecycle_versions_the_mission_jha_with_attribution(client)
                                      evidence_removed=['Crew report (pending supervisor review): DEMO TEST: water over the trench access road.'])
     cited = [e for e in next(e for e in verified['jha']['entries'] if e['hazard'] == 'flood')['evidence'] if e.get('ref') == report['id']]
     assert cited[0]['kind'] == 'observed'
+    assert verified['memory_source']['crew'] == 1 and verified['memory_source']['noaa'] == len(memory.site_records(s['id']))
     assert len(client.get('/api/missions/'+mid).json()['versions']) == 3
 
     decision = dict(hazard='flood', decision='mitigate', rationale='Pump trench and reroute access before entry.',

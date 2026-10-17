@@ -512,14 +512,15 @@ async def mission_detail(mission_id: str):
         decisions = [dict(r, stale=current.get(r['hazard']) != r['entry_fingerprint']) for r in
                      c.execute('SELECT * FROM jha_decisions WHERE mission_id=? ORDER BY created_at DESC', (mission_id,))]
     work_point = dict(site, latitude=mission['latitude'], longitude=mission['longitude'])
-    records = memory.site_records(site['id'])+memory.crew_records(site_reports(site['id']))
+    noaa, crew = memory.site_records(site['id']), memory.crew_records(site_reports(site['id']))
+    records = noaa+crew
     plans = overlap.dataset()
     return dict(mission=dict(mission, ended=ended), site=site, activity=missions.ACTIVITIES[mission['activity']],
                 conditions=jha['conditions'], jha=jha, decisions=decisions,
                 versions=[dict(version=v['version'], created_at=v['created_at'], trigger=v['trigger'], diff=v['diff'],
                                readiness=v['payload']['readiness']) for v in versions],
                 memory=memory.retrieve(work_point, mission['activity'], jha['entries'], mission['shift_start'], records),
-                memory_source=dict(records=len(records), note=(memory.dataset() or {}).get('note')),
+                memory_source=dict(noaa=len(noaa), crew=len(crew), note=(memory.dataset() or {}).get('note')),
                 planned_nearby=overlap.near_mission(plans['projects'], mission['latitude'], mission['longitude'], mission['shift_start'],
                                                     site['operator'])[:6] if plans else [],
                 planned_source=dict(inventory=plans['inventory'], note=plans['note'], url=plans['source']['url']) if plans else None)

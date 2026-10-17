@@ -1,7 +1,7 @@
 """Mission shift windows and the deterministic, evidence-cited Job Hazard Analysis."""
 import hashlib
 import json
-from datetime import timedelta
+from datetime import timedelta, timezone
 from math import ceil
 from backend.domain import parse_time
 
@@ -43,6 +43,10 @@ def evidence(id, kind, source, summary, rating=None, counts=True, **extra):
     return dict(id=id, kind=kind, source=source, summary=summary, rating=rating, counts=counts, **extra)
 
 
+def utc_clock(value):
+    return parse_time(value).astimezone(timezone.utc).strftime('%H:%M UTC')
+
+
 def band(value, elevated, high):
     return None if value is None else 'high' if value >= high else 'elevated' if value >= elevated else 'low'
 
@@ -81,10 +85,12 @@ def build_jha(mission, ctx):
     live, replay = ctx['lightning'].get('live'), ctx['lightning'].get('replay')
     if reaches_shift(live):
         add('lightning', evidence(f"strike:live:{live['last_strike_at']}", 'observed', 'Recorded strike feed (deterministic 10-mile / 30-minute rule)',
-            f"Strike recorded {live['last_strike_at']}; review after {live['review_after']}", rating='stop_work', at=live['last_strike_at']))
+            f"Strike recorded at {utc_clock(live['last_strike_at'])}; review after {utc_clock(live['review_after'])}", rating='stop_work',
+            at=live['last_strike_at']))
     if reaches_shift(replay):
         add('lightning', evidence(f"strike:replay:{replay['last_strike_at']}", 'simulated', 'Labeled replay scenario (not a live observation)',
-            f"Simulated strike {replay['last_strike_at']}; scenario timer until {replay['review_after']}", rating='stop_work', simulated=True))
+            f"Simulated strike at {utc_clock(replay['last_strike_at'])}; scenario timer runs until {utc_clock(replay['review_after'])}",
+            rating='stop_work', simulated=True))
     if ctx['live_feed_configured']:
         if not reaches_shift(live):
             add('lightning', evidence('strike:live:none', 'observed', 'Recorded strike feed',

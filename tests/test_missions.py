@@ -61,6 +61,7 @@ def test_recorded_strike_timer_is_an_observed_stop_work_that_sets_readiness():
     jha = missions.build_jha(ACTIVE, context(ACTIVE, lightning=dict(live=hold(20), replay=IDLE), live_feed_configured=True))
     lightning = entry(jha, 'lightning')
     assert lightning['rating'] == 'stop_work' and lightning['evidence'][0]['kind'] == 'observed'
+    assert lightning['evidence'][0]['summary'] == 'Strike recorded at 11:50 UTC; review after 12:20 UTC'
     assert jha['readiness']['status'] == 'stop_work' and jha['entries'][0]['hazard'] == 'lightning'
 
 
@@ -69,6 +70,7 @@ def test_replay_timer_is_labeled_simulated_and_does_not_look_like_a_live_hold():
     lightning = entry(jha, 'lightning')
     assert lightning['rating'] == 'stop_work' and {e['kind'] for e in lightning['evidence']} >= {'simulated', 'unavailable'}
     assert jha['readiness']['status'] == 'simulated_stop_work'
+    assert lightning['evidence'][0]['summary'] == 'Simulated strike at 11:55 UTC; scenario timer runs until 12:25 UTC'
 
 
 def test_missing_strike_feed_is_unknown_and_expired_timers_do_not_reach_a_later_shift():
