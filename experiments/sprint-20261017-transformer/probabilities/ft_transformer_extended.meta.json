@@ -1,0 +1,15 @@
+{
+  "name": "ft_transformer_extended",
+  "reuse": false,
+  "started_at": "2026-10-17T08:14:17.868416+00:00",
+  "epochs_trained": 34,
+  "fit_seconds": 21.5,
+  "splits": {
+    "train": 5115,
+    "calibration": 2702,
+    "validation": 2747,
+    "geographic_validation": 1470
+  },
+  "total_seconds": 21.8,
+  "checkpoint_sha256": "cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49"
+}
