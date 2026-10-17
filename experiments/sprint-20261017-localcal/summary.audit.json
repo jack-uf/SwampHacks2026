@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "selected": "pooled_10",
+  "candidates": 8,
+  "test_rows": 10394,
+  "gauges": 23,
+  "huc4": 23,
+  "criteria": {
+    "adequate_population": true,
+    "recall_gain": false,
+    "recall_intervals": false,
+    "brier_improvement": false,
+    "pooled_false_alerts": true,
+    "regional_false_alerts": false,
+    "paired_lead": true
+  },
+  "study_passes": false,
+  "diagnostics": {
+    "common_event_earlier": 2,
+    "common_event_same": 41,
+    "common_event_later": 8,
+    "events_warned_at_least_48h": {
+      "global": 55,
+      "selected": 44
+    },
+    "fresh_station_2021_calibration": {
+      "stations": 23,
+      "rows": 6033,
+      "positive_windows": 193,
+      "zero_positive_stations": 2
+    }
+  },
+  "evaluation_sha256": "9fcd33631744065ac1535e8531344a97f2433bc0dacedee2e50b6405cec7ffef",
+  "evaluation_hashes": {
+    "classic": "f992b927372113f92cdeac32dcca32845cbb9dd30210a4fc9ee7cbcfc42286a7",
+    "neural": "da39004bad730f69c109d7f41347bdec27c1a6dea9b7405dceb485c6ec89f7de"
+  }
+}

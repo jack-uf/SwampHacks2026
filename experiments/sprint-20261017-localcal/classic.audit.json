@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "source_files": 202,
+  "new_source_bytes": 12824802,
+  "test_rows": 10394,
+  "test_gauges": 23,
+  "occupied_basins": 250,
+  "reconstructed_labels": 10394,
+  "predictions": {
+    "global": "b4828c3b68261fb9ca3ae834f283fecfd124f4f504b98a7bc6d94d0384fec2da",
+    "local": "32a573608573902e51c1dcd0c6e55a1b7b8ad469d102db51ba04044f06c491b5",
+    "pooled_2": "42878f6695c3c1c74fe5d5f42524c3fd3b1575cbe5b6ab5ecfadb5a1ec536e82",
+    "pooled_10": "100d0b1df0dc21e1f1e5cce03202982dca5db5451dea36b96a9363c87454ce99",
+    "rainfall": "a68890dbc686dc37ac2217a34c57649dbf8939138aaeb85dfc432b269b4dee4e",
+    "logistic": "efc6cd1f016a609fce77f93964d17d43b8d882236f3c50f3150b230f3756cb73",
+    "direct": "b9cd92f06143a8aab988f7f2cdece9393e068bf05496e4e53f455e9a726a5996"
+  },
+  "evaluation_sha256": "f992b927372113f92cdeac32dcca32845cbb9dd30210a4fc9ee7cbcfc42286a7",
+  "code_sha256": "dd0f2c7892371c17c75ed0054f37a1a8519d3a8bbb2ffedc921ea1f7613dfdfd"
+}
