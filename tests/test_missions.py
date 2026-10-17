@@ -186,6 +186,10 @@ def test_stale_or_missing_gauge_data_is_unavailable_never_low():
     assert undefined['gauge:NEAR1:observed:not_defined']['kind'] == 'unavailable'
     assert 'stage 12 ft' in undefined['gauge:NEAR1:observed:not_defined']['summary']
     assert 'no flood thresholds' in undefined['gauge:NEAR1:observed:not_defined']['summary']
+    retired = flood_ids(missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'out_of_service')))))
+    assert retired['gauge:NEAR1:observed:out_of_service']['kind'] == 'unavailable'
+    assert 'out_of_service' in retired['gauge:NEAR1:observed:out_of_service']['summary']
+    assert 'thresholds' not in retired['gauge:NEAR1:observed:out_of_service']['summary']
     failed = missions.build_jha(MISSION, context(gauges=dict(gauges=None, feed=dict(available=False))))
     assert flood_ids(failed)['gauge:feed:unavailable']['kind'] == 'unavailable'
 

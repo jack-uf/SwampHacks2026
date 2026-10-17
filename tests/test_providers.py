@@ -34,20 +34,29 @@ def test_unmapped_flood_exposure_is_unknown():
     assert next(c for c in result['components'] if c['name']=='Mapped flood exposure')['severity'] is None
 
 
-NWPS = {'gauges': [
-    {'lid': 'POPW2', 'name': 'Ohio River at Point Pleasant', 'latitude': 38.8439, 'longitude': -82.1397,
-     'status': {'observed': {'primary': 24.93, 'primaryUnit': 'ft', 'floodCategory': 'no_flooding', 'validTime': '2026-10-17T03:00:00Z'},
-                'forecast': {'primary': 25.1, 'primaryUnit': 'ft', 'floodCategory': 'no_flooding', 'validTime': '2026-10-18T00:00:00Z'}}},
-    {'lid': 'POMO1', 'name': 'Ohio River at Pomeroy', 'latitude': 39.0272, 'longitude': -82.0319,
-     'status': {'observed': {'primary': -999, 'primaryUnit': '', 'floodCategory': 'obs_not_current', 'validTime': '0001-01-01T00:00:00Z'},
-                'forecast': {'primary': -999, 'primaryUnit': '', 'floodCategory': 'fcst_not_current', 'validTime': '0001-01-01T00:00:00Z'}}}]}
+# Records from the NWPS river-gauge map service, layers 0 (observed) and 15 (full forecast period), October 17, 2026.
+OBSERVED = {'features': [
+    {'attributes': {'gaugelid': 'POPW2', 'status': 'no_flooding', 'location': 'Point Pleasant', 'waterbody': 'Ohio River',
+                    'obstime': '2026-10-17 03:00:00', 'units': 'ft', 'observed': '24.93', 'latitude': 38.843889, 'longitude': -82.139722}},
+    {'attributes': {'gaugelid': 'POMO1', 'status': 'obs_not_current', 'location': 'Pomeroy', 'waterbody': 'Ohio River',
+                    'obstime': 'N/A', 'units': '', 'observed': '', 'latitude': 39.027222, 'longitude': -82.031944}}]}
+FORECAST = {'features': [
+    {'attributes': {'gaugelid': 'POPW2', 'status': 'no_flooding', 'fcsttime': '2026-10-18 00:00:00', 'units': 'ft', 'forecast': '25.1'}},
+    {'attributes': {'gaugelid': 'POMO1', 'status': 'fcst_not_current', 'fcsttime': 'N/A', 'units': '', 'forecast': '-999'}}]}
 
 
 def test_river_gauges_keep_official_categories_and_drop_missing_value_sentinels():
-    first, second = providers.parse_gauges(NWPS)
-    assert first['observed'] == dict(category='no_flooding', stage=24.93, unit='ft', valid_time='2026-10-17T03:00:00Z')
-    assert first['forecast']['stage'] == 25.1 and first['lid'] == 'POPW2'
+    first, second = providers.parse_gauges(OBSERVED, FORECAST)
+    assert first['lid'] == 'POPW2' and first['name'] == 'Ohio River at Point Pleasant'
+    assert first['observed'] == dict(category='no_flooding', stage=24.93, unit='ft', valid_time='2026-10-17T03:00:00+00:00')
+    assert first['forecast'] == dict(category='no_flooding', stage=25.1, unit='ft', valid_time='2026-10-18T00:00:00+00:00')
     assert second['observed'] == dict(category='obs_not_current', stage=None, unit=None, valid_time=None)
+    assert second['forecast'] == dict(category='fcst_not_current', stage=None, unit=None, valid_time=None)
+
+
+def test_a_gauge_missing_from_the_forecast_layer_has_no_forecast():
+    only, = providers.parse_gauges(OBSERVED, {'features': []})[:1]
+    assert only['forecast'] == dict(category=None, stage=None, unit=None, valid_time=None)
 
 
 WFIGS = {'features': [

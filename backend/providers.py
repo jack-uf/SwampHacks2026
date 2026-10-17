@@ -83,33 +83,56 @@ async def alerts(site):
                 items=items if result['available'] else None)
 
 
-NWPS_GAUGES = 'https://api.water.noaa.gov/nwps/v1/gauges'
+# The NWPS JSON API (api.water.noaa.gov) allows 10 requests per 5 minutes, too few for one query per facility.
+# The NWPS map service publishes the same gauge statuses without that limit.
+NWPS_MAP = 'https://mapservices.weather.noaa.gov/eventdriven/rest/services/water/riv_gauges/MapServer'
 WFIGS_CURRENT = ('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/'
                  'WFIGS_Incident_Locations_Current/FeatureServer/0/query')
 
 
-def _reading(status):
-    """NWPS marks missing values with -999 and the year-1 timestamp."""
-    status = status or {}
-    stage = status.get('primary')
-    valid = status.get('validTime')
-    return dict(category=status.get('floodCategory') or None, stage=None if stage is None or stage <= -999 else stage,
-                unit=status.get('primaryUnit') or None, valid_time=None if not valid or valid.startswith('0001') else valid)
+def _reading(a, stage_field, time_field):
+    """The map service stores values as text: '' or '-999' for no value, 'N/A' for no time, times in UTC."""
+    if a is None:
+        return dict(category=None, stage=None, unit=None, valid_time=None)
+    try:
+        stage = float(a.get(stage_field))
+    except (TypeError, ValueError):
+        stage = None
+    time = a.get(time_field) or ''
+    return dict(category=a.get('status') or None, stage=None if stage is None or stage <= -999 else stage,
+                unit=a.get('units') or None,
+                valid_time=time.replace(' ', 'T')+'+00:00' if time[:4].isdigit() else None)
 
 
-def parse_gauges(data):
-    return [dict(lid=g['lid'], name=g.get('name'), latitude=g['latitude'], longitude=g['longitude'],
-                 observed=_reading((g.get('status') or {}).get('observed')), forecast=_reading((g.get('status') or {}).get('forecast')))
-            for g in data.get('gauges', []) if g.get('latitude') is not None and g.get('longitude') is not None]
+def parse_gauges(observed, forecast):
+    forecasts = {f['attributes']['gaugelid']: f['attributes'] for f in forecast.get('features', [])}
+    gauges = []
+    for f in observed.get('features', []):
+        a = f['attributes']
+        if a.get('latitude') is None or a.get('longitude') is None:
+            continue
+        name = ' at '.join(p for p in (a.get('waterbody'), a.get('location')) if p)
+        gauges.append(dict(lid=a['gaugelid'], name=name or a['gaugelid'], latitude=a['latitude'], longitude=a['longitude'],
+                           observed=_reading(a, 'observed', 'obstime'),
+                           forecast=_reading(forecasts.get(a['gaugelid']), 'forecast', 'fcsttime')))
+    return gauges
 
 
 async def river_gauges(site):
     """NWS river gauges in a box about 70 miles around the facility, so missions up to 50 miles away are covered."""
     lat, lon = site['latitude'], site['longitude']
-    result = await fetch('nwps:'+site['id'], NWPS_GAUGES, {'bbox.xmin': lon-1.3, 'bbox.ymin': lat-1, 'bbox.xmax': lon+1.3,
-                                                          'bbox.ymax': lat+1, 'srid': 'EPSG_4326'}, ttl=900)
-    return dict(source='NOAA National Water Prediction Service river gauges', feed={k: v for k, v in result.items() if k != 'data'},
-                gauges=parse_gauges(result['data']) if result['available'] else None)
+    box = dict(geometry=f'{lon-1.3},{lat-1},{lon+1.3},{lat+1}', geometryType='esriGeometryEnvelope', inSR=4326,
+               spatialRel='esriSpatialRelIntersects', returnGeometry='false', f='json')
+    observed = await fetch('nwps-map:observed:'+site['id'], NWPS_MAP+'/0/query', dict(
+        box, outFields='gaugelid,status,location,waterbody,obstime,units,observed,latitude,longitude'), ttl=900)
+    forecast = await fetch('nwps-map:forecast:'+site['id'], NWPS_MAP+'/15/query', dict(
+        box, outFields='gaugelid,status,fcsttime,units,forecast'), ttl=900)
+    complete = observed['available'] and not observed['data'].get('exceededTransferLimit')
+    # A failed forecast query leaves gauges without forecast evidence; observations still count.
+    forecast_data = forecast['data'] if forecast['available'] else {}
+    return dict(source='NOAA National Water Prediction Service river gauges', feed={k: v for k, v in observed.items() if k != 'data'},
+                forecast_feed={k: v for k, v in forecast.items() if k != 'data'},
+                gauges=parse_gauges(observed['data'], forecast_data) if complete else None)
 
 
 def _epoch(value):

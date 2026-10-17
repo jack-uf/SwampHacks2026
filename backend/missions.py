@@ -85,8 +85,9 @@ def gauge_evidence(point, feed, now):
         o, f = g['observed'], g['forecast']
         rating = FLOOD_CATEGORY.get(o['category'])
         if rating is None:
-            reading = (f"stage {o['stage']:g} {o['unit']} at {utc_clock(o['valid_time'])}, but NWS reports {o['category']}: "
-                       'no flood thresholds apply' if o['stage'] is not None and o['valid_time']
+            why = 'no flood thresholds apply' if o['category'] == 'not_defined' else 'not rated'
+            reading = (f"stage {o['stage']:g} {o['unit']} at {utc_clock(o['valid_time'])}, but NWS reports {o['category']}: {why}"
+                       if o['stage'] is not None and o['valid_time']
                        else f"no current observation ({o['category'] or 'no category'})")
             items.append(evidence(f"gauge:{g['lid']}:observed:{o['category'] or 'unknown'}", 'unavailable', GAUGE_SOURCE,
                                   f'{where}: {reading}'))
