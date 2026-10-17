@@ -1,13 +1,69 @@
-"""Experiment boundaries; fixtures are synthetic and never enter training files."""
-import json
+"""Experiment boundaries; fixtures are synthetic and never enter training files.
 
-import joblib
+torch and the boosted libraries cannot share one process here, so the worker runs
+in a subprocess in this test exactly as it does in the experiment.
+"""
+import json
+import os
+import subprocess
+import sys
+
 import numpy as np
 import pandas as pd
 import pytest
 
 from scripts import transformer_sprint
-from scripts.transformer_sprint import FTTransformerClassifier, matched_budget_threshold, transformer_gate_failures
+from scripts.transformer_sprint import matched_budget_threshold, transformer_gate_failures
+
+FT_FRAMES_SCRIPT = '''
+import json
+import pathlib
+import sys
+
+import numpy as np
+
+frames_dir, out_dir = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+frames_dir.mkdir(parents=True, exist_ok=True)
+out_dir.mkdir(parents=True, exist_ok=True)
+rng = np.random.default_rng(0)
+features = ["feature_%d" % i for i in range(6)]
+rows = rng.normal(size=(400, 6))
+label = (rows[:, 0] + rng.normal(size=400) * .5 > 0).astype(int)
+frame = __import__("pandas").DataFrame(rows, columns=features)
+frame["exceedance"] = label
+frame.iloc[:300].to_csv(frames_dir / "train.csv", index=False)
+frame.iloc[300:].to_csv(frames_dir / "calibration.csv", index=False)
+frame.iloc[300:].to_csv(frames_dir / "validation.csv", index=False)
+(frames_dir / "features.json").write_text(json.dumps({"features": features}))
+(frames_dir / "splits.json").write_text(json.dumps({"splits": ["validation"]}))
+'''
+
+
+def run_worker(name, frames, out, reuse=False, models=None):
+    command = [sys.executable, '-m', 'scripts.transformer_worker', name, str(frames), str(out)]
+    if reuse:
+        command.append('--reuse')
+    if models:
+        command += ['--models', str(models)]
+    return subprocess.run(command, capture_output=True, text=True, cwd=transformer_sprint.ROOT,
+                          env=dict(os.environ, PYTHONPATH=str(transformer_sprint.ROOT), HF_HUB_OFFLINE='1'))
+
+
+def test_worker_trains_ft_transformer_deterministically(tmp_path):
+    frames, out = tmp_path / 'frames', tmp_path / 'out'
+    setup = subprocess.run([sys.executable, '-c', FT_FRAMES_SCRIPT, str(frames), str(out)], capture_output=True, text=True,
+                           cwd=transformer_sprint.ROOT, env=dict(os.environ, PYTHONPATH=str(transformer_sprint.ROOT)))
+    assert setup.returncode == 0, setup.stderr[-500:]
+    first = run_worker('ft_transformer_extended', frames, out)
+    assert first.returncode == 0, first.stderr[-800:]
+    probabilities = np.load(out / 'ft_transformer_extended.validation.npy')
+    assert probabilities.shape == (100,) and np.isfinite(probabilities).all()
+    assert ((probabilities >= 0) & (probabilities <= 1)).all()
+    meta = json.loads((out / 'ft_transformer_extended.meta.json').read_text())
+    assert 1 <= meta['epochs_trained'] <= 60
+    reused = run_worker('ft_transformer_extended', frames, tmp_path / 'reused', reuse=True, models=out)
+    assert reused.returncode == 0, reused.stderr[-800:]
+    assert np.array_equal(probabilities, np.load(tmp_path / 'reused' / 'ft_transformer_extended.validation.npy'))
 
 
 def test_matched_budget_threshold_equals_the_rule_false_alert_count():
@@ -45,24 +101,6 @@ def test_extension_rejects_days_before_the_fresh_window(tmp_path, monkeypatch):
         transformer_sprint.extension_frames()
 
 
-def test_ft_transformer_trains_deterministically_and_round_trips(tmp_path):
-    rng = np.random.default_rng(0)
-    X = rng.normal(size=(400, 16))
-    y = (X[:, 0] + rng.normal(size=400) * .5 > 0).astype(int)
-    model = FTTransformerClassifier(epochs=6, patience=3, batch=128)
-    model.fit(X[:300], y[:300], X[300:], y[300:])
-    probabilities = model.predict_proba(X[300:])[:, 1]
-    assert probabilities.shape == (100,) and np.isfinite(probabilities).all()
-    assert ((probabilities >= 0) & (probabilities <= 1)).all()
-    assert 1 <= model.epochs_trained_ <= 6
-    twin = FTTransformerClassifier(epochs=6, patience=3, batch=128)
-    twin.fit(X[:300], y[:300], X[300:], y[300:])
-    assert np.array_equal(probabilities, twin.predict_proba(X[300:])[:, 1])
-    path = tmp_path / 'ft.joblib'
-    joblib.dump(model, path)
-    assert np.array_equal(probabilities, joblib.load(path).predict_proba(X[300:])[:, 1])
-
-
 def test_gate_adds_the_matched_budget_recall_condition():
     updated = dict(positives=30, alert_rate=.12, recall=.6, false_alerts_per_100_station_days=3.)
     baseline = dict(recall=.5, false_alerts_per_100_station_days=5.)
@@ -80,6 +118,8 @@ def test_frozen_selection_rejects_changed_code_and_checkpoint(tmp_path, monkeypa
     experiment = tmp_path / 'experiment'
     experiment.mkdir()
     monkeypatch.setattr(transformer_sprint, 'OUT', experiment)
+    (experiment / 'probabilities').mkdir()
+    (experiment / 'probabilities' / 'logistic_extended.model.joblib').write_text('frozen model')
     document = tmp_path / 'docs/TRANSFORMER_SPRINT_PROTOCOL.md'
     document.parent.mkdir()
     document.write_text('frozen')
@@ -87,23 +127,28 @@ def test_frozen_selection_rejects_changed_code_and_checkpoint(tmp_path, monkeypa
     wind = tmp_path / 'wind'
     wind.mkdir()
     monkeypatch.setattr(transformer_sprint.wind_sprint, 'OUT', wind)
-    artifacts = [(experiment / 'candidates.joblib', 'model_sha256'), (wind / 'training.csv.gz', 'dataset_sha256'),
-                 (wind / 'protocol.json', 'protocol_sha256'), (document, 'protocol_document_sha256'),
-                 (tmp_path / 'scripts/transformer_sprint.py', 'code_sha256')]
-    selection = dict(dependencies={}, versions={}, checkpoint_sha256=transformer_sprint.CHECKPOINT_SHA256)
+    artifacts = [(wind / 'training.csv.gz', 'dataset_sha256'), (wind / 'protocol.json', 'protocol_sha256'),
+                 (document, 'protocol_document_sha256'), (tmp_path / 'scripts/transformer_sprint.py', 'code_sha256'),
+                 (tmp_path / 'scripts/transformer_worker.py', 'worker_sha256')]
+    selection = dict(versions={}, checkpoint_sha256=transformer_sprint.CHECKPOINT_SHA256)
     for path, field in artifacts:
         path.parent.mkdir(exist_ok=True)
         path.write_text('frozen artifact')
         selection[field] = transformer_sprint.digest(path)
+    selection['artifacts_sha256'] = transformer_sprint.artifacts_digest()
     (experiment / 'selection.json').write_text(json.dumps(selection))
     assert transformer_sprint.frozen_selection() == selection
+    (experiment / 'probabilities' / 'logistic_extended.model.joblib').write_text('changed')
+    with pytest.raises(ValueError, match='candidate artifacts changed'):
+        transformer_sprint.frozen_selection()
+    (experiment / 'probabilities' / 'logistic_extended.model.joblib').write_text('frozen model')
     selection['checkpoint_sha256'] = '0' * 64
     (experiment / 'selection.json').write_text(json.dumps(selection))
     with pytest.raises(ValueError, match='checkpoint'):
         transformer_sprint.frozen_selection()
     selection['checkpoint_sha256'] = transformer_sprint.CHECKPOINT_SHA256
     (experiment / 'selection.json').write_text(json.dumps(selection))
-    (tmp_path / 'scripts/transformer_sprint.py').write_text('changed after selection')
+    (tmp_path / 'scripts/transformer_worker.py').write_text('changed after selection')
     with pytest.raises(ValueError, match='Frozen selection input changed'):
         transformer_sprint.frozen_selection()
 

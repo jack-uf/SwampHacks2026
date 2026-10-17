@@ -1,23 +1,24 @@
-"""Transformer experiment. See docs/TRANSFORMER_SPRINT_PROTOCOL.md before running."""
-import copy
+"""Transformer experiment coordinator. See docs/TRANSFORMER_SPRINT_PROTOCOL.md before running.
+
+Model fitting happens in scripts/transformer_worker.py, one process per candidate:
+on this machine xgboost/lightgbm and torch cannot initialize OpenMP in the same
+process, so this coordinator never imports a model library itself. It prepares
+frames, runs the workers, and computes every threshold and metric from the saved
+probability arrays.
+"""
 import hashlib
 import importlib.metadata
 import json
-import time
+import os
+import subprocess
+import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
-import joblib
 import numpy as np
 import pandas as pd
-import torch
-from torch import nn
-from sklearn.linear_model import LogisticRegression
 
-from tabpfn import TabPFNClassifier
-from tabpfn.constants import ModelVersion
-
-from backend.model import calibrated
 from scripts.common import ROOT, download
 from scripts import wind_sprint
 from scripts.wind_sprint import EXTENDED, THRESHOLD_KMH, digest, rule_metrics, station_metrics, write_json
@@ -29,9 +30,8 @@ FRESH_START = '2026-07-01'
 WIND_END = '2026-06-30'
 CHECKPOINT = Path.home() / 'Library/Caches/tabpfn' / 'tabpfn-v2-classifier-finetuned-zk73skhh.ckpt'
 CHECKPOINT_SHA256 = 'cf8c519c01eaf1613ee91239006d57b1c806ff5f23ac1aeb1315ba1015210e49'
-DEPENDENCIES = ['scripts/wind_sprint.py', 'scripts/train.py', 'scripts/common.py', 'backend/model.py']
+CANDIDATE_NAMES = ('logistic_extended', 'xgboost_extended', 'lightgbm_extended', 'tabpfn_extended', 'ft_transformer_extended')
 PACKAGES = ['tabpfn', 'torch', 'mlx', 'scikit-learn', 'xgboost', 'lightgbm', 'numpy', 'pandas', 'joblib', 'scipy']
-THREADS = 8
 
 
 def verify_checkpoint():
@@ -41,100 +41,45 @@ def verify_checkpoint():
         raise ValueError('TabPFN checkpoint hash changed; the frozen protocol pins the v2 weights hash')
 
 
-class FTTransformer(nn.Module):
-    def __init__(self, n_features, d_token=32, n_blocks=2, n_heads=4, dropout=.1):
-        super().__init__()
-        self.weight = nn.Parameter(torch.randn(n_features, d_token) * .02)
-        self.bias = nn.Parameter(torch.zeros(n_features, d_token))
-        self.cls = nn.Parameter(torch.zeros(1, 1, d_token))
-        layer = nn.TransformerEncoderLayer(d_model=d_token, nhead=n_heads, dim_feedforward=2 * d_token,
-                                           dropout=dropout, activation='relu', batch_first=True, norm_first=True)
-        self.encoder = nn.TransformerEncoder(layer, n_blocks)
-        self.norm = nn.LayerNorm(d_token)
-        self.head = nn.Linear(d_token, 1)
-
-    def forward(self, x):
-        tokens = x.unsqueeze(-1) * self.weight + self.bias
-        tokens = torch.cat([self.cls.expand(x.shape[0], -1, -1), tokens], dim=1)
-        return self.head(self.norm(self.encoder(tokens)[:, 0])).squeeze(-1)
+def frames_dir():
+    return OUT / 'frames'
 
 
-class FTTransformerClassifier:
-    """Frozen recipe from the protocol: no search, seed 42, early stop on the calibration rows."""
-
-    def __init__(self, d_token=32, n_blocks=2, n_heads=4, dropout=.1, epochs=60, patience=10,
-                 batch=256, lr=1e-3, weight_decay=1e-5, seed=42):
-        self.kwargs = dict(d_token=d_token, n_blocks=n_blocks, n_heads=n_heads, dropout=dropout, epochs=epochs,
-                           patience=patience, batch=batch, lr=lr, weight_decay=weight_decay, seed=seed)
-
-    def fit(self, X, y, X_eval, y_eval):
-        torch.manual_seed(self.kwargs['seed'])
-        torch.set_num_threads(THREADS)
-        X = np.asarray(X, dtype=float)
-        self.mean_, self.std_ = X.mean(axis=0), X.std(axis=0) + 1e-9
-        scaled, eval_scaled = self._scale(X), self._scale(np.asarray(X_eval, dtype=float))
-        y = np.asarray(y, dtype=float)
-        pos_weight = torch.tensor((len(y) - y.sum()) / max(y.sum(), 1.0))
-        net = FTTransformer(X.shape[1], self.kwargs['d_token'], self.kwargs['n_blocks'], self.kwargs['n_heads'], self.kwargs['dropout'])
-        optimizer = torch.optim.AdamW(net.parameters(), lr=self.kwargs['lr'], weight_decay=self.kwargs['weight_decay'])
-        criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
-        X_tensor, y_tensor = torch.tensor(scaled, dtype=torch.float32), torch.tensor(y, dtype=torch.float32)
-        eval_x, eval_y = torch.tensor(eval_scaled, dtype=torch.float32), torch.tensor(np.asarray(y_eval, dtype=float), dtype=torch.float32)
-        rng = np.random.default_rng(self.kwargs['seed'])
-        best_loss, best_state, stale, epochs_run = np.inf, None, 0, 0
-        for _ in range(self.kwargs['epochs']):
-            epochs_run += 1
-            net.train()
-            for start in range(0, len(X_tensor), self.kwargs['batch']):
-                rows = torch.tensor(rng.permutation(len(X_tensor))[start:start + self.kwargs['batch']], dtype=torch.long)
-                optimizer.zero_grad()
-                loss = criterion(net(X_tensor[rows]), y_tensor[rows])
-                loss.backward()
-                optimizer.step()
-            net.eval()
-            with torch.no_grad():
-                eval_loss = float(nn.functional.binary_cross_entropy_with_logits(net(eval_x), eval_y))
-            if eval_loss < best_loss - 1e-6:
-                best_loss, best_state, stale = eval_loss, copy.deepcopy(net.state_dict()), 0
-            else:
-                stale += 1
-                if stale >= self.kwargs['patience']:
-                    break
-        net.load_state_dict(best_state)
-        self.net_, self.epochs_trained_, self.best_eval_loss_ = net, epochs_run, best_loss
-        return self
-
-    def _scale(self, X):
-        return (X - self.mean_) / self.std_
-
-    def predict_proba(self, X):
-        self.net_.eval()
-        with torch.no_grad():
-            logits = self.net_(torch.tensor(self._scale(np.asarray(X, dtype=float)), dtype=torch.float32))
-            positive = torch.sigmoid(logits).numpy()
-        return np.column_stack([1 - positive, positive])
+def predictions_dir():
+    return OUT / 'probabilities'
 
 
-def tabpfn():
-    return TabPFNClassifier.create_default_for_version(ModelVersion.V2, device='cpu', random_state=42)
+def artifacts_digest():
+    files = sorted(path for path in predictions_dir().glob('*') if path.is_file())
+    if not files:
+        raise FileNotFoundError('No frozen candidate artifacts found')
+    return hashlib.sha256('|'.join(f'{path.name}:{digest(path)}' for path in files).encode()).hexdigest()
 
 
-def candidate_models(train):
-    for name, model, features in wind_sprint.recipes(train):
-        if name.endswith('_extended'):
-            yield name, model, features
-    yield 'tabpfn_extended', tabpfn(), EXTENDED
-    yield 'ft_transformer_extended', FTTransformerClassifier(), EXTENDED
+def prepare_frames(frames):
+    frames_dir().mkdir(parents=True, exist_ok=True)
+    (frames_dir() / 'features.json').write_text(json.dumps(dict(features=EXTENDED), indent=2) + '\n')
+    (frames_dir() / 'splits.json').write_text(json.dumps(dict(splits=list(frames)), indent=2) + '\n')
+    for name, frame in frames.items():
+        frame.to_csv(frames_dir() / f'{name}.csv', index=False)
 
 
-def fitted_experiment(model, features, train, calibration, name):
-    if isinstance(model, FTTransformerClassifier):
-        model.fit(train[features], train.exceedance, calibration[features], calibration.exceedance)
-    else:
-        model.fit(train[features], train.exceedance)
-    raw = np.clip(model.predict_proba(calibration[features])[:, 1], 1e-6, 1 - 1e-6)
-    calibrator = LogisticRegression(C=1, random_state=42).fit(np.log(raw / (1 - raw)).reshape(-1, 1), calibration.exceedance)
-    return dict(name=name, model=model, calibrator=calibrator, features=list(features))
+def run_worker(name, reuse=False, out_dir=None, models_dir=None):
+    out_dir = Path(out_dir) if out_dir else predictions_dir()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    command = [sys.executable, '-m', 'scripts.transformer_worker', name, str(frames_dir()), str(out_dir)]
+    if reuse:
+        command.append('--reuse')
+    command += ['--models', str(Path(models_dir) if models_dir else out_dir)]
+    environment = dict(os.environ, PYTHONPATH=str(ROOT), HF_HUB_OFFLINE='1')
+    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, env=environment)
+    if result.returncode:
+        raise RuntimeError(f'Worker {name} failed with exit {result.returncode}: ' + result.stderr[-900:])
+    return json.loads((out_dir / f'{name}.meta.json').read_text())
+
+
+def load_probability(name, split):
+    return np.load(predictions_dir() / f'{name}.{split}.npy')
 
 
 def matched_budget_threshold(scores, y, budget_fraction):
@@ -169,6 +114,15 @@ def selection_inputs():
     parts = wind_sprint.partition_rows(frame[frame.target_date < '2026-01-01'])
     validation = pd.concat([parts['validation'], parts['geographic_validation']], ignore_index=True)
     return parts, validation
+
+
+def cohorts_of(frozen, fresh):
+    return dict(
+        fresh_temporal=fresh[fresh.role.eq('development')],
+        fresh_geographic_validation=fresh[fresh.role.eq('geographic_validation')],
+        fresh_geographic_test=fresh[fresh.role.eq('geographic_test')],
+        inspected_temporal=frozen[frozen.role.eq('development') & (frozen.target_date >= '2026-01-01')],
+        inspected_geographic_test=frozen[frozen.role.eq('geographic_test') & (frozen.target_date >= '2026-01-01')])
 
 
 def extend():
@@ -218,44 +172,43 @@ def extend():
 
 
 def select():
-    if (OUT / 'selection.json').exists() or (OUT / 'candidates.joblib').exists():
+    if (OUT / 'selection.json').exists():
         raise FileExistsError('Selection is already frozen; use evaluate or verify')
     verify_checkpoint()
-    torch.set_num_threads(THREADS)
     parts, validation = selection_inputs()
-    train, calibration = parts['train'], parts['calibration']
     reference = (validation.forecast_gust_max_kmh >= THRESHOLD_KMH).astype(float)
     baseline = rule_metrics(validation.exceedance, validation.forecast_gust_max_kmh, THRESHOLD_KMH)
     budget_fraction = baseline['false_alerts_per_100_station_days'] / 100
-    candidates, results = {}, {}
-    for name, model, features in candidate_models(train):
-        start = time.time()
-        bundle = fitted_experiment(model, features, train, calibration, name)
-        bundle.update(matched_threshold=matched_budget_threshold(calibrated(bundle, validation), validation.exceedance, budget_fraction),
-                      fit_seconds=round(time.time() - start, 1))
-        threshold, supported = wind_sprint.recall_threshold(validation.exceedance, calibrated(bundle, validation), reference, .5)
-        bundle.update(threshold=threshold, warning_supported=supported)
-        scores = {part: station_metrics(parts[part].exceedance, calibrated(bundle, parts[part]), threshold)
+    prepare_frames(dict(train=parts['train'], calibration=parts['calibration'],
+                        validation=parts['validation'], geographic_validation=parts['geographic_validation']))
+    results, metadata = {}, {}
+    for name in CANDIDATE_NAMES:
+        meta = run_worker(name)
+        probabilities = {split: load_probability(name, split) for split in ['validation', 'geographic_validation']}
+        pooled = np.concatenate([probabilities['validation'], probabilities['geographic_validation']])
+        threshold, supported = wind_sprint.recall_threshold(validation.exceedance, pooled, reference, .5)
+        scores = {part: station_metrics(parts[part].exceedance, probabilities[part], threshold)
                   for part in ['validation', 'geographic_validation']}
-        scores.update(features=bundle['features'], threshold=threshold, matched_threshold=bundle['matched_threshold'],
-                      fit_seconds=bundle['fit_seconds'], warning_supported=supported)
+        scores.update(features=list(EXTENDED), threshold=threshold, warning_supported=supported,
+                      matched_threshold=matched_budget_threshold(pooled, validation.exceedance, budget_fraction),
+                      fit_seconds=meta['fit_seconds'], tool_seconds=meta['total_seconds'])
         scores['selection_ap'] = float(np.mean([scores[k]['pr_auc'] or 0. for k in ['validation', 'geographic_validation']]))
         scores['selection_brier'] = float(np.mean([scores[k]['brier'] for k in ['validation', 'geographic_validation']]))
-        candidates[name], results[name] = bundle, scores
-        print(name, 'fit seconds', bundle['fit_seconds'], 'threshold', round(threshold, 4), 'validation AP',
+        results[name], metadata[name] = scores, meta
+        print(name, 'fit seconds', meta['fit_seconds'], 'threshold', round(threshold, 4), 'validation AP',
               round(scores['selection_ap'], 4), 'supported', supported, flush=True)
     eligible = [name for name in results if results[name]['warning_supported']]
     winner = sorted(eligible or list(results), key=lambda n: (-results[n]['selection_ap'], results[n]['selection_brier'], n))[0]
-    joblib.dump(dict(candidates=candidates), OUT / 'candidates.joblib')
     write_json(OUT / 'selection.json', dict(created_at=datetime.now(timezone.utc).isoformat(), selected=winner,
-        eligible_candidates=eligible, candidates=results, baseline_validation=baseline,
-        budget_fraction=budget_fraction, dataset_sha256=digest(wind_sprint.OUT / 'training.csv.gz'),
-        protocol_sha256=digest(wind_sprint.OUT / 'protocol.json'), model_sha256=digest(OUT / 'candidates.joblib'),
+        eligible_candidates=eligible, candidates=results, baseline_validation=baseline, budget_fraction=budget_fraction,
+        worker_metadata=metadata, dataset_sha256=digest(wind_sprint.OUT / 'training.csv.gz'),
+        protocol_sha256=digest(wind_sprint.OUT / 'protocol.json'), artifacts_sha256=artifacts_digest(),
         protocol_document_sha256=digest(PROTOCOL_DOCUMENT), checkpoint_sha256=CHECKPOINT_SHA256,
         code_sha256=digest(ROOT / 'scripts/transformer_sprint.py'),
-        dependencies={name: digest(ROOT / name) for name in DEPENDENCIES},
-        versions={name: importlib.metadata.version(name) for name in PACKAGES}, threads=THREADS,
+        worker_sha256=digest(ROOT / 'scripts/transformer_worker.py'),
+        versions={name: importlib.metadata.version(name) for name in PACKAGES},
         selection_rule='Supported candidates first; equal temporal/geographic validation AP, mean Brier tie-break, then name',
+        execution='One worker process per candidate; the coordinator never imports a model library',
         test_outcomes_inspected=False))
     print('Selected', winner, flush=True)
 
@@ -274,16 +227,15 @@ def evaluate():
     with (OUT / 'evaluation-started.json').open('x') as marker:
         json.dump(dict(started_at=datetime.now(timezone.utc).isoformat(), selection_sha256=digest(OUT / 'selection.json')), marker)
     verify_checkpoint()
-    torch.set_num_threads(THREADS)
     parts, validation = selection_inputs()
     frozen, fresh = extension_frames()
-    cohorts = dict(
-        fresh_temporal=fresh[fresh.role.eq('development')],
-        fresh_geographic_validation=fresh[fresh.role.eq('geographic_validation')],
-        fresh_geographic_test=fresh[fresh.role.eq('geographic_test')],
-        inspected_temporal=frozen[frozen.role.eq('development') & (frozen.target_date >= '2026-01-01')],
-        inspected_geographic_test=frozen[frozen.role.eq('geographic_test') & (frozen.target_date >= '2026-01-01')])
-    candidates = joblib.load(OUT / 'candidates.joblib')['candidates']
+    cohorts = cohorts_of(frozen, fresh)
+    prepare_frames(cohorts)
+    probabilities = {}
+    for name in CANDIDATE_NAMES:
+        run_worker(name, reuse=True)
+        probabilities[name] = {cohort: load_probability(name, cohort) for cohort in cohorts}
+        print('predicted', name, flush=True)
     report = dict(created_at=datetime.now(timezone.utc).isoformat(), selected=selection['selected'],
                   selection_sha256=digest(OUT / 'selection.json'), protocol='docs/TRANSFORMER_SPRINT_PROTOCOL.md',
                   checkpoint_sha256=CHECKPOINT_SHA256, cohorts={}, baseline_contract='Archived forecast maximum gust at 60 km/h',
@@ -292,28 +244,32 @@ def evaluate():
     for cohort, data in cohorts.items():
         info = dict(rows=len(data), stations=int(data.station.nunique()), positives=int(data.exceedance.sum()),
                     states=sorted(set(data.state)), models={})
-        for name, bundle in candidates.items():
-            probability = calibrated(bundle, data)
-            selection_metrics = station_metrics(data.exceedance, probability, bundle['threshold'])
-            matched_metrics = station_metrics(data.exceedance, probability, bundle['matched_threshold'])
-            info['models'][name] = dict(selection=selection_metrics, matched_budget=matched_metrics)
+        for name in CANDIDATE_NAMES:
+            threshold = selection['candidates'][name]['threshold']
+            matched = selection['candidates'][name]['matched_threshold']
+            probability = probabilities[name][cohort]
+            info['models'][name] = dict(selection=station_metrics(data.exceedance, probability, threshold),
+                                        matched_budget=station_metrics(data.exceedance, probability, matched))
             prediction_frames.append(pd.DataFrame(dict(cohort=cohort, station=data.station, target_date=data.target_date,
                 label=data.exceedance, model=name, probability=probability,
-                selection_alert=probability >= bundle['threshold'], matched_alert=probability >= bundle['matched_threshold'])))
+                selection_alert=probability >= threshold, matched_alert=probability >= matched)))
         info['baseline'] = rule_metrics(data.exceedance, data.forecast_gust_max_kmh, THRESHOLD_KMH)
         info['climatology'] = station_metrics(data.exceedance, np.full(len(data), parts['train'].exceedance.mean()), .5)
-        winner = candidates[selection['selected']]
-        probability = calibrated(winner, data)
-        info['winner'] = selection['selected']
+        winner_name = selection['selected']
+        winner_probability = probabilities[winner_name][cohort]
+        info['winner'] = winner_name
         info['paired_uncertainty'] = wind_sprint.paired_intervals(data, data.exceedance, data.forecast_gust_max_kmh,
-                                                                  probability, THRESHOLD_KMH, winner['threshold'])
-        info['lead_time_winner'] = wind_sprint.lead_times(data, probability >= winner['threshold'])
+                                                                  winner_probability, THRESHOLD_KMH,
+                                                                  selection['candidates'][winner_name]['threshold'])
+        info['lead_time_winner'] = wind_sprint.lead_times(data, winner_probability >= selection['candidates'][winner_name]['threshold'])
         info['stations_detail'] = {station: dict(baseline=rule_metrics(group.exceedance, group.forecast_gust_max_kmh, THRESHOLD_KMH),
-                                                 updated=station_metrics(group.exceedance, calibrated(winner, group), winner['threshold']))
+                                                 updated=station_metrics(group.exceedance,
+                                                                         winner_probability[data.station.eq(station).to_numpy()],
+                                                                         selection['candidates'][winner_name]['threshold']))
                                    for station, group in data.groupby('station')}
         report['cohorts'][cohort] = info
         print(cohort, 'rows', len(data), 'positives', info['positives'], 'rule AP', round(info['baseline']['pr_auc'] or 0, 4),
-              'winner AP', round(info['models'][info['winner']]['selection']['pr_auc'] or 0, 4), flush=True)
+              'winner AP', round(info['models'][winner_name]['selection']['pr_auc'] or 0, 4), flush=True)
     primary = report['cohorts']['fresh_temporal']
     winner = primary['models'][selection['selected']]
     report['gate'] = transformer_gate_failures(winner['selection'], primary['baseline'], primary['paired_uncertainty'],
@@ -329,14 +285,14 @@ def evaluate():
 
 def frozen_selection():
     selection = json.loads((OUT / 'selection.json').read_text())
-    for path, field in [(OUT / 'candidates.joblib', 'model_sha256'), (wind_sprint.OUT / 'training.csv.gz', 'dataset_sha256'),
+    for path, field in [(wind_sprint.OUT / 'training.csv.gz', 'dataset_sha256'),
                         (wind_sprint.OUT / 'protocol.json', 'protocol_sha256'), (PROTOCOL_DOCUMENT, 'protocol_document_sha256'),
-                        (ROOT / 'scripts/transformer_sprint.py', 'code_sha256')]:
+                        (ROOT / 'scripts/transformer_sprint.py', 'code_sha256'),
+                        (ROOT / 'scripts/transformer_worker.py', 'worker_sha256')]:
         if digest(path) != selection[field]:
             raise ValueError('Frozen selection input changed: ' + str(path))
-    for name, checksum in selection['dependencies'].items():
-        if digest(ROOT / name) != checksum:
-            raise ValueError('Frozen dependency changed: ' + name)
+    if artifacts_digest() != selection['artifacts_sha256']:
+        raise ValueError('Frozen candidate artifacts changed')
     for name, version in selection['versions'].items():
         if importlib.metadata.version(name) != version:
             raise ValueError('Frozen package version changed: ' + name)
@@ -353,27 +309,24 @@ def verify():
         raise ValueError('Evaluation artifact checksum mismatch')
     assert report['selected'] == selection['selected']
     assert report['decision'] == ('retain_forecast_threshold' if report['gate'] else 'propose_integration_review')
-    predictions = pd.read_csv(OUT / 'predictions.csv.gz')
     parts, validation = selection_inputs()
     frozen, fresh = extension_frames()
-    cohorts = dict(
-        fresh_temporal=fresh[fresh.role.eq('development')],
-        fresh_geographic_validation=fresh[fresh.role.eq('geographic_validation')],
-        fresh_geographic_test=fresh[fresh.role.eq('geographic_test')],
-        inspected_temporal=frozen[frozen.role.eq('development') & (frozen.target_date >= '2026-01-01')],
-        inspected_geographic_test=frozen[frozen.role.eq('geographic_test') & (frozen.target_date >= '2026-01-01')])
-    candidates = joblib.load(OUT / 'candidates.joblib')['candidates']
-    for cohort, data in cohorts.items():
-        saved = predictions[predictions.cohort.eq(cohort)]
-        assert len(saved) == len(data) * len(candidates)
-        for name, bundle in candidates.items():
-            rows = saved[saved.model.eq(name)]
-            assert list(rows.station) == list(data.station) and list(rows.target_date) == list(data.target_date)
-            assert np.array_equal(rows.label, data.exceedance)
-            probability = calibrated(bundle, data)
-            assert np.allclose(probability, rows.probability, atol=1e-12, rtol=0)
-            assert station_metrics(data.exceedance, probability, bundle['threshold']) == report['cohorts'][cohort]['models'][name]['selection']
-    print('Verified frozen inputs, checkpoint, prediction rows and pooled metrics')
+    cohorts = cohorts_of(frozen, fresh)
+    prepare_frames(cohorts)
+    predictions = pd.read_csv(OUT / 'predictions.csv.gz')
+    with tempfile.TemporaryDirectory() as tmp:
+        for name in CANDIDATE_NAMES:
+            run_worker(name, reuse=True, out_dir=tmp, models_dir=predictions_dir())
+            for cohort, data in cohorts.items():
+                fresh_probability = np.load(Path(tmp) / f'{name}.{cohort}.npy')
+                saved = predictions[predictions.cohort.eq(cohort) & predictions.model.eq(name)]
+                assert len(saved) == len(data)
+                assert list(saved.station) == list(data.station) and list(saved.target_date) == list(data.target_date)
+                assert np.array_equal(saved.label, data.exceedance)
+                assert np.allclose(fresh_probability, saved.probability, atol=1e-12, rtol=0)
+                threshold = selection['candidates'][name]['threshold']
+                assert station_metrics(data.exceedance, fresh_probability, threshold) == report['cohorts'][cohort]['models'][name]['selection']
+    print('Verified frozen inputs, checkpoint, workers, prediction rows and pooled metrics')
 
 
 if __name__ == '__main__':
