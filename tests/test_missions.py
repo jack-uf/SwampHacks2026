@@ -148,6 +148,79 @@ def test_model_evidence_states_how_often_a_flag_was_right_in_testing():
     assert 'January to June 2026' in cited['summary']
 
 
+def gauge(lid, miles_north, category, hours_old=1, forecast=None):
+    reading = lambda c, t: dict(category=c, stage=12.0 if t else None, unit='ft' if t else None, valid_time=t)
+    return dict(lid=lid, name=f'Creek at {lid}', latitude=30+miles_north/69.05, longitude=-82.,
+                observed=reading(category, (NOW-timedelta(hours=hours_old)).isoformat()),
+                forecast=reading(forecast, (NOW+timedelta(hours=12)).isoformat()) if forecast else reading('fcst_not_current', None))
+
+
+def gauges(*items):
+    return dict(gauges=list(items), feed=dict(available=True, fetched_at=NOW.isoformat()))
+
+
+def flood_ids(jha):
+    return {e['id']: e for e in entry(jha, 'flood')['evidence'] if e['id'].startswith('gauge')}
+
+
+def test_nearby_river_gauge_flood_category_rates_flood_from_official_thresholds():
+    jha = missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'moderate'), gauge('FAR1', 30, 'major'))))
+    cited = flood_ids(jha)
+    assert entry(jha, 'flood')['rating'] == 'high' and set(cited) == {'gauge:NEAR1:observed:moderate'}
+    assert cited['gauge:NEAR1:observed:moderate']['kind'] == 'observed' and '3.0 miles' in cited['gauge:NEAR1:observed:moderate']['summary']
+    action = missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'action'), gauge('TWIN1', 3, 'action'))))
+    assert entry(action, 'flood')['rating'] == 'elevated'
+    forecast = flood_ids(missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'no_flooding', forecast='minor')))))
+    assert forecast['gauge:NEAR1:forecast:minor']['kind'] == 'predicted' and forecast['gauge:NEAR1:forecast:minor']['rating'] == 'high'
+    assert forecast['gauge:NEAR1:observed:no_flooding']['rating'] == 'low'
+
+
+def test_stale_or_missing_gauge_data_is_unavailable_never_low():
+    old = flood_ids(missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'minor', hours_old=8)))))
+    assert old['gauge:NEAR1:observed:stale']['kind'] == 'unavailable' and old['gauge:NEAR1:observed:stale']['rating'] is None
+    dead = flood_ids(missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'obs_not_current')))))
+    assert dead['gauge:NEAR1:observed:obs_not_current']['kind'] == 'unavailable'
+    none = missions.build_jha(MISSION, context(gauges=gauges(gauge('FAR1', 30, 'major'))))
+    assert flood_ids(none)['gauge:none'] ['kind'] == 'unavailable' and entry(none, 'flood')['incomplete']
+    undefined = flood_ids(missions.build_jha(MISSION, context(gauges=gauges(gauge('NEAR1', 3, 'not_defined')))))
+    assert undefined['gauge:NEAR1:observed:not_defined']['kind'] == 'unavailable'
+    assert 'stage 12 ft' in undefined['gauge:NEAR1:observed:not_defined']['summary']
+    assert 'no flood thresholds' in undefined['gauge:NEAR1:observed:not_defined']['summary']
+    failed = missions.build_jha(MISSION, context(gauges=dict(gauges=None, feed=dict(available=False))))
+    assert flood_ids(failed)['gauge:feed:unavailable']['kind'] == 'unavailable'
+
+
+def fire(id, miles_north, acres=50., days_old=0):
+    return dict(id=id, name=f'Fire {id}', acres=acres, contained_pct=10, discovered_at=(NOW-timedelta(days=2)).isoformat(),
+                updated_at=(NOW-timedelta(days=days_old)).isoformat(), latitude=30+miles_north/69.05, longitude=-82.)
+
+
+def fires(*items, complete=True):
+    return dict(incidents=list(items), complete=complete, feed=dict(available=True, fetched_at=NOW.isoformat()))
+
+
+def test_every_jha_rates_wildfire_from_active_incidents_by_distance_to_the_fire_edge():
+    close = entry(missions.build_jha(MISSION, context(wildfires=fires(fire('a', 6)))), 'wildfire')
+    assert close['rating'] == 'high' and close['evidence'][0]['kind'] == 'observed' and close['evidence'][0]['ref'] == 'a'
+    big = entry(missions.build_jha(MISSION, context(wildfires=fires(fire('b', 18, acres=300_000)))), 'wildfire')
+    assert big['rating'] == 'high' and 'edge' in big['evidence'][0]['summary']
+    contained = entry(missions.build_jha(MISSION, context(wildfires=fires(dict(fire('f', 6), contained_pct=100)))), 'wildfire')
+    assert contained['rating'] == 'elevated' and 'fully contained' in contained['evidence'][0]['summary']
+    region = entry(missions.build_jha(MISSION, context(wildfires=fires(fire('c', 18)))), 'wildfire')
+    assert region['rating'] == 'elevated'
+    clear = entry(missions.build_jha(MISSION, context(wildfires=fires(fire('d', 80)))), 'wildfire')
+    assert clear['rating'] == 'low' and '80 miles' in clear['evidence'][0]['summary']
+    stale = entry(missions.build_jha(MISSION, context(wildfires=fires(fire('e', 6, days_old=30)))), 'wildfire')
+    assert stale['evidence'][0]['counts'] is False and stale['rating'] == 'low'
+
+
+def test_wildfire_is_unknown_when_the_feed_fails_or_is_cut_off():
+    assert entry(missions.build_jha(MISSION, context(wildfires=fires(complete=False))), 'wildfire')['rating'] == 'unknown'
+    failed = dict(incidents=None, complete=False, feed=dict(available=False))
+    assert entry(missions.build_jha(MISSION, context(wildfires=failed)), 'wildfire')['rating'] == 'unknown'
+    assert entry(missions.build_jha(MISSION, context()), 'wildfire')['rating'] == 'unknown'
+
+
 def test_versions_change_on_band_or_evidence_changes_and_diff_names_them():
     base = missions.build_jha(MISSION, context(w=weather(gust=50.)))
     drift = missions.build_jha(MISSION, context(w=weather(gust=55.)))

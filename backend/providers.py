@@ -1,7 +1,7 @@
 """Authoritative providers with explicit cache freshness and visible failures."""
 import asyncio
 import os
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 import httpx
 from backend.domain import now_utc, parse_time
 from backend.store import get_cache, put_cache
@@ -81,6 +81,61 @@ async def alerts(site):
             items.append({k:p.get(k) for k in ['id','event','severity','headline','description','instruction','sent','onset','expires','ends']})
     return dict(source='NOAA / National Weather Service', feed={k:v for k,v in result.items() if k!='data'},
                 items=items if result['available'] else None)
+
+
+NWPS_GAUGES = 'https://api.water.noaa.gov/nwps/v1/gauges'
+WFIGS_CURRENT = ('https://services3.arcgis.com/T4QMspbfLg3qTGWY/arcgis/rest/services/'
+                 'WFIGS_Incident_Locations_Current/FeatureServer/0/query')
+
+
+def _reading(status):
+    """NWPS marks missing values with -999 and the year-1 timestamp."""
+    status = status or {}
+    stage = status.get('primary')
+    valid = status.get('validTime')
+    return dict(category=status.get('floodCategory') or None, stage=None if stage is None or stage <= -999 else stage,
+                unit=status.get('primaryUnit') or None, valid_time=None if not valid or valid.startswith('0001') else valid)
+
+
+def parse_gauges(data):
+    return [dict(lid=g['lid'], name=g.get('name'), latitude=g['latitude'], longitude=g['longitude'],
+                 observed=_reading((g.get('status') or {}).get('observed')), forecast=_reading((g.get('status') or {}).get('forecast')))
+            for g in data.get('gauges', []) if g.get('latitude') is not None and g.get('longitude') is not None]
+
+
+async def river_gauges(site):
+    """NWS river gauges in a box about 70 miles around the facility, so missions up to 50 miles away are covered."""
+    lat, lon = site['latitude'], site['longitude']
+    result = await fetch('nwps:'+site['id'], NWPS_GAUGES, {'bbox.xmin': lon-1.3, 'bbox.ymin': lat-1, 'bbox.xmax': lon+1.3,
+                                                          'bbox.ymax': lat+1, 'srid': 'EPSG_4326'}, ttl=900)
+    return dict(source='NOAA National Water Prediction Service river gauges', feed={k: v for k, v in result.items() if k != 'data'},
+                gauges=parse_gauges(result['data']) if result['available'] else None)
+
+
+def _epoch(value):
+    return None if value is None else datetime.fromtimestamp(value/1000, timezone.utc).isoformat()
+
+
+def parse_wildfires(data):
+    """Active WFIGS wildfire incidents. A response cut at the record limit cannot show that no fire is nearby."""
+    incidents = []
+    for f in data.get('features', []):
+        a, g = f.get('attributes') or {}, f.get('geometry')
+        if not g or g.get('x') is None or g.get('y') is None:
+            continue
+        incidents.append(dict(id=a.get('UniqueFireIdentifier'), name=a.get('IncidentName'), acres=a.get('IncidentSize'),
+                              contained_pct=a.get('PercentContained'), discovered_at=_epoch(a.get('FireDiscoveryDateTime')),
+                              updated_at=_epoch(a.get('ModifiedOnDateTime_dt')), latitude=g['y'], longitude=g['x']))
+    return incidents, not data.get('exceededTransferLimit')
+
+
+async def wildfires():
+    result = await fetch('wfigs:current', WFIGS_CURRENT, dict(
+        where="IncidentTypeCategory='WF' AND FireOutDateTime IS NULL", returnGeometry='true', outSR=4326, f='json',
+        outFields='UniqueFireIdentifier,IncidentName,IncidentSize,PercentContained,FireDiscoveryDateTime,ModifiedOnDateTime_dt'), ttl=900)
+    incidents, complete = parse_wildfires(result['data']) if result['available'] else (None, False)
+    return dict(source='NIFC WFIGS current wildfire incidents', feed={k: v for k, v in result.items() if k != 'data'},
+                incidents=incidents, complete=complete)
 
 
 async def floodplain(site):

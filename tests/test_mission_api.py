@@ -74,6 +74,25 @@ def test_crew_report_lifecycle_versions_the_mission_jha_with_attribution(client)
     assert after['decisions'][0]['stale'] is True and len(after['versions']) == 4
 
 
+def test_alert_watch_reassesses_only_sites_with_open_missions_when_alerts_change(client, monkeypatch):
+    import asyncio
+    s = main.SITES[0]
+    mid = client.post('/api/missions', json=mission_body(s), headers=AUTH).json()['id']
+    asyncio.run(main.watch_alerts())
+    assert len(main.versions_for(mid)) == 1
+    warning = dict(id='urn:nws:flood-1', event='Flood Warning', severity='Severe', sent=now_utc().isoformat(),
+                   expires=(now_utc()+timedelta(days=2)).isoformat())
+    checked = []
+    async def alerts(site):
+        checked.append(site['id'])
+        return dict(items=[warning], feed=dict(available=True, fetched_at=now_utc().isoformat()))
+    monkeypatch.setattr(main.providers, 'alerts', alerts)
+    asyncio.run(main.watch_alerts())
+    latest = main.versions_for(mid)[-1]
+    assert checked[0] == s['id'] and latest['trigger'] == 'NWS alert set changed'
+    assert any(e.get('ref') == 'urn:nws:flood-1' for e in next(e for e in latest['payload']['entries'] if e['hazard'] == 'flood')['evidence'])
+
+
 def test_concurrent_jha_updates_each_get_their_own_version(client, monkeypatch):
     import threading
     import time

@@ -26,6 +26,12 @@ def client(tmp_path, monkeypatch):
         return dict(available=False,hazards={},reason='Explicit test provider; no model substitution')
     async def floodplain(site):
         return dict(zones=[],feed=dict(available=False),note='Test unavailable')
+    async def river_gauges(site):
+        return dict(gauges=[],feed=dict(available=True,fetched_at=now_utc().isoformat()))
+    async def wildfires():
+        return dict(incidents=[],complete=True,feed=dict(available=True,fetched_at=now_utc().isoformat()))
+    monkeypatch.setattr(main.providers,'river_gauges',river_gauges)
+    monkeypatch.setattr(main.providers,'wildfires',wildfires)
     monkeypatch.setattr(main.providers,'weather',weather)
     monkeypatch.setattr(main.providers,'alerts',alerts)
     monkeypatch.setattr(main.providers,'floodplain',floodplain)
@@ -99,6 +105,20 @@ def test_briefing_history_is_persistent_and_idempotent(client):
     saved=client.get(url).json()
     assert len(saved)==1 and saved[0]['payload']['timezone']==site['timezone']
     assert saved[0]['delivery']=='not configured'
+
+
+def test_site_detail_rates_nearby_wildfire_and_keeps_only_regional_incidents(client, monkeypatch):
+    s=main.SITES[0]
+    def incident(id,dlat):
+        return dict(id=id,name=id,acres=40.,contained_pct=0,discovered_at=now_utc().isoformat(),updated_at=now_utc().isoformat(),
+                    latitude=s['latitude']+dlat,longitude=s['longitude'])
+    async def wildfires():
+        return dict(incidents=[incident('near',.05),incident('far',8)],complete=True,feed=dict(available=True,fetched_at=now_utc().isoformat()))
+    monkeypatch.setattr(main.providers,'wildfires',wildfires)
+    detail=client.get('/api/sites/'+s['id']).json()
+    assert [i['id'] for i in detail['wildfires']['incidents']]==['near']
+    assert detail['nearby']['wildfire'][0]['rating']=='high' and detail['nearby']['wildfire'][0]['ref']=='near'
+    assert detail['nearby']['flood'][0]['kind']=='unavailable'
 
 
 def test_failed_reassessment_serves_the_last_assessment_marked_stale(client, monkeypatch):

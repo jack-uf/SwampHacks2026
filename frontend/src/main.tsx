@@ -34,7 +34,7 @@ import {
 import { ClipboardList, GitCompare } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 import "./styles.css";
-import { MissionsView, OverlapsView } from "./missions";
+import { KindBadge, MissionsView, OverlapsView } from "./missions";
 
 type Site = {
   id: string;
@@ -75,6 +75,7 @@ type Detail = {
   lightning: any;
   reports: any[];
   floodplain: any;
+  nearby?: { flood: any[]; wildfire: any[] };
   history: any[];
   assessed_at: string;
   stale?: boolean;
@@ -974,11 +975,24 @@ function App() {
                                 : detail.floodplain.note
                               : "FEMA floodplain lookup unavailable. Static flood exposure is unknown."}
                           </p>
+                          {detail.nearby && (
+                            <ul className="evidence-list nearby-evidence">
+                              {[...detail.nearby.flood, ...detail.nearby.wildfire].map((x: any) => (
+                                <li key={x.id}>
+                                  <KindBadge kind={x.kind} />
+                                  <span>
+                                    <b>{x.source}</b> {x.summary}
+                                    {x.rating && <em> → {x.rating}</em>}
+                                    {!x.counts && <em> · not counted</em>}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                           <p className="body-note">
-                            Flood screening combines rainfall and modeled soil
-                            moisture in the contribution panel. Wildfire: NWS
-                            fire-weather alerts where present; no active-fire
-                            perimeter feed. Wildlife: crew sightings only.
+                            River gauges and wildfire incidents are measured from the
+                            facility point and rate mission JHAs; they are not part of
+                            the weighted index. Wildlife: crew sightings only.
                           </p>
                         </div>
                         <div className="contribution-column">

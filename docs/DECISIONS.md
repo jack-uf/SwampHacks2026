@@ -68,3 +68,51 @@ No. There is no new research objective, and the storm investigation concluded th
 - Image inference with Jev: gated experimental API, photos stay local.
 - Automatic mission clearance: no rule or model clears work.
 - Seeded demo missions in the persistent database: missions created during browser checks carry a DEMO label in their names.
+
+# Decision record: technical improvement round (October 17, 2026)
+
+Same method as above: I questioned the plan myself, read the code first, and checked every provider contract against a live response before building on it.
+
+## R1. What was weakest once I read the code?
+
+The JHA could stay silent where it should speak. A vegetation-clearing mission had no wildfire entry at all unless NWS issued a fire alert, and river flooding had no source besides rain forecasts. NWS alerts that matched no keyword (Winter Storm, Dense Fog, Extreme Cold) were dropped, and "Wind Chill" matched the storm keyword "wind". The ML component reported "elevated" with no hint that most flagged county-days in testing had no event. A supervisor decision recorded the latest version even if the supervisor had been reading an older one. Two writers (a sync endpoint thread and the async refresh) could both read version N and race to insert N+1, and `INSERT OR IGNORE` hid the loser.
+
+Order of work, by impact on a crew decision: JHA correctness and traceability first, then the two missing hazard feeds, then index uncertainty, identity and audit, then the ML diagnostic.
+
+## R2. Which flood and wildfire feeds?
+
+- Flood: NOAA National Water Prediction Service gauges (`api.water.noaa.gov/nwps/v1/gauges`, bounding-box query, no key). Each gauge carries an observed and a forecast NWS flood category with a valid time, so the rating uses the official thresholds instead of a raw stage I would have to interpret. USGS instantaneous values give stage without flood thresholds, so I left them out. A national box timed out after 60 seconds; a box around one facility returns in about a second.
+- Wildfire: NIFC WFIGS current incident locations (public ArcGIS layer, no key). One request returns every active incident (241 wildfires at check time). NASA FIRMS needs a registered MAP_KEY, which this machine does not have.
+- Lightning: no free, keyless strike feed with redistribution terms exists that I could verify, and `PLANIT_LIGHTNING_TOKEN` is blank. The ingestion contract stays; live lightning stays unavailable.
+- Briefing delivery: `PLANIT_ENABLE_DELIVERY` and `PLANIT_BRIEFING_WEBHOOK` are blank, so external delivery cannot be verified. I fix a queue bug in it instead (R7).
+
+Rating rules, all deterministic and documented as screening heuristics:
+
+- Gauge within 10 miles of the work point: observed minor, moderate or major flooding rates high; action stage rates elevated; no flooding rates low. The forecast category uses the same bands as predicted evidence. An observation older than 6 hours, or a category the API marks not current, is unavailable for that gauge. No gauge within 10 miles is unavailable: river stage unmonitored, not safe.
+- Wildfire: distance to the reported origin minus the radius of a circle with the reported acreage. Under 10 miles rates high, under 25 miles elevated, otherwise low. A response cut off by the server's record limit makes "no fire nearby" unavailable.
+
+The first live run changed two rules. Sherburne County and Grand Coulee both rated high from fires reported 100% contained, so a fully contained fire now rates one band lower. Gauges without NWS flood thresholds (`not_defined`) still report a current stage; the evidence says so instead of claiming there is no observation. WFIGS also lists a "WILDFIRE TRAINING" record last discovered in January, so records not updated for 14 days are shown but not counted.
+
+## R3. Does missing data still look safe anywhere?
+
+Yes, in the portfolio ranking. A site with 45% coverage and a score of 2.0 sorts below a fully covered site at 3.0. Decision: every index also reports the highest score its unknown components could add (each unknown component at full severity), and the leaderboard sorts by that upper bound. Weights stay unchanged so stored history remains comparable.
+
+## R4. Identity: Auth0 or something local?
+
+Auth0 has no credentials here. Decision: optional per-supervisor bearer tokens in `PLANIT_SUPERVISOR_TOKENS`. When the token names a supervisor, decisions and reviews record that name and ignore the typed one. The shared token still works, and records made with it say the name was self-declared. Every supervisor mutation goes into an append-only audit table.
+
+## R5. Can the ML evaluation say anything new without touching inspected holdouts?
+
+Yes, about geographic generalization. The question is how much worse the selected recipes do in a state they never saw. Design, frozen in `docs/SPATIAL_CV_PROTOCOL.md` before the first run: leave one state out across the 18 development counties, fit on 2024, calibrate on January to June 2025, score July to December 2025, all from other states. Compare against the same rows scored by the same recipe fitted on all states. No 2026 row and no geographic-holdout state is read. The result is diagnostic only; it changes no model, threshold or serving scope whatever it shows.
+
+## R6. What about Jev?
+
+The 16 held-out cases are inspected, so they cannot tune a new rule. A new abstention rule would need fresh frozen cases and paid calls. That costs money and still leaves author-written labels. I leave the rule alone and record the limit. Prioritization is a different matter. The pending queue now sorts urgent before clarification before standard, oldest first. That is a display order, so it needs no accuracy claim.
+
+## R7. Smaller reliability fixes
+
+- JHA writes take an immediate SQLite write lock around read-then-insert, and the database uses WAL.
+- A decision must name the version it was made on; a newer version returns 409.
+- Each mission records when its JHA was last re-checked, separately from when its last version was created.
+- A failed reassessment returns the last assessment marked stale instead of a 500.
+- Briefing delivery attempts the oldest undelivered snapshots that are not cooling down, so permanent failures stop blocking newer ones.

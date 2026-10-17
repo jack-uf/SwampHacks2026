@@ -2,8 +2,8 @@
 import hashlib
 import json
 from datetime import timedelta, timezone
-from math import ceil
-from backend.domain import parse_time
+from math import ceil, pi, sqrt
+from backend.domain import distance_miles, parse_time
 
 
 RANK = dict(unknown=0, low=1, elevated=2, high=3, stop_work=4)
@@ -61,6 +61,86 @@ def forecast_evidence(hazard, conditions, key, unit, rating, label):
                     rating=rating, value=value, unit=unit, at=conditions['fetched_at'])
 
 
+GAUGE_SOURCE = 'NOAA National Water Prediction Service river gauge'
+GAUGE_MILES, GAUGE_MAX_AGE = 10, timedelta(hours=6)
+FLOOD_CATEGORY = dict(no_flooding='low', action='elevated', minor='high', moderate='high', major='high')
+CATEGORY_LABEL = dict(no_flooding='no flooding', action='action stage', minor='minor flooding', moderate='moderate flooding',
+                      major='major flooding')
+FIRE_SOURCE = 'NIFC WFIGS current wildfire incidents (agency-reported)'
+FIRE_HIGH_MILES, FIRE_ELEVATED_MILES, FIRE_MAX_AGE = 10, 25, timedelta(days=14)
+
+
+def gauge_evidence(point, feed, now):
+    if not feed or feed.get('gauges') is None:
+        return [evidence('gauge:feed:unavailable', 'unavailable', GAUGE_SOURCE, 'River gauge feed unavailable; river stage unknown')]
+    near = sorted(((distance_miles(*point, g['latitude'], g['longitude']), g) for g in feed['gauges'] if g.get('lid')),
+                  key=lambda pair: (pair[0], pair[1]['lid']))
+    near = [(d, g) for d, g in near if d <= GAUGE_MILES][:3]
+    if not near:
+        return [evidence('gauge:none', 'unavailable', GAUGE_SOURCE,
+                         f'No NWS river gauge within {GAUGE_MILES} miles of the work location; river stage is unmonitored, not safe')]
+    items = []
+    for d, g in near:
+        where = f"{g['name']} ({g['lid']}), {d:.1f} miles away"
+        o, f = g['observed'], g['forecast']
+        rating = FLOOD_CATEGORY.get(o['category'])
+        if rating is None:
+            reading = (f"stage {o['stage']:g} {o['unit']} at {utc_clock(o['valid_time'])}, but NWS reports {o['category']}: "
+                       'no flood thresholds apply' if o['stage'] is not None and o['valid_time']
+                       else f"no current observation ({o['category'] or 'no category'})")
+            items.append(evidence(f"gauge:{g['lid']}:observed:{o['category'] or 'unknown'}", 'unavailable', GAUGE_SOURCE,
+                                  f'{where}: {reading}'))
+        elif not o['valid_time'] or now-parse_time(o['valid_time']) > GAUGE_MAX_AGE:
+            items.append(evidence(f"gauge:{g['lid']}:observed:stale", 'unavailable', GAUGE_SOURCE,
+                                  f"{where}: last observation {o['valid_time'] or 'unknown'} is older than 6 hours"))
+        else:
+            items.append(evidence(f"gauge:{g['lid']}:observed:{o['category']}", 'observed', GAUGE_SOURCE,
+                                  f"{where}: {CATEGORY_LABEL[o['category']]} at {o['stage']:g} {o['unit']}, observed {utc_clock(o['valid_time'])}",
+                                  rating=rating, ref=g['lid'], at=o['valid_time']))
+        forecast = FLOOD_CATEGORY.get(f['category'])
+        if forecast and f['valid_time']:
+            items.append(evidence(f"gauge:{g['lid']}:forecast:{f['category']}", 'predicted', 'NWS river forecast at ' + g['lid'],
+                                  f"{where}: forecast {CATEGORY_LABEL[f['category']]}, {f['stage']:g} {f['unit']} at {f['valid_time'][:16]} UTC",
+                                  rating=forecast, ref=g['lid']))
+    return items
+
+
+def wildfire_evidence(point, feed, now):
+    if not feed or feed.get('incidents') is None or not feed.get('complete'):
+        return [evidence('wfigs:unavailable', 'unavailable', FIRE_SOURCE,
+                         'Wildfire incident feed unavailable or cut off at its record limit; nearby fires unknown')]
+    rows = []
+    for f in feed['incidents']:
+        center = distance_miles(*point, f['latitude'], f['longitude'])
+        radius = sqrt((f['acres'] or 0)/640/pi)
+        current = bool(f['updated_at']) and now-parse_time(f['updated_at']) <= FIRE_MAX_AGE
+        rows.append((max(0., center-radius), center, current, f))
+    rows.sort(key=lambda r: r[0])
+    items = []
+    for edge, center, current, f in [r for r in rows if r[0] <= FIRE_ELEVATED_MILES][:3]:
+        size = f"{f['acres']:g} acres" if f['acres'] else 'size not reported'
+        contained = f", {f['contained_pct']:g}% contained" if f['contained_pct'] is not None else ''
+        where = f"origin {center:.1f} miles away" + (f", edge about {edge:.1f} miles if the fire were a circle of its reported size" if f['acres'] else '')
+        if current:
+            rating = 'high' if edge < FIRE_HIGH_MILES else 'elevated'
+            if (f['contained_pct'] or 0) >= 100:
+                rating, contained = ('elevated' if rating == 'high' else 'low'), ', fully contained (rated one band lower)'
+            items.append(evidence(f"wfigs:{f['id']}:{rating}", 'observed', FIRE_SOURCE,
+                                  f"{f['name']}: {size}{contained}, {where}; updated {f['updated_at'][:10]}", rating=rating, ref=f['id'],
+                                  at=f['updated_at']))
+        else:
+            items.append(evidence(f"wfigs:{f['id']}:stale", 'observed', FIRE_SOURCE,
+                                  f"{f['name']}: {where}; record not updated since {(f['updated_at'] or 'unknown')[:10]}, may be out of date",
+                                  counts=False, ref=f['id']))
+    if not any(e['counts'] for e in items):
+        fresh = [center for _, center, current, _ in rows if current]
+        nearest = f'; nearest current record {min(fresh):.0f} miles away' if fresh else ''
+        items.append(evidence(f'wfigs:none-within-{FIRE_ELEVATED_MILES}mi', 'observed', FIRE_SOURCE,
+                              f'No current wildfire incident within {FIRE_ELEVATED_MILES} miles{nearest}. New or unreported fires can be missing.',
+                              rating='low', at=(feed.get('feed') or {}).get('fetched_at')))
+    return items
+
+
 def build_jha(mission, ctx):
     activity = ACTIVITIES[mission['activity']]
     c = ctx['conditions']
@@ -71,6 +151,11 @@ def build_jha(mission, ctx):
     elevated, high = activity.get('wind', DEFAULT_WIND)
     add('storm', forecast_evidence('storm', c, 'gust_max_kmh', 'km/h', band(c['gust_max_kmh'], elevated, high), 'Gust max'))
     add('flood', forecast_evidence('flood', c, 'rain_mm', 'mm', band(c['rain_mm'], 10, 25), 'Rainfall'))
+    point = (mission['latitude'], mission['longitude'])
+    for item in gauge_evidence(point, ctx.get('gauges'), ctx['now']):
+        add('flood', item)
+    for item in wildfire_evidence(point, ctx.get('wildfires'), ctx['now']):
+        add('wildfire', item)
     if activity.get('terrain'):
         prior = ((ctx.get('weather') or {}).get('summary') or {}).get('rain_72h_mm')
         wet = None if c['soil_moisture_max'] is None and c['rain_mm'] is None else \

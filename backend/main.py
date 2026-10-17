@@ -67,6 +67,7 @@ def mission_context(mission, site, assessment):
     return dict(now=now_utc(), conditions=missions.window_conditions(weather, mission['shift_start'], mission['shift_end']),
                 weather=weather, alerts=assessment['alerts']['items'], model=assessment['model'], floodplain=assessment['floodplain'],
                 reports=site_reports(site['id']), lightning=strike_states(work_point),
+                gauges=assessment.get('gauges'), wildfires=assessment.get('wildfires'),
                 live_feed_configured=bool(os.getenv('PLANIT_LIGHTNING_TOKEN')))
 
 
@@ -105,13 +106,17 @@ def update_missions(site, trigger, assessment=None):
 
 
 async def assess(site, trigger='Environmental refresh'):
-    weather, alerts, model, exposure = await asyncio.gather(
-        providers.weather(site), providers.alerts(site), predictions(site), providers.floodplain(site))
+    weather, alerts, model, exposure, gauges, fires = await asyncio.gather(
+        providers.weather(site), providers.alerts(site), predictions(site), providers.floodplain(site),
+        providers.river_gauges(site), providers.wildfires())
+    if fires.get('incidents') is not None:
+        fires = dict(fires, incidents=[f for f in fires['incidents']
+                                       if distance_miles(site['latitude'], site['longitude'], f['latitude'], f['longitude']) <= 150])
     reports = site_reports(site['id'])
     active_reports = [r for r in reports if parse_time(r['created_at']) > now_utc()-timedelta(hours=48)]
     index = hazard_index(weather, alerts['items'], active_reports, model['hazards'], exposure)
     result = dict(site=site, weather=weather, alerts=alerts, model=model, index=index, floodplain=exposure,
-                  assessed_at=now_utc().isoformat())
+                  gauges=gauges, wildfires=fires, assessed_at=now_utc().isoformat())
     put_cache('assessment:'+MODEL_REVISION+':'+site['id'], result, result['assessed_at'])
     with db() as c:
         c.execute('INSERT OR IGNORE INTO history VALUES (?,?,?,?)',
@@ -240,10 +245,31 @@ async def refresh_scheduler():
         await asyncio.sleep(1800)
 
 
+async def watch_alerts():
+    """Re-check NWS alerts at sites with open missions; reassess when the set of in-effect alerts changes."""
+    for site in SITES:
+        if not open_missions(site['id']):
+            continue
+        try:
+            latest = await providers.alerts(site)
+            cached = cached_assessment(site)
+            known = (cached or {}).get('alerts', {}).get('items')
+            if latest['items'] is not None and (known is None or {a['id'] for a in known} != {a['id'] for a in latest['items']}):
+                await assess(site, 'NWS alert set changed')
+        except Exception:
+            log.exception('Alert watch failed for %s', site['id'])
+
+
+async def alert_scheduler():
+    while True:
+        await asyncio.sleep(300)
+        await watch_alerts()
+
+
 @asynccontextmanager
 async def lifespan(app):
     initialize()
-    tasks = [asyncio.create_task(job()) for job in (scheduler, refresh_scheduler)] if os.getenv('PLANIT_SCHEDULER','true')=='true' else []
+    tasks = [asyncio.create_task(job()) for job in (scheduler, refresh_scheduler, alert_scheduler)] if os.getenv('PLANIT_SCHEDULER','true')=='true' else []
     try:
         yield
     finally:
@@ -280,7 +306,10 @@ async def detail(site_id):
     result = await current_assessment(s)
     with db() as c:
         history = [dict(r) for r in c.execute('SELECT * FROM history WHERE site_id=? ORDER BY recorded_at DESC LIMIT 48',(site_id,))]
-    return dict(result, reports=site_reports(site_id), lightning=strike_states(s), history=history)
+    point = (s['latitude'], s['longitude'])
+    nearby = dict(flood=missions.gauge_evidence(point, result.get('gauges'), now_utc()),
+                  wildfire=missions.wildfire_evidence(point, result.get('wildfires'), now_utc()))
+    return dict(result, reports=site_reports(site_id), lightning=strike_states(s), history=history, nearby=nearby)
 
 
 @app.post('/api/refresh',dependencies=[Depends(admin)])
