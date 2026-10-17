@@ -37,8 +37,10 @@ def build_model(name, train):
     if name == 'tabpfn_extended':
         from tabpfn import TabPFNClassifier
         from tabpfn.constants import ModelVersion
-        torch_modules()
-        return TabPFNClassifier.create_default_for_version(ModelVersion.V2, device='cpu', random_state=42)
+        import torch
+        torch.set_num_threads(THREADS)
+        return TabPFNClassifier.create_default_for_version(ModelVersion.V2, device='cpu', random_state=42,
+                                                    ignore_pretraining_limits=True)
     if name == 'ft_transformer_extended':
         from scripts.ft_transformer import FTTransformerClassifier
         return FTTransformerClassifier()
