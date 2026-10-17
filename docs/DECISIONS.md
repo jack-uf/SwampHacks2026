@@ -107,12 +107,12 @@ Yes, about geographic generalization. The question is how much worse the selecte
 
 ## R6. What about Jev?
 
-The 16 held-out cases are inspected, so they cannot tune a new rule. A new abstention rule would need fresh frozen cases and paid calls. That costs money and still leaves author-written labels. I leave the rule alone and record the limit. Prioritization is a different matter. The pending queue now sorts urgent before clarification before standard, oldest first. That is a display order, so it needs no accuracy claim.
+The 16 held-out cases are inspected, so they cannot tune a new rule. A new abstention rule would need fresh frozen cases and paid calls. That costs money and still leaves author-written labels. I leave the rule alone and record the limit. Prioritization is a different matter. The pending queue now lists urgent reports first. Clarification reports and reports Jev never screened come next, and standard reports last, oldest first within each group. Closed reports follow, newest first. That is a display order, so it needs no accuracy claim. An unscreened report ranks with clarification because nobody has triaged it yet.
 
 ## R7. Smaller reliability fixes
 
-- JHA writes take an immediate SQLite write lock around read-then-insert, and the database uses WAL.
+- JHA writes take an immediate SQLite write lock around read-then-insert. I left the journal mode alone: WAL would change the user's live database file for a gain nobody has measured.
 - A decision must name the version it was made on; a newer version returns 409.
 - Each mission records when its JHA was last re-checked, separately from when its last version was created.
 - A failed reassessment returns the last assessment marked stale instead of a 500.
-- Briefing delivery attempts the oldest undelivered snapshots that are not cooling down, so permanent failures stop blocking newer ones.
+- Briefing delivery tries never-attempted snapshots before failed ones, so 20 permanent failures can no longer block every newer briefing. Failed snapshots still retry every minute; a per-snapshot backoff needs an attempt timestamp the schema does not have.

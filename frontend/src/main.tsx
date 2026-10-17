@@ -398,6 +398,14 @@ function App() {
     return (reportHazard === "all" || categories.includes(reportHazard)) &&
       (reportQueue === "all" || r.status === "pending" &&
         (reportQueue === "manual" ? provider?.status !== "classified" : provider?.review_queue === reportQueue));
+  }).sort((a, b) => {
+    // Pending first: urgent, then clarification or unscreened, then standard; oldest waits least. Closed reports newest first.
+    const rank = (r: any) => {
+      if (r.status !== "pending") return 9;
+      const p = r.triage?.provider;
+      return p?.status !== "classified" ? 1 : ({ urgent: 0, clarification: 1, standard: 2 } as any)[p.review_queue] ?? 1;
+    };
+    return rank(a) - rank(b) || (rank(a) < 9 ? a.created_at.localeCompare(b.created_at) : b.created_at.localeCompare(a.created_at));
   });
   const remaining = (state: any) =>
     Math.max(
