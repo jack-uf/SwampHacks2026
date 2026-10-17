@@ -1,0 +1,677 @@
+{
+  "metrics": {
+    "2021": {
+      "gbm": {
+        "rows": 18127,
+        "positive_decisions": 551,
+        "prevalence": 0.03039664588735036,
+        "ap": 0.2830864689337417,
+        "brier": 0.025137402690790418,
+        "log_loss": 0.09302044706244499,
+        "policies": {
+          "pooled_1": {
+            "alerts": 297,
+            "true_alerts": 118,
+            "false_alerts": 179,
+            "precision": 0.39730639730639733,
+            "decision_recall": 0.21415607985480944,
+            "events": 189,
+            "event_recall": 0.3968253968253968,
+            "false_alerts_per_100": 0.9874772438903293,
+            "median_event_lead_hours": 53.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 16602,
+            "predicted": 0.009914547692968416,
+            "observed": 0.01264907842428623
+          },
+          {
+            "rows": 722,
+            "predicted": 0.14081588826963892,
+            "observed": 0.13157894736842105
+          },
+          {
+            "rows": 314,
+            "predicted": 0.24245493369391333,
+            "observed": 0.25477707006369427
+          },
+          {
+            "rows": 203,
+            "predicted": 0.34682915255799357,
+            "observed": 0.2512315270935961
+          },
+          {
+            "rows": 117,
+            "predicted": 0.4509907160878823,
+            "observed": 0.3162393162393162
+          },
+          {
+            "rows": 93,
+            "predicted": 0.5450892359455433,
+            "observed": 0.4731182795698925
+          },
+          {
+            "rows": 44,
+            "predicted": 0.643718044824825,
+            "observed": 0.4090909090909091
+          },
+          {
+            "rows": 25,
+            "predicted": 0.7366754776118702,
+            "observed": 0.52
+          },
+          {
+            "rows": 7,
+            "predicted": 0.8305804473952026,
+            "observed": 0.42857142857142855
+          }
+        ]
+      },
+      "extra": {
+        "rows": 18127,
+        "positive_decisions": 551,
+        "prevalence": 0.03039664588735036,
+        "ap": 0.27344045244934784,
+        "brier": 0.025471128532591043,
+        "log_loss": 0.09760201988731426,
+        "policies": {
+          "pooled_1": {
+            "alerts": 290,
+            "true_alerts": 112,
+            "false_alerts": 178,
+            "precision": 0.38620689655172413,
+            "decision_recall": 0.20326678765880218,
+            "events": 189,
+            "event_recall": 0.36507936507936506,
+            "false_alerts_per_100": 0.9819606112428974,
+            "median_event_lead_hours": 53.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 16542,
+            "predicted": 0.01112229833622022,
+            "observed": 0.013541288840527143
+          },
+          {
+            "rows": 770,
+            "predicted": 0.14377234997433425,
+            "observed": 0.11298701298701298
+          },
+          {
+            "rows": 328,
+            "predicted": 0.24459049354744253,
+            "observed": 0.2073170731707317
+          },
+          {
+            "rows": 201,
+            "predicted": 0.3500341426203776,
+            "observed": 0.3034825870646766
+          },
+          {
+            "rows": 129,
+            "predicted": 0.4462406839039559,
+            "observed": 0.2868217054263566
+          },
+          {
+            "rows": 82,
+            "predicted": 0.5448692298011858,
+            "observed": 0.3902439024390244
+          },
+          {
+            "rows": 48,
+            "predicted": 0.6470032178474464,
+            "observed": 0.5833333333333334
+          },
+          {
+            "rows": 23,
+            "predicted": 0.7483690999118189,
+            "observed": 0.4782608695652174
+          },
+          {
+            "rows": 4,
+            "predicted": 0.8214713183801121,
+            "observed": 0.75
+          }
+        ]
+      },
+      "analog": {
+        "rows": 18127,
+        "positive_decisions": 551,
+        "prevalence": 0.03039664588735036,
+        "ap": 0.07830542223706854,
+        "brier": 0.028942810684782848,
+        "log_loss": 0.12665677236259218,
+        "policies": {
+          "pooled_1": {
+            "alerts": 191,
+            "true_alerts": 27,
+            "false_alerts": 164,
+            "precision": 0.14136125654450263,
+            "decision_recall": 0.04900181488203267,
+            "events": 189,
+            "event_recall": 0.07936507936507936,
+            "false_alerts_per_100": 0.9047277541788492,
+            "median_event_lead_hours": 76.0,
+            "min_event_lead_hours": 52.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 16760,
+            "predicted": 0.02182655369562472,
+            "observed": 0.0256563245823389
+          },
+          {
+            "rows": 1336,
+            "predicted": 0.12481546823107205,
+            "observed": 0.08383233532934131
+          },
+          {
+            "rows": 31,
+            "predicted": 0.222789233993186,
+            "observed": 0.2903225806451613
+          }
+        ]
+      },
+      "rainfall": {
+        "rows": 18127,
+        "positive_decisions": 551,
+        "prevalence": 0.03039664588735036,
+        "ap": 0.2322306898259959,
+        "brier": 0.026039376548052714,
+        "log_loss": 0.10558668056408958,
+        "policies": {
+          "pooled_1": {
+            "alerts": 281,
+            "true_alerts": 102,
+            "false_alerts": 179,
+            "precision": 0.36298932384341637,
+            "decision_recall": 0.1851179673321234,
+            "events": 189,
+            "event_recall": 0.31216931216931215,
+            "false_alerts_per_100": 0.9874772438903293,
+            "median_event_lead_hours": 76.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 16263,
+            "predicted": 0.016534158837410284,
+            "observed": 0.014081042858021276
+          },
+          {
+            "rows": 1331,
+            "predicted": 0.13900398324448485,
+            "observed": 0.1179564237415477
+          },
+          {
+            "rows": 318,
+            "predicted": 0.2404002873062536,
+            "observed": 0.2610062893081761
+          },
+          {
+            "rows": 132,
+            "predicted": 0.34317422553343396,
+            "observed": 0.32575757575757575
+          },
+          {
+            "rows": 55,
+            "predicted": 0.44127471908524724,
+            "observed": 0.41818181818181815
+          },
+          {
+            "rows": 26,
+            "predicted": 0.5511315193118916,
+            "observed": 0.5769230769230769
+          },
+          {
+            "rows": 2,
+            "predicted": 0.6380825465525295,
+            "observed": 0.5
+          }
+        ]
+      },
+      "logistic": {
+        "rows": 18127,
+        "positive_decisions": 551,
+        "prevalence": 0.03039664588735036,
+        "ap": 0.26900329092926223,
+        "brier": 0.02622526252984284,
+        "log_loss": 0.10109049332463588,
+        "policies": {
+          "pooled_1": {
+            "alerts": 302,
+            "true_alerts": 128,
+            "false_alerts": 174,
+            "precision": 0.423841059602649,
+            "decision_recall": 0.2323049001814882,
+            "events": 189,
+            "event_recall": 0.4021164021164021,
+            "false_alerts_per_100": 0.9598940806531693,
+            "median_event_lead_hours": 53.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 16851,
+            "predicted": 0.015597067505165417,
+            "observed": 0.014717227464245445
+          },
+          {
+            "rows": 673,
+            "predicted": 0.1378116811813988,
+            "observed": 0.15304606240713226
+          },
+          {
+            "rows": 230,
+            "predicted": 0.24198301910420067,
+            "observed": 0.23478260869565218
+          },
+          {
+            "rows": 108,
+            "predicted": 0.34430775729626617,
+            "observed": 0.3055555555555556
+          },
+          {
+            "rows": 74,
+            "predicted": 0.4447229361648764,
+            "observed": 0.43243243243243246
+          },
+          {
+            "rows": 44,
+            "predicted": 0.5449826129244987,
+            "observed": 0.36363636363636365
+          },
+          {
+            "rows": 38,
+            "predicted": 0.6565527775139866,
+            "observed": 0.47368421052631576
+          },
+          {
+            "rows": 32,
+            "predicted": 0.7435352212587836,
+            "observed": 0.4375
+          },
+          {
+            "rows": 32,
+            "predicted": 0.8377559164245073,
+            "observed": 0.40625
+          },
+          {
+            "rows": 45,
+            "predicted": 0.9613947429637597,
+            "observed": 0.4444444444444444
+          }
+        ]
+      }
+    },
+    "2022": {
+      "gbm": {
+        "rows": 21984,
+        "positive_decisions": 525,
+        "prevalence": 0.023881004366812227,
+        "ap": 0.30650985834827615,
+        "brier": 0.019588385863972615,
+        "log_loss": 0.07615001742325037,
+        "policies": {
+          "pooled_1": {
+            "alerts": 364,
+            "true_alerts": 146,
+            "false_alerts": 218,
+            "precision": 0.4010989010989011,
+            "decision_recall": 0.2780952380952381,
+            "events": 184,
+            "event_recall": 0.42934782608695654,
+            "false_alerts_per_100": 0.9916302765647744,
+            "median_event_lead_hours": 55.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 20128,
+            "predicted": 0.011573880358127928,
+            "observed": 0.008445945945945946
+          },
+          {
+            "rows": 979,
+            "predicted": 0.1416703189184888,
+            "observed": 0.11338100102145046
+          },
+          {
+            "rows": 389,
+            "predicted": 0.24601868323768422,
+            "observed": 0.16966580976863754
+          },
+          {
+            "rows": 226,
+            "predicted": 0.3468243744367109,
+            "observed": 0.27876106194690264
+          },
+          {
+            "rows": 129,
+            "predicted": 0.4443285292776129,
+            "observed": 0.3488372093023256
+          },
+          {
+            "rows": 71,
+            "predicted": 0.5424020280621293,
+            "observed": 0.4084507042253521
+          },
+          {
+            "rows": 40,
+            "predicted": 0.6384542276771338,
+            "observed": 0.625
+          },
+          {
+            "rows": 20,
+            "predicted": 0.7375264393789717,
+            "observed": 0.75
+          },
+          {
+            "rows": 2,
+            "predicted": 0.8505313811668771,
+            "observed": 0.5
+          }
+        ]
+      },
+      "extra": {
+        "rows": 21984,
+        "positive_decisions": 525,
+        "prevalence": 0.023881004366812227,
+        "ap": 0.29235862560943615,
+        "brier": 0.019804322161597773,
+        "log_loss": 0.07921272851958186,
+        "policies": {
+          "pooled_1": {
+            "alerts": 355,
+            "true_alerts": 137,
+            "false_alerts": 218,
+            "precision": 0.38591549295774646,
+            "decision_recall": 0.26095238095238094,
+            "events": 184,
+            "event_recall": 0.4076086956521739,
+            "false_alerts_per_100": 0.9916302765647744,
+            "median_event_lead_hours": 53.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 20164,
+            "predicted": 0.014816211983341225,
+            "observed": 0.009472326919262052
+          },
+          {
+            "rows": 1083,
+            "predicted": 0.14125033212259386,
+            "observed": 0.11265004616805172
+          },
+          {
+            "rows": 426,
+            "predicted": 0.24293682149932688,
+            "observed": 0.19953051643192488
+          },
+          {
+            "rows": 193,
+            "predicted": 0.34342561146193623,
+            "observed": 0.29533678756476683
+          },
+          {
+            "rows": 81,
+            "predicted": 0.4425422805154895,
+            "observed": 0.5432098765432098
+          },
+          {
+            "rows": 31,
+            "predicted": 0.5363370442288904,
+            "observed": 0.6774193548387096
+          },
+          {
+            "rows": 6,
+            "predicted": 0.635174875334635,
+            "observed": 0.8333333333333334
+          }
+        ]
+      },
+      "analog": {
+        "rows": 21984,
+        "positive_decisions": 525,
+        "prevalence": 0.023881004366812227,
+        "ap": 0.060617932939889575,
+        "brier": 0.022853678756941536,
+        "log_loss": 0.10273807019985694,
+        "policies": {
+          "pooled_1": {
+            "alerts": 200,
+            "true_alerts": 10,
+            "false_alerts": 190,
+            "precision": 0.05,
+            "decision_recall": 0.01904761904761905,
+            "events": 184,
+            "event_recall": 0.043478260869565216,
+            "false_alerts_per_100": 0.8642649199417758,
+            "median_event_lead_hours": 53.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 21239,
+            "predicted": 0.025930752157243508,
+            "observed": 0.02231743490748152
+          },
+          {
+            "rows": 745,
+            "predicted": 0.119449153581731,
+            "observed": 0.06845637583892618
+          }
+        ]
+      },
+      "rainfall": {
+        "rows": 21984,
+        "positive_decisions": 525,
+        "prevalence": 0.023881004366812227,
+        "ap": 0.19800302147379212,
+        "brier": 0.020908751919535954,
+        "log_loss": 0.08638210396165924,
+        "policies": {
+          "pooled_1": {
+            "alerts": 317,
+            "true_alerts": 108,
+            "false_alerts": 209,
+            "precision": 0.34069400630914826,
+            "decision_recall": 0.2057142857142857,
+            "events": 184,
+            "event_recall": 0.34782608695652173,
+            "false_alerts_per_100": 0.9506914119359534,
+            "median_event_lead_hours": 76.0,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 20224,
+            "predicted": 0.016715141185634348,
+            "observed": 0.011372626582278481
+          },
+          {
+            "rows": 1353,
+            "predicted": 0.1371201223223219,
+            "observed": 0.12638580931263857
+          },
+          {
+            "rows": 322,
+            "predicted": 0.23783665447408073,
+            "observed": 0.30745341614906835
+          },
+          {
+            "rows": 70,
+            "predicted": 0.33908960083180556,
+            "observed": 0.2857142857142857
+          },
+          {
+            "rows": 12,
+            "predicted": 0.4338455638172633,
+            "observed": 0.3333333333333333
+          },
+          {
+            "rows": 3,
+            "predicted": 0.5416561368708824,
+            "observed": 0.3333333333333333
+          }
+        ]
+      },
+      "logistic": {
+        "rows": 21984,
+        "positive_decisions": 525,
+        "prevalence": 0.023881004366812227,
+        "ap": 0.25609747990387227,
+        "brier": 0.020326559858215812,
+        "log_loss": 0.08210517744756139,
+        "policies": {
+          "pooled_1": {
+            "alerts": 343,
+            "true_alerts": 126,
+            "false_alerts": 217,
+            "precision": 0.3673469387755102,
+            "decision_recall": 0.24,
+            "events": 184,
+            "event_recall": 0.40217391304347827,
+            "false_alerts_per_100": 0.9870815138282387,
+            "median_event_lead_hours": 55.5,
+            "min_event_lead_hours": 28.0
+          }
+        },
+        "reliability": [
+          {
+            "rows": 20448,
+            "predicted": 0.01645575530003869,
+            "observed": 0.01085680751173709
+          },
+          {
+            "rows": 909,
+            "predicted": 0.13892412373833177,
+            "observed": 0.12871287128712872
+          },
+          {
+            "rows": 303,
+            "predicted": 0.2446393266534856,
+            "observed": 0.22112211221122113
+          },
+          {
+            "rows": 130,
+            "predicted": 0.34361598977419483,
+            "observed": 0.27692307692307694
+          },
+          {
+            "rows": 74,
+            "predicted": 0.4440328998689155,
+            "observed": 0.35135135135135137
+          },
+          {
+            "rows": 39,
+            "predicted": 0.5474235555412341,
+            "observed": 0.3076923076923077
+          },
+          {
+            "rows": 32,
+            "predicted": 0.6489340035507865,
+            "observed": 0.53125
+          },
+          {
+            "rows": 26,
+            "predicted": 0.7622925021144038,
+            "observed": 0.5769230769230769
+          },
+          {
+            "rows": 12,
+            "predicted": 0.8393643907665274,
+            "observed": 0.5833333333333334
+          },
+          {
+            "rows": 11,
+            "predicted": 0.9428542202904686,
+            "observed": 0.5454545454545454
+          }
+        ]
+      }
+    }
+  },
+  "complementarity": {
+    "2021": {
+      "events": 189,
+      "union_recall": 0.5714285714285714,
+      "shared_events": 3,
+      "single_expert_events": {
+        "gbm": 10,
+        "extra": 6,
+        "analog": 2,
+        "rainfall": 6,
+        "logistic": 2
+      },
+      "missed_by_all": 81,
+      "pairwise_agreement": {
+        "gbm,extra": 0.9893528989904562,
+        "gbm,analog": 0.9745131571688641,
+        "gbm,rainfall": 0.9816847796105257,
+        "gbm,logistic": 0.9873669112373807,
+        "extra,analog": 0.9747889888012358,
+        "extra,rainfall": 0.9816296132840514,
+        "extra,logistic": 0.9888564020521874,
+        "analog,rainfall": 0.9744028245159155,
+        "analog,logistic": 0.9747889888012358,
+        "rainfall,logistic": 0.9874772438903293
+      }
+    },
+    "2022": {
+      "events": 184,
+      "union_recall": 0.5760869565217391,
+      "shared_events": 4,
+      "single_expert_events": {
+        "gbm": 5,
+        "extra": 7,
+        "analog": 0,
+        "rainfall": 9,
+        "logistic": 0
+      },
+      "missed_by_all": 78,
+      "pairwise_agreement": {
+        "gbm,extra": 0.9890374818049491,
+        "gbm,analog": 0.976528384279476,
+        "gbm,rainfall": 0.9808497088791849,
+        "gbm,logistic": 0.9870360262008734,
+        "extra,analog": 0.9768467976710334,
+        "extra,rainfall": 0.9796215429403202,
+        "extra,logistic": 0.9879002911208151,
+        "analog,rainfall": 0.9768467976710334,
+        "analog,logistic": 0.977301673944687,
+        "rainfall,logistic": 0.9853529839883551
+      }
+    }
+  },
+  "cuts": {
+    "2021": {
+      "gbm": 0.39442861432806703,
+      "extra": 0.39864857120195346,
+      "analog": 0.157826720678681,
+      "rainfall": 0.26795679124389915,
+      "logistic": 0.3568038818156857
+    },
+    "2022": {
+      "gbm": 0.3514908572968658,
+      "extra": 0.2852764928560651,
+      "analog": 0.12906771166061784,
+      "rainfall": 0.21514409323089562,
+      "logistic": 0.2915497248887908
+    }
+  },
+  "protocol_sha256": "8d68a053998b1e19341f1cca2dfb0adbf19ee51bbc281de348f4798049b11b3f"
+}
