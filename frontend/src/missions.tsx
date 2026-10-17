@@ -20,6 +20,8 @@ import {
 type Api = (path: string, options?: RequestInit) => Promise<any>;
 type Action = (fn: () => Promise<any>, message: string) => Promise<boolean>;
 
+import { observeMapResize } from "./map";
+
 const fmt = (v: number | null | undefined, digits = 1) => (v == null ? "—" : v.toFixed(digits));
 const zoned = (v: string | null | undefined, tz?: string) =>
   v
@@ -162,7 +164,7 @@ export function MissionsView({
         )}
         <div className="mission-rows">
           {[...list].reverse().map((m) => (
-            <button key={m.id} className={"mission-row" + (m.id === current ? " selected" : "")} onClick={() => setCurrent(m.id)}>
+            <button key={m.id} className={"mission-row" + (m.id === current ? " selected" : "")} aria-pressed={m.id === current} onClick={() => setCurrent(m.id)}>
               <span className={"rating-dot rating-" + (m.readiness?.status || "unknown")} />
               <span>
                 {m.name}
@@ -551,7 +553,7 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
                 <strong>{m.record.event_type}</strong>
                 <span>{m.record.begin.slice(0, 10)}</span>
                 <span className="tiny-tag">{m.record.source}</span>
-                <b className="memory-score">{fmt(m.score * 100, 0)}</b>
+                <b className="memory-score"><small>Match score</small>{fmt(m.score * 100, 0)}</b>
               </header>
               <p>{m.record.narrative || "No narrative in the source record."}</p>
               <FactorBars factors={m.factors} />
@@ -673,16 +675,25 @@ function OverlapMap({ pairs }: { pairs: any[] }) {
     layer = useRef<L.LayerGroup | null>(null);
   useEffect(() => {
     if (!container.current) return;
-    map.current = L.map(container.current, { zoomControl: false }).setView([37.4, -96.5], 4);
+    map.current = L.map(container.current, {
+      zoomControl: false,
+      trackResize: false,
+      minZoom: 2,
+      maxBounds: [[-85, -180], [85, 180]],
+    }).setView([37.4, -96.5], 4);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
       maxZoom: 19,
+      noWrap: true,
     }).addTo(map.current);
     L.control.zoom({ position: "bottomright" }).addTo(map.current);
     layer.current = L.layerGroup().addTo(map.current);
+    const disconnectResize = observeMapResize(map.current, container.current);
     return () => {
+      disconnectResize();
       map.current?.remove();
       map.current = null;
+      layer.current = null;
     };
   }, []);
   useEffect(() => {
@@ -790,7 +801,7 @@ export function OverlapsView({ api }: { api: Api }) {
                   <span className={"tiny-tag kind-" + p.kind}>{p.kind.replaceAll("_", " ").toUpperCase()}</span>
                   {p.cross_state && <span className="tiny-tag">CROSS-STATE</span>}
                   {p.possible_affiliates && <span className="tiny-tag warn">POSSIBLE AFFILIATES · NAME MATCH</span>}
-                  <b className="memory-score">{fmt(p.score * 100, 0)}</b>
+                  <b className="memory-score"><small>Overlap score</small>{fmt(p.score * 100, 0)}</b>
                 </header>
                 <div className="overlap-pair">
                   {[p.a, p.b].map((x: any) => (
@@ -805,7 +816,10 @@ export function OverlapsView({ api }: { api: Api }) {
                     </div>
                   ))}
                 </div>
-                <FactorBars factors={p.factors} />
+                <details className="overlap-factors">
+                  <summary>Score factors</summary>
+                  <FactorBars factors={p.factors} />
+                </details>
               </article>
             ))}
           </div>

@@ -2,7 +2,7 @@
 
 Environmental safety intelligence for utility construction supervisors. This local research MVP maps **60 genuine EIA power plants across 33 states**, combines public environmental feeds into an inspectable screening index, runs historically trained flood/storm classifiers, and persists crew reports and next-day briefings.
 
-![Operations dashboard](output/playwright/dashboard-desktop.png)
+![Operations dashboard](output/ui-sprint/desktop.jpg)
 
 This is decision support for human review. The index is not an injury probability, a low score is not clearance, and missing lightning observations do not establish safe conditions. Live provider records and explicitly labeled replay strikes are separate.
 
@@ -68,11 +68,16 @@ These numbers are a **new benchmark**, not directly comparable with the original
 
 The [storm investigation](docs/STORM_DIAGNOSTICS.md) reproduces the regression without refitting or changing selection. Positive-slope calibration preserves AP ranking. Selection relies on only three geographic-validation positives in one county, and the three missed test county-days represent two NOAA episodes west of all selected-model fitting coordinates. Feature/SHAP diagnostics identify plausible transfer and event-proxy problems, without establishing a single cause or an improvement. Existing artifacts and serving restrictions are preserved.
 
+The [October 17 geographic sprint](docs/ML_SPRINT_RESULTS.md) adds an isolated 44,250-row, 50-county experiment, with new states reserved for validation and independent evaluation. Logistic regression, XGBoost and LightGBM were compared with forecast pressure, CAPE and antecedent-rain features. Neither selected candidate passed the frozen promotion gates: flood had sparse positive days and mixed temporal results; storm increased false alerts. Both served models remain unchanged. See the [source eligibility audit](docs/ML_DATA_RESEARCH.md), [frozen protocol](docs/ML_SPRINT_PROTOCOL.md) and complete matched-row results before interpreting geographic improvements.
+
 Serving is restricted to the actual fitted county/state inventory per hazard: eleven original flood counties and eighteen storm development counties. It uses the evaluated county representative point and genuine SHAP of calibrated probability. Unsupported locations stay unknown. No national or plant-level validity is claimed. No index weight was statistically validated or changed to make a score look better.
 
 ```sh
 .venv/bin/python -m pytest -q
+npm --prefix frontend test
 npm --prefix frontend run build
+# Replay the isolated sprint's frozen predictions, metrics and integrity checks:
+.venv/bin/python -m scripts.ml_sprint verify
 # Verify the immutable original benchmark in temporary storage:
 .venv/bin/python -m scripts.reproduce_baseline
 # Retrain using the included training table; overwrites the saved model and evaluation:
@@ -106,10 +111,14 @@ Six hypothetical workflow fixtures cover normal, ambiguous, multi-hazard, lightn
 | `backend/store.py` | Canonical SQLite schema and transactions |
 | `scripts/ingest_sites.py` | Genuine EIA inventory extraction and validation |
 | `scripts/build_training.py`, `train.py` | Archived predictors, NOAA labels and measured benchmark |
+| `scripts/ml_sprint.py`, `experiments/sprint-20261017/` | Isolated geographic experiment, frozen selection, independent results and integrity verification |
+| `frontend/src/map.ts`, `frontend/tests/` | Shared animation-safe map resize handling and behavioral check |
 | `data/`, `models/` | Committed inventory, training data, provenance and trained artifacts |
 | `tests/` | Critical domain, API, persistence, provider and dataset checks |
 
 Read [research findings](docs/RESEARCH.md), [frozen experiment protocol](docs/RESEARCH_PLAN.md), [Jev validation](docs/JEV_VALIDATION.md), [earlier Jev contract audit](docs/JEV_RESEARCH.md), [storm diagnostics](docs/STORM_DIAGNOSTICS.md), [sources and licensing](docs/SOURCES.md), [model methodology](docs/MODEL_CARD.md), [operations and API](docs/OPERATIONS.md), [generated evaluation](docs/EVALUATION.md), and the [demo and verification record](docs/DEMO.md). `PLAN.md` records milestone completion.
+
+The restrained visual update and responsive/map checks are recorded in [UI verification](docs/UI_VERIFICATION.md), including current desktop and mobile screenshots.
 
 ## Deployment boundary
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 import L from "leaflet";
 import {
@@ -34,6 +34,7 @@ import {
 import { ClipboardList, GitCompare } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 import "./styles.css";
+import { observeMapResize } from "./map";
 import { KindBadge, MissionsView, OverlapsView } from "./missions";
 
 type Site = {
@@ -157,87 +158,162 @@ function SiteMap({
   const container = useRef<HTMLDivElement>(null),
     map = useRef<L.Map | null>(null),
     markers = useRef<L.LayerGroup | null>(null),
-    fitted = useRef(false);
+    siteMarkers = useRef(new Map<string, L.CircleMarker>()),
+    reportMarkers = useRef(new Map<string, L.Marker>()),
+    fitted = useRef(false),
+    moving = useRef(false),
+    focused = useRef<string | null>(null),
+    currentSites = useRef(sites),
+    currentSelect = useRef(onSelect);
+  currentSites.current = sites;
+  currentSelect.current = onSelect;
   const [tileError, setTileError] = useState(false);
   useEffect(() => {
     if (!container.current) return;
     map.current = L.map(container.current, {
       zoomControl: false,
       attributionControl: true,
+      trackResize: false,
+      minZoom: 2,
+      maxBounds: [[-85, -180], [85, 180]],
     }).setView([37.4, -96.5], 4);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
       maxZoom: 19,
+      noWrap: true,
     })
       .on("tileerror", () => setTileError(true))
       .addTo(map.current);
     L.control.zoom({ position: "bottomright" }).addTo(map.current);
     markers.current = L.layerGroup().addTo(map.current);
-    const observer = new ResizeObserver(() => map.current?.invalidateSize());
-    observer.observe(container.current);
+    map.current
+      .on("movestart", () => { moving.current = true; })
+      .on("moveend", () => { moving.current = false; });
+    const disconnectResize = observeMapResize(map.current, container.current);
     return () => {
-      observer.disconnect();
+      disconnectResize();
       map.current?.remove();
       map.current = null;
+      markers.current = null;
+      siteMarkers.current.clear();
+      reportMarkers.current.clear();
+      fitted.current = false;
+      moving.current = false;
+      focused.current = null;
     };
   }, []);
   useEffect(() => {
-    if (!markers.current) return;
-    if (sites.length && !fitted.current) {
-      map.current?.fitBounds(
-        L.latLngBounds(
-          sites.map((s) => [s.latitude, s.longitude] as [number, number]),
-        ),
-        { padding: [30, 35] },
-      );
-      fitted.current = true;
-    }
-    markers.current.clearLayers();
-    sites.forEach((s) => {
-      const marker = L.circleMarker([s.latitude, s.longitude], {
-        radius: s.id === selected ? 10 : 5.5,
-        fillColor: color(s),
-        color: s.id === selected ? "#fff" : color(s),
-        weight: s.id === selected ? 2 : 1,
-        fillOpacity: 0.95,
+    const instance = map.current;
+    if (!instance || !markers.current) return;
+    const syncMarkers = () => {
+      if (sites.length && !fitted.current) {
+        map.current?.fitBounds(
+          L.latLngBounds(
+            sites.map((s) => [s.latitude, s.longitude] as [number, number]),
+          ),
+          { padding: [30, 35], animate: false, maxZoom: 6 },
+        );
+        fitted.current = true;
+      }
+      // Keep layer identity through selection and polling. Recreating SVG paths
+      // during a zoom projects them against an in-flight renderer transform.
+      const siteIds = new Set(sites.map((s) => s.id));
+      siteMarkers.current.forEach((marker, id) => {
+        if (!siteIds.has(id)) {
+          markers.current!.removeLayer(marker);
+          siteMarkers.current.delete(id);
+        }
       });
-      const tip = document.createElement("span");
-      tip.textContent =
-        s.name +
-        " · " +
-        (s.stale
-          ? "stale"
-          : s.index
-            ? fmt(s.index.score) +
-              "/10 · " +
-              Math.round(s.index.coverage * 100) +
-              "% inputs"
-            : "unassessed");
-      marker
-        .bindTooltip(tip)
-        .on("click", () => onSelect(s))
-        .addTo(markers.current!);
-    });
-    reports
-      .filter((r) => r.status !== "rejected")
-      .forEach((r) => {
-        const marker = L.marker([r.latitude, r.longitude], {
-          icon: L.divIcon({
-            className: "report-pin",
-            html: "!",
-            iconSize: [20, 20],
-          }),
+      sites.forEach((s) => {
+        let marker = siteMarkers.current.get(s.id);
+        if (!marker) {
+          marker = L.circleMarker([s.latitude, s.longitude])
+            .on("click", () => {
+              const site = currentSites.current.find((site) => site.id === s.id);
+              if (site) currentSelect.current(site);
+            })
+            .addTo(markers.current!);
+          siteMarkers.current.set(s.id, marker);
+        }
+        if (!marker.getLatLng().equals([s.latitude, s.longitude])) {
+          marker.setLatLng([s.latitude, s.longitude]);
+        }
+        marker.setStyle({
+          radius: s.id === selected ? 10 : 5.5,
+          fillColor: color(s),
+          color: s.id === selected ? "#fff" : color(s),
+          weight: s.id === selected ? 2 : 1,
+          fillOpacity: 0.95,
         });
         const tip = document.createElement("span");
-        tip.textContent = `Crew report · ${(r.triage?.manual_categories || [r.classification]).map(hazardName).join(", ")} · ${r.status}`;
-        marker.bindTooltip(tip).addTo(markers.current!);
+        tip.textContent =
+          s.name +
+          " · " +
+          (s.stale
+            ? "stale"
+            : s.index
+              ? fmt(s.index.score) +
+                "/10 · " +
+                Math.round(s.index.coverage * 100) +
+                "% inputs"
+              : "unassessed");
+        if (marker.getTooltip()) marker.setTooltipContent(tip);
+        else marker.bindTooltip(tip);
+        if (s.id === selected) marker.bringToFront();
       });
-  }, [sites, selected, reports, onSelect]);
+      const activeReports = reports.filter((r) => r.status !== "rejected");
+      const reportIds = new Set(activeReports.map((r) => String(r.id)));
+      reportMarkers.current.forEach((marker, id) => {
+        if (!reportIds.has(id)) {
+          markers.current!.removeLayer(marker);
+          reportMarkers.current.delete(id);
+        }
+      });
+      activeReports.forEach((r) => {
+        const id = String(r.id);
+        let marker = reportMarkers.current.get(id);
+        if (!marker) {
+          marker = L.marker([r.latitude, r.longitude], {
+            icon: L.divIcon({
+              className: "report-pin",
+              html: "!",
+              iconSize: [20, 20],
+              iconAnchor: [10, 10],
+            }),
+          }).addTo(markers.current!);
+          reportMarkers.current.set(id, marker);
+        }
+        if (!marker.getLatLng().equals([r.latitude, r.longitude])) {
+          marker.setLatLng([r.latitude, r.longitude]);
+        }
+        const tip = document.createElement("span");
+        tip.textContent = `Crew report · ${(r.triage?.manual_categories || [r.classification]).map(hazardName).join(", ")} · ${r.status}`;
+        if (marker.getTooltip()) marker.setTooltipContent(tip);
+        else marker.bindTooltip(tip);
+      });
+    };
+    // CircleMarker.setStyle also reprojects its path, even with the same
+    // coordinates. Apply polling updates only once the zoom has settled.
+    if (moving.current) instance.once("moveend", syncMarkers);
+    else syncMarkers();
+    return () => { instance.off("moveend", syncMarkers); };
+  }, [sites, selected, reports]);
   useEffect(() => {
+    if (!selected) {
+      focused.current = null;
+      return;
+    }
+    if (focused.current === selected) return;
     const s = sites.find((s) => s.id === selected);
-    if (s) map.current?.flyTo([s.latitude, s.longitude], 7, { duration: 1 });
-  }, [selected]);
+    if (s && map.current) {
+      focused.current = selected;
+      map.current.stop().flyTo([s.latitude, s.longitude], Math.max(7, map.current.getZoom()), {
+        duration: 0.65,
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      });
+    }
+  }, [selected, sites]);
   return (
     <>
       <div
@@ -392,13 +468,13 @@ function App() {
     (s) => s.stale || !s.index || s.index.coverage < 1,
   ).length;
   const selectedSite = sites.find((s) => s.id === selected);
-  const visibleReports = (detail?.reports || []).filter(r => {
+  const visibleReports = useMemo(() => (detail?.reports || []).filter((r: any) => {
     const provider = r.triage?.provider;
     const categories = [...(r.triage?.manual_categories || [r.classification]), ...(provider?.categories || [])];
     return (reportHazard === "all" || categories.includes(reportHazard)) &&
       (reportQueue === "all" || r.status === "pending" &&
         (reportQueue === "manual" ? provider?.status !== "classified" : provider?.review_queue === reportQueue));
-  }).sort((a, b) => {
+  }).sort((a: any, b: any) => {
     // Pending first: urgent, then clarification or unscreened, then standard; oldest waits least. Closed reports newest first.
     const rank = (r: any) => {
       if (r.status !== "pending") return 9;
@@ -406,7 +482,7 @@ function App() {
       return p?.status !== "classified" ? 1 : ({ urgent: 0, clarification: 1, standard: 2 } as any)[p.review_queue] ?? 1;
     };
     return rank(a) - rank(b) || (rank(a) < 9 ? a.created_at.localeCompare(b.created_at) : b.created_at.localeCompare(a.created_at));
-  });
+  }), [detail, reportHazard, reportQueue]);
   const remaining = (state: any) =>
     Math.max(
       0,
@@ -423,6 +499,7 @@ function App() {
       <aside className="sidebar">
         <a
           className="brand"
+          aria-label="Planit Control overview"
           href="#"
           onClick={(e) => {
             e.preventDefault();
@@ -447,6 +524,8 @@ function App() {
         <nav aria-label="Main navigation">
           <button
             className={view === "overview" ? "nav-item active" : "nav-item"}
+            aria-current={view === "overview" ? "page" : undefined}
+            title="Overview"
             onClick={() => setView("overview")}
           >
             <Layers size={18} />
@@ -454,6 +533,8 @@ function App() {
           </button>
           <button
             className={view === "briefings" ? "nav-item active" : "nav-item"}
+            aria-current={view === "briefings" ? "page" : undefined}
+            title="Safety briefings"
             onClick={() => setView("briefings")}
           >
             <FileText size={18} />
@@ -461,6 +542,8 @@ function App() {
           </button>
           <button
             className={view === "missions" ? "nav-item active" : "nav-item"}
+            aria-current={view === "missions" ? "page" : undefined}
+            title="Missions & JHA"
             onClick={() => setView("missions")}
           >
             <ClipboardList size={18} />
@@ -468,6 +551,8 @@ function App() {
           </button>
           <button
             className={view === "overlaps" ? "nav-item active" : "nav-item"}
+            aria-current={view === "overlaps" ? "page" : undefined}
+            title="Plan overlaps"
             onClick={() => setView("overlaps")}
           >
             <GitCompare size={18} />
@@ -475,6 +560,8 @@ function App() {
           </button>
           <button
             className={view === "model" ? "nav-item active" : "nav-item"}
+            aria-current={view === "model" ? "page" : undefined}
+            title="Model intelligence"
             onClick={() => setView("model")}
           >
             <Activity size={18} />
@@ -493,7 +580,7 @@ function App() {
               </small>
             </div>
           </div>
-          <button className="nav-item" onClick={() => setModal("settings")}>
+          <button className="nav-item" title="Supervisor access" onClick={() => setModal("settings")}>
             <Settings2 size={18} />
             Supervisor access
           </button>
@@ -749,6 +836,7 @@ function App() {
                       <button
                         key={s.id}
                         className={`facility-row ${selected === s.id ? "selected" : ""}`}
+                        aria-pressed={selected === s.id}
                         onClick={() => choose(s)}
                       >
                         <span
