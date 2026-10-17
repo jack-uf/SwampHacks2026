@@ -219,3 +219,27 @@ def test_typed_suggestions_survive_correction_without_approving_or_mutating_text
     assert saved['description']==text and saved['status']=='pending'
     assert saved['triage']['provider']==provider and saved['triage']['source']=='manual_correction'
     assert saved['triage']['manual_categories']==['flood','equipment_obstruction']
+
+
+def test_failing_old_briefings_do_not_block_delivery_of_new_ones(client, monkeypatch):
+    import asyncio, json, httpx
+    monkeypatch.setenv('PLANIT_ENABLE_DELIVERY','true')
+    monkeypatch.setenv('PLANIT_BRIEFING_WEBHOOK','https://receiver.test/briefings')
+    with db() as c:
+        for day in range(25):
+            c.execute('INSERT INTO briefings VALUES (?,?,?,?,?,?)',(f'old-{day}','old',f'2026-09-{day+1:02d}',f'2026-09-{day+1:02d}T22:00:00+00:00',
+                                                                  json.dumps(dict(n=day)),'failed: HTTPStatusError 410'))
+        c.execute('INSERT INTO briefings VALUES (?,?,?,?,?,?)',('new','site','2026-10-17','2026-10-16T22:00:00+00:00',json.dumps(dict(n='new')),'not configured'))
+    sent=[]
+    class Receiver:
+        def __init__(self, **kwargs): pass
+        async def __aenter__(self): return self
+        async def __aexit__(self,*args): pass
+        async def post(self,url,json,headers):
+            sent.append(headers['Idempotency-Key'])
+            return httpx.Response(200 if headers['Idempotency-Key']=='new' else 410,request=httpx.Request('POST',url))
+    monkeypatch.setattr(main.httpx,'AsyncClient',Receiver)
+    asyncio.run(main.deliver_pending())
+    assert sent[0]=='new' and len(sent)==20
+    with db() as c:
+        assert c.execute("SELECT delivery FROM briefings WHERE id='new'").fetchone()[0]=='delivered'

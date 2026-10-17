@@ -227,7 +227,9 @@ async def deliver_pending():
         log.error('Briefing webhook must use HTTPS')
         return
     with db() as c:
-        rows = c.execute("SELECT * FROM briefings WHERE delivery != 'delivered' ORDER BY generated_at LIMIT 20").fetchall()
+        # Never-attempted snapshots first, so failures that keep failing cannot starve newer briefings.
+        rows = c.execute("SELECT * FROM briefings WHERE delivery != 'delivered' "
+                         "ORDER BY delivery LIKE 'failed%', generated_at LIMIT 20").fetchall()
     async with httpx.AsyncClient(timeout=15) as client:
         for row in rows:
             try:
