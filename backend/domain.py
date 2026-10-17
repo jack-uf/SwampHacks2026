@@ -54,7 +54,7 @@ def hazard_index(weather, alerts, reports, predictions, exposure):
     rain = d.get('rain_24h_mm')
     previous = d.get('rain_72h_mm')
     soil = d.get('soil_moisture')
-    flood = None if rain is None else max(rain/75, ((soil or 0)/.45)*(rain/50), ((previous or 0)/150)*(rain/50))
+    flood = None if any(v is None for v in (rain, soil, previous)) else max(rain/75, (soil/.45)*(rain/50), (previous/150)*(rain/50))
     add('Rain & saturation', flood, .20, 'Rain screening, not hydraulic inundation modeling; Static FEMA exposure is a separate component.')
     add('Wind & storms', None if d.get('gust_max_kmh') is None else (d['gust_max_kmh']-25)/65, .15,
         'Maximum next-24h forecast gust; consult active warnings.')

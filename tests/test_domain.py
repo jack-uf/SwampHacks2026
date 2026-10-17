@@ -49,3 +49,12 @@ def test_unknown_is_not_zero_and_never_renormalized():
     assert index['score']==10 and index['complete']
     outside=hazard_index(weather,[],[],dict(flood=dict(probability=1,in_domain=False)),None)
     assert next(c for c in outside['components'] if c['name']=='County event model')['points'] is None
+
+
+def test_incomplete_rain_inputs_reduce_coverage():
+    summary = dict(rain_24h_mm=10, soil_moisture=.3, rain_72h_mm=30)
+    for missing in summary:
+        partial = dict(summary, **{missing: None})
+        result = hazard_index(dict(summary=partial), None, [], {}, None)
+        rain = next(c for c in result['components'] if c['name']=='Rain & saturation')
+        assert rain['points'] is None and result['coverage'] == .05
