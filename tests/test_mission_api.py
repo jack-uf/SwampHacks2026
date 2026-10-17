@@ -52,11 +52,16 @@ def test_crew_report_lifecycle_versions_the_mission_jha_with_attribution(client)
     cited = [e for e in next(e for e in verified['jha']['entries'] if e['hazard'] == 'flood')['evidence'] if e.get('ref') == report['id']]
     assert cited[0]['kind'] == 'observed'
     assert verified['memory_source']['crew'] == 1 and verified['memory_source']['noaa'] == len(memory.site_records(s['id']))
-    assert len(client.get('/api/missions/'+mid).json()['versions']) == 3
+    again = client.get('/api/missions/'+mid).json()
+    assert len(again['versions']) == 3
+    assert again['checked']['checked_at'] > verified['checked']['checked_at'] > latest['created_at']
+    assert again['checked']['assessed_at'] and again['checked']['stale'] is False
 
     decision = dict(hazard='flood', decision='mitigate', rationale='Pump trench and reroute access before entry.',
-                    mitigation='Dewater trench; competent-person inspection.', supervisor='A. Rivera')
+                    mitigation='Dewater trench; competent-person inspection.', supervisor='A. Rivera', version=3)
     assert client.post(f'/api/missions/{mid}/decisions', json=decision).status_code == 401
+    behind = client.post(f'/api/missions/{mid}/decisions', json=dict(decision, version=2), headers=AUTH)
+    assert behind.status_code == 409 and 'version 3' in behind.json()['detail']
     saved = client.post(f'/api/missions/{mid}/decisions', json=decision, headers=AUTH)
     assert saved.status_code == 200, saved.text
     assert saved.json()['version'] == 3
@@ -67,6 +72,29 @@ def test_crew_report_lifecycle_versions_the_mission_jha_with_attribution(client)
     client.patch('/api/reports/'+report['id'], json={'status': 'resolved'}, headers=AUTH)
     after = client.get('/api/missions/'+mid).json()
     assert after['decisions'][0]['stale'] is True and len(after['versions']) == 4
+
+
+def test_concurrent_jha_updates_each_get_their_own_version(client, monkeypatch):
+    import threading
+    import time
+    s = main.SITES[0]
+    mid = client.post('/api/missions', json=mission_body(s), headers=AUTH).json()['id']
+    mission, assessment = main.mission_or_404(mid), main.cached_assessment(s)
+    real_build, real_diff = main.missions.build_jha, main.missions.diff_jha
+    def build(m, ctx):
+        jha = real_build(m, ctx)
+        return dict(jha, fingerprint=threading.current_thread().name)
+    def slow_diff(before, after):
+        time.sleep(.3)
+        return real_diff(before, after)
+    monkeypatch.setattr(main.missions, 'build_jha', build)
+    monkeypatch.setattr(main.missions, 'diff_jha', slow_diff)
+    writers = [threading.Thread(target=main.record_jha, args=(mission, s, assessment, 'race '+n), name=n) for n in 'AB']
+    for w in writers:
+        w.start()
+    for w in writers:
+        w.join()
+    assert sorted(v['trigger'] for v in main.versions_for(mid)[1:]) == ['race A', 'race B']
 
 
 def test_lightning_stop_work_cannot_be_overridden_and_replay_is_simulated(client):
@@ -81,7 +109,8 @@ def test_lightning_stop_work_cannot_be_overridden_and_replay_is_simulated(client
     assert lightning['rating'] == 'stop_work' and lightning['simulated']
     assert detail['jha']['readiness']['status'] == 'simulated_stop_work'
     assert 'replay' in detail['versions'][-1]['trigger'].lower()
-    override = dict(hazard='lightning', decision='override', rating='low', rationale='Crew wants to continue.', supervisor='B. Lee')
+    override = dict(hazard='lightning', decision='override', rating='low', rationale='Crew wants to continue.', supervisor='B. Lee',
+                    version=detail['versions'][-1]['version'])
     response = client.post(f'/api/missions/{mid}/decisions', json=override, headers=AUTH)
     assert response.status_code == 409 and 'deterministic' in response.json()['detail']
 

@@ -1,4 +1,5 @@
 """County-scoped forecasts with the exact evaluated extraction and probability contract."""
+import json
 from datetime import timedelta
 from functools import lru_cache
 import joblib
@@ -15,6 +16,17 @@ from backend.domain import now_utc
 def artifact():
     path = ROOT / 'models/hazards.joblib'
     return joblib.load(path) if path.exists() else None
+
+
+@lru_cache(maxsize=1)
+def tested():
+    """Final-test precision and recall of each served model at its served threshold."""
+    path = ROOT / 'models/evaluation.json'
+    if not path.exists():
+        return {}
+    hazards = json.loads(path.read_text())['hazards']
+    return {h: dict(precision=i['candidates'][i['selected']]['test']['precision'], recall=i['candidates'][i['selected']]['test']['recall'],
+                    period='January to June 2026') for h, i in hazards.items()}
 
 
 def matching_region(bundle, site):
@@ -58,7 +70,7 @@ async def predictions(site):
             probability=float(calibrated(bundle,x)[0])
             hazards[hazard]=dict(probability=probability,model=bundle['name'],threshold=bundle['threshold'],
                 warning_supported=bundle['warning_supported'],elevated=bundle['warning_supported'] and probability>=bundle['threshold'],
-                in_domain=True,**explain(bundle,x))
+                in_domain=True,tested=tested().get(hazard),**explain(bundle,x))
     except (KeyError,ValueError,TypeError) as exc:
         return dict(available=False,reason='Forecast contract rejected; prediction withheld: '+str(exc),hazards={})
     return dict(available=True,hazards=hazards,target_date=str(tomorrow),target_timezone='UTC',target_window=f'{tomorrow} 00:00–24:00 UTC',

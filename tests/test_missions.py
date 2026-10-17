@@ -122,6 +122,32 @@ def test_nws_alerts_and_county_model_are_cited_and_missing_alert_feed_is_incompl
     assert entry(missions.build_jha(MISSION, context(alerts=None)), 'storm')['incomplete']
 
 
+def nws(id, event, severity='Moderate', **times):
+    return dict(id=id, event=event, severity=severity, sent=NOW.isoformat(), expires=(NOW+timedelta(hours=3)).isoformat(), **times)
+
+
+def test_every_active_nws_alert_is_cited_and_alerts_outside_the_shift_are_not():
+    later = (NOW+timedelta(hours=11)).isoformat()
+    jha = missions.build_jha(MISSION, context(alerts=[
+        nws('urn:chill', 'Wind Chill Advisory'), nws('urn:winter', 'Winter Storm Warning', 'Severe'),
+        nws('urn:over', 'Flood Warning', 'Severe', ends=(NOW+timedelta(hours=1)).isoformat()),
+        nws('urn:later', 'Heat Advisory', onset=later, ends=(NOW+timedelta(hours=20)).isoformat())]))
+    assert not any(e.get('ref') == 'urn:chill' for e in entry(jha, 'storm')['evidence'])
+    other = entry(jha, 'other')
+    assert {e['ref'] for e in other['evidence']} == {'urn:chill', 'urn:winter'}
+    assert other['rating'] == 'high' and all(e['kind'] == 'official_alert' for e in other['evidence'])
+    assert entry(jha, 'flood')['rating'] == 'low' and entry(jha, 'heat')['rating'] == 'low'
+
+
+def test_model_evidence_states_how_often_a_flag_was_right_in_testing():
+    tested = dict(probability=.31, threshold=.2, elevated=True, warning_supported=True, model='original_logistic',
+                  tested=dict(precision=.073, recall=.595, period='January to June 2026'))
+    model = dict(available=True, target_date=(NOW+timedelta(hours=4)).date().isoformat(), hazards=dict(flood=tested))
+    cited = next(e for e in entry(missions.build_jha(MISSION, context(model=model)), 'flood')['evidence'] if e['id'].startswith('model:'))
+    assert 'about 7 of every 100 flagged county-days had a NOAA-reported flood' in cited['summary']
+    assert 'January to June 2026' in cited['summary']
+
+
 def test_versions_change_on_band_or_evidence_changes_and_diff_names_them():
     base = missions.build_jha(MISSION, context(w=weather(gust=50.)))
     drift = missions.build_jha(MISSION, context(w=weather(gust=55.)))

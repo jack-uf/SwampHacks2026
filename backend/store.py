@@ -53,6 +53,8 @@ def initialize():
         CREATE TABLE IF NOT EXISTS jha_decisions (id TEXT PRIMARY KEY, mission_id TEXT NOT NULL REFERENCES missions(id),
           version INTEGER NOT NULL, hazard TEXT NOT NULL, decision TEXT NOT NULL CHECK(decision IN ('accept','override','mitigate')),
           rating TEXT, mitigation TEXT, rationale TEXT NOT NULL, supervisor TEXT NOT NULL, entry_fingerprint TEXT NOT NULL, created_at TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS jha_checks (mission_id TEXT PRIMARY KEY REFERENCES missions(id), checked_at TEXT NOT NULL,
+          assessed_at TEXT NOT NULL, stale INTEGER NOT NULL);
         ''')
 
 

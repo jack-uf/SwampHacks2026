@@ -367,6 +367,13 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
             .filter((e: any) => e.rating === "high" && !decisions.some((d: any) => d.hazard === e.hazard && !d.stale))
             .map((e: any) => e.label)}
         />
+        {detail.checked && (
+          <p className={"body-note" + (detail.checked.stale ? " warning-text" : "")}>
+            JHA v{versions[versions.length - 1].version} unchanged since {zoned(versions[versions.length - 1].created_at, tz)}. Last re-checked{" "}
+            {zoned(detail.checked.checked_at, tz)} against the site assessment from {zoned(detail.checked.assessed_at, tz)}
+            {detail.checked.stale ? ". That assessment is stale because reassessment failed; treat this analysis as out of date." : "."}
+          </p>
+        )}
         <h3 className="section-subtitle">
           Shift conditions <KindBadge kind={conditions.kind} />
         </h3>
@@ -482,7 +489,11 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
                     busy={busy}
                     onSubmit={async (body) => {
                       const ok = await action(
-                        () => api(`/missions/${mission.id}/decisions`, { method: "POST", body: JSON.stringify(body) }),
+                        () =>
+                          api(`/missions/${mission.id}/decisions`, {
+                            method: "POST",
+                            body: JSON.stringify({ ...body, version: versions[versions.length - 1].version }),
+                          }),
                         "Supervisor decision recorded against the current JHA version.",
                       );
                       if (ok) setDeciding(null);

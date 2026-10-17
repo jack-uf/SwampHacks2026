@@ -75,6 +75,9 @@ def record_jha(mission, site, assessment, trigger):
     ctx = mission_context(mission, site, assessment)
     jha = missions.build_jha(mission, ctx)
     with db() as c:
+        c.execute('BEGIN IMMEDIATE')  # read-then-insert must not interleave with another writer
+        c.execute('INSERT OR REPLACE INTO jha_checks VALUES (?,?,?,?)',
+                  (mission['id'], now_utc().isoformat(), assessment['assessed_at'], int(bool(assessment.get('stale')))))
         prior = c.execute('SELECT * FROM jha_versions WHERE mission_id=? ORDER BY version DESC LIMIT 1', (mission['id'],)).fetchone()
         if prior and prior['fingerprint'] == jha['fingerprint']:
             return
@@ -125,6 +128,20 @@ def cached_assessment(site):
     if now_utc()-parse_time(result['assessed_at']) > timedelta(minutes=35):
         result = dict(result, stale=True)
     return result
+
+
+async def current_assessment(site, trigger='Environmental refresh'):
+    """A fresh assessment, or the last one marked stale with the error when reassessment fails."""
+    result = cached_assessment(site)
+    if result and not result.get('stale'):
+        return result
+    try:
+        return await assess(site, trigger)
+    except Exception as exc:
+        log.exception('Reassessment failed for %s', site['id'])
+        if not result:
+            raise HTTPException(503, 'Assessment failed and no earlier assessment exists; see the server log')
+        return dict(result, stale=True, reassessment_error=f'{type(exc).__name__}: {exc}'[:300])
 
 
 async def refresh_all():
@@ -260,9 +277,7 @@ def sites():
 @app.get('/api/sites/{site_id}')
 async def detail(site_id):
     s = site_or_404(site_id)
-    result = cached_assessment(s)
-    if not result or result.get('stale'):
-        result = await assess(s)
+    result = await current_assessment(s)
     with db() as c:
         history = [dict(r) for r in c.execute('SELECT * FROM history WHERE site_id=? ORDER BY recorded_at DESC LIMIT 48',(site_id,))]
     return dict(result, reports=site_reports(site_id), lightning=strike_states(s), history=history)
@@ -461,10 +476,7 @@ async def create_mission(value: MissionBody):
                    shift_start=start.isoformat(), shift_end=end.isoformat(), created_at=now_utc().isoformat())
     with db() as c:
         c.execute('INSERT INTO missions VALUES (:id,:site_id,:name,:activity,:latitude,:longitude,:shift_start,:shift_end,:crew_size,:supervisor,:created_at)', mission)
-    assessment = cached_assessment(site)
-    if not assessment or assessment.get('stale'):
-        assessment = await assess(site, 'Mission created')
-    record_jha(mission, site, assessment, 'Mission created')
+    record_jha(mission, site, await current_assessment(site, 'Mission created'), 'Mission created')
     return mission
 
 
@@ -501,22 +513,21 @@ async def mission_detail(mission_id: str):
     site = SITE_BY_ID[mission['site_id']]
     ended = parse_time(mission['shift_end']) <= now_utc()
     if not ended:
-        assessment = cached_assessment(site)
-        if not assessment or assessment.get('stale'):
-            assessment = await assess(site)
-        record_jha(mission, site, assessment, 'Conditions re-checked when the mission was opened')
+        record_jha(mission, site, await current_assessment(site), 'Conditions re-checked when the mission was opened')
     versions = versions_for(mission_id)
     jha = versions[-1]['payload']
     current = {e['hazard']: missions.entry_fingerprint(e) for e in jha['entries']}
     with db() as c:
         decisions = [dict(r, stale=current.get(r['hazard']) != r['entry_fingerprint']) for r in
                      c.execute('SELECT * FROM jha_decisions WHERE mission_id=? ORDER BY created_at DESC', (mission_id,))]
+        check = c.execute('SELECT checked_at, assessed_at, stale FROM jha_checks WHERE mission_id=?', (mission_id,)).fetchone()
     work_point = dict(site, latitude=mission['latitude'], longitude=mission['longitude'])
     noaa, crew = memory.site_records(site['id']), memory.crew_records(site_reports(site['id']))
     records = noaa+crew
     plans = overlap.dataset()
     return dict(mission=dict(mission, ended=ended), site=site, activity=missions.ACTIVITIES[mission['activity']],
                 conditions=jha['conditions'], jha=jha, decisions=decisions,
+                checked=dict(check, stale=bool(check['stale'])) if check else None,
                 versions=[dict(version=v['version'], created_at=v['created_at'], trigger=v['trigger'], diff=v['diff'],
                                readiness=v['payload']['readiness']) for v in versions],
                 memory=memory.retrieve(work_point, mission['activity'], jha['entries'], mission['shift_start'], records),
@@ -533,12 +544,15 @@ class Decision(BaseModel):
     supervisor: str = Field(min_length=2, max_length=80)
     rating: Literal['low', 'elevated', 'high'] | None = None
     mitigation: str | None = Field(default=None, max_length=1000)
+    version: int = Field(ge=1)
 
 
 @app.post('/api/missions/{mission_id}/decisions', dependencies=[Depends(admin)])
 def decide(mission_id: str, value: Decision):
     mission_or_404(mission_id)
     latest = versions_for(mission_id)[-1]
+    if value.version != latest['version']:
+        raise HTTPException(409, f"The JHA is now version {latest['version']}; review the changes before deciding (you decided on version {value.version}).")
     entry = next((e for e in latest['payload']['entries'] if e['hazard'] == value.hazard), None)
     if entry is None:
         raise HTTPException(422, 'Hazard is not in the current JHA version')

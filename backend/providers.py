@@ -78,7 +78,7 @@ async def alerts(site):
             p = feature['properties']
             if p.get('expires') and parse_time(p['expires']) <= now_utc():
                 continue
-            items.append({k:p.get(k) for k in ['id','event','severity','headline','description','instruction','sent','expires']})
+            items.append({k:p.get(k) for k in ['id','event','severity','headline','description','instruction','sent','onset','expires','ends']})
     return dict(source='NOAA / National Weather Service', feed={k:v for k,v in result.items() if k!='data'},
                 items=items if result['available'] else None)
 

@@ -2237,3 +2237,7 @@ td strong {
   .evidence-list li { flex-wrap: wrap; }
   .overlap-map { height: 280px; margin: 0 12px; }
 }
+
+.body-note.warning-text {
+  color: #9c844d;
+}

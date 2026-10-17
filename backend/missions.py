@@ -103,24 +103,28 @@ def build_jha(mission, ctx):
         for hazard in ('heat', 'storm', 'flood'):
             add(hazard, evidence('nws:unavailable', 'unavailable', 'NOAA / National Weather Service', 'Alert feed unavailable; advisory status unknown'))
     for a in alerts or []:
-        if a.get('expires') and parse_time(a['expires']) <= start:
+        until = a.get('ends') or a.get('expires')
+        if until and parse_time(until) <= start or a.get('onset') and parse_time(a['onset']) >= end:
             continue
         event = (a.get('event') or '').casefold()
         severe = a.get('severity') in ('Extreme', 'Severe')
-        for hazard, words in ALERT_HAZARDS:
-            if any(w in event for w in words):
-                rating = 'elevated' if hazard == 'lightning' or not severe else 'high'
-                add(hazard, evidence(f"nws:{a['id']}", 'official_alert', 'NOAA / National Weather Service (issued alert)',
-                                     f"{a.get('event')} ({a.get('severity')}) · expires {a.get('expires')}", rating=rating, ref=a['id'], at=a.get('sent')))
+        hazards = [h for h, words in ALERT_HAZARDS if any(w in event for w in words) and not (h == 'storm' and 'chill' in event)]
+        for hazard in hazards or ['other']:
+            rating = 'elevated' if hazard == 'lightning' or not severe else 'high'
+            add(hazard, evidence(f"nws:{a['id']}", 'official_alert', 'NOAA / National Weather Service (issued alert)',
+                                 f"{a.get('event')} ({a.get('severity')}) · in effect until {until}", rating=rating, ref=a['id'], at=a.get('sent')))
     model = ctx['model']
     target = model.get('target_date') if model.get('available') else None
     if target and start.date().isoformat() <= target <= (end-timedelta(seconds=1)).date().isoformat():
         for hazard, p in model['hazards'].items():
             supported = p.get('warning_supported')
+            tested = p.get('tested')
             add(hazard, evidence(f"model:{hazard}:{'elevated' if p.get('elevated') else 'below'}", 'predicted',
                 f"County event model · {p.get('model')}",
                 f"{p['probability']*100:.1f}% county-day probability for {target} UTC (threshold {p['threshold']*100:.1f}%)"
-                + ('' if supported else '; warning threshold unsupported'),
+                + ('' if supported else '; warning threshold unsupported')
+                + (f". In the {tested['period']} test, about {round(tested['precision']*100)} of every 100 flagged county-days had a "
+                   f"NOAA-reported {hazard} and the flag caught {round(tested['recall']*100)}% of reported {hazard} days" if tested else ''),
                 rating=('elevated' if p.get('elevated') else 'low') if supported else None, counts=bool(supported),
                 value=round(p['probability'], 4)))
     for r in ctx['reports']:

@@ -101,6 +101,21 @@ def test_briefing_history_is_persistent_and_idempotent(client):
     assert saved[0]['delivery']=='not configured'
 
 
+def test_failed_reassessment_serves_the_last_assessment_marked_stale(client, monkeypatch):
+    s=main.SITES[0]
+    assert client.get('/api/sites/'+s['id']).status_code==200
+    key='assessment:'+main.MODEL_REVISION+':'+s['id']
+    old=get_cache(key)['payload']
+    put_cache(key,dict(old,assessed_at=(now_utc()-timedelta(hours=2)).isoformat()),now_utc().isoformat())
+    async def broken(site):
+        raise RuntimeError('model artifact unreadable')
+    monkeypatch.setattr(main,'predictions',broken)
+    response=client.get('/api/sites/'+s['id'])
+    assert response.status_code==200
+    body=response.json()
+    assert body['stale'] is True and 'RuntimeError' in body['reassessment_error']
+
+
 def test_bad_description_and_invalid_review(client):
     s=main.SITES[0]
     response=client.post(f"/api/sites/{s['id']}/reports",data=dict(classification='other',description='short',latitude=s['latitude'],longitude=s['longitude']),headers=AUTH)
