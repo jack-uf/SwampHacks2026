@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 from lightgbm import LGBMClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -21,7 +22,7 @@ from scripts.revision_worker import BASE, PARAMS, folds
 
 OUT = ROOT / 'experiments/sprint-20261017-hybrid'
 REVISION = ROOT / 'experiments/sprint-20261017-revision'
-EXPERTS = ['gbm', 'neural', 'analog', 'rainfall', 'logistic']
+EXPERTS = ['gbm', 'extra', 'analog', 'rainfall', 'logistic']
 COMBINERS = ['mean', 'stack', 'gated']
 GATING = SIGNATURE + ['log_area', 'elevation_m', 'season_sin', 'season_cos', 'snow_store',
                       'history_complete', 'q_3', 'rain_spread_0', 'rain_spread_1', 'rain_mean_0']
@@ -125,10 +126,11 @@ def fit_expert(name, fold):
         model = LGBMClassifier(**PARAMS).fit(train[BASE], train.exceedance, init_score=train.analog_logit)
         score = lambda frame: model.predict(frame[BASE], raw_score=True) + frame.analog_logit.to_numpy()
         bundle = dict(model=model)
-    elif name == 'neural':
-        from scripts.response_network import fit_network, network_output
-        bundle = fit_network('pooled', train)
-        score = lambda frame: logits(1 - network_output(bundle, frame)[0][:, 0])
+    elif name == 'extra':
+        model = ExtraTreesClassifier(n_estimators=300, max_features='sqrt', min_samples_leaf=5,
+                                     n_jobs=2, random_state=42).fit(train[BASE], train.exceedance)
+        score = lambda frame: logits(model.predict_proba(frame[BASE])[:, 1])
+        bundle = dict(model=model)
     elif name == 'logistic':
         model = make_pipeline(StandardScaler(), LogisticRegression(C=1, max_iter=2000, random_state=42))
         model.fit(train[BASE], train.exceedance)

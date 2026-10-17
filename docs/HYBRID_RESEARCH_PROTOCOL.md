@@ -22,10 +22,12 @@ All five address the same target and horizon. Each is calibrated with a one-dime
 | Expert | Model |
 | --- | --- |
 | gbm | LightGBM, 200 trees, learning rate .04, depth 3, 7 leaves, seed 42, fitted with the historical analog logit as initial score |
-| neural | pooled response mixture, 60 epochs, batch 2048, AdamW at .002 with .001 weight decay, seed 42 |
+| extra | extremely randomized trees, 300 trees, square-root feature sampling, minimum leaf 5, seed 42 |
 | analog | pre-2016 nearest-neighbour transition logit, no fitted weather term |
 | rainfall | HRES precipitation summed over forecast leads 3 to 5 |
 | logistic | standardized logistic regression on the combined weather, hydrology, snow and analog feature set |
+
+The first design used the pooled response mixture as the architecturally distinct member. Three runs stopped inside its training without completing a single epoch, while a standalone torch import completed in 1.5 seconds, so the substitution for randomized trees is recorded in `experiments/sprint-20261017-hybrid/amendment-1.md` before any evaluation-fold result existed.
 
 ## Complementarity
 
