@@ -44,6 +44,15 @@ def initialize():
           UNIQUE(site_id, local_date));
         CREATE TABLE IF NOT EXISTS history (site_id TEXT NOT NULL, recorded_at TEXT NOT NULL, score REAL,
           coverage REAL NOT NULL, PRIMARY KEY(site_id, recorded_at));
+        CREATE TABLE IF NOT EXISTS missions (id TEXT PRIMARY KEY, site_id TEXT NOT NULL, name TEXT NOT NULL, activity TEXT NOT NULL,
+          latitude REAL NOT NULL, longitude REAL NOT NULL, shift_start TEXT NOT NULL, shift_end TEXT NOT NULL, crew_size INTEGER NOT NULL,
+          supervisor TEXT NOT NULL, created_at TEXT NOT NULL);
+        CREATE TABLE IF NOT EXISTS jha_versions (mission_id TEXT NOT NULL REFERENCES missions(id), version INTEGER NOT NULL,
+          created_at TEXT NOT NULL, trigger TEXT NOT NULL, fingerprint TEXT NOT NULL, payload TEXT NOT NULL, diff TEXT NOT NULL,
+          PRIMARY KEY(mission_id, version));
+        CREATE TABLE IF NOT EXISTS jha_decisions (id TEXT PRIMARY KEY, mission_id TEXT NOT NULL REFERENCES missions(id),
+          version INTEGER NOT NULL, hazard TEXT NOT NULL, decision TEXT NOT NULL CHECK(decision IN ('accept','override','mitigate')),
+          rating TEXT, mitigation TEXT, rationale TEXT NOT NULL, supervisor TEXT NOT NULL, entry_fingerprint TEXT NOT NULL, created_at TEXT NOT NULL);
         ''')
 
 

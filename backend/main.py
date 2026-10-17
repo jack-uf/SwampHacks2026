@@ -9,6 +9,7 @@ import os
 import uuid
 from contextlib import asynccontextmanager
 from datetime import timedelta
+from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 from zoneinfo import ZoneInfo
@@ -18,7 +19,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from PIL import Image, UnidentifiedImageError
-from backend import providers, jev
+from backend import providers, jev, missions, memory, overlap
 from backend.domain import now_utc, parse_time, lightning_state, hazard_index, briefing_due, distance_miles
 from backend.store import initialize, db, get_cache, put_cache
 from backend.predict import predictions
@@ -60,7 +61,47 @@ def strike_states(site):
     return {source:lightning_state([s for s in rows if s['source']==source],site) for source in ['live','replay']}
 
 
-async def assess(site):
+def mission_context(mission, site, assessment):
+    weather = assessment['weather']
+    work_point = dict(site, latitude=mission['latitude'], longitude=mission['longitude'])
+    return dict(now=now_utc(), conditions=missions.window_conditions(weather, mission['shift_start'], mission['shift_end']),
+                weather=weather, alerts=assessment['alerts']['items'], model=assessment['model'], floodplain=assessment['floodplain'],
+                reports=site_reports(site['id']), lightning=strike_states(work_point),
+                live_feed_configured=bool(os.getenv('PLANIT_LIGHTNING_TOKEN')))
+
+
+def record_jha(mission, site, assessment, trigger):
+    """Append a JHA version only when hazards, ratings or cited evidence changed."""
+    ctx = mission_context(mission, site, assessment)
+    jha = missions.build_jha(mission, ctx)
+    with db() as c:
+        prior = c.execute('SELECT * FROM jha_versions WHERE mission_id=? ORDER BY version DESC LIMIT 1', (mission['id'],)).fetchone()
+        if prior and prior['fingerprint'] == jha['fingerprint']:
+            return
+        diff = missions.diff_jha(json.loads(prior['payload'])['entries'] if prior else [], jha['entries'])
+        payload = dict(jha, conditions=ctx['conditions'], computed_at=now_utc().isoformat(),
+                       inputs=dict(assessed_at=assessment['assessed_at'], weather_feed=assessment['weather'].get('feed'),
+                                   alerts_feed=assessment['alerts'].get('feed'), model_available=assessment['model'].get('available')))
+        c.execute('INSERT OR IGNORE INTO jha_versions VALUES (?,?,?,?,?,?,?)',
+                  (mission['id'], (prior['version'] if prior else 0)+1, now_utc().isoformat(), trigger, jha['fingerprint'],
+                   json.dumps(payload), json.dumps(diff)))
+
+
+def open_missions(site_id):
+    with db() as c:
+        rows = [dict(r) for r in c.execute('SELECT * FROM missions WHERE site_id=?', (site_id,))]
+    return [m for m in rows if parse_time(m['shift_end']) > now_utc()]
+
+
+def update_missions(site, trigger, assessment=None):
+    assessment = assessment or cached_assessment(site)
+    if not assessment:
+        return
+    for mission in open_missions(site['id']):
+        record_jha(mission, site, assessment, trigger)
+
+
+async def assess(site, trigger='Environmental refresh'):
     weather, alerts, model, exposure = await asyncio.gather(
         providers.weather(site), providers.alerts(site), predictions(site), providers.floodplain(site))
     reports = site_reports(site['id'])
@@ -72,6 +113,7 @@ async def assess(site):
     with db() as c:
         c.execute('INSERT OR IGNORE INTO history VALUES (?,?,?,?)',
                   (site['id'],result['assessed_at'],index['score'],index['coverage']))
+    update_missions(site, trigger, result)
     return result
 
 
@@ -269,13 +311,18 @@ def ingest_strike(value: Strike, authorization: str=Header(default='')):
         raise HTTPException(503,'Live strike ingestion is not configured')
     if not hmac.compare_digest(authorization,'Bearer '+token):
         raise HTTPException(401,'Invalid strike provider token')
-    return record_strike(value,'live')
+    result = record_strike(value,'live')
+    for site in SITES:
+        if distance_miles(value.latitude,value.longitude,site['latitude'],site['longitude']) <= 60:
+            update_missions(site,'Recorded lightning strike (live feed)')
+    return result
 
 
 @app.post('/api/sites/{site_id}/lightning-replay',dependencies=[Depends(admin)])
 def replay(site_id):
     s = site_or_404(site_id)
     record_strike(Strike(id=str(uuid.uuid4()),latitude=s['latitude'],longitude=s['longitude'],occurred_at=now_utc().isoformat()),'replay')
+    update_missions(s,'Labeled lightning replay at the facility (simulated, not a live observation)')
     return dict(source='LABELED REPLAY — NOT A LIVE OBSERVATION',**strike_states(s)['replay'])
 
 
@@ -329,6 +376,7 @@ async def report(site_id: str, classification: str=Form(...), description: str=F
         if image_path:
             (UPLOADS/image_path).unlink(missing_ok=True)
         raise
+    update_missions(s,f'Crew report {identifier[:8]} submitted (pending review)')
     return dict(id=identifier,status='pending',image=image_path,triage=triage)
 
 
@@ -339,13 +387,14 @@ class TriageCorrection(BaseModel):
 @app.patch('/api/reports/{report_id}/triage',dependencies=[Depends(admin)])
 def correct_triage(report_id: str, value: TriageCorrection):
     with db() as c:
-        row=c.execute('SELECT id FROM reports WHERE id=?',(report_id,)).fetchone()
+        row=c.execute('SELECT id,site_id FROM reports WHERE id=?',(report_id,)).fetchone()
         if not row:raise HTTPException(404,'Report not found')
         prior=c.execute('SELECT payload FROM report_triage WHERE report_id=?',(report_id,)).fetchone()
         triage=json.loads(prior['payload']) if prior else {}
         triage.update(manual_categories=list(dict.fromkeys(value.categories)),source='manual_correction',corrected_at=now_utc().isoformat())
         c.execute('UPDATE reports SET classification=? WHERE id=?',(value.categories[0],report_id))
         c.execute('INSERT OR REPLACE INTO report_triage VALUES (?,?,?)',(report_id,json.dumps(triage),now_utc().isoformat()))
+    update_missions(site_or_404(row['site_id']),f'Crew report {report_id[:8]} labels corrected by supervisor')
     return triage
 
 
@@ -360,7 +409,7 @@ async def review(report_id: str, value: Review):
         if not row:
             raise HTTPException(404,'Report not found')
         c.execute('UPDATE reports SET status=? WHERE id=?',(value.status,report_id))
-    await assess(site_or_404(row['site_id']))
+    await assess(site_or_404(row['site_id']),f'Crew report {report_id[:8]} marked {value.status} by supervisor')
     return dict(id=report_id,status=value.status)
 
 
@@ -375,6 +424,154 @@ def briefing_history(site_id):
     with db() as c:
         return [dict(r,payload=json.loads(r['payload'])) for r in c.execute(
             'SELECT * FROM briefings WHERE site_id=? ORDER BY local_date DESC LIMIT 30',(site_id,))]
+
+
+@app.get('/api/activities')
+def activities():
+    return [dict(id=k, label=v['label'], sensitivity=v['sensitivity'], wind_kmh=v.get('wind', missions.DEFAULT_WIND))
+            for k, v in missions.ACTIVITIES.items()]
+
+
+class MissionBody(BaseModel):
+    site_id: str
+    name: str = Field(min_length=3, max_length=120)
+    activity: Literal[tuple(missions.ACTIVITIES)]
+    latitude: float = Field(ge=-90, le=90)
+    longitude: float = Field(ge=-180, le=180)
+    shift_start: str
+    shift_end: str
+    crew_size: int = Field(ge=1, le=200)
+    supervisor: str = Field(min_length=2, max_length=80)
+
+
+@app.post('/api/missions', dependencies=[Depends(admin)])
+async def create_mission(value: MissionBody):
+    site = site_or_404(value.site_id)
+    try:
+        start, end = parse_time(value.shift_start), parse_time(value.shift_end)
+    except ValueError as exc:
+        raise HTTPException(422, str(exc))
+    if not start < end <= start+timedelta(hours=24):
+        raise HTTPException(422, 'Shift must end after it starts and last at most 24 hours')
+    if end <= now_utc():
+        raise HTTPException(422, 'Shift has already ended; missions plan current or future work')
+    if distance_miles(value.latitude, value.longitude, site['latitude'], site['longitude']) > 50:
+        raise HTTPException(422, 'Work location must be within 50 miles of the selected facility')
+    mission = dict(value.model_dump(), id=str(uuid.uuid4()), name=value.name.strip(), supervisor=value.supervisor.strip(),
+                   shift_start=start.isoformat(), shift_end=end.isoformat(), created_at=now_utc().isoformat())
+    with db() as c:
+        c.execute('INSERT INTO missions VALUES (:id,:site_id,:name,:activity,:latitude,:longitude,:shift_start,:shift_end,:crew_size,:supervisor,:created_at)', mission)
+    assessment = cached_assessment(site)
+    if not assessment or assessment.get('stale'):
+        assessment = await assess(site, 'Mission created')
+    record_jha(mission, site, assessment, 'Mission created')
+    return mission
+
+
+def mission_or_404(mission_id):
+    with db() as c:
+        row = c.execute('SELECT * FROM missions WHERE id=?', (mission_id,)).fetchone()
+    if not row:
+        raise HTTPException(404, 'Mission not found')
+    return dict(row)
+
+
+def versions_for(mission_id):
+    with db() as c:
+        return [dict(r, payload=json.loads(r['payload']), diff=json.loads(r['diff'])) for r in
+                c.execute('SELECT * FROM jha_versions WHERE mission_id=? ORDER BY version', (mission_id,))]
+
+
+@app.get('/api/missions')
+def list_missions(site_id: str | None = None):
+    with db() as c:
+        rows = [dict(r) for r in (c.execute('SELECT * FROM missions WHERE site_id=? ORDER BY shift_start', (site_id,)) if site_id
+                                  else c.execute('SELECT * FROM missions ORDER BY shift_start'))]
+        for m in rows:
+            latest = c.execute('SELECT version, payload FROM jha_versions WHERE mission_id=? ORDER BY version DESC LIMIT 1', (m['id'],)).fetchone()
+            m.update(site_name=SITE_BY_ID[m['site_id']]['name'], version=latest['version'] if latest else None,
+                     readiness=json.loads(latest['payload'])['readiness'] if latest else None,
+                     ended=parse_time(m['shift_end']) <= now_utc())
+    return rows
+
+
+@app.get('/api/missions/{mission_id}')
+async def mission_detail(mission_id: str):
+    mission = mission_or_404(mission_id)
+    site = SITE_BY_ID[mission['site_id']]
+    ended = parse_time(mission['shift_end']) <= now_utc()
+    if not ended:
+        assessment = cached_assessment(site)
+        if not assessment or assessment.get('stale'):
+            assessment = await assess(site)
+        record_jha(mission, site, assessment, 'Conditions re-checked when the mission was opened')
+    versions = versions_for(mission_id)
+    jha = versions[-1]['payload']
+    current = {e['hazard']: missions.entry_fingerprint(e) for e in jha['entries']}
+    with db() as c:
+        decisions = [dict(r, stale=current.get(r['hazard']) != r['entry_fingerprint']) for r in
+                     c.execute('SELECT * FROM jha_decisions WHERE mission_id=? ORDER BY created_at DESC', (mission_id,))]
+    work_point = dict(site, latitude=mission['latitude'], longitude=mission['longitude'])
+    records = memory.site_records(site['id'])+memory.crew_records(site_reports(site['id']))
+    plans = overlap.dataset()
+    return dict(mission=dict(mission, ended=ended), site=site, activity=missions.ACTIVITIES[mission['activity']],
+                conditions=jha['conditions'], jha=jha, decisions=decisions,
+                versions=[dict(version=v['version'], created_at=v['created_at'], trigger=v['trigger'], diff=v['diff'],
+                               readiness=v['payload']['readiness']) for v in versions],
+                memory=memory.retrieve(work_point, mission['activity'], jha['entries'], mission['shift_start'], records),
+                memory_source=dict(records=len(records), note=(memory.dataset() or {}).get('note')),
+                planned_nearby=overlap.near_mission(plans['projects'], mission['latitude'], mission['longitude'], mission['shift_start'],
+                                                    site['operator'])[:6] if plans else [],
+                planned_source=dict(inventory=plans['inventory'], note=plans['note'], url=plans['source']['url']) if plans else None)
+
+
+class Decision(BaseModel):
+    hazard: Literal[tuple(missions.LABELS)]
+    decision: Literal['accept', 'override', 'mitigate']
+    rationale: str = Field(min_length=5, max_length=1000)
+    supervisor: str = Field(min_length=2, max_length=80)
+    rating: Literal['low', 'elevated', 'high'] | None = None
+    mitigation: str | None = Field(default=None, max_length=1000)
+
+
+@app.post('/api/missions/{mission_id}/decisions', dependencies=[Depends(admin)])
+def decide(mission_id: str, value: Decision):
+    mission_or_404(mission_id)
+    latest = versions_for(mission_id)[-1]
+    entry = next((e for e in latest['payload']['entries'] if e['hazard'] == value.hazard), None)
+    if entry is None:
+        raise HTTPException(422, 'Hazard is not in the current JHA version')
+    if value.decision == 'override' and value.rating is None:
+        raise HTTPException(422, 'An override needs the supervisor rating')
+    if value.decision == 'mitigate' and not (value.mitigation or '').strip():
+        raise HTTPException(422, 'A mitigation decision needs the controls applied')
+    if value.decision == 'override' and entry['rating'] == 'stop_work':
+        raise HTTPException(409, 'Lightning stop work is a deterministic rule and cannot be overridden. Record a mitigation or wait for the timer review.')
+    record = dict(id=str(uuid.uuid4()), mission_id=mission_id, version=latest['version'], hazard=value.hazard, decision=value.decision,
+                  rating=value.rating if value.decision == 'override' else None, mitigation=(value.mitigation or '').strip() or None,
+                  rationale=value.rationale.strip(), supervisor=value.supervisor.strip(),
+                  entry_fingerprint=missions.entry_fingerprint(entry), created_at=now_utc().isoformat())
+    with db() as c:
+        c.execute('INSERT INTO jha_decisions VALUES (:id,:mission_id,:version,:hazard,:decision,:rating,:mitigation,:rationale,:supervisor,:entry_fingerprint,:created_at)', record)
+    return record
+
+
+@lru_cache(maxsize=2)
+def cached_overlaps(utilities_only):
+    data = overlap.dataset()
+    return overlap.find_overlaps(data['projects'], utilities_only=utilities_only) if data else None
+
+
+@app.get('/api/plan-overlaps')
+def plan_overlaps(utilities_only: bool = False, kind: str | None = None, cross_state: bool = False, limit: int = 100):
+    data = overlap.dataset()
+    if not data:
+        raise HTTPException(503, 'Run scripts.build_planned_projects to extract EIA-860M planned generators')
+    pairs = [p for p in cached_overlaps(utilities_only) if (not kind or p['kind'] == kind) and (not cross_state or p['cross_state'])]
+    projects = [p for p in data['projects'] if not utilities_only or p['sector'] == 'Electric Utility']
+    return dict(source=data['source'], inventory=data['inventory'], note=data['note'], projects=len(projects),
+                entities=len({p['entity_id'] for p in projects}), total=len(pairs), pairs=pairs[:max(1, min(limit, 500))],
+                thresholds=dict(close_miles=overlap.CLOSE_MILES, region_miles=overlap.REGION_MILES, concurrent_months=overlap.CONCURRENT_MONTHS))
 
 
 if (ROOT/'frontend/dist').exists():
