@@ -1,7 +1,7 @@
 {
   "id": "sprint-20261017-wind",
   "document": "docs/WIND_SPRINT_PROTOCOL.md",
-  "document_sha256": "ed4cc9974c27e3a44a446ec21e006c3d5d3dc333b1a93301bff841e680ff25e0",
+  "document_sha256": "1b1a67d5d90906d09bc95a700213082fe3fcf8fb5ca24bad02189bc819d28066",
   "county_source": "experiments/sprint-20261017/protocol.json",
   "county_source_sha256": "90ce29222cfaffda09f0994e5ce57fb7fc892a800557a85325011ba5b8242413",
   "seed": 42,
@@ -736,5 +736,6 @@
         41051
       ]
     }
-  ]
+  ],
+  "document_revision": "Pre-ingestion correction note 2026-10-17; station list unchanged"
 }
