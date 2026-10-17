@@ -2116,3 +2116,11 @@ td strong {
 .leaflet-tile-pane {
   filter: saturate(0.35) contrast(0.9);
 }
+
+.hazard-options { border: 1px solid var(--line, #d8ded9); border-radius: 8px; padding: 12px; display: flex; flex-wrap: wrap; gap: 10px 16px; margin: 12px 0; }
+.hazard-options label, .consent-option { font-size: 12px; line-height: 1.6; }
+.hazard-options input, .consent-option input { width: auto; accent-color: #3d6c4b; }
+.consent-option { display: block; margin: 16px 0; }
+.report-triage { margin-top: 10px; }
+.report-triage p { font-size: 12px; }
+.report-triage pre { max-height: 200px; overflow: auto; font-size: 11px; }

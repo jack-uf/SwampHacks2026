@@ -45,10 +45,17 @@ def test_unknown_is_not_zero_and_never_renormalized():
     assert index['components'][-1]['severity']==0
     weather=dict(summary=dict(apparent_max_c=45,rain_24h_mm=150,gust_max_kmh=100,soil_moisture=.5,rain_72h_mm=150))
     index=hazard_index(weather,[dict(severity='Extreme')],[dict(status='verified')]*3,
-                       dict(flood=dict(probability=1,in_domain=True)),dict(zones=[dict(SFHA_TF='T')],feed=dict(available=True)))
+                       dict(flood=dict(probability=1,in_domain=True),storm=dict(probability=.5,in_domain=True)),dict(zones=[dict(SFHA_TF='T')],feed=dict(available=True)))
     assert index['score']==10 and index['complete']
     outside=hazard_index(weather,[],[],dict(flood=dict(probability=1,in_domain=False)),None)
     assert next(c for c in outside['components'] if c['name']=='County event model')['points'] is None
+
+
+def test_one_supported_hazard_cannot_complete_combined_model_component():
+    for hazard in ('flood','storm'):
+        result=hazard_index(None,None,[],{hazard:dict(probability=.9,in_domain=True)},None)
+        assert result['coverage']==.05
+        assert next(c for c in result['components'] if c['name']=='County event model')['points'] is None
 
 
 def test_incomplete_rain_inputs_reduce_coverage():

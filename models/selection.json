@@ -1,0 +1,398 @@
+{
+  "flood": {
+    "selected": "frozen_baseline",
+    "threshold": 0.030639765827391585,
+    "validation": {
+      "n": 3312,
+      "positives": 34,
+      "prevalence": 0.010265700483091788,
+      "precision": 0.0738255033557047,
+      "recall": 0.3235294117647059,
+      "pr_auc": 0.08754873277503476,
+      "roc_auc": 0.8840218210530093,
+      "brier": 0.009832397375717021,
+      "confusion_matrix": [
+        [
+          3140,
+          138
+        ],
+        [
+          23,
+          11
+        ]
+      ],
+      "false_alerts_per_100_county_days": 4.166666666666667,
+      "false_positive_rate": 0.042098840756558877,
+      "alert_rate": 0.04498792270531401,
+      "threshold": 0.030639765827391585,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 3297,
+          "predicted": 0.006621963584123355,
+          "observed": 0.009705793145283591
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 13,
+          "predicted": 0.131185727292702,
+          "observed": 0.15384615384615385
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "n": 2,
+          "predicted": 0.2431925537515078,
+          "observed": 0.0
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "calibration_ece": 0.003305663259614489
+    },
+    "geographic_validation": {
+      "n": 368,
+      "positives": 1,
+      "prevalence": 0.002717391304347826,
+      "precision": 0.0,
+      "recall": 0.0,
+      "pr_auc": 0.015873015873015872,
+      "roc_auc": 0.8310626702997275,
+      "brier": 0.002740584968035195,
+      "confusion_matrix": [
+        [
+          363,
+          4
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "false_alerts_per_100_county_days": 1.0869565217391304,
+      "false_positive_rate": 0.010899182561307902,
+      "alert_rate": 0.010869565217391304,
+      "threshold": 0.030639765827391585,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 368,
+          "predicted": 0.0042073892259706855,
+          "observed": 0.002717391304347826
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "calibration_ece": 0.0014899979216228595
+    }
+  },
+  "storm": {
+    "selected": "lightgbm_enhanced",
+    "threshold": 0.07567978303996738,
+    "validation": {
+      "n": 3312,
+      "positives": 57,
+      "prevalence": 0.017210144927536232,
+      "precision": 0.0995260663507109,
+      "recall": 0.3684210526315789,
+      "pr_auc": 0.09053643118255997,
+      "roc_auc": 0.8559409275877867,
+      "brier": 0.016323757488800137,
+      "confusion_matrix": [
+        [
+          3065,
+          190
+        ],
+        [
+          36,
+          21
+        ]
+      ],
+      "false_alerts_per_100_county_days": 5.736714975845411,
+      "false_positive_rate": 0.05837173579109063,
+      "alert_rate": 0.06370772946859904,
+      "threshold": 0.07567978303996738,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 3190,
+          "predicted": 0.014901238702376916,
+          "observed": 0.013479623824451411
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 103,
+          "predicted": 0.1311308693321396,
+          "observed": 0.11650485436893204
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "n": 18,
+          "predicted": 0.2385332232172207,
+          "observed": 0.1111111111111111
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "n": 1,
+          "predicted": 0.35274703364127113,
+          "observed": 0.0
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "calibration_ece": 0.002623120789053135
+    },
+    "geographic_validation": {
+      "n": 368,
+      "positives": 3,
+      "prevalence": 0.008152173913043478,
+      "precision": 0.038461538461538464,
+      "recall": 0.3333333333333333,
+      "pr_auc": 0.07457669505862277,
+      "roc_auc": 0.841095890410959,
+      "brier": 0.00844201930969824,
+      "confusion_matrix": [
+        [
+          340,
+          25
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "false_alerts_per_100_county_days": 6.793478260869565,
+      "false_positive_rate": 0.0684931506849315,
+      "alert_rate": 0.07065217391304347,
+      "threshold": 0.07567978303996738,
+      "calibration": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "n": 356,
+          "predicted": 0.013931522473463622,
+          "observed": 0.0056179775280898875
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "n": 11,
+          "predicted": 0.13721787350217574,
+          "observed": 0.09090909090909091
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.30000000000000004,
+          "n": 1,
+          "predicted": 0.21817522456696536,
+          "observed": 0.0
+        },
+        {
+          "lower": 0.30000000000000004,
+          "upper": 0.4,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.6000000000000001,
+          "upper": 0.7000000000000001,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.7000000000000001,
+          "upper": 0.8,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "n": 0,
+          "predicted": null,
+          "observed": null
+        }
+      ],
+      "calibration_ece": 0.01001954846098899
+    }
+  }
+}

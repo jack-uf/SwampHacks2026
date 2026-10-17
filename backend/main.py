@@ -1,6 +1,7 @@
 """PlanIT Control local API. Run one Uvicorn worker for the in-process scheduler."""
 import asyncio
 import hmac
+import hashlib
 import io
 import json
 import logging
@@ -17,7 +18,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from PIL import Image, UnidentifiedImageError
-from backend import providers
+from backend import providers, jev
 from backend.domain import now_utc, parse_time, lightning_state, hazard_index, briefing_due, distance_miles
 from backend.store import initialize, db, get_cache, put_cache
 from backend.predict import predictions
@@ -26,6 +27,7 @@ from scripts.common import ROOT
 log = logging.getLogger('planit')
 SITES = json.loads((ROOT/'data/sites.json').read_text())['sites']
 SITE_BY_ID = {s['id']:s for s in SITES}
+MODEL_REVISION = hashlib.sha256((ROOT/'models/hazards.joblib').read_bytes()).hexdigest()
 UPLOADS = ROOT/'data/uploads'
 UPLOADS.mkdir(parents=True, exist_ok=True)
 REFRESH_LOCK = asyncio.Lock()
@@ -48,7 +50,8 @@ def admin(authorization: str = Header(default='')):
 
 def site_reports(site_id):
     with db() as c:
-        return [dict(r) for r in c.execute('SELECT * FROM reports WHERE site_id=? ORDER BY created_at DESC', (site_id,))]
+        rows = c.execute('SELECT reports.*, report_triage.payload AS triage FROM reports LEFT JOIN report_triage ON reports.id=report_triage.report_id WHERE site_id=? ORDER BY created_at DESC', (site_id,)).fetchall()
+        return [dict(r, triage=json.loads(r['triage']) if r['triage'] else None) for r in rows]
 
 
 def strike_states(site):
@@ -65,7 +68,7 @@ async def assess(site):
     index = hazard_index(weather, alerts['items'], active_reports, model['hazards'], exposure)
     result = dict(site=site, weather=weather, alerts=alerts, model=model, index=index, floodplain=exposure,
                   assessed_at=now_utc().isoformat())
-    put_cache('assessment:'+site['id'], result, result['assessed_at'])
+    put_cache('assessment:'+MODEL_REVISION+':'+site['id'], result, result['assessed_at'])
     with db() as c:
         c.execute('INSERT OR IGNORE INTO history VALUES (?,?,?,?)',
                   (site['id'],result['assessed_at'],index['score'],index['coverage']))
@@ -73,7 +76,7 @@ async def assess(site):
 
 
 def cached_assessment(site):
-    cached = get_cache('assessment:'+site['id'])
+    cached = get_cache('assessment:'+MODEL_REVISION+':'+site['id'])
     if not cached:
         return None
     result = cached['payload']
@@ -278,10 +281,18 @@ def replay(site_id):
 
 @app.post('/api/sites/{site_id}/reports',dependencies=[Depends(admin)])
 async def report(site_id: str, classification: str=Form(...), description: str=Form(...),
-                 latitude: float=Form(...), longitude: float=Form(...), image: UploadFile | None=File(default=None)):
+                 latitude: float=Form(...), longitude: float=Form(...), image: UploadFile | None=File(default=None),
+                 categories: str=Form('[]'), jev_consent: bool=Form(False)):
     s = site_or_404(site_id)
-    if classification not in ['heat','storm','flood','lightning','wildfire','wildlife','other']:
+    if classification not in jev.CATEGORIES:
         raise HTTPException(422,'Unknown hazard classification')
+    try:
+        extra = json.loads(categories)
+        if not isinstance(extra,list) or len(extra)>len(jev.CATEGORIES) or any(not isinstance(v,str) or v not in jev.CATEGORIES for v in extra):
+            raise ValueError()
+    except (ValueError,TypeError):
+        raise HTTPException(422,'Categories must be a JSON array of supported hazards')
+    manual_categories = list(dict.fromkeys([classification,*extra]))
     description = description.strip()
     if not 10 <= len(description) <= 2000:
         raise HTTPException(422,'Description must have 10–2000 characters')
@@ -309,14 +320,33 @@ async def report(site_id: str, classification: str=Form(...), description: str=F
         image_path = identifier+'.jpg'
         (UPLOADS/image_path).write_bytes(output.getvalue())
     try:
+        triage = dict(manual_categories=manual_categories,source='manual',provider=await jev.classify(description,consent=jev_consent))
         with db() as c:
             c.execute('INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?)',
                 (identifier,site_id,classification,description,latitude,longitude,now_utc().isoformat(),'pending',image_path))
+            c.execute('INSERT INTO report_triage VALUES (?,?,?)',(identifier,json.dumps(triage),now_utc().isoformat()))
     except Exception:
         if image_path:
             (UPLOADS/image_path).unlink(missing_ok=True)
         raise
-    return dict(id=identifier,status='pending',image=image_path)
+    return dict(id=identifier,status='pending',image=image_path,triage=triage)
+
+
+class TriageCorrection(BaseModel):
+    categories: list[Literal['heat','storm','flood','lightning','wildfire','wildlife','unstable_terrain','equipment_obstruction','other']] = Field(min_length=1,max_length=9)
+
+
+@app.patch('/api/reports/{report_id}/triage',dependencies=[Depends(admin)])
+def correct_triage(report_id: str, value: TriageCorrection):
+    with db() as c:
+        row=c.execute('SELECT id FROM reports WHERE id=?',(report_id,)).fetchone()
+        if not row:raise HTTPException(404,'Report not found')
+        prior=c.execute('SELECT payload FROM report_triage WHERE report_id=?',(report_id,)).fetchone()
+        triage=json.loads(prior['payload']) if prior else {}
+        triage.update(manual_categories=list(dict.fromkeys(value.categories)),source='manual_correction',corrected_at=now_utc().isoformat())
+        c.execute('UPDATE reports SET classification=? WHERE id=?',(value.categories[0],report_id))
+        c.execute('INSERT OR REPLACE INTO report_triage VALUES (?,?,?)',(report_id,json.dumps(triage),now_utc().isoformat()))
+    return triage
 
 
 class Review(BaseModel):

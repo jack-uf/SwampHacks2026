@@ -120,3 +120,30 @@ def test_scheduler_local_due_and_same_day_idempotency(client, monkeypatch):
     asyncio.run(main.tick(datetime(2026,10,16,22,1,tzinfo=timezone.utc)))
     saved=client.get(f"/api/sites/{site['id']}/briefings").json()
     assert len(saved)==1 and saved[0]['local_date']=='2026-10-17'
+
+
+def test_multi_hazard_correction_provider_failure_retains_report(client,monkeypatch):
+    async def unavailable(text,*,consent):
+        assert consent is True
+        return dict(status='unavailable',source='manual',reason='Fixture provider outage')
+    monkeypatch.setattr(main.jev,'classify',unavailable)
+    s=main.SITES[0]
+    data=dict(classification='wildlife',categories='["unstable_terrain","equipment_obstruction"]',jev_consent='true',
+              description='HYPOTHETICAL TEST: Gator and saturated east access road; trucks stuck.',latitude=s['latitude'],longitude=s['longitude'])
+    response=client.post(f"/api/sites/{s['id']}/reports",data=data,headers=AUTH)
+    assert response.status_code==200,response.text
+    report=response.json();assert report['status']=='pending'
+    assert report['triage']['manual_categories']==['wildlife','unstable_terrain','equipment_obstruction']
+    url='/api/reports/'+report['id']+'/triage'
+    assert client.patch(url,json={'categories':['flood']}).status_code==401
+    assert client.patch(url,json={'categories':[]},headers=AUTH).status_code==422
+    assert client.patch(url,json={'categories':['unknown']},headers=AUTH).status_code==422
+    result=client.patch(url,json={'categories':['flood','unstable_terrain']},headers=AUTH)
+    assert result.status_code==200
+    detail=client.get('/api/sites/'+s['id']).json();r=detail['reports'][0]
+    assert r['classification']=='flood' and r['status']=='pending'
+    assert r['triage']['provider']['reason']=='Fixture provider outage'
+    assert r['triage']['manual_categories']==['flood','unstable_terrain']
+    with db() as c:
+        assert c.execute('SELECT count(*) FROM report_triage').fetchone()[0]==1
+    assert client.post(f"/api/sites/{s['id']}/reports",data={**data,'categories':'{}'},headers=AUTH).status_code==422

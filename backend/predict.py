@@ -1,13 +1,14 @@
-"""Serve only the saved, evaluated feature contract; no synthetic model substitute."""
+"""County-scoped forecasts with the exact evaluated extraction and probability contract."""
 from datetime import timedelta
 from functools import lru_cache
 import joblib
-import numpy as np
 import pandas as pd
+import shap
 from scripts.common import ROOT
-from scripts.build_training import FEATURES, REGIONS
+from scripts.build_training import VARIABLES, daily_features
+from backend.model import calibrated
 from backend.providers import fetch
-from backend.domain import now_utc, distance_miles
+from backend.domain import now_utc
 
 
 @lru_cache(maxsize=1)
@@ -16,48 +17,53 @@ def artifact():
     return joblib.load(path) if path.exists() else None
 
 
-def calibrated(bundle, x):
-    p = np.clip(bundle['model'].predict_proba(x)[:,1], 1e-6, 1-1e-6)
-    return bundle['calibrator'].predict_proba(np.log(p/(1-p)).reshape(-1,1))[:,1]
+def matching_region(bundle, site):
+    return next((r for r in bundle['supported_regions']
+                 if r['state'] == site['state'] and r['county'].casefold() == site['county'].casefold()), None)
+
+
+def explain(bundle, x):
+    features=bundle['features']
+    def probability(values):
+        return calibrated(bundle,pd.DataFrame(values,columns=features))
+    explainer=shap.PermutationExplainer(probability,bundle['background'],seed=42)
+    result=explainer(x[features],max_evals=(2*len(features)+1)*4,silent=True)
+    return dict(explanation_base=float(result.base_values[0]),explanations=sorted([
+        dict(feature=f,value=float(x.iloc[0][f]),probability_delta=float(result.values[0,i]))
+        for i,f in enumerate(features)],key=lambda e:abs(e['probability_delta']),reverse=True))
 
 
 async def predictions(site):
-    saved = artifact()
+    saved=artifact()
     if saved is None:
-        return dict(available=False, reason='No trained artifact. Run scripts.build_training and scripts.train.', hazards={})
-    tomorrow = now_utc().date()+timedelta(days=1)
-    params = dict(latitude=site['latitude'], longitude=site['longitude'], start_date=str(tomorrow), end_date=str(tomorrow),
-        hourly=','.join(v+'_previous_day2' for v in ['precipitation','temperature_2m','relative_humidity_2m','wind_gusts_10m']),
-        models='gfs_seamless', timezone='GMT')
-    result = await fetch('model-weather:'+site['id']+':'+str(tomorrow),
-                         'https://previous-runs-api.open-meteo.com/v1/forecast', params, ttl=21600)
+        return dict(available=False,reason='No trained artifact. Run scripts.build_training and scripts.train.',hazards={})
+    regions={h:matching_region(b,site) for h,b in saved['hazards'].items()}
+    region=next((r for r in regions.values() if r),None)
+    if region is None:
+        return dict(available=False,reason='County outside the fitted population. No nationwide or nearby-point extrapolation is supported; ML contribution is unknown.',hazards={})
+    tomorrow=now_utc().date()+timedelta(days=1)
+    params=dict(latitude=region['latitude'],longitude=region['longitude'],start_date=str(tomorrow-timedelta(days=3)),end_date=str(tomorrow),
+                hourly=','.join(v+'_previous_day2' for v in VARIABLES),models='gfs_seamless',timezone='GMT')
+    result=await fetch(f"model-weather:{region['state_fips']*1000+region['county_fips']}:{tomorrow}",
+                       'https://previous-runs-api.open-meteo.com/v1/forecast',params,ttl=21600)
     if not result['available']:
-        return dict(available=False, reason='Archived issue-time forecast unavailable: '+str(result['error']), hazards={})
-    h = result['data']['hourly']
-    values = [h.get(v+'_previous_day2', []) for v in ['precipitation','temperature_2m','relative_humidity_2m','wind_gusts_10m']]
-    if any(len(v)!=24 or any(x is None for x in v) for v in values):
-        return dict(available=False, reason='Incomplete 48-hour-lead archived forecast; prediction withheld.', hazards={})
-    doy = tomorrow.timetuple().tm_yday
-    features = dict(forecast_rain_mm=sum(values[0]), forecast_temp_c=max(values[1]),
-        forecast_humidity_pct=float(np.mean(values[2])), forecast_gust_kmh=max(values[3]), latitude=site['latitude'],
-        longitude=site['longitude'], season_sin=np.sin(2*np.pi*doy/365.25), season_cos=np.cos(2*np.pi*doy/365.25))
-    x = pd.DataFrame([features], columns=FEATURES)
-    nearest = min(distance_miles(site['latitude'],site['longitude'],r[3],r[4])*1.609344 for r in REGIONS if r[0]!='Los Angeles, CA')
-    hazards = {}
-    for hazard,b in saved['hazards'].items():
-        probability = float(calibrated(b,x)[0])
-        explanations = []
-        for feature in FEATURES:
-            changed = x.copy()
-            changed.loc[0, feature] = b['reference'][feature]
-            delta = probability-float(calibrated(b,changed)[0])
-            explanations.append(dict(feature=feature, value=float(features[feature]), probability_delta=round(delta,5)))
-        hazards[hazard] = dict(probability=probability, model=b['name'], threshold=b['threshold'],
-            elevated=probability >= b['threshold'], in_domain=nearest <= 150,
-            explanations=sorted(explanations,key=lambda e: abs(e['probability_delta']),reverse=True))
-    return dict(available=True, hazards=hazards, target_date=str(tomorrow), target_timezone='UTC',
-        target_window=f'{tomorrow} 00:00–24:00 UTC', issue_time=f'{tomorrow-timedelta(days=1)}T00:00:00Z',
-        forecast_lead='at least 48h per target hour', resolution='county-day event screening, not a verified site incident',
-        nearest_training_km=round(nearest), extrapolation=nearest>150, trained_at=saved['trained_at'],
-        explanation_method='One feature replaced by its training median. Signed probability difference; not additive or causal.',
+        return dict(available=False,reason='Archived nominal-lead forecast unavailable: '+str(result['error']),hazards={})
+    try:
+        rows=daily_features(result['data'],region['latitude'],region['longitude'])
+        target=next((r for r in rows if r['target_date']==str(tomorrow)),None)
+        if target is None:raise ValueError('Missing complete target or antecedent hours')
+        x=pd.DataFrame([target]);hazards={}
+        for hazard,bundle in saved['hazards'].items():
+            if regions[hazard] is None:continue
+            probability=float(calibrated(bundle,x)[0])
+            hazards[hazard]=dict(probability=probability,model=bundle['name'],threshold=bundle['threshold'],
+                warning_supported=bundle['warning_supported'],elevated=bundle['warning_supported'] and probability>=bundle['threshold'],
+                in_domain=True,**explain(bundle,x))
+    except (KeyError,ValueError,TypeError) as exc:
+        return dict(available=False,reason='Forecast contract rejected; prediction withheld: '+str(exc),hazards={})
+    return dict(available=True,hazards=hazards,target_date=str(tomorrow),target_timezone='UTC',target_window=f'{tomorrow} 00:00–24:00 UTC',
+        issue_time=f'{tomorrow-timedelta(days=1)}T00:00:00Z',forecast_lead='nominal 48h per target hour; actual publication time unverified',
+        resolution='Reported county-day event screening, never a verified site incident',county=region['county']+', '+region['state'],
+        forecast_point=dict(latitude=region['latitude'],longitude=region['longitude']),trained_at=saved['trained_at'],
+        explanation_method='Permutation SHAP of calibrated probability; baseline + all signed contributions = prediction. Independent masking of 16 training rows; approximate, correlated inputs, not causal.',
         feed={k:v for k,v in result.items() if k!='data'})

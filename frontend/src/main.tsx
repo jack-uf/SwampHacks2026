@@ -77,6 +77,8 @@ type Detail = {
   assessed_at: string;
   stale?: boolean;
 };
+const CATEGORIES = ["heat", "storm", "flood", "lightning", "wildfire", "wildlife", "unstable_terrain", "equipment_obstruction", "other"];
+const hazardName = (v: string) => v.replaceAll("_", " ");
 const fmt = (v: number | null | undefined, digits = 1) =>
   v == null ? "—" : v.toFixed(digits);
 const time = (v: string | null) =>
@@ -223,7 +225,7 @@ function SiteMap({
           }),
         });
         const tip = document.createElement("span");
-        tip.textContent = `Crew report · ${r.classification} · ${r.status}`;
+        tip.textContent = `Crew report · ${(r.triage?.manual_categories || [r.classification]).map(hazardName).join(", ")} · ${r.status}`;
         marker.bindTooltip(tip).addTo(markers.current!);
       });
   }, [sites, selected, reports, onSelect]);
@@ -1020,16 +1022,8 @@ function App() {
                           <>
                             <p>
                               {detail.model.target_window} · ≥48h lead ·{" "}
-                              {detail.model.nearest_training_km} km from nearest
-                              training county point
+                              {detail.model.county} · county representative forecast
                             </p>
-                            {detail.model.extrapolation && (
-                              <div className="inline-note warning">
-                                Outside the regional training guard. These
-                                experimental estimates are excluded from the
-                                operational index.
-                              </div>
-                            )}
                             <div className="prediction-grid">
                               {Object.entries(detail.model.hazards).map(
                                 ([hazard, value]) => {
@@ -1051,6 +1045,8 @@ function App() {
                                         {p.model} · threshold{" "}
                                         {fmt(p.threshold * 100)}%
                                       </small>
+                                      <small>SHAP baseline {fmt(p.explanation_base * 100, 2)}% · {!p.warning_supported ? "warning threshold unsupported" : p.elevated ? "above warning threshold" : "below warning threshold"}</small>
+                                      {!p.warning_supported && <p className="inline-note warning">No validation threshold met the warning budget and recall floor; automatic warning withheld.</p>}
                                       <div className="explanation-list">
                                         {p.explanations
                                           .slice(0, 3)
@@ -1077,15 +1073,14 @@ function App() {
                                 },
                               )}
                             </div>
+                            {Object.keys(detail.model.hazards).length < 2 && <p className="inline-note warning">The other hazard model is unsupported in this county. Its probability and the combined ML index component remain unknown.</p>}
                             <p className="body-note">
                               {detail.model.explanation_method} County reporting
                               is incomplete. Estimates are not site-incident or
                               injury probabilities.
                             </p>
                             <div className="inline-note warning">
-                              Held-out false alerts per 100 county-days: flood
-                              36.01, storm 24.13 at recall-focused thresholds.
-                              Review full benchmark in Model intelligence.
+                              Warnings remain experimental. Review false alerts, missed events, calibration and geographic tests in Model intelligence.
                             </div>
                           </>
                         ) : (
@@ -1129,7 +1124,7 @@ function App() {
                               <div>
                                 <div className="report-meta">
                                   <span className="tiny-tag">
-                                    {r.classification}
+                                    {(r.triage?.manual_categories || [r.classification]).map(hazardName).join(" · ")}
                                   </span>
                                   <span className={"review-status " + r.status}>
                                     {r.status}
@@ -1137,6 +1132,7 @@ function App() {
                                   <small>{time(r.created_at)}</small>
                                 </div>
                                 <p>{r.description}</p>
+                                <ReportTriage report={r} busy={busy} onSave={(categories) => action(() => api(`/reports/${r.id}/triage`, {method: "PATCH", body: JSON.stringify({categories})}), "Manual classifications saved. Report review status is unchanged.")} />
                                 <small>
                                   <MapPin size={11} />
                                   {r.latitude.toFixed(4)},{" "}
@@ -1374,20 +1370,20 @@ function App() {
                 <>
                   <div className="method-grid">
                     <div>
-                      <strong>8,532</strong>
+                      <strong>{evaluation.rows.toLocaleString()}</strong>
                       <span>Complete county-days</span>
                     </div>
                     <div>
-                      <strong>12 counties</strong>
-                      <span>2024–2025 regional sample</span>
+                      <strong>{evaluation.counties} counties</strong>
+                      <span>2024–June 2026 convenience sample</span>
                     </div>
                     <div>
                       <strong>≥48 hours</strong>
                       <span>Archived forecast lead per hour</span>
                     </div>
                     <div>
-                      <strong>2025</strong>
-                      <span>Chronological held-out test</span>
+                      <strong>Jan–Jun 2026</strong>
+                      <span>Final chronological test</span>
                     </div>
                   </div>
                   <div className="table-scroll">
@@ -1400,7 +1396,7 @@ function App() {
                           <th>PR-AUC</th>
                           <th>ROC-AUC</th>
                           <th>Brier</th>
-                          <th>False alerts /100 days</th>
+                          <th>False alerts /100 county-days</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1443,18 +1439,29 @@ function App() {
                   <div className="methodology">
                     <h3>The evaluation contract</h3>
                     <p>
-                      Training: January–August 2024. Sigmoid calibration:
-                      September–October 2024. Selection and F2 threshold:
-                      November–December 2024. Test: January–December 2025. Los
-                      Angeles is excluded from fitting and reserved for
-                      geographic evaluation.
+                      Fit: 2024. Sigmoid calibration: January–June 2025. Model and threshold selection: July–December 2025, including independent Georgia and Colorado counties. Final temporal test: January–June 2026. California, Arizona, Washington and Utah form the new-model geographic test; Arizona was used by the frozen baseline and is not independent for that candidate.
                     </p>
                     <p>
-                      The primary candidate is XGBoost; the winner is selected
-                      by validation average precision (PR-AUC). Class weighting
-                      is applied only in training. Target days require all 24
-                      forecast hours. No future realized weather is used.
+                      Seven newly fitted logistic/XGBoost/LightGBM candidates compete with the unchanged original estimators. Selection uses mean temporal and geographic validation average precision, with temporal Brier as tie-break. Warning thresholds target at most 20% flagged days and at least 30% recall on validation; these are provisional cost hypotheses. F1/F2 alternatives remain inspectable. No final-test tuning or nationwide validity is claimed.
                     </p>
+                    <p className="inline-note warning">
+                      Final results are mixed: the original flood estimator was retained. The selected storm model did not improve ranking on the same ten original counties in 2026, and missed all three independent geographic-test events. Lower false-alert rates also sacrifice recall. Geographic validation contains only one flood and three storm positives.
+                    </p>
+                    <h3>Same-test comparison and uncertainty</h3>
+                    <p>Both versions below use identical original ten county locations, labels and January–June 2026 dates. The original threshold stays unchanged; updated thresholds use only 2025 validation. AP is average precision; the paired intervals resample calendar weeks with counties kept together.</p>
+                    <div className="table-scroll"><table>
+                      <thead><tr><th>Hazard / version</th><th>Precision</th><th>Recall</th><th>AP</th><th>Brier</th><th>False alerts /100 county-days</th></tr></thead>
+                      <tbody>{Object.entries(evaluation.hazards).flatMap(([h, info]) => ["original_threshold_baseline", "updated"].map(version => {
+                        const m = (info as any).same_final_rows[version];
+                        return <tr key={h+version}><td>{h} · {version.replaceAll("_", " ")}</td><td>{fmt(m.precision,3)}</td><td>{fmt(m.recall,3)}</td><td>{fmt(m.pr_auc,3)}</td><td>{fmt(m.brier,4)}</td><td>{fmt(m.false_alerts_per_100_county_days,2)}</td></tr>;
+                      }))}</tbody>
+                    </table></div>
+                    <details><summary>Reliability bins, warning policies, prevalence, regional variation and paired uncertainty</summary>
+                      <pre>{JSON.stringify(Object.fromEntries(Object.entries(evaluation.hazards).map(([h,i]) => {
+                        const info = i as any; const m = info.candidates[info.selected];
+                        return [h, {temporal: m.test, geographic: m.geographic_test, threshold_policies: m.threshold_policies, warning_supported: m.warning_supported, quarters: m.quarters, counties: m.counties, paired_uncertainty: info.same_final_rows.paired_uncertainty}];
+                      })),null,2)}</pre>
+                    </details>
                     <h3>Limitations that travel with the model</h3>
                     <ul>
                       {evaluation.limitations.map((l: string) => (
@@ -1639,6 +1646,32 @@ function Condition({
     </div>
   );
 }
+function ReportTriage({report, busy, onSave}: {report: any; busy: boolean; onSave: (categories: string[]) => Promise<void>}) {
+  const [editing, setEditing] = useState(false);
+  const [error, setError] = useState("");
+  const provider = report.triage?.provider;
+  const categories: string[] = report.triage?.manual_categories || [report.classification];
+  return <div className="report-triage">
+    <small>Classification source: {report.triage?.source || "manual"}. Human review status: {report.status}.</small>
+    {provider?.status === "classified" ? <>
+      <p>Jev suggestions ({provider.model}): {provider.categories.map(hazardName).join(", ") || "abstained"}. {provider.abstained && "Uncertain — human clarification required."}</p>
+      <p>{provider.immediate_review === true ? "Suggests immediate supervisor review." : provider.immediate_review === null ? "Priority uncertain; supervisor review required." : "No immediate-priority suggestion; this does not clear work."} {provider.needs_clarification && "Clarify the report."}</p>
+      <details><summary>Unverified Jev probabilities and usage</summary><pre>{JSON.stringify({probabilities: provider.probabilities, uncertain: provider.uncertain, location_sufficient: provider.location_sufficient, usage: provider.usage},null,2)}</pre></details>
+      <small>Provider probabilities and 0.3/0.7 cutoffs are unvalidated for this domain. Suggestions never verify or dismiss reports.</small>
+    </> : <p className="body-note">{provider?.reason || "No AI enrichment requested."}</p>}
+    <button className="text-button" type="button" onClick={() => setEditing(!editing)}>Correct classifications</button>
+    {editing && <form onSubmit={async e => {
+      e.preventDefault(); const values = new FormData(e.currentTarget).getAll("category").map(String);
+      if (!values.length) {setError("Select at least one classification."); return;}
+      setError("");
+      await onSave(values); setEditing(false);
+    }}>
+      <fieldset className="hazard-options"><legend>Supervisor classifications — select at least one</legend>{CATEGORIES.map(c => <label key={c}><input name="category" type="checkbox" value={c} defaultChecked={categories.includes(c)} /> {hazardName(c)}</label>)}</fieldset>
+      {error && <p role="alert" className="form-error">{error}</p>}
+      <button disabled={busy} className="button secondary">Save classifications</button>
+    </form>}
+  </div>;
+}
 function ReportForm({
   site,
   busy,
@@ -1656,6 +1689,8 @@ function ReportForm({
       onSubmit={(e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
+        form.set("categories", JSON.stringify(form.getAll("extra_category")));
+        form.delete("extra_category");
         const photo = form.get("image");
         if (photo instanceof File && !photo.size) form.delete("image");
         onSubmit(form);
@@ -1668,21 +1703,16 @@ function ReportForm({
       <label className="field">
         Hazard classification
         <select name="classification" required>
-          {[
-            "heat",
-            "storm",
-            "flood",
-            "lightning",
-            "wildfire",
-            "wildlife",
-            "other",
-          ].map((v) => (
+          {CATEGORIES.map((v) => (
             <option key={v} value={v}>
-              {v.charAt(0).toUpperCase() + v.slice(1)}
+              {hazardName(v)}
             </option>
           ))}
         </select>
       </label>
+      <fieldset className="hazard-options"><legend>Additional hazards (optional)</legend>
+        {CATEGORIES.map(c => <label key={c}><input type="checkbox" name="extra_category" value={c} /> {hazardName(c)}</label>)}
+      </fieldset>
       <label className="field">
         What did the crew observe?
         <textarea
@@ -1759,8 +1789,11 @@ function ReportForm({
       </label>
       <p className="body-note">
         Images are resized and re-encoded to remove embedded metadata. Reports
-        remain stored locally.
+        and photos remain stored locally unless you explicitly consent to sharing report text below.
       </p>
+      <label className="consent-option"><input type="checkbox" name="jev_consent" value="true" />
+        I authorize sending this observation text to TypeSafe AI for optional Jev suggestions. Remove personal or sensitive details first. Photos and coordinates are not sent. Server configuration must separately authorize API costs; unavailable Jev leaves manual labels intact.
+      </label>
       <button disabled={busy} className="button primary full">
         {busy ? <RefreshCw size={16} className="spin" /> : <Plus size={16} />}
         Save crew report

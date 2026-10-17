@@ -35,6 +35,8 @@ def initialize():
         CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, site_id TEXT NOT NULL, classification TEXT NOT NULL,
           description TEXT NOT NULL, latitude REAL NOT NULL, longitude REAL NOT NULL, created_at TEXT NOT NULL,
           status TEXT NOT NULL CHECK(status IN ('pending','verified','rejected','resolved')), image TEXT);
+        CREATE TABLE IF NOT EXISTS report_triage (report_id TEXT PRIMARY KEY REFERENCES reports(id),
+          payload TEXT NOT NULL, updated_at TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS strikes (id TEXT PRIMARY KEY, latitude REAL NOT NULL, longitude REAL NOT NULL,
           occurred_at TEXT NOT NULL, source TEXT NOT NULL CHECK(source IN ('live','replay')));
         CREATE TABLE IF NOT EXISTS briefings (id TEXT PRIMARY KEY, site_id TEXT NOT NULL, local_date TEXT NOT NULL,

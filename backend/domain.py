@@ -58,8 +58,9 @@ def hazard_index(weather, alerts, reports, predictions, exposure):
     add('Rain & saturation', flood, .20, 'Rain screening, not hydraulic inundation modeling; Static FEMA exposure is a separate component.')
     add('Wind & storms', None if d.get('gust_max_kmh') is None else (d['gust_max_kmh']-25)/65, .15,
         'Maximum next-24h forecast gust; consult active warnings.')
-    valid = [p['probability'] for p in predictions.values() if p.get('in_domain') and p.get('probability') is not None]
-    add('County event model', max(valid) if valid else None, .20, 'Calibrated historical county-event estimate for tomorrow UTC.')
+    valid = [predictions[h]['probability'] for h in ('flood', 'storm') if h in predictions and predictions[h].get('in_domain') and predictions[h].get('probability') is not None]
+    add('County event model', max(valid) if len(valid)==2 else None, .20,
+        'Maximum calibrated flood/storm county-event estimate for tomorrow UTC. Both estimates must be supported; an absent hazard keeps this combined component unknown.')
     add('Active NWS alerts', None if alerts is None else max([{'Extreme':1, 'Severe':.8, 'Moderate':.5, 'Minor':.2}.get(a.get('severity'),.3) for a in alerts] or [0]),
         .20, 'Point-matched NWS alerts. An unavailable alert feed is unknown.')
     zones = exposure.get('zones', []) if exposure and exposure.get('feed', {}).get('available') else []

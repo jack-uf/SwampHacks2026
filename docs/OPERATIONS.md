@@ -2,7 +2,9 @@
 
 ## Process and storage
 
-Run from the repository root with one Uvicorn worker. Lifespan starts separate briefing and assessment tasks. SQLite transactions persist cache, reports, strikes, briefings and index history. `PLANIT_DB` selects the database (relative paths are relative to the working directory); uploads are always in `data/uploads/`. Runtime database, uploads, raw source downloads and `.env` are ignored by Git. The included inventory and training/evaluation artifacts are versioned.
+Run from the repository root with one Uvicorn worker. Lifespan starts separate briefing and assessment tasks. SQLite transactions persist cache, reports, optional report-triage entities, strikes, briefings and index history. Assessment cache keys include the serving artifact SHA-256, so an artifact replacement cannot reuse an assessment computed by a different model; restart after replacing the artifact. Historical briefings remain immutable snapshots. `PLANIT_DB` selects the database (relative paths are relative to the working directory); uploads are always in `data/uploads/`. Runtime database, uploads, raw source downloads and `.env` are ignored by Git. The included inventory and training/evaluation artifacts are versioned.
+
+Each startup refreshes the portfolio using current assessment logic. After code-only changes, wait for that refresh or request authenticated `POST /api/refresh`; the model fingerprint does not identify Python source revisions. The combined ML index component remains unknown unless both county-scoped hazard estimates are available. Individual supported estimates can still appear in the forecast panel.
 
 Back up the database and uploads together while the server is stopped. Preserve `.env` separately in secure storage. There is one canonical schema and no automatic migration or historical-format compatibility. A schema/artifact mismatch should be diagnosed explicitly; do not delete the database to repair a cache problem. Preserve reports and briefings before any deliberate reset. The app currently has no retention/deletion UI or audit history.
 
@@ -16,6 +18,9 @@ Back up the database and uploads together while the server is stopped. Preserve 
 | `PLANIT_LIGHTNING_TOKEN` | Independent secret for real strike ingestion; blank disables ingestion |
 | `PLANIT_ENABLE_DELIVERY` | Exact `true` enables optional delivery; default disabled |
 | `PLANIT_BRIEFING_WEBHOOK` | HTTPS destination, used only with delivery enabled |
+| `PLANIT_JEV_ENABLED` | Exact `true` authorizes optional paid Jev requests; disabled unless an operator explicitly approves costs |
+| `TYPESAFE_API_KEY` | Server-only TypeSafe bearer credential; never exposed to the browser |
+| `PLANIT_JEV_MODEL` | Pinned documented stable version, default `jev-1.13.0`; reject unexpected response model |
 | `PLANIT_SCHEDULER` | Exact `true` starts jobs; defaults true, set false for isolated tests/manual operation |
 
 The browser stores the supervisor secret in session storage. It is a local shared secret, not a user account or authorization hierarchy. Reads and uploaded images are public to anyone who can reach the server. Keep loopback binding. Photos, descriptions and coordinates can expose sensitive site details; do not use real personal/sensitive material in a demo. Image EXIF stripping does not anonymize visible image content.
@@ -24,7 +29,7 @@ The browser stores the supervisor secret in session storage. It is a local share
 
 A portfolio refresh assesses sites sequentially, with four concurrent provider requests at most and a 250 ms pause between sites. The next scheduled portfolio pass begins 30 minutes after completion. Assessment timestamps older than 35 minutes are marked stale; requesting a stale detail triggers reassessment. The leaderboard polls every 15 seconds and selected detail every minute, but polling does not bypass assessment/provider caches.
 
-Provider TTLs: weather 30 minutes; NWS five minutes when an assessment requests it; inference archive six hours per target date; static FEMA seven days. Thus NWS snapshot age can approach the assessment cycle, not five minutes. This is polling decision support, not guaranteed immediate warning delivery.
+Provider TTLs: weather 30 minutes; NWS five minutes when an assessment requests it; inference archive six hours per county/target date; static FEMA seven days. Thus NWS snapshot age can approach the assessment cycle, not five minutes. This is polling decision support, not guaranteed immediate warning delivery.
 
 Requests retry HTTP 429/500/502/503/504 up to three attempts with one- and two-second waits, a 35-second timeout, and a shared concurrency limit. A failure retains the last successful fetch timestamp and records the error; repeated failures have a two-minute cooldown. Missing sources stay unavailable and do not feed old/synthetic values into the index. Empty successful NWS results mean no matching active alert at fetch time; failed NWS results mean unknown.
 
@@ -58,9 +63,21 @@ A Haversine great-circle calculation uses Earth radius 3958.7613 miles. Strikes 
 
 ## Reports
 
-`POST /api/sites/{id}/reports` uses multipart fields `classification`, `description`, `latitude`, `longitude` and optional `image`. Classes: heat, storm, flood, lightning, wildfire, wildlife, other. Descriptions trim to 10–2,000 characters; coordinates must be valid and within 50 miles of the selected facility. Initial map coordinates are the facility's location and must be confirmed or replaced by actual observation coordinates. Browser geolocation is optional and permission-dependent.
+`POST /api/sites/{id}/reports` uses multipart fields `classification`, `description`, `latitude`, `longitude` and optional `image`. Classes: heat, storm, flood, lightning, wildfire, wildlife, unstable_terrain, equipment_obstruction, other. `classification` is the primary manual class; optional `categories` is a JSON array of additional manual classes (at most nine). `jev_consent` defaults false. Primary and additional labels are deduplicated and persisted in an associated report-triage entity. A report without requested enrichment remains manually classified; no historical schema conversion occurs. Descriptions trim to 10–2,000 characters; coordinates must be valid and within 50 miles of the selected facility. Initial map coordinates are the facility's location and must be confirmed or replaced by actual observation coordinates. Browser geolocation is optional and permission-dependent.
 
 Images are limited to 5 MB, JPEG/PNG/WebP, and 20 megapixels. They are decoded, resized within 1600×1600, converted to RGB JPEG and saved under generated UUID names. Re-encoding removes embedded metadata. If persistence fails after image creation, the new file is removed. Reports start pending. `PATCH /api/reports/{id}` with `{"status":"verified"}`, `rejected`, or `resolved` changes review status and reassesses the site. Invalid identifiers return 404. Review has no user identity or status-transition audit log.
+
+### Optional Jev enrichment and correction
+
+The operator must separately authorize API spending and configure `PLANIT_JEV_ENABLED=true` plus `TYPESAFE_API_KEY`. Each submitted report must additionally include explicit text-sharing consent. The dashboard checkbox is unchecked by default. With both gates satisfied, `backend/jev.py` makes one 15-second HTTP request to the documented `POST https://api.typesafe.ai/v1/systemone` endpoint, pinned to `PLANIT_JEV_MODEL`. The state contains only `observation` text: no photo, coordinates, site/report identifiers or supervisor credentials. Descriptions may still contain sensitive details; obtain appropriate authorization and redact before consent. Official image support is experimental and **not enabled or live-verified**.
+
+Twelve independent Noul questions produce nine possible hazard suggestions plus immediate-review, location-sufficiency and clarification judgments. Noul is the provider's yes probability, not an independently calibrated confidence score. Hand-chosen .7 acceptance/.3 rejection cutoffs leave intermediate answers uncertain. Any uncertain answer or no accepted hazard marks abstention; ambiguous priority/location is not silently interpreted as safe. Cutoffs and question wording have not been field-calibrated. The UI displays the pinned model, probabilities, uncertainty, token usage and explicit manual/AI source.
+
+Missing consent, disabled configuration or missing credentials makes **zero provider calls**. Timeout, connection failure, 401/403, 429, 5xx, malformed/missing answer IDs, wrong answer types/ranges/usage or unexpected model all yield a persisted unavailable reason with manual labels intact. 429 includes bounded Retry-After metadata. There is no automatic retry or queue that might duplicate paid inference. Report and triage are committed together; photo cleanup remains in place on failed persistence. Provider bodies and secrets are not logged. No requests were made to the paid inference endpoint during this implementation.
+
+AI suggestions are retained as suggestions, never copied into human classification or verification. `PATCH /api/reports/{id}/triage` with `{"categories":["wildlife","unstable_terrain"]}` requires supervisor authorization, validates at least one supported category, saves source `manual_correction` and timestamp, updates the report's primary classification, and preserves the original provider suggestion. The map and timeline show manual categories. Correction does not change pending/verified/rejected/resolved review status. Human review is the separate existing PATCH operation; only verified recent reports affect the heuristic index. Jev never clears a lightning hold or authorizes work.
+
+`tests/fixtures/jev-hypothetical.json` has six clearly hypothetical observations and hand-authored response probabilities. Automated checks validate parsing, multitagging, uncertainty and failure/persistence handling. They **do not measure Jev semantic accuracy**. To evaluate semantics later, obtain spending/text authorization, use a fresh documented human-labeled corpus, retain raw versioned responses/token usage, and report multitag precision/recall, abstention, triage disagreements, latency and actual cost separately from these fixtures. Do not silently add a live paid test to CI.
 
 ## Briefings and optional delivery
 
@@ -82,6 +99,7 @@ Delivery is disabled unless both explicit opt-in and an HTTPS webhook are config
 | POST | `/api/lightning/strikes` | Separate provider secret; real recorded strike contract |
 | POST | `/api/sites/{id}/lightning-replay` | Supervisor; labeled replay |
 | POST | `/api/sites/{id}/reports` | Supervisor; validated multipart report |
+| PATCH | `/api/reports/{id}/triage` | Supervisor; correct multihazard labels while retaining AI evidence |
 | PATCH | `/api/reports/{id}` | Supervisor; review status |
 | GET / POST | `/api/sites/{id}/briefings` | Public history / supervisor generation |
 | GET | `/uploads/{generated-name}.jpg` | Public local report photo |
