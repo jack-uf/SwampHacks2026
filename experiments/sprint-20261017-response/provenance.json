@@ -1,0 +1,3501 @@
+{
+  "datasets": {
+    "training": {
+      "rows": 107689,
+      "gauges": 89,
+      "sha256": "3bd5180a073b6403684172f5ea0bd9aef0097cd62cc6833aac7a7153414515f4"
+    },
+    "test": {
+      "rows": 15234,
+      "gauges": 36,
+      "sha256": "75b6c52cc8251ef415488c5d7061998f6bd8e45794e8c5c618bb8ad0afdcb1e6"
+    }
+  },
+  "coverage": [
+    {
+      "station": "02096846",
+      "huc": "03030002",
+      "role": "geographic_validation",
+      "rows": 1277,
+      "reference_cfs": 19.194999999999983
+    },
+    {
+      "station": "02111180",
+      "huc": "03040101",
+      "role": "geographic_validation",
+      "rows": 1408,
+      "reference_cfs": 229.69999999999982
+    },
+    {
+      "station": "02177000",
+      "huc": "03060102",
+      "role": "geographic_validation",
+      "rows": 1507,
+      "reference_cfs": 1388.9999999999964
+    },
+    {
+      "station": "02212600",
+      "huc": "03070103",
+      "role": "geographic_validation",
+      "rows": 1602,
+      "reference_cfs": 188.0
+    },
+    {
+      "station": "02296500",
+      "huc": "03100101",
+      "role": "geographic_validation",
+      "rows": 1638,
+      "reference_cfs": 1300.0
+    },
+    {
+      "station": "02314500",
+      "huc": "03110201",
+      "role": "geographic_validation",
+      "rows": 1805,
+      "reference_cfs": 2634.499999999998
+    },
+    {
+      "station": "02327100",
+      "huc": "03120003",
+      "role": "geographic_validation",
+      "rows": 1491,
+      "reference_cfs": 712.1499999999996
+    },
+    {
+      "station": "02342933",
+      "huc": "031300031204",
+      "role": "geographic_validation",
+      "excluded": "no eligible complete decisions"
+    },
+    {
+      "station": "02361000",
+      "huc": "03140201",
+      "role": "geographic_validation",
+      "rows": 1663,
+      "reference_cfs": 2360.0
+    },
+    {
+      "station": "02381600",
+      "huc": "03150102",
+      "role": "geographic_validation",
+      "rows": 1443,
+      "reference_cfs": 37.5
+    },
+    {
+      "station": "02430085",
+      "huc": "03160101",
+      "role": "geographic_validation",
+      "rows": 1508,
+      "reference_cfs": 82.12999999999992
+    },
+    {
+      "station": "02472000",
+      "huc": "03170004",
+      "role": "geographic_validation",
+      "rows": 1583,
+      "reference_cfs": 4043.9999999999964
+    },
+    {
+      "station": "03010655",
+      "huc": "05010001",
+      "role": "development",
+      "rows": 1518,
+      "reference_cfs": 564.0
+    },
+    {
+      "station": "03159540",
+      "huc": "05030202",
+      "role": "development",
+      "rows": 1537,
+      "reference_cfs": 890.6999999999989
+    },
+    {
+      "station": "03161000",
+      "huc": "05050001",
+      "role": "development",
+      "rows": 1342,
+      "reference_cfs": 933.0999999999995
+    },
+    {
+      "station": "03213700",
+      "huc": "050702010506",
+      "role": "development",
+      "rows": 1555,
+      "reference_cfs": 3530.0
+    },
+    {
+      "station": "03237280",
+      "huc": "05090201",
+      "role": "development",
+      "rows": 1347,
+      "reference_cfs": 66.1
+    },
+    {
+      "station": "03280700",
+      "huc": "05100202",
+      "role": "development",
+      "rows": 1267,
+      "reference_cfs": 311.89999999999964
+    },
+    {
+      "station": "03338780",
+      "huc": "05120109",
+      "role": "development",
+      "excluded": "no eligible complete decisions"
+    },
+    {
+      "station": "03439000",
+      "huc": "06010105",
+      "role": "development",
+      "rows": 1469,
+      "reference_cfs": 506.0
+    },
+    {
+      "station": "05120500",
+      "huc": "090100030205",
+      "role": "development",
+      "excluded": "Insufficient or invalid historical flow"
+    },
+    {
+      "station": "05362000",
+      "huc": "07050004",
+      "role": "development",
+      "rows": 926,
+      "reference_cfs": 3010.0
+    },
+    {
+      "station": "05393500",
+      "huc": "07070001",
+      "role": "development",
+      "rows": 1021,
+      "reference_cfs": 445.0
+    },
+    {
+      "station": "05444000",
+      "huc": "07090005",
+      "role": "development",
+      "rows": 1368,
+      "reference_cfs": 308.0
+    },
+    {
+      "station": "05591550",
+      "huc": "07140201",
+      "role": "development",
+      "rows": 1488,
+      "reference_cfs": 157.0
+    },
+    {
+      "station": "06188000",
+      "huc": "10070001",
+      "role": "development",
+      "rows": 1006,
+      "reference_cfs": 5623.999999999996
+    },
+    {
+      "station": "06311000",
+      "huc": "10090201",
+      "role": "development",
+      "rows": 826,
+      "reference_cfs": 79.42999999999975
+    },
+    {
+      "station": "06332515",
+      "huc": "101101011904",
+      "role": "development",
+      "rows": 534,
+      "reference_cfs": 20.0
+    },
+    {
+      "station": "06339100",
+      "huc": "101302010107",
+      "role": "development",
+      "rows": 1166,
+      "reference_cfs": 46.379999999999924
+    },
+    {
+      "station": "06404000",
+      "huc": "101201090803",
+      "role": "development",
+      "rows": 1185,
+      "reference_cfs": 39.5
+    },
+    {
+      "station": "06601000",
+      "huc": "102300010104",
+      "role": "development",
+      "rows": 1068,
+      "reference_cfs": 134.39999999999964
+    },
+    {
+      "station": "06746095",
+      "huc": "10190007",
+      "role": "development",
+      "excluded": "Insufficient or invalid historical flow"
+    },
+    {
+      "station": "06847900",
+      "huc": "10250015",
+      "role": "development",
+      "rows": 1033,
+      "reference_cfs": 7.878000000000002
+    },
+    {
+      "station": "06876700",
+      "huc": "10260015",
+      "role": "development",
+      "rows": 1335,
+      "reference_cfs": 134.64999999999964
+    },
+    {
+      "station": "06879650",
+      "huc": "10270101",
+      "role": "development",
+      "rows": 1631,
+      "reference_cfs": 5.36
+    },
+    {
+      "station": "06906800",
+      "huc": "10300103",
+      "role": "development",
+      "rows": 1397,
+      "reference_cfs": 1716.0000000000036
+    },
+    {
+      "station": "07056000",
+      "huc": "11010005",
+      "role": "development",
+      "excluded": "no eligible complete decisions"
+    },
+    {
+      "station": "07083000",
+      "huc": "11020001",
+      "role": "development",
+      "rows": 796,
+      "reference_cfs": 151.0
+    },
+    {
+      "station": "07195800",
+      "huc": "11110103",
+      "role": "development",
+      "rows": 1660,
+      "reference_cfs": 38.7
+    },
+    {
+      "station": "07208500",
+      "huc": "11080002",
+      "role": "development",
+      "rows": 1152,
+      "reference_cfs": 47.014999999999915
+    },
+    {
+      "station": "07290650",
+      "huc": "08060203",
+      "role": "development",
+      "rows": 760,
+      "reference_cfs": 4455.0
+    },
+    {
+      "station": "07335700",
+      "huc": "11140105",
+      "role": "development",
+      "rows": 1423,
+      "reference_cfs": 275.0
+    },
+    {
+      "station": "07359610",
+      "huc": "08040102",
+      "role": "development",
+      "rows": 1563,
+      "reference_cfs": 800.0
+    },
+    {
+      "station": "07375000",
+      "huc": "08090201",
+      "role": "development",
+      "rows": 1078,
+      "reference_cfs": 404.9499999999998
+    },
+    {
+      "station": "07376000",
+      "huc": "08070203",
+      "role": "development",
+      "rows": 1716,
+      "reference_cfs": 1250.0
+    },
+    {
+      "station": "08023080",
+      "huc": "12010004",
+      "role": "geographic_validation",
+      "rows": 1674,
+      "reference_cfs": 357.6999999999989
+    },
+    {
+      "station": "08050800",
+      "huc": "12030103",
+      "role": "geographic_validation",
+      "rows": 1416,
+      "reference_cfs": 29.064999999999966
+    },
+    {
+      "station": "08070000",
+      "huc": "12040103",
+      "role": "geographic_validation",
+      "rows": 1805,
+      "reference_cfs": 807.5
+    },
+    {
+      "station": "08079600",
+      "huc": "12050004",
+      "role": "geographic_validation",
+      "rows": 1183,
+      "reference_cfs": 100.89999999999964
+    },
+    {
+      "station": "08164000",
+      "huc": "12100101",
+      "role": "geographic_validation",
+      "rows": 1920,
+      "reference_cfs": 1370.5000000000018
+    },
+    {
+      "station": "08190000",
+      "huc": "12110101",
+      "role": "geographic_validation",
+      "rows": 1952,
+      "reference_cfs": 469.0
+    },
+    {
+      "station": "08377900",
+      "huc": "13060001",
+      "role": "development",
+      "rows": 1002,
+      "reference_cfs": 132.0
+    },
+    {
+      "station": "09107000",
+      "huc": "14020001",
+      "role": "development",
+      "rows": 1054,
+      "reference_cfs": 464.0
+    },
+    {
+      "station": "09312600",
+      "huc": "14060007",
+      "role": "development",
+      "rows": 922,
+      "reference_cfs": 101.25
+    },
+    {
+      "station": "09404450",
+      "huc": "15010008",
+      "role": "development",
+      "rows": 1601,
+      "reference_cfs": 29.61999999999989
+    },
+    {
+      "station": "09430500",
+      "huc": "15040001",
+      "role": "development",
+      "rows": 1517,
+      "reference_cfs": 425.1999999999998
+    },
+    {
+      "station": "09480000",
+      "huc": "15050301",
+      "role": "development",
+      "rows": 1035,
+      "reference_cfs": 5.195
+    },
+    {
+      "station": "10023000",
+      "huc": "16010101",
+      "role": "development",
+      "rows": 1007,
+      "reference_cfs": 37.4
+    },
+    {
+      "station": "10166430",
+      "huc": "16020201",
+      "role": "development",
+      "rows": 1198,
+      "reference_cfs": 11.4
+    },
+    {
+      "station": "10244950",
+      "huc": "16060008",
+      "role": "development",
+      "rows": 2014,
+      "reference_cfs": 14.4
+    },
+    {
+      "station": "10258000",
+      "huc": "18100201",
+      "role": "development",
+      "rows": 1697,
+      "reference_cfs": 15.5
+    },
+    {
+      "station": "10263500",
+      "huc": "18090206",
+      "role": "development",
+      "rows": 643,
+      "reference_cfs": 51.45
+    },
+    {
+      "station": "10310500",
+      "huc": "16050201",
+      "role": "development",
+      "rows": 1441,
+      "reference_cfs": 9.850999999999994
+    },
+    {
+      "station": "10316500",
+      "huc": "16040101",
+      "role": "development",
+      "rows": 870,
+      "reference_cfs": 226.94999999999982
+    },
+    {
+      "station": "10396000",
+      "huc": "17120003",
+      "role": "development",
+      "rows": 1491,
+      "reference_cfs": 390.0
+    },
+    {
+      "station": "11098000",
+      "huc": "180701050209",
+      "role": "development",
+      "rows": 1871,
+      "reference_cfs": 28.839999999999964
+    },
+    {
+      "station": "11124500",
+      "huc": "18060010",
+      "role": "development",
+      "rows": 1661,
+      "reference_cfs": 57.16999999999999
+    },
+    {
+      "station": "11162500",
+      "huc": "18050006",
+      "role": "development",
+      "rows": 1799,
+      "reference_cfs": 139.0
+    },
+    {
+      "station": "11224500",
+      "huc": "18030012",
+      "role": "development",
+      "rows": 1880,
+      "reference_cfs": 8.933999999999978
+    },
+    {
+      "station": "11230500",
+      "huc": "18040006",
+      "role": "development",
+      "rows": 1552,
+      "reference_cfs": 416.0
+    },
+    {
+      "station": "11468500",
+      "huc": "18010108",
+      "role": "development",
+      "rows": 1897,
+      "reference_cfs": 781.5
+    },
+    {
+      "station": "12010000",
+      "huc": "17100106",
+      "role": "development",
+      "excluded": "Expected exactly one mean-discharge series"
+    },
+    {
+      "station": "12358500",
+      "huc": "17010207",
+      "role": "development",
+      "rows": 1603,
+      "reference_cfs": 11600.0
+    },
+    {
+      "station": "12447390",
+      "huc": "17020008",
+      "role": "development",
+      "rows": 1707,
+      "reference_cfs": 175.0
+    },
+    {
+      "station": "12488500",
+      "huc": "17030002",
+      "role": "development",
+      "rows": 1635,
+      "reference_cfs": 752.0
+    },
+    {
+      "station": "13161500",
+      "huc": "17050102",
+      "role": "development",
+      "rows": 1261,
+      "reference_cfs": 415.1999999999998
+    },
+    {
+      "station": "13310700",
+      "huc": "17060208",
+      "role": "development",
+      "rows": 1240,
+      "reference_cfs": 1990.0
+    },
+    {
+      "station": "14020000",
+      "huc": "17070103",
+      "role": "development",
+      "rows": 1708,
+      "reference_cfs": 769.7999999999993
+    },
+    {
+      "station": "14137000",
+      "huc": "17080001",
+      "role": "development",
+      "rows": 1656,
+      "reference_cfs": 3209.499999999998
+    },
+    {
+      "station": "14154500",
+      "huc": "17090002",
+      "role": "development",
+      "rows": 1735,
+      "reference_cfs": 1940.0
+    },
+    {
+      "station": "05056000",
+      "huc": "09020203",
+      "role": "geographic_validation",
+      "rows": 175,
+      "reference_cfs": 677.9499999999998
+    },
+    {
+      "station": "05057000",
+      "huc": "09020203",
+      "role": "geographic_validation",
+      "rows": 168,
+      "reference_cfs": 1360.0
+    },
+    {
+      "station": "08267500",
+      "huc": "13020101",
+      "role": "geographic_validation",
+      "rows": 191,
+      "reference_cfs": 107.0
+    },
+    {
+      "station": "08269000",
+      "huc": "13020101",
+      "role": "geographic_validation",
+      "rows": 163,
+      "reference_cfs": 101.0
+    },
+    {
+      "station": "05487980",
+      "huc": "07100008",
+      "role": "geographic_validation",
+      "rows": 224,
+      "reference_cfs": 1399.4999999999982
+    },
+    {
+      "station": "05488200",
+      "huc": "07100009",
+      "role": "geographic_validation",
+      "rows": 246,
+      "reference_cfs": 370.64999999999964
+    },
+    {
+      "station": "07299670",
+      "huc": "11130101",
+      "role": "geographic_validation",
+      "rows": 292,
+      "reference_cfs": 35.925
+    },
+    {
+      "station": "07315200",
+      "huc": "11130209",
+      "role": "geographic_validation",
+      "rows": 311,
+      "reference_cfs": 23.51999999999989
+    },
+    {
+      "station": "02081500",
+      "huc": "03020101",
+      "role": "geographic_validation",
+      "rows": 278,
+      "reference_cfs": 496.7999999999993
+    },
+    {
+      "station": "02082950",
+      "huc": "03020102",
+      "role": "geographic_validation",
+      "rows": 278,
+      "reference_cfs": 512.0
+    },
+    {
+      "station": "11381500",
+      "huc": "18020156",
+      "role": "geographic_validation",
+      "rows": 344,
+      "reference_cfs": 736.6000000000004
+    },
+    {
+      "station": "11383500",
+      "huc": "18020157",
+      "role": "geographic_validation",
+      "rows": 351,
+      "reference_cfs": 912.0
+    },
+    {
+      "station": "08150800",
+      "huc": "12090204",
+      "role": "geographic_validation",
+      "rows": 336,
+      "reference_cfs": 43.084999999999944
+    },
+    {
+      "station": "08155200",
+      "huc": "12090205",
+      "role": "geographic_validation",
+      "rows": 351,
+      "reference_cfs": 147.0
+    },
+    {
+      "station": "06784000",
+      "huc": "10210004",
+      "role": "geographic_validation",
+      "rows": 242,
+      "reference_cfs": 419.39999999999964
+    },
+    {
+      "station": "05495000",
+      "huc": "07110001",
+      "role": "fresh_test",
+      "rows": 428,
+      "reference_cfs": 2230.0
+    },
+    {
+      "station": "05495500",
+      "huc": "07110001",
+      "role": "fresh_test",
+      "rows": 504,
+      "reference_cfs": 1510.0
+    },
+    {
+      "station": "06037500",
+      "huc": "10020007",
+      "role": "fresh_test",
+      "rows": 462,
+      "reference_cfs": 831.0
+    },
+    {
+      "station": "06043500",
+      "huc": "10020008",
+      "role": "fresh_test",
+      "rows": 552,
+      "reference_cfs": 2833.9999999999964
+    },
+    {
+      "station": "07142300",
+      "huc": "11030009",
+      "role": "fresh_test",
+      "rows": 620,
+      "reference_cfs": 23.61999999999989
+    },
+    {
+      "station": "07145700",
+      "huc": "11030013",
+      "role": "fresh_test",
+      "rows": 438,
+      "reference_cfs": 285.39999999999964
+    },
+    {
+      "station": "13011500",
+      "huc": "17040101",
+      "role": "fresh_test",
+      "rows": 342,
+      "reference_cfs": 1510.0
+    },
+    {
+      "station": "13011900",
+      "huc": "17040101",
+      "role": "fresh_test",
+      "rows": 320,
+      "reference_cfs": 2650.0
+    },
+    {
+      "station": "02046000",
+      "huc": "03010201",
+      "role": "fresh_test",
+      "rows": 498,
+      "reference_cfs": 353.0
+    },
+    {
+      "station": "02051000",
+      "huc": "03010204",
+      "role": "fresh_test",
+      "rows": 479,
+      "reference_cfs": 163.84999999999945
+    },
+    {
+      "station": "08013000",
+      "huc": "08080203",
+      "role": "fresh_test",
+      "rows": 496,
+      "reference_cfs": 2750.0
+    },
+    {
+      "station": "08014500",
+      "huc": "08080204",
+      "role": "fresh_test",
+      "rows": 471,
+      "reference_cfs": 2070.0
+    },
+    {
+      "station": "09492400",
+      "huc": "15060102",
+      "role": "fresh_test",
+      "rows": 336,
+      "reference_cfs": 87.2
+    },
+    {
+      "station": "09494000",
+      "huc": "15060102",
+      "role": "fresh_test",
+      "rows": 497,
+      "reference_cfs": 477.2999999999993
+    },
+    {
+      "station": "06453600",
+      "huc": "10170104",
+      "role": "fresh_test",
+      "rows": 295,
+      "reference_cfs": 300.7999999999993
+    },
+    {
+      "station": "06479215",
+      "huc": "10170201",
+      "role": "fresh_test",
+      "rows": 272,
+      "reference_cfs": 60.349999999999994
+    },
+    {
+      "station": "05129115",
+      "huc": "09030002",
+      "role": "fresh_test",
+      "rows": 472,
+      "reference_cfs": 2110.0
+    },
+    {
+      "station": "05131500",
+      "huc": "09030005",
+      "role": "fresh_test",
+      "rows": 295,
+      "reference_cfs": 4992.999999999997
+    },
+    {
+      "station": "05556500",
+      "huc": "07130001",
+      "role": "fresh_test",
+      "rows": 473,
+      "reference_cfs": 606.0
+    },
+    {
+      "station": "06440200",
+      "huc": "10140102",
+      "role": "fresh_test",
+      "rows": 313,
+      "reference_cfs": 51.77499999999982
+    },
+    {
+      "station": "06441500",
+      "huc": "10140102",
+      "role": "fresh_test",
+      "rows": 269,
+      "reference_cfs": 751.5999999999985
+    },
+    {
+      "station": "03574500",
+      "huc": "06030002",
+      "role": "fresh_test",
+      "rows": 487,
+      "reference_cfs": 2400.500000000002
+    },
+    {
+      "station": "03592718",
+      "huc": "06030005",
+      "role": "fresh_test",
+      "excluded": "no eligible complete decisions"
+    },
+    {
+      "station": "06464500",
+      "huc": "10150006",
+      "role": "fresh_test",
+      "rows": 273,
+      "reference_cfs": 287.0
+    },
+    {
+      "station": "08082700",
+      "huc": "12060101",
+      "role": "fresh_test",
+      "rows": 487,
+      "reference_cfs": 9.8525
+    },
+    {
+      "station": "08086212",
+      "huc": "12060105",
+      "role": "fresh_test",
+      "rows": 600,
+      "reference_cfs": 39.2
+    },
+    {
+      "station": "06614800",
+      "huc": "10180001",
+      "role": "fresh_test",
+      "rows": 348,
+      "reference_cfs": 19.0
+    },
+    {
+      "station": "06622700",
+      "huc": "10180002",
+      "role": "fresh_test",
+      "rows": 328,
+      "reference_cfs": 314.1999999999998
+    },
+    {
+      "station": "02235200",
+      "huc": "03080101",
+      "role": "fresh_test",
+      "rows": 627,
+      "reference_cfs": 184.0
+    },
+    {
+      "station": "02245500",
+      "huc": "03080103",
+      "role": "fresh_test",
+      "rows": 533,
+      "reference_cfs": 446.6999999999998
+    },
+    {
+      "station": "02137727",
+      "huc": "03050101",
+      "role": "fresh_test",
+      "rows": 533,
+      "reference_cfs": 541.3499999999995
+    },
+    {
+      "station": "10173450",
+      "huc": "16030001",
+      "role": "fresh_test",
+      "rows": 282,
+      "reference_cfs": 281.0499999999997
+    },
+    {
+      "station": "10205030",
+      "huc": "16030003",
+      "role": "fresh_test",
+      "rows": 237,
+      "reference_cfs": 45.4
+    },
+    {
+      "station": "05454000",
+      "huc": "07080209",
+      "role": "fresh_test",
+      "rows": 427,
+      "reference_cfs": 74.01999999999998
+    },
+    {
+      "station": "05458000",
+      "huc": "07080201",
+      "role": "fresh_test",
+      "rows": 488,
+      "reference_cfs": 941.0
+    },
+    {
+      "station": "06803510",
+      "huc": "10200203",
+      "role": "fresh_test",
+      "rows": 372,
+      "reference_cfs": 26.83000000000002
+    },
+    {
+      "station": "06803530",
+      "huc": "10200203",
+      "role": "fresh_test",
+      "rows": 380,
+      "reference_cfs": 99.22000000000007
+    }
+  ],
+  "signatures": {
+    "02096846": {
+      "sig_mean": 0.26308417527569045,
+      "sig_low": 0.000520969002344361,
+      "sig_median": 0.058869497264912786,
+      "sig_extreme": 3.8622557957801575,
+      "sig_cv": 3.461457970171902,
+      "sig_lag1": 0.38545706017596304,
+      "sig_flash": 0.8492735036435377,
+      "sig_sin": 0.3564355641687466,
+      "sig_cos": 0.2270136963091748,
+      "sig_runoff": 1.225184033538789
+    },
+    "02111180": {
+      "sig_mean": 0.3738299985685724,
+      "sig_low": 0.09360034828036577,
+      "sig_median": 0.2498911623857207,
+      "sig_extreme": 2.809229429690906,
+      "sig_cv": 1.4405793824059343,
+      "sig_lag1": 0.592050402774173,
+      "sig_flash": 0.31939170821324353,
+      "sig_sin": 0.12298655848577174,
+      "sig_cos": 0.029476125296863102,
+      "sig_runoff": 1.6606802061543684
+    },
+    "02177000": {
+      "sig_mean": 0.42206141460972973,
+      "sig_low": 0.12598992080633584,
+      "sig_median": 0.323974082073435,
+      "sig_extreme": 1.8544276457883413,
+      "sig_cv": 0.9807613394042696,
+      "sig_lag1": 0.677225177609892,
+      "sig_flash": 0.1964850966733855,
+      "sig_sin": 0.0962711376073121,
+      "sig_cos": 0.06875115490942167,
+      "sig_runoff": 1.9931469234042416
+    },
+    "02212600": {
+      "sig_mean": 0.25321826216284726,
+      "sig_low": 0.0023936170212765957,
+      "sig_median": 0.06595744680851064,
+      "sig_extreme": 3.5045744680851096,
+      "sig_cv": 3.010974760428403,
+      "sig_lag1": 0.5549882654196424,
+      "sig_flash": 0.6606972749704457,
+      "sig_sin": 0.3739276521174512,
+      "sig_cos": 0.3009716732841145,
+      "sig_runoff": 1.2411808498221504
+    },
+    "02296500": {
+      "sig_mean": 0.1897036017758573,
+      "sig_low": 0.0037569230769230787,
+      "sig_median": 0.039,
+      "sig_extreme": 1.8461538461538463,
+      "sig_cv": 2.1410959174784017,
+      "sig_lag1": 0.9801464292088474,
+      "sig_flash": 0.1377466276288945,
+      "sig_sin": -0.4694170120641394,
+      "sig_cos": -0.3134192639708421,
+      "sig_runoff": 1.5520761809804002
+    },
+    "02314500": {
+      "sig_mean": 0.24009373137484075,
+      "sig_low": 0.004554944012146521,
+      "sig_median": 0.06604668817612455,
+      "sig_extreme": 2.0822926551527816,
+      "sig_cv": 1.7518596008774945,
+      "sig_lag1": 0.997015458197249,
+      "sig_flash": 0.05439200158417312,
+      "sig_sin": 0.11765901800342658,
+      "sig_cos": -0.09660205241022692,
+      "sig_runoff": 1.1638758586400133
+    },
+    "02327100": {
+      "sig_mean": 0.225383045714633,
+      "sig_low": 0.0031032788036228338,
+      "sig_median": 0.04591729270518854,
+      "sig_extreme": 2.5275573966158826,
+      "sig_cv": 2.2741432228779668,
+      "sig_lag1": 0.9083168691166374,
+      "sig_flash": 0.2614445101274306,
+      "sig_sin": 0.09696049970113768,
+      "sig_cos": 0.027558850805546344,
+      "sig_runoff": 2.027524860078505
+    },
+    "02361000": {
+      "sig_mean": 0.3201011682132373,
+      "sig_low": 0.04533898305084746,
+      "sig_median": 0.18093220338983051,
+      "sig_extreme": 2.4981779661016783,
+      "sig_cv": 1.59306585666246,
+      "sig_lag1": 0.886141768944816,
+      "sig_flash": 0.24331569772015474,
+      "sig_sin": 0.2677794680289527,
+      "sig_cos": 0.15801832491613887,
+      "sig_runoff": 1.446858035803692
+    },
+    "02381600": {
+      "sig_mean": 0.3567392285427374,
+      "sig_low": 0.064,
+      "sig_median": 0.23226666666666668,
+      "sig_extreme": 2.4922133333333334,
+      "sig_cv": 1.6570462883970551,
+      "sig_lag1": 0.44823460403554394,
+      "sig_flash": 0.40182987311777585,
+      "sig_sin": 0.2390440142578005,
+      "sig_cos": 0.10593607418776062,
+      "sig_runoff": 1.5142260078988832
+    },
+    "02430085": {
+      "sig_mean": 0.30298334276442374,
+      "sig_low": 0.04854498965055405,
+      "sig_median": 0.14610982588579097,
+      "sig_extreme": 2.757335930841341,
+      "sig_cv": 1.7998000255393531,
+      "sig_lag1": 0.4754918206448581,
+      "sig_flash": 0.5634676958417807,
+      "sig_sin": 0.25753599203672495,
+      "sig_cos": 0.21990137875683718,
+      "sig_runoff": 1.7819697289081478
+    },
+    "02472000": {
+      "sig_mean": 0.2282579310990124,
+      "sig_low": 0.02274975272007915,
+      "sig_median": 0.07443125618199808,
+      "sig_extreme": 2.234520276953512,
+      "sig_cv": 2.0918506069700737,
+      "sig_lag1": 0.8758398727498181,
+      "sig_flash": 0.3369710317058622,
+      "sig_sin": 0.37094005020687437,
+      "sig_cos": 0.29783645204127646,
+      "sig_runoff": 1.815056199024543
+    },
+    "03010655": {
+      "sig_mean": 0.2955411991243091,
+      "sig_low": 0.02925531914893617,
+      "sig_median": 0.16631205673758864,
+      "sig_extreme": 2.145390070921986,
+      "sig_cv": 1.3697920383822209,
+      "sig_lag1": 0.838642442619405,
+      "sig_flash": 0.24794975186707693,
+      "sig_sin": 0.26219449113214294,
+      "sig_cos": 0.11228211214492628,
+      "sig_runoff": 1.85596588091406
+    },
+    "03159540": {
+      "sig_mean": 0.20967428304313174,
+      "sig_low": 0.00328954754687325,
+      "sig_median": 0.05658470865611324,
+      "sig_extreme": 2.545862804535764,
+      "sig_cv": 2.3471363799871843,
+      "sig_lag1": 0.601535433267633,
+      "sig_flash": 0.677129705817515,
+      "sig_sin": 0.364891282661159,
+      "sig_cos": 0.17792605027786787,
+      "sig_runoff": 1.8552760821110315
+    },
+    "03161000": {
+      "sig_mean": 0.44360309173583146,
+      "sig_low": 0.1671846533061838,
+      "sig_median": 0.3472296645589971,
+      "sig_extreme": 2.10288286357304,
+      "sig_cv": 0.9916266640281631,
+      "sig_lag1": 0.67498103733084,
+      "sig_flash": 0.21635963971616395,
+      "sig_sin": 0.07438066206860824,
+      "sig_cos": 2.474250414287268e-05,
+      "sig_runoff": 1.6676446735177783
+    },
+    "03213700": {
+      "sig_mean": 0.3262331588970411,
+      "sig_low": 0.053257790368271954,
+      "sig_median": 0.2008498583569405,
+      "sig_extreme": 2.082152974504249,
+      "sig_cv": 1.4444349456610825,
+      "sig_lag1": 0.7166516926989865,
+      "sig_flash": 0.2984964670329249,
+      "sig_sin": 0.3648900235113807,
+      "sig_cos": 0.056379135845937435,
+      "sig_runoff": 1.517879427472176
+    },
+    "03237280": {
+      "sig_mean": 0.26012141322411364,
+      "sig_low": 0.0009077155824508322,
+      "sig_median": 0.07216338880484115,
+      "sig_extreme": 2.977609682299528,
+      "sig_cv": 2.4289497293521047,
+      "sig_lag1": 0.4346640795663313,
+      "sig_flash": 0.6573659036659902,
+      "sig_sin": 0.4570414702563955,
+      "sig_cos": 0.15242966353691068,
+      "sig_runoff": 1.811239497556123
+    },
+    "03280700": {
+      "sig_mean": 0.2972458782789005,
+      "sig_low": 0.017313241423533205,
+      "sig_median": 0.13786470022443106,
+      "sig_extreme": 2.977845463289519,
+      "sig_cv": 2.092222252982567,
+      "sig_lag1": 0.5373013366321051,
+      "sig_flash": 0.5243890907303501,
+      "sig_sin": 0.3832156585379487,
+      "sig_cos": 0.15674927047908377,
+      "sig_runoff": 1.7589528462004254
+    },
+    "03439000": {
+      "sig_mean": 0.436423021070752,
+      "sig_low": 0.15104743083003955,
+      "sig_median": 0.3339920948616601,
+      "sig_extreme": 2.143675889328068,
+      "sig_cv": 1.0262500536965853,
+      "sig_lag1": 0.6493390579403707,
+      "sig_flash": 0.237238148071693,
+      "sig_sin": 0.0891439597097546,
+      "sig_cos": 0.0896053686424942,
+      "sig_runoff": 2.0843664675350757
+    },
+    "05362000": {
+      "sig_mean": 0.2243194961799613,
+      "sig_low": 0.0167109634551495,
+      "sig_median": 0.08039867109634552,
+      "sig_extreme": 2.0166112956810647,
+      "sig_cv": 1.7725349637156125,
+      "sig_lag1": 0.9208232399872154,
+      "sig_flash": 0.24984513533938094,
+      "sig_sin": 0.30559780812079124,
+      "sig_cos": -0.3383612052740833,
+      "sig_runoff": 1.7810924129246417
+    },
+    "05393500": {
+      "sig_mean": 0.2301699966596608,
+      "sig_low": 0.017123595505617976,
+      "sig_median": 0.08764044943820225,
+      "sig_extreme": 2.157303370786517,
+      "sig_cv": 1.8765553557945354,
+      "sig_lag1": 0.8741392658321047,
+      "sig_flash": 0.3115124942627514,
+      "sig_sin": 0.2371096529482231,
+      "sig_cos": -0.3362168492396492,
+      "sig_runoff": 1.8166901854084445
+    },
+    "05444000": {
+      "sig_mean": 0.3984305976986268,
+      "sig_low": 0.1198051948051948,
+      "sig_median": 0.2642857142857143,
+      "sig_extreme": 2.3862337662337634,
+      "sig_cv": 1.4359491651523435,
+      "sig_lag1": 0.6646909780856712,
+      "sig_flash": 0.23960820803807945,
+      "sig_sin": 0.16903247880702532,
+      "sig_cos": -0.18190800433404591,
+      "sig_runoff": 1.0962017476230541
+    },
+    "05591550": {
+      "sig_mean": 0.2590496116069965,
+      "sig_low": 0.0,
+      "sig_median": 0.08280254777070063,
+      "sig_extreme": 3.3606369426751583,
+      "sig_cv": 2.7852443361973003,
+      "sig_lag1": 0.5822351691508023,
+      "sig_flash": 0.5869676999908574,
+      "sig_sin": 0.3588058108991751,
+      "sig_cos": 0.03209938831275447,
+      "sig_runoff": 1.6651220212322748
+    },
+    "06188000": {
+      "sig_mean": 0.23693101962876395,
+      "sig_low": 0.026315789473684226,
+      "sig_median": 0.0673897581792319,
+      "sig_extreme": 1.5731152204836414,
+      "sig_cv": 1.4595508025190622,
+      "sig_lag1": 0.9791347122628896,
+      "sig_flash": 0.12670686543625262,
+      "sig_sin": 0.3251683822055927,
+      "sig_cos": -0.768026909406254,
+      "sig_runoff": 2.191986068191197
+    },
+    "06311000": {
+      "sig_mean": 0.20481672275446303,
+      "sig_low": 0.02266146292332879,
+      "sig_median": 0.04834445423643475,
+      "sig_extreme": 2.064711066347734,
+      "sig_cv": 2.013225898313,
+      "sig_lag1": 0.9724400461215077,
+      "sig_flash": 0.13171668730096134,
+      "sig_sin": 0.29906109702265116,
+      "sig_cos": -0.7210353742985609,
+      "sig_runoff": 1.420552365159611
+    },
+    "06332515": {
+      "sig_mean": 0.23669569993722533,
+      "sig_low": 0.0055,
+      "sig_median": 0.016,
+      "sig_extreme": 5.365000000000009,
+      "sig_cv": 4.39167559414191,
+      "sig_lag1": 0.7039042185690585,
+      "sig_flash": 0.5740841054882396,
+      "sig_sin": 0.590980601379582,
+      "sig_cos": -0.4144658372256315,
+      "sig_runoff": 0.22737848464677124
+    },
+    "06339100": {
+      "sig_mean": 0.2941590098253048,
+      "sig_low": 0.004527813712807252,
+      "sig_median": 0.05099180681328167,
+      "sig_extreme": 4.805950840879729,
+      "sig_cv": 4.837693728496226,
+      "sig_lag1": 0.7283278159136276,
+      "sig_flash": 0.4908365544165346,
+      "sig_sin": 0.5197560588236568,
+      "sig_cos": -0.4815848539480909,
+      "sig_runoff": 0.19454980003315306
+    },
+    "06404000": {
+      "sig_mean": 0.26734781907603,
+      "sig_low": 0.006835443037974684,
+      "sig_median": 0.07670886075949368,
+      "sig_extreme": 3.4493670886076178,
+      "sig_cv": 2.907814604501367,
+      "sig_lag1": 0.8264611056468818,
+      "sig_flash": 0.26099324879299635,
+      "sig_sin": 0.24696077416289927,
+      "sig_cos": -0.6101233085574455,
+      "sig_runoff": 0.49336963701239983
+    },
+    "06601000": {
+      "sig_mean": 0.47774773043414737,
+      "sig_low": 0.1726190476190481,
+      "sig_median": 0.3712797619047629,
+      "sig_extreme": 1.9827380952380973,
+      "sig_cv": 1.6387601108087926,
+      "sig_lag1": 0.28803676779628273,
+      "sig_flash": 0.24972720579512722,
+      "sig_sin": 0.056529453925358304,
+      "sig_cos": -0.329790585609192,
+      "sig_runoff": 0.5479154758357632
+    },
+    "06847900": {
+      "sig_mean": 0.49324284541130153,
+      "sig_low": 0.0,
+      "sig_median": 0.24244732165524238,
+      "sig_extreme": 2.738766184310741,
+      "sig_cv": 5.966752533577509,
+      "sig_lag1": 0.42653019911499085,
+      "sig_flash": 0.42688158687706335,
+      "sig_sin": 0.36813377432471156,
+      "sig_cos": -0.2549123440830704,
+      "sig_runoff": 0.012534303104498398
+    },
+    "06876700": {
+      "sig_mean": 0.2840399831252191,
+      "sig_low": 0.009357593761604185,
+      "sig_median": 0.060861492759004994,
+      "sig_extreme": 4.793984404010425,
+      "sig_cv": 3.816125989473315,
+      "sig_lag1": 0.9051465700762503,
+      "sig_flash": 0.3411994858879292,
+      "sig_sin": 0.12737524755857002,
+      "sig_cos": -0.41254160375276516,
+      "sig_runoff": 0.27253250132451023
+    },
+    "06879650": {
+      "sig_mean": 0.24686944989192147,
+      "sig_low": 0.0,
+      "sig_median": 0.0,
+      "sig_extreme": 3.1518656716417834,
+      "sig_cv": 5.222891529908954,
+      "sig_lag1": 0.3757272587744467,
+      "sig_flash": 0.5729534587724526,
+      "sig_sin": 0.448333213964811,
+      "sig_cos": -0.5531279339930979,
+      "sig_runoff": 0.7609749032692324
+    },
+    "06906800": {
+      "sig_mean": 0.2687434971142389,
+      "sig_low": 0.004055944055944047,
+      "sig_median": 0.03432400932400925,
+      "sig_extreme": 5.532167832167829,
+      "sig_cv": 3.67930568609851,
+      "sig_lag1": 0.5444711585802334,
+      "sig_flash": 0.8492408569063383,
+      "sig_sin": 0.28094171379723687,
+      "sig_cos": -0.07587957133291094,
+      "sig_runoff": 1.3825959180478895
+    },
+    "07083000": {
+      "sig_mean": 0.29830467321220133,
+      "sig_low": 0.05496688741721855,
+      "sig_median": 0.15894039735099338,
+      "sig_extreme": 1.4834437086092715,
+      "sig_cv": 1.106575941950199,
+      "sig_lag1": 0.9863465719112194,
+      "sig_flash": 0.09154722644599234,
+      "sig_sin": 0.05703817033585911,
+      "sig_cos": -0.8039122518002156,
+      "sig_runoff": 1.9558234210810708
+    },
+    "07195800": {
+      "sig_mean": 0.36263030492770987,
+      "sig_low": 0.08527131782945735,
+      "sig_median": 0.18139534883720929,
+      "sig_extreme": 3.102325581395359,
+      "sig_cv": 3.1466985183986593,
+      "sig_lag1": 0.5109736279496534,
+      "sig_flash": 0.37088878031141426,
+      "sig_sin": 0.23572689472226863,
+      "sig_cos": 0.007559821777023288,
+      "sig_runoff": 1.2738096915486052
+    },
+    "07208500": {
+      "sig_mean": 0.2705080072798931,
+      "sig_low": 0.056364989896841536,
+      "sig_median": 0.12400297777305137,
+      "sig_extreme": 2.0334999468254815,
+      "sig_cv": 1.5359356368992219,
+      "sig_lag1": 0.9552557061574695,
+      "sig_flash": 0.10329845464100984,
+      "sig_sin": 0.38798040014071267,
+      "sig_cos": -0.43633814105898705,
+      "sig_runoff": 0.5207304707148157
+    },
+    "07290650": {
+      "sig_mean": 0.22236617499888853,
+      "sig_low": 0.01324354657687991,
+      "sig_median": 0.043322109988776655,
+      "sig_extreme": 3.070707070707075,
+      "sig_cv": 2.833833477330749,
+      "sig_lag1": 0.6039965182815725,
+      "sig_flash": 0.6580275838833269,
+      "sig_sin": 0.26979341323666417,
+      "sig_cos": 0.2893371497455783,
+      "sig_runoff": 2.0061632438564097
+    },
+    "07335700": {
+      "sig_mean": 0.2885978967855349,
+      "sig_low": 0.0,
+      "sig_median": 0.08145454545454545,
+      "sig_extreme": 3.639636363636369,
+      "sig_cv": 3.376471193147477,
+      "sig_lag1": 0.38488952310233215,
+      "sig_flash": 0.6703213568311068,
+      "sig_sin": 0.29344115109766317,
+      "sig_cos": 0.1776678652567783,
+      "sig_runoff": 2.0228602583025754
+    },
+    "07359610": {
+      "sig_mean": 0.3153473862080767,
+      "sig_low": 0.042,
+      "sig_median": 0.13375,
+      "sig_extreme": 3.2088749999999893,
+      "sig_cv": 2.692668948320109,
+      "sig_lag1": 0.48759772791685685,
+      "sig_flash": 0.5784448896539612,
+      "sig_sin": 0.2262806808141617,
+      "sig_cos": 0.1389572038555763,
+      "sig_runoff": 1.8804776478639005
+    },
+    "07375000": {
+      "sig_mean": 0.30326169284705434,
+      "sig_low": 0.09630818619582669,
+      "sig_median": 0.14594394369675276,
+      "sig_extreme": 3.210272873194223,
+      "sig_cv": 2.3619438625157403,
+      "sig_lag1": 0.6077217516818035,
+      "sig_flash": 0.4069066152860995,
+      "sig_sin": 0.14746140160992288,
+      "sig_cos": 0.10566785947759494,
+      "sig_runoff": 1.5505062171151127
+    },
+    "07376000": {
+      "sig_mean": 0.25886622507369517,
+      "sig_low": 0.0664,
+      "sig_median": 0.1072,
+      "sig_extreme": 2.8668800000000045,
+      "sig_cv": 2.0308872419692383,
+      "sig_lag1": 0.8911676582014186,
+      "sig_flash": 0.29374162257698794,
+      "sig_sin": 0.19952438291328017,
+      "sig_cos": 0.16697886006821774,
+      "sig_runoff": 1.7544913215367874
+    },
+    "08023080": {
+      "sig_mean": 0.18474882969384088,
+      "sig_low": 0.0,
+      "sig_median": 0.012021246854906383,
+      "sig_extreme": 3.1590718479172586,
+      "sig_cv": 3.790667359943464,
+      "sig_lag1": 0.6685587727197227,
+      "sig_flash": 0.7360505278621752,
+      "sig_sin": 0.3604905577345326,
+      "sig_cos": 0.3725396462542378,
+      "sig_runoff": 1.7335298231812262
+    },
+    "08050800": {
+      "sig_mean": 0.508635946598273,
+      "sig_low": 0.0,
+      "sig_median": 0.0,
+      "sig_extreme": 11.639428866334192,
+      "sig_cv": 8.764076893429769,
+      "sig_lag1": 0.2627498084064764,
+      "sig_flash": 1.1973052524970422,
+      "sig_sin": 0.29460012712004335,
+      "sig_cos": -0.04276736519473432,
+      "sig_runoff": 0.5350999799651694
+    },
+    "08070000": {
+      "sig_mean": 0.2339100041396881,
+      "sig_low": 0.013622291021671827,
+      "sig_median": 0.051393188854489166,
+      "sig_extreme": 3.6866873065015344,
+      "sig_cv": 3.361071169748935,
+      "sig_lag1": 0.8173097930615656,
+      "sig_flash": 0.45047753078295605,
+      "sig_sin": 0.17473030220932295,
+      "sig_cos": 0.22682709970234982,
+      "sig_runoff": 1.2080756286039835
+    },
+    "08079600": {
+      "sig_mean": 0.41030021345160783,
+      "sig_low": 0.0,
+      "sig_median": 9.910802775024813e-05,
+      "sig_extreme": 8.259960356788914,
+      "sig_cv": 9.722055008352589,
+      "sig_lag1": 0.22700699233583319,
+      "sig_flash": 1.2726541879884654,
+      "sig_sin": -0.20197588789783313,
+      "sig_cos": -0.3441393021041057,
+      "sig_runoff": 0.06298951458105213
+    },
+    "08164000": {
+      "sig_mean": 0.2579700611879832,
+      "sig_low": 0.002538489602334911,
+      "sig_median": 0.03283473184968985,
+      "sig_extreme": 5.356074425392187,
+      "sig_cv": 4.194787445486348,
+      "sig_lag1": 0.7725660876981891,
+      "sig_flash": 0.630898561133568,
+      "sig_sin": 0.08696508654928022,
+      "sig_cos": -0.08488308086420401,
+      "sig_runoff": 0.9495682045217855
+    },
+    "08190000": {
+      "sig_mean": 0.3297009371225789,
+      "sig_low": 0.04837953091684435,
+      "sig_median": 0.14072494669509594,
+      "sig_extreme": 2.6652452025586353,
+      "sig_cv": 3.6959534484329772,
+      "sig_lag1": 0.4634533752086199,
+      "sig_flash": 0.3106688726581479,
+      "sig_sin": -0.06117535419951918,
+      "sig_cos": 0.012275492935904594,
+      "sig_runoff": 0.4707077389281687
+    },
+    "08377900": {
+      "sig_mean": 0.2676362878987188,
+      "sig_low": 0.05462121212121212,
+      "sig_median": 0.13257575757575757,
+      "sig_extreme": 1.6515151515151516,
+      "sig_cv": 1.3487981506803317,
+      "sig_lag1": 0.9745496665696567,
+      "sig_flash": 0.1080093644934019,
+      "sig_sin": 0.23029781388938766,
+      "sig_cos": -0.5457340325463725,
+      "sig_runoff": 1.2071120957869388
+    },
+    "09107000": {
+      "sig_mean": 0.2931585673375955,
+      "sig_low": 0.08362068965517241,
+      "sig_median": 0.16228448275862067,
+      "sig_extreme": 1.5827586206896525,
+      "sig_cv": 1.0884817667884013,
+      "sig_lag1": 0.9877625878272738,
+      "sig_flash": 0.08862798838138743,
+      "sig_sin": 0.144712015361771,
+      "sig_cos": -0.6763493431327893,
+      "sig_runoff": 1.4871068435241444
+    },
+    "09312600": {
+      "sig_mean": 0.23489802663555945,
+      "sig_low": 0.01580246913580247,
+      "sig_median": 0.057185185185185186,
+      "sig_extreme": 3.2627160493827105,
+      "sig_cv": 2.2739826661637044,
+      "sig_lag1": 0.9921028949782804,
+      "sig_flash": 0.08749204541450514,
+      "sig_sin": 0.579975283343946,
+      "sig_cos": -0.5721074382946648,
+      "sig_runoff": 0.8176307920388486
+    },
+    "09404450": {
+      "sig_mean": 0.4785845193205844,
+      "sig_low": 0.16266036461850164,
+      "sig_median": 0.3578663065496299,
+      "sig_extreme": 3.477380148548291,
+      "sig_cv": 1.3648175882306004,
+      "sig_lag1": 0.8792377623540324,
+      "sig_flash": 0.1162693648600029,
+      "sig_sin": 0.24283473106759093,
+      "sig_cos": 0.08955991748605711,
+      "sig_runoff": 0.319970681388889
+    },
+    "09430500": {
+      "sig_mean": 0.3433329299109736,
+      "sig_low": 0.07996237064910634,
+      "sig_median": 0.16368767638758236,
+      "sig_extreme": 2.8344308560677445,
+      "sig_cv": 3.009462206200609,
+      "sig_lag1": 0.7618827403851375,
+      "sig_flash": 0.22846466158038856,
+      "sig_sin": -0.011413626974971081,
+      "sig_cos": 0.10428684899926698,
+      "sig_runoff": 0.1951395670991062
+    },
+    "09480000": {
+      "sig_mean": 0.28062496926438246,
+      "sig_low": 0.0038498556304138593,
+      "sig_median": 0.05967276227141482,
+      "sig_extreme": 3.8479307025986453,
+      "sig_cv": 6.820971714919834,
+      "sig_lag1": 0.40649965900549934,
+      "sig_flash": 0.5934291229387777,
+      "sig_sin": -0.40280462941053863,
+      "sig_cos": -0.08961141388516386,
+      "sig_runoff": 0.05798588335428886
+    },
+    "10023000": {
+      "sig_mean": 0.2909023665562579,
+      "sig_low": 0.09481283422459894,
+      "sig_median": 0.18449197860962568,
+      "sig_extreme": 2.3315508021390374,
+      "sig_cv": 1.3511928773154978,
+      "sig_lag1": 0.9960634584929661,
+      "sig_flash": 0.04155904257993732,
+      "sig_sin": 0.08481478791589836,
+      "sig_cos": -0.47748215059673166,
+      "sig_runoff": 0.515346962387452
+    },
+    "10166430": {
+      "sig_mean": 0.2207528609180549,
+      "sig_low": 0.008771929824561403,
+      "sig_median": 0.06403508771929824,
+      "sig_extreme": 2.5684210526315807,
+      "sig_cv": 2.1492264515732815,
+      "sig_lag1": 0.9914690319088296,
+      "sig_flash": 0.07774223970707021,
+      "sig_sin": 0.21823353039387355,
+      "sig_cos": -0.6456914388878675,
+      "sig_runoff": 0.3377709752664538
+    },
+    "10244950": {
+      "sig_mean": 0.3717803596706342,
+      "sig_low": 0.15763888888888888,
+      "sig_median": 0.2548611111111111,
+      "sig_extreme": 2.4869444444444375,
+      "sig_cv": 1.0960211038494894,
+      "sig_lag1": 0.9977006320849936,
+      "sig_flash": 0.025159690600090767,
+      "sig_sin": 0.05785334927251925,
+      "sig_cos": -0.3005342929913821,
+      "sig_runoff": 0.799965199547593
+    },
+    "10258000": {
+      "sig_mean": 0.19463812851214907,
+      "sig_low": 0.0,
+      "sig_median": 0.0232258064516129,
+      "sig_extreme": 2.1287096774193537,
+      "sig_cv": 4.539503342814396,
+      "sig_lag1": 0.6889714223064816,
+      "sig_flash": 0.1891622004394001,
+      "sig_sin": 0.5487022525129338,
+      "sig_cos": 0.02182391211301689,
+      "sig_runoff": 0.6239979846357165
+    },
+    "10263500": {
+      "sig_mean": 0.27718943456695,
+      "sig_low": 0.02662779397473275,
+      "sig_median": 0.0890184645286686,
+      "sig_extreme": 2.676384839650142,
+      "sig_cv": 3.2738724608230845,
+      "sig_lag1": 0.8718699095090878,
+      "sig_flash": 0.14658648765525256,
+      "sig_sin": 0.5259152917357464,
+      "sig_cos": 0.18629856959326574,
+      "sig_runoff": 1.1385761432485038
+    },
+    "10310500": {
+      "sig_mean": 0.4189471389958865,
+      "sig_low": 0.14313267688559544,
+      "sig_median": 0.3502182519541166,
+      "sig_extreme": 1.7015531418130139,
+      "sig_cv": 0.8387730640368898,
+      "sig_lag1": 0.8232794072369356,
+      "sig_flash": 0.06785016590578138,
+      "sig_sin": 0.2737923016070881,
+      "sig_cos": 0.09254739087450176,
+      "sig_runoff": 0.4702266448984233
+    },
+    "10316500": {
+      "sig_mean": 0.21124144151994428,
+      "sig_low": 0.014320334875523255,
+      "sig_median": 0.03906146728354266,
+      "sig_extreme": 2.0074465741352743,
+      "sig_cv": 1.8154187607617724,
+      "sig_lag1": 0.9869243880431072,
+      "sig_flash": 0.09350280929649364,
+      "sig_sin": 0.3454529028328404,
+      "sig_cos": -0.7601463808107499,
+      "sig_runoff": 2.2627805989989245
+    },
+    "10396000": {
+      "sig_mean": 0.30377632434076796,
+      "sig_low": 0.08666666666666666,
+      "sig_median": 0.1358974358974359,
+      "sig_extreme": 2.0891282051282056,
+      "sig_cv": 1.3576052785346193,
+      "sig_lag1": 0.9077403102138215,
+      "sig_flash": 0.15776479977665295,
+      "sig_sin": 0.3937844965625598,
+      "sig_cos": -0.3463024386064829,
+      "sig_runoff": 1.0445167535595967
+    },
+    "11098000": {
+      "sig_mean": 0.28588845674601143,
+      "sig_low": 0.0058945908460471645,
+      "sig_median": 0.047156726768377316,
+      "sig_extreme": 3.5977808599167944,
+      "sig_cv": 6.159524477627872,
+      "sig_lag1": 0.7871545070323004,
+      "sig_flash": 0.4257059832208201,
+      "sig_sin": 0.4573343926520248,
+      "sig_cos": 0.49142308353449504,
+      "sig_runoff": 0.9942483683775643
+    },
+    "11124500": {
+      "sig_mean": 0.23782396270959144,
+      "sig_low": 0.0,
+      "sig_median": 0.022739198880531754,
+      "sig_extreme": 2.938604163022565,
+      "sig_cv": 5.611348953526923,
+      "sig_lag1": 0.5279280317429176,
+      "sig_flash": 0.4306028787984146,
+      "sig_sin": 0.6316445833609637,
+      "sig_cos": 0.3572131329396407,
+      "sig_runoff": 0.5479994547351817
+    },
+    "11162500": {
+      "sig_mean": 0.22715844799888243,
+      "sig_low": 0.009999999999999998,
+      "sig_median": 0.041402877697841727,
+      "sig_extreme": 3.122158273381292,
+      "sig_cv": 3.1510719071885562,
+      "sig_lag1": 0.6686973567256619,
+      "sig_flash": 0.456978661987383,
+      "sig_sin": 0.5209647915691055,
+      "sig_cos": 0.4196091810793247,
+      "sig_runoff": 1.3508325766027236
+    },
+    "11224500": {
+      "sig_mean": 0.2670052399800385,
+      "sig_low": 0.0,
+      "sig_median": 0.0,
+      "sig_extreme": 4.589209760465648,
+      "sig_cv": 7.009317490236856,
+      "sig_lag1": 0.4542252914783036,
+      "sig_flash": 0.6190272731163545,
+      "sig_sin": 0.7040251218835712,
+      "sig_cos": 0.39722547548132403,
+      "sig_runoff": 0.08442660389998048
+    },
+    "11230500": {
+      "sig_mean": 0.2380976350403512,
+      "sig_low": 0.016346153846153847,
+      "sig_median": 0.09134615384615384,
+      "sig_extreme": 1.749038461538458,
+      "sig_cv": 1.4880475146863283,
+      "sig_lag1": 0.9860782939226521,
+      "sig_flash": 0.11032899137384289,
+      "sig_sin": 0.3085654549114775,
+      "sig_cos": -0.6466908354034054,
+      "sig_runoff": 2.138306160150322
+    },
+    "11468500": {
+      "sig_mean": 0.2027033310375041,
+      "sig_low": 0.004177863083813179,
+      "sig_median": 0.034612923864363404,
+      "sig_extreme": 2.4337811900192032,
+      "sig_cv": 2.5925170728005975,
+      "sig_lag1": 0.7715018628166274,
+      "sig_flash": 0.36771517695078515,
+      "sig_sin": 0.468863602474938,
+      "sig_cos": 0.4847696653389429,
+      "sig_runoff": 2.074982155247766
+    },
+    "12358500": {
+      "sig_mean": 0.24238194245719463,
+      "sig_low": 0.03810344827586207,
+      "sig_median": 0.08879310344827586,
+      "sig_extreme": 1.5172413793103448,
+      "sig_cv": 1.3610926307715172,
+      "sig_lag1": 0.984057502459626,
+      "sig_flash": 0.09239420011878884,
+      "sig_sin": 0.293816994710046,
+      "sig_cos": -0.5385458429263725,
+      "sig_runoff": 2.3739904790233917
+    },
+    "12447390": {
+      "sig_mean": 0.21903672152732062,
+      "sig_low": 0.021765714285714288,
+      "sig_median": 0.06685714285714285,
+      "sig_extreme": 1.584114285714282,
+      "sig_cv": 1.604594851653273,
+      "sig_lag1": 0.9844408123299526,
+      "sig_flash": 0.09979370442332364,
+      "sig_sin": 0.356307333908648,
+      "sig_cos": -0.6332075758349672,
+      "sig_runoff": 2.1377206806667624
+    },
+    "12488500": {
+      "sig_mean": 0.3050259045066784,
+      "sig_low": 0.05957446808510638,
+      "sig_median": 0.1675531914893617,
+      "sig_extreme": 1.4626329787234014,
+      "sig_cv": 1.0851297351982172,
+      "sig_lag1": 0.9519816359873482,
+      "sig_flash": 0.10842981225960166,
+      "sig_sin": 0.29802751369038116,
+      "sig_cos": -0.296307544420222,
+      "sig_runoff": 2.3029149886086406
+    },
+    "13161500": {
+      "sig_mean": 0.23011993492678276,
+      "sig_low": 0.014041425818882472,
+      "sig_median": 0.06141618497109829,
+      "sig_extreme": 2.0048169556840163,
+      "sig_cv": 1.7425011652404498,
+      "sig_lag1": 0.9867348470520038,
+      "sig_flash": 0.09536341290850849,
+      "sig_sin": 0.6334787456085085,
+      "sig_cos": -0.4088068786576492,
+      "sig_runoff": 0.706422012277226
+    },
+    "13310700": {
+      "sig_mean": 0.269718223632643,
+      "sig_low": 0.061809045226130656,
+      "sig_median": 0.1100502512562814,
+      "sig_extreme": 1.6331658291457287,
+      "sig_cv": 1.2931337982164897,
+      "sig_lag1": 0.9843714972829951,
+      "sig_flash": 0.09532295163432596,
+      "sig_sin": 0.38032672283100905,
+      "sig_cos": -0.4880088095662071,
+      "sig_runoff": 1.9015691261057412
+    },
+    "14020000": {
+      "sig_mean": 0.2981862429194163,
+      "sig_low": 0.05455962587685118,
+      "sig_median": 0.14029618082618875,
+      "sig_extreme": 1.80813198233307,
+      "sig_cv": 1.2374636831003576,
+      "sig_lag1": 0.9103996384070699,
+      "sig_flash": 0.17010004924602515,
+      "sig_sin": 0.5127475070916774,
+      "sig_cos": 0.019049668545653643,
+      "sig_runoff": 1.8796103811334628
+    },
+    "14137000": {
+      "sig_mean": 0.38543553288068066,
+      "sig_low": 0.10095030378563645,
+      "sig_median": 0.3002025237575948,
+      "sig_extreme": 1.7479358155475941,
+      "sig_cv": 0.9191571985888412,
+      "sig_lag1": 0.8374479575679245,
+      "sig_flash": 0.17497816917684367,
+      "sig_sin": 0.2538480695659342,
+      "sig_cos": 0.1655472910940126,
+      "sig_runoff": 2.5244502166488094
+    },
+    "14154500": {
+      "sig_mean": 0.28440847394455643,
+      "sig_low": 0.012871134020618558,
+      "sig_median": 0.13041237113402063,
+      "sig_extreme": 2.1608762886597845,
+      "sig_cv": 1.5795029804694938,
+      "sig_lag1": 0.7875048669813015,
+      "sig_flash": 0.3282492421638525,
+      "sig_sin": 0.3582940405466612,
+      "sig_cos": 0.3806532645305858,
+      "sig_runoff": 2.2705995893415705
+    },
+    "05056000": {
+      "sig_mean": 0.33099443112002125,
+      "sig_low": 0.02022273028984439,
+      "sig_median": 0.17257909875359545,
+      "sig_extreme": 3.353934655948068,
+      "sig_cv": 1.7902455007156837,
+      "sig_lag1": 0.9864799614459582,
+      "sig_flash": 0.09126128518027483,
+      "sig_sin": 0.23572393181880757,
+      "sig_cos": -0.4410390150489636,
+      "sig_runoff": 0.2684149383754119
+    },
+    "05057000": {
+      "sig_mean": 0.34072671472661115,
+      "sig_low": 0.029191176470588238,
+      "sig_median": 0.21323529411764705,
+      "sig_extreme": 2.652941176470583,
+      "sig_cv": 1.428172620088909,
+      "sig_lag1": 0.9891574117464854,
+      "sig_flash": 0.06367420485571337,
+      "sig_sin": 0.18404664268771628,
+      "sig_cos": -0.45691216997014766,
+      "sig_runoff": 0.3765075583692804
+    },
+    "08267500": {
+      "sig_mean": 0.3050873179272276,
+      "sig_low": 0.09057009345794391,
+      "sig_median": 0.17289719626168223,
+      "sig_extreme": 1.8390654205607537,
+      "sig_cv": 1.2055166293332873,
+      "sig_lag1": 0.9916750487176299,
+      "sig_flash": 0.054486608312630594,
+      "sig_sin": 0.1766153390333757,
+      "sig_cos": -0.5549975156417465,
+      "sig_runoff": 1.3329285994245588
+    },
+    "08269000": {
+      "sig_mean": 0.24752690980107184,
+      "sig_low": 0.05148514851485149,
+      "sig_median": 0.10891089108910891,
+      "sig_extreme": 1.6377227722772263,
+      "sig_cv": 1.416912488402081,
+      "sig_lag1": 0.9922487639629775,
+      "sig_flash": 0.07841784865177781,
+      "sig_sin": 0.4173349544195657,
+      "sig_cos": -0.5108543591639181,
+      "sig_runoff": 0.8889376703143174
+    },
+    "05487980": {
+      "sig_mean": 0.21394440532906028,
+      "sig_low": 0.0028581636298678137,
+      "sig_median": 0.03297606287959991,
+      "sig_extreme": 3.4505894962486505,
+      "sig_cv": 3.249597384239798,
+      "sig_lag1": 0.598416025491699,
+      "sig_flash": 0.7020645941173239,
+      "sig_sin": 0.2684221866103044,
+      "sig_cos": -0.39527089132774346,
+      "sig_runoff": 1.6034180424098603
+    },
+    "05488200": {
+      "sig_mean": 0.23407050644960958,
+      "sig_low": 0.0020504519088088515,
+      "sig_median": 0.03385943612572511,
+      "sig_extreme": 4.147578578173471,
+      "sig_cv": 3.7094326715721655,
+      "sig_lag1": 0.5445218783451423,
+      "sig_flash": 0.7872415291997825,
+      "sig_sin": 0.233267096314706,
+      "sig_cos": -0.4753655817334711,
+      "sig_runoff": 1.5863689866833655
+    },
+    "07299670": {
+      "sig_mean": 0.6477795962271353,
+      "sig_low": 0.14029227557411275,
+      "sig_median": 0.2950591510090466,
+      "sig_extreme": 7.21642310368824,
+      "sig_cv": 5.154827719243703,
+      "sig_lag1": 0.444049040326329,
+      "sig_flash": 0.6369233502420246,
+      "sig_sin": 0.10055957357210502,
+      "sig_cos": -0.2607536437084424,
+      "sig_runoff": 0.10615949677197516
+    },
+    "07315200": {
+      "sig_mean": 1.0383363510950212,
+      "sig_low": 0.0,
+      "sig_median": 0.0,
+      "sig_extreme": 26.539115646258427,
+      "sig_cv": 9.090196673488025,
+      "sig_lag1": 0.7073705756533901,
+      "sig_flash": 0.8205498368994997,
+      "sig_sin": 0.45264823800747844,
+      "sig_cos": -0.18047448408111713,
+      "sig_runoff": 0.11762148898825771
+    },
+    "02081500": {
+      "sig_mean": 0.2578538039184967,
+      "sig_low": 0.0032004830917874445,
+      "sig_median": 0.0644122383252819,
+      "sig_extreme": 3.6288244766505637,
+      "sig_cv": 2.8725982345806695,
+      "sig_lag1": 0.5302051435427089,
+      "sig_flash": 0.7071784351344353,
+      "sig_sin": 0.26974138084258076,
+      "sig_cos": 0.24634518914390074,
+      "sig_runoff": 1.3376625701166887
+    },
+    "02082950": {
+      "sig_mean": 0.26372427682690636,
+      "sig_low": 0.012660156250000006,
+      "sig_median": 0.1244140625,
+      "sig_extreme": 2.51953125,
+      "sig_cv": 1.8424896815246476,
+      "sig_lag1": 0.7637502784668585,
+      "sig_flash": 0.414401109879496,
+      "sig_sin": 0.19457852306626788,
+      "sig_cos": 0.15769933426775057,
+      "sig_runoff": 1.3170738408065363
+    },
+    "11381500": {
+      "sig_mean": 0.36804797358003755,
+      "sig_low": 0.12462666304642947,
+      "sig_median": 0.23350529459679598,
+      "sig_extreme": 1.8837903882704337,
+      "sig_cv": 1.0568228771100707,
+      "sig_lag1": 0.7885575830045646,
+      "sig_flash": 0.18639034294725826,
+      "sig_sin": 0.3240131364238079,
+      "sig_cos": 0.06878972416849513,
+      "sig_runoff": 1.8423812977222433
+    },
+    "11383500": {
+      "sig_mean": 0.30636152635483593,
+      "sig_low": 0.08574561403508772,
+      "sig_median": 0.15021929824561403,
+      "sig_extreme": 2.2653508771929864,
+      "sig_cv": 1.4870426523528972,
+      "sig_lag1": 0.778953198176507,
+      "sig_flash": 0.22752335897122605,
+      "sig_sin": 0.38161330602435223,
+      "sig_cos": 0.1914887519047095,
+      "sig_runoff": 1.6374092215616394
+    },
+    "08150800": {
+      "sig_mean": 0.4183113009425639,
+      "sig_low": 0.006962980155506566,
+      "sig_median": 0.09748172217709193,
+      "sig_extreme": 5.198096785424148,
+      "sig_cv": 6.906443615982813,
+      "sig_lag1": 0.18995951711991463,
+      "sig_flash": 0.7986637819172571,
+      "sig_sin": 0.10248242899387149,
+      "sig_cos": -0.14857078812019592,
+      "sig_runoff": 0.17336412304683
+    },
+    "08155200": {
+      "sig_mean": 0.2701067181288865,
+      "sig_low": 0.0022448979591836735,
+      "sig_median": 0.026530612244897958,
+      "sig_extreme": 2.7957142857142503,
+      "sig_cv": 4.308704612853919,
+      "sig_lag1": 0.421176526964784,
+      "sig_flash": 0.46469908659419246,
+      "sig_sin": 0.06574436488166018,
+      "sig_cos": 0.07092313905321819,
+      "sig_runoff": 0.9353294352100306
+    },
+    "06784000": {
+      "sig_mean": 0.47796818850990386,
+      "sig_low": 0.16204101096804976,
+      "sig_median": 0.4101096804959469,
+      "sig_extreme": 2.1006199332379607,
+      "sig_cv": 0.9739477646360127,
+      "sig_lag1": 0.8405855376852651,
+      "sig_flash": 0.13831204167485645,
+      "sig_sin": 0.16531628035312673,
+      "sig_cos": -0.20121405844995527,
+      "sig_runoff": 0.15765820038956174
+    },
+    "05495000": {
+      "sig_mean": 0.18874900487698262,
+      "sig_low": 0.003273542600896861,
+      "sig_median": 0.027959641255605377,
+      "sig_extreme": 3.0929147982062832,
+      "sig_cv": 3.0512439663055804,
+      "sig_lag1": 0.7535802313078729,
+      "sig_flash": 0.6222803345935622,
+      "sig_sin": 0.2467766479786914,
+      "sig_cos": -0.3020290199965603,
+      "sig_runoff": 1.8351863325925322
+    },
+    "05495500": {
+      "sig_mean": 0.20839351656022012,
+      "sig_low": 0.0015602649006622518,
+      "sig_median": 0.024172185430463577,
+      "sig_extreme": 3.7438410596026412,
+      "sig_cv": 3.724977274675784,
+      "sig_lag1": 0.6004900967488173,
+      "sig_flash": 0.7969939285398194,
+      "sig_sin": 0.2610741866108208,
+      "sig_cos": -0.21316182104477993,
+      "sig_runoff": 1.6267025894296314
+    },
+    "06037500": {
+      "sig_mean": 0.5585903800279849,
+      "sig_low": 0.4332129963898917,
+      "sig_median": 0.49217809867629364,
+      "sig_extreme": 1.4197352587244232,
+      "sig_cv": 0.36146020979419596,
+      "sig_lag1": 0.9767599378112883,
+      "sig_flash": 0.034673810048353515,
+      "sig_sin": 0.07653238184257252,
+      "sig_cos": -0.13351839345680389,
+      "sig_runoff": 1.026831737438709
+    },
+    "06043500": {
+      "sig_mean": 0.27076564334706027,
+      "sig_low": 0.0906845448129853,
+      "sig_median": 0.14008468595624576,
+      "sig_extreme": 1.6266760762173627,
+      "sig_cv": 1.1919228368497163,
+      "sig_lag1": 0.9900421948302713,
+      "sig_flash": 0.07102035139601316,
+      "sig_sin": 0.13556745374981155,
+      "sig_cos": -0.514879317836056,
+      "sig_runoff": 1.4513124012722007
+    },
+    "07142300": {
+      "sig_mean": 0.32275529434565253,
+      "sig_low": 0.0,
+      "sig_median": 0.12912785774767205,
+      "sig_extreme": 2.6856054191363343,
+      "sig_cv": 2.5368164839576415,
+      "sig_lag1": 0.8220679302854171,
+      "sig_flash": 0.2119028759444309,
+      "sig_sin": 0.2978648162268832,
+      "sig_cos": -0.20850141420630255,
+      "sig_runoff": 0.03150994971134568
+    },
+    "07145700": {
+      "sig_mean": 0.27766462088566357,
+      "sig_low": 0.008023826208829724,
+      "sig_median": 0.03503854239663635,
+      "sig_extreme": 6.201822004204633,
+      "sig_cv": 4.670875383004099,
+      "sig_lag1": 0.5006333646163483,
+      "sig_flash": 0.9519396839689012,
+      "sig_sin": 0.19084839332949205,
+      "sig_cos": -0.3264894293417091,
+      "sig_runoff": 1.0118295974620886
+    },
+    "13011500": {
+      "sig_mean": 0.22077207070970434,
+      "sig_low": 0.03165562913907285,
+      "sig_median": 0.06016556291390728,
+      "sig_extreme": 1.496092715231787,
+      "sig_cv": 1.521593695168504,
+      "sig_lag1": 0.9833420061711468,
+      "sig_flash": 0.1106122883454353,
+      "sig_sin": 0.36271195366365266,
+      "sig_cos": -0.7263748928786473,
+      "sig_runoff": 2.244973800272466
+    },
+    "13011900": {
+      "sig_mean": 0.2768971134641777,
+      "sig_low": 0.06716981132075471,
+      "sig_median": 0.11962264150943397,
+      "sig_extreme": 1.518415094339623,
+      "sig_cv": 1.17303700618853,
+      "sig_lag1": 0.9875934408416926,
+      "sig_flash": 0.0876317427824801,
+      "sig_sin": 0.10995949108910263,
+      "sig_cos": -0.7583590971400714,
+      "sig_runoff": 2.150092191810788
+    },
+    "02046000": {
+      "sig_mean": 0.27290283506809304,
+      "sig_low": 0.01226628895184136,
+      "sig_median": 0.12138810198300282,
+      "sig_extreme": 2.62756373937677,
+      "sig_cv": 2.260350317295506,
+      "sig_lag1": 0.6879193818423437,
+      "sig_flash": 0.45229404189194533,
+      "sig_sin": 0.19520567546451464,
+      "sig_cos": 0.14298021047479012,
+      "sig_runoff": 1.373947923394853
+    },
+    "02051000": {
+      "sig_mean": 0.28697012585236825,
+      "sig_low": 0.01464754348489477,
+      "sig_median": 0.10863594751296954,
+      "sig_extreme": 3.512602990540134,
+      "sig_cv": 3.0647351737917026,
+      "sig_lag1": 0.28713644563088125,
+      "sig_flash": 0.8135539150370864,
+      "sig_sin": 0.1820441996088716,
+      "sig_cos": 0.18920364529916736,
+      "sig_runoff": 1.3254505017801905
+    },
+    "08013000": {
+      "sig_mean": 0.21646314403085704,
+      "sig_low": 0.007345454545454545,
+      "sig_median": 0.03781818181818182,
+      "sig_extreme": 2.338509090909088,
+      "sig_cv": 2.418685977510244,
+      "sig_lag1": 0.8916760833835052,
+      "sig_flash": 0.26877458823480327,
+      "sig_sin": 0.2465575234939836,
+      "sig_cos": 0.36058538177946436,
+      "sig_runoff": 1.8254950185833716
+    },
+    "08014500": {
+      "sig_mean": 0.28694675516803475,
+      "sig_low": 0.05748792270531401,
+      "sig_median": 0.12222222222222222,
+      "sig_extreme": 2.6375845410628,
+      "sig_cv": 2.085338056495773,
+      "sig_lag1": 0.8493821174514579,
+      "sig_flash": 0.2614266889450035,
+      "sig_sin": 0.13518389642201076,
+      "sig_cos": 0.2841302140527692,
+      "sig_runoff": 1.5756905741364
+    },
+    "09492400": {
+      "sig_mean": 0.2910900071676923,
+      "sig_low": 0.08543577981651376,
+      "sig_median": 0.16743119266055045,
+      "sig_extreme": 1.6869266055045913,
+      "sig_cv": 1.1102138126626495,
+      "sig_lag1": 0.9655937793357449,
+      "sig_flash": 0.11177333748892941,
+      "sig_sin": 0.27261960013716396,
+      "sig_cos": -0.1810532550460945,
+      "sig_runoff": 1.13878723057896
+    },
+    "09494000": {
+      "sig_mean": 0.2511412439627916,
+      "sig_low": 0.046092604232139185,
+      "sig_median": 0.11104127383197168,
+      "sig_extreme": 1.6014875340456767,
+      "sig_cv": 1.5005127007483066,
+      "sig_lag1": 0.8919439847895724,
+      "sig_flash": 0.13684208286146432,
+      "sig_sin": 0.4022379883566058,
+      "sig_cos": -0.040065113044059235,
+      "sig_runoff": 0.5384817245541483
+    },
+    "06453600": {
+      "sig_mean": 0.30925737247298263,
+      "sig_low": 0.004089095744680861,
+      "sig_median": 0.10272606382978748,
+      "sig_extreme": 4.191489361702136,
+      "sig_cv": 3.2061116406992483,
+      "sig_lag1": 0.8331661610618311,
+      "sig_flash": 0.28905932862570943,
+      "sig_sin": 0.46045022974852723,
+      "sig_cos": -0.37673627908534124,
+      "sig_runoff": 0.3000536262103337
+    },
+    "06479215": {
+      "sig_mean": 0.2523342221955964,
+      "sig_low": 0.002816901408450705,
+      "sig_median": 0.036785418392709206,
+      "sig_extreme": 2.410936205468103,
+      "sig_cv": 2.829605407233164,
+      "sig_lag1": 0.9666258349221756,
+      "sig_flash": 0.18572655730935106,
+      "sig_sin": 0.4885467838473731,
+      "sig_cos": -0.3980665671550509,
+      "sig_runoff": 0.606867380320111
+    },
+    "05129115": {
+      "sig_mean": 0.2648445803286804,
+      "sig_low": 0.035450236966824644,
+      "sig_median": 0.15260663507109004,
+      "sig_extreme": 1.4545023696682446,
+      "sig_cv": 1.1622420898508081,
+      "sig_lag1": 0.9944470384194206,
+      "sig_flash": 0.049190489973040846,
+      "sig_sin": 0.23833066449006493,
+      "sig_cos": -0.3475239777735452,
+      "sig_runoff": 1.16389821318439
+    },
+    "05131500": {
+      "sig_mean": 0.2572815725419245,
+      "sig_low": 0.022831964750650923,
+      "sig_median": 0.12397356298818353,
+      "sig_extreme": 1.8060484678549984,
+      "sig_cv": 1.4766307246814099,
+      "sig_lag1": 0.9751363003107065,
+      "sig_flash": 0.12674841285786312,
+      "sig_sin": 0.2867044704828034,
+      "sig_cos": -0.4877093954343912,
+      "sig_runoff": 1.3282489258363472
+    },
+    "05556500": {
+      "sig_mean": 0.2827035906261939,
+      "sig_low": 0.007466996699669968,
+      "sig_median": 0.13036303630363036,
+      "sig_extreme": 2.5305280528052867,
+      "sig_cv": 2.2314382525554985,
+      "sig_lag1": 0.6697292921332798,
+      "sig_flash": 0.360177131928515,
+      "sig_sin": 0.31876597401015083,
+      "sig_cos": -0.15147217925989936,
+      "sig_runoff": 1.3662538492318705
+    },
+    "06440200": {
+      "sig_mean": 0.3052123083794291,
+      "sig_low": 0.0,
+      "sig_median": 0.001158860453887015,
+      "sig_extreme": 7.847223563495939,
+      "sig_cv": 5.872965111015679,
+      "sig_lag1": 0.657715084408342,
+      "sig_flash": 0.8272796703578191,
+      "sig_sin": 0.3723420563702549,
+      "sig_cos": -0.5143789899114136,
+      "sig_runoff": 0.17420870999143762
+    },
+    "06441500": {
+      "sig_mean": 0.24644878868721984,
+      "sig_low": 0.0,
+      "sig_median": 0.006818786588610976,
+      "sig_extreme": 5.431479510377901,
+      "sig_cv": 4.429669527619156,
+      "sig_lag1": 0.8541856595140699,
+      "sig_flash": 0.4220570267348403,
+      "sig_sin": 0.5063272334232929,
+      "sig_cos": -0.43657888452327176,
+      "sig_runoff": 0.20343551857162678
+    },
+    "03574500": {
+      "sig_mean": 0.2513288311212368,
+      "sig_low": 0.00970631118516975,
+      "sig_median": 0.09164757342220364,
+      "sig_extreme": 2.969423036867319,
+      "sig_cv": 2.2186699014694766,
+      "sig_lag1": 0.7906597921467534,
+      "sig_flash": 0.45978707532788604,
+      "sig_sin": 0.33398869427334016,
+      "sig_cos": 0.34512213096011773,
+      "sig_runoff": 2.090157263359401
+    },
+    "06464500": {
+      "sig_mean": 0.3213526531107529,
+      "sig_low": 0.0783623693379791,
+      "sig_median": 0.19999999999999998,
+      "sig_extreme": 1.9130662020905913,
+      "sig_cv": 1.1914515205516005,
+      "sig_lag1": 0.94380211551044,
+      "sig_flash": 0.12474809336919254,
+      "sig_sin": 0.3141592723375801,
+      "sig_cos": -0.43036945219465184,
+      "sig_runoff": 0.21521728022289155
+    },
+    "08082700": {
+      "sig_mean": 0.7345862828448572,
+      "sig_low": 0.0,
+      "sig_median": 0.0,
+      "sig_extreme": 13.752854605430095,
+      "sig_cv": 17.510296728329386,
+      "sig_lag1": 0.4740306463873675,
+      "sig_flash": 0.9782594899520994,
+      "sig_sin": -0.0530212990765184,
+      "sig_cos": -0.4309561783197032,
+      "sig_runoff": 0.08570959399457886
+    },
+    "08086212": {
+      "sig_mean": 0.7357245565122125,
+      "sig_low": 0.0,
+      "sig_median": 0.000510204081632653,
+      "sig_extreme": 12.70153061224498,
+      "sig_cv": 11.164260975949004,
+      "sig_lag1": 0.5497675536942257,
+      "sig_flash": 1.068203563742413,
+      "sig_sin": 0.06099600443916357,
+      "sig_cos": -0.36542726908585904,
+      "sig_runoff": 0.05865268975617731
+    },
+    "06614800": {
+      "sig_mean": 0.23789306261605433,
+      "sig_low": 0.02,
+      "sig_median": 0.07894736842105263,
+      "sig_extreme": 1.7105263157894737,
+      "sig_cv": 1.5386835621755812,
+      "sig_lag1": 0.9801632710767935,
+      "sig_flash": 0.10864712524911947,
+      "sig_sin": 0.07249694266730057,
+      "sig_cos": -0.8300667527305026,
+      "sig_runoff": 2.5380130824595724
+    },
+    "06622700": {
+      "sig_mean": 0.18940612017881436,
+      "sig_low": 0.025143220878421402,
+      "sig_median": 0.040738383195416956,
+      "sig_extreme": 2.1842138765117762,
+      "sig_cv": 2.1322397438527565,
+      "sig_lag1": 0.9815928484719164,
+      "sig_flash": 0.13240122994491316,
+      "sig_sin": 0.31079451974902095,
+      "sig_cos": -0.7177696246920564,
+      "sig_runoff": 2.1713014304019076
+    },
+    "02235200": {
+      "sig_mean": 0.2941000351052785,
+      "sig_low": 0.029782608695652177,
+      "sig_median": 0.1233695652173913,
+      "sig_extreme": 2.5641304347826095,
+      "sig_cv": 1.562024523966731,
+      "sig_lag1": 0.989844872934863,
+      "sig_flash": 0.0641966430725896,
+      "sig_sin": -0.2407295998422586,
+      "sig_cos": -0.039497034470008144,
+      "sig_runoff": 0.8668722711942478
+    },
+    "02245500": {
+      "sig_mean": 0.2699300945515619,
+      "sig_low": 0.031340944705618996,
+      "sig_median": 0.1076785314528767,
+      "sig_extreme": 2.4790687262144577,
+      "sig_cv": 2.43898835986956,
+      "sig_lag1": 0.8029815354670745,
+      "sig_flash": 0.3468761927661457,
+      "sig_sin": -0.12354366256568776,
+      "sig_cos": -0.1676393134246992,
+      "sig_runoff": 1.4228662116062347
+    },
+    "02137727": {
+      "sig_mean": 0.4055433513087359,
+      "sig_low": 0.12007019488316259,
+      "sig_median": 0.29740463655675653,
+      "sig_extreme": 2.438348573011917,
+      "sig_cv": 1.5124189303997522,
+      "sig_lag1": 0.5078404227639058,
+      "sig_flash": 0.28632048228540113,
+      "sig_sin": 0.045376426335999524,
+      "sig_cos": 0.027505921460486284,
+      "sig_runoff": 1.621075364775033
+    },
+    "10173450": {
+      "sig_mean": 0.2217244490236766,
+      "sig_low": 0.03211528197829571,
+      "sig_median": 0.08361501512186452,
+      "sig_extreme": 2.5955523928126807,
+      "sig_cv": 1.9304761498009289,
+      "sig_lag1": 0.9956989715167703,
+      "sig_flash": 0.06513379919015735,
+      "sig_sin": 0.2459522748032941,
+      "sig_cos": -0.6412705983286674,
+      "sig_runoff": 1.2608599692600133
+    },
+    "10205030": {
+      "sig_mean": 0.3283905360590011,
+      "sig_low": 0.13103524229074892,
+      "sig_median": 0.20803964757709253,
+      "sig_extreme": 2.1003744493392107,
+      "sig_cv": 1.1323109374851335,
+      "sig_lag1": 0.9855103570653075,
+      "sig_flash": 0.0632139036191867,
+      "sig_sin": 0.17434403995961525,
+      "sig_cos": -0.5067196195019515,
+      "sig_runoff": 0.6031772266876003
+    },
+    "05454000": {
+      "sig_mean": 0.3100392982010736,
+      "sig_low": 0.007970818697649285,
+      "sig_median": 0.14050256687381793,
+      "sig_extreme": 2.8694947311537624,
+      "sig_cv": 2.554761787190416,
+      "sig_lag1": 0.48376626100014775,
+      "sig_flash": 0.48295584651324674,
+      "sig_sin": 0.27443081276373454,
+      "sig_cos": -0.2057154404043431,
+      "sig_runoff": 1.3254000156252481
+    },
+    "05458000": {
+      "sig_mean": 0.27792978373469257,
+      "sig_low": 0.03496280552603613,
+      "sig_median": 0.11370882040382571,
+      "sig_extreme": 2.486503719447392,
+      "sig_cv": 2.033431470245205,
+      "sig_lag1": 0.7683603144137455,
+      "sig_flash": 0.2595571899476035,
+      "sig_sin": 0.3002670613945699,
+      "sig_cos": -0.39757030668064186,
+      "sig_runoff": 1.3622285270263714
+    },
+    "06803510": {
+      "sig_mean": 0.45215218946117164,
+      "sig_low": 0.08572493477450609,
+      "sig_median": 0.20536712635109935,
+      "sig_extreme": 4.661200149086855,
+      "sig_cv": 4.303624903262272,
+      "sig_lag1": 0.3325277311045464,
+      "sig_flash": 0.735414277877785,
+      "sig_sin": 0.15843389064247132,
+      "sig_cos": -0.3473604974198619,
+      "sig_runoff": 0.4582428247489329
+    },
+    "06803530": {
+      "sig_mean": 0.4040836899423012,
+      "sig_low": 0.06309211852449098,
+      "sig_median": 0.16125781092521657,
+      "sig_extreme": 4.9842773634347415,
+      "sig_cv": 4.13449232701135,
+      "sig_lag1": 0.34589199194941506,
+      "sig_flash": 0.7202645090625258,
+      "sig_sin": 0.2132343777707599,
+      "sig_cos": -0.3969087081324467,
+      "sig_runoff": 0.5772030780291197
+    }
+  },
+  "sources": {
+    "experiments/sprint-20261017-hydrology/research/hres-metadata.json": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/.zmetadata",
+      "status": 200,
+      "retrieved_utc": "2026-10-17T16:41:21.117485+00:00",
+      "bytes": 7094,
+      "sha256": "4597ba02bbea8b1cd5aaa6eb98190897455baa654085141bca378e33048ec1b6"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/0",
+      "sha256": "17fa90282e35978670dbd51dd46594ba6ac91af5519653e1dd13260772e65eb2",
+      "bytes": 8891,
+      "retrieved_utc": "2026-10-17T16:44:14.758796+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-1.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/1",
+      "sha256": "890ecdd54d0a4a863af1ed29471fa1980fa4b4add5bfcff1ccc7a729c455abb8",
+      "bytes": 8238,
+      "retrieved_utc": "2026-10-17T16:44:16.059322+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-2.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/2",
+      "sha256": "24d8b8a7ae55cf08895329c3470a1a2b02a0ec2eb6ccc863261cbf77da69cfe4",
+      "bytes": 6345,
+      "retrieved_utc": "2026-10-17T16:44:16.327575+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-3.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/3",
+      "sha256": "584955436db71816c825a9a6de985cf65761bbca8d11f4c877a9a92bfdc9697a",
+      "bytes": 9819,
+      "retrieved_utc": "2026-10-17T16:44:16.640486+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-4.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/4",
+      "sha256": "929a8bcbf37d09e89edb329bd47e1f44ac735c3cfeb7d7101a04f17445660a2b",
+      "bytes": 9801,
+      "retrieved_utc": "2026-10-17T16:44:16.915435+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-5.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/5",
+      "sha256": "332244550187557d20ebfb9390beced30a892c772e84d95d378a817441d2935f",
+      "bytes": 9671,
+      "retrieved_utc": "2026-10-17T16:44:17.300046+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-6.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/6",
+      "sha256": "fb709c03d69aac8d163b790a5f87d4ad6bb690085f0ab7f614b69092fa665b4e",
+      "bytes": 9449,
+      "retrieved_utc": "2026-10-17T16:44:17.526019+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/basin-7.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/basin/7",
+      "sha256": "69aed2564cba24344c3e9a36a60843c3574444fe8dba7b7f7a45e041536826dd",
+      "bytes": 9675,
+      "retrieved_utc": "2026-10-17T16:44:17.869236+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/date-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/date/0",
+      "sha256": "30cab1e110e267c2417fd4f60999a9a385a2a033574aaddfd8773e37fc671fd0",
+      "bytes": 600,
+      "retrieved_utc": "2026-10-17T16:44:18.158237+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/research/lead_time-0.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/lead_time/0",
+      "sha256": "6f0be590e2cb997d157685ba6e4f963323963469f758e275f9f22b516a9b04b7",
+      "bytes": 96,
+      "retrieved_utc": "2026-10-17T16:44:18.413314+00:00"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-25.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:19.842141+00:00",
+      "status": 200,
+      "bytes": 15712584,
+      "sha256": "c658dfa75294d224363c62479e241cfc9c4458d49ce2db96a7582c9b9e694492"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-26.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:20.967541+00:00",
+      "status": 200,
+      "bytes": 15718951,
+      "sha256": "628682e9bffef7ef9649b3e80f4f7709a5b8a3232b42aef354871ea980670006"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-27.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:22.149204+00:00",
+      "status": 200,
+      "bytes": 15731272,
+      "sha256": "c7595f0784628c46ddb42a9abf3a90f941fb95228ab157517772c97a3b04ba74"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-28.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:23.173809+00:00",
+      "status": 200,
+      "bytes": 14846996,
+      "sha256": "0624e51e23c8623b0bee60631f005ff60ccf54f3c4dabaa84623cc5ad52708cc"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_total_precipitation-29.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_total_precipitation/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:24.244344+00:00",
+      "status": 200,
+      "bytes": 14525769,
+      "sha256": "cff1cdef2cef969738620945c5541e5da8d5d102f8a7ea7273e1b380ba53c015"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-25.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/25.0.0",
+      "retrieved_utc": "2026-10-17T16:50:26.263252+00:00",
+      "status": 200,
+      "bytes": 12984871,
+      "sha256": "21308540795f1f9583ce8ad2a835f746f1c8fbdd66c22b4811665621f17ed375"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-26.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/26.0.0",
+      "retrieved_utc": "2026-10-17T16:50:27.380684+00:00",
+      "status": 200,
+      "bytes": 12974957,
+      "sha256": "d84bc5bab87273b9806ca9c295bc78bab8651d3ae80c838e9600723b976d7ea7"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-27.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/27.0.0",
+      "retrieved_utc": "2026-10-17T16:50:28.393354+00:00",
+      "status": 200,
+      "bytes": 13146979,
+      "sha256": "28126b4903385a8f682155235eeb9445cb49afd7fc823c92dc39eb7ad665310f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-28.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/28.0.0",
+      "retrieved_utc": "2026-10-17T16:50:29.685835+00:00",
+      "status": 200,
+      "bytes": 12917349,
+      "sha256": "317addf673a86fc268f1e28f168f1a5506ceee7ff5e3a5aec96ed640fed935a5"
+    },
+    "experiments/sprint-20261017-hydrology/sources/hres_temperature_2m-29.bin": {
+      "url": "https://storage.googleapis.com/caravan-multimet/v1.1/HRES/timeseries.zarr/hres_temperature_2m/29.0.0",
+      "retrieved_utc": "2026-10-17T16:50:30.789155+00:00",
+      "status": 200,
+      "bytes": 12901462,
+      "sha256": "d3b3ea7f499a7122f8223ed3a35a5a09c4a731033658e53cc6c05f1a47f3729c"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02111180.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02111180&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:34.546330+00:00",
+      "status": 200,
+      "bytes": 288287,
+      "sha256": "9ddb06df2049ef43a1e0f19f5f27ea33d5ced0f1e301d7afe04d497e0e780923"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02096846.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02096846&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:34.090007+00:00",
+      "status": 200,
+      "bytes": 292070,
+      "sha256": "73f05126671ffb1a88368c762e6c97f41706968d95f3019329614eda049f5aeb"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02177000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02177000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:34.679346+00:00",
+      "status": 200,
+      "bytes": 283776,
+      "sha256": "9aa81f2f672d58b3844a3c96ff8f18f7062d95b83f97b0067c2c549002b6b9f7"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02212600.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02212600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.015704+00:00",
+      "status": 200,
+      "bytes": 290726,
+      "sha256": "f9d6b583011b58c9d10b0c4d4d2cdc8dfc95862a31c95def9fa870860ac28378"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02296500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02296500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.146067+00:00",
+      "status": 200,
+      "bytes": 288311,
+      "sha256": "1debe0e05922329b7041d43606a217627da0d753c87463b06e6088e5101c86de"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02314500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02314500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.490034+00:00",
+      "status": 200,
+      "bytes": 287427,
+      "sha256": "34402b0cfc892ed235f0c0abb765cd4353434fdb656fa4676f48e7c9da6aae62"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02327100.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02327100&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.590921+00:00",
+      "status": 200,
+      "bytes": 288801,
+      "sha256": "2d33e11dfb5d9ec3431cbe9a131c40224f687f61968f78b751da66efa6fb40ea"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02342933.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02342933&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.870205+00:00",
+      "status": 200,
+      "bytes": 138711,
+      "sha256": "f002d0f7095ed0dc5bb89df476f1f02743d21ce032ee071ed0e1108443c6cd60"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02361000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02361000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:35.995174+00:00",
+      "status": 200,
+      "bytes": 284760,
+      "sha256": "c0a61553c13371fade6f6ff83555302c091a77056c27f7bb344f139d34192acb"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02381600.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02381600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.343125+00:00",
+      "status": 200,
+      "bytes": 291593,
+      "sha256": "9b75e97bd88002b37cfc245520c6ea18ad0dedb74b46404804627f3c58e538e6"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02430085.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02430085&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.441207+00:00",
+      "status": 200,
+      "bytes": 291567,
+      "sha256": "c102a30cd251876571f01439d34f137399885234dbfdb7d9f24dcee1df91a6b1"
+    },
+    "experiments/sprint-20261017-hydrology/sources/02472000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02472000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.830586+00:00",
+      "status": 200,
+      "bytes": 284986,
+      "sha256": "72f878e18357ad27f77cb231fc17e5f3a981e51e1955a88c3f1f72b27cbe1b81"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03010655.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03010655&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:36.881991+00:00",
+      "status": 200,
+      "bytes": 288723,
+      "sha256": "65c1120fed06dc060857f76ae6ea8e68e6b4ab4f8255c3899f097c600af3579d"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03159540.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03159540&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.276815+00:00",
+      "status": 200,
+      "bytes": 289399,
+      "sha256": "351392c274e587147219a80b4435ee2b3e39d6237b9c9f7a706d81763002c88c"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03161000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03161000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.326544+00:00",
+      "status": 200,
+      "bytes": 283347,
+      "sha256": "afc545b9edb8883367b5d3e5c49e5b690fb3ab944db8be23cda93b812337dad2"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03213700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03213700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.715282+00:00",
+      "status": 200,
+      "bytes": 285708,
+      "sha256": "6a5a308e93095a299038ef111341897e15a0fdf98b58803f16369e63d04a9c3c"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03237280.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03237280&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:37.833338+00:00",
+      "status": 200,
+      "bytes": 293937,
+      "sha256": "ac6289ef2eaf1f967cee8d0745a6e3992fcb8c3d4bb252b2bf4f1beba886efec"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03280700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03280700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.135723+00:00",
+      "status": 200,
+      "bytes": 291858,
+      "sha256": "1ca5f871ac0403e6d2257417612c964c9a7681a262b31a3035a1edf95a1da28f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03338780.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03338780&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.180141+00:00",
+      "status": 200,
+      "bytes": 173684,
+      "sha256": "d73c7afe9ca4c16c3498000474b2466985cdfa7ad1422f0dcc94af63bc8972b2"
+    },
+    "experiments/sprint-20261017-hydrology/sources/03439000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03439000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:38.630075+00:00",
+      "status": 200,
+      "bytes": 283850,
+      "sha256": "a930b1f0766ad9009084b0c6fb6f7c5dc8ea8e6aa7df610412956bc444191dfd"
+    },
+    "experiments/sprint-20261017-hydrology/sources/05120500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05120500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.379127+00:00",
+      "status": 200,
+      "bytes": 300801,
+      "sha256": "ea14faa667b53d55c00f6a70f018a1ddfa769969dcfeb1f64b91f824aa805e2a"
+    },
+    "experiments/sprint-20261017-hydrology/sources/05362000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05362000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.379159+00:00",
+      "status": 200,
+      "bytes": 291498,
+      "sha256": "5be4a03a02151ff8106b6a2eb4590db039ec51aafd7c99c31aad3a05dc8718aa"
+    },
+    "experiments/sprint-20261017-hydrology/sources/05393500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05393500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.844838+00:00",
+      "status": 200,
+      "bytes": 295339,
+      "sha256": "fd693130c14b474d049f1f476ca292b3c1e6917e4dafc613d610290b03738c33"
+    },
+    "experiments/sprint-20261017-hydrology/sources/05444000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05444000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:40.787869+00:00",
+      "status": 200,
+      "bytes": 289329,
+      "sha256": "a8e632a3826ca4ccc90057dc65385fc946c300fc593180a39ab1e25cd2247a90"
+    },
+    "experiments/sprint-20261017-hydrology/sources/05591550.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05591550&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.267300+00:00",
+      "status": 200,
+      "bytes": 291860,
+      "sha256": "051f6d145e330e4b3be33664e6b7faeeb74e78dc4a6beb107ebfd77922b4ef81"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06188000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06188000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.314527+00:00",
+      "status": 200,
+      "bytes": 291285,
+      "sha256": "4f6e10d9f7b93d0b387fb2a9fbdd6d6217cc47be5e09019f47f5983f2437b46f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06311000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06311000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.672132+00:00",
+      "status": 200,
+      "bytes": 247343,
+      "sha256": "bfa9b418ff7a0c0fcebc246d2f9d7ac9db1264a8fcd461ff3d086bd787ac2f1e"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06332515.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06332515&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:41.794936+00:00",
+      "status": 200,
+      "bytes": 299489,
+      "sha256": "02266541a51f6a703b789257f176b19e289e4ff375a596b85282e6cc5ff50f9c"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06339100.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06339100&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.164909+00:00",
+      "status": 200,
+      "bytes": 296581,
+      "sha256": "8daeae3152df3b38787ac06873a4d61120682bc6b54c155213a6218d4032d642"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06404000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06404000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.234714+00:00",
+      "status": 200,
+      "bytes": 295027,
+      "sha256": "469ad451e17f89e4a06998ba22f094d46c2144469512312aeb090179bd87db6a"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06601000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06601000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.569677+00:00",
+      "status": 200,
+      "bytes": 293558,
+      "sha256": "e091c164f3c3fdd33b5a829c59fb3b6b82d7f42028239c55ada0e6a2ed370903"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06746095.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06746095&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:42.704629+00:00",
+      "status": 200,
+      "bytes": 289896,
+      "sha256": "434157aba710d5d05c883538ae57f9c36aa2d827ee9328185896c569aaaa77cb"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06847900.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06847900&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.010060+00:00",
+      "status": 200,
+      "bytes": 292862,
+      "sha256": "b46a233ae7383ad1b5cd56d4c8a62e46313dfddc146809331092b2266d638aef"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06876700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06876700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.166118+00:00",
+      "status": 200,
+      "bytes": 291524,
+      "sha256": "e792904cf379da6310d4e45e2cc5cb7470f7c9ba725b21d59b195d829c4565af"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06879650.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06879650&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.468615+00:00",
+      "status": 200,
+      "bytes": 291484,
+      "sha256": "bf165d3ccbdbb04baa7512830d743173d9c05edbf0ffdf1a08b494ac79a708e5"
+    },
+    "experiments/sprint-20261017-hydrology/sources/06906800.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06906800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.633841+00:00",
+      "status": 200,
+      "bytes": 288633,
+      "sha256": "ae3311e52bb69c8a5ffa2f3c27f5e131a07e5f2759f498f7998a9226ee2115f2"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07056000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07056000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:43.910627+00:00",
+      "status": 200,
+      "bytes": 294243,
+      "sha256": "ee9223da642d4f1a43cb0bd1ba1256189f71a1ad3fd3a8264de6a18d1ef60c4a"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07083000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07083000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.054980+00:00",
+      "status": 200,
+      "bytes": 298833,
+      "sha256": "314106ba259fb407035171591813e530fc002d96af5c58c2087c3dab33616159"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07195800.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07195800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.376199+00:00",
+      "status": 200,
+      "bytes": 291180,
+      "sha256": "19184e11075fde51129fd2246b5e0c00e235d6c31f863291a1272365bc5bffab"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07208500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07208500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.506563+00:00",
+      "status": 200,
+      "bytes": 295571,
+      "sha256": "dc0240d1d834c1850e6ad1b1e4b82d5133abd62acaf2c2e2cf2638ccd4109406"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07290650.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07290650&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.767447+00:00",
+      "status": 200,
+      "bytes": 180385,
+      "sha256": "a9f39ceb9a2da710e9f8fb1dc6ba1d86c9645feb2dcca8d5e0183df5a87b2509"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07335700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07335700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:44.939546+00:00",
+      "status": 200,
+      "bytes": 289604,
+      "sha256": "950efa837a8fe4144d4be09d6ad119d97e0c2d8a34c629ebd027a49fb28fb306"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07359610.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07359610&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.232714+00:00",
+      "status": 200,
+      "bytes": 286319,
+      "sha256": "139915877e6af6b8b2b6e54a19c2c1bcf49832ba0137054cfe1a36017aa01aa4"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07375000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07375000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.368305+00:00",
+      "status": 200,
+      "bytes": 269948,
+      "sha256": "e89addaeabd9c46e0afe163da262cdc531a9c915d9d869abf30d619f33829cd1"
+    },
+    "experiments/sprint-20261017-hydrology/sources/07376000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07376000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.674358+00:00",
+      "status": 200,
+      "bytes": 284461,
+      "sha256": "fef8771496164b72404dcd9be7373b5fbd98dd3ec73394061aa03bd4f69d05dd"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08023080.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08023080&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:45.799499+00:00",
+      "status": 200,
+      "bytes": 290425,
+      "sha256": "5b4ecdf69dc580dcbab4beb484971cff7f0cbb1f2409f591df4ad4ab1ff35a31"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08050800.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08050800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.085678+00:00",
+      "status": 200,
+      "bytes": 290938,
+      "sha256": "de08665550975b97d2ce02d7836e37ddb306efbe76fb6b327084069e5ffdef34"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08070000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08070000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.208036+00:00",
+      "status": 200,
+      "bytes": 289052,
+      "sha256": "81383f43ff8e0ad8146daf9d3b8748e0557591f36200b1130626fae7d62b9b21"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08079600.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08079600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.523873+00:00",
+      "status": 200,
+      "bytes": 292827,
+      "sha256": "06af2623bd8c74633a916afc050ce7237a89ca733b3b92292968e19486b29e30"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08164000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08164000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.636586+00:00",
+      "status": 200,
+      "bytes": 289317,
+      "sha256": "b8ad6ea84fd05beeb6c6024926f5913cca3cc36b353c2e905da719a397361cd0"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08190000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08190000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:46.940908+00:00",
+      "status": 200,
+      "bytes": 288335,
+      "sha256": "b476ad01ab5409c9813c221cb91b665bbd4120cc2c4894ab9dcd5691d2395bab"
+    },
+    "experiments/sprint-20261017-hydrology/sources/08377900.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08377900&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.083992+00:00",
+      "status": 200,
+      "bytes": 296389,
+      "sha256": "1a29b50294a3609cb43bf2532cea88f1a538a5c5c7e9962192e17a9456b11f07"
+    },
+    "experiments/sprint-20261017-hydrology/sources/09107000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09107000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.380568+00:00",
+      "status": 200,
+      "bytes": 295331,
+      "sha256": "0b7a1c3b3cb9fdbb3c9f13ab5e32cd76f3f64d5c2f7e9ad4fd6c93026a896505"
+    },
+    "experiments/sprint-20261017-hydrology/sources/09312600.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09312600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.564817+00:00",
+      "status": 200,
+      "bytes": 297746,
+      "sha256": "066eec35494dfcf4db765ae50be17b8c2be287eaef5a221342377395bcc7f8d7"
+    },
+    "experiments/sprint-20261017-hydrology/sources/09404450.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09404450&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:47.799823+00:00",
+      "status": 200,
+      "bytes": 291366,
+      "sha256": "119a84548d999426dfc7b6a1f7f3767f45f7d0da371fe3c81cdda2120fc91f96"
+    },
+    "experiments/sprint-20261017-hydrology/sources/09430500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09430500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.020449+00:00",
+      "status": 200,
+      "bytes": 275765,
+      "sha256": "2034eb43d584c0d4f03753e2aa60143aaddef6b177b519c7512d88d369634a3b"
+    },
+    "experiments/sprint-20261017-hydrology/sources/09480000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09480000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.212154+00:00",
+      "status": 200,
+      "bytes": 235962,
+      "sha256": "95bdd7571918f96bec08c1435c93818bb73a61985f3ebb03806e471e7b8e8adf"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10023000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10023000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.442832+00:00",
+      "status": 200,
+      "bytes": 296985,
+      "sha256": "1417c4e9f322ad9b3c4c8e680cda990d3ee3e4e36bc950022fd061696f220555"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10166430.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10166430&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.678361+00:00",
+      "status": 200,
+      "bytes": 294985,
+      "sha256": "231c42815e1cd3886dc553c016b2b4a9179a076dfea545a9265359f90b0e7270"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10244950.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10244950&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:48.878334+00:00",
+      "status": 200,
+      "bytes": 291495,
+      "sha256": "4e57b1046389cd3a2b1baa2b349cd88553f575dd2b5a6f3df7cdb548afaef39a"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10258000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10258000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.146038+00:00",
+      "status": 200,
+      "bytes": 291378,
+      "sha256": "c9eddcdd1931822233b88ee74ac04f85625200745613c7cf8e112a5b5b17a92f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10263500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10263500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.334570+00:00",
+      "status": 200,
+      "bytes": 297458,
+      "sha256": "b746da93db971d7867d3a6c7683a378d10b251673480db6b39eb5ca76a33311f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10310500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10310500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.619659+00:00",
+      "status": 200,
+      "bytes": 291686,
+      "sha256": "547b3fcf0e8503f1b6e0c4f112b775e21570d9f035381a9bdb5bb4cd368f8fb8"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10316500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10316500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:49.778409+00:00",
+      "status": 200,
+      "bytes": 294007,
+      "sha256": "98597423f9389cdd4d22622500f347feb096de1405b5e8a51bf1aa8fa45ba4f3"
+    },
+    "experiments/sprint-20261017-hydrology/sources/10396000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10396000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.058301+00:00",
+      "status": 200,
+      "bytes": 289215,
+      "sha256": "e9731101e5f126bb079aea45ef6bc4d8d630f434b9f0a6552c766a07a1eff38e"
+    },
+    "experiments/sprint-20261017-hydrology/sources/11098000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11098000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.188257+00:00",
+      "status": 200,
+      "bytes": 291850,
+      "sha256": "aae972377c7bc10f2f37dbaf6e88b60839472af881f6816a5360df7a64de211b"
+    },
+    "experiments/sprint-20261017-hydrology/sources/11124500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11124500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.483580+00:00",
+      "status": 200,
+      "bytes": 291574,
+      "sha256": "e45015085e2d6e6ddeb75738194a0465c6426f5ff20592a696d34b9495a79124"
+    },
+    "experiments/sprint-20261017-hydrology/sources/11162500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11162500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.628564+00:00",
+      "status": 200,
+      "bytes": 290518,
+      "sha256": "148bdc41abb89ffcd93d68dfa77a7b2c5e38b5b128f984ac313b8c04180560ba"
+    },
+    "experiments/sprint-20261017-hydrology/sources/11224500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11224500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:50.890674+00:00",
+      "status": 200,
+      "bytes": 291101,
+      "sha256": "e1d97c8374ce0240fe49e324f65fd083bef1683fa60bf689f9b17549b2a38b0f"
+    },
+    "experiments/sprint-20261017-hydrology/sources/11230500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11230500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.043232+00:00",
+      "status": 200,
+      "bytes": 292344,
+      "sha256": "0788a4e9d9a262bc631c3b9b6d20cc222bef17002716226944f54367489802b1"
+    },
+    "experiments/sprint-20261017-hydrology/sources/11468500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11468500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.319559+00:00",
+      "status": 200,
+      "bytes": 289317,
+      "sha256": "4c625ef507fa162e85f46fc4148b809ff8435ec2e0d94ac634c2dcdd8c4aebfe"
+    },
+    "experiments/sprint-20261017-hydrology/sources/12010000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12010000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.508772+00:00",
+      "status": 200,
+      "bytes": 310243,
+      "sha256": "4797db62e9eb8b07bc5b19f050b99c6743063e39aa82815fcc281dde36583066"
+    },
+    "experiments/sprint-20261017-hydrology/sources/12358500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12358500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.803356+00:00",
+      "status": 200,
+      "bytes": 287528,
+      "sha256": "f6431f8f4ba76f9de51fa624bc99ccd3f2d1b73f14731d5c6fd991d55f350e88"
+    },
+    "experiments/sprint-20261017-hydrology/sources/12447390.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12447390&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:51.957126+00:00",
+      "status": 200,
+      "bytes": 293582,
+      "sha256": "c66ab12efdf11be0fd324fe8b9162aede5fb23d22b632f032eeaa41308112683"
+    },
+    "experiments/sprint-20261017-hydrology/sources/12488500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12488500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.248705+00:00",
+      "status": 200,
+      "bytes": 286781,
+      "sha256": "29558e4e0cae4455017f2827a02c39385a6750517f55d5e89a381a554c0d9395"
+    },
+    "experiments/sprint-20261017-hydrology/sources/13161500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13161500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.410586+00:00",
+      "status": 200,
+      "bytes": 292238,
+      "sha256": "0aba53bbdf38996ffbd25b119cc21ceaa0161ca76f520ab30de43e1ea38042ee"
+    },
+    "experiments/sprint-20261017-hydrology/sources/14020000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14020000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.849041+00:00",
+      "status": 200,
+      "bytes": 286954,
+      "sha256": "928ca21916a13c34fa26eb15f6147a3f35abe3a9a927d1f3c6cd50c164a566dc"
+    },
+    "experiments/sprint-20261017-hydrology/sources/13310700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13310700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:52.672261+00:00",
+      "status": 200,
+      "bytes": 286405,
+      "sha256": "5dbaa9d85f8837554aed29cce51a7ed1e0d4aa791fbfc93a6defd4099332c440"
+    },
+    "experiments/sprint-20261017-hydrology/sources/14137000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14137000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:53.110515+00:00",
+      "status": 200,
+      "bytes": 287875,
+      "sha256": "78f607d3957adbe5bb1e6c2ec2e78ab4f39a0d86251755f958bee96d18e6a884"
+    },
+    "experiments/sprint-20261017-hydrology/sources/14154500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=14154500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T16:50:53.307517+00:00",
+      "status": 200,
+      "bytes": 287155,
+      "sha256": "470f1232e1a5b5f250bb11486b128a48c868c1bd2f4693bcd00fc962178fd2d1"
+    },
+    "experiments/sprint-20261017-response/sources/05057000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05057000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:25.867831+00:00",
+      "status": 200,
+      "bytes": 292093,
+      "sha256": "bf435089620e5bf30ed68b13f8cee37ef4bc1a9c3e61fa02ea20e0b97b63ce5a"
+    },
+    "experiments/sprint-20261017-response/sources/05056000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05056000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:25.907129+00:00",
+      "status": 200,
+      "bytes": 291711,
+      "sha256": "12b8c6e441a2af6b468cab2804e969e2dc4f03a45b0437da5c2d830232080a15"
+    },
+    "experiments/sprint-20261017-response/sources/08269000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08269000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:26.740539+00:00",
+      "status": 200,
+      "bytes": 295223,
+      "sha256": "dfba56d325328e6c2acbeec47c03a1ea64562ccf87d8c300334a7f48125342fd"
+    },
+    "experiments/sprint-20261017-response/sources/08267500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08267500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:26.744586+00:00",
+      "status": 200,
+      "bytes": 294815,
+      "sha256": "390e8219294e7ba37689cbf7b45c9338900ff63ecc5d92e14325b9b2068d1822"
+    },
+    "experiments/sprint-20261017-response/sources/05488200.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05488200&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:27.252090+00:00",
+      "status": 200,
+      "bytes": 293955,
+      "sha256": "e6cdf9e95c79878013a5c146712b53d62b305cb73ce8ddc29b8aa18778d7d086"
+    },
+    "experiments/sprint-20261017-response/sources/05487980.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05487980&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:27.252175+00:00",
+      "status": 200,
+      "bytes": 293265,
+      "sha256": "ea6994f14dbf8adc75055a9830ffcad55df51927febb939658df7ccf3d94cad2"
+    },
+    "experiments/sprint-20261017-response/sources/07315200.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07315200&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:27.733584+00:00",
+      "status": 200,
+      "bytes": 290905,
+      "sha256": "b41cabee41d337b1159e27491d86815c30de7a21267fa3539268f47c451ec121"
+    },
+    "experiments/sprint-20261017-response/sources/07299670.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07299670&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:27.771043+00:00",
+      "status": 200,
+      "bytes": 291231,
+      "sha256": "5f54158a9729a28304e8e3be6134bb697a6477337fb67cfab162c5120364789c"
+    },
+    "experiments/sprint-20261017-response/sources/02081500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02081500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:28.311832+00:00",
+      "status": 200,
+      "bytes": 289235,
+      "sha256": "55d9220b115ca38d48021787db02ea795b69c6b390e3d28c298db635e5f4600d"
+    },
+    "experiments/sprint-20261017-response/sources/02082950.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02082950&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:28.352780+00:00",
+      "status": 200,
+      "bytes": 288215,
+      "sha256": "43a42acb54aa9246262251e358f0310059dd1e18f5c25d21ef20c9872126df20"
+    },
+    "experiments/sprint-20261017-response/sources/11381500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11381500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:28.926633+00:00",
+      "status": 200,
+      "bytes": 283787,
+      "sha256": "c3f44e7847a0f268b38cc6380cb6843ff7c0b8eb7d5b183f66a35c877b088d12"
+    },
+    "experiments/sprint-20261017-response/sources/11383500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=11383500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:29.058864+00:00",
+      "status": 200,
+      "bytes": 285073,
+      "sha256": "63f91539d17a7614273809d5fc0fae2eb8dededb94b2a64244e9520bf114a6d3"
+    },
+    "experiments/sprint-20261017-response/sources/08150800.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08150800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:29.420095+00:00",
+      "status": 200,
+      "bytes": 290992,
+      "sha256": "fc646cec294adc7c04bb07a2167b5a608f381d448dbf3c461cb2320ad82b8403"
+    },
+    "experiments/sprint-20261017-response/sources/08155200.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08155200&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:29.676067+00:00",
+      "status": 200,
+      "bytes": 290360,
+      "sha256": "efc75172f9011df33e764425d45ac52e83df682c9cf0e22ebea5ef2f88108d1d"
+    },
+    "experiments/sprint-20261017-response/sources/06784000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06784000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:29.879162+00:00",
+      "status": 200,
+      "bytes": 286666,
+      "sha256": "9a72b3b855bff638f79116d1db0b404da2466b5b0c3ed70e0040a28a7374be85"
+    },
+    "experiments/sprint-20261017-response/sources/05495000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05495000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:30.206617+00:00",
+      "status": 200,
+      "bytes": 290867,
+      "sha256": "19f29d1cdcf9862b9005092c964aa1e840ff5543cffdec7bbc94a5c47722f685"
+    },
+    "experiments/sprint-20261017-response/sources/05495500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05495500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:30.389499+00:00",
+      "status": 200,
+      "bytes": 291110,
+      "sha256": "e863bd180c234185a4c58bbac512953deefdc43c6a6ef4a247acfe4caa57597c"
+    },
+    "experiments/sprint-20261017-response/sources/06037500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06037500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:30.839983+00:00",
+      "status": 200,
+      "bytes": 282753,
+      "sha256": "fe284984575cf3467ae24fec3aa9cb8422a5d7c71cd3af0fe83f543a49e924b5"
+    },
+    "experiments/sprint-20261017-response/sources/06043500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06043500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:30.909808+00:00",
+      "status": 200,
+      "bytes": 283976,
+      "sha256": "4ea0d3aad6a3674ae633cc6d92c3fafe16df85e89b1638fefdabe0399cdff261"
+    },
+    "experiments/sprint-20261017-response/sources/07142300.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07142300&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:31.368894+00:00",
+      "status": 200,
+      "bytes": 292329,
+      "sha256": "3e53724712c5cf68fb28d275cefed153d5234885d15d8729aabd33edf2851eea"
+    },
+    "experiments/sprint-20261017-response/sources/07145700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07145700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:31.404189+00:00",
+      "status": 200,
+      "bytes": 290899,
+      "sha256": "5d80e4863c9c222ae7a146dc4f7fa053dd86a18a192bed48389c0b23e43e7be2"
+    },
+    "experiments/sprint-20261017-response/sources/13011500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13011500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:31.892559+00:00",
+      "status": 200,
+      "bytes": 295026,
+      "sha256": "8073845246f0bbd022f7c96d55501cc117bd05abcc54278871ea49bbaac01004"
+    },
+    "experiments/sprint-20261017-response/sources/13011900.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=13011900&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:31.931113+00:00",
+      "status": 200,
+      "bytes": 279634,
+      "sha256": "bb994d9514ab3578bb75bdd8601ac7e7ef742d93bfe4b9e1fac6e8388c226bd5"
+    },
+    "experiments/sprint-20261017-response/sources/02051000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02051000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:32.488489+00:00",
+      "status": 200,
+      "bytes": 290795,
+      "sha256": "71777f125e86e468aea41cf0dfee037d62418110a08540b65a603b5861552dd9"
+    },
+    "experiments/sprint-20261017-response/sources/02046000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02046000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:32.489316+00:00",
+      "status": 200,
+      "bytes": 289693,
+      "sha256": "8eeadd717f7678c04bd46c53c4ee9b4866dd6ba96ab22b98e5798725e498d021"
+    },
+    "experiments/sprint-20261017-response/sources/08013000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08013000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:33.083357+00:00",
+      "status": 200,
+      "bytes": 287239,
+      "sha256": "ec7336ec7ab4c66f775c84f5f7cbc1dfe9c130444314067911952c0ae9fabf4c"
+    },
+    "experiments/sprint-20261017-response/sources/08014500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08014500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:33.083600+00:00",
+      "status": 200,
+      "bytes": 284216,
+      "sha256": "0bdd32a6700a8008d41ccf16dea0625ffe077a171e20eb158004458de9137126"
+    },
+    "experiments/sprint-20261017-response/sources/09492400.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09492400&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:33.587383+00:00",
+      "status": 200,
+      "bytes": 291819,
+      "sha256": "2ef69f218cbe8852e6dd7eed5cfdae5e023db2b9351e498f9d262b10a1629831"
+    },
+    "experiments/sprint-20261017-response/sources/09494000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=09494000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:33.596396+00:00",
+      "status": 200,
+      "bytes": 289356,
+      "sha256": "87e83252ff98babcf300b62003dfd677adf5635886b0bcef0315c7c5879ed3c1"
+    },
+    "experiments/sprint-20261017-response/sources/06453600.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06453600&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:34.075307+00:00",
+      "status": 200,
+      "bytes": 294251,
+      "sha256": "ba2a9969cd0d6b2932d25e68525ae04dde23fefb5b7505bba623592535368a28"
+    },
+    "experiments/sprint-20261017-response/sources/06479215.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06479215&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:34.083570+00:00",
+      "status": 200,
+      "bytes": 297745,
+      "sha256": "534a92aceda4780e807a9f228a14a5e1c6c48445b7da2282e45c7f5c0cb1a949"
+    },
+    "experiments/sprint-20261017-response/sources/05131500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05131500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:34.578059+00:00",
+      "status": 200,
+      "bytes": 292077,
+      "sha256": "63b5ff4a9fd0bd40b67931dfc5469baeb2edfc8d5ddcb4bb21e2c3260fbbad2a"
+    },
+    "experiments/sprint-20261017-response/sources/05129115.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05129115&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:34.596709+00:00",
+      "status": 200,
+      "bytes": 285068,
+      "sha256": "e2a798fd2cabcd0bf095e4f734e16a13021b8dd3592eaac0bae66e59d2d08841"
+    },
+    "experiments/sprint-20261017-response/sources/06440200.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06440200&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:35.078489+00:00",
+      "status": 200,
+      "bytes": 294827,
+      "sha256": "d041b81038e57dca8f250d885609e1beb4536e0301f45fa783fbf39a02b5731e"
+    },
+    "experiments/sprint-20261017-response/sources/05556500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05556500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:35.104237+00:00",
+      "status": 200,
+      "bytes": 288827,
+      "sha256": "3bdf95c12292200bbc802ea0e105357770516b6b182b31034fe0a0bb873dcfe1"
+    },
+    "experiments/sprint-20261017-response/sources/06441500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06441500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:35.563539+00:00",
+      "status": 200,
+      "bytes": 296454,
+      "sha256": "d1de7e91225fe3e86bfb38639bdd250f3642ea5d240fd529c9438418b59f4024"
+    },
+    "experiments/sprint-20261017-response/sources/03574500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03574500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:35.630271+00:00",
+      "status": 200,
+      "bytes": 286421,
+      "sha256": "d0350e0a2732591de975081d039416ef9e27ff6a87003c7a1e16642ff1a41350"
+    },
+    "experiments/sprint-20261017-response/sources/03592718.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03592718&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:35.928624+00:00",
+      "status": 200,
+      "bytes": 156082,
+      "sha256": "226b23a86bb182a899a9949aefb57059a83e2114caa9870f6812b2f588377c90"
+    },
+    "experiments/sprint-20261017-response/sources/06464500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06464500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:36.153164+00:00",
+      "status": 200,
+      "bytes": 293790,
+      "sha256": "a18395bafb990b4f8ed76df1e64cb937592aee0f9b56850acce0267c20509f37"
+    },
+    "experiments/sprint-20261017-response/sources/08082700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08082700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:36.413379+00:00",
+      "status": 200,
+      "bytes": 291147,
+      "sha256": "3ddf364dc68912d077edf33c6a031f8f5858fc2626e46311bbf14a379d880e13"
+    },
+    "experiments/sprint-20261017-response/sources/08086212.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=08086212&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:36.651011+00:00",
+      "status": 200,
+      "bytes": 290719,
+      "sha256": "ee96796e52b0cd6a62658968d05b1f64c8a6a9f4b9a0ce84357bf25e286bef6a"
+    },
+    "experiments/sprint-20261017-response/sources/06614800.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06614800&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:36.966551+00:00",
+      "status": 200,
+      "bytes": 296409,
+      "sha256": "4211c2e851c815ceb89da9852b2a181bba1cccc1d10289afb96fcae5341438e5"
+    },
+    "experiments/sprint-20261017-response/sources/06622700.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06622700&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:37.198053+00:00",
+      "status": 200,
+      "bytes": 293293,
+      "sha256": "304d79a4dce451bbd06044e16812da37f9f656b6ae2c2c704ebc57a15a54eb12"
+    },
+    "experiments/sprint-20261017-response/sources/02235200.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02235200&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:37.460753+00:00",
+      "status": 200,
+      "bytes": 289728,
+      "sha256": "36a100de88bf9077c16197f90795dfc73c0fa4b948db8e7a29282ed66b9cb9cf"
+    },
+    "experiments/sprint-20261017-response/sources/02245500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02245500&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:37.744238+00:00",
+      "status": 200,
+      "bytes": 288928,
+      "sha256": "702671c25ee2cf47380756a1d065c6f2596512a64fb1554684f340b3fdb57c3a"
+    },
+    "experiments/sprint-20261017-response/sources/02137727.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=02137727&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:37.998014+00:00",
+      "status": 200,
+      "bytes": 284192,
+      "sha256": "4ddaf8814cc20a9662adeac287c61b9ea0f0832e87fce64c0b2ce2196c39870c"
+    },
+    "experiments/sprint-20261017-response/sources/10173450.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10173450&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:38.287186+00:00",
+      "status": 200,
+      "bytes": 294902,
+      "sha256": "6ca386718fe6bba4c1b8e1c5daae62d291236bf24ed938ade88c47731036ba49"
+    },
+    "experiments/sprint-20261017-response/sources/10205030.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=10205030&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:38.519934+00:00",
+      "status": 200,
+      "bytes": 295311,
+      "sha256": "807b76c1810beb4cac182c2bb5b2eb6388ca5e0afd17e5d090225c1ae4d50bb4"
+    },
+    "experiments/sprint-20261017-response/sources/05454000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05454000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:38.777281+00:00",
+      "status": 200,
+      "bytes": 292822,
+      "sha256": "34a58e457f30a2990b38f83c0bc234a1cd9d95ff2709b1864c9db7cbe4781f08"
+    },
+    "experiments/sprint-20261017-response/sources/05458000.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=05458000&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:39.037418+00:00",
+      "status": 200,
+      "bytes": 289474,
+      "sha256": "1f30a6ab68a3a17d7e3bf09661d4375325898dfa2a9ca2c447fc6367a7b0c7ea"
+    },
+    "experiments/sprint-20261017-response/sources/06803510.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06803510&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:39.316965+00:00",
+      "status": 200,
+      "bytes": 293439,
+      "sha256": "e285f426bbb110af8ef9628c2f51456ac583d4c6dcd372881d067fae973bfe8e"
+    },
+    "experiments/sprint-20261017-response/sources/06803530.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=06803530&startDT=2000-01-01&endDT=2024-09-30&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:02:39.548529+00:00",
+      "status": 200,
+      "bytes": 293958,
+      "sha256": "6a929d7babda8bd4b80a9275248b4dae922de780f4e8ea25ef004fa909c4cec8"
+    }
+  },
+  "new_source_bytes": 18248333,
+  "previous_training_sha256": "a1080406ef7322fce812d684f8d1be2342eaba5328e14c475f1dd7530363ae71",
+  "protocol_sha256": "34ee2fe923e422d6c494f9b3864c741bd96e62a3d9c400b4c0e5f9e3b3c54538"
+}
