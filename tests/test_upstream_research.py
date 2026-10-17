@@ -43,3 +43,13 @@ def test_transport_uses_calendar_lags_and_reference_period_only():
     pd.testing.assert_frame_equal(first, second)
     missing, _ = transport_features(down, up.drop(pd.Timestamp('2017-01-07')), issue)
     assert missing.isna().all(axis=1).all()
+
+
+def test_reference_coverage_distinguishes_empty_source_from_unknown_schema():
+    from scripts.upstream_pilot import reference_coverage
+    empty = '#  No sites found matching all criteria\nagency_cd\tsite_no\tdatetime\n5s\t15s\t20d\n\t\t\n'
+    record = reference_coverage(empty, '12357500')
+    assert record == dict(station='12357500', eligible=False, approved_days=0,
+                         reason='USGS returned no sites for the requested historical interval')
+    with pytest.raises(ValueError, match='documented mean discharge'):
+        reference_coverage('unrecognized upstream response', '12357500')

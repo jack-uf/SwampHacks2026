@@ -1,0 +1,1327 @@
+{
+  "status": "passed",
+  "sources": {
+    "experiments/sprint-20261017-upstream/basins/01144000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01144000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:45.533163+00:00",
+      "status": 200,
+      "bytes": 10707,
+      "sha256": "beb4f1a72a9d72b4a16bc76a2de5ae61b27340fc9e570d1fd8504baa6df37b60"
+    },
+    "experiments/sprint-20261017-upstream/basins/01543500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01543500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:46.270789+00:00",
+      "status": 200,
+      "bytes": 12569,
+      "sha256": "c1ac2e0554ae0dd70a3ee94400c8dc358e74cab331cfe92b4a668c6205f561c6"
+    },
+    "experiments/sprint-20261017-upstream/basins/01606500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01606500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:47.393142+00:00",
+      "status": 200,
+      "bytes": 10186,
+      "sha256": "29f71f704e0156b4ea8fffe64585730d8ebb8160119cce2ad7485824be6389d9"
+    },
+    "experiments/sprint-20261017-upstream/basins/01664000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01664000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:47.654703+00:00",
+      "status": 200,
+      "bytes": 10589,
+      "sha256": "d981b7ca7fffbc9bd9475295ea81b57bd1efa098190ad9c5e4c52c0980604d91"
+    },
+    "experiments/sprint-20261017-upstream/basins/02051500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02051500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:49.549972+00:00",
+      "status": 200,
+      "bytes": 11551,
+      "sha256": "991a6874339947cd76202ac0057a0f78f691e11815d0feaf6f37a2910b6f6fd7"
+    },
+    "experiments/sprint-20261017-upstream/basins/02108000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02108000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:48.168274+00:00",
+      "status": 200,
+      "bytes": 8427,
+      "sha256": "a8017166d85c8b35e7fe21c5b22ea23b94afb25a140620de71001cb3e1ae37e1"
+    },
+    "experiments/sprint-20261017-upstream/basins/02196000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02196000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:50.186131+00:00",
+      "status": 200,
+      "bytes": 9653,
+      "sha256": "3bd6ae9fed9ad05157f7dd6da2c7de5f53ecfa56f818828271e197f1af977e70"
+    },
+    "experiments/sprint-20261017-upstream/basins/02231000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02231000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:44.818086+00:00",
+      "status": 200,
+      "bytes": 12217,
+      "sha256": "5b34bc107b26a6983e07172f95d720bcd0c923e38db7705b03e22864282d2734"
+    },
+    "experiments/sprint-20261017-upstream/basins/02315500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02315500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:37.603892+00:00",
+      "status": 200,
+      "bytes": 21902,
+      "sha256": "a1e94cab72d64ca306f84ae9a14ff4d2beb761a6c29d31d05c99a4680dca5bd6"
+    },
+    "experiments/sprint-20261017-upstream/basins/02350900.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02350900/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:50.281275+00:00",
+      "status": 200,
+      "bytes": 10320,
+      "sha256": "a0c2ecac65870ed12f29bcad6e8d646179e8742ace4119d6e10ad8705d6aca61"
+    },
+    "experiments/sprint-20261017-upstream/basins/02371500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02371500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:51.121342+00:00",
+      "status": 200,
+      "bytes": 14000,
+      "sha256": "049b7fb656d1a1bde18c73f86c4ff05c5feb3e7c9220280dbf7a7a8e25ca0556"
+    },
+    "experiments/sprint-20261017-upstream/basins/02479560.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02479560/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:49.424991+00:00",
+      "status": 200,
+      "bytes": 15333,
+      "sha256": "408de82b6dc9401d84c111c908f51851bc2af1d0c6b2f11a9c6b6fb47b602817"
+    },
+    "experiments/sprint-20261017-upstream/basins/03069500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03069500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:44.117508+00:00",
+      "status": 200,
+      "bytes": 14905,
+      "sha256": "b331a8c24a929a33db14d35dd7575d8afcaefbaa9c1a4979f99f9cbe6860ab13"
+    },
+    "experiments/sprint-20261017-upstream/basins/03164000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03164000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:40.223084+00:00",
+      "status": 200,
+      "bytes": 14425,
+      "sha256": "ad70eb3ed1e5c6ba9d0414b5b1cdfb20313b398fb074f3f309b46afdc6482950"
+    },
+    "experiments/sprint-20261017-upstream/basins/03281500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03281500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:44.001764+00:00",
+      "status": 200,
+      "bytes": 18065,
+      "sha256": "26066955dcf46c99387897c26626963fab9d2bbc110a236e56e7e0b7722b499a"
+    },
+    "experiments/sprint-20261017-upstream/basins/04027000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-04027000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:48.646368+00:00",
+      "status": 200,
+      "bytes": 12963,
+      "sha256": "40294475a6fae5628c157b27e3344b3b5480b6d984addba63d876533b51df86e"
+    },
+    "experiments/sprint-20261017-upstream/basins/04045500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-04045500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:42.560760+00:00",
+      "status": 200,
+      "bytes": 14347,
+      "sha256": "8af473c4673ef55dac2a03e55833593d27f72841abe529e818fb2e26796b1c9a"
+    },
+    "experiments/sprint-20261017-upstream/basins/04122500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-04122500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:46.895245+00:00",
+      "status": 200,
+      "bytes": 15065,
+      "sha256": "9abb1a651787bc6f3bfc25a5dad8b6e38e30406d9344d733fe8894ff4d897673"
+    },
+    "experiments/sprint-20261017-upstream/basins/05062500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05062500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:41.798070+00:00",
+      "status": 200,
+      "bytes": 23428,
+      "sha256": "a07a4f31e27447f7e12b56c12d934539a5b85befd299a385d6b3b8616be98921"
+    },
+    "experiments/sprint-20261017-upstream/basins/05123400.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05123400/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:40.861467+00:00",
+      "status": 200,
+      "bytes": 19569,
+      "sha256": "8421759aa680951ea7605c93bc40f6b226c8d6172e10dfcd099fcc3583a0db12"
+    },
+    "experiments/sprint-20261017-upstream/basins/05466500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05466500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:54.371217+00:00",
+      "status": 200,
+      "bytes": 9455,
+      "sha256": "eb2b829070b72d92fbeea8b82512f3f366c04e230f0089b04d29adf50d403428"
+    },
+    "experiments/sprint-20261017-upstream/basins/05514500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05514500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:42.470409+00:00",
+      "status": 200,
+      "bytes": 10766,
+      "sha256": "ba59e584d80ba50538d0fdfd5d0b1f3c8ee14ebbaa882760dcbd781d94bdb40a"
+    },
+    "experiments/sprint-20261017-upstream/basins/05525500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05525500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:52.574366+00:00",
+      "status": 200,
+      "bytes": 10288,
+      "sha256": "fe90f452b2c565897da2357b64f36c375b646f310fb8442417cec1ad6e2f5a73"
+    },
+    "experiments/sprint-20261017-upstream/basins/05585000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05585000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:39.190834+00:00",
+      "status": 200,
+      "bytes": 11472,
+      "sha256": "118dfcaafa446f1a628def74ec64274acfff56c345947bf4da8cd5d7abeeacc4"
+    },
+    "experiments/sprint-20261017-upstream/basins/06191500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06191500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:37.603846+00:00",
+      "status": 200,
+      "bytes": 30142,
+      "sha256": "d5d5ce07fdb0c5b62f5eebd81439002f312d16ce2c1548a77c122d010e2b3067"
+    },
+    "experiments/sprint-20261017-upstream/basins/06360500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06360500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:36.664245+00:00",
+      "status": 200,
+      "bytes": 45174,
+      "sha256": "491dd5dbd3e5c12ee13f2d4f79accdeb4a92def4e40559cf3cad46353da9db81"
+    },
+    "experiments/sprint-20261017-upstream/basins/06452000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06452000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:35.724064+00:00",
+      "status": 200,
+      "bytes": 85471,
+      "sha256": "b07e398f73136ab4c222fb0107bdff265edea7f6a81f1784cdf372570a63ad68"
+    },
+    "experiments/sprint-20261017-upstream/basins/06468250.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06468250/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:39.916238+00:00",
+      "status": 200,
+      "bytes": 27482,
+      "sha256": "9d019b861cbe8582207c25c29e388113433290caeb7b0879766b6a2816a1a254"
+    },
+    "experiments/sprint-20261017-upstream/basins/06479438.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06479438/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:50.833901+00:00",
+      "status": 200,
+      "bytes": 8529,
+      "sha256": "88f707d1ce3db6d1f74c87dbf2070e91d3612ad0f076e235171ccead81a1f392"
+    },
+    "experiments/sprint-20261017-upstream/basins/06885500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06885500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:54.785022+00:00",
+      "status": 200,
+      "bytes": 9959,
+      "sha256": "587fe2abfbc9dbf9cefdfe91eda58060e9fdbd695e31016b46a9ad6e6be493a2"
+    },
+    "experiments/sprint-20261017-upstream/basins/06934000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06934000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:36.664194+00:00",
+      "status": 200,
+      "bytes": 28219,
+      "sha256": "85a59b85e2d6595690fca3edd9bfa411a78d3e8f7327b5278cdb1b0740121013"
+    },
+    "experiments/sprint-20261017-upstream/basins/07014500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07014500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:39.326730+00:00",
+      "status": 200,
+      "bytes": 16789,
+      "sha256": "88fab40970f1fa4b3ee5657da7f33f37748ecb26da0e1c64bc67b243c30a255d"
+    },
+    "experiments/sprint-20261017-upstream/basins/07068000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07068000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:38.444277+00:00",
+      "status": 200,
+      "bytes": 23861,
+      "sha256": "6cb2b83e6d1fec3b0d4e991ff57b889e97bedc2d7659606b8e2cc8f5a27115dc"
+    },
+    "experiments/sprint-20261017-upstream/basins/07148400.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07148400/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:41.682290+00:00",
+      "status": 200,
+      "bytes": 15846,
+      "sha256": "f5eb2f9e4d6323ce7b030db3621bf33f1002932896e23172008bee090c079bd0"
+    },
+    "experiments/sprint-20261017-upstream/basins/07226500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07226500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:38.451875+00:00",
+      "status": 200,
+      "bytes": 18525,
+      "sha256": "24f5a7bd2b7ea1673891f86791f00c1bc7ca3bfe584abb2e449516627c2de69e"
+    },
+    "experiments/sprint-20261017-upstream/basins/07292500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07292500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:43.234873+00:00",
+      "status": 200,
+      "bytes": 14786,
+      "sha256": "8e118c89eeb2e17ac59666fd5a47138a4ede2d0272ab1120e27c14fa8dd96ba0"
+    },
+    "experiments/sprint-20261017-upstream/basins/07315700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07315700/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:48.897255+00:00",
+      "status": 200,
+      "bytes": 9521,
+      "sha256": "d6d2063f35ec30a5a5ab7264aaf1c75ab0fe6439538904779b659a6005d18c7d"
+    },
+    "experiments/sprint-20261017-upstream/basins/08189500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08189500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:46.160660+00:00",
+      "status": 200,
+      "bytes": 10090,
+      "sha256": "e34f96e77a88840f8a492adc59d6d1622d108c5e730e2cfc81a412ee091540f6"
+    },
+    "experiments/sprint-20261017-upstream/basins/08190500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08190500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:45.607021+00:00",
+      "status": 200,
+      "bytes": 13476,
+      "sha256": "574e8bcfdc9307b7d7d17c4de543dce4cc1c5148af4d44feaebcd31e0fbb02a5"
+    },
+    "experiments/sprint-20261017-upstream/basins/08324000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08324000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:51.543451+00:00",
+      "status": 200,
+      "bytes": 8588,
+      "sha256": "0aa2a80e2c4eab5dde31ff13c6605dc10668ecf9f38f636ce5352565a59f3a10"
+    },
+    "experiments/sprint-20261017-upstream/basins/09484600.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09484600/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:51.848510+00:00",
+      "status": 200,
+      "bytes": 8327,
+      "sha256": "c9424b7327f4c90f0b73eefc4b3dbd79612843ea24971c6b34461b26ad627fcf"
+    },
+    "experiments/sprint-20261017-upstream/basins/11528700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11528700/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:43.370630+00:00",
+      "status": 200,
+      "bytes": 9210,
+      "sha256": "584180560bde934f1aec21ab65fa173e2ddb40b49d24c61b359347c5700e7f54"
+    },
+    "experiments/sprint-20261017-upstream/basins/12189500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12189500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:44.712926+00:00",
+      "status": 200,
+      "bytes": 10798,
+      "sha256": "916a88877f5b07c989acadb2f4076bfc3038a15a8f2a38855c764a4a23c6ffab"
+    },
+    "experiments/sprint-20261017-upstream/basins/12414500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12414500/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:40.916894+00:00",
+      "status": 200,
+      "bytes": 13078,
+      "sha256": "f9e2dfe5293bd40914dd56dec01440cee019b10d1ea47e5b7c6da77f2843f8d7"
+    },
+    "experiments/sprint-20261017-upstream/basins/13023000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13023000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:52.282142+00:00",
+      "status": 200,
+      "bytes": 10352,
+      "sha256": "f718213ad421fb90a49e8c0a0b44d4816ea0ee9bd214fa9ee7fe935ee64ae28d"
+    },
+    "experiments/sprint-20261017-upstream/basins/13235000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13235000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:52.958427+00:00",
+      "status": 200,
+      "bytes": 11186,
+      "sha256": "e18067aa16f58052cbef25643f04b467b8f59e53ac814ee5b37f08e972b892a7"
+    },
+    "experiments/sprint-20261017-upstream/basins/13340000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13340000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:35.655786+00:00",
+      "status": 200,
+      "bytes": 38655,
+      "sha256": "a40e80994f08345cdc5325fd015b68e48e76fc992d00027a4f32d0e8bf1d2b41"
+    },
+    "experiments/sprint-20261017-upstream/basins/14301000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-14301000/basin?simplified=true",
+      "retrieved_utc": "2026-10-17T20:29:46.942161+00:00",
+      "status": 200,
+      "bytes": 11254,
+      "sha256": "87d9911b2678fc2087e07b5a0164b40faa5a8459af6f33f20ba027663d2ac655"
+    },
+    "experiments/sprint-20261017-upstream/navigation/01144000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01144000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:19.461577+00:00",
+      "status": 200,
+      "bytes": 9109,
+      "sha256": "71edd141a6b8f5e9fbd2613ee9feeaf0096c4b1edcd86e4f8aaa2d4847b8f742"
+    },
+    "experiments/sprint-20261017-upstream/navigation/01606500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01606500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:20.038046+00:00",
+      "status": 200,
+      "bytes": 14673,
+      "sha256": "fd081887276833a99fb74ff110dadf829062643c550d126b639bfa6e7372eb28"
+    },
+    "experiments/sprint-20261017-upstream/navigation/01664000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01664000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:22.557967+00:00",
+      "status": 200,
+      "bytes": 34728,
+      "sha256": "3a658e3a870925c9d9b607d527038d8d161784c86a775e08cf7739e4d2c6a603"
+    },
+    "experiments/sprint-20261017-upstream/navigation/02108000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02108000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:20.771338+00:00",
+      "status": 200,
+      "bytes": 14972,
+      "sha256": "d1f2e71d1f81203f48a4d4a29821d9755998873786182f60e3e21c5a1b2b37ad"
+    },
+    "experiments/sprint-20261017-upstream/navigation/02196000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02196000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:26.434817+00:00",
+      "status": 200,
+      "bytes": 3889,
+      "sha256": "0719d34f7f2eb429b4e7709843128719fe41f953bda63161a98bd43266d6f334"
+    },
+    "experiments/sprint-20261017-upstream/navigation/02231000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02231000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:17.268562+00:00",
+      "status": 200,
+      "bytes": 4582,
+      "sha256": "d63b8a58e6a88867c116fd745c3b012820b7a956673483926723beb01198cb96"
+    },
+    "experiments/sprint-20261017-upstream/navigation/02350900.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02350900/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:25.598469+00:00",
+      "status": 200,
+      "bytes": 13872,
+      "sha256": "404266b57aa757c0376d7eefa1d79f6d29d8acefe3da30a4064d264b4fda0c01"
+    },
+    "experiments/sprint-20261017-upstream/navigation/02371500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02371500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:27.691014+00:00",
+      "status": 200,
+      "bytes": 8712,
+      "sha256": "fd7c43557fb101cdf59df3130bb8591383d00ec56d6e648f0e50aba9cf2ccc13"
+    },
+    "experiments/sprint-20261017-upstream/navigation/02479560.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-02479560/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:24.969622+00:00",
+      "status": 200,
+      "bytes": 11100,
+      "sha256": "5baa2faa7ccc02965fcee86f4bc682a22f8c3b9555f605b5ded3019cc2b7494e"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03010655.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03010655/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:48.814440+00:00",
+      "status": 200,
+      "bytes": 1151,
+      "sha256": "07d0c05e82db32dff9bfdfece7771190617877bcb286a5897e75d59dec00f6c1"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03159540.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03159540/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:01.496009+00:00",
+      "status": 200,
+      "bytes": 11190,
+      "sha256": "ea60d4d7964c70ac128cfaf44610e22ed743c16b9424ad5f6e670f4264f06c6a"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03161000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03161000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:57.701809+00:00",
+      "status": 200,
+      "bytes": 2219,
+      "sha256": "ca4981fa4845e76af8e25a6dd40271551bd9c062fe958a5319486d25b7bc3d16"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03213700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03213700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:29:59.504496+00:00",
+      "status": 200,
+      "bytes": 61887,
+      "sha256": "07d5036d8fc4524fe458b7243eecc66d59eb86a318ffbcd7b36eb88ec3a3ac3f"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03237280.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03237280/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:49.073619+00:00",
+      "status": 200,
+      "bytes": 2713,
+      "sha256": "2b5bad26b14eb3965a15c173c24163194235731a8b5c11d39792f18707808c1e"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03280700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03280700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:51.282389+00:00",
+      "status": 200,
+      "bytes": 1645,
+      "sha256": "4c8aa2923facc17814a059b40fd5d22c3353e6153be3dd4171389b770235df9f"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03281500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03281500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:15.105672+00:00",
+      "status": 200,
+      "bytes": 15242,
+      "sha256": "e7cd3a133a5d3795a5941f45e21f2af5a6b0005839d9d52a763d0e4039cf35d4"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03338780.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03338780/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:54.312019+00:00",
+      "status": 200,
+      "bytes": 4016,
+      "sha256": "78cb1ed4e2b43c43ba8b5654a8935f5dc5bbd6c23abaf2339a6b7bbc076f31cf"
+    },
+    "experiments/sprint-20261017-upstream/navigation/03439000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-03439000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:51.654599+00:00",
+      "status": 200,
+      "bytes": 597,
+      "sha256": "612e5ceea9e85eccd77fb905d04b3d0d1f89eb9f05831dc62533344e49100157"
+    },
+    "experiments/sprint-20261017-upstream/navigation/04027000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-04027000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:23.074395+00:00",
+      "status": 200,
+      "bytes": 40353,
+      "sha256": "33c6be4990359196e738bac6ebb5bc67f85e1323c5f1c51c26cf6cfbec4fb2d3"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05062500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05062500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:11.095204+00:00",
+      "status": 200,
+      "bytes": 9527,
+      "sha256": "8b66b1f28e7d0ce615bd97194bc599ccd83e8a021aeb8cf48679faa925fe0f44"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05120500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05120500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:01.501671+00:00",
+      "status": 200,
+      "bytes": 2256,
+      "sha256": "8f24f47ac67eb4b6e1307ee8749ce8453f61cc96c6127bf0d3e7f013a0d96aa5"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05123400.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05123400/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:09.248078+00:00",
+      "status": 200,
+      "bytes": 9047,
+      "sha256": "be938f3ada8569f9a8de4f9f79f2984c75b113f678e346104d7415bb1bdcbee2"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05362000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05362000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:48.266548+00:00",
+      "status": 200,
+      "bytes": 4382,
+      "sha256": "c88aff4280087fbfac1fefcb513742f1ed3b02a0b8b56121f6bf7da273a3afcc"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05393500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05393500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:53.745782+00:00",
+      "status": 200,
+      "bytes": 598,
+      "sha256": "5ca6733abec76273020f718feb9c2746d6a36df18aaacb6aa106aceaf23f45f3"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05444000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05444000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:02.948352+00:00",
+      "status": 200,
+      "bytes": 2266,
+      "sha256": "76ec003cc6d0d12e76b6ba2fcd7121384f73a52a42a557ddafc8915bb7c332d1"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05466500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05466500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:34.028320+00:00",
+      "status": 200,
+      "bytes": 3293,
+      "sha256": "065476a14e2e50ddb3f4fe9d32a063a4a368f7f80da1b772412141621b072543"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05514500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05514500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:11.332818+00:00",
+      "status": 200,
+      "bytes": 2186,
+      "sha256": "02faf95f7633c397e0626d0b139ec96e51a5c795fac20800172f958c7c154746"
+    },
+    "experiments/sprint-20261017-upstream/navigation/05591550.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-05591550/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:54.085437+00:00",
+      "status": 200,
+      "bytes": 599,
+      "sha256": "df100809c28f646f40cf6c6b336f3170dedafd29822336b7cb66afef1f6bcce0"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06188000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06188000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:01.599938+00:00",
+      "status": 200,
+      "bytes": 42801,
+      "sha256": "c0631e2680d12dfd14142c9991e83e959743c1cd305010dfba138b2c10f37521"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06311000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06311000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:55.856514+00:00",
+      "status": 200,
+      "bytes": 607,
+      "sha256": "eab3a9c3d5247b3689bf5de1385cede9e4d246abf63ff77e889d7d6d580216f5"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06332515.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06332515/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:55.925951+00:00",
+      "status": 200,
+      "bytes": 597,
+      "sha256": "db8d63726bf50ba1383fc1a88e7da09d757469a6a7d162eb4779e0902de27174"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06339100.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06339100/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:59.100802+00:00",
+      "status": 200,
+      "bytes": 592,
+      "sha256": "c02be456487673f4505e0255e63e2255ebe04d4bdc817b9da6b06e90d2269091"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06360500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06360500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:05.298500+00:00",
+      "status": 200,
+      "bytes": 39407,
+      "sha256": "b773f061e3f2417909c66127506ff813e7d3374c7680141b530a5c4d8ac94725"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06404000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06404000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:58.462505+00:00",
+      "status": 200,
+      "bytes": 9284,
+      "sha256": "d1eaa5e6729a5ecefe5553bc562ded0a3a3b748c036a444bc1e208cccfbc40a8"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06601000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06601000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:00.948397+00:00",
+      "status": 200,
+      "bytes": 7915,
+      "sha256": "49d09dff4b60ccc17fbb5b1c25a462a07f2c0f6fb2c28ba15c5b29a64d2ba3f1"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06746095.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06746095/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:36:58.273947+00:00",
+      "status": 200,
+      "bytes": 1733,
+      "sha256": "87cc198540c6596179c9ca6c15ae2c1e78bcf91c8210682c34e2fcb588d3a7b0"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06847900.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06847900/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:46.424592+00:00",
+      "status": 200,
+      "bytes": 2696,
+      "sha256": "0a841ba5da834cd743987e76fc3f6b6c151341716538f82d20e7d9defe47178f"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06876700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06876700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:50.012110+00:00",
+      "status": 200,
+      "bytes": 1125,
+      "sha256": "ccc0e9810b7c9fa333ba28076a75de99cae0a34b3912464892a7fc1777a2bf90"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06879650.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06879650/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:00.143935+00:00",
+      "status": 200,
+      "bytes": 3818,
+      "sha256": "339af5e9c3295f15ce3b6eef5c998780d0bfb4e4c2fbf5796a59ad72c7022b04"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06906800.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06906800/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:48.790667+00:00",
+      "status": 200,
+      "bytes": 1697,
+      "sha256": "a26e319517f37f9c44fe12388192d1ea3bbfe3228c5d30d073de7209a234a453"
+    },
+    "experiments/sprint-20261017-upstream/navigation/06934000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-06934000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:07.346518+00:00",
+      "status": 200,
+      "bytes": 114217,
+      "sha256": "523226f03721d70ff658ac50e661dda033c683f542ec37044e5168d2a79e2015"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07056000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07056000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:29:59.380215+00:00",
+      "status": 200,
+      "bytes": 61898,
+      "sha256": "06b137cc6804e56e18edfc5cbdaf770f0cf73dc12163c18daa5e2644cb6e3c81"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07083000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07083000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:00.423659+00:00",
+      "status": 200,
+      "bytes": 9563,
+      "sha256": "d491e505d3763d7d5aab7c1f1fbc1361c53b11d5e110ac842f013b1c9d42d1a4"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07195800.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07195800/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:02.656135+00:00",
+      "status": 200,
+      "bytes": 3221,
+      "sha256": "137dc6404ee229840ee5e57c8003405f6569cc4a7216f24dd742533ee706df27"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07208500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07208500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:02.662490+00:00",
+      "status": 200,
+      "bytes": 597,
+      "sha256": "2a7642758ac305ad7ad52343f0626c89c6a9e2c932e8ba63a5af9b5bb938a601"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07226500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07226500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:07.154572+00:00",
+      "status": 200,
+      "bytes": 7513,
+      "sha256": "30a59a8cac7d9694bb97265e359eae434a63015f73be6c9fe8ad2e52fd23982d"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07290650.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07290650/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:46.935375+00:00",
+      "status": 200,
+      "bytes": 28451,
+      "sha256": "3946e8ef1f30760f0dffaf6243542ecfcbd68f12bc7c15c933c05d939f6196a3"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07292500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07292500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:13.431267+00:00",
+      "status": 200,
+      "bytes": 19233,
+      "sha256": "6f137eb9294e35c762d984961118673bce97e7d898c959228ec48ed4e59ce3fb"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07315700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07315700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:24.495930+00:00",
+      "status": 200,
+      "bytes": 3303,
+      "sha256": "ab2be1739435eab8888c54a60039b9133595f4a27711b6fd34bc31b6fa251105"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07335700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07335700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:04.864025+00:00",
+      "status": 200,
+      "bytes": 597,
+      "sha256": "f1d972727730f6368f1c72373b5b4ef93534ee169a20f4439a9b5d3937a38745"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07359610.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07359610/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:03.470668+00:00",
+      "status": 200,
+      "bytes": 6365,
+      "sha256": "2fbac9b6add244c4e71d1edb8c2ca9dca2a9b551e5f169e4d02c58d61b1fd314"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07375000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07375000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:04.916287+00:00",
+      "status": 200,
+      "bytes": 3255,
+      "sha256": "d0b0f18135464d2d22834f11ebc477272c77144adb0012eb4181f63d81bf6c83"
+    },
+    "experiments/sprint-20261017-upstream/navigation/07376000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-07376000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:54.637653+00:00",
+      "status": 200,
+      "bytes": 5992,
+      "sha256": "5cba368f92c5b60b236db86c544df37f0fd6d181c5904b388246b7865d9dc7b9"
+    },
+    "experiments/sprint-20261017-upstream/navigation/08189500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08189500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:19.440546+00:00",
+      "status": 200,
+      "bytes": 4443,
+      "sha256": "cdecc03f2b2bee6f1213853c5dac79ab2b59347526fc322faf6c6cc5bdd8bc73"
+    },
+    "experiments/sprint-20261017-upstream/navigation/08190500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08190500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:17.244633+00:00",
+      "status": 200,
+      "bytes": 3975,
+      "sha256": "bc8d5162bcfdacdcab6f162b539d861e6d1615f8e96ce04a7f13f4f0a3576d52"
+    },
+    "experiments/sprint-20261017-upstream/navigation/08324000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08324000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:28.397156+00:00",
+      "status": 200,
+      "bytes": 19664,
+      "sha256": "fb42fc6b5335955ea3c57d5b3efa7f435adcce15eff7340fc239e4ba1f01b5da"
+    },
+    "experiments/sprint-20261017-upstream/navigation/08377900.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-08377900/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:07.011799+00:00",
+      "status": 200,
+      "bytes": 552,
+      "sha256": "097ef4d1fb925334d81b406a30fb9b0acf87f4f0cbb52a04be25405fd0f1a035"
+    },
+    "experiments/sprint-20261017-upstream/navigation/09107000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09107000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:06.927721+00:00",
+      "status": 200,
+      "bytes": 1170,
+      "sha256": "e91bf7f816ed656ba27f03f2880040063bb34df7c3511c2e36df62f8adc6091f"
+    },
+    "experiments/sprint-20261017-upstream/navigation/09312600.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09312600/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:08.948253+00:00",
+      "status": 200,
+      "bytes": 1743,
+      "sha256": "c3a847700aba4ab4772b24957fbb273f5840e23a3f239c44f1595301529b7d3a"
+    },
+    "experiments/sprint-20261017-upstream/navigation/09404450.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09404450/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:09.281790+00:00",
+      "status": 200,
+      "bytes": 4569,
+      "sha256": "5e67177c17bed7b33f8c03fe408efc52f306377bbf0f2acd60c5188f3b0f82cb"
+    },
+    "experiments/sprint-20261017-upstream/navigation/09430500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09430500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:29:56.883185+00:00",
+      "status": 200,
+      "bytes": 9673,
+      "sha256": "16c100574473609e39a19abdfbc5572e92b6aae735a840b8edfcc29cc31851a9"
+    },
+    "experiments/sprint-20261017-upstream/navigation/09480000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09480000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:10.722407+00:00",
+      "status": 200,
+      "bytes": 601,
+      "sha256": "d4aefc1e02e80fad2443b2e474cdcbe46e075ae3fe2fb28d748706ab593bc756"
+    },
+    "experiments/sprint-20261017-upstream/navigation/09484600.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-09484600/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:29.727510+00:00",
+      "status": 200,
+      "bytes": 3307,
+      "sha256": "76c63fb677073b60e93f9d2e472cd5b1ac20e9243310d01d350592e92f958669"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10023000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10023000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:11.046820+00:00",
+      "status": 200,
+      "bytes": 594,
+      "sha256": "6ded37ac03da30fa786361b8983c444c2e532cd30cfb2202132bded03f79c567"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10166430.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10166430/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:12.522025+00:00",
+      "status": 200,
+      "bytes": 564,
+      "sha256": "8b6e25dc1fa2c60f404316cf01e356626edcc358c302a11d79b8187dd4f01ac4"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10244950.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10244950/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:13.098411+00:00",
+      "status": 200,
+      "bytes": 8120,
+      "sha256": "e6094b1ea75924c5b728d76beb0136455a3736e7a2f8b0b6ea4f6cc7f9d848ef"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10258000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10258000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:14.239162+00:00",
+      "status": 200,
+      "bytes": 1137,
+      "sha256": "cc3041a97e4714114ffbbe0181ca946e9cd0bd3148d7548495e8318a6f4c8d1b"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10263500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10263500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:14.782831+00:00",
+      "status": 200,
+      "bytes": 1145,
+      "sha256": "9630b9cfe645b376b289fe474627182ee18397679196ae2e9bddbbcf8bb0f718"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10310500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10310500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:15.880520+00:00",
+      "status": 200,
+      "bytes": 3408,
+      "sha256": "530469c861dee13b0b3ae9be8e33965673749665fbc876c0623bbfa83f091277"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10316500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10316500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:16.841072+00:00",
+      "status": 200,
+      "bytes": 1705,
+      "sha256": "22e64cb51ff40e2d466a5c7913369a4257e15c213ab80ea23cce9151c965adcb"
+    },
+    "experiments/sprint-20261017-upstream/navigation/10396000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-10396000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:59.517501+00:00",
+      "status": 200,
+      "bytes": 8681,
+      "sha256": "96be8bea723ce429baa98cf394bdc8af40b17ab42b48aa8deffb38ad8eda711f"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11098000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11098000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:17.682827+00:00",
+      "status": 200,
+      "bytes": 594,
+      "sha256": "a35c99a08179ef107390c5e386d79d1c82fc5a47bf95e159e2f9256958bbdda0"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11124500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11124500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:18.601692+00:00",
+      "status": 200,
+      "bytes": 1165,
+      "sha256": "d355e4fb42a58122850aa62cab71b7ebe3e9405bba110b7883ff15ac344c610c"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11162500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11162500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:19.402696+00:00",
+      "status": 200,
+      "bytes": 17631,
+      "sha256": "4988ba72f9e9a29c94a1c276482b58178e5a1871fe8720b8444efc9321e4b9a5"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11224500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11224500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:20.356593+00:00",
+      "status": 200,
+      "bytes": 606,
+      "sha256": "fac3108f7a57af374552a0fe4fc74b3f08ce9f34ff3b0d8ff08ddf0347aed834"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11230500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11230500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:22.128325+00:00",
+      "status": 200,
+      "bytes": 600,
+      "sha256": "32a9a84c996cf9f312164c7f3e5f90de8f1f215d60c335d1022ea1c8912dec26"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11468500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11468500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:22.471160+00:00",
+      "status": 200,
+      "bytes": 591,
+      "sha256": "3a8e7350b01c21f84f4b81e7a827940747fc630efbda7afcb3c9803923c88463"
+    },
+    "experiments/sprint-20261017-upstream/navigation/11528700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-11528700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:11.859641+00:00",
+      "status": 200,
+      "bytes": 4873,
+      "sha256": "2c6f0deb530bc95eb4c092ab7f6b0e31c0f1c9d05b15d63fefc227e685267057"
+    },
+    "experiments/sprint-20261017-upstream/navigation/12010000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12010000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:23.847572+00:00",
+      "status": 200,
+      "bytes": 2796,
+      "sha256": "4fde162cc47d961ebbc1afd0f88d7426bc85b686aa1b0bbaf015bf87239a5d0b"
+    },
+    "experiments/sprint-20261017-upstream/navigation/12189500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12189500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:15.105605+00:00",
+      "status": 200,
+      "bytes": 19347,
+      "sha256": "96b036482c4e43a6531ab7e0a20da30e465fcb0103cb4b423c3b2c57b708b0e2"
+    },
+    "experiments/sprint-20261017-upstream/navigation/12358500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12358500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:29:56.883112+00:00",
+      "status": 200,
+      "bytes": 15694,
+      "sha256": "2f297063b37f24a042de8120e5bfaa5b4bfccb7b708205b56a36ca5af3dce53b"
+    },
+    "experiments/sprint-20261017-upstream/navigation/12414500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12414500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:09.474618+00:00",
+      "status": 200,
+      "bytes": 7772,
+      "sha256": "f957ab03a4bcfb2f641ef7cbb61d7f85b8081030d7477130dc84590313bb8891"
+    },
+    "experiments/sprint-20261017-upstream/navigation/12447390.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12447390/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:24.323460+00:00",
+      "status": 200,
+      "bytes": 596,
+      "sha256": "ceb917b6f0760bb3701ebf3471077bb1acae1647813f27f4085b81551129419b"
+    },
+    "experiments/sprint-20261017-upstream/navigation/12488500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-12488500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:25.679685+00:00",
+      "status": 200,
+      "bytes": 2253,
+      "sha256": "aa05f85e3aba6fda2b7f34c4acd5716a3062e7a0ea50d137689f1fdee320ff89"
+    },
+    "experiments/sprint-20261017-upstream/navigation/13023000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13023000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:30.091842+00:00",
+      "status": 200,
+      "bytes": 6715,
+      "sha256": "0c3f4077a84605ebc0ef86297d21ba599c38ef8183a9025847f63b89d58e6ff6"
+    },
+    "experiments/sprint-20261017-upstream/navigation/13161500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13161500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:50.610887+00:00",
+      "status": 200,
+      "bytes": 14037,
+      "sha256": "4eac92bb5307e3c99fbc9bf53a225f5c7fc0f7e67e51b41c95762e76ac7a8c98"
+    },
+    "experiments/sprint-20261017-upstream/navigation/13235000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13235000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:34.035681+00:00",
+      "status": 200,
+      "bytes": 5034,
+      "sha256": "98759708354c261f3d09d294b94acd824e395cb02a2d9c49e500e1506a6b62ba"
+    },
+    "experiments/sprint-20261017-upstream/navigation/13310700.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13310700/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:52.095938+00:00",
+      "status": 200,
+      "bytes": 10043,
+      "sha256": "7ce2709e3ea9a27157b2c92e81494bcb9bc35d4294e34367cec480f3e4b7f592"
+    },
+    "experiments/sprint-20261017-upstream/navigation/13340000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-13340000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:05.042860+00:00",
+      "status": 200,
+      "bytes": 44263,
+      "sha256": "feaaa12e119a4cb3c31ec3a50e77dcfbc667718cc16408b5a51443dc81b28f6d"
+    },
+    "experiments/sprint-20261017-upstream/navigation/14020000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-14020000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:37:26.233091+00:00",
+      "status": 200,
+      "bytes": 2339,
+      "sha256": "bdaa5c7d02b083ad447f3737b364e90bccff5051c06108a4d319ef87d228ae01"
+    },
+    "experiments/sprint-20261017-upstream/navigation/14137000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-14137000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:52.641346+00:00",
+      "status": 200,
+      "bytes": 22363,
+      "sha256": "711565188d087c0bb233940e69cc58d844b0d47edb4f2b4f5edce4d44d920be6"
+    },
+    "experiments/sprint-20261017-upstream/navigation/14154500.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-14154500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:30:56.259365+00:00",
+      "status": 200,
+      "bytes": 2729,
+      "sha256": "a23f9951b4c8cc17ac578973fc1dec4516e1703e174074c8ce291bac56d6f348"
+    },
+    "experiments/sprint-20261017-upstream/navigation/14301000.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-14301000/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:31:19.964019+00:00",
+      "status": 200,
+      "bytes": 5489,
+      "sha256": "caa42da71823dde507237b05b6bdef3bc0822e5f9294c55bc773a0480817fb69"
+    },
+    "experiments/sprint-20261017-upstream/research/camels.html": {
+      "url": "https://hess.copernicus.org/articles/21/5293/2017/",
+      "retrieved_utc": "2026-10-17T20:29:38.130111+00:00",
+      "status": 200,
+      "bytes": 143855,
+      "sha256": "70a2518e6fb3a77036705f652598278a9c51c7811557f36c5e81864c9081169d"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-0.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01142000,01142500,01142550,01143000,01143500,01605100,01605200,01605220,01605490,01605500,01605600,01605620,01605800,01605890,01605900,01605950,01606000,01661839,01661840,01661850,01661855,01661870,01661890,01661900,01661977,01661995,01662000,01662010,01662050,01662065,01662100,01662110,01662150,01662156,01662159,01662160,01662180,01662225,01662235,01662270,01662310,01662315,01662320,01662350,01662367,01662370,01662395,01662400,01662410,01662445&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:33:59.552750+00:00",
+      "status": 200,
+      "bytes": 106749,
+      "sha256": "17ab302d97a2361b99201eb3ea5dfe2832645c85c59e6484324a83c085a7c51c"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-1.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01662480,01662490,01662500,01662800,01662820,01663000,01663500,01663750,01663830,01663990,02107590,02107600,02107620,02195555,02195660,02195665,02228500,02229000,02229250,02229350,02229500,02230000,02230500,02350568,02350570,02350572,02350576,02350582,02350586,02350594,02350600,02350625,02350630,02350660,02350670,02350685,02350690,02350740,02350760,02350761,02350765,02350768,02350769,02350790,02350798,02350820,02350860,02370800,02370900,02371000&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:33:59.562796+00:00",
+      "status": 200,
+      "bytes": 160788,
+      "sha256": "7022985127ae011add43280195bbacd8b309ef9b5e283e387036fd895e1775ac"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-10.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07291450,07291500,07291730,07291748,07291750,07291800,07291920,07291925,07292000,07292180,07292200,07292450,07292453,07292454,07292455,07292460,07292465,07295030,07315672,07315680,07315681,07315697,07359590,07359596,07359598,07359599,07359600,07375740,07375750,07375751,07375752,07375790,07375800,07375850,07375900,07375920,07375960,07900003,08189230,08189250,08189295,08189298,08189300,08189320,08189400,08190100,08190150,08190185,08190195,08190210&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:01.064503+00:00",
+      "status": 200,
+      "bytes": 83686,
+      "sha256": "a62cecdd5d6496cb5ea2e3d2855804e069a2b2f0e315cd9653d481367819d0b7"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-11.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=08190420,08319945,08319950,08321500,08321900,08323000,08323500,09429900,09429980,09430000,09430010,09430020,09430030,09430150,09430300,09484550,09484560,09484570,09484580,09484590,09850200,10395700,10395800,11528090,11528100,11528110,11528200,11528400,11528440,11528480,11528500,12185000,12185295,12185297,12185300,12185500,12185900,12186000,12186450,12186500,12187000,12187500,12187900,12187980,12187985,12187995,12188000,12188100,12188300,12188380&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:01.258381+00:00",
+      "status": 200,
+      "bytes": 190748,
+      "sha256": "02f6a6440fb8d2b6649886e7a9f4e03458f446117f61e2ef2ed221b6466fc248"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-12.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=12188390,12188395,12188400,12188500,12189000,12189300,12189498,12355600,12355700,12355900,12356000,12356500,12357000,12357300,12357400,12357500,12357800,12358000,12413875,12413900,12413950,12413970,12413980,12414000,12414040,12414195,12414200,12414215,12414300,12414350,12414400,13022800,13022820,13022830,13022840,13022850,13022860,13022870,13022920,13022925,13022970,13161100,13161120,13161140,13161160,13161180,13161200,13161206,13161210,13161212&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:01.306705+00:00",
+      "status": 200,
+      "bytes": 105025,
+      "sha256": "7f51523102a28cdfad810799427710145af13a5e3cffc6c80120201568023088"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-13.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=13161215,13161220,13161225,13161230,13161235,13161240,13161250,13161255,13161260,13161265,13161277,13161278,13161282,13161284,13161286,13161300,13234200,13234215,13234240,13234260,13234280,13234300,13234400,13234500,13310470,13310480,13310500,13310520,13310565,13310570,13310600,13310654,13310660,13310661,13310670,13310671,13310674,13310690,13310750,13335420,13335424,13335460,13335470,13335480,13335600,13335620,13335640,13335660,13335690,13335700&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:01.548985+00:00",
+      "status": 200,
+      "bytes": 18940,
+      "sha256": "5a0b013027c5f33532880dde0bf9e490ed309392af208f35e3234d7754de333a"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-14.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=13335800,13335900,13336000,13336100,13336200,13336300,13336450,13336500,13336520,13336600,13336601,13336620,13336630,13336635,13336640,13336650,13336670,13336690,13336750,13336800,13336850,13336880,13336900,13337000,13337050,13337095,13337099,13337100,13337120,13337177,13337180,13337200,13337500,13337510,13337520,13337522,13337540,13337550,13337700,13337880,13338000,13338100,13338200,13338275,13338300,13338350,13338500,13338650,13338745,13338750&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:01.626353+00:00",
+      "status": 200,
+      "bytes": 106942,
+      "sha256": "bf8c1d012b72f71582abd03a89c37d8066ead33c1a93f4faed458bfc77f05f48"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-15.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=13338775,13338800,13338900,13338945,13338950,13339000,13339500,13339600,13339620,13339700,13339750,13339755,13339800,13339900,13339950,13339999,13340850,14129500,14130000,14130500,14131000,14131200,14131400,14131500,14132000,14132500,14133000,14133400,14133450,14133500,14134000,14134500,14135000,14135500,14136000,14136500,14137002,14153800,14153900,14154000,14299800,14300000,14300100,14300200,14300350,14300400,14300500,88350018&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:01.858398+00:00",
+      "status": 200,
+      "bytes": 63406,
+      "sha256": "f13021a7870440d10d91ba2b9caa9e45764ee741ec859a10019f07aa6f9d8eac"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-2.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=02371050,02371160,02371200,02371300,02371380,02371470,02479410,02479420,02479425,02479431,02479435,02479437,02479438,02479439,02479441,02479447,02479450,02479465,02479466,02479467,02479468,02479470,02479497,02479500,02479550,03159532,03159534,03159536,03159537,03159538,03160271,03160610,03212558,03212567,03212585,03212600,03212640,03212700,03212703,03212750,03212800,03212900,03212950,03212980,03212985,03212990,03213000,03213495,03213500,03213570&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.128379+00:00",
+      "status": 200,
+      "bytes": 179397,
+      "sha256": "4a1dd8cc554de936498d74ff84a7fc44dc4d63bac828280e50f66a5c1eb5222c"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-3.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=03213572,03213575,03213577,03213578,03213581,03213584,03213587,03213590,03213594,03213600,03213620,03213630,03213650,03213670,03213680,03213690,03213698,03281016,03281017,03281030,03281035,03281040,03281045,03281065,03281075,03281080,03281090,03281097,03281100,03281120,03281125,03281130,03281133,03281135,03281175,03281195,03281200,03281340,03281350,03281351,03281360,03281400,04025552,04025555,04026400,04026408,04026410,04026413,04026449,04026450&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.018276+00:00",
+      "status": 200,
+      "bytes": 113980,
+      "sha256": "8fb3e80eed5e3c8a47aa35a1c4a29abbd7fe561a74f858c82e8b76ae912dab11"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-4.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=04026470,04026490,04026500,04026501,04026505,04026510,04026511,04026514,04026530,04026550,04026552,04026553,04026559,04026560,04026561,04026564,04026580,04026586,04026590,04026600,04026613,04026616,04026619,04026620,04026635,04026650,04026651,04026700,04026740,04026757,04026760,04026761,04026768,04026820,04026850,04026851,04026859,04026867,04026870,04026880,04026894,04026900,04026910,04026911,04026950,04026955,04026961,05062280,05062300,05062335&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.452867+00:00",
+      "status": 200,
+      "bytes": 110765,
+      "sha256": "00abcac0071d1a54521f6289b589edf3808f56b9f64e3a3e4f42545bd3031976"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-5.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=05062360,05062400,05062410,05062435,05062440,05062465,05062470,05062477,05062480,05120180,05120200,05120520,05122500,05123000,05123100,05123300,05123350,05361400,05361420,05361500,05361600,05361730,05361833,05361989,05443560,05443600,05443650,05466000,05466010,05466200,05466250,05466400,05513700,05514170,05514200,06187820,06187825,06187840,06187850,06187860,06187880,06187900,06187910,06187915,06187920,06187940,06187950,06187980,06359000,06359300&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.378148+00:00",
+      "status": 200,
+      "bytes": 112887,
+      "sha256": "5dbf56023f29594be55c128089e5dc7efab10f7b91734cdd26a611505a176d47"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-6.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=06359500,06359700,06359800,06359850,06360000,06360350,06600600,06600700,06600770,06600795,06600900,06600910,06600922,06600935,06600950,06600980,06847600,06847780,06847790,06847800,06876500,06906700,06906715,06927590,06927600,06927746,06927780,06927800,06927850,06928000,06928200,06928300,06928320,06928330,06928359,06928360,06928370,06928380,06928400,06928410,06928420,06928430,06928500,06928600,06928700,06928730,06928750,06928800,06928850,06928900&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.612609+00:00",
+      "status": 200,
+      "bytes": 147674,
+      "sha256": "bc525b7a726b769da00facd1024c8ba8ab99e80e2e7afa714f56fd6b0817d7c4"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-7.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=06929000,06929315,06929320,06929900,06930000,06930015,06930023,06930025,06930027,06930028,06930030,06930058,06930060,06930100,06930250,06930450,06930750,06930800,06930900,06930920,06931000,06931500,06931600,06931700,06932000,06933300,06933500,06933600,06933700,06933800,06933820,07055646,07055650,07055652,07055660,07055670,07055677,07055680,07055681,07055687,07055688,07055696,07055700,07055760,07055770,07055771,07055772,07055773,07055774,07055775&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.743288+00:00",
+      "status": 200,
+      "bytes": 366971,
+      "sha256": "e25e682b690d83bc7ee7f00360c98e1303a3ab5b4ea70d4f78c5b483c1afc0f9"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-8.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07055776,07055780,07055790,07055792,07055794,07055800,07055807,07055809,07055811,07055812,07055814,07055820,07055824,07055828,07055832,07055840,07055865,07055866,07055868,07055869,07055872,07055874,07055875,07055876,07055878,07055881,07055885,07055887,07055888,07055890,07055893,07055900,07226200,07226300,07281240,07290217,07290218,07290220,07290229,07290230,07290232,07290234,07290235,07290236,07290242,07290244,07290246,07290248,07290250,07290252&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.835877+00:00",
+      "status": 200,
+      "bytes": 105670,
+      "sha256": "d4461aa4fde99d8ff6ee77922a6c8a3051237c73dd132af8904b15142f9cc47d"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-9.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07290257,07290258,07290260,07290265,07290275,07290278,07290290,07290300,07290350,07290356,07290360,07290370,07290380,07290385,07290387,07290400,07290420,07290425,07290430,07290440,07290460,07290470,07290500,07290510,07290516,07290522,07290525,07290528,07290532,07290549,07290550,07290568,07290600,07290630,07290935,07290940,07290950,07290975,07290995,07291000,07291217,07291223,07291225,07291229,07291230,07291248,07291250,07291255,07291258,07291260&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:34:00.972139+00:00",
+      "status": 200,
+      "bytes": 25254,
+      "sha256": "470a1e7c57aa071e9cc32bfc7b5a10aae39042c39071cddec1d0dac2ad28217e"
+    },
+    "experiments/sprint-20261017-upstream/research/catalog-sample.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01606500,01605100,01605200,01605220,01605490&seriesCatalogOutput=true",
+      "retrieved_utc": "2026-10-17T20:33:02.319994+00:00",
+      "status": 200,
+      "bytes": 33445,
+      "sha256": "3e8b3cb97cb1ec73eaf1a9f0f4a92cc703c11f3d328a95a0a9151e3defe19297"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-0.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01142000,01142500,01142550,01143000,01143500,01605100,01605200,01605220,01605490,01605500,01605600,01605620,01605800,01605890,01605900,01605950,01606000,01661839,01661840,01661850,01661855,01661870,01661890,01661900,01661977,01661995,01662000,01662010,01662050,01662065,01662100,01662110,01662150,01662156,01662159,01662160,01662180,01662225,01662235,01662270,01662310,01662315,01662320,01662350,01662367,01662370,01662395,01662400,01662410,01662445&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:37.498073+00:00",
+      "status": 200,
+      "bytes": 106749,
+      "sha256": "c488e4911b94378f70fc846d676ab281a1c768016c48d8db2b0dc0d9dd3d76f5"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-1.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01662480,01662490,01662500,01662800,01662820,01663000,01663500,01663750,01663830,01663990,02107590,02107600,02107620,02195555,02195660,02195665,02228500,02229000,02229250,02229350,02229500,02230000,02230500,02350568,02350570,02350572,02350576,02350582,02350586,02350594,02350600,02350625,02350630,02350660,02350670,02350685,02350690,02350740,02350760,02350761,02350765,02350768,02350769,02350790,02350798,02350820,02350860,02370800,02370900,02371000&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:37.591552+00:00",
+      "status": 200,
+      "bytes": 160788,
+      "sha256": "703128a481d774620421e45b1f179d085d5e0456303839e1faadb64f0c4f4884"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-10.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07290940,07290950,07290975,07290995,07291000,07291217,07291223,07291225,07291229,07291230,07291248,07291250,07291255,07291258,07291260,07291450,07291500,07291730,07291748,07291750,07291800,07291920,07291925,07292000,07292180,07292200,07292450,07292453,07292454,07292455,07292460,07292465,07295030,07315672,07315680,07315681,07315697,07359590,07359596,07359598,07359599,07359600,07374590,07374600,07374650,07374700,07374720,07375740,07375750,07375751&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.032143+00:00",
+      "status": 200,
+      "bytes": 36641,
+      "sha256": "e8201fba78e421a0d0ac3d4071bfa8281e74bbbfe0813bf1228bb770918c226a"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-11.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07375752,07375790,07375800,07375850,07375900,07375920,07375960,07900003,08189230,08189250,08189295,08189298,08189300,08189320,08189400,08190100,08190150,08190185,08190195,08190210,08190420,08319945,08319950,08321500,08321900,08323000,08323500,09106800,09312000,09312500,09429900,09429980,09430000,09430010,09430020,09430030,09430150,09430300,09484550,09484560,09484570,09484580,09484590,09850200,10310480,10310485,10310487,10310490,10310518,10316400&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.180158+00:00",
+      "status": 200,
+      "bytes": 214848,
+      "sha256": "c0c5cf323a648249d53627f322b26587ffc78a92b4fcb4bb117c813d2fd46d0d"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-12.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=10316420,10395700,10395800,11124000,11162470,11528090,11528100,11528110,11528200,11528400,11528440,11528480,11528500,12009850,12009880,12009900,12009910,12185000,12185295,12185297,12185300,12185500,12185900,12186000,12186450,12186500,12187000,12187500,12187900,12187980,12187985,12187995,12188000,12188100,12188300,12188380,12188390,12188395,12188400,12188500,12189000,12189300,12189498,12355600,12355700,12355900,12356000,12356500,12357000,12357300&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.271258+00:00",
+      "status": 200,
+      "bytes": 68950,
+      "sha256": "16153c1577f2cb63f79d1981db776b096f20a550f30a4bd2837aa8c60af7e646"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-13.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=12357400,12357500,12357800,12358000,12413875,12413900,12413950,12413970,12413980,12414000,12414040,12414195,12414200,12414215,12414300,12414350,12414400,12488100,12488250,12488300,13022800,13022820,13022830,13022840,13022850,13022860,13022870,13022920,13022925,13022970,13161100,13161120,13161140,13161160,13161180,13161200,13161206,13161210,13161212,13161215,13161220,13161225,13161230,13161235,13161240,13161250,13161255,13161260,13161265,13161277&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.408750+00:00",
+      "status": 200,
+      "bytes": 101420,
+      "sha256": "fa62ad525d27611b4e9dc084573cac2b468c440c1d7fea899c7eb6e612f84946"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-14.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=13161278,13161282,13161284,13161286,13161300,13234200,13234215,13234240,13234260,13234280,13234300,13234400,13234500,13310470,13310480,13310500,13310520,13310565,13310570,13310600,13310654,13310660,13310661,13310670,13310671,13310674,13310690,13310750,13335420,13335424,13335460,13335470,13335480,13335600,13335620,13335640,13335660,13335690,13335700,13335800,13335900,13336000,13336100,13336200,13336300,13336450,13336500,13336520,13336600,13336601&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.487757+00:00",
+      "status": 200,
+      "bytes": 60421,
+      "sha256": "5fda89f862c0373fcb02e6293df8a813e2f09aed1de78cc7a13317f8dab88ffc"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-15.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=13336620,13336630,13336635,13336640,13336650,13336670,13336690,13336750,13336800,13336850,13336880,13336900,13337000,13337050,13337095,13337099,13337100,13337120,13337177,13337180,13337200,13337500,13337510,13337520,13337522,13337540,13337550,13337700,13337880,13338000,13338100,13338200,13338275,13338300,13338350,13338500,13338650,13338745,13338750,13338775,13338800,13338900,13338945,13338950,13339000,13339500,13339600,13339620,13339700,13339750&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.727418+00:00",
+      "status": 200,
+      "bytes": 92916,
+      "sha256": "34d910755e9c2fdb5aee8807b14d227f2af90006097cea03b8feef506cff4b4b"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-16.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=13339755,13339800,13339900,13339950,13339999,13340850,14019400,14019500,14129500,14130000,14130500,14131000,14131200,14131400,14131500,14132000,14132500,14133000,14133400,14133450,14133500,14134000,14134500,14135000,14135500,14136000,14136500,14137002,14153800,14153900,14154000,14299800,14300000,14300100,14300200,14300350,14300400,14300500,88350018&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:39.791843+00:00",
+      "status": 200,
+      "bytes": 35951,
+      "sha256": "b7b21450f19e22ada10ecb61d84cb61b1647e431451ab80122db6a1c88f909f9"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-2.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=02371050,02371160,02371200,02371300,02371380,02371470,02479410,02479420,02479425,02479431,02479435,02479437,02479438,02479439,02479441,02479447,02479450,02479465,02479466,02479467,02479468,02479470,02479497,02479500,02479550,03010650,03159532,03159534,03159536,03159537,03159538,03160271,03160610,03212558,03212567,03212585,03212600,03212640,03212700,03212703,03212750,03212800,03212900,03212950,03212980,03212985,03212990,03213000,03213495,03213500&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:37.949559+00:00",
+      "status": 200,
+      "bytes": 185923,
+      "sha256": "96790508c7cb725b7314f934fe1d384d68ec4f298c30162b32f5d4ccaee34e0a"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-3.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=03213570,03213572,03213575,03213577,03213578,03213581,03213584,03213587,03213590,03213594,03213600,03213620,03213630,03213650,03213670,03213680,03213690,03213698,03280670,03280680,03281016,03281017,03281030,03281035,03281040,03281045,03281065,03281075,03281080,03281090,03281097,03281100,03281120,03281125,03281130,03281133,03281135,03281175,03281195,03281200,03281340,03281350,03281351,03281360,03281400,04025552,04025555,04026400,04026408,04026410&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.031803+00:00",
+      "status": 200,
+      "bytes": 93533,
+      "sha256": "1fe80d95ff555468e60307c5fc261e371691b2372e2b5b951f9591b2ebccd0ac"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-4.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=04026413,04026449,04026450,04026470,04026490,04026500,04026501,04026505,04026510,04026511,04026514,04026530,04026550,04026552,04026553,04026559,04026560,04026561,04026564,04026580,04026586,04026590,04026600,04026613,04026616,04026619,04026620,04026635,04026650,04026651,04026700,04026740,04026757,04026760,04026761,04026768,04026820,04026850,04026851,04026859,04026867,04026870,04026880,04026894,04026900,04026910,04026911,04026950,04026955,04026961&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.379252+00:00",
+      "status": 200,
+      "bytes": 131212,
+      "sha256": "73a79de32a385a7344a12791613225888936fbe0a4a643104ecf185049214815"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-5.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=05062280,05062300,05062335,05062360,05062400,05062410,05062435,05062440,05062465,05062470,05062477,05062480,05120180,05120200,05120520,05122500,05123000,05123100,05123300,05123350,05361400,05361420,05361500,05361600,05361730,05361833,05361989,05443560,05443600,05443650,05466000,05466010,05466200,05466250,05466400,05513700,05514170,05514200,06187820,06187825,06187840,06187850,06187860,06187880,06187900,06187910,06187915,06187920,06187940,06187950&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.450567+00:00",
+      "status": 200,
+      "bytes": 102984,
+      "sha256": "051f708288be078a72151fd57aafcc15ac6c7f5d9383c124a3f02c6fa2489f3f"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-6.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=06187980,06359000,06359300,06359500,06359700,06359800,06359850,06360000,06360350,06403800,06403810,06403845,06403850,06403900,06600600,06600700,06600770,06600795,06600900,06600910,06600922,06600935,06600950,06600980,06745500,06746000,06847600,06847780,06847790,06847800,06876500,06906700,06906715,06927590,06927600,06927746,06927780,06927800,06927850,06928000,06928200,06928300,06928320,06928330,06928359,06928360,06928370,06928380,06928400,06928410&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.608381+00:00",
+      "status": 200,
+      "bytes": 127298,
+      "sha256": "de50289d3748d58d7177cf120dc7e271667a246dbb2b53c6c0a262062b060d66"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-7.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=06928420,06928430,06928500,06928600,06928700,06928730,06928750,06928800,06928850,06928900,06929000,06929315,06929320,06929900,06930000,06930015,06930023,06930025,06930027,06930028,06930030,06930058,06930060,06930100,06930250,06930450,06930750,06930800,06930900,06930920,06931000,06931500,06931600,06931700,06932000,06933300,06933500,06933600,06933700,06933800,06933820,07055646,07055650,07055652,07055660,07055670,07055677,07055680,07055681,07055687&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.725598+00:00",
+      "status": 200,
+      "bytes": 396821,
+      "sha256": "60dae0c9a1b89293dac8e74f958fb0e280202969166dbd295fa4b4f016fcb97a"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-8.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07055688,07055696,07055700,07055760,07055770,07055771,07055772,07055773,07055774,07055775,07055776,07055780,07055790,07055792,07055794,07055800,07055807,07055809,07055811,07055812,07055814,07055820,07055824,07055828,07055832,07055840,07055865,07055866,07055868,07055869,07055872,07055874,07055875,07055876,07055878,07055881,07055885,07055887,07055888,07055890,07055893,07055900,07083200,07083500,07195686,07195696,07195700,07226200,07226300,07281240&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.826550+00:00",
+      "status": 200,
+      "bytes": 128660,
+      "sha256": "dfcc399beda9b812c85014970886c8ebf3ad644242effb1fa522d5d70b89df6a"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-catalog-9.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=07290217,07290218,07290220,07290229,07290230,07290232,07290234,07290235,07290236,07290242,07290244,07290246,07290248,07290250,07290252,07290257,07290258,07290260,07290265,07290275,07290278,07290290,07290300,07290350,07290356,07290360,07290370,07290380,07290385,07290387,07290400,07290420,07290425,07290430,07290440,07290460,07290470,07290500,07290510,07290516,07290522,07290525,07290528,07290532,07290549,07290550,07290568,07290600,07290630,07290935&seriesCatalogOutput=true&parameterCd=00060",
+      "retrieved_utc": "2026-10-17T20:37:38.921723+00:00",
+      "status": 200,
+      "bytes": 23983,
+      "sha256": "24a58e7b7be53992e4a1e4ddde0961d8b820ba0ba5652ef3e09698e034829547"
+    },
+    "experiments/sprint-20261017-upstream/research/expanded-sites-0.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01142500,01605500,01606000,01662800,01663500,02228500,02350600,03212750,03212980,03213500,03281100,05466000,06187915,06359500,06928000,06928300,06930000,06930060,06932000,06933500,07055646,07055875,07291000,07375800,08189300,12186000,12357500,12413875,13336500,13337000,13337500,13338500,13339500&siteOutput=expanded",
+      "retrieved_utc": "2026-10-17T20:37:40.089302+00:00",
+      "status": 200,
+      "bytes": 11128,
+      "sha256": "1917c68bc138df5ae6caf15aea979deb2d5c5ee57927a669124cba120e3a0a3a"
+    },
+    "experiments/sprint-20261017-upstream/research/floodgtn.html": {
+      "url": "https://arxiv.org/abs/2310.07631v1",
+      "retrieved_utc": "2026-10-17T20:30:56.368670+00:00",
+      "status": 200,
+      "bytes": 42711,
+      "sha256": "4de8ff092d697fda744b8dd6164f95e288e4f004a0f305325edd64a933fd0630"
+    },
+    "experiments/sprint-20261017-upstream/research/graph-search.xml": {
+      "url": "https://export.arxiv.org/api/query?search_query=all:river%20AND%20all:graph%20AND%20all:forecasting&start=0&max_results=5",
+      "retrieved_utc": "2026-10-17T20:30:11.074018+00:00",
+      "status": 200,
+      "bytes": 11619,
+      "sha256": "50120f26651ab2ed518af5908722541d3321da23f96deaf1ba72ea1fc3ea1b29"
+    },
+    "experiments/sprint-20261017-upstream/research/graph-topology.html": {
+      "url": "https://arxiv.org/abs/2410.05536v3",
+      "retrieved_utc": "2026-10-17T20:30:56.368628+00:00",
+      "status": 200,
+      "bytes": 41418,
+      "sha256": "c7a9c6340958f1230d2b9607d2dc8a5dc243d89ea51f4f744b2f44fab968e545"
+    },
+    "experiments/sprint-20261017-upstream/research/navigation-sample.json": {
+      "url": "https://api.water.usgs.gov/nldi/linked-data/nwissite/USGS-01606500/navigation/UT/nwissite?distance=500",
+      "retrieved_utc": "2026-10-17T20:27:30.876238+00:00",
+      "status": 200,
+      "bytes": 14673,
+      "sha256": "fd081887276833a99fb74ff110dadf829062643c550d126b639bfa6e7372eb28"
+    },
+    "experiments/sprint-20261017-upstream/research/nldi-blog.html": {
+      "url": "https://waterdata.usgs.gov/blog/nldi-intro/",
+      "retrieved_utc": "2026-10-17T20:30:10.577291+00:00",
+      "status": 200,
+      "bytes": 76752,
+      "sha256": "a9b995a86deb33172c6fbd16e993c0cf33d07f34b05f488b204bd7ae744c0e74"
+    },
+    "experiments/sprint-20261017-upstream/research/sites-0.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/site/?format=rdb&sites=01142500,01605500,01606000,01662800,01663500,02228500,02350600,03212750,03212980,03213500,03281100,05466000,06187915,06359500,06928000,06928300,06930000,06930060,06932000,06933500,07055646,07055875,07291000,07375800,08189300,12186000,12357500,12413875,13336500,13337000,13337500,13338500,13339500&siteOutput=expanded",
+      "retrieved_utc": "2026-10-17T20:34:02.144334+00:00",
+      "status": 200,
+      "bytes": 11128,
+      "sha256": "c7596c83727d0680657f3b7a61c65393f67fd7fea3a72ce907d0be94ab1f2e94"
+    },
+    "experiments/sprint-20261017-upstream/sources/03212980.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=03212980&startDT=2000-01-01&endDT=2022-12-31&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:43:37.352538+00:00",
+      "status": 200,
+      "bytes": 266234,
+      "sha256": "4f7a46db6ffe458c10deeaaf586cbac2aa6e49f8d1c65a6555ba4e2e093e390d"
+    },
+    "experiments/sprint-20261017-upstream/sources/07055875.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07055875&startDT=2000-01-01&endDT=2022-12-31&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:43:38.083064+00:00",
+      "status": 200,
+      "bytes": 268595,
+      "sha256": "462d42181a63cccdfd833d6761ae2c48b39d0ca1981d04a19481b96a9ecb03c8"
+    },
+    "experiments/sprint-20261017-upstream/sources/07375800.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=07375800&startDT=2000-01-01&endDT=2022-12-31&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:43:38.513925+00:00",
+      "status": 200,
+      "bytes": 249143,
+      "sha256": "63119b3a9c0dc1392291e9cd1a85e872e90bf2ac2d9b0b7c54ceddf448d4a384"
+    },
+    "experiments/sprint-20261017-upstream/sources/12357500.rdb": {
+      "url": "https://waterservices.usgs.gov/nwis/dv/?format=rdb&sites=12357500&startDT=2000-01-01&endDT=2022-12-31&parameterCd=00060&statCd=00003",
+      "retrieved_utc": "2026-10-17T20:41:54.969342+00:00",
+      "status": 200,
+      "bytes": 81,
+      "sha256": "847ec612e7a103176c99618c922b8ae969072efa89e08a7230eb4d04b3f4ffa6"
+    }
+  },
+  "source_bytes": 6970144,
+  "source_files": 187,
+  "prior_gauges": 215,
+  "disjoint_new_basins": 31,
+  "development_navigation": 62,
+  "uninspected_navigation": 31,
+  "navigated_eight_digit_usgs_sites": 839,
+  "catalog_eligible_sites": 33,
+  "development_metadata_pairs": 4,
+  "reference_eligible_development_pairs": 3,
+  "unopened_metadata_pairs": 13,
+  "coverage_sha256": "da921852168adffe12c9e3d9b54ab38b3d4c7ec8b37507c1e4b8e29e88730d41",
+  "code_sha256": "43579f0613d24f048a80cac6aa883863530f17b916242afb2c80deeb34bd28c6"
+}

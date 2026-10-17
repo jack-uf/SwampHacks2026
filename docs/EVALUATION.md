@@ -30,6 +30,8 @@ The separate [catchment-response study](RESPONSE_RESEARCH_RESULTS.md) tests day-
 
 The separate [onset-supervision and warning-budget study](WARNING_RESEARCH_RESULTS.md) compares matched neural objectives and delayed-feedback regional warning budgets on another fresh watershed population. Neither frozen improvement claim passes, so all candidates remain experimental.
 
+The separate [connected-river feasibility study](UPSTREAM_RESEARCH_RESULTS.md) stopped before fitting because a frozen upstream gauge lacked historical discharge. It preserves potential geographic test outcomes and provides no new predictive-performance claim.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.
