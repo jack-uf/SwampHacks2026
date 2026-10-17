@@ -1,0 +1,887 @@
+{
+  "created_at": "2026-10-17T05:34:46.738640+00:00",
+  "sources": [
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz",
+      "retrieved_at": "2026-10-17T00:01:20.527651+00:00",
+      "sha256": "2070b83eccab041b36360ab73645b9a249c3eefc5b92b5b3fc0cbba4d9fcc09c",
+      "bytes": 12693243
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2025_c20260819.csv.gz",
+      "retrieved_at": "2026-10-17T00:01:24.953233+00:00",
+      "sha256": "d9b46b4c6aae554723cadbb9691f3d5258371c02e530ba815d6fe41e4550149f",
+      "bytes": 12585209
+    },
+    {
+      "url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2026_c20260918.csv.gz",
+      "retrieved_at": "2026-10-17T01:03:35.568063+00:00",
+      "sha256": "61c1dfebdfb24d561bad4528a31659791cf9a83d74663dd4e97b1e0088003f44",
+      "bytes": 7490892
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=29.65&longitude=-82.32&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:23:42.860215+00:00",
+      "sha256": "fc090803317f9b7afa581cded15b0857420d34953c21bb8e6501396e9ef57004",
+      "bytes": 675850
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=29.65&longitude=-82.32&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:03:39.136557+00:00",
+      "sha256": "7352bedd4544d92709167a75cd4b48941893ef372b657395ba557624ea148970",
+      "bytes": 804128
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=27.99&longitude=-82.35&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:23:55.338968+00:00",
+      "sha256": "5f0c8ec70e10df0311a4fd5fa572275835323f350cbaf2a54894f252ff17bdb3",
+      "bytes": 678738
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=27.99&longitude=-82.35&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:03:52.247899+00:00",
+      "sha256": "79a4113b9e13197effc5db9f8fe4a3d36a41d01e09e27093ea6b1a4f6dfcb444",
+      "bytes": 805962
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=25.61&longitude=-80.5&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:24:09.071080+00:00",
+      "sha256": "c3f0034908e75865236a64f34b2a692012b9d13a416ba3655b746ace91813efc",
+      "bytes": 688274
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=25.61&longitude=-80.5&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:04:05.256892+00:00",
+      "sha256": "2a64a52b7a54fa20ff6a7e4b043601f59581f81a7e2794c0c469568aeab1839f",
+      "bytes": 807414
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=29.86&longitude=-95.39&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:24:21.268362+00:00",
+      "sha256": "870c37ebf1eba2fe20d416e8df48bf8f5d1a302a4270130a32b53e2b48c7894c",
+      "bytes": 684620
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=29.86&longitude=-95.39&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:04:19.277829+00:00",
+      "sha256": "354b3c3d0b612b60735635ffd603bae02c5e1bb85d35189ba178c4401d4b08b4",
+      "bytes": 807844
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=32.77&longitude=-96.78&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:24:33.467910+00:00",
+      "sha256": "9a1c08c2317d857e793d5e9ad603b07c1f1ee6ee5883a5e01fe304f716e3c525",
+      "bytes": 676101
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=32.77&longitude=-96.78&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:04:31.866523+00:00",
+      "sha256": "3f3ade86981e9086fad2f28ced2a32baf8674bc4f8483e7d78d5b925ca65ca27",
+      "bytes": 807309
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=30.33&longitude=-97.78&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:24:45.634836+00:00",
+      "sha256": "262a60384d94914b1b73bedebb92d5c3d44114bb9802be7f3de55a772baabca2",
+      "bytes": 680255
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=30.33&longitude=-97.78&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:04:45.723072+00:00",
+      "sha256": "db72e2b326a80b9a100670baa92301d3bf56eebc6f3a8821596db0cd00e4e55f",
+      "bytes": 807789
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=35.55&longitude=-97.41&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:24:57.834804+00:00",
+      "sha256": "d1a95211ed1a4ff6c5045d9e82e9fd7481c721fc5b4f33491aeb79e8fe46bc65",
+      "bytes": 671966
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=35.55&longitude=-97.41&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:05:01.087536+00:00",
+      "sha256": "578a55bb706890bfe8f33954793fd4ed1215023d287fa290869ef8374dc7da48",
+      "bytes": 806039
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=36.12&longitude=-95.94&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:25:09.900538+00:00",
+      "sha256": "cb6c00287327785e034a8e465b9e13c251b09da0fe39f4971df1003419874ac8",
+      "bytes": 672115
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=36.12&longitude=-95.94&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:05:14.035708+00:00",
+      "sha256": "76b3ead0c5362f08a888aade420a05657ef04107b23d6068639a6ceb09797223",
+      "bytes": 805373
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=35.18&longitude=-89.9&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:25:21.951835+00:00",
+      "sha256": "5ce18b9af825880d31287372e1d96166043bc3a7bec2aff594d4a2ecc88a3949",
+      "bytes": 672142
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=35.18&longitude=-89.9&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:05:26.876844+00:00",
+      "sha256": "d5e4ff9c8284d527e277b04d933d31d137bb427c1e5640302b4d85a3353b6272",
+      "bytes": 804525
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=36.17&longitude=-86.78&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:25:34.667799+00:00",
+      "sha256": "7aa85dbb06815ab3452852011df34089e35316c67aff7b705edaca1db82b5cba",
+      "bytes": 671006
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=36.17&longitude=-86.78&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:05:40.219233+00:00",
+      "sha256": "1df76f9c2d5db7b18576296e0440de57d22b501596954d0171353822b5d26b13",
+      "bytes": 802677
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=45.006121&longitude=-93.475228&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:25:46.975075+00:00",
+      "sha256": "cfca5ed4d92d8a907f9e18cf4c25a5b1c80c68b20f9c64f6d70181adc26473ac",
+      "bytes": 664648
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=45.006121&longitude=-93.475228&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:07:19.311490+00:00",
+      "sha256": "a9efeb7328e1a3cbf59bd3179356acb8476d2da8104a3f684553fdb097721b8c",
+      "bytes": 804832
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.448474&longitude=-87.978456&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:25:59.038097+00:00",
+      "sha256": "60b461bd25888ee904a848248ace95223ec0560e676e237ca8c7c1643c58757d",
+      "bytes": 666041
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.448474&longitude=-87.978456&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:07:44.313127+00:00",
+      "sha256": "e3e829e628690812743b6f9223c5ba87a4f19acc89fc7b061cce639a3ba1a13c",
+      "bytes": 803629
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.651432&longitude=-79.087545&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:26:12.044596+00:00",
+      "sha256": "530eb14f58b2767b0eabd9932d40455b8ffa5ef273ab20e37ebc523b298eb2d0",
+      "bytes": 666162
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.651432&longitude=-79.087545&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:07:56.716887+00:00",
+      "sha256": "ddaa69d51e09ad14f35a8d2ecbb1aeddb0433a90235333db318dbfbbe2f3cb22",
+      "bytes": 800358
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=34.038754&longitude=-78.227765&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:26:25.147598+00:00",
+      "sha256": "17efc88f61411249bd128b0610b9d7c8e97052699e41106a9c3b3af2c4a07c57",
+      "bytes": 672650
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=34.038754&longitude=-78.227765&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:08:10.064014+00:00",
+      "sha256": "c722e60e97e8b6e4082b2ed1061fe89a9b7884d1e79b2608270ae775d8ac484c",
+      "bytes": 804103
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=34.970188&longitude=-81.183187&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:26:38.496239+00:00",
+      "sha256": "468c8c0aea4e1060cf86e205eaa2f1d533e9d855676a5ef549eaf96bde573545",
+      "bytes": 668131
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=34.970188&longitude=-81.183187&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:08:24.329098+00:00",
+      "sha256": "4d690bada868cf8d5cd13d0885856d6a573c11a0cbc4159385f521f9144c615d",
+      "bytes": 800356
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=29.905722&longitude=-90.357855&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:26:50.550423+00:00",
+      "sha256": "6a97981b086dfc0d62ad7e0a835cf0cbd1090236a0271f6c45f2a3aac79c8e1b",
+      "bytes": 681471
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=29.905722&longitude=-90.357855&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:08:37.957447+00:00",
+      "sha256": "ce48de1cb7cc654b10284c0a2b8264140ceb86accfcd722ba58316cbed3c8a1f",
+      "bytes": 804034
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=34.764114&longitude=-85.980056&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:27:03.279766+00:00",
+      "sha256": "96ed5d8bdba452fa44899fef572fb2ec378f161dbd8b5b9fe3053622feb98c69",
+      "bytes": 669764
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=34.764114&longitude=-85.980056&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:08:51.467093+00:00",
+      "sha256": "3d4eec54d3343ae686f25337e2857fe3d4dc645a9c669f701938854b421d6d99",
+      "bytes": 795590
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.399384&longitude=-80.763527&start_date=2024-01-01&end_date=2026-06-30&hourly=pressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:27:15.456737+00:00",
+      "sha256": "661ea26852829ed4d65958b7a2266d70b2edc3466190b0a6779b8b4a86f93ab9",
+      "bytes": 666205
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.399384&longitude=-80.763527&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T01:09:04.458626+00:00",
+      "sha256": "e567ce0677d3f482c3430436585744000257719550d77768805a76a556347717",
+      "bytes": 800305
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=35.053628&longitude=-106.66908&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:27:30.817425+00:00",
+      "sha256": "b7c6558eb776e00a83b26d7b8d76a7c471d90e7b53be92514f1b2c675f76b592",
+      "bytes": 1044451
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=32.349919&longitude=-106.834968&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:27:45.466693+00:00",
+      "sha256": "eb08ff4fb7895eaf8ca64a84c74e20836d24de3ecbc18aea6bb538dd477dfaf9",
+      "bytes": 1047959
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=36.21413&longitude=-115.014398&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:27:58.877401+00:00",
+      "sha256": "950162c3bf95364c70186d287d261d6f36cb8b2644e7a0bfa62c2700da6d2029",
+      "bytes": 1038160
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.73132&longitude=-119.663269&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:28:12.214976+00:00",
+      "sha256": "820d83bc3f37379253a876c43a8ad9c37287aa8e34d63cc1aa6630438bc6fcd7",
+      "bytes": 1036689
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=45.936987&longitude=-108.276656&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:28:27.814393+00:00",
+      "sha256": "7dc2d5f2d72155ea21935a7b9ce18bc7a3b842a187f753589c24dbe5a1cf02f3",
+      "bytes": 1043033
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=47.027263&longitude=-113.892691&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:28:42.261473+00:00",
+      "sha256": "cc028c7371e31f3bf39265aed27fd19c020016a15b8630b5805ae368cc759f78",
+      "bytes": 1039693
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=46.927003&longitude=-97.252375&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:28:55.874653+00:00",
+      "sha256": "b5bbd045326f0172bb8e8c57648d8ca69d78fcb4e07326a88032b71b4489cd18",
+      "bytes": 1052697
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=46.978829&longitude=-100.469533&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:29:08.480707+00:00",
+      "sha256": "92469820a258a24704f9e586de593150b2ae7b6daa901896f16be0568b28f113",
+      "bytes": 1051783
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.667472&longitude=-96.795726&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:29:21.427670+00:00",
+      "sha256": "8f016e77b51bb2550bf45fbf1f575ad8b984222343b905f83ae93d4b816e34ab",
+      "bytes": 1053103
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=44.002349&longitude=-102.823801&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:29:34.914259+00:00",
+      "sha256": "4d94bc336d0a1ec9bc3e1fb9c54c3ee27ce0d0dcb063d1bc49689d9465fd510c",
+      "bytes": 1048053
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.297091&longitude=-96.154066&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:29:48.290101+00:00",
+      "sha256": "4c59ddc28376ce51c344d72022ebcd1517e2f7c80092c3138843691bb9fa5ac3",
+      "bytes": 1054190
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=40.783547&longitude=-96.688658&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:30:01.015111+00:00",
+      "sha256": "d390b053f42875a7aabf52a388c5c86a8206bb0dfe71d79e56f62496c67643f7",
+      "bytes": 1054405
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=37.681045&longitude=-97.461054&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:30:16.005471+00:00",
+      "sha256": "0145540cafcb785c81d89d0b62add6fe20d46d2c59ee6382b5c7704b4f300dc3",
+      "bytes": 1058967
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=39.041805&longitude=-95.755664&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:30:28.920304+00:00",
+      "sha256": "7cf6d5b666f6294117fd75d271760f1fc116e0fe572e0551730e19d8d121bde9",
+      "bytes": 1057392
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.067468&longitude=-89.417852&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:30:43.226907+00:00",
+      "sha256": "529a4c158c0917758e35f508fb16962007aae2d2987afac960a73dee70fbf1ae",
+      "bytes": 1052815
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.912643&longitude=-87.862312&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:30:55.943139+00:00",
+      "sha256": "fea708651b49259e87fe26ee5627db6a9fb37b355b5acb2aec716a5ce7615696",
+      "bytes": 1049972
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.451476&longitude=-116.244376&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:31:13.373300+00:00",
+      "sha256": "9b589e9e4ad7e62d50f9db8a524a5cf62979b7332bfa9a1f30e29580cf90727e",
+      "bytes": 1038341
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.692921&longitude=-112.228982&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:31:27.401805+00:00",
+      "sha256": "920acb5f45de97ce4128608785b17da26aadab49aaf01570a3248684e884d122",
+      "bytes": 1039812
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=41.684816&longitude=-93.568971&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:31:40.367917+00:00",
+      "sha256": "9f7ff5fe1d44d2c2f17d2213fdc1064e3707fd9ef36699c526a95bb603dceef8",
+      "bytes": 1054392
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.077951&longitude=-91.597674&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:31:53.227060+00:00",
+      "sha256": "567af72d0119287db6407de6aec7a93b5d28b0e8aa731a9dde72d2623485f5ed",
+      "bytes": 1054094
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=39.005364&longitude=-94.343211&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:32:07.660998+00:00",
+      "sha256": "17d9d8c449b26b43d9a7fd5c7a56fea2072c36105e73e67ac132b43a154e1184",
+      "bytes": 1057168
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=37.258196&longitude=-93.340641&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:32:21.274832+00:00",
+      "sha256": "ede3423dee4a6037c62a0fc4b71bfb53791f9fd998aa0d4d111dac4dc893368e",
+      "bytes": 1058854
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.284664&longitude=-83.261953&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:32:33.971393+00:00",
+      "sha256": "b0f1dae2a1ceaa6c83278c1476c9fd99546b495ae132bbc65f4f8e8f86f714ad",
+      "bytes": 1051590
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.032497&longitude=-85.547446&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:32:46.332337+00:00",
+      "sha256": "ca8c04d39ad3b4a48696dbbe1d3f9c1c9591147db1f98764bd66daafedf98d5c",
+      "bytes": 1050469
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=45.547711&longitude=-122.417363&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:32:59.537821+00:00",
+      "sha256": "8cea969b2bc0ed72457b8d28484ebc108b32907056d5c09e0ee4b542522c491e",
+      "bytes": 1036018
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=43.928334&longitude=-122.897581&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:33:14.870638+00:00",
+      "sha256": "ae462c5967665cb338af82a544b006ba3095cc661d8a3effa58cac25592f9c0e",
+      "bytes": 1030285
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.189532&longitude=-85.657624&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:33:27.851170+00:00",
+      "sha256": "64ad7776b2861ce964c085c10bf5e7f94fa244366ed725054c514a60fce8acf0",
+      "bytes": 1055069
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.040678&longitude=-84.458272&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:33:41.332796+00:00",
+      "sha256": "cde0e4c5dc561b3cdc1592f3ed4c71e112db93f0803ae058d94194c37589a39e",
+      "bytes": 1055329
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=38.82952&longitude=-77.273252&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:33:54.351704+00:00",
+      "sha256": "c355c80c7edf6298655863a2963dc944d9d0bb8beb7a23e13f4debf523fed993",
+      "bytes": 1049935
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=37.43752&longitude=-77.300333&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:34:08.598978+00:00",
+      "sha256": "48b90e7009c72a1c8c7e8dd46279f727ab0439f38fef49925fe8601749a5db5b",
+      "bytes": 1051874
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.752759&longitude=-78.778192&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:34:21.476512+00:00",
+      "sha256": "bd2b94c6b9021a7c7b5f9e3d22aa727e1614787cff12cef64e3e2bf515c04f5e",
+      "bytes": 1050042
+    },
+    {
+      "url": "https://previous-runs-api.open-meteo.com/v1/forecast?latitude=42.58824&longitude=-73.97401&start_date=2024-01-01&end_date=2026-06-30&hourly=precipitation_previous_day2%2Ctemperature_2m_previous_day2%2Crelative_humidity_2m_previous_day2%2Cwind_gusts_10m_previous_day2%2Cpressure_msl_previous_day2%2Ccape_previous_day2&models=gfs_seamless&timezone=GMT",
+      "retrieved_at": "2026-10-17T05:34:34.551588+00:00",
+      "sha256": "2806cf9f7cc1efd2116d3da78974947a035c36ad5dbd5deb917142bad813d4b2",
+      "bytes": 1046429
+    }
+  ],
+  "coverage": [
+    {
+      "region": "Alachua, FL",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Hillsborough, FL",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Miami-Dade, FL",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Harris, TX",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Dallas, TX",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Travis, TX",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Oklahoma, OK",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Tulsa, OK",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Shelby, TN",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Davidson, TN",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Hennepin County, MN",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Will County, IL",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Indiana County, PA",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Brunswick County, NC",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "York County, SC",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "St. Charles Parish, LA",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Jackson County, AL",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Jefferson County, OH",
+      "role": "development",
+      "origin": "original",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Bernalillo County, NM",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Do\u00f1a Ana County, NM",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Clark County, NV",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Washoe County, NV",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Yellowstone County, MT",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Missoula County, MT",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Cass County, ND",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Burleigh County, ND",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Minnehaha County, SD",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Pennington County, SD",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Douglas County, NE",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Lancaster County, NE",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Sedgwick County, KS",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Shawnee County, KS",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Dane County, WI",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Milwaukee County, WI",
+      "role": "development",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Ada County, ID",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Bannock County, ID",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Polk County, IA",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Linn County, IA",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Jackson County, MO",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Greene County, MO",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Wayne County, MI",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Kent County, MI",
+      "role": "geographic_validation",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Multnomah County, OR",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Lane County, OR",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Jefferson County, KY",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Fayette County, KY",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Fairfax County, VA",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Henrico County, VA",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Erie County, NY",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    },
+    {
+      "region": "Albany County, NY",
+      "role": "geographic_test",
+      "origin": "new",
+      "complete_days": 885,
+      "requested_days": 912,
+      "first": "2024-01-28",
+      "last": "2026-06-30"
+    }
+  ],
+  "dataset_sha256": "fa182c26e051ada994f83a625ba647aaec6c10f54a2beb086b6430708324436d",
+  "protocol_sha256": "90ce29222cfaffda09f0994e5ce57fb7fc892a800557a85325011ba5b8242413",
+  "forecast_contract": "Nominal hourly day2 GFS forecasts, not observations or verified dissemination timestamps",
+  "label_contract": "Same frozen NOAA county intervals as original data; absence of report is not absence of hazard"
+}
