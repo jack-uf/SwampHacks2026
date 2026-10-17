@@ -58,11 +58,12 @@ def strike_states(site):
 
 
 async def assess(site):
-    weather, alerts, model = await asyncio.gather(providers.weather(site), providers.alerts(site), predictions(site))
+    weather, alerts, model, exposure = await asyncio.gather(
+        providers.weather(site), providers.alerts(site), predictions(site), providers.floodplain(site))
     reports = site_reports(site['id'])
     active_reports = [r for r in reports if parse_time(r['created_at']) > now_utc()-timedelta(hours=48)]
-    index = hazard_index(weather, alerts['items'], active_reports, model['hazards'])
-    result = dict(site=site, weather=weather, alerts=alerts, model=model, index=index,
+    index = hazard_index(weather, alerts['items'], active_reports, model['hazards'], exposure)
+    result = dict(site=site, weather=weather, alerts=alerts, model=model, index=index, floodplain=exposure,
                   assessed_at=now_utc().isoformat())
     put_cache('assessment:'+site['id'], result, result['assessed_at'])
     with db() as c:
@@ -163,29 +164,30 @@ async def tick(now=None):
 
 
 async def scheduler():
-    last_refresh = None
     while True:
         try:
-            if last_refresh is None or now_utc()-last_refresh > timedelta(minutes=30):
-                await refresh_all()
-                last_refresh = now_utc()
             await tick()
         except Exception:
-            log.exception('Scheduler iteration failed; retrying next minute')
+            log.exception('Briefing scheduler failed; retrying next minute')
         await asyncio.sleep(60)
+
+
+async def refresh_scheduler():
+    while True:
+        await refresh_all()
+        await asyncio.sleep(1800)
 
 
 @asynccontextmanager
 async def lifespan(app):
     initialize()
-    task = asyncio.create_task(scheduler()) if os.getenv('PLANIT_SCHEDULER','true')=='true' else None
-    yield
-    if task:
-        task.cancel()
-        try:
-            await task
-        except asyncio.CancelledError:
-            pass
+    tasks = [asyncio.create_task(job()) for job in (scheduler, refresh_scheduler)] if os.getenv('PLANIT_SCHEDULER','true')=='true' else []
+    try:
+        yield
+    finally:
+        for task in tasks:
+            task.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
 
 
 app = FastAPI(title='PlanIT Control',version='0.1.0',lifespan=lifespan)
@@ -216,10 +218,9 @@ async def detail(site_id):
     result = cached_assessment(s)
     if not result or result.get('stale'):
         result = await assess(s)
-    exposure = await providers.floodplain(s)
     with db() as c:
         history = [dict(r) for r in c.execute('SELECT * FROM history WHERE site_id=? ORDER BY recorded_at DESC LIMIT 48',(site_id,))]
-    return dict(result, reports=site_reports(site_id), lightning=strike_states(s), floodplain=exposure, history=history)
+    return dict(result, reports=site_reports(site_id), lightning=strike_states(s), history=history)
 
 
 @app.post('/api/refresh',dependencies=[Depends(admin)])

@@ -12,11 +12,12 @@ LIMIT = asyncio.Semaphore(4)
 async def fetch(key, url, params, ttl=1800):
     cached = get_cache(key)
     now = now_utc()
+    saved = cached['payload'] if cached else dict(data={}, last_success_at=None)
     if cached and not cached['error'] and now-parse_time(cached['fetched_at']) < timedelta(seconds=ttl):
-        return dict(available=True, stale=False, fetched_at=cached['fetched_at'], data=cached['payload'], error=None, url=url)
+        return dict(available=True, stale=False, fetched_at=saved['last_success_at'], data=saved['data'], error=None, url=url)
     # Failed fetches are cooled down too: repeated UI polling must not hammer providers.
     if cached and cached['error'] and now-parse_time(cached['fetched_at']) < timedelta(seconds=120):
-        return dict(available=False, stale=True, fetched_at=cached['fetched_at'], data=cached['payload'], error=cached['error'], url=url)
+        return dict(available=False, stale=True, fetched_at=saved['last_success_at'], data=saved['data'], error=cached['error'], url=url)
     try:
         async with LIMIT:
             async with httpx.AsyncClient(timeout=35, follow_redirects=True) as client:
@@ -31,13 +32,13 @@ async def fetch(key, url, params, ttl=1800):
                 data = response.json()
                 if data.get('error'):
                     raise ValueError(str(data['error']))
-        put_cache(key, data, now.isoformat())
+        put_cache(key, dict(data=data, last_success_at=now.isoformat()), now.isoformat())
         return dict(available=True, stale=False, fetched_at=now.isoformat(), data=data, error=None, url=url)
     except (httpx.HTTPError, ValueError) as exc:
-        error = str(exc)[:400]
-        put_cache(key, cached['payload'] if cached else {}, now.isoformat(), error)
-        return dict(available=False, stale=True, fetched_at=cached['fetched_at'] if cached else None,
-                    data=cached['payload'] if cached else {}, error=error, url=url)
+        error = f'{type(exc).__name__}: {exc}'[:400]
+        put_cache(key, saved, now.isoformat(), error)
+        return dict(available=False, stale=True, fetched_at=saved['last_success_at'],
+                    data=saved['data'], error=error, url=url)
 
 
 async def weather(site):
