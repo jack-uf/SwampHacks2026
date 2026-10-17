@@ -1,0 +1,30 @@
+{
+  "inputs": {
+    "docs/ANALOG_RESEARCH_PROTOCOL.md": "5cbd925d2cb596374252953bf665971c2f2e31697814860c0684f273e740ceb6",
+    "experiments/sprint-20261017-upstream/expanded-metadata.json": "095d7354e0f9000d9b6d862af219951de23d31b8e06a679767bb440b5ab15b51",
+    "experiments/sprint-20261017-analog/stations.json": "e5287b87ff7bf97caa8355d818cd803b96391dce86e458a71018a43f8eb12e06",
+    "scripts/hydrology_research.py": "3cd150dae537cb5a3e209fef5414e0a2c2651fc94238479b224a6b86fda66c22",
+    "scripts/onset_research.py": "0f37363576d7f60bfca8e2d0f78df1ba80355031cdbbde110c92b02b74dbd6e6",
+    "scripts/response_research.py": "9a29fe17f6e8ffd5e229e0c50d0e0a313c5d47736858b6bedf52ff69db798d94",
+    "scripts/response_worker.py": "4130547de0daab33543768ee712f2e7468d75b475804174fc37acdeac600d47a",
+    "scripts/response_network.py": "43a50e3fa6e6b3d672a2541441ac49eedbf05c09e36427f35b52b2b0dc2c2a1f",
+    "scripts/onset_worker.py": "5125d5affdffc89ea09155fc1e31cd4539ba42c95c5a8baed99366aa72f858bc",
+    "experiments/sprint-20261017-response/training.csv.gz": "3bd5180a073b6403684172f5ea0bd9aef0097cd62cc6833aac7a7153414515f4",
+    "experiments/sprint-20261017-response/provenance.json": "d720422bbd9050eae91c63ae571cb1c20b4ddf7e25de6ffae4eeef5f295ceb9e",
+    "experiments/sprint-20261017-response/stations.json": "296a31925275c3c319e33d3bbd34528fe27058bd26a0ccedefd42ae02c130a0e",
+    "experiments/sprint-20261017-response/selection.json": "9d61e0be032487436711f99ea6461f97767cb9f550a303416fb621b3fbfef8bd",
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5",
+    "backend/missions.py": "845f23a6432a9a828e4e80540233bd012594a39499e54fa4bddda75486272eff",
+    "backend/domain.py": "355efe79eefaef1a53897b6d2860fdfa06cdbfad0fd3ea8cb6f8583889b6265b",
+    "experiments/sprint-20261017-response/artifacts/rainfall.joblib": "2e7e941e57130f73c04b92e9eada1c3b5c240c91d3484e1ae47e0a0e43f1554b",
+    "experiments/sprint-20261017-response/artifacts/logistic.joblib": "dfb4c8016c83fb9e96f1ed0a95dba2523addfde7ea704b8a1f16eb9b2a5d096e",
+    "experiments/sprint-20261017-response/artifacts/direct.joblib": "a8264d20f33805aee80f87ef089b0e8f90b4f9e6bcae5d089ef8d53d72bbc61a",
+    "experiments/sprint-20261017-response/artifacts/pooled.joblib": "e075db29436a38f7048b1329beb3e9bcd85348a9d93187f7bb968e31426eecd9"
+  },
+  "seed": 42,
+  "fresh_gauges": 31,
+  "unopened": "No reserved discharge requested before protocol freeze"
+}
