@@ -6,6 +6,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 import httpx
+from email.utils import parsedate_to_datetime
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / 'data/raw'
@@ -30,8 +31,19 @@ def download(url: str, name: str, params=None) -> Path:
                 'sha256': hashlib.sha256(response.content).hexdigest(), 'bytes': len(response.content)
             }, indent=2))
             return path
-        except httpx.HTTPError:
+        except httpx.HTTPError as exc:
             if attempt == 3:
                 raise
-            time.sleep(2 ** attempt)
+            delay = 2 ** attempt
+            if isinstance(exc,httpx.HTTPStatusError) and exc.response.status_code == 429:
+                if attempt > 0:
+                    raise RuntimeError('Repeated provider rate limit; stop ingestion and retry after the provider window resets') from exc
+                retry = exc.response.headers.get('Retry-After','60')
+                try:
+                    delay = float(retry)
+                except ValueError:
+                    delay = (parsedate_to_datetime(retry)-datetime.now(timezone.utc)).total_seconds()
+                if delay > 60:
+                    raise RuntimeError(f'Provider requests {retry} Retry-After; stop and rerun after that window') from exc
+            time.sleep(max(0,delay))
     raise RuntimeError('Download did not complete')
