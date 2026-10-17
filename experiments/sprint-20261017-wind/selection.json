@@ -1891,7 +1891,7 @@
   "model_sha256": "ee72114a32cf3e65e25a68f4f2ad50e774052940866e039144a5246c3de26a40",
   "protocol_sha256": "d008e37995aaad72261796fc5e296fe4af9061c909e22dbf3cd6ff5a5842ec8c",
   "protocol_document_sha256": "1b1a67d5d90906d09bc95a700213082fe3fcf8fb5ca24bad02189bc819d28066",
-  "code_sha256": "bc56d43bb7031decc56246d28f213c0092ccacfba224a3f03cfa733872f8ed71",
+  "code_sha256": "28d509d224a900e27f921a65bd67533c5386c93a7949abe5352caf273c60cdf5",
   "dependencies": {
     "scripts/train.py": "9711ca34e2847b5abcbb96a7d5ff70e59931dfd013c0813d91169135311eb525",
     "scripts/ml_sprint.py": "eaf10e329b15550da8d7811afb379be6b8f4e718dc259f483698bf874af3946f",
@@ -1907,5 +1907,6 @@
     "scipy": "1.18.1"
   },
   "selection_rule": "Supported candidates first; equal temporal/geographic validation AP, mean Brier tie-break, then name",
-  "test_outcomes_inspected": false
+  "test_outcomes_inspected": false,
+  "code_revision": "Evaluation-side fix: per-station baseline metrics use the non-probabilistic rule helper. Features, splits, recipes and threshold unchanged."
 }

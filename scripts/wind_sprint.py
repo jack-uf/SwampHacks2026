@@ -415,7 +415,7 @@ def evaluate():
         data = parts[part].copy()
         probability = calibrated(winner, data)
         data['probability'] = probability
-        stations = {station: dict(baseline=station_metrics(group.exceedance, group.forecast_gust_max_kmh, THRESHOLD_KMH),
+        stations = {station: dict(baseline=rule_metrics(group.exceedance, group.forecast_gust_max_kmh, THRESHOLD_KMH),
                                   updated=station_metrics(group.exceedance, group.probability, winner['threshold']))
                     for station, group in data.groupby('station')}
         info = dict(rows=len(data), stations=int(data.station.nunique()), states=sorted(set(data.state)),
