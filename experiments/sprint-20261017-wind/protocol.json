@@ -1,0 +1,740 @@
+{
+  "id": "sprint-20261017-wind",
+  "document": "docs/WIND_SPRINT_PROTOCOL.md",
+  "document_sha256": "ed4cc9974c27e3a44a446ec21e006c3d5d3dc333b1a93301bff841e680ff25e0",
+  "county_source": "experiments/sprint-20261017/protocol.json",
+  "county_source_sha256": "90ce29222cfaffda09f0994e5ce57fb7fc892a800557a85325011ba5b8242413",
+  "seed": 42,
+  "start": "2024-01-01",
+  "end": "2026-06-30",
+  "threshold_kmh": 60.0,
+  "max_station_km": 100.0,
+  "counties": [
+    {
+      "region": "Bernalillo County, NM",
+      "state": "NM",
+      "county_fips": 35001,
+      "latitude": 35.053628,
+      "longitude": -106.66908,
+      "role": "development",
+      "station": "ABQ",
+      "distance_km": 5.0,
+      "dropped": null
+    },
+    {
+      "region": "Do\u00f1a Ana County, NM",
+      "state": "NM",
+      "county_fips": 35013,
+      "latitude": 32.349919,
+      "longitude": -106.834968,
+      "role": "development",
+      "station": "LRU",
+      "distance_km": 10.6,
+      "dropped": null
+    },
+    {
+      "region": "Clark County, NV",
+      "state": "NV",
+      "county_fips": 32003,
+      "latitude": 36.21413,
+      "longitude": -115.014398,
+      "role": "development",
+      "station": "LSV",
+      "distance_km": 3.0,
+      "dropped": null
+    },
+    {
+      "region": "Washoe County, NV",
+      "state": "NV",
+      "county_fips": 32031,
+      "latitude": 40.73132,
+      "longitude": -119.663269,
+      "role": "development",
+      "station": null,
+      "distance_km": 118.3,
+      "dropped": "No unclaimed station within 100 km"
+    },
+    {
+      "region": "Yellowstone County, MT",
+      "state": "MT",
+      "county_fips": 30111,
+      "latitude": 45.936987,
+      "longitude": -108.276656,
+      "role": "development",
+      "station": "BIL",
+      "distance_km": 25.1,
+      "dropped": null
+    },
+    {
+      "region": "Missoula County, MT",
+      "state": "MT",
+      "county_fips": 30063,
+      "latitude": 47.027263,
+      "longitude": -113.892691,
+      "role": "development",
+      "station": "MSO",
+      "distance_km": 19.2,
+      "dropped": null
+    },
+    {
+      "region": "Cass County, ND",
+      "state": "ND",
+      "county_fips": 38017,
+      "latitude": 46.927003,
+      "longitude": -97.252375,
+      "role": "development",
+      "station": "FAR",
+      "distance_km": 33.5,
+      "dropped": null
+    },
+    {
+      "region": "Burleigh County, ND",
+      "state": "ND",
+      "county_fips": 38015,
+      "latitude": 46.978829,
+      "longitude": -100.469533,
+      "role": "development",
+      "station": "BIS",
+      "distance_km": 31.1,
+      "dropped": null
+    },
+    {
+      "region": "Minnehaha County, SD",
+      "state": "SD",
+      "county_fips": 46099,
+      "latitude": 43.667472,
+      "longitude": -96.795726,
+      "role": "development",
+      "station": "FSD",
+      "distance_km": 10.6,
+      "dropped": null
+    },
+    {
+      "region": "Pennington County, SD",
+      "state": "SD",
+      "county_fips": 46103,
+      "latitude": 44.002349,
+      "longitude": -102.823801,
+      "role": "development",
+      "station": "RAP",
+      "distance_km": 19.3,
+      "dropped": null
+    },
+    {
+      "region": "Douglas County, NE",
+      "state": "NE",
+      "county_fips": 31055,
+      "latitude": 41.297091,
+      "longitude": -96.154066,
+      "role": "development",
+      "station": "MLE",
+      "distance_km": 11.8,
+      "dropped": null
+    },
+    {
+      "region": "Lancaster County, NE",
+      "state": "NE",
+      "county_fips": 31109,
+      "latitude": 40.783547,
+      "longitude": -96.688658,
+      "role": "development",
+      "station": "LNK",
+      "distance_km": 8.2,
+      "dropped": null
+    },
+    {
+      "region": "Sedgwick County, KS",
+      "state": "KS",
+      "county_fips": 20173,
+      "latitude": 37.681045,
+      "longitude": -97.461054,
+      "role": "development",
+      "station": "ICT",
+      "distance_km": 4.4,
+      "dropped": null
+    },
+    {
+      "region": "Shawnee County, KS",
+      "state": "KS",
+      "county_fips": 20177,
+      "latitude": 39.041805,
+      "longitude": -95.755664,
+      "role": "development",
+      "station": "TOP",
+      "distance_km": 12.1,
+      "dropped": null
+    },
+    {
+      "region": "Dane County, WI",
+      "state": "WI",
+      "county_fips": 55025,
+      "latitude": 43.067468,
+      "longitude": -89.417852,
+      "role": "development",
+      "station": "MSN",
+      "distance_km": 10.0,
+      "dropped": null
+    },
+    {
+      "region": "Milwaukee County, WI",
+      "state": "WI",
+      "county_fips": 55079,
+      "latitude": 42.912643,
+      "longitude": -87.862312,
+      "role": "development",
+      "station": "MKE",
+      "distance_km": 4.8,
+      "dropped": null
+    },
+    {
+      "region": "Ada County, ID",
+      "state": "ID",
+      "county_fips": 16001,
+      "latitude": 43.451476,
+      "longitude": -116.244376,
+      "role": "geographic_validation",
+      "station": "BOI",
+      "distance_km": 12.8,
+      "dropped": null
+    },
+    {
+      "region": "Bannock County, ID",
+      "state": "ID",
+      "county_fips": 16005,
+      "latitude": 42.692921,
+      "longitude": -112.228982,
+      "role": "geographic_validation",
+      "station": "PIH",
+      "distance_km": 38.4,
+      "dropped": null
+    },
+    {
+      "region": "Polk County, IA",
+      "state": "IA",
+      "county_fips": 19153,
+      "latitude": 41.684816,
+      "longitude": -93.568971,
+      "role": "geographic_validation",
+      "station": "IKV",
+      "distance_km": 0.3,
+      "dropped": null
+    },
+    {
+      "region": "Linn County, IA",
+      "state": "IA",
+      "county_fips": 19113,
+      "latitude": 42.077951,
+      "longitude": -91.597674,
+      "role": "geographic_validation",
+      "station": "CID",
+      "distance_km": 24.1,
+      "dropped": null
+    },
+    {
+      "region": "Jackson County, MO",
+      "state": "MO",
+      "county_fips": 29095,
+      "latitude": 39.005364,
+      "longitude": -94.343211,
+      "role": "geographic_validation",
+      "station": "LXT",
+      "distance_km": 5.6,
+      "dropped": null
+    },
+    {
+      "region": "Greene County, MO",
+      "state": "MO",
+      "county_fips": 29077,
+      "latitude": 37.258196,
+      "longitude": -93.340641,
+      "role": "geographic_validation",
+      "station": "SGF",
+      "distance_km": 4.8,
+      "dropped": null
+    },
+    {
+      "region": "Wayne County, MI",
+      "state": "MI",
+      "county_fips": 26163,
+      "latitude": 42.284664,
+      "longitude": -83.261953,
+      "role": "geographic_validation",
+      "station": "DTW",
+      "distance_km": 8.3,
+      "dropped": null
+    },
+    {
+      "region": "Kent County, MI",
+      "state": "MI",
+      "county_fips": 26081,
+      "latitude": 43.032497,
+      "longitude": -85.547446,
+      "role": "geographic_validation",
+      "station": "GRR",
+      "distance_km": 16.8,
+      "dropped": null
+    },
+    {
+      "region": "Multnomah County, OR",
+      "state": "OR",
+      "county_fips": 41051,
+      "latitude": 45.547711,
+      "longitude": -122.417363,
+      "role": "geographic_test",
+      "station": "TTD",
+      "distance_km": 0.7,
+      "dropped": null
+    },
+    {
+      "region": "Lane County, OR",
+      "state": "OR",
+      "county_fips": 41039,
+      "latitude": 43.928334,
+      "longitude": -122.897581,
+      "role": "geographic_test",
+      "station": "77S",
+      "distance_km": 8.7,
+      "dropped": null
+    },
+    {
+      "region": "Jefferson County, KY",
+      "state": "KY",
+      "county_fips": 21111,
+      "latitude": 38.189532,
+      "longitude": -85.657624,
+      "role": "geographic_test",
+      "station": "LOU",
+      "distance_km": 4.3,
+      "dropped": null
+    },
+    {
+      "region": "Fayette County, KY",
+      "state": "KY",
+      "county_fips": 21067,
+      "latitude": 38.040678,
+      "longitude": -84.458272,
+      "role": "geographic_test",
+      "station": "LEX",
+      "distance_km": 12.9,
+      "dropped": null
+    },
+    {
+      "region": "Fairfax County, VA",
+      "state": "VA",
+      "county_fips": 51059,
+      "latitude": 38.82952,
+      "longitude": -77.273252,
+      "role": "geographic_test",
+      "station": "DAA",
+      "distance_km": 15.0,
+      "dropped": null
+    },
+    {
+      "region": "Henrico County, VA",
+      "state": "VA",
+      "county_fips": 51087,
+      "latitude": 37.43752,
+      "longitude": -77.300333,
+      "role": "geographic_test",
+      "station": "RIC",
+      "distance_km": 8.5,
+      "dropped": null
+    },
+    {
+      "region": "Erie County, NY",
+      "state": "NY",
+      "county_fips": 36029,
+      "latitude": 42.752759,
+      "longitude": -78.778192,
+      "role": "geographic_test",
+      "station": "BUF",
+      "distance_km": 21.2,
+      "dropped": null
+    },
+    {
+      "region": "Albany County, NY",
+      "state": "NY",
+      "county_fips": 36001,
+      "latitude": 42.58824,
+      "longitude": -73.97401,
+      "role": "geographic_test",
+      "station": "ALB",
+      "distance_km": 23.4,
+      "dropped": null
+    }
+  ],
+  "stations": [
+    {
+      "sid": "77S",
+      "name": "Creswell Hobby Field",
+      "state": "OR",
+      "latitude": 43.9308,
+      "longitude": -123.0067,
+      "elevation_m": 162.28636,
+      "role": "geographic_test",
+      "counties": [
+        41039
+      ]
+    },
+    {
+      "sid": "ABQ",
+      "name": "ALBUQUERQUE INTL",
+      "state": "NM",
+      "latitude": 35.0419,
+      "longitude": -106.6155,
+      "elevation_m": 1620.0,
+      "role": "development",
+      "counties": [
+        35001
+      ]
+    },
+    {
+      "sid": "ALB",
+      "name": "ALBANY COUNTY ARPT",
+      "state": "NY",
+      "latitude": 42.7576,
+      "longitude": -73.8036,
+      "elevation_m": 89.0,
+      "role": "geographic_test",
+      "counties": [
+        36001
+      ]
+    },
+    {
+      "sid": "BIL",
+      "name": "BILLINGS/LOGAN INTL",
+      "state": "MT",
+      "latitude": 45.8069,
+      "longitude": -108.5422,
+      "elevation_m": 1088.0,
+      "role": "development",
+      "counties": [
+        30111
+      ]
+    },
+    {
+      "sid": "BIS",
+      "name": "BISMARCK",
+      "state": "ND",
+      "latitude": 46.7727,
+      "longitude": -100.7458,
+      "elevation_m": 506.0,
+      "role": "development",
+      "counties": [
+        38015
+      ]
+    },
+    {
+      "sid": "BOI",
+      "name": "BOISE MUNICIPAL",
+      "state": "ID",
+      "latitude": 43.5667,
+      "longitude": -116.2406,
+      "elevation_m": 874.0,
+      "role": "geographic_validation",
+      "counties": [
+        16001
+      ]
+    },
+    {
+      "sid": "BUF",
+      "name": "BUFFALO INTL ARPT",
+      "state": "NY",
+      "latitude": 42.9408,
+      "longitude": -78.7358,
+      "elevation_m": 215.0,
+      "role": "geographic_test",
+      "counties": [
+        36029
+      ]
+    },
+    {
+      "sid": "CID",
+      "name": "CEDAR RAPIDS",
+      "state": "IA",
+      "latitude": 41.8829,
+      "longitude": -91.7246,
+      "elevation_m": 265.0,
+      "role": "geographic_validation",
+      "counties": [
+        19113
+      ]
+    },
+    {
+      "sid": "DAA",
+      "name": "FORT BELVOIR/DAVISO",
+      "state": "VA",
+      "latitude": 38.715,
+      "longitude": -77.181,
+      "elevation_m": 21.0,
+      "role": "geographic_test",
+      "counties": [
+        51059
+      ]
+    },
+    {
+      "sid": "DTW",
+      "name": "DETROIT/WAYNE",
+      "state": "MI",
+      "latitude": 42.23,
+      "longitude": -83.33,
+      "elevation_m": 195.0,
+      "role": "geographic_validation",
+      "counties": [
+        26163
+      ]
+    },
+    {
+      "sid": "FAR",
+      "name": "FARGO",
+      "state": "ND",
+      "latitude": 46.9253,
+      "longitude": -96.8111,
+      "elevation_m": 274.0,
+      "role": "development",
+      "counties": [
+        38017
+      ]
+    },
+    {
+      "sid": "FSD",
+      "name": "SIOUX FALLS",
+      "state": "SD",
+      "latitude": 43.5769,
+      "longitude": -96.7536,
+      "elevation_m": 428.94208,
+      "role": "development",
+      "counties": [
+        46099
+      ]
+    },
+    {
+      "sid": "GRR",
+      "name": "Grand Rapids",
+      "state": "MI",
+      "latitude": 42.8821,
+      "longitude": -85.523,
+      "elevation_m": 240.0,
+      "role": "geographic_validation",
+      "counties": [
+        26081
+      ]
+    },
+    {
+      "sid": "ICT",
+      "name": "WICHITA",
+      "state": "KS",
+      "latitude": 37.65,
+      "longitude": -97.43,
+      "elevation_m": 408.0,
+      "role": "development",
+      "counties": [
+        20173
+      ]
+    },
+    {
+      "sid": "IKV",
+      "name": "ANKENY",
+      "state": "IA",
+      "latitude": 41.6878,
+      "longitude": -93.5695,
+      "elevation_m": 270.7,
+      "role": "geographic_validation",
+      "counties": [
+        19153
+      ]
+    },
+    {
+      "sid": "LEX",
+      "name": "LEXINGTON/BLUEGRASS",
+      "state": "KY",
+      "latitude": 38.0408,
+      "longitude": -84.6058,
+      "elevation_m": 301.0,
+      "role": "geographic_test",
+      "counties": [
+        21067
+      ]
+    },
+    {
+      "sid": "LNK",
+      "name": "Lincoln",
+      "state": "NE",
+      "latitude": 40.8312,
+      "longitude": -96.7633,
+      "elevation_m": 352.0,
+      "role": "development",
+      "counties": [
+        31109
+      ]
+    },
+    {
+      "sid": "LOU",
+      "name": "LOUISVILLE/BOWMAN",
+      "state": "KY",
+      "latitude": 38.228,
+      "longitude": -85.6637,
+      "elevation_m": 167.0,
+      "role": "geographic_test",
+      "counties": [
+        21111
+      ]
+    },
+    {
+      "sid": "LRU",
+      "name": "LAS CRUCES INTL",
+      "state": "NM",
+      "latitude": 32.2894,
+      "longitude": -106.922,
+      "elevation_m": 1358.0,
+      "role": "development",
+      "counties": [
+        35013
+      ]
+    },
+    {
+      "sid": "LSV",
+      "name": "NELLIS AFB",
+      "state": "NV",
+      "latitude": 36.2362,
+      "longitude": -115.0342,
+      "elevation_m": 570.0,
+      "role": "development",
+      "counties": [
+        32003
+      ]
+    },
+    {
+      "sid": "LXT",
+      "name": "Lee s Summit",
+      "state": "MO",
+      "latitude": 38.9597,
+      "longitude": -94.3714,
+      "elevation_m": 306.0,
+      "role": "geographic_validation",
+      "counties": [
+        29095
+      ]
+    },
+    {
+      "sid": "MKE",
+      "name": "MILWAUKEE",
+      "state": "WI",
+      "latitude": 42.9472,
+      "longitude": -87.8967,
+      "elevation_m": 204.0,
+      "role": "development",
+      "counties": [
+        55079
+      ]
+    },
+    {
+      "sid": "MLE",
+      "name": "MILLARD",
+      "state": "NE",
+      "latitude": 41.196,
+      "longitude": -96.112,
+      "elevation_m": 322.07217,
+      "role": "development",
+      "counties": [
+        31055
+      ]
+    },
+    {
+      "sid": "MSN",
+      "name": "MADISON",
+      "state": "WI",
+      "latitude": 43.1406,
+      "longitude": -89.3453,
+      "elevation_m": 261.0,
+      "role": "development",
+      "counties": [
+        55025
+      ]
+    },
+    {
+      "sid": "MSO",
+      "name": "MISSOULA/BELL FIELD",
+      "state": "MT",
+      "latitude": 46.9208,
+      "longitude": -114.0925,
+      "elevation_m": 972.0,
+      "role": "development",
+      "counties": [
+        30063
+      ]
+    },
+    {
+      "sid": "PIH",
+      "name": "POCATELLO MUNICIPAL",
+      "state": "ID",
+      "latitude": 42.9098,
+      "longitude": -112.5959,
+      "elevation_m": 1365.0,
+      "role": "geographic_validation",
+      "counties": [
+        16005
+      ]
+    },
+    {
+      "sid": "RAP",
+      "name": "RAPID CITY",
+      "state": "SD",
+      "latitude": 44.0453,
+      "longitude": -103.0574,
+      "elevation_m": 964.70654,
+      "role": "development",
+      "counties": [
+        46103
+      ]
+    },
+    {
+      "sid": "RIC",
+      "name": "RICHMOND/BYRD FIELD",
+      "state": "VA",
+      "latitude": 37.5115,
+      "longitude": -77.3234,
+      "elevation_m": 54.0,
+      "role": "geographic_test",
+      "counties": [
+        51087
+      ]
+    },
+    {
+      "sid": "SGF",
+      "name": "SPRINGFIELD",
+      "state": "MO",
+      "latitude": 37.2397,
+      "longitude": -93.3897,
+      "elevation_m": 390.0,
+      "role": "geographic_validation",
+      "counties": [
+        29077
+      ]
+    },
+    {
+      "sid": "TOP",
+      "name": "TOPEKA (TOP)",
+      "state": "KS",
+      "latitude": 39.07,
+      "longitude": -95.62,
+      "elevation_m": 270.0,
+      "role": "development",
+      "counties": [
+        20177
+      ]
+    },
+    {
+      "sid": "TTD",
+      "name": "Portland - Troutdale",
+      "state": "OR",
+      "latitude": 45.551,
+      "longitude": -122.4098,
+      "elevation_m": -0.15002128,
+      "role": "geographic_test",
+      "counties": [
+        41051
+      ]
+    }
+  ]
+}
