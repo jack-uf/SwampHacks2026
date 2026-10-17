@@ -1,6 +1,6 @@
 # Emerging high-flow research
 
-This isolated experiment asks whether PlanIT can warn about newly emerging high flow rather than mostly recognizing persistent high water. It implements the committed [protocol](ONSET_RESEARCH_PROTOCOL.md). Results belong in `ONSET_RESEARCH_RESULTS.md` after the final evaluation. Nothing here changes served models, the screening index, mission ratings or production safety rules.
+This isolated experiment asks whether PlanIT can warn about newly emerging high flow rather than mostly recognizing persistent high water. It implements the committed [protocol](ONSET_RESEARCH_PROTOCOL.md). Measured results are in [the final report](ONSET_RESEARCH_RESULTS.md). Nothing here changes served models, the screening index, mission ratings or production safety rules.
 
 ## Data and target
 
@@ -41,3 +41,11 @@ Collection refuses an already frozen provenance record. Selection refuses an exi
 Raw source files, training/test tables, fitted artifacts and prediction tables are ignored by Git. Committed manifests and reports identify them by hashes. Reproduction requires network access for public sources and the dependencies recorded in selection metadata. Preserve the previous experiment cache because this study intentionally shares its immutable source bytes.
 
 The focused tests cover certification and missing days, local-day warning lead, exclusion of fresh geography from fitting, development-year buffers, delayed feedback, conservative ties, quantile ordering and unique-event accounting. Existing production tests remain required before delivery. Dataset hashes and the preserved-artifact checks in the frozen protocol establish that this experiment does not replace the application's models or source data.
+
+Run the independent, read-only outcome and prediction audit after evaluation:
+
+```sh
+OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 .venv/bin/python -m scripts.audit_onset
+```
+
+The audit reconstructs each target from original discharge records and reproduces frozen-artifact probabilities. It writes only its own audit record.

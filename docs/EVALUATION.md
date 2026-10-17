@@ -24,6 +24,8 @@ The separate [measured river flood audit](FLOOD_SPRINT_RESULTS.md) stopped befor
 
 The separate [forecast-memory hydrology experiment](HYDROLOGY_RESEARCH_RESULTS.md) evaluates measured high discharge at held-out watersheds. It retains experimental candidates only; a discharge percentile is not a certified flood threshold or site-safety outcome.
 
+The separate [emerging high-flow study](ONSET_RESEARCH_RESULTS.md) evaluates newly emerging measured-discharge episodes at fresh watersheds. Its onset target and warning policies remain experimental and are not comparable with persistent-high-flow AP. Production models are unchanged.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.
