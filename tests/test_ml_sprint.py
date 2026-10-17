@@ -147,7 +147,7 @@ def test_frozen_selection_rejects_changed_code_or_model(tmp_path, monkeypatch):
                  (tmp_path / 'models/hazards.joblib', 'served_model_sha256'),
                  (tmp_path / 'docs/ML_SPRINT_PROTOCOL.md', 'protocol_document_sha256'),
                  (tmp_path / 'scripts/ml_sprint.py', 'code_sha256')]
-    selection = {}
+    selection = dict(dependencies={}, versions={})
     for path, field in artifacts:
         path.parent.mkdir(exist_ok=True)
         path.write_text('frozen artifact')
@@ -157,3 +157,40 @@ def test_frozen_selection_rejects_changed_code_or_model(tmp_path, monkeypatch):
     artifacts[-1][0].write_text('changed after selection')
     with pytest.raises(ValueError, match='Frozen selection input changed'):
         ml_sprint.frozen_selection()
+
+
+@pytest.mark.parametrize('changed', ['dependency', 'version'])
+def test_frozen_selection_rejects_dependency_or_package_changes(tmp_path, monkeypatch, changed):
+    monkeypatch.setattr(ml_sprint, 'ROOT', tmp_path)
+    monkeypatch.setattr(ml_sprint, 'OUT', tmp_path)
+    paths = ['selected.joblib', 'training.csv.gz', 'protocol.json', 'models/hazards.joblib',
+             'docs/ML_SPRINT_PROTOCOL.md', 'scripts/ml_sprint.py', 'backend/model.py']
+    for name in paths:
+        path = tmp_path / name
+        path.parent.mkdir(exist_ok=True)
+        path.write_text('frozen')
+    checksum = ml_sprint.digest(tmp_path / paths[0])
+    selection = {field: checksum for field in ['model_sha256', 'dataset_sha256', 'protocol_sha256',
+                 'served_model_sha256', 'protocol_document_sha256', 'code_sha256']}
+    selection.update(dependencies={'backend/model.py': checksum},
+                     versions={'numpy': ml_sprint.importlib.metadata.version('numpy')})
+    if changed == 'dependency':
+        (tmp_path / 'backend/model.py').write_text('changed')
+    else:
+        selection['versions']['numpy'] = 'different'
+    (tmp_path / 'selection.json').write_text(json.dumps(selection))
+    with pytest.raises(ValueError, match='Frozen (dependency|package version) changed'):
+        ml_sprint.frozen_selection()
+
+
+def test_interrupted_final_evaluation_cannot_be_restarted(tmp_path, monkeypatch):
+    monkeypatch.setattr(ml_sprint, 'OUT', tmp_path)
+    monkeypatch.setattr(ml_sprint, 'frozen_selection', lambda: {})
+    (tmp_path / 'selection.json').write_text('{}')
+    def interrupted():
+        raise RuntimeError('interrupted')
+    monkeypatch.setattr(ml_sprint, 'load_dataset', interrupted)
+    with pytest.raises(RuntimeError, match='interrupted'):
+        ml_sprint.evaluate()
+    with pytest.raises(FileExistsError):
+        ml_sprint.evaluate()

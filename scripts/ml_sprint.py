@@ -27,6 +27,8 @@ EXTRA_FEATURES = ['antecedent_forecast_rain_7d_mm', 'forecast_pressure_min_hpa',
                   'forecast_pressure_change_24h_hpa', 'forecast_cape_max_jkg']
 OUT = ROOT / 'experiments/sprint-20261017'
 WEATHER = [f for f in FEATURES if f not in ['latitude', 'longitude', 'season_sin', 'season_cos']]
+DEPENDENCIES = ['backend/model.py', 'scripts/build_training.py', 'scripts/train.py', 'scripts/common.py']
+PACKAGES = ['numpy', 'pandas', 'scikit-learn', 'xgboost', 'lightgbm', 'joblib', 'scipy']
 
 
 def digest(path):
@@ -185,7 +187,8 @@ def select():
         served_model_sha256=digest(ROOT / 'models/hazards.joblib'),
         protocol_sha256=digest(OUT / 'protocol.json'), protocol_document_sha256=digest(ROOT / 'docs/ML_SPRINT_PROTOCOL.md'),
         code_sha256=digest(ROOT / 'scripts/ml_sprint.py'),
-        versions={name: importlib.metadata.version(name) for name in ['numpy', 'pandas', 'scikit-learn', 'xgboost', 'lightgbm', 'joblib']},
+        dependencies={name: digest(ROOT / name) for name in DEPENDENCIES},
+        versions={name: importlib.metadata.version(name) for name in PACKAGES},
         selection_rule='Supported candidates first; equal temporal/geographic validation AP, mean Brier tie-break, then name',
         test_outcomes_inspected=False))
 
@@ -243,13 +246,24 @@ def frozen_selection():
                         (ROOT / 'scripts/ml_sprint.py', 'code_sha256')]:
         if digest(path) != selection[field]:
             raise ValueError('Frozen selection input changed: ' + str(path))
+    for name, checksum in selection['dependencies'].items():
+        if digest(ROOT / name) != checksum:
+            raise ValueError('Frozen dependency changed: ' + name)
+    for name, version in selection['versions'].items():
+        if importlib.metadata.version(name) != version:
+            raise ValueError('Frozen package version changed: ' + name)
     return selection
 
 
 def evaluate():
     if (OUT / 'evaluation.json').exists():
         raise FileExistsError('Final evaluation already exists; do not tune on it. Use verify')
-    selection = frozen_selection(); frame = load_dataset(); parts = partition_rows(frame)
+    selection = frozen_selection()
+    # An interrupted evaluation consumes this holdout too; never expose it twice.
+    with (OUT / 'evaluation-started.json').open('x') as marker:
+        json.dump(dict(started_at=datetime.now(timezone.utc).isoformat(),
+                       selection_sha256=digest(OUT / 'selection.json')), marker)
+    frame = load_dataset(); parts = partition_rows(frame)
     chosen = joblib.load(OUT / 'selected.joblib')['hazards']
     served = joblib.load(ROOT / 'models/hazards.joblib')['hazards']
     report = dict(created_at=datetime.now(timezone.utc).isoformat(), selection_sha256=digest(OUT / 'selection.json'),
