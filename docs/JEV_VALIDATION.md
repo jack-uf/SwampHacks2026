@@ -82,6 +82,31 @@ The disagreements were an additional `other` label on the multi-hazard report, a
 
 **Abstention was 10/10, uncertainty 9/10, and the clarification queue 6/10**; the other four entered urgent review and also required clarification. The no-hazard cases contribute to abstention by definition. Vague fictional locations, the broad `other` question and additional review judgments contributed to uncertainty. Thus apparent routing agreement and very small urgency error do not establish useful field reliability. Do not adjust cutoffs or question wording against these cases and reuse their scores as independent evidence. A future experiment needs new preregistered cases, independently adjudicated authentic field observations with sharing authorization, and a separately held-out evaluation.
 
+### Abstention rule v2 and the held-out run
+
+On 14 valid held-out responses, the v2 rule cut abstention from 14/14 to 5/14 without changing any review queue. Of the 9 decisive answers, 7 matched the author labels exactly and 2 over-labeled a no-hazard report. Both of those stayed in the clarification queue and pending.
+
+The v1 rule above treats a confident "no hazard" as abstention and lets location or clarification uncertainty block the hazard labels. `jev.abstention` (rule `hazard-decisive-v2`) abstains only when a specific hazard question sits between 0.3 and 0.7, when `other` is uncertain and no specific hazard was accepted, or when inbox confidence is below 0.7. The review queue, cutoffs, prompts and pinned model are unchanged. `abstained_v1` is still returned for comparison. `tests/test_jev.py` replays the ten stored live responses and checks that labels, uncertainty lists, queues and the v1 flag reproduce exactly.
+
+I designed v2 after reading the ten frozen responses, so those ten are development data. On them, v2 abstains on 3/10 and 5 of 7 decisive answers match. That number is not evidence.
+
+The held-out method: 16 new fictional, author-labeled cases (`tests/fixtures/jev-heldout.json`) and `docs/jev-heldout-protocol.json`, which pins the corpus hash, question hash, model and a SHA-256 of the `jev.abstention` source. Both were committed in `405ca32` before any held-out call. The runner made one sequential pass with no retries (`output/jev-heldout-evaluation.jsonl`). Both rules are scored on the same responses by `scripts.evaluate_jev --compare`.
+
+| Rule, held-out responses | Abstained | Decisive | Decisive exact | Decisive wrong | Abstained but exact |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| v1 (original) | 14 / 14 | 0 | n/a | 0 | 8 |
+| v2 `hazard-decisive-v2` | 5 / 14 | 9 | 7 (.778) | 2 | 1 |
+
+What happened in the run:
+
+- 15 of 16 cases were sent. The 15th, a prompt-injection case (`injection-hornets`), returned a response that failed strict contract validation, so PlanIT kept manual classification. The runner stops on the first failure, so `meeting-reminder` was never sent. Raw provider bodies are not stored, so the exact validation failure is not recorded.
+- Label metrics over the 14 valid responses: micro precision .722, recall .867 (13 TP, 5 FP, 2 FN). Routing matched all 14 author labels; urgency mean absolute error .095.
+- The two decisive errors: `resolved-water` (drained water, Jev accepted flood) and `hearsay-bear` (secondhand rumor, Jev accepted wildlife and other). Both are false positives on reports a human would close.
+- v2 still abstained on the wind miss (`wind-lift`, storm not accepted) and on the `other`-only case (`damaged-cord`).
+- Returned usage was 17,952 input and 3,848 output tokens, about $0.00075 at the retrieved input price. That is an estimate, not an invoice.
+
+Limits: the same author wrote the cases and labels, 14 responses cannot support confidence intervals, and the cases are fictional. The rule now presents more answers as decisive, which makes over-labeling visible as confident suggestions. That is acceptable only because suggestions never verify a report, set a JHA rating or skip the review queue.
+
 ### Workflow and failure checks
 
 The browser report returned five hazard suggestions, a low-confidence routine inbox and a clarification queue. Its explicit fictional framing may affect routing; that observation is not part of the measured ten-case suite. The UI retained all accepted suggestions, displayed the different inbox and urgency judgments, and left it pending. A supervisor added flood and equipment obstruction to the manual labels. Reloading preserved the correction, original text and exact original provider object while status remained pending. Filtering on `other`, which was only an AI suggestion, included the report and its map pin; wildfire gave an explicit empty state. Clarification and manual-only queues were exercised separately. The fictional test reports were rejected afterward, retaining their audit records and removing their map pins.
