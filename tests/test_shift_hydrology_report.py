@@ -1,5 +1,8 @@
 from copy import deepcopy
 
+import pandas as pd
+import pytest
+
 from scripts.report_shift_hydrology import promotion_gates
 
 
@@ -39,3 +42,22 @@ def test_coverage_keeps_onsets_at_gauges_with_no_eligible_decisions():
     assert result['all_certified_onsets']==2
     assert result['event_coverage']==.5
     assert result['eligibility_reasons']=={'eligible':1,'missing_history':1}
+
+
+@pytest.mark.parametrize('column,value',[('target',0),('event_time',''),('station','wrong')])
+def test_saved_predictions_must_match_canonical_labels_even_with_valid_checksum(tmp_path,monkeypatch,column,value):
+    from scripts import report_shift_hydrology as report
+    monkeypatch.setattr(report,'OUT',tmp_path)
+    (tmp_path/'predictions').mkdir()
+    expected=pd.DataFrame(dict(station=['001'],huc=['01'],decision_time=['2025-02-01T00:00:00+00:00'],
+        horizon=[6],target=[1],event_time=['2025-02-01T06:00:00+00:00']))
+    saved=expected.assign(probability=.5)
+    path=tmp_path/'predictions'/'candidate-temporal_test.csv.gz'
+    saved.to_csv(path,index=False)
+    evaluations=[dict(name='candidate',partition='temporal_test',prediction_sha256=report.digest(path))]
+    report.read_predictions({'name':'candidate'},'temporal_test',evaluations,expected)
+    saved.loc[0,column]=value
+    saved.to_csv(path,index=False)
+    evaluations[0]['prediction_sha256']=report.digest(path)
+    with pytest.raises(AssertionError):
+        report.read_predictions({'name':'candidate'},'temporal_test',evaluations,expected)

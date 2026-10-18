@@ -32,13 +32,16 @@ def promotion_gates(evidence):
                               'High-flow percentile target is not a verified flooding threshold'])
 
 
-def read_predictions(record, partition, evaluations):
+def read_predictions(record, partition, evaluations, expected_labels):
     path = OUT/'predictions'/(record['name']+'-'+partition+'.csv.gz')
     expected = next(r['prediction_sha256'] for r in evaluations
                     if r['name']==record['name'] and r['partition']==partition)
     if digest(path) != expected:
         raise ValueError('Saved prediction checksum changed')
-    return pd.read_csv(path,dtype={'station':str,'huc':str},keep_default_na=False)
+    saved=pd.read_csv(path,dtype={'station':str,'huc':str},keep_default_na=False)
+    pd.testing.assert_frame_equal(saved[expected_labels.columns].reset_index(drop=True),
+                                  expected_labels.reset_index(drop=True))
+    return saved
 
 
 def paired_frame(control,candidate):
@@ -77,11 +80,14 @@ def coverage(frame, ledger, horizon, role):
 
 
 def report():
+    from scripts.shift_hydrology_worker import load_data,partitions
     protocol()
     if (OUT/'evaluation.json').exists():
         raise FileExistsError('Final report already recorded')
     selected=verify_selection()
     records={r['name']:r for r in selected['candidates']}
+    labels=['station','huc','decision_time','horizon','target','event_time']
+    canonical={key:value[labels] for key,value in partitions(load_data('test')).items()}
     evaluations=[]
     summary=[]
     for family in ['baseline','logistic','lightgbm','xgboost']:
@@ -92,6 +98,9 @@ def report():
             raise ValueError('Evaluation used a different test dataset')
         for r in family_result['results']:
             evaluations.append(r)
+            expected=canonical[r['partition']]
+            read_predictions(records[r['name']],r['partition'],evaluations,
+                             expected.loc[expected.horizon.eq(records[r['name']]['horizon'])])
             s=dict(name=r['name'],partition=r['partition'])
             s.update({key:r['metrics'][key] for key in ['rows','positives','ap','brier','events','detected_events',
                 'event_recall','median_lead_hours','false_alerts_per_100','false_warning_episodes']})
@@ -105,8 +114,9 @@ def report():
         evidence={}
         frames=[]
         for partition in ['temporal_test','geographic_test']:
-            control=read_predictions(baseline,partition,evaluations)
-            test=read_predictions(candidate,partition,evaluations)
+            expected=canonical[partition].loc[canonical[partition].horizon.eq(horizon)]
+            control=read_predictions(baseline,partition,evaluations,expected)
+            test=read_predictions(candidate,partition,evaluations,expected)
             f=paired_frame(control,test)
             frames.append(f)
             evidence[partition]=dict(
