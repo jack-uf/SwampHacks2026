@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -125,13 +125,6 @@
       </div>
       <footer>Layout preview only. All bracketed values are placeholders. Decision support for supervisor review.</footer>
     </div>
-    <div id="root"></div>
-    <script type="module">
-      if (new URLSearchParams(window.location.search).get('view') === 'live') {
-        document.getElementById('wireframe').remove();
-        document.title = 'PlanIT Control | Field intelligence';
-        import('/src/main.tsx');
-      }
-    </script>
+    <script type="module" src="/src/wireframe.ts"></script>
   </body>
 </html>
