@@ -2194,6 +2194,12 @@ td strong {
 .work-window { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--line); border-left: 4px solid #b9c2bb;
   border-radius: var(--radius-sm); background: var(--surface); }
 .work-window.recommended { border-left-color: #4a7958; background: #f6f9f2; }
+.work-window.planned { border-style: dashed; }
+.window-verdict { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0 6px; padding: 10px 12px; font-size: 13px;
+  border: 1px solid var(--line); border-left: 4px solid #b9c2bb; border-radius: var(--radius-sm); background: var(--surface); }
+.verdict-move { border-left-color: #4a7958; background: #f6f9f2; }
+.verdict-keep { border-left-color: #c9952f; background: #fbf7ea; color: var(--warn-text); }
+.verdict-insufficient { border-left-color: #9aa39c; color: #5c665f; }
 .window-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 13px; }
 .window-class { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: #6b756e; }
 .window-prob { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--warn-text, #8a6d1f); }

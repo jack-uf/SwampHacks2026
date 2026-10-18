@@ -616,25 +616,32 @@ class Decision(BaseModel):
 
 
 @app.get('/api/missions/{mission_id}/work-windows')
-async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int = 3):
-    """Rank candidate windows of the mission's shift length against the forecast the JHA cites."""
+async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int = 1, flex_hours: int = 2, limit: int = 8):
+    """Compare candidate windows of the mission's shift length and say whether a move is supported."""
     mission = mission_or_404(mission_id)
-    if not 12 <= hours <= 120 or not 1 <= step_hours <= 12:
-        raise HTTPException(422, 'Horizon must be 12 to 120 hours and the step 1 to 12 hours')
+    if not 12 <= hours <= 120 or not 1 <= step_hours <= 6 or not 0 <= flex_hours <= 8 or not 1 <= limit <= 24:
+        raise HTTPException(422, 'Horizon 12 to 120 hours, step 1 to 6 hours, flexibility 0 to 8 hours, limit 1 to 24')
     site = SITE_BY_ID[mission['site_id']]
     activity = missions.ACTIVITIES[mission['activity']]
     start, end = parse_time(mission['shift_start']), parse_time(mission['shift_end'])
     duration = max(1, ceil((end-start).total_seconds()/3600))
-    # Look one day either side of the planned shift so a supervisor can move it earlier as well as later.
-    anchor = max(now_utc(), start - timedelta(hours=24))
+    now = now_utc()
+    # Cover the planned shift plus a day after it, so a move later in the week is inside the horizon.
+    horizon = min(120, max(hours, ceil(max(0., (end-now).total_seconds()/3600)) + 24))
+    with db() as c:
+        busy = [(m['shift_start'], m['shift_end']) for m in
+                c.execute('SELECT id, shift_start, shift_end FROM missions WHERE site_id=? AND id<>?', (mission['site_id'], mission_id)).fetchall()
+                if parse_time(m['shift_end']) > now]
     weather = await providers.weather(site)
-    ensemble = await providers.ensemble(site, days=ceil(hours/24))
+    ensemble = await providers.ensemble(site, days=ceil(horizon/24))
     terrain = await providers.terrain(site)
-    plan = planner.plan(weather, activity, duration, terrain=terrain, ensemble=ensemble,
-                        now=anchor.isoformat(), hours=hours, step_hours=step_hours)
+    plan = planner.plan(weather, activity, duration, terrain=terrain, ensemble=ensemble, now=now.isoformat(),
+                        hours=horizon, step_hours=step_hours, limit=limit, planned_start=mission['shift_start'],
+                        timezone=site['timezone'], flex_hours=flex_hours, busy=busy)
     return dict(mission_id=mission_id, activity=dict(id=mission['activity'], **activity),
-                anchor=anchor.isoformat(), planned_start=mission['shift_start'], generated_at=now_utc().isoformat(),
-                conditions_source=weather.get('source'), **plan)
+                anchor=now.isoformat(), planned_start=mission['shift_start'], generated_at=now.isoformat(),
+                conditions_source=weather.get('source'), weather_fetched_at=(weather.get('feed') or {}).get('fetched_at'),
+                ensemble_available=bool(ensemble.get('available')), terrain_source=(terrain or {}).get('source'), **plan)
 
 
 @app.post('/api/missions/{mission_id}/decisions')

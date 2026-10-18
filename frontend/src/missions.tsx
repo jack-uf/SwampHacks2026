@@ -418,7 +418,7 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
         </p>
 
         <h3 className="section-subtitle">Work windows</h3>
-        <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} />
+        <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} tz={tz} />
 
         <div className="section-title jha-title">
           <div>
@@ -620,14 +620,14 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
   );
 }
 
-function WorkWindows({ api, missionId, revision }: { api: Api; missionId: string; revision: number }) {
+function WorkWindows({ api, missionId, revision, tz }: { api: Api; missionId: string; revision: number; tz: string }) {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState("");
   useEffect(() => {
     let live = true;
     setData(null);
     setError("");
-    api(`/api/missions/${missionId}/work-windows?hours=48&step_hours=3`)
+    api(`/api/missions/${missionId}/work-windows?hours=48&step_hours=1&flex_hours=2`)
       .then((d) => live && setData(d))
       .catch((e) => live && setError(String(e?.message || e)));
     return () => {
@@ -636,46 +636,65 @@ function WorkWindows({ api, missionId, revision }: { api: Api; missionId: string
   }, [missionId, revision]);
   if (error) return <p className="body-note">Work-window comparison unavailable. {error}</p>;
   if (!data) return <p className="body-note">Comparing candidate windows…</p>;
-  if (!data.candidate_count)
-    return <p className="body-note">No window in the next {data.horizon_hours} hours has enough forecast coverage to compare.</p>;
+  const verdict = data.recommendation;
+  const banner =
+    verdict.choice === "move"
+      ? "Move the shift to " + zoned(verdict.start, tz) + " (" + data.duration_hours + " h). " + verdict.reason
+      : verdict.choice === "keep"
+        ? "Keep the planned window. " + verdict.reason
+        : "No change is advised on this evidence. " + verdict.reason;
+  const footnote =
+    data.candidate_count + " windows of " + data.duration_hours + " h compared across " + data.horizon_hours + " h; " +
+    data.excluded.hour_band + " start(s) outside the allowed band, " + data.excluded.overlap + " overlapping another mission, " +
+    data.excluded.coverage + " too thinly forecast. " +
+    (data.ensemble_available ? "Weather-model members are shown; " : "No member sample was available, so this rests on the single-run forecast; ") +
+    "starts stay within " + data.constraints.flex_hours + " h of the planned " + data.constraints.planned_local_hour +
+    ":00 site-time start. " + data.notes[4];
   return (
     <>
+      <div className={"window-verdict verdict-" + verdict.choice} role="status">
+        <TriangleAlert size={16} />
+        <span>{banner}</span>
+      </div>
+      {data.candidate_count > 0 && (
       <div className="work-windows">
-        {data.windows.map((w: any, index: number) => (
-          <div key={w.start} className={"work-window" + (index === data.recommended ? " recommended" : "")}>
+        {data.windows.map((w: any) => (
+          <div
+            key={w.start}
+            className={
+              "work-window" +
+              (verdict.choice === "move" && w.start === verdict.start ? " recommended" : "") +
+              (w.start === data.planned_start ? " planned" : "")
+            }
+          >
             <div className="window-head">
               <span className={"rating-dot rating-" + (w.label === "restricted" ? "high" : w.label)} />
               <strong>
-                {zoned(w.start)} → {new Date(w.end).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                {zoned(w.start, tz)} → {new Date(w.end).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", timeZone: tz })}
               </strong>
               <span className="window-class">
                 {w.label}
-                {index === data.recommended ? " · lowest exposure" : ""}
+                {verdict.choice === "move" && w.start === verdict.start ? " · recommended" : ""}
+                {w.start === data.planned_start ? " · planned" : ""}
               </span>
-              {w.uncertainty?.gust_high_probability != null && (
-                <span
-                  className="window-prob"
-                  title={`${w.uncertainty.members} weather-model members; share crossing the ${w.uncertainty.gust_limit_kmh} km/h activity limit`}
-                >
-                  {Math.round(w.uncertainty.gust_high_probability * 100)}% over gust limit
+              {w.uncertainty?.restrict_share != null && (
+                <span className="window-prob" title={w.uncertainty.members + " weather-model members; share crossing a screening limit"}>
+                  {Math.round(w.uncertainty.restrict_share * 100)}% of members restrict
                 </span>
               )}
             </div>
             <small>
               apparent {fmt(w.apparent_max_c)}°C · gust {fmt(w.gust_max_kmh, 0)} km/h · rain {fmt(w.rain_mm)} mm
-              {w.soil_deep_max != null ? ` · deep soil ${fmt(w.soil_deep_max, 2)} m³/m³` : ""}
-              {w.unknown.length ? ` · unknown ${w.unknown.join(", ")}` : ""}
+              {w.soil_deep_max != null ? " · deep soil " + fmt(w.soil_deep_max, 2) + " m³/m³" : ""}
+              {w.coverage < 1 ? " · " + Math.round(w.coverage * 100) + "% of hours forecast" : ""}
+              {w.unknown.length ? " · unknown " + w.unknown.join(", ") : ""}
             </small>
             {w.drivers.length > 0 && <small className="window-drivers">Drivers: {w.drivers.join(", ")}</small>}
           </div>
         ))}
       </div>
-      <p className="body-note">
-        {data.candidate_count} windows of {data.duration_hours} h across {data.horizon_hours} h from {zoned(data.anchor)}.
-        {data.recommended_start ? ` Lowest-exposure start ${zoned(data.recommended_start)}.` : " No unrestricted window in this horizon."}{" "}
-        {data.skipped ? `${data.skipped} window(s) skipped for missing hours. ` : ""}
-        {data.notes[1]}
-      </p>
+      )}
+      <p className="body-note">{footnote}</p>
     </>
   );
 }

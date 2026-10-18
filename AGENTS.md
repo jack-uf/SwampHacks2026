@@ -64,6 +64,8 @@ Credit exactly these, in both the README and Devpost, and ask the team whether t
 | Site Hazard Memory with per-factor relevance | `backend/memory.py`, `scripts/build_hazard_memory.py` | Mission detail, "Site Hazard Memory" | `tests/test_memory.py` |
 | Cross-entity plan overlaps (Sperry) | `backend/overlap.py`, `scripts/build_planned_projects.py`, `/api/plan-overlaps` | `frontend/src/missions.tsx` (`OverlapsView`) | `tests/test_overlap.py` |
 | Work-window comparison with ensemble spread | `backend/planner.py`, `/api/missions/{id}/work-windows`, terrain and ensemble providers in `backend/providers.py` | Mission detail, "Work windows" | `tests/test_planner.py` |
+
+Its decision rule, constraint set and uncertainty language are documented in `docs/WORK_WINDOW_PLANNER.md` and measured by `scripts/evaluate_planner.py`. A move needs one weighted hazard to improve a whole band with no weighted hazard worse, members can only veto, windows below 75 percent forecast coverage are skipped, and lower exposure is never described as safety.
 | Jev abstention v2 and held-out evaluation | `backend/jev.py` (`abstention`), `scripts/evaluate_jev.py` | Report triage text in `frontend/src/main.tsx` | `tests/test_jev.py`, `tests/test_jev_evaluation.py` |
 
 The reasoning behind each design choice is in `docs/DECISIONS.md`.

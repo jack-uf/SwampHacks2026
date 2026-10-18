@@ -1,0 +1,214 @@
+{
+  "metrics": {
+    "scenarios": 8,
+    "matched": 8,
+    "constraint_violations": 0,
+    "moves": 4,
+    "declined": 3,
+    "insufficient": 1,
+    "mean_improvement_on_move": 0.787,
+    "chosen_at_or_better_than_naive": 4
+  },
+  "records": [
+    {
+      "name": "hot_then_mild_excavation",
+      "expect": "move",
+      "choice": "move",
+      "matched": true,
+      "reason": "One weighted hazard improves a whole band, nothing weighed gets worse, and the members do not object. Lower exposure is not guaranteed safety.",
+      "improvement": 0.541,
+      "planned_risk": 0.708,
+      "chosen_risk": 0.167,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 17,
+      "naive": {
+        "keep": 0.708,
+        "earliest": 0.708,
+        "later_same_hour": 0.167
+      },
+      "violations": [],
+      "ensemble_available": true
+    },
+    {
+      "name": "rain_front_excavation",
+      "expect": "move",
+      "choice": "move",
+      "matched": true,
+      "reason": "The planned shift carries a restriction. This alternative is the lowest-exposure window that does not.",
+      "improvement": 1.066,
+      "planned_risk": 1.556,
+      "chosen_risk": 0.49,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 17,
+      "naive": {
+        "keep": 1.556,
+        "earliest": 0.49,
+        "later_same_hour": 0.49
+      },
+      "violations": [],
+      "ensemble_available": true
+    },
+    {
+      "name": "all_windows_restricted",
+      "expect": "keep",
+      "choice": "keep",
+      "matched": true,
+      "reason": "Every candidate window in this horizon carries a restriction; no move is advised.",
+      "improvement": null,
+      "planned_risk": 1.0,
+      "chosen_risk": null,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 0,
+      "naive": {
+        "keep": 1.0,
+        "earliest": null,
+        "later_same_hour": null
+      },
+      "violations": [],
+      "ensemble_available": true
+    },
+    {
+      "name": "flat_exposure",
+      "expect": "keep",
+      "choice": "keep",
+      "matched": true,
+      "reason": "Moving is not supported: no weighted hazard improves by a whole band.",
+      "improvement": 0.0,
+      "planned_risk": 0.168,
+      "chosen_risk": null,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 26,
+      "naive": {
+        "keep": 0.168,
+        "earliest": 0.168,
+        "later_same_hour": 0.168
+      },
+      "violations": [],
+      "ensemble_available": true
+    },
+    {
+      "name": "windy_morning_calm_evening",
+      "expect": "move",
+      "choice": "move",
+      "matched": true,
+      "reason": "The planned shift carries a restriction. This alternative is the lowest-exposure window that does not.",
+      "improvement": 1.0,
+      "planned_risk": 1.0,
+      "chosen_risk": 0.0,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 8,
+      "naive": {
+        "keep": 1.0,
+        "earliest": 0.0,
+        "later_same_hour": null
+      },
+      "violations": [],
+      "ensemble_available": true
+    },
+    {
+      "name": "no_ensemble_still_moves_on_large_gain",
+      "expect": "move",
+      "choice": "move",
+      "matched": true,
+      "reason": "One weighted hazard improves a whole band, nothing weighed gets worse, and the members do not object. Lower exposure is not guaranteed safety.",
+      "improvement": 0.541,
+      "planned_risk": 0.708,
+      "chosen_risk": 0.167,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 17,
+      "naive": {
+        "keep": 0.708,
+        "earliest": 0.708,
+        "later_same_hour": 0.167
+      },
+      "violations": [],
+      "ensemble_available": false
+    },
+    {
+      "name": "near_tie_declines",
+      "expect": "keep",
+      "choice": "keep",
+      "matched": true,
+      "reason": "Moving is not supported: no weighted hazard improves by a whole band.",
+      "improvement": 0.018,
+      "planned_risk": 0.194,
+      "chosen_risk": null,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 26,
+      "naive": {
+        "keep": 0.194,
+        "earliest": 0.194,
+        "later_same_hour": 0.176
+      },
+      "violations": [],
+      "ensemble_available": true
+    },
+    {
+      "name": "unknown_exposure_declines",
+      "expect": "insufficient",
+      "choice": "insufficient",
+      "matched": true,
+      "reason": "Exposure is unknown for storm in the planned shift, so no alternative can be shown to be better.",
+      "improvement": null,
+      "planned_risk": 0.0,
+      "chosen_risk": null,
+      "candidate_count": 27,
+      "excluded": {
+        "past": 0,
+        "hour_band": 38,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 0,
+      "naive": {
+        "keep": 0.0,
+        "earliest": 0.0,
+        "later_same_hour": 0.0
+      },
+      "violations": [],
+      "ensemble_available": false
+    }
+  ]
+}

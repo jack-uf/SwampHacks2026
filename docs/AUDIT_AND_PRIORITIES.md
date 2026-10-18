@@ -26,7 +26,7 @@ A five-point USGS 3DEP terrain sample (the facility point plus roughly 500 m nor
 
 A work-window planner (`backend/planner.py`, `GET /api/missions/{id}/work-windows`) ranks candidate windows of the mission's own shift length across the next two days using the same bands, wind limits and terrain rule as the JHA, one day either side of the planned start so a supervisor can move a shift earlier as well as later. Each window reports its exposure, its drivers, whether it is restricted, and the share of GFS ensemble members crossing the activity's gust, heat and rain limits. Windows with less than half their hours covered are skipped instead of scored, and the response states that spread is not calibrated risk.
 
-The frontend renders the ranked windows inside the mission detail, above the Job Hazard Analysis, with the lowest-exposure window marked.
+The planner now returns a decision rather than a ranking: it declines to recommend when exposure is unknown, when the gain does not move a whole band for a weighted hazard, or when the ensemble members put more restriction on the alternative than on the plan, and its candidates respect the planned start hour in the site's timezone, never start in the past and never overlap another open mission at the same site. Semantics are in [WORK_WINDOW_PLANNER.md](WORK_WINDOW_PLANNER.md), the scenario evaluation is `scripts/evaluate_planner.py`, and the frontend renders the verdict above the ranked windows in the mission detail.
 
 ## Remaining weaknesses and the next steps
 
