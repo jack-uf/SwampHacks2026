@@ -38,6 +38,8 @@ The separate [hourly high-flow onset study](SHIFT_HYDROLOGY_RESULTS.md) predicts
 
 The separate [MLP onset study](MLP_ONSET_RESULTS.md) retests the response experiment's neural architecture on the hourly target with a fresh 28-gauge cohort. A plain perceptron ranks best at 24 hours in both the temporal and geographic partition and warns earlier, but detects fewer events than the linear extrapolation at the frozen alert budget, so no candidate promotes.
 
+The separate [hybrid MLP study](MLP_HYBRID_RESULTS.md) separates the operating point from the architecture on a second fresh cohort. A threshold rule that spends the promotion gate's own false-alert ceilings recovers events for every network at every horizon; the damped-offset hybrid, trailing-history features and a balanced loss each fail to improve ranking. No horizon passes every gate, and the remaining blockers are geographic.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

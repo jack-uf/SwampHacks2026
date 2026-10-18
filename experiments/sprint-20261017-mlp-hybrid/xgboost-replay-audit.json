@@ -1,0 +1,50 @@
+{
+  "family": "xgboost",
+  "selection_sha256": "ac671a0b2b77523770f8d9c190aa118dd666e5e0d0ce100725d7f94a0178e568",
+  "test_sha256": "00a70f98033b2d7bd6ff04b593712078ee6214e33a3b1292473fe8586a79ea6d",
+  "elapsed_seconds": 0.2568327079061419,
+  "checked": [
+    {
+      "name": "xgboost-dynamics-row-6",
+      "partition": "temporal_test",
+      "rows": 10340,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "d923e0d41049a0e254a3447f3a44ceef3dcc3607b1b2b4b9e45babf37821ed51"
+    },
+    {
+      "name": "xgboost-dynamics-row-6",
+      "partition": "geographic_test",
+      "rows": 7848,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "8d428008eb7bab18452e1795abe70c2f34ee7212d5bc78f83a45aa9ecafb9f78"
+    },
+    {
+      "name": "xgboost-dynamics-row-12",
+      "partition": "temporal_test",
+      "rows": 10340,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "e7a0d08fe071e4054148abb6e19ec4e3fa528f5ca2a7e56ca2aa7ba5006574ae"
+    },
+    {
+      "name": "xgboost-dynamics-row-12",
+      "partition": "geographic_test",
+      "rows": 7848,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "ff3af08c65f407b9e0451a8cf74a624dfefb6ccea3bbd818ff5ea707d91cda12"
+    },
+    {
+      "name": "xgboost-dynamics-row-24",
+      "partition": "temporal_test",
+      "rows": 10340,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "ff8fff6fb3a32839ccbd9f952c02a4554fdb3c5a9bab7603029d6651808c8f75"
+    },
+    {
+      "name": "xgboost-dynamics-row-24",
+      "partition": "geographic_test",
+      "rows": 7848,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "e4f83ede3246b895de2d14e87a84d0c85972ef03f0a1539d8e579b8e70cce313"
+    }
+  ]
+}

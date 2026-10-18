@@ -1,0 +1,50 @@
+{
+  "family": "lightgbm",
+  "selection_sha256": "ac671a0b2b77523770f8d9c190aa118dd666e5e0d0ce100725d7f94a0178e568",
+  "test_sha256": "00a70f98033b2d7bd6ff04b593712078ee6214e33a3b1292473fe8586a79ea6d",
+  "elapsed_seconds": 0.4335843750741333,
+  "checked": [
+    {
+      "name": "lightgbm-dynamics-row-6",
+      "partition": "temporal_test",
+      "rows": 10340,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "c64e0b6fe7369dd2fa21ac6d819a2954c0639a3e1c5ab4cc933b8da92de07398"
+    },
+    {
+      "name": "lightgbm-dynamics-row-6",
+      "partition": "geographic_test",
+      "rows": 7848,
+      "max_abs_probability_error": 9.999054535747565e-17,
+      "sha256": "b5c9da995c05efe26fc01baf23c7d60d43b363271e3b97257164fd0f6d71b1cd"
+    },
+    {
+      "name": "lightgbm-dynamics-row-12",
+      "partition": "temporal_test",
+      "rows": 10340,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "a4a2acac8a8cbf2c4f7e1893d3bb7ee1be32f4666164bfeefa3c58e269ddd8f0"
+    },
+    {
+      "name": "lightgbm-dynamics-row-12",
+      "partition": "geographic_test",
+      "rows": 7848,
+      "max_abs_probability_error": 9.993633524885137e-17,
+      "sha256": "024208a9cb8595de64ae5066eae2bdd6596c8d63707c688e167f1b6f07d16e80"
+    },
+    {
+      "name": "lightgbm-dynamics-row-24",
+      "partition": "temporal_test",
+      "rows": 10340,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "61cca9429eddfc1b48fd465691ffa56aeb0adc75600e7487486707df92491511"
+    },
+    {
+      "name": "lightgbm-dynamics-row-24",
+      "partition": "geographic_test",
+      "rows": 7848,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "3bff29881d783db266136d1b6bd1e24d7968cb887aa2aacf99fc97d8507f3b83"
+    }
+  ]
+}
