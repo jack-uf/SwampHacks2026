@@ -47,11 +47,19 @@ def fetch(path, url, params=None):
         if digest(path) != meta['sha256'] or meta['url'] != expected:
             raise ValueError('Cached source changed: '+str(path))
         return gzip.decompress(path.read_bytes()) if path.suffix == '.gz' else path.read_bytes()
-    response = httpx.get(expected, timeout=90, follow_redirects=True)
-    if response.status_code == 429:
+    # The archive API answers 429 under load and asks for a wait; honour it a bounded number of times
+    # instead of losing an otherwise complete acquisition run to one throttled request.
+    for attempt in range(4):
+        response = httpx.get(expected, timeout=90, follow_redirects=True)
+        if response.status_code != 429:
+            break
+        delay = response.headers.get('Retry-After', '')
+        wait = int(delay) if delay.isdigit() and 0 < int(delay) <= 3600 else min(60*(attempt+1), 300)
         with (OUT/'acquisition-events.jsonl').open('a') as log:
             log.write(json.dumps(dict(at=datetime.now(timezone.utc).isoformat(), url=expected,
-                status=429, response=response.text[:1000]))+'\n')
+                status=429, attempt=attempt+1, wait_seconds=wait, response=response.text[:600]))+'\n')
+        print('Archive rate limit; waiting', wait, 'seconds', flush=True)
+        time.sleep(wait)
     response.raise_for_status()
     body = response.content
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -199,8 +207,8 @@ def fit(cycle):
     if out.exists():
         raise FileExistsError(out)
     out.mkdir()
-    write_json(out/'freeze.json', dict(dataset_sha256=digest(OUT/'development.csv.gz') if cycle in [1,3,4,5,6,7,8,9,10,11,12,13,14,15] else None, configurations=configs,
-        forecast_dataset_sha256=digest(OUT/'hrrr/features.csv.gz') if cycle in [2,3,4,5,6,7,8,9,10,11,12,13,14,15] else None,
+    write_json(out/'freeze.json', dict(dataset_sha256=digest(OUT/'development.csv.gz') if cycle in [1,3,4,5,6,7,8,9,10,11,12,13,14,15,16] else None, configurations=configs,
+        forecast_dataset_sha256=digest(OUT/'hrrr/features.csv.gz') if cycle in [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] else None,
         code_sha256=digest(ROOT/'scripts/high_flow_signals.py'), reserved_huc4=sorted(reserved),
         split='Train 2020-2021; calibrate 2022; threshold 2023; score 2024. Inspected development only.',
         matched_training='Configurations with hours restrict model, calibrator and threshold selection to those UTC decision hours.',
@@ -214,14 +222,14 @@ def fit(cycle):
 def population(cycle):
     """Feature frame for one cycle, built before partitioning so derived columns exist everywhere."""
     frame = catchment_attributes(load(True)) if cycle in [0,2] else data()
-    if cycle in [2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
+    if cycle in [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
         path=OUT/'hrrr/features.csv.gz'
         if digest(path)!=json.loads((OUT/'hrrr/features.json').read_text())['sha256']:
             raise ValueError('Forecast features changed')
         rain=pd.read_csv(path,dtype={'station':str})
         frame=frame.merge(rain,on=['station','decision_time'],how='left',validate='one_to_one')
         frame['hrrr_available']=frame.hrrr_point12.notna().astype(int)
-    if cycle in [3,4,5,6,7,8,9,10,11,12,13,14,15]:
+    if cycle in [3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
         # The CAMELS long-term precipitation mean is prior knowledge, available for every gauge, and
         # turns raw depths into "unusual for this watershed" ratios that transfer across climates.
         expected = frame.p_mean
@@ -232,7 +240,7 @@ def population(cycle):
         frame['hrrr_max_ratio'] = frame.hrrr_max12/expected
         frame['rain24_ratio'] = frame.rain_24_lag6/(2*expected)
         frame['rain168_ratio'] = frame.rain_168_lag6/(7*expected)
-    if cycle in [8,9,10,11,12,13,14,15]:
+    if cycle in [8,9,10,11,12,13,14,15,16]:
         # Saturating catchments convert the same rain into more runoff; both additions are causal.
         frame['soil_change_6d'] = frame.soil_lag6 - frame.soil_lag144
         frame['rain_share_6h'] = frame.rain_6_lag6/(frame.rain_168_lag6 + 1e-3)
@@ -410,6 +418,22 @@ def configurations(cycle, weather):
             configs['winner_'+label]=dict(features=winner+forecast+hrrr_ratio, conditional=True, budget=budget)
             configs['forecast_only_'+label]=dict(features=FEATURES+forecast+hrrr_ratio+wetness+HYDRO,
                 conditional=True, budget=budget)
+    elif cycle == 16:
+        # Precision at useful recall is a ranking property of the top of the list, so this cycle asks
+        # whether a pairwise objective inside each station-day beats the binary objective there.
+        forecast = ['hrrr_available','hrrr_point12','hrrr_basin12','hrrr_max12']
+        hrrr_ratio = ['hrrr_point_ratio','hrrr_basin_ratio','hrrr_max_ratio']
+        rain_ratio = ['rain24_ratio','rain168_ratio']
+        wetness = ['soil_change_6d','rain_share_6h']
+        winner = FEATURES+weather[6]+rain_ratio+wetness+HYDRO
+        full = FEATURES+forecast+hrrr_ratio+wetness+HYDRO
+        configs=dict()
+        for label, budget in [('tight', (.75, 1.5)), ('tighter', (.5, 1.))]:
+            configs['linear_'+label]=dict(physical='linear', conditional=True, budget=budget)
+            configs['forecast_only_'+label]=dict(features=full, conditional=True, budget=budget)
+            configs['forecast_only_rank_'+label]=dict(features=full, conditional=True, budget=budget, ranker=True)
+            configs['winner_rank_'+label]=dict(features=winner+forecast+hrrr_ratio, conditional=True,
+                budget=budget, ranker=True)
     else:
         raise ValueError('Unknown experiment cycle')
     return configs
@@ -439,6 +463,18 @@ def fit_candidate(name, configuration, parts, out, evaluation=None, cycle=None):
         # Early stopping holds out a contiguous tail of the training period inside the worker, never
         # a random row set and never any calibration, threshold or validation observation.
         network_table = network_scores(name, configuration, features, fitted, parts, out)
+    elif physical is None and configuration.get('ranker'):
+        # Pairwise ranking inside each station-day: the operational question is which decision in a day
+        # deserves the alert, so a pairwise objective is asked to order that list rather than calibrate
+        # every row.
+        from lightgbm import LGBMRanker
+        ordered = fitted['train'].sort_values(['station', 'decision_time']).reset_index(drop=True)
+        day = pd.to_datetime(ordered.decision_time, utc=True).dt.strftime('%Y-%m-%d')
+        group = ordered.assign(day=day).groupby(['station', 'day'], sort=False).size().to_numpy()
+        model = LGBMRanker(objective='lambdarank', n_estimators=250, learning_rate=.04, num_leaves=15,
+            max_depth=4, min_child_samples=80, reg_lambda=5, n_jobs=2, random_state=42,
+            deterministic=True, verbosity=-1)
+        model.fit(ordered[features], ordered.target, group=group)
     elif physical is None:
         if name.startswith('logistic'):
             from sklearn.impute import SimpleImputer
@@ -458,6 +494,8 @@ def fit_candidate(name, configuration, parts, out, evaluation=None, cycle=None):
             if aligned.logit.isna().any():
                 raise ValueError('Missing network logits for a scored row')
             score = aligned.logit.to_numpy(float)
+        elif configuration.get('ranker'):
+            score = model.predict(f[features]).astype(float)
         else:
             probability = np.clip(model.predict_proba(f[features])[:, 1], 1e-6, 1-1e-6)
             score = np.log(probability/(1-probability))
