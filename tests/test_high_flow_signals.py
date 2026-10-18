@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from scripts.high_flow_signals import meteorology, VARIABLES
+from scripts.high_flow_signals import meteorology, USABLE, VARIABLES
 from scripts.high_flow_upstream import upstream_features
 from scripts.high_flow_hrrr import precipitation_range
 
@@ -11,12 +11,15 @@ from scripts.high_flow_hrrr import precipitation_range
 def test_rainfall_rolls_before_the_declared_delay_and_rejects_calendar_gaps():
     dates=pd.date_range('2020-01-01',periods=240,freq='h')
     hourly={v:np.ones(240) for v in VARIABLES}
+    hourly['snow_depth']=np.full(240,np.nan)
     hourly['time']=[t.isoformat() for t in dates]
     before=meteorology(hourly,6)
     assert before.rain_6_lag6.iloc[200]==6
     assert before.rain_24_lag6.iloc[200]==24
+    with pytest.raises(ValueError,match='Snow depth'):
+        meteorology({**hourly,'snow_depth':np.ones(240)},6)
     changed={k:list(v) for k,v in hourly.items()}
-    for v in VARIABLES:changed[v][195:]=[1000.]*(240-195)
+    for v in USABLE:changed[v][195:]=[1000.]*(240-195)
     after=meteorology(changed,6)
     pd.testing.assert_series_equal(before.iloc[200],after.iloc[200])
     assert before.rain_24_lag6.iloc[201]!=after.rain_24_lag6.iloc[201]

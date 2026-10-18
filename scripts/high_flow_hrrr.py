@@ -1,4 +1,4 @@
-"""Operational HRRR precipitation-field acquisition for a fixed 12 UTC development pilot."""
+"""Operational HRRR precipitation-field acquisition for a fixed six-hourly development schedule."""
 import argparse
 import concurrent.futures
 import gzip
@@ -21,6 +21,12 @@ from scripts.hydrology_research import ROOT, digest
 
 HR = OUT/'hrrr'
 BUCKET = 'https://noaa-hrrr-bdp-pds.s3.amazonaws.com'
+ISSUE_HOURS=[0,6,12,18]
+
+
+def schedule():
+    """Every 2020-2024 decision hour. Each issue uses the cycle initialized six hours earlier."""
+    return pd.date_range('2020-01-01T00:00Z','2024-12-31T18:00Z',freq='6h')
 
 
 def precipitation_range(index, end_hour=12):
@@ -40,7 +46,7 @@ def grid():
     if path.exists():return json.loads(path.read_text())
     import shapefile
     from scipy.spatial import cKDTree
-    from shapely import contains_xy
+    from shapely import contains_xy, make_valid
     from shapely.geometry import shape
     frame=load(True)
     stations=frame[['station','latitude','longitude']].drop_duplicates().sort_values('station')
@@ -61,16 +67,21 @@ def grid():
         tree=cKDTree(np.c_[latitude,longitude])
         nearest=tree.query(stations[['latitude','longitude']].to_numpy())[1]
         mapping={}
+        topology=[]
         for (_,row),index in zip(stations.iterrows(),nearest):
-            polygon=polygons[row.station]
-            if not polygon.is_valid:raise ValueError('Invalid official basin polygon')
+            original=polygons[row.station]
+            polygon=make_valid(original)
+            if polygon.geom_type not in ['Polygon','MultiPolygon'] or abs(polygon.area-original.area)>1e-10*original.area:
+                raise ValueError('Basin normalization changed area or dimensionality: '+row.station)
+            if not original.is_valid:
+                topology.append(dict(station=row.station,method='GEOS make_valid',original_area=original.area,normalized_area=polygon.area))
             west,south,east,north=polygon.bounds
             within=np.flatnonzero((longitude>=west)&(longitude<=east)&(latitude>=south)&(latitude<=north))
             cells=within[contains_xy(polygon,longitude[within],latitude[within])]
             if not len(cells):raise ValueError('Basin contains no HRRR cell centres: '+row.station)
             mapping[row.station]=dict(point=int(index),cells=cells.tolist(),latitude=row.latitude,longitude=row.longitude)
     finally:eccodes.codes_release(h)
-    result=dict(geometry=geometry,stations=mapping,basin_source_sha256=digest(archive),probe_sha256=digest(probe),
+    result=dict(geometry=geometry,stations=mapping,topology_normalization=topology,basin_source_sha256=digest(archive),probe_sha256=digest(probe),
         basin_aggregation='Unweighted 3-km grid-cell-centre mean within full-resolution CAMELS polygons')
     write_json(path,result)
     return result
@@ -101,13 +112,13 @@ def extract(body,issue,mapping):
 
 def collect():
     mapping=grid()
-    dates=pd.date_range('2020-01-01T12:00Z','2024-12-31T12:00Z',freq='D')
-    if not (HR/'acquisition.json').exists():
-        write_json(HR/'acquisition.json',dict(issue_hour_utc=12,initialization_lag_hours=6,forecast_end_lead=12,
-            dates=[t.isoformat() for t in dates],grid_sha256=digest(HR/'grid.json'),code_sha256=digest(ROOT/'scripts/high_flow_hrrr.py'),
-            reason='Fixed once-daily development pilot chosen for acquisition cost before model scoring',
-            evidence='Operational model archive. Six-hour publication buffer assumed; original receipt evidence unavailable.',
-            retention='Retain extracted values, exact ranges, source hashes and ETags. Raw fields are not all retained because local disk has under 7 GiB free.'))
+    dates=schedule()
+    write_json(HR/'acquisition.json',dict(issue_hours_utc=ISSUE_HOURS,initialization_lag_hours=6,forecast_end_lead=12,
+        dates=[t.isoformat() for t in dates],grid_sha256=digest(HR/'grid.json'),code_sha256=digest(ROOT/'scripts/high_flow_hrrr.py'),
+        reason='Six-hourly decision cadence matching the research population; the 12 UTC pilot completed first.',
+        pilot='2020-01-01 to 2024-12-31 at 12 UTC was acquired and scored as cycles 2 to 4 before this extension.',
+        evidence='Operational model archive. Six-hour publication buffer assumed; original receipt evidence unavailable.',
+        retention='Retain extracted values, exact ranges, source hashes and ETags. Raw fields are not all retained because local disk has under 7 GiB free.'))
     def one(issue):
         path=HR/'fields'/(issue.strftime('%Y%m%dT%H')+'.json.gz')
         if path.exists():
@@ -149,8 +160,8 @@ def materialize():
         x=json.loads(gzip.decompress(p.read_bytes()))
         rows.extend(dict(station=sid,decision_time=x['issue_time'],**v) for sid,v in x['stations'].items())
     f=pd.DataFrame(rows)
-    if f.duplicated(['station','decision_time']).any() or len(f)!=1827*len(grid()['stations']):
-        raise ValueError('Incomplete once-daily forecast acquisition')
+    if f.duplicated(['station','decision_time']).any() or len(f)!=len(schedule())*len(grid()['stations']):
+        raise ValueError('Incomplete forecast acquisition for the declared schedule')
     f.to_csv(target,index=False,compression={'method':'gzip','mtime':0})
     write_json(HR/'features.json',dict(sha256=digest(target),rows=len(f),
         source_hashes={str(p.relative_to(ROOT)):digest(p) for p in (HR/'fields').glob('*.json.gz')}))
