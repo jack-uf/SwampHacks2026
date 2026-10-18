@@ -65,3 +65,27 @@ def test_temporal_validation_requires_a_fitted_station_and_annual_schedule():
     assert len(annual['threshold']) == 4
     pd.testing.assert_frame_equal(half['train'], annual['train'])
     pd.testing.assert_frame_equal(half['calibration'], annual['calibration'])
+
+
+def test_common_row_comparison_rejects_changed_outcomes():
+    from scripts.report_high_flow_research import common_predictions
+    f = pd.DataFrame(dict(station=['one'], huc=['01010000'], decision_time=['2024-01-01T00:00:00+00:00'],
+        horizon=[6], target=[0], event_time=[''], probability=[.1]))
+    with pytest.raises(ValueError, match='labels'):
+        common_predictions([f, f.assign(target=1)])
+    a, b = common_predictions([f, f.assign(probability=.9)])
+    assert a.probability.iloc[0] != b.probability.iloc[0]
+
+
+def test_two_way_bootstrap_preserves_paired_zero_differences():
+    from scripts.report_high_flow_research import two_way_uncertainty
+    dates = pd.date_range('2024-01-01', periods=20, freq='7D', tz='UTC')
+    f = pd.DataFrame([dict(station=str(i), huc=huc, decision_time=t.isoformat(), horizon=6,
+        target=int(j % 2 == 0), event_time=(t + pd.Timedelta(hours=2)).isoformat() if j % 2 == 0 else '')
+        for i, huc in enumerate(['01010000', '02010000', '04010000']) for j, t in enumerate(dates)])
+    p = np.linspace(0, 1, len(f))
+    result = two_way_uncertainty(f, p, p, .5, .5, draws=20)
+    assert result['spatial_clusters'] == 3 and result['weekly_blocks'] == 20
+    assert all(value == [0, 0] for value in result['intervals_95'].values())
+    with pytest.raises(ValueError, match='six-hour'):
+        two_way_uncertainty(f.assign(horizon=12), p, p, .5, .5)

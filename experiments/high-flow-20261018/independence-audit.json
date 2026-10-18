@@ -1,0 +1,9 @@
+{
+  "registry_sha256": "bff9553672cf2703d28ba9cc220b9d58e957760c4813442f550501422af38b48",
+  "exposed_station_ids": 411,
+  "eligible_metadata_stations": 555,
+  "unused_station_ids": 208,
+  "unused_stations_in_unexposed_huc4": [],
+  "prior_huc4": 158,
+  "note": "Metadata pool only. Reused HUC4 can contain disjoint basins; no complete prior polygon exclusion audit exists for this study."
+}

@@ -1,0 +1,281 @@
+{
+  "cycle": 4,
+  "evidence": "Adaptive development only; no untouched final test",
+  "sources": {
+    "experiments/sprint-20261017-shift-hydrology/development.csv.gz": "ab0685d8a5a5b15663aa382641ad34f34e60b5ee5c095c6c9cb263818f5359b8",
+    "experiments/sprint-20261017-mlp-onset/development.csv.gz": "c60d84e7502380a8feff1f2ef394118f12c17f989fcaa9300ffc16f65da45906",
+    "experiments/sprint-20261017-mlp-hybrid/development.csv.gz": "7e05dd7b02c06a2ecc3c3c3a1c03ee001512f52f37320458fb19ddbf57913bb4",
+    "experiments/sprint-20261017-mlp-geo/development.csv.gz": "1c3beaad3a3670981899c71331a6524acaaefeaab002a5ef5608a97990ba21e6"
+  },
+  "code": {
+    "scripts/high_flow_research.py": "1b1010dced32222d938563047253087653dd3839bdabeb2af115bab0b26f2b14",
+    "scripts/shift_hydrology.py": "9a1f9e64fcc75af21469c31a1a7eebf01497651d63ce2bb3a7483c1a73c1c38d",
+    "scripts/shift_hydrology_metrics.py": "cc0a130dd54a9ac9f11b1332477a19cb9b4ad11107b18a9bfa44acc88b98e28e",
+    "scripts/mlp_hybrid_worker.py": "70ac02d3a09ba21dc24a3fd13cf4459a066e084c4c6072e6f1a131aee5e013bc"
+  },
+  "reserved_huc4": [
+    "0204",
+    "0316",
+    "0405",
+    "0502",
+    "0711",
+    "1025",
+    "1101",
+    "1210",
+    "1505",
+    "1710",
+    "1801"
+  ],
+  "configurations": [
+    [
+      "expanded_original",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "latitude",
+        "longitude",
+        "log_area",
+        "elevation_m"
+      ],
+      false,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "expanded_no_coordinates",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m"
+      ],
+      false,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "expanded_hydrologic",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m",
+        "margin",
+        "linear_margin",
+        "damped_margin",
+        "time_to_reference",
+        "rise_persistence",
+        "recent_fraction",
+        "relative_range"
+      ],
+      false,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "expanded_balanced",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m",
+        "margin",
+        "linear_margin",
+        "damped_margin",
+        "time_to_reference",
+        "rise_persistence",
+        "recent_fraction",
+        "relative_range"
+      ],
+      true,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "expanded_conditional",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m",
+        "margin",
+        "linear_margin",
+        "damped_margin",
+        "time_to_reference",
+        "rise_persistence",
+        "recent_fraction",
+        "relative_range"
+      ],
+      true,
+      "conditional",
+      "lightgbm"
+    ],
+    [
+      "proximity",
+      [],
+      false,
+      "platt",
+      "proximity"
+    ],
+    [
+      "proximity",
+      [],
+      false,
+      "conditional",
+      "proximity"
+    ],
+    [
+      "linear",
+      [],
+      false,
+      "platt",
+      "linear"
+    ],
+    [
+      "linear",
+      [],
+      false,
+      "conditional",
+      "linear"
+    ],
+    [
+      "damped",
+      [],
+      false,
+      "platt",
+      "damped"
+    ],
+    [
+      "damped",
+      [],
+      false,
+      "conditional",
+      "damped"
+    ]
+  ],
+  "partitions": {
+    "train": {
+      "rows": 85550,
+      "gauges": 49,
+      "huc4": 38,
+      "positives": 547
+    },
+    "calibration": {
+      "rows": 50936,
+      "gauges": 49,
+      "huc4": 38,
+      "positives": 296
+    },
+    "threshold": {
+      "rows": 89230,
+      "gauges": 85,
+      "huc4": 59,
+      "positives": 491
+    },
+    "temporal_validation": {
+      "rows": 51851,
+      "gauges": 47,
+      "huc4": 37,
+      "positives": 306
+    },
+    "geographic_validation": {
+      "rows": 17826,
+      "gauges": 16,
+      "huc4": 11,
+      "positives": 102
+    }
+  },
+  "versions": {
+    "lightgbm": "4.6.0",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "joblib": "1.5.3"
+  },
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5"
+  }
+}

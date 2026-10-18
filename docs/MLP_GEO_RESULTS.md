@@ -1,5 +1,7 @@
 # Geographic generalization study: measured result
 
+> Gate-count correction from the retained `evaluation.json`: the six-hour result passes 13 of 15 individual gates. The narrative below counts 11 of 13. The same two failures remain. See [the follow-up research](HIGH_FLOW_RESEARCH_RESULTS.md) for development experiments and the unchanged promotion decision.
+
 The 6-hour MLP does not deliver a credible operational improvement over simpler models across unseen watersheds, and the answer is now decisive rather than marginal. Under matched threshold rules on a third independent cohort, LightGBM detects 25 of 76 temporal events where the MLP detects 19, and the MLP's ceiling-rule variants collapse to 7 of 76 because its false alerts concentrate in one region and the regional ceiling forces it to a far higher threshold. The booster with the ceiling rule clears 11 of 13 promotion gates at 6 hours, the best result any candidate has reached, and it still fails two. Nothing is promoted and production is unchanged.
 
 The [frozen protocol](MLP_GEO_PROTOCOL.md) and cohort were committed in `4aedc27` before any observation was acquired. Artifacts live under [`experiments/sprint-20261017-mlp-geo/`](../experiments/sprint-20261017-mlp-geo/); [`evaluation.json`](../experiments/sprint-20261017-mlp-geo/evaluation.json) owns the final scores and gate decisions.

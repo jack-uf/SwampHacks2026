@@ -1,0 +1,62 @@
+{
+  "temporal_validation": {
+    "spatial_clusters": 37,
+    "weekly_blocks": 53,
+    "draws": 500,
+    "valid_draws": 500,
+    "intervals_95": {
+      "ap": [
+        0.01442112816404295,
+        0.10371251437562094
+      ],
+      "event_recall": [
+        -0.03698636363636363,
+        0.1491028898062877
+      ],
+      "false_alerts_per_100": [
+        -0.6611280666397058,
+        0.18908855809501077
+      ]
+    }
+  },
+  "geographic_validation": {
+    "spatial_clusters": 11,
+    "weekly_blocks": 53,
+    "draws": 500,
+    "valid_draws": 500,
+    "intervals_95": {
+      "ap": [
+        -0.03268572868620267,
+        0.2295973124954838
+      ],
+      "event_recall": [
+        -0.09242549668874173,
+        0.3531381027253666
+      ],
+      "false_alerts_per_100": [
+        -0.8044683499590458,
+        0.35920133051016256
+      ]
+    }
+  },
+  "pooled": {
+    "spatial_clusters": 48,
+    "weekly_blocks": 53,
+    "draws": 500,
+    "valid_draws": 500,
+    "intervals_95": {
+      "ap": [
+        0.020335090940211794,
+        0.11210058837757766
+      ],
+      "event_recall": [
+        -0.026557151637824145,
+        0.1537848474429967
+      ],
+      "false_alerts_per_100": [
+        -0.5214279131519679,
+        0.14269999020486893
+      ]
+    }
+  }
+}

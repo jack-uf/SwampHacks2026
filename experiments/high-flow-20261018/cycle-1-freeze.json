@@ -1,0 +1,243 @@
+{
+  "cycle": 1,
+  "evidence": "Adaptive development only; no untouched final test",
+  "sources": {
+    "experiments/sprint-20261017-mlp-geo/development.csv.gz": "1c3beaad3a3670981899c71331a6524acaaefeaab002a5ef5608a97990ba21e6"
+  },
+  "code": {
+    "scripts/high_flow_research.py": "1b3e3e632189d1df7d73ba69b04616e0abc0414ea2921f35a3fc9f44aae6f180",
+    "scripts/shift_hydrology.py": "9a1f9e64fcc75af21469c31a1a7eebf01497651d63ce2bb3a7483c1a73c1c38d",
+    "scripts/shift_hydrology_metrics.py": "cc0a130dd54a9ac9f11b1332477a19cb9b4ad11107b18a9bfa44acc88b98e28e",
+    "scripts/mlp_hybrid_worker.py": "70ac02d3a09ba21dc24a3fd13cf4459a066e084c4c6072e6f1a131aee5e013bc"
+  },
+  "reserved_huc4": [
+    "0204",
+    "0316",
+    "0405",
+    "0502",
+    "0711",
+    "1025",
+    "1101",
+    "1210",
+    "1505",
+    "1710",
+    "1801"
+  ],
+  "configurations": [
+    [
+      "original",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "latitude",
+        "longitude",
+        "log_area",
+        "elevation_m"
+      ],
+      false,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "no_coordinates",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m"
+      ],
+      false,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "hydrologic",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m",
+        "margin",
+        "linear_margin",
+        "damped_margin",
+        "time_to_reference",
+        "rise_persistence",
+        "recent_fraction",
+        "relative_range"
+      ],
+      false,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "balanced",
+      [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "log_area",
+        "elevation_m",
+        "margin",
+        "linear_margin",
+        "damped_margin",
+        "time_to_reference",
+        "rise_persistence",
+        "recent_fraction",
+        "relative_range"
+      ],
+      true,
+      "platt",
+      "lightgbm"
+    ],
+    [
+      "proximity",
+      [],
+      false,
+      "platt",
+      "proximity"
+    ],
+    [
+      "proximity",
+      [],
+      false,
+      "conditional",
+      "proximity"
+    ],
+    [
+      "linear",
+      [],
+      false,
+      "platt",
+      "linear"
+    ],
+    [
+      "linear",
+      [],
+      false,
+      "conditional",
+      "linear"
+    ],
+    [
+      "damped",
+      [],
+      false,
+      "platt",
+      "damped"
+    ],
+    [
+      "damped",
+      [],
+      false,
+      "conditional",
+      "damped"
+    ]
+  ],
+  "partitions": {
+    "train": {
+      "rows": 45144,
+      "gauges": 14,
+      "huc4": 14,
+      "positives": 309
+    },
+    "calibration": {
+      "rows": 5580,
+      "gauges": 13,
+      "huc4": 13,
+      "positives": 63
+    },
+    "threshold": {
+      "rows": 13640,
+      "gauges": 22,
+      "huc4": 22,
+      "positives": 47
+    },
+    "temporal_validation": {
+      "rows": 14157,
+      "gauges": 13,
+      "huc4": 13,
+      "positives": 109
+    },
+    "geographic_validation": {
+      "rows": 10219,
+      "gauges": 10,
+      "huc4": 10,
+      "positives": 60
+    }
+  },
+  "versions": {
+    "lightgbm": "4.6.0",
+    "scikit-learn": "1.8.0",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "joblib": "1.5.3"
+  },
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5"
+  }
+}

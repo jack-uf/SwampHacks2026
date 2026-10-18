@@ -1,0 +1,332 @@
+{
+  "evidence": "Previously inspected 2025 outcomes, development diagnosis only",
+  "source_hashes": {
+    "experiments/sprint-20261017-mlp-geo/test.csv.gz": "6d26fb5155514ec11daff7b014f1e814f052eb84aa98001ae01f8fb2881e43fe",
+    "experiments/sprint-20261017-mlp-geo/selection.json": "85a188c3182727de7c1a20caec61f5c3afe365464725dafea305cd9522192f5c"
+  },
+  "threshold": 0.07579406186740384,
+  "stations": [
+    "04127997"
+  ],
+  "metrics": {
+    "rows": 797,
+    "positives": 11,
+    "ap": 0.24075160950160954,
+    "brier": 0.011866083760347965,
+    "precision": 0.15151515151515152,
+    "row_recall": 0.45454545454545453,
+    "false_alerts_per_100": 3.5131744040150563,
+    "eligible_decision_exposure_station_days": 199.25,
+    "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+    "false_warnings_per_station_day": 0.14052697616060225,
+    "reliability_bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "rows": 769,
+        "mean_probability": 0.005090248156006242,
+        "observed_rate": 0.007802340702210663
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "rows": 15,
+        "mean_probability": 0.1400668794283308,
+        "observed_rate": 0.06666666666666667
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "rows": 6,
+        "mean_probability": 0.23224718669753905,
+        "observed_rate": 0.0
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "rows": 6,
+        "mean_probability": 0.34499566447874863,
+        "observed_rate": 0.6666666666666666
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "rows": 1,
+        "mean_probability": 0.450710068219552,
+        "observed_rate": 0.0
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "rows": 0,
+        "mean_probability": null,
+        "observed_rate": null
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "rows": 0,
+        "mean_probability": null,
+        "observed_rate": null
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "rows": 0,
+        "mean_probability": null,
+        "observed_rate": null
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "rows": 0,
+        "mean_probability": null,
+        "observed_rate": null
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "rows": 0,
+        "mean_probability": null,
+        "observed_rate": null
+      }
+    ],
+    "events": 11,
+    "detected_events": 5,
+    "event_recall": 0.45454545454545453,
+    "median_lead_hours": 3.0,
+    "false_warning_episodes": 16,
+    "regions": {
+      "04": {
+        "rows": 797,
+        "positives": 11,
+        "ap": 0.24075160950160954,
+        "brier": 0.011866083760347965,
+        "precision": 0.15151515151515152,
+        "row_recall": 0.45454545454545453,
+        "false_alerts_per_100": 3.5131744040150563,
+        "eligible_decision_exposure_station_days": 199.25,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.14052697616060225,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 769,
+            "mean_probability": 0.005090248156006242,
+            "observed_rate": 0.007802340702210663
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 15,
+            "mean_probability": 0.1400668794283308,
+            "observed_rate": 0.06666666666666667
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 6,
+            "mean_probability": 0.23224718669753905,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 6,
+            "mean_probability": 0.34499566447874863,
+            "observed_rate": 0.6666666666666666
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 1,
+            "mean_probability": 0.450710068219552,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 11,
+        "detected_events": 5,
+        "event_recall": 0.45454545454545453,
+        "median_lead_hours": 3.0,
+        "false_warning_episodes": 16
+      }
+    }
+  },
+  "monthly": [
+    {
+      "month": 2,
+      "rows": 28,
+      "positives": 0,
+      "alerts": 0,
+      "false_alerts": 0
+    },
+    {
+      "month": 3,
+      "rows": 69,
+      "positives": 5,
+      "alerts": 6,
+      "false_alerts": 2
+    },
+    {
+      "month": 4,
+      "rows": 49,
+      "positives": 2,
+      "alerts": 10,
+      "false_alerts": 9
+    },
+    {
+      "month": 5,
+      "rows": 82,
+      "positives": 2,
+      "alerts": 4,
+      "false_alerts": 4
+    },
+    {
+      "month": 6,
+      "rows": 28,
+      "positives": 0,
+      "alerts": 0,
+      "false_alerts": 0
+    },
+    {
+      "month": 7,
+      "rows": 81,
+      "positives": 1,
+      "alerts": 8,
+      "false_alerts": 8
+    },
+    {
+      "month": 8,
+      "rows": 96,
+      "positives": 1,
+      "alerts": 0,
+      "false_alerts": 0
+    },
+    {
+      "month": 9,
+      "rows": 104,
+      "positives": 0,
+      "alerts": 3,
+      "false_alerts": 3
+    },
+    {
+      "month": 10,
+      "rows": 124,
+      "positives": 0,
+      "alerts": 2,
+      "false_alerts": 2
+    },
+    {
+      "month": 11,
+      "rows": 120,
+      "positives": 0,
+      "alerts": 0,
+      "false_alerts": 0
+    },
+    {
+      "month": 12,
+      "rows": 16,
+      "positives": 0,
+      "alerts": 0,
+      "false_alerts": 0
+    }
+  ],
+  "false_alert_later_onsets": {
+    "12": 2,
+    "24": 6
+  },
+  "false_alert_above_reference": 3,
+  "development_shift": {
+    "2020": {
+      "rows": 940,
+      "prevalence": 0.023404255319148935,
+      "q2_quantiles": [
+        0.5041569115709527,
+        0.5643520723543749,
+        0.6276011026620744
+      ],
+      "spring_fraction": 0.251063829787234
+    },
+    "2021": {
+      "rows": 1099,
+      "prevalence": 0.009099181073703366,
+      "q2_quantiles": [
+        0.4517104361984101,
+        0.5114296709000324,
+        0.5712014141999497
+      ],
+      "spring_fraction": 0.30300272975432213
+    },
+    "2022": {
+      "rows": 979,
+      "prevalence": 0.013278855975485188,
+      "q2_quantiles": [
+        0.40848170164759,
+        0.4745251139645815,
+        0.556415933344016
+      ],
+      "spring_fraction": 0.24004085801838612
+    },
+    "2023": {
+      "rows": 968,
+      "prevalence": 0.008264462809917356,
+      "q2_quantiles": [
+        0.40848170164759,
+        0.4631828373606469,
+        0.5591841021959323
+      ],
+      "spring_fraction": 0.2159090909090909
+    },
+    "2024": {
+      "rows": 1031,
+      "prevalence": 0.009699321047526674,
+      "q2_quantiles": [
+        0.3820305155604203,
+        0.4555492125055758,
+        0.5311612527626275
+      ],
+      "spring_fraction": 0.2832201745877789
+    }
+  },
+  "test_q2_quantiles": [
+    0.4322923503413086,
+    0.4782774635831319,
+    0.5694934718547936
+  ]
+}
