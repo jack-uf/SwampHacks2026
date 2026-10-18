@@ -21,7 +21,7 @@ async def fetch(key, url, params, ttl=1800):
         return dict(available=False, stale=True, fetched_at=saved['last_success_at'], data=saved['data'], error=cached['error'], url=url)
     try:
         async with LIMIT:
-            async with httpx.AsyncClient(timeout=35, follow_redirects=True) as client:
+            async with httpx.AsyncClient(timeout=35, follow_redirects=not url.startswith('https://api.waterdata.usgs.gov/')) as client:
                 for attempt in range(3):
                     headers = {
                         'User-Agent': os.getenv('PLANIT_USER_AGENT', 'PlanITControl/0.1 local research prototype'),

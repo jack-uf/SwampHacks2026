@@ -1,0 +1,1278 @@
+{
+  "command": "live",
+  "checked_at": "2026-10-18T05:24:47.748225+00:00",
+  "records": [
+    {
+      "site": {
+        "id": "6163",
+        "name": "Grand Coulee",
+        "state": "WA",
+        "county": "Grant",
+        "latitude": 47.957511,
+        "longitude": -118.9773,
+        "capacity_mw": 6809.0,
+        "technology": "Conventional Hydroelectric",
+        "operator": "U S Bureau of Reclamation",
+        "source": "EIA-860M December 2024",
+        "inventory_date": "2024-12-31",
+        "timezone": "America/Los_Angeles"
+      },
+      "result": {
+        "status": "unavailable",
+        "checked_at": "2026-10-18T05:24:44.587866+00:00",
+        "latitude": 47.957511,
+        "longitude": -118.9773,
+        "network": {
+          "available": true,
+          "comid": "23057946",
+          "candidates": [
+            {
+              "station": "12436000",
+              "name": "FRANKLIN ROOSEVELT LAKE AT GRAND COULEE DAM, WA",
+              "latitude": 47.95543006,
+              "longitude": -118.9850212,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 0.39,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12436500",
+              "name": "COLUMBIA RIVER AT GRAND COULEE, WA",
+              "latitude": 47.9654302,
+              "longitude": -118.9827992,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 0.6,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "475735118494600",
+              "name": "LAKE ROOSEVELT AT SWAWILLA BASIN RB",
+              "latitude": 47.9595983,
+              "longitude": -118.8305707,
+              "relationship": "upstream_network",
+              "distance_miles": 6.79,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "475426118433510",
+              "name": "LAKE ROOSEVELT SEDIMENT SAMPLE (SD2)",
+              "latitude": 47.9072222,
+              "longitude": -118.7263889,
+              "relationship": "upstream_network",
+              "distance_miles": 12.12,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "475432118430600",
+              "name": "LAKE ROOSEVELT NEAR KELLER FERRY RB",
+              "latitude": 47.90876528,
+              "longitude": -118.7194533,
+              "relationship": "upstream_network",
+              "distance_miles": 12.4,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12435100",
+              "name": "MANILA CREEK NEAR KELLER, WA",
+              "latitude": 48.0071007,
+              "longitude": -118.6980666,
+              "relationship": "upstream_network",
+              "distance_miles": 13.36,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "480013118411801",
+              "name": "EPILIMNION-FRENCH JOHNS LAKE NR KELLER, WA",
+              "latitude": 48.0034896,
+              "longitude": -118.689455,
+              "relationship": "upstream_network",
+              "distance_miles": 13.69,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "480013118411802",
+              "name": "HYPOLIMNION-FRENCH JOHNS LAKE NR KELLER, WA",
+              "latitude": 48.0034896,
+              "longitude": -118.689455,
+              "relationship": "upstream_network",
+              "distance_miles": 13.69,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12435050",
+              "name": "DICK CREEK NEAR KELLER, WA",
+              "latitude": 48.00904557,
+              "longitude": -118.671121,
+              "relationship": "upstream_network",
+              "distance_miles": 14.6,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "480209118400410",
+              "name": "BTE-8 LAKE ROOSEVELT, SANPOIL ARM NR JOHN TOM CR",
+              "latitude": 48.0358333,
+              "longitude": -118.6677778,
+              "relationship": "upstream_network",
+              "distance_miles": 15.3,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "480209118400420",
+              "name": "BTE-8INC LAKE ROOSEVELT",
+              "latitude": 48.0358333,
+              "longitude": -118.6677778,
+              "relationship": "upstream_network",
+              "distance_miles": 15.3,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12435000",
+              "name": "SANPOIL RIVER AT KELLER, WA",
+              "latitude": 48.0346017,
+              "longitude": -118.6655659,
+              "relationship": "upstream_network",
+              "distance_miles": 15.37,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12435020",
+              "name": "JOHN TOM CREEK NEAR KELLER, WA",
+              "latitude": 48.0296017,
+              "longitude": -118.6577876,
+              "relationship": "upstream_network",
+              "distance_miles": 15.59,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12434600",
+              "name": "JACK CREEK AT KELLER, WA",
+              "latitude": 48.08154679,
+              "longitude": -118.6894572,
+              "relationship": "upstream_network",
+              "distance_miles": 15.82,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12434590",
+              "name": "SANPOIL RIVER ABOVE JACK CREEK AT KELLER, WA",
+              "latitude": 48.08432459,
+              "longitude": -118.6914018,
+              "relationship": "upstream_network",
+              "distance_miles": 15.85,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12434800",
+              "name": "MEADOW CREEK NEAR KELLER, WA",
+              "latitude": 48.06515779,
+              "longitude": -118.6739005,
+              "relationship": "upstream_network",
+              "distance_miles": 15.87,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12434900",
+              "name": "SILVER CREEK NEAR KELLER, WA",
+              "latitude": 48.0501577,
+              "longitude": -118.6563992,
+              "relationship": "upstream_network",
+              "distance_miles": 16.16,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "12434700",
+              "name": "COPPER CREEK NEAR KELLER, WA",
+              "latitude": 48.07099135,
+              "longitude": -118.6664003,
+              "relationship": "upstream_network",
+              "distance_miles": 16.37,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "475556118325400",
+              "name": "LAKE ROOSEVELT NEAR WHITESTONE CREEK MS",
+              "latitude": 47.9321014,
+              "longitude": -118.5494465,
+              "relationship": "upstream_network",
+              "distance_miles": 19.88,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "475342118322710",
+              "name": "LAKE ROOSEVELT SEDIMENT CORE RO16",
+              "latitude": 47.895,
+              "longitude": -118.5408333,
+              "relationship": "upstream_network",
+              "distance_miles": 20.66,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json"
+            }
+          ],
+          "candidate_count": 20,
+          "navigation_km": 50,
+          "note": "NLDI catchment-level connectivity. Distance is straight-line; no travel time or site inundation is established."
+        },
+        "gauges": [
+          {
+            "station": "12436000",
+            "name": "FRANKLIN ROOSEVELT LAKE AT GRAND COULEE DAM, WA",
+            "latitude": 47.95543006,
+            "longitude": -118.9850212,
+            "relationship": "same_indexed_reach",
+            "distance_miles": 0.39,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "296b8b8d870a49f7a398f217cdc7da4a",
+              "sha256": "538b5c866d51f05d7ee2d33badc7918c8b8507840bcf1937eef4f9eff53342bb",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-12436000&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A42.955975%2B00%3A00%2F2026-10-18T05%3A24%3A42.955975%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:43.571614+00:00"
+            }
+          },
+          {
+            "station": "12436500",
+            "name": "COLUMBIA RIVER AT GRAND COULEE, WA",
+            "latitude": 47.9654302,
+            "longitude": -118.9827992,
+            "relationship": "same_indexed_reach",
+            "distance_miles": 0.6,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "7205b8493652462bb69dab71bcb12e32",
+              "sha256": "6f6893773ba194c2f15a74ef0cee79a18604179ee261385d88d4fba8915b8035",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-12436500&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A43.575227%2B00%3A00%2F2026-10-18T05%3A24%3A43.575227%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:44.088231+00:00"
+            }
+          },
+          {
+            "station": "475735118494600",
+            "name": "LAKE ROOSEVELT AT SWAWILLA BASIN RB",
+            "latitude": 47.9595983,
+            "longitude": -118.8305707,
+            "relationship": "upstream_network",
+            "distance_miles": 6.79,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/23057946/navigation/UT/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "ee49d19a2941488c954415365ed87f74",
+              "sha256": "eecebe8f84352eb70f1930e871675a8bd4fde68bc4e5b067f085685f35dc28d8",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-475735118494600&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A44.089735%2B00%3A00%2F2026-10-18T05%3A24%3A44.089735%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:44.585780+00:00"
+            }
+          }
+        ],
+        "operational_prediction": "withheld",
+        "stale": false,
+        "note": "Gauge discharge describes a river, not water depth at this work location. Check drainage, access routes and NWS instructions with the supervisor. Experimental ML cannot authorize work or change hazard ratings or window rankings.",
+        "summary": "No fresh discharge in the bounded gauge screen. River conditions remain unknown.",
+        "model": {
+          "name": "Six-hour LightGBM development reference",
+          "promoted": false,
+          "reason": "Independent validation, input-availability and site-applicability requirements remain open."
+        }
+      }
+    },
+    {
+      "site": {
+        "id": "3166",
+        "name": "Peach Bottom",
+        "state": "PA",
+        "county": "York",
+        "latitude": 39.758936,
+        "longitude": -76.26874,
+        "capacity_mw": 2876.4,
+        "technology": "Nuclear",
+        "operator": "Constellation Nuclear",
+        "source": "EIA-860M December 2024",
+        "inventory_date": "2024-12-31",
+        "timezone": "America/New_York"
+      },
+      "result": {
+        "status": "unavailable",
+        "checked_at": "2026-10-18T05:24:46.159342+00:00",
+        "latitude": 39.758936,
+        "longitude": -76.26874,
+        "network": {
+          "available": true,
+          "comid": "4726523",
+          "candidates": [
+            {
+              "station": "394524076154501",
+              "name": "CO 08.05  Conowingo Reservoir",
+              "latitude": 39.7567709,
+              "longitude": -76.2621788,
+              "relationship": "downstream_network",
+              "distance_miles": 0.38,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394453076144101",
+              "name": "CO 07.03  Conowingo Reservoir",
+              "latitude": 39.7481601,
+              "longitude": -76.2444003,
+              "relationship": "downstream_network",
+              "distance_miles": 1.49,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394418076142801",
+              "name": "Conowingo XC-4 (LC)",
+              "latitude": 39.7384381,
+              "longitude": -76.240789,
+              "relationship": "downstream_network",
+              "distance_miles": 2.05,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394426076141301",
+              "name": "Conowingo XC-4 (C)",
+              "latitude": 39.7406604,
+              "longitude": -76.2366222,
+              "relationship": "downstream_network",
+              "distance_miles": 2.12,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394339076140701",
+              "name": "CO 12.01  Conowingo Reservoir",
+              "latitude": 39.7276051,
+              "longitude": -76.2349555,
+              "relationship": "downstream_network",
+              "distance_miles": 2.81,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394254076140701",
+              "name": "CO 05.02  Conowingo Reservoir",
+              "latitude": 39.7151053,
+              "longitude": -76.2349555,
+              "relationship": "downstream_network",
+              "distance_miles": 3.52,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394236076140901",
+              "name": "CONOWINGO XC-7 (LC)",
+              "latitude": 39.71010539,
+              "longitude": -76.23551108,
+              "relationship": "downstream_network",
+              "distance_miles": 3.81,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394238076135101",
+              "name": "CONOWINGO XC-7 (C)",
+              "latitude": 39.710661,
+              "longitude": -76.23051089,
+              "relationship": "downstream_network",
+              "distance_miles": 3.91,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394240076133501",
+              "name": "CONOWINGO XC-7 (RC)",
+              "latitude": 39.71121667,
+              "longitude": -76.2260663,
+              "relationship": "downstream_network",
+              "distance_miles": 4.0,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394214076134001",
+              "name": "CONOWINGO XC-8 (C)",
+              "latitude": 39.70399455,
+              "longitude": -76.2274552,
+              "relationship": "downstream_network",
+              "distance_miles": 4.38,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394212076133501",
+              "name": "CO 04.05  Conowingo Reservoir",
+              "latitude": 39.703439,
+              "longitude": -76.2260663,
+              "relationship": "downstream_network",
+              "distance_miles": 4.45,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394219076132101",
+              "name": "CONOWINGO XC-8 (RC)",
+              "latitude": 39.7053835,
+              "longitude": -76.2221772,
+              "relationship": "downstream_network",
+              "distance_miles": 4.45,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394148076131801",
+              "name": "CO 12.05  Conowingo Reservoir",
+              "latitude": 39.69677258,
+              "longitude": -76.2213439,
+              "relationship": "downstream_network",
+              "distance_miles": 4.98,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394136076125801",
+              "name": "CONOWINGO XC-10 (C)",
+              "latitude": 39.6934394,
+              "longitude": -76.2157881,
+              "relationship": "downstream_network",
+              "distance_miles": 5.33,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394126076125801",
+              "name": "CO 12.06  Conowingo Reservoir",
+              "latitude": 39.6906617,
+              "longitude": -76.2157881,
+              "relationship": "downstream_network",
+              "distance_miles": 5.49,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394104076125501",
+              "name": "CO 03.05  Conowingo Reservoir",
+              "latitude": 39.6845507,
+              "longitude": -76.2149547,
+              "relationship": "downstream_network",
+              "distance_miles": 5.88,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394107076122301",
+              "name": "CO 13.02  Conowingo Reservoir",
+              "latitude": 39.6853842,
+              "longitude": -76.2060655,
+              "relationship": "downstream_network",
+              "distance_miles": 6.08,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394107076122001",
+              "name": "CONOWINGO XC-12 (C)",
+              "latitude": 39.68538426,
+              "longitude": -76.2052321,
+              "relationship": "downstream_network",
+              "distance_miles": 6.1,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394107076121101",
+              "name": "CONOWINGO XC-12 (RC)",
+              "latitude": 39.6853843,
+              "longitude": -76.202732,
+              "relationship": "downstream_network",
+              "distance_miles": 6.18,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394055076122901",
+              "name": "CONOWINGO XC-12 (LC)",
+              "latitude": 39.6820509,
+              "longitude": -76.2077322,
+              "relationship": "downstream_network",
+              "distance_miles": 6.22,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394018076111701",
+              "name": "CONOWINGO XC-15 (LC)",
+              "latitude": 39.6717738,
+              "longitude": -76.1877315,
+              "relationship": "downstream_network",
+              "distance_miles": 7.4,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394010076112501",
+              "name": "CONOWINGO XC-15 (C)",
+              "latitude": 39.66955158,
+              "longitude": -76.18995378,
+              "relationship": "downstream_network",
+              "distance_miles": 7.46,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394007076112401",
+              "name": "CO 13.05  Conowingo Reservoir",
+              "latitude": 39.66871827,
+              "longitude": -76.18967599,
+              "relationship": "downstream_network",
+              "distance_miles": 7.52,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394001076113401",
+              "name": "CONOWINGO XC-15 (RC)",
+              "latitude": 39.66705157,
+              "longitude": -76.19245388,
+              "relationship": "downstream_network",
+              "distance_miles": 7.53,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394007076105201",
+              "name": "CONOWINGO XC-16 (RC)",
+              "latitude": 39.66871847,
+              "longitude": -76.1807868,
+              "relationship": "downstream_network",
+              "distance_miles": 7.79,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "393957076105801",
+              "name": "CONOWINGO XC-16 (C)",
+              "latitude": 39.6659407,
+              "longitude": -76.18245349,
+              "relationship": "downstream_network",
+              "distance_miles": 7.89,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "393955076105801",
+              "name": "CO 01.03  Conowingo Reservoir",
+              "latitude": 39.66538517,
+              "longitude": -76.18245349,
+              "relationship": "downstream_network",
+              "distance_miles": 7.93,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "394002076103501",
+              "name": "CONOWINGO XC-17 (RC TO BANK)",
+              "latitude": 39.6673297,
+              "longitude": -76.1760644,
+              "relationship": "downstream_network",
+              "distance_miles": 8.02,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "393955076103901",
+              "name": "CONOWINGO XC-17 (C TO RC)",
+              "latitude": 39.66538529,
+              "longitude": -76.1771755,
+              "relationship": "downstream_network",
+              "distance_miles": 8.09,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "01578310",
+              "name": "SUSQUEHANNA RIVER AT CONOWINGO, MD",
+              "latitude": 39.65788889,
+              "longitude": -76.1744444,
+              "relationship": "downstream_network",
+              "distance_miles": 8.59,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "01579550",
+              "name": "SUSQUEHANNA RIVER NEAR DARLINGTON, MD",
+              "latitude": 39.62605556,
+              "longitude": -76.15775,
+              "relationship": "downstream_network",
+              "distance_miles": 10.91,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "01580570",
+              "name": "SUSQUEHANNA RIVER AT LAPIDUM, MD",
+              "latitude": 39.6011111,
+              "longitude": -76.1269444,
+              "relationship": "downstream_network",
+              "distance_miles": 13.26,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json"
+            }
+          ],
+          "candidate_count": 32,
+          "navigation_km": 50,
+          "note": "NLDI catchment-level connectivity. Distance is straight-line; no travel time or site inundation is established."
+        },
+        "gauges": [
+          {
+            "station": "394524076154501",
+            "name": "CO 08.05  Conowingo Reservoir",
+            "latitude": 39.7567709,
+            "longitude": -76.2621788,
+            "relationship": "downstream_network",
+            "distance_miles": 0.38,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "95f435ff7bdf4007b9c78cacb3ed0fa7",
+              "sha256": "1b412639e122e4436d6021b34878f8986e9f512ea468facf99c3d7cfecce34c0",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-394524076154501&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A44.591402%2B00%3A00%2F2026-10-18T05%3A24%3A44.591402%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:45.111116+00:00"
+            }
+          },
+          {
+            "station": "394453076144101",
+            "name": "CO 07.03  Conowingo Reservoir",
+            "latitude": 39.7481601,
+            "longitude": -76.2444003,
+            "relationship": "downstream_network",
+            "distance_miles": 1.49,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "313885d5097143968f7ee99ee5866dc8",
+              "sha256": "972d74a25a97f2f06e788f1741d4f8c130c4b62e2e4f6e4d3003e7e6e1bc02d6",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-394453076144101&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A45.112648%2B00%3A00%2F2026-10-18T05%3A24%3A45.112648%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:45.634102+00:00"
+            }
+          },
+          {
+            "station": "394418076142801",
+            "name": "Conowingo XC-4 (LC)",
+            "latitude": 39.7384381,
+            "longitude": -76.240789,
+            "relationship": "downstream_network",
+            "distance_miles": 2.05,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/4726523/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "bde53ef6f0134454903b0d7e190362a9",
+              "sha256": "909d01eeba55459301916e8bfca2efe52581af07b31e863a875289844d7eea9a",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-394418076142801&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A45.635313%2B00%3A00%2F2026-10-18T05%3A24%3A45.635313%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:46.158242+00:00"
+            }
+          }
+        ],
+        "operational_prediction": "withheld",
+        "stale": false,
+        "note": "Gauge discharge describes a river, not water depth at this work location. Check drainage, access routes and NWS instructions with the supervisor. Experimental ML cannot authorize work or change hazard ratings or window rankings.",
+        "summary": "No fresh discharge in the bounded gauge screen. River conditions remain unknown.",
+        "model": {
+          "name": "Six-hour LightGBM development reference",
+          "promoted": false,
+          "reason": "Independent validation, input-availability and site-applicability requirements remain open."
+        }
+      }
+    },
+    {
+      "site": {
+        "id": "8102",
+        "name": "Gavin Power, LLC",
+        "state": "OH",
+        "county": "Gallia",
+        "latitude": 38.9347,
+        "longitude": -82.1158,
+        "capacity_mw": 2600.0,
+        "technology": "Conventional Steam Coal",
+        "operator": "Gavin Power, LLC",
+        "source": "EIA-860M December 2024",
+        "inventory_date": "2024-12-31",
+        "timezone": "America/New_York"
+      },
+      "result": {
+        "status": "unavailable",
+        "checked_at": "2026-10-18T05:24:47.738319+00:00",
+        "latitude": 38.9347,
+        "longitude": -82.1158,
+        "network": {
+          "available": true,
+          "comid": "19443465",
+          "candidates": [
+            {
+              "station": "03160100",
+              "name": "Ohio River near Addison OH",
+              "latitude": 38.91369067,
+              "longitude": -82.1273666,
+              "relationship": "downstream_network",
+              "distance_miles": 1.58,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385449082073902",
+              "name": "OHIO R NR ADDISON OH-USGS 385449082073902",
+              "latitude": 38.913690666,
+              "longitude": -82.127366598,
+              "relationship": "downstream_network",
+              "distance_miles": 1.58,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385728082042439",
+              "name": "L02.0TENMILE CR @ HWY 8 BR @ LAKIN WV",
+              "latitude": 38.95785689,
+              "longitude": -82.07319789,
+              "relationship": "upstream_network",
+              "distance_miles": 2.79,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385845082050800",
+              "name": "SEWAGE DISP P 2 NR MIDDLEPORT OH",
+              "latitude": 38.9792453,
+              "longitude": -82.0854207,
+              "relationship": "upstream_network",
+              "distance_miles": 3.48,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385900082051900",
+              "name": "051 STORYS RN (7-1) NR MIDDLEPORT OH",
+              "latitude": 38.98341189,
+              "longitude": -82.0884763,
+              "relationship": "upstream_network",
+              "distance_miles": 3.67,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385933082042800",
+              "name": "051 LEADING C (12-10) AT MIDDLEPORT OH",
+              "latitude": 38.99257847,
+              "longitude": -82.0743091,
+              "relationship": "upstream_network",
+              "distance_miles": 4.58,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390021082071700",
+              "name": "051 LEADING C (12-7) NR RUTLAND OH",
+              "latitude": 39.0059113,
+              "longitude": -82.1212555,
+              "relationship": "upstream_network",
+              "distance_miles": 4.93,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385138082081101",
+              "name": "Ohio River at mile 264.0 nr Point Pleasant, WV",
+              "latitude": 38.86052778,
+              "longitude": -82.1364167,
+              "relationship": "downstream_network",
+              "distance_miles": 5.24,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390017082042700",
+              "name": "THOMAS F NR MIDDLEPORT OH",
+              "latitude": 39.00480048,
+              "longitude": -82.0740314,
+              "relationship": "upstream_network",
+              "distance_miles": 5.34,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03160050",
+              "name": "Leading Creek near Middleport OH",
+              "latitude": 39.00868924,
+              "longitude": -82.0851429,
+              "relationship": "upstream_network",
+              "distance_miles": 5.37,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390046082081800",
+              "name": "LEADING C NR RUTLAND OH",
+              "latitude": 39.0128555,
+              "longitude": -82.1382007,
+              "relationship": "upstream_network",
+              "distance_miles": 5.53,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390049082053700",
+              "name": "LEADING C NR MIDDLEPORT OH-USGS 390049082053700",
+              "latitude": 39.0136891,
+              "longitude": -82.0934766,
+              "relationship": "upstream_network",
+              "distance_miles": 5.59,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390110082050700",
+              "name": "051 THOMAS F (12-9) NR MIDDLEPORT OH",
+              "latitude": 39.0195224,
+              "longitude": -82.0851429,
+              "relationship": "upstream_network",
+              "distance_miles": 6.09,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03201500",
+              "name": "OHIO RIVER AT POINT PLEASANT, WV",
+              "latitude": 38.84396959,
+              "longitude": -82.139589,
+              "relationship": "downstream_network",
+              "distance_miles": 6.4,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390134082081300",
+              "name": "L LEADING C NR RUTLAND OH",
+              "latitude": 39.0261886,
+              "longitude": -82.1368117,
+              "relationship": "upstream_network",
+              "distance_miles": 6.42,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03160000",
+              "name": "OHIO R AT POMEROY, OH",
+              "latitude": 38.8403585,
+              "longitude": -82.1415336,
+              "relationship": "downstream_network",
+              "distance_miles": 6.66,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390150082081800",
+              "name": "041 L LEADING C NR RUTLAND OH",
+              "latitude": 39.030633,
+              "longitude": -82.1382007,
+              "relationship": "upstream_network",
+              "distance_miles": 6.74,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390201082034300",
+              "name": "051 THOMAS F (12-8) NR POMEROY OH",
+              "latitude": 39.03368898,
+              "longitude": -82.0618087,
+              "relationship": "upstream_network",
+              "distance_miles": 7.43,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390222082092200",
+              "name": "051 LEADING C (12-2) NR LANGSVILLE OH",
+              "latitude": 39.0395216,
+              "longitude": -82.1559791,
+              "relationship": "upstream_network",
+              "distance_miles": 7.56,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390222082093300",
+              "name": "O84 LEADING C NR RUTLAND OH",
+              "latitude": 39.0395216,
+              "longitude": -82.1590348,
+              "relationship": "upstream_network",
+              "distance_miles": 7.61,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390240082075000",
+              "name": "051 L LEADING C (12-6) AT RUTLAND OH",
+              "latitude": 39.0445217,
+              "longitude": -82.1304226,
+              "relationship": "upstream_network",
+              "distance_miles": 7.63,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390240082075001",
+              "name": "L LEADING CR @ STATE HWY 124 BRG NR RUTLAND, OH",
+              "latitude": 39.044521699,
+              "longitude": -82.130422569,
+              "relationship": "upstream_network",
+              "distance_miles": 7.63,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390238082093200",
+              "name": "051 UNAM TRIB TO LEADING C (12-3) NR RUTLAND OH",
+              "latitude": 39.04396597,
+              "longitude": -82.158757,
+              "relationship": "upstream_network",
+              "distance_miles": 7.89,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390239082030800",
+              "name": "041 E B THOMAS F NR POMEROY OH",
+              "latitude": 39.0442444,
+              "longitude": -82.0520861,
+              "relationship": "upstream_network",
+              "distance_miles": 8.31,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390222081594900",
+              "name": "KERR RN AT POMEROY OH",
+              "latitude": 39.0395226,
+              "longitude": -81.9968061,
+              "relationship": "upstream_network",
+              "distance_miles": 9.66,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385945081562100",
+              "name": "MAPLEWOOD LK J CUNDIFF NR RACINE OH",
+              "latitude": 38.9959124,
+              "longitude": -81.9390262,
+              "relationship": "upstream_network",
+              "distance_miles": 10.4,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390238081583900",
+              "name": "HIDDEN LK (UPPER) M ROUSH NR MINERSVILLE OH",
+              "latitude": 39.04396708,
+              "longitude": -81.977361,
+              "relationship": "upstream_network",
+              "distance_miles": 10.6,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03159900",
+              "name": "OHIO RIVER AT NEW HAVEN, WV",
+              "latitude": 38.9670242,
+              "longitude": -81.9215256,
+              "relationship": "upstream_network",
+              "distance_miles": 10.68,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03159870",
+              "name": "OHIO RIVER AT RACINE DAM, WV",
+              "latitude": 38.9167475,
+              "longitude": -81.9120808,
+              "relationship": "upstream_network",
+              "distance_miles": 11.02,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390539082083000",
+              "name": "051 L LEADING C (12-5) NR HARRISONVILLE OH",
+              "latitude": 39.09424299,
+              "longitude": -82.1415341,
+              "relationship": "upstream_network",
+              "distance_miles": 11.11,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390404082142000",
+              "name": "MEIGS MINE DAM NR DEXTER OH",
+              "latitude": 39.06785389,
+              "longitude": -82.2387601,
+              "relationship": "upstream_network",
+              "distance_miles": 11.32,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390545082135300",
+              "name": "DEXTER RN NR DEXTER OH",
+              "latitude": 39.09590897,
+              "longitude": -82.2312597,
+              "relationship": "upstream_network",
+              "distance_miles": 12.75,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390622082131000",
+              "name": "041 MUD F LEADING C NR DEXTER OH",
+              "latitude": 39.10618665,
+              "longitude": -82.2193148,
+              "relationship": "upstream_network",
+              "distance_miles": 13.09,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390733082080300",
+              "name": "051 UNAM TRIB TO LEADING C (12-4) AT HARRISON OH",
+              "latitude": 39.12590917,
+              "longitude": -82.1340338,
+              "relationship": "upstream_network",
+              "distance_miles": 13.25,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385304081523700",
+              "name": "RICHARDS SAND AND GRAVEL LK NR LETART FALLS OH",
+              "latitude": 38.88452619,
+              "longitude": -81.8768018,
+              "relationship": "upstream_network",
+              "distance_miles": 13.31,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "385912081521000",
+              "name": "PORTER LK F PORTER NR PORTLAND OH",
+              "latitude": 38.98674625,
+              "longitude": -81.8693017,
+              "relationship": "upstream_network",
+              "distance_miles": 13.72,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390900082100900",
+              "name": "051 MUD F (12-1) NR HARRISONVILLE OH",
+              "latitude": 39.15007514,
+              "longitude": -82.16903509,
+              "relationship": "upstream_network",
+              "distance_miles": 15.15,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "390759082155100",
+              "name": "UNNAMED TR TO OGDEN RN NR CARPENTER OH",
+              "latitude": 39.1331302,
+              "longitude": -82.26403859,
+              "relationship": "upstream_network",
+              "distance_miles": 15.85,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03202020",
+              "name": "OHIO R AT PT. PLEASANT, WV (AUX.GAGE)",
+              "latitude": 38.69174959,
+              "longitude": -82.18459,
+              "relationship": "downstream_network",
+              "distance_miles": 17.19,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "03202050",
+              "name": "OHIO RIVER AT GALLIPOLIS DAM, WV",
+              "latitude": 38.6817497,
+              "longitude": -82.1879234,
+              "relationship": "downstream_network",
+              "distance_miles": 17.9,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "384054082111702",
+              "name": "OHIO RIVER AT GALLIPOLIS DAM, W. VA.",
+              "latitude": 38.6817497,
+              "longitude": -82.1879234,
+              "relationship": "downstream_network",
+              "distance_miles": 17.9,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json"
+            }
+          ],
+          "candidate_count": 41,
+          "navigation_km": 50,
+          "note": "NLDI catchment-level connectivity. Distance is straight-line; no travel time or site inundation is established."
+        },
+        "gauges": [
+          {
+            "station": "03160100",
+            "name": "Ohio River near Addison OH",
+            "latitude": 38.91369067,
+            "longitude": -82.1273666,
+            "relationship": "downstream_network",
+            "distance_miles": 1.58,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "e3333575ab7c4cb8a8d941c20e264b52",
+              "sha256": "019cf2981bb7ca54e3fa5c61d8ef18afb4f93266e69d872ab8a39175852f49c3",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-03160100&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A46.160843%2B00%3A00%2F2026-10-18T05%3A24%3A46.160843%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:46.685678+00:00"
+            }
+          },
+          {
+            "station": "385449082073902",
+            "name": "OHIO R NR ADDISON OH-USGS 385449082073902",
+            "latitude": 38.913690666,
+            "longitude": -82.127366598,
+            "relationship": "downstream_network",
+            "distance_miles": 1.58,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "459016d3dbcb457cb9200b1d68b3fbd1",
+              "sha256": "b6c900031f0c4379b43d4c3c3e786e358087cb0b88d28a9eeb7154a45d8d6429",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-385449082073902&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A46.687332%2B00%3A00%2F2026-10-18T05%3A24%3A46.687332%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:47.212664+00:00"
+            }
+          },
+          {
+            "station": "385728082042439",
+            "name": "L02.0TENMILE CR @ HWY 8 BR @ LAKIN WV",
+            "latitude": 38.95785689,
+            "longitude": -82.07319789,
+            "relationship": "upstream_network",
+            "distance_miles": 2.79,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/19443465/navigation/UT/nwissite?distance=50&f=json",
+            "observation": {
+              "available": false,
+              "reason": "No unqualified discharge readings returned"
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "9df636bbd6dd42a1a940988e1f010ddd",
+              "sha256": "f8ea79fe5cd77bfaf9ab8095c09b2d2b69b7ee5349461c70ceae45fe9141425c",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-385728082042439&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A24%3A47.215020%2B00%3A00%2F2026-10-18T05%3A24%3A47.215020%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:24:47.733293+00:00"
+            }
+          }
+        ],
+        "operational_prediction": "withheld",
+        "stale": false,
+        "note": "Gauge discharge describes a river, not water depth at this work location. Check drainage, access routes and NWS instructions with the supervisor. Experimental ML cannot authorize work or change hazard ratings or window rankings.",
+        "summary": "No fresh discharge in the bounded gauge screen. River conditions remain unknown.",
+        "model": {
+          "name": "Six-hour LightGBM development reference",
+          "promoted": false,
+          "reason": "Independent validation, input-availability and site-applicability requirements remain open."
+        }
+      }
+    }
+  ],
+  "source_sites_sha256": "0bba80a9be519a8cbb1b21c205ea557257472683571ad3b18963d2c3a5daf35b",
+  "model_manifest_sha256": "48116da274212889e56555186e0176131b1551a8c11498bdd8811774666e1497",
+  "note": "Live access and metadata screening only. No independent predictive outcomes or site flooding labels."
+}

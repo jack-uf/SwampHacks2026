@@ -1,0 +1,356 @@
+{
+  "evidence": "Inspected retrospective feature/inference parity only. Historical receipt availability remains unknown.",
+  "source_hashes": {
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2023-0-0.json.gz": "613b762a385cecb55119af4282c00bdc3d4f7a6f9ae8af5e8b51a0d04cecb70c",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2023-1-0.json.gz": "f5f97dda9ea1e6b35c603773737913a3e08612b9e00935d886b68ef40ed2c08e",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2023-2-0.json.gz": "8c65cfec8f128a7c00b68b011d70ea784a70a8cab477e7a23b9aee4a6c32da31",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2023-3-0-bounded.json.gz": "d2a19a0d05de0eb9f4a3e3973deae6acbe13265e4cf235a2f6f347c5d49aa9ab",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2023-3-0.json.gz": "a024f02e6e1937d299ae14a7a0227abfb19ce5f3c4df540df383fe1b72b90eb0",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2024-0-0.json.gz": "964a2db83a270d78f60b217a55a481a0654e158105e6f7a092ebf063a1f5e6c0",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2024-1-0.json.gz": "8dd7274fb2419261f69285a695900a7bd8909c5901336a744aeb0d6202b311ff",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2024-2-0.json.gz": "4a02f47b5259eeb7f4f9b0d39d9f0061b9fb46ebfb0c82b5f8dfffb8d03b9be6",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2024-3-0-bounded.json.gz": "c1348eebd8c7c74310c74a5b457cc2d23b292d43b4424bfb7f0ef15deb7829c2",
+    "experiments/sprint-20261017-shift-hydrology/sources/01047000/2024-3-0.json.gz": "5d8bbcb8b2a078da021167e94b5fc0e9a44f0d8e3b78d38373bd62b8011537d3",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2023-0-0.json.gz": "ec930e25c950217abaa12ed5af1427953f35d43bb1424d0df9dc63607cb6abe1",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2023-1-0.json.gz": "6f70bc49fd611b7918edb73957927cc6707005698de0e9547ac284d94d1dccfb",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2023-2-0.json.gz": "c425af66993b53f2750fc86513d2af6d42eb3fbbb1dce8b31c9ed150b79c279a",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2023-3-0-bounded.json.gz": "1f1f93eab57a0feaba74d5ddb7de21a4a5ac8aaf0666f86d6a6639ed00716fc9",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2023-3-0.json.gz": "6317793f22ac4b18a3687c13ce6f86eb07b4e0fb2f30f97fc4020300610f1c64",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2024-0-0.json.gz": "3ed605d8318ec77478f59fce6635d08447b534f65cf1c1df0e342cdeb71e90ec",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2024-1-0.json.gz": "be13ba178bdbb7bd5d823eaf0d9d95f88335826051ab5d2538c24d720415da4e",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2024-2-0.json.gz": "e10b3075b1ae06e3fca4df8e858ec3f9bb8f55fc2300ac95d591a533299dc044",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2024-3-0-bounded.json.gz": "f41a70f364a07c2172ce0caff1082a23bd841b112ec19627d50bddd37b6ea6e2",
+    "experiments/sprint-20261017-shift-hydrology/sources/01134500/2024-3-0.json.gz": "0e1cd90cf98b176dbfb5fd417cb8cf4ec2394e0fb41c49affa658223c3ee0861",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2023-0-0.json.gz": "b1f362d310960353b94489efc35594d8ecf100008d0c615f8f4f9b17400b777b",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2023-1-0.json.gz": "554772e8a384538903996d8dd057bd7da4c61971d728305ba0a2433b78bdc04b",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2023-2-0.json.gz": "6bc5faa5e7e6100f5cb7eedb9977d0f677dde54471ae8f9e8b1178b92a953cfa",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2023-3-0-bounded.json.gz": "edc9999279366c9fb0e632e344d73e710aa1a8a288c01649f33bd2781ee3b82b",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2024-0-0.json.gz": "72a1ac447a30027393fc503f9ba80a417fda9764d7f56c3b38e281244f71ec9d",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2024-1-0.json.gz": "81b3c6981b3e74f1f8363479243da678511e24f676308d6f1ffe61b4ff010478",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2024-2-0.json.gz": "64e65e6cd25b96a968411f93c20668b657feecea27d949a63ee443b1a7f593e3",
+    "experiments/sprint-20261017-mlp-onset/sources/01142500/2024-3-0-bounded.json.gz": "38e3c11a99a411b6548ae082a03272cd7f76dabd2e4a3321f51897bf37402b3b",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2023-0-0.json.gz": "70051366945be248e7942c970d2db4506d9399f13c09cf847d24195246064079",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2023-1-0.json.gz": "0734b906438a60154e1a78cc6cb401d32839603f63cf536c41f636106903d20d",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2023-2-0.json.gz": "50c92594a00a35b08577ebfa338929d65ad01a5ee923cd48ea92f4f32ce749a0",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2023-3-0-bounded.json.gz": "189c6d7c167a8d98dc2cd90b11250c0a03184999dffc4654b592b76a577b0573",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2024-0-0.json.gz": "72fccd06759d076b205d864c428dff882a8824925a70bb8f33f2b47b646a93a0",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2024-1-0.json.gz": "860f7637b1448a3d13682b009cd0d482b45e829a3c867e431bec17e4484728af",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2024-2-0.json.gz": "de9d11949e3f9c251c19a08988a69290aa71b4d39287d8b0b343a277f45042a3",
+    "experiments/sprint-20261017-mlp-hybrid/sources/01170100/2024-3-0-bounded.json.gz": "97aeef879d4802632f6e57e3ba7c995bca5f31cee255eab9f3ffce3c4ab1ab82",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2023-0-0.json.gz": "3abe954ca588903b3c33b70cd3b067ab133129d44fe3b5ad74799770d78bab46",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2023-1-0.json.gz": "97932a843d4f41a4b89dcbcba4f9abd61c543dbc6303955783acd9f583f8b79e",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2023-2-0.json.gz": "487297fce153115124f59aec22aa98692ea10c80f3a11129d296daafaf40003c",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2023-3-0-bounded.json.gz": "19db1a50ccb3387529aff2cb6da0db4dcc702767a8260d4ebf2ff4f0f8fe6b0e",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2024-0-0.json.gz": "c93dd2ffa1895c3f21b4cbc5297fe62492149fa60f161a96bb3d58e03d8d27d8",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2024-1-0.json.gz": "8df86082c84803376c44e421ffefd26aaafeaf4d8c7f948fe89244be2ec4f025",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2024-2-0.json.gz": "093bbda71b5dcbdd1e1919307ce8d93e02271d8e6990cb1c028a2fd75f506849",
+    "experiments/sprint-20261017-mlp-geo/sources/01181000/2024-3-0-bounded.json.gz": "4ea0cda8c92b08f39c476365a0f7613602464fad534c70b0a63087aefaad6799"
+  },
+  "model_manifest_sha256": "48116da274212889e56555186e0176131b1551a8c11498bdd8811774666e1497",
+  "results": [
+    {
+      "station": "01047000",
+      "issue_time": "2024-03-14T18:00:00+00:00",
+      "candidate_error": 5.898059818321144e-17,
+      "comparator_error": 3.122502256758253e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-04-27T18:00:00+00:00",
+      "candidate_error": 2.8189256484623115e-17,
+      "comparator_error": 3.642919299551295e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-05-24T06:00:00+00:00",
+      "candidate_error": 4.9439619065339e-17,
+      "comparator_error": 2.905661822261152e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-06-19T18:00:00+00:00",
+      "candidate_error": 2.531612072753653e-17,
+      "comparator_error": 5.377642775528102e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-07-17T18:00:00+00:00",
+      "candidate_error": 5.551115123125783e-17,
+      "comparator_error": 8.153200337090993e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-08-14T12:00:00+00:00",
+      "candidate_error": 4.7271214720367993e-17,
+      "comparator_error": 4.9439619065339e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-09-10T00:00:00+00:00",
+      "candidate_error": 9.280770596475918e-17,
+      "comparator_error": 6.440160904563896e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-10-06T06:00:00+00:00",
+      "candidate_error": 8.68445940160889e-17,
+      "comparator_error": 1.973247953923618e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-11-01T18:00:00+00:00",
+      "candidate_error": 9.589768215634287e-17,
+      "comparator_error": 9.085614205428527e-17
+    },
+    {
+      "station": "01047000",
+      "issue_time": "2024-11-28T06:00:00+00:00",
+      "candidate_error": 8.023096076392733e-18,
+      "comparator_error": 6.071532165918825e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-01-01T00:00:00+00:00",
+      "candidate_error": 9.90960785651751e-17,
+      "comparator_error": 7.806255641895632e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-04-12T00:00:00+00:00",
+      "candidate_error": 2.7755575615628914e-17,
+      "comparator_error": 4.85722573273506e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-05-15T12:00:00+00:00",
+      "candidate_error": 6.245004513516506e-17,
+      "comparator_error": 8.500145032286355e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-06-13T06:00:00+00:00",
+      "candidate_error": 2.1467203015212988e-17,
+      "comparator_error": 8.673617379884035e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-07-19T06:00:00+00:00",
+      "candidate_error": 3.122502256758253e-17,
+      "comparator_error": 5.898059818321144e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-08-19T12:00:00+00:00",
+      "candidate_error": 4.119968255444917e-18,
+      "comparator_error": 8.239936510889834e-18
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-09-17T06:00:00+00:00",
+      "candidate_error": 2.222614453595284e-17,
+      "comparator_error": 9.6710833785707e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-10-16T00:00:00+00:00",
+      "candidate_error": 2.688821387764051e-17,
+      "comparator_error": 6.548581121812447e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-11-13T18:00:00+00:00",
+      "candidate_error": 9.703609443745265e-17,
+      "comparator_error": 5.4643789493269423e-17
+    },
+    {
+      "station": "01134500",
+      "issue_time": "2024-12-12T12:00:00+00:00",
+      "candidate_error": 4.85722573273506e-17,
+      "comparator_error": 2.7755575615628914e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-01-01T00:00:00+00:00",
+      "candidate_error": 2.905661822261152e-17,
+      "comparator_error": 4.85722573273506e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-03-11T12:00:00+00:00",
+      "candidate_error": 6.765421556309548e-17,
+      "comparator_error": 6.245004513516506e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-04-30T06:00:00+00:00",
+      "candidate_error": 1.3877787807814457e-17,
+      "comparator_error": 4.9439619065339e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-06-02T06:00:00+00:00",
+      "candidate_error": 1.1926223897340549e-17,
+      "comparator_error": 8.521829075736065e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-07-05T06:00:00+00:00",
+      "candidate_error": 8.798300629719868e-17,
+      "comparator_error": 4.705437428587089e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-08-19T00:00:00+00:00",
+      "candidate_error": 5.898059818321144e-17,
+      "comparator_error": 9.627715291671279e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-09-21T00:00:00+00:00",
+      "candidate_error": 5.589062199162775e-17,
+      "comparator_error": 2.4069288229178198e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-10-24T00:00:00+00:00",
+      "candidate_error": 4.4181238528784306e-18,
+      "comparator_error": 4.206704429243757e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-11-26T00:00:00+00:00",
+      "candidate_error": 6.711211447685272e-17,
+      "comparator_error": 6.808789643208968e-17
+    },
+    {
+      "station": "01142500",
+      "issue_time": "2024-12-30T18:00:00+00:00",
+      "candidate_error": 2.7755575615628914e-17,
+      "comparator_error": 8.326672684688674e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-01-01T00:00:00+00:00",
+      "candidate_error": 1.5829351718288365e-17,
+      "comparator_error": 3.0357660829594124e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-02-26T00:00:00+00:00",
+      "candidate_error": 6.245004513516506e-17,
+      "comparator_error": 7.806255641895632e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-04-19T18:00:00+00:00",
+      "candidate_error": 3.165870343657673e-17,
+      "comparator_error": 5.377642775528102e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-05-21T12:00:00+00:00",
+      "candidate_error": 9.985502008591496e-17,
+      "comparator_error": 8.760353553682876e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-06-23T12:00:00+00:00",
+      "candidate_error": 6.071532165918825e-18,
+      "comparator_error": 2.862293735361732e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-07-25T06:00:00+00:00",
+      "candidate_error": 4.2717565595928875e-17,
+      "comparator_error": 8.716985466783456e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-08-27T06:00:00+00:00",
+      "candidate_error": 8.326672684688674e-17,
+      "comparator_error": 9.280770596475918e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-09-28T00:00:00+00:00",
+      "candidate_error": 5.681219383824043e-17,
+      "comparator_error": 6.787105599759258e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-10-29T18:00:00+00:00",
+      "candidate_error": 5.0903291998194433e-17,
+      "comparator_error": 7.936359902593892e-17
+    },
+    {
+      "station": "01170100",
+      "issue_time": "2024-11-30T12:00:00+00:00",
+      "candidate_error": 9.324138683375338e-17,
+      "comparator_error": 6.635317295611287e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-01-01T00:00:00+00:00",
+      "candidate_error": 9.367506770274758e-17,
+      "comparator_error": 3.642919299551295e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-02-14T06:00:00+00:00",
+      "candidate_error": 5.724587470723463e-17,
+      "comparator_error": 5.551115123125783e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-04-02T06:00:00+00:00",
+      "candidate_error": 3.252606517456513e-17,
+      "comparator_error": 1.9081958235744878e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-05-11T18:00:00+00:00",
+      "candidate_error": 9.367506770274758e-17,
+      "comparator_error": 5.117434254131581e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-06-17T12:00:00+00:00",
+      "candidate_error": 9.280770596475918e-17,
+      "comparator_error": 9.627715291671279e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-07-24T00:00:00+00:00",
+      "candidate_error": 4.716279450311944e-17,
+      "comparator_error": 1.734723475976807e-18
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-08-31T00:00:00+00:00",
+      "candidate_error": 4.347650711666873e-17,
+      "comparator_error": 7.068998164605489e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-10-06T12:00:00+00:00",
+      "candidate_error": 2.0708261494473135e-17,
+      "comparator_error": 8.088148206741863e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-11-12T06:00:00+00:00",
+      "candidate_error": 7.383416794626285e-17,
+      "comparator_error": 1.4094628242311558e-17
+    },
+    {
+      "station": "01181000",
+      "issue_time": "2024-12-29T12:00:00+00:00",
+      "candidate_error": 8.586881206085195e-17,
+      "comparator_error": 4.90059381963448e-17
+    }
+  ],
+  "code_sha256": {
+    "backend/hydrology.py": "89d59a44b6f2fd0ed2a621c7b6f45fe71828ce6ccab82aafc2a4d9a409e98036",
+    "scripts/verify_site_hydrology.py": "a37ffa5cb4e1367372adf1ee76d474614cf8792dac97bc51eeb71ba633da0f21"
+  }
+}

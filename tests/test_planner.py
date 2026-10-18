@@ -21,6 +21,25 @@ def anchor():
     return now_utc().replace(minute=0, second=0, microsecond=0)
 
 
+def test_non_aligned_plan_is_compared_and_candidate_hours_survive_routine_refresh():
+    start = anchor()
+    feed = weather(hourly(start, 50, 20, 24, 0.0))
+    planned = start + timedelta(hours=2, minutes=17)
+    kwargs = dict(hours=48, step_hours=1, planned_start=planned.isoformat(), timezone='UTC', flex_hours=2)
+    a = planner.plan(feed, activity('general_site_work'), 8,
+                     now=(start+timedelta(minutes=7, seconds=12)).isoformat(), **kwargs)
+    b = planner.plan(feed, activity('general_site_work'), 8,
+                     now=(start+timedelta(minutes=7, seconds=22)).isoformat(), **kwargs)
+    assert a['planned']['start'] == b['planned']['start'] == planned.isoformat()
+    assert a['recommendation']['choice'] == 'keep'
+    assert [w['start'] for w in a['windows']] == [w['start'] for w in b['windows']]
+    assert a['candidate_count'] == b['candidate_count']
+    # A fixed restriction is still applied to the added exact planned window.
+    restricted = planner.plan(weather(hourly(start, 50, 80, 24, 0.0)), activity('aerial_lift_crane'), 8,
+                              now=(start+timedelta(minutes=7)).isoformat(), **kwargs)
+    assert restricted['planned']['restricted'] is True
+
+
 def activity(name):
     return main.missions.ACTIVITIES[name]
 

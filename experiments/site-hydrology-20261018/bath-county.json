@@ -1,0 +1,313 @@
+{
+  "command": "live",
+  "checked_at": "2026-10-18T05:28:15.849398+00:00",
+  "records": [
+    {
+      "site": {
+        "id": "6167",
+        "name": "Bath County",
+        "state": "VA",
+        "county": "Bath",
+        "latitude": 38.20889,
+        "longitude": -79.8,
+        "capacity_mw": 2862.0,
+        "technology": "Hydroelectric Pumped Storage",
+        "operator": "Virginia Electric & Power Co",
+        "source": "EIA-860M December 2024",
+        "inventory_date": "2024-12-31",
+        "timezone": "America/New_York"
+      },
+      "result": {
+        "status": "observed",
+        "checked_at": "2026-10-18T05:28:15.835621+00:00",
+        "latitude": 38.20889,
+        "longitude": -79.8,
+        "network": {
+          "available": true,
+          "comid": "8520739",
+          "candidates": [
+            {
+              "station": "02011469",
+              "name": "BACK CREEK AT VEPCO DAM NR SUNRISE, VA",
+              "latitude": 38.1970682,
+              "longitude": -79.8058866,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 0.88,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011470",
+              "name": "BACK CREEK AT SUNRISE, VA",
+              "latitude": 38.19040156,
+              "longitude": -79.81172,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 1.43,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011460",
+              "name": "BACK CREEK NEAR SUNRISE, VA",
+              "latitude": 38.24540129,
+              "longitude": -79.76866328,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 3.04,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011449",
+              "name": "BACK CREEK BELOW WARWICK RUN NEAR MILL GAP, VA",
+              "latitude": 38.28569444,
+              "longitude": -79.746,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 6.06,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011480",
+              "name": "BACK CREEK ON ROUTE 600, NEAR MOUNTAIN GROVE, VA",
+              "latitude": 38.1348461,
+              "longitude": -79.8656107,
+              "relationship": "same_indexed_reach",
+              "distance_miles": 6.23,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "0201144558",
+              "name": "WARWICK RUN ABOVE LICK DRAFT NEAR MILL GAP, VA",
+              "latitude": 38.3006111,
+              "longitude": -79.7805278,
+              "relationship": "upstream_network",
+              "distance_miles": 6.42,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "0201144806",
+              "name": "WARWICK RUN BELOW LICK DRAFT NEAR MILL GAP, VA",
+              "latitude": 38.2995,
+              "longitude": -79.7726944,
+              "relationship": "upstream_network",
+              "distance_miles": 6.43,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011440",
+              "name": "BACK CREEK AT ROUTE 84 NEAR MUSTOE, VA",
+              "latitude": 38.30519444,
+              "longitude": -79.7297222,
+              "relationship": "upstream_network",
+              "distance_miles": 7.67,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/UT/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011500",
+              "name": "BACK CREEK NEAR MOUNTAIN GROVE, VA",
+              "latitude": 38.0695688,
+              "longitude": -79.8970003,
+              "relationship": "downstream_network",
+              "distance_miles": 10.97,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011510",
+              "name": "BACK CREEK NEAR BACOVA JUNCTION, VA",
+              "latitude": 38.03623575,
+              "longitude": -79.9061671,
+              "relationship": "downstream_network",
+              "distance_miles": 13.25,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011650",
+              "name": "LAKE MOOMAW (NORTH) NEAR HOT SPRINGS, VA",
+              "latitude": 37.97456896,
+              "longitude": -79.967558,
+              "relationship": "downstream_network",
+              "distance_miles": 18.58,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            },
+            {
+              "station": "02011700",
+              "name": "LAKE MOOMAW (CENTRAL) NEAR HOT SPRINGS, VA",
+              "latitude": 37.94984678,
+              "longitude": -79.9756137,
+              "relationship": "downstream_network",
+              "distance_miles": 20.29,
+              "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json"
+            }
+          ],
+          "candidate_count": 12,
+          "navigation_km": 50,
+          "note": "NLDI catchment-level connectivity. Distance is straight-line; no travel time or site inundation is established.",
+          "discharge_screen": {
+            "available": true,
+            "candidates_screened": 12,
+            "fresh_discharge_gauges": 3,
+            "excluded": {
+              "02011469": "No unqualified discharge readings returned",
+              "02011449": "No unqualified discharge readings returned",
+              "02011480": "No unqualified discharge readings returned",
+              "0201144558": "No unqualified discharge readings returned",
+              "0201144806": "No unqualified discharge readings returned",
+              "02011440": "No unqualified discharge readings returned",
+              "02011510": "No unqualified discharge readings returned",
+              "02011650": "No unqualified discharge readings returned",
+              "02011700": "No unqualified discharge readings returned"
+            },
+            "note": "Active means fresh unqualified discharge, including provisional data; ML has a separate approved-only contract."
+          }
+        },
+        "gauges": [
+          {
+            "station": "02011470",
+            "name": "BACK CREEK AT SUNRISE, VA",
+            "latitude": 38.19040156,
+            "longitude": -79.81172,
+            "relationship": "same_indexed_reach",
+            "distance_miles": 1.43,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": true,
+              "latest_at": "2026-10-18T04:30:00+00:00",
+              "value_cfs": 25.2,
+              "quality": "Provisional",
+              "age_minutes": 58.2,
+              "received_at": "2026-10-18T05:28:14.530715+00:00",
+              "observation_to_receipt_minutes": 58.2,
+              "latency_note": "Observation age at retrieval, not first-publication or transmission delay.",
+              "change_6h_cfs": 2.3,
+              "change_24h_cfs": -3.4,
+              "provisional_readings": 765,
+              "approved_readings": 0,
+              "qualified_readings": 0,
+              "readings": 765
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "0a34d05801ae48518526d5a6f12ce0d3",
+              "sha256": "334b53f83e4268d360d28a1f28f462d4f045450e22ccc41e649d94bcb445eae4",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-02011470&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A28%3A13.921582%2B00%3A00%2F2026-10-18T05%3A28%3A13.921582%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:28:14.530715+00:00"
+            }
+          },
+          {
+            "station": "02011460",
+            "name": "BACK CREEK NEAR SUNRISE, VA",
+            "latitude": 38.24540129,
+            "longitude": -79.76866328,
+            "relationship": "same_indexed_reach",
+            "distance_miles": 3.04,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": true,
+              "latest_at": "2026-10-18T05:00:00+00:00",
+              "value_cfs": 56.8,
+              "quality": "Provisional",
+              "age_minutes": 28.3,
+              "received_at": "2026-10-18T05:28:15.177155+00:00",
+              "observation_to_receipt_minutes": 28.3,
+              "latency_note": "Observation age at retrieval, not first-publication or transmission delay.",
+              "change_6h_cfs": -10.8,
+              "change_24h_cfs": -31.3,
+              "provisional_readings": 767,
+              "approved_readings": 0,
+              "qualified_readings": 0,
+              "readings": 767
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "216fc79d35ce4f0f9be84dfdd5ca2c41",
+              "sha256": "b42e823b1d7ccbdb58c0fd41a71df5aaefa84ccb74eb041063323ceacf5d564d",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-02011460&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A28%3A14.537102%2B00%3A00%2F2026-10-18T05%3A28%3A14.537102%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:28:15.177155+00:00"
+            }
+          },
+          {
+            "station": "02011500",
+            "name": "BACK CREEK NEAR MOUNTAIN GROVE, VA",
+            "latitude": 38.0695688,
+            "longitude": -79.8970003,
+            "relationship": "downstream_network",
+            "distance_miles": 10.97,
+            "source_url": "https://api.water.usgs.gov/nldi/linked-data/comid/8520739/navigation/DM/nwissite?distance=50&f=json",
+            "observation": {
+              "available": true,
+              "latest_at": "2026-10-18T04:30:00+00:00",
+              "value_cfs": 80.5,
+              "quality": "Provisional",
+              "age_minutes": 58.3,
+              "received_at": "2026-10-18T05:28:15.829091+00:00",
+              "observation_to_receipt_minutes": 58.3,
+              "latency_note": "Observation age at retrieval, not first-publication or transmission delay.",
+              "change_6h_cfs": -5.4,
+              "change_24h_cfs": -31.5,
+              "provisional_readings": 765,
+              "approved_readings": 0,
+              "qualified_readings": 0,
+              "readings": 765
+            },
+            "experimental": {
+              "status": "withheld",
+              "operational_status": "withheld",
+              "probability": null,
+              "baseline_probability": null,
+              "reasons": [
+                "model_not_promoted",
+                "site_flood_applicability_unverified",
+                "gauge_has_no_frozen_reference_and_attributes",
+                "no_response_received_by_issue"
+              ],
+              "issue_time": "2026-10-18T00:00:00+00:00",
+              "valid_until": "2026-10-18T06:00:00+00:00",
+              "threshold": 0.10851271591094244
+            },
+            "receipt": {
+              "id": "76b1d81f92bf4920937d2dc22eb05f92",
+              "sha256": "c218559b8f924e361d410ddc9a04b128ca259d60551161f0bdab81f1267a29e8",
+              "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-02011500&parameter_code=00060&statistic_id=00011&datetime=2026-10-10T05%3A28%3A15.184110%2B00%3A00%2F2026-10-18T05%3A28%3A15.184110%2B00%3A00&limit=50000&skipGeometry=true",
+              "received_at": "2026-10-18T05:28:15.829091+00:00"
+            }
+          }
+        ],
+        "operational_prediction": "withheld",
+        "stale": false,
+        "note": "Gauge discharge describes a river, not water depth at this work location. Check drainage, access routes and NWS instructions with the supervisor. Experimental ML cannot authorize work or change hazard ratings or window rankings.",
+        "summary": "Live river context; experimental ML withheld from operational decisions.",
+        "model": {
+          "name": "Six-hour LightGBM development reference",
+          "promoted": false,
+          "reason": "Independent validation, input-availability and site-applicability requirements remain open."
+        }
+      }
+    }
+  ],
+  "source_sites_sha256": "0bba80a9be519a8cbb1b21c205ea557257472683571ad3b18963d2c3a5daf35b",
+  "model_manifest_sha256": "48116da274212889e56555186e0176131b1551a8c11498bdd8811774666e1497",
+  "note": "Live access and metadata screening only. No independent predictive outcomes or site flooding labels."
+}

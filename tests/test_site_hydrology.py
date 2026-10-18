@@ -184,3 +184,18 @@ def test_cached_context_expires_readings_and_forecast_horizon(tmp_path, monkeypa
     assert current['gauges'][0]['experimental']['probability'] is None
     assert 'forecast_horizon_expired' in current['gauges'][0]['experimental']['reasons']
     assert hydrology.cached(dict(latitude=38.001, longitude=-82.)) is None
+
+
+def test_receipt_endpoint_preserves_bytes_and_checks_integrity(client):
+    body = b'{"features": [], "links": []}\n'
+    with db() as c:
+        c.execute('INSERT INTO hydrology_receipts VALUES (?,?,?,?,?,?,?)',
+            ('public-receipt', '04127997', now_utc().isoformat(), 'https://api.waterdata.usgs.gov/test',
+             200, hashlib.sha256(body).hexdigest(), body))
+    result = client.get('/api/hydrology/receipts/public-receipt')
+    assert result.status_code == 200 and result.content == body
+    assert result.headers['x-content-sha256'] == hashlib.sha256(body).hexdigest()
+    with db() as c:
+        c.execute("UPDATE hydrology_receipts SET body=? WHERE id='public-receipt'", (b'corrupt',))
+    assert client.get('/api/hydrology/receipts/public-receipt').status_code == 503
+    assert client.get('/api/hydrology/receipts/unknown').status_code == 404

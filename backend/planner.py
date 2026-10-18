@@ -239,8 +239,19 @@ def plan(weather, activity, duration_hours, terrain=None, ensemble=None, now=Non
     base['constraints']['planned_local_hour'] = round(planned_local, 2) if planned_local is not None else None
     decisive = sorted(h for h, weight in activity['sensitivity'].items() if weight >= DECISIVE)
     windows, planned = [], None
-    begin = start
+    # Stable UTC candidate hours keep routine refreshes comparable; include the exact plan too.
+    begin = start.replace(minute=0, second=0, microsecond=0)
+    if begin < start:
+        begin += timedelta(hours=1)
+    starts = []
     while begin + timedelta(hours=duration_hours) <= horizon:
+        starts.append(begin)
+        begin += timedelta(hours=step_hours)
+    if planned_start:
+        exact = parse_time(planned_start)
+        if start <= exact and exact + timedelta(hours=duration_hours) <= horizon and exact not in starts:
+            starts.append(exact)
+    for begin in sorted(starts):
         end = begin + timedelta(hours=duration_hours)
         if begin < start - timedelta(seconds=1):
             base['excluded']['past'] += 1
@@ -263,7 +274,6 @@ def plan(weather, activity, duration_hours, terrain=None, ensemble=None, now=Non
                 windows.append(window)
                 if planned_start and begin == parse_time(planned_start):
                     planned = window
-        begin += timedelta(hours=step_hours)
     ordered = sorted(windows, key=lambda w: (w['restricted'], w['risk'],
         (w['uncertainty'] or {}).get('restrict_share') if (w['uncertainty'] or {}).get('restrict_share') is not None else 1,
         w['start']))

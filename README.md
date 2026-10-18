@@ -48,6 +48,7 @@ For frontend development, keep the backend running and run `npm --prefix fronten
 
 - Leaflet map, ranked facilities, source timestamps, warning details, responsive site panels, index contributions, and locally accumulated score history.
 - Open-Meteo modeled weather, forecast rainfall and shallow soil moisture; active point-matched NWS alerts; FEMA mapped flood exposure.
+- On-demand USGS river observations and NLDI upstream/downstream context at facility and mission work points. The [river intelligence guide](docs/SITE_HYDROLOGY.md) documents source receipts, withholding, live coverage and the experimental LightGBM path. High-flow ML remains unpromoted and never changes ratings, clearance or window rankings.
 - Separate flood and severe-storm classifiers benchmarked against XGBoost, LightGBM, and logistic regression, calibrated on a separate period. The original flood estimator was retained; enhanced LightGBM won storm validation. Final evidence is mixed.
 - Recorded-strike stop-work timers within 10 miles, reset to 30 minutes after the latest qualifying strike; independent labeled replay controls.
 - Geolocated multi-hazard photo reports, persistent review status and manual corrections, consent-gated optional Jev text suggestions, and verified-report index contributions.

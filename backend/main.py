@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 import httpx
 from fastapi import FastAPI, HTTPException, Depends, Header, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from pydantic import BaseModel, Field
 from PIL import Image, UnidentifiedImageError
 from backend import providers, jev, missions, memory, overlap, planner, hydrology
@@ -368,6 +368,19 @@ async def site_hydrology(site_id: str):
     result = await hydrology.inspect(site)
     update_missions(site, 'Live river context checked')
     return result
+
+
+@app.get('/api/hydrology/receipts/{receipt_id}')
+def hydrology_receipt(receipt_id: str):
+    with db() as c:
+        row = c.execute('SELECT * FROM hydrology_receipts WHERE id=?', (receipt_id,)).fetchone()
+    if row is None:
+        raise HTTPException(404, 'Unknown river observation receipt')
+    if hashlib.sha256(row['body']).hexdigest() != row['sha256']:
+        raise HTTPException(503, 'River receipt checksum mismatch; restore the captured evidence')
+    return Response(content=row['body'], media_type='application/json', headers={
+        'X-Received-At': row['received_at'], 'X-Content-SHA256': row['sha256'],
+        'X-Upstream-Status': str(row['status'] or 'transport_error')})
 
 
 @app.get('/api/missions/{mission_id}/hydrology')
