@@ -69,6 +69,8 @@ Credit exactly these, in both the README and Devpost, and ask the team whether t
 Its decision rule, constraint set and uncertainty language are documented in `docs/WORK_WINDOW_PLANNER.md` and measured by `scripts/evaluate_planner.py`. A move needs one weighted hazard to improve a whole band with no weighted hazard worse, members can only veto, windows below 75 percent forecast coverage are skipped, and lower exposure is never described as safety.
 
 A window decision echoes the snapshot digest of the comparison the supervisor was looking at; the server recomputes the windows and answers 409 when the forecast has moved since, so no record can be attached to a stale view. A move must name a listed, unrestricted window, and every record writes an audit row carrying the JHA version current at the time.
+
+The snapshot digest covers decision-relevant material only (recommendation, window risks, restriction flags and bands, horizon and constraints), so a routine forecast refresh with unchanged advice does not invalidate a record; freshness is reported separately through the weather fetch time and member availability. `apply: true` reschedules in the same transaction as the record, re-checking the stored shift start and site overlap, and appends a JHA version for the new window with `window.reschedule` in the audit log.
 | Jev abstention v2 and held-out evaluation | `backend/jev.py` (`abstention`), `scripts/evaluate_jev.py` | Report triage text in `frontend/src/main.tsx` | `tests/test_jev.py`, `tests/test_jev_evaluation.py` |
 
 The reasoning behind each design choice is in `docs/DECISIONS.md`.

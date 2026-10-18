@@ -80,7 +80,31 @@ def scenarios():
              ensemble=calm_members, activity='general_site_work', **base),
         dict(name='unknown_exposure_declines', expect='insufficient', weather=grid(start, missing_gust),
              ensemble=None, activity='aerial_lift_crane', **base),
+        dict(name='weather_unavailable', expect='insufficient',
+             weather=dict(source='Open-Meteo numerical weather models', forecast=[], summary={}, feed=dict(available=False,
+                                                                                                           error='timeout')),
+             ensemble=None, activity='general_site_work', **base),
     ]
+
+
+def refresh(weather, heat=1.0, gust=1.05):
+    """A plausible forecast update: one degree warmer, five percent gustier."""
+    rows = [dict(row,
+                 apparent_temperature=None if row['apparent_temperature'] is None else row['apparent_temperature'] + heat,
+                 wind_gusts_10m=None if row['wind_gusts_10m'] is None else row['wind_gusts_10m'] * gust)
+            for row in weather.get('forecast') or []]
+    return dict(weather, forecast=rows)
+
+
+def refreshed_stable(scenario, choice, start):
+    """Would the same decision come back after an ordinary forecast update?"""
+    result = planner.plan(refresh(scenario['weather']), ACTIVITIES[scenario['activity']], scenario['duration_hours'],
+                          ensemble=scenario['ensemble'], now=scenario['now'], hours=scenario['hours'],
+                          step_hours=scenario['step_hours'], planned_start=scenario['planned_start'],
+                          timezone=scenario['timezone'], flex_hours=scenario['flex_hours'], limit=24,
+                          busy=scenario.get('busy', ()))
+    verdict = result['recommendation']
+    return (verdict['choice'], verdict['start']) == (choice, start)
 
 
 def run_scenarios():
@@ -116,7 +140,8 @@ def run_scenarios():
                             planned_risk=planned['risk'] if planned else None, chosen_risk=chosen['risk'] if chosen else None,
                             candidate_count=result['candidate_count'], excluded=result['excluded'],
                             near_ties=result['recommendation']['near_ties'], naive=naive, violations=violations,
-                            ensemble_available=bool(ensemble and ensemble.get('available'))))
+                            ensemble_available=bool(ensemble and ensemble.get('available')),
+                            stable_under_refresh=refreshed_stable(scenario, choice, result['recommendation']['start'])))
     moved = [r for r in records if r['choice'] == 'move']
     def beats_naive(record):
         values = [v for v in record['naive'].values() if v is not None]
@@ -126,7 +151,10 @@ def run_scenarios():
                    moves=len(moved), declined=sum(1 for r in records if r['choice'] == 'keep'),
                    insufficient=sum(1 for r in records if r['choice'] == 'insufficient'),
                    mean_improvement_on_move=round(sum(r['improvement'] or 0 for r in moved)/len(moved), 3) if moved else None,
-                   chosen_at_or_better_than_naive=sum(1 for r in moved if beats_naive(r)))
+                   chosen_at_or_better_than_naive=sum(1 for r in moved if beats_naive(r)),
+                   stable_under_refresh=sum(1 for r in records if r['stable_under_refresh']),
+                   stability=round(sum(1 for r in records if r['stable_under_refresh'])/len(records), 3),
+                   moves_stable=sum(1 for r in moved if r['stable_under_refresh']))
     return dict(metrics=metrics, records=records)
 
 

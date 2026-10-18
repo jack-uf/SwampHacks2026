@@ -221,6 +221,7 @@ export function MissionsView({
             action={action}
             busy={busy}
             onReport={() => onReport(detail.site.id)}
+            onApplied={() => current && loadDetail(current)}
           />
         )}
       </section>
@@ -367,7 +368,14 @@ function Readiness({ readiness, undecided }: { readiness: any; undecided: string
   );
 }
 
-function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; api: Api; action: Action; busy: boolean; onReport: () => void }) {
+function MissionDetail({ detail, api, action, busy, onReport, onApplied }: {
+  detail: any;
+  api: Api;
+  action: Action;
+  busy: boolean;
+  onReport: () => void;
+  onApplied?: () => void;
+}) {
   const { mission, site, conditions, jha, versions, decisions } = detail;
   const tz = site.timezone;
   const [deciding, setDeciding] = useState<string | null>(null);
@@ -419,7 +427,7 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
 
         <h3 className="section-subtitle">Work windows</h3>
         <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} tz={tz}
-          action={action} supervisor={mission.supervisor} busy={busy} />
+          action={action} supervisor={mission.supervisor} busy={busy} onApplied={onApplied} />
 
         <div className="section-title jha-title">
           <div>
@@ -621,7 +629,7 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
   );
 }
 
-function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy }: {
+function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy, onApplied }: {
   api: Api;
   missionId: string;
   revision: number;
@@ -629,11 +637,13 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy }:
   action: Action;
   supervisor: string;
   busy: boolean;
+  onApplied?: () => void;
 }) {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState("");
   const [note, setNote] = useState("");
   const [tick, setTick] = useState(0);
+  const [applied, setApplied] = useState<any>(null);
   useEffect(() => {
     let live = true;
     setData(null);
@@ -645,21 +655,27 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy }:
       live = false;
     };
   }, [missionId, revision, tick]);
-  const record = async (choice: "move" | "keep", start?: string) => {
+  const record = async (choice: "move" | "keep", start?: string, apply = false) => {
     if (!data) return;
+    let result: any = null;
     const ok = await action(
-      () =>
-        api(`/api/missions/${missionId}/window-decisions`, {
+      async () => {
+        result = await api(`/api/missions/${missionId}/window-decisions`, {
           method: "POST",
-          body: JSON.stringify({ choice, start, note: note.trim() || null, snapshot: data.snapshot, supervisor }),
-        }),
-      choice === "move"
-        ? "Window decision recorded. Reschedule the crew in your own system; this record states what the comparison showed."
-        : "Window decision recorded: the planned shift stands.",
+          body: JSON.stringify({ choice, start, apply, note: note.trim() || null, snapshot: data.snapshot, supervisor }),
+        });
+      },
+      apply
+        ? "Window decision recorded and the shift moved; the Job Hazard Analysis was rebuilt for the new window."
+        : choice === "move"
+          ? "Window decision recorded. Reschedule the crew in your own system; this record states what the comparison showed."
+          : "Window decision recorded: the planned shift stands.",
     );
     if (ok) {
       setNote("");
+      setApplied(result?.applied ?? null);
       setTick((value) => value + 1);
+      if (apply) onApplied?.();
     }
   };
   if (error) return <p className="body-note">Work-window comparison unavailable. {error}</p>;
@@ -707,6 +723,11 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy }:
             Record: move to the recommended window
           </button>
         )}
+        {verdict.choice === "move" && (
+          <button type="button" className="primary" disabled={busy} onClick={() => record("move", verdict.start, true)}>
+            Record and reschedule to {zoned(verdict.start, tz)}
+          </button>
+        )}
         {verdict.choice === "move" &&
           data.windows
             .filter((w: any) => !w.restricted && w.start !== verdict.start && w.start !== data.planned_start)
@@ -717,6 +738,14 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy }:
               </button>
             ))}
       </div>
+      {applied && (
+        <p className="body-note">
+          Shift moved: {zoned(applied.start, tz)} to {zoned(applied.end, tz)}.{" "}
+          {applied.hazards_unchanged
+            ? "Hazards were unchanged by the move, so the current JHA version stands and its check was refreshed."
+            : "The Job Hazard Analysis was rebuilt for the new window as version " + applied.jha_version + "."}
+        </p>
+      )}
       {data.candidate_count > 0 && (
       <div className="work-windows">
         {data.windows.map((w: any) => (

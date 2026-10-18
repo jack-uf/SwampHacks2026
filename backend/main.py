@@ -96,22 +96,34 @@ def mission_context(mission, site, assessment):
 
 def record_jha(mission, site, assessment, trigger):
     """Append a JHA version only when hazards, ratings or cited evidence changed."""
-    ctx = mission_context(mission, site, assessment)
-    jha = missions.build_jha(mission, ctx)
+    ctx, jha = prepare_jha(mission, site, assessment)
     with db() as c:
         c.execute('BEGIN IMMEDIATE')  # read-then-insert must not interleave with another writer
-        c.execute('INSERT OR REPLACE INTO jha_checks VALUES (?,?,?,?)',
-                  (mission['id'], now_utc().isoformat(), assessment['assessed_at'], int(bool(assessment.get('stale')))))
-        prior = c.execute('SELECT * FROM jha_versions WHERE mission_id=? ORDER BY version DESC LIMIT 1', (mission['id'],)).fetchone()
-        if prior and prior['fingerprint'] == jha['fingerprint']:
-            return
-        diff = missions.diff_jha(json.loads(prior['payload'])['entries'] if prior else [], jha['entries'])
-        payload = dict(jha, conditions=ctx['conditions'], computed_at=now_utc().isoformat(),
-                       inputs=dict(assessed_at=assessment['assessed_at'], weather_feed=assessment['weather'].get('feed'),
-                                   alerts_feed=assessment['alerts'].get('feed'), model_available=assessment['model'].get('available')))
-        c.execute('INSERT OR IGNORE INTO jha_versions VALUES (?,?,?,?,?,?,?)',
-                  (mission['id'], (prior['version'] if prior else 0)+1, now_utc().isoformat(), trigger, jha['fingerprint'],
-                   json.dumps(payload), json.dumps(diff)))
+        insert_jha_version(c, mission, assessment, ctx, jha, trigger)
+
+
+def prepare_jha(mission, site, assessment):
+    """Build the context and entries for one mission state, without touching the database."""
+    ctx = mission_context(mission, site, assessment)
+    return ctx, missions.build_jha(mission, ctx)
+
+
+def insert_jha_version(c, mission, assessment, ctx, jha, trigger):
+    """Append a version on an open transaction; returns the version number, or None when nothing changed."""
+    c.execute('INSERT OR REPLACE INTO jha_checks VALUES (?,?,?,?)',
+              (mission['id'], now_utc().isoformat(), assessment['assessed_at'], int(bool(assessment.get('stale')))))
+    prior = c.execute('SELECT * FROM jha_versions WHERE mission_id=? ORDER BY version DESC LIMIT 1', (mission['id'],)).fetchone()
+    if prior and prior['fingerprint'] == jha['fingerprint']:
+        return None
+    diff = missions.diff_jha(json.loads(prior['payload'])['entries'] if prior else [], jha['entries'])
+    payload = dict(jha, conditions=ctx['conditions'], computed_at=now_utc().isoformat(),
+                   inputs=dict(assessed_at=assessment['assessed_at'], weather_feed=assessment['weather'].get('feed'),
+                               alerts_feed=assessment['alerts'].get('feed'), model_available=assessment['model'].get('available')))
+    version = (prior['version'] if prior else 0) + 1
+    c.execute('INSERT OR IGNORE INTO jha_versions VALUES (?,?,?,?,?,?,?)',
+              (mission['id'], version, now_utc().isoformat(), trigger, jha['fingerprint'],
+               json.dumps(payload), json.dumps(diff)))
+    return version
 
 
 def open_missions(site_id):
@@ -625,12 +637,19 @@ def window_decisions(mission_id, limit=5):
 
 
 def plan_snapshot(body):
-    """Canonical digest of the comparison a supervisor is looking at, so a decision cannot be recorded against a stale view."""
+    """Decision-relevant digest: a routine refresh that leaves the advice unchanged does not move it.
+
+    Weather values, fetch times and member availability are excluded on purpose; they belong to
+    evidence freshness, which the record and the audit row carry separately.
+    """
+    def window(item):
+        return dict(start=item['start'], risk=item['risk'], restricted=item['restricted'], ratings=item['ratings'])
+    recommendation = body['recommendation']
     material = dict(planned_start=body['planned_start'], horizon_hours=body['horizon_hours'],
                     duration_hours=body['duration_hours'], flex_hours=body['constraints']['flex_hours'],
-                    weather_fetched_at=body.get('weather_fetched_at'), ensemble_available=body.get('ensemble_available'),
-                    recommendation=body['recommendation'], planned=body['planned'],
-                    windows=[dict(start=w['start'], risk=w['risk'], restricted=w['restricted']) for w in body['windows']])
+                    choice=recommendation['choice'], start=recommendation['start'],
+                    planned=window(body['planned']) if body['planned'] else None,
+                    windows=[window(item) for item in body['windows']])
     return hashlib.sha256(json.dumps(material, sort_keys=True, default=str).encode()).hexdigest()
 
 
@@ -670,6 +689,7 @@ async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int
 class WindowDecision(BaseModel):
     choice: Literal['move', 'keep']
     start: str | None = None
+    apply: bool = False
     note: str | None = Field(default=None, max_length=280)
     snapshot: str = Field(min_length=32, max_length=64)
     supervisor: str = Field(min_length=2, max_length=80)
@@ -700,6 +720,8 @@ async def record_window_decision(mission_id: str, value: WindowDecision, actor: 
     record = dict(id=str(uuid.uuid4()), mission_id=mission_id, created_at=now_utc().isoformat(),
                   actor=actor['name'] or value.supervisor.strip(), identity=actor['identity'], choice=value.choice,
                   start=start, note=(value.note or '').strip() or None, snapshot=value.snapshot, jha_version=latest['version'])
+    if value.apply:
+        return await apply_window(mission_id, value, plan, start, record, actor)
     with db() as c:
         c.execute('BEGIN IMMEDIATE')
         c.execute('INSERT INTO window_decisions VALUES (:id,:mission_id,:created_at,:actor,:identity,:choice,:start,:note,:snapshot,:jha_version)', record)
@@ -707,6 +729,41 @@ async def record_window_decision(mission_id: str, value: WindowDecision, actor: 
               choice=record['choice'], start=start, snapshot=value.snapshot, jha_version=record['jha_version'],
               recommendation=plan['recommendation']['choice'])
     return dict(record, stale=False)
+
+
+async def apply_window(mission_id: str, value: WindowDecision, plan: dict, start: str | None,
+                       record: dict, actor: dict):
+    """Move the shift to an accepted window. The schedule change, its JHA version, its record and the audits commit together."""
+    if value.choice != 'move' or not start:
+        raise HTTPException(422, 'Only a move to a listed, unrestricted window can be applied to the schedule.')
+    mission = mission_or_404(mission_id)
+    site = SITE_BY_ID[mission['site_id']]
+    end = (parse_time(start) + timedelta(hours=plan['duration_hours'])).isoformat()
+    if parse_time(start) <= now_utc():
+        raise HTTPException(409, 'That window has already started; choose a future window.')
+    assessment = await current_assessment(site)
+    moved = dict(mission, shift_start=start, shift_end=end)
+    ctx, jha = prepare_jha(moved, site, assessment)
+    with db() as c:
+        c.execute('BEGIN IMMEDIATE')
+        current = c.execute('SELECT shift_start FROM missions WHERE id=?', (mission_id,)).fetchone()
+        if current['shift_start'] != mission['shift_start']:
+            raise HTTPException(409, 'The schedule changed while this comparison was open; reload the mission and compare again.')
+        clash = [dict(row) for row in c.execute('SELECT name, shift_start, shift_end FROM missions WHERE site_id=? AND id<>?',
+                                                (mission['site_id'], mission_id)).fetchall()
+                 if parse_time(row['shift_end']) > parse_time(start) and parse_time(row['shift_start']) < parse_time(end)]
+        if clash:
+            raise HTTPException(409, f"That window now overlaps mission {clash[0]['name']} at this site.")
+        c.execute('UPDATE missions SET shift_start=?, shift_end=? WHERE id=?', (start, end, mission_id))
+        version = insert_jha_version(c, moved, assessment, ctx, jha, f'Shift moved to {start} by supervisor window decision')
+        c.execute('INSERT INTO window_decisions VALUES (:id,:mission_id,:created_at,:actor,:identity,:choice,:start,:note,:snapshot,:jha_version)', record)
+        audit(c, actor, 'window.decide', record['id'], typed_name=record['actor'], mission_id=mission_id,
+              choice=record['choice'], start=start, snapshot=value.snapshot, jha_version=record['jha_version'],
+              recommendation=plan['recommendation']['choice'], applied=True)
+        audit(c, actor, 'window.reschedule', record['id'], typed_name=record['actor'], mission_id=mission_id,
+              previous_start=mission['shift_start'], new_start=start, new_end=end, jha_version=version)
+    return dict(record, stale=False, applied=dict(start=start, end=end, jha_version=version,
+                hazards_unchanged=version is None))
 
 
 @app.post('/api/missions/{mission_id}/decisions')
