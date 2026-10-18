@@ -1,0 +1,134 @@
+{
+  "family": "baseline",
+  "selection_sha256": "c31552a3b934f658a7b83315eafeb281d572f838ecd96d4cb4eae528fbcd981c",
+  "test_sha256": "98a44abfb86d3cb4f3e2984a4d38f47f06066652e0b0b0f16cd9cd09d86b52af",
+  "elapsed_seconds": 0.6148415000643581,
+  "checked": [
+    {
+      "name": "baseline-proximity-6",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "e0b601982b16f96d29ffed1d8e7415477194d18cb474a4cf755d3086ea744e25"
+    },
+    {
+      "name": "baseline-proximity-6",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "e5a3bbfa1a3d3f0919da88ede69f5ba455f51e9ae8c4f151b4dc02b49b73979b"
+    },
+    {
+      "name": "baseline-linear-6",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "d0abf18f0ec0b76faf76ee138d982441e1e8f479448abfde0528dac87e530a6c"
+    },
+    {
+      "name": "baseline-linear-6",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "12cfc939a6ddac4708bf9a293de54fdc2c5f3b5db76a66c58984506a6775f656"
+    },
+    {
+      "name": "baseline-damped-6",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "77f8a62692a5766457581a5464aeec2b4f232a9c92ef73c2e28832b25c4df2a7"
+    },
+    {
+      "name": "baseline-damped-6",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "7c279b7fc52b9454b79de0cf07440a207f7998269d784ea2287406ff3940552e"
+    },
+    {
+      "name": "baseline-proximity-12",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "cb5f5e387fa99cd49b2fd0fabb11ff7398e097a20f4019df4f57e0dc8ffe79c6"
+    },
+    {
+      "name": "baseline-proximity-12",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "9a43041202f822b9206273aa13099c83110e4125aec6bd69ae134cf39fc7a4a6"
+    },
+    {
+      "name": "baseline-linear-12",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 1.1102230246251565e-16,
+      "sha256": "2423265fd227ee1348411c91ddb77a5a334dd6a0afd20cb19cc94e6f34529e1c"
+    },
+    {
+      "name": "baseline-linear-12",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 1.1102230246251565e-16,
+      "sha256": "6146ea4032e6613fac055ed372719ed0e9f9b770fb9cbcbf0cec8691a34a357c"
+    },
+    {
+      "name": "baseline-damped-12",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "0eb8933024e3a1915fd6b21392f6324841c6a3ad639b81d68a04c34f70a125ba"
+    },
+    {
+      "name": "baseline-damped-12",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "462e16dd4dffbab241fc98179aee5da0c3471aff97511d7c718ec27401a35e7a"
+    },
+    {
+      "name": "baseline-proximity-24",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "f7bbc6ddfa6d96540a8ce98296cd6bc48d490498c1ac0574f60bcccbb9340645"
+    },
+    {
+      "name": "baseline-proximity-24",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "60dc8ee403377d8809cc5edbe481b04cb85f2079beba2d870a483c432ae207e6"
+    },
+    {
+      "name": "baseline-linear-24",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 1.1102230246251565e-16,
+      "sha256": "686be23a5fefa33fcf95ab4874a7fa04c6e3a832406a29003d9638b1d36f8feb"
+    },
+    {
+      "name": "baseline-linear-24",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 1.1102230246251565e-16,
+      "sha256": "d53ce07182a4e7b5f138dd9384609b05e5703ba189fb77c823191129d41c0410"
+    },
+    {
+      "name": "baseline-damped-24",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "88fd4cddf8cb62dde941dac266c62535914788f81dad82494c6fd5b3e541b73f"
+    },
+    {
+      "name": "baseline-damped-24",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "cab2c21b4937e21b37fc37ed849b1b7f994854d50db0b1c3da8c142409485237"
+    }
+  ]
+}

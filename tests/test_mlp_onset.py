@@ -1,4 +1,12 @@
+"""Experiment boundaries; fixtures are synthetic and never enter research data.
+
+torch and the boosted libraries cannot share one process here, so network fitting
+runs in a subprocess exactly as it does in the experiment.
+"""
 import json
+import os
+import subprocess
+import sys
 
 import numpy as np
 import pandas as pd
@@ -55,39 +63,57 @@ def test_physical_extrapolation_accounts_for_the_two_hour_delay():
     assert physical_score('proximity', frame)[0] == .5
 
 
-def _frame(rows=400, seed=0, horizon=6):
+MLP_SCRIPT = '''
+import json
+
+import numpy as np
+import pandas as pd
+
+from scripts.mlp_onset import FEATURES, ROOT
+from scripts.mlp_onset_network import fit_network, horizon_heads, network_probability
+
+
+def frame(rows=400, seed=0, horizon=6):
     generator = np.random.default_rng(seed)
-    from scripts.mlp_onset import FEATURES
-    frame = pd.DataFrame(generator.normal(size=(rows, len(FEATURES))), columns=FEATURES)
-    frame['head'] = 0
-    frame['target'] = (frame.q_2 > frame.q_2.median()).astype(int)
-    frame['horizon'] = horizon
-    return frame
+    result = pd.DataFrame(generator.normal(size=(rows, len(FEATURES))), columns=FEATURES)
+    result["head"] = 0
+    result["target"] = (result.q_2 > result.q_2.median()).astype(int)
+    result["horizon"] = horizon
+    return result
 
 
-@pytest.mark.parametrize('architecture', ['mlp_direct', 'mlp_residual'])
-def test_mlp_training_is_deterministic_and_bounded(architecture):
-    from scripts.mlp_onset_network import fit_network, network_probability, horizon_heads
-    from scripts.mlp_onset import FEATURES
-    frame = _frame()
-    first = fit_network(architecture, FEATURES, horizon_heads(frame, [6]), horizon_heads(frame, [6]))
-    second = fit_network(architecture, FEATURES, horizon_heads(frame, [6]), horizon_heads(frame, [6]))
-    p1 = network_probability(first, frame, 6)
-    p2 = network_probability(second, frame, 6)
-    np.testing.assert_allclose(p1, p2)
-    assert p1.shape == (len(frame),) and ((0 <= p1) & (p1 <= 1)).all()
-    assert first['parameters'] > 0
+report = {}
+sample = frame()
+per_horizon = [horizon_heads(sample, [6], single=True)] * 2
+for name in ["mlp_direct", "mlp_residual"]:
+    first = fit_network(name, FEATURES, per_horizon[0], per_horizon[1])
+    second = fit_network(name, FEATURES, per_horizon[0], per_horizon[1])
+    left = network_probability(first, sample, 6)
+    right = network_probability(second, sample, 6)
+    report[name] = dict(deterministic=bool(np.allclose(left, right)), rows=int(left.shape[0]),
+                        bounded=bool(((left >= 0) & (left <= 1)).all()), parameters=int(first["parameters"]))
+
+parts = [frame(seed=index, horizon=horizon) for index, horizon in enumerate([6, 12, 24])]
+bundle = fit_network("mlp_multitask", FEATURES, horizon_heads(pd.concat(parts, ignore_index=True)),
+                     horizon_heads(pd.concat(parts, ignore_index=True)))
+outputs = [network_probability(bundle, part, part.horizon.iloc[0]) for part in parts]
+report["mlp_multitask"] = dict(distinct_heads=bool(not np.allclose(outputs[0], outputs[1])),
+                               rows=[int(o.shape[0]) for o in outputs])
+print(json.dumps(report))
+'''
 
 
-def test_multitask_routes_each_horizon_to_its_own_head():
-    from scripts.mlp_onset_network import fit_network, horizon_heads, network_probability
-    from scripts.mlp_onset import FEATURES
-    parts = [_frame(seed=index, horizon=horizon) for index, horizon in enumerate([6, 12, 24])]
-    stacked = horizon_heads(pd.concat(parts, ignore_index=True))
-    bundle = fit_network('mlp_multitask', FEATURES, stacked, stacked)
-    outputs = [network_probability(bundle, part, part.horizon.iloc[0]) for part in parts]
-    assert not np.allclose(outputs[0], outputs[1])
-    assert all(o.shape == (len(parts[0]),) for o in outputs)
+def test_network_fitting_is_deterministic_bounded_and_routes_multitask_heads():
+    from scripts.mlp_onset import ROOT
+    completed = subprocess.run([sys.executable, '-c', MLP_SCRIPT], capture_output=True, text=True,
+                               cwd=ROOT, env=dict(os.environ, PYTHONPATH=str(ROOT)))
+    assert completed.returncode == 0, completed.stderr[-900:]
+    report = json.loads(completed.stdout.strip().splitlines()[-1])
+    for name in ['mlp_direct', 'mlp_residual']:
+        assert report[name]['deterministic'] and report[name]['bounded']
+        assert report[name]['rows'] == 400 and report[name]['parameters'] > 0
+    assert report['mlp_multitask']['distinct_heads']
+    assert report['mlp_multitask']['rows'] == [400, 400, 400]
 
 
 def test_every_gate_is_required():

@@ -136,11 +136,11 @@ def network_probability(bundle, frame, horizon):
     return np.concatenate(outputs)
 
 
-def horizon_heads(frame, horizons=HORIZONS):
+def horizon_heads(frame, horizons=HORIZONS, single=False):
     """Stack per-horizon rows with the head index each row trains against."""
     parts = []
     for horizon in horizons:
         part = frame.loc[frame.horizon.eq(horizon)].copy()
-        part['head'] = HORIZONS.index(horizon)
+        part['head'] = 0 if single else HORIZONS.index(horizon)
         parts.append(part)
     return pd.concat(parts, ignore_index=True)

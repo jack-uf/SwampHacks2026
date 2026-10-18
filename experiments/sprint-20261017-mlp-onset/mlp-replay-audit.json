@@ -1,0 +1,134 @@
+{
+  "family": "mlp",
+  "selection_sha256": "c31552a3b934f658a7b83315eafeb281d572f838ecd96d4cb4eae528fbcd981c",
+  "test_sha256": "98a44abfb86d3cb4f3e2984a4d38f47f06066652e0b0b0f16cd9cd09d86b52af",
+  "elapsed_seconds": 1.5473101248499006,
+  "checked": [
+    {
+      "name": "mlp-mlp_direct-6",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "f51031c59e6791bee231bb5e38b0249dd38cd79c06b2a508fd8d24c1b1a0385f"
+    },
+    {
+      "name": "mlp-mlp_direct-6",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "364ff7beafa839ced1bd248a4591aac5e07e8a3545ffd40cc02d67d44b22d5c9"
+    },
+    {
+      "name": "mlp-mlp_residual-6",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "51a3b98cec681be1359f3594076f4f532ff85ac53a4e0f1277b3bf9a35df9c4a"
+    },
+    {
+      "name": "mlp-mlp_residual-6",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "61d347539f563a7a474e80428e772b85db969c2ba749470c20708873ec0e5563"
+    },
+    {
+      "name": "mlp-mlp_multitask-6",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "f55cfd64ac2be7301d86069d255b14bd3bcda30642801e29c068c49c0d285a6f"
+    },
+    {
+      "name": "mlp-mlp_multitask-6",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "be8bf7990bd13b221c9edd9cc1563ea79a6ec99468326298de45411fefb9b1e0"
+    },
+    {
+      "name": "mlp-mlp_direct-12",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "33c58af3839da736bb93b5edf570f8bee0d60b3980594be9dfb6ac655e5fa09f"
+    },
+    {
+      "name": "mlp-mlp_direct-12",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "6945f3164f218f1b6af312cf4cd7d1f2f5e670ed79241ca08753364247555f89"
+    },
+    {
+      "name": "mlp-mlp_residual-12",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "78f4dcc805361c3d71022c7bb50775ab000f7129299c160587b2683651372bac"
+    },
+    {
+      "name": "mlp-mlp_residual-12",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "67fa196cda00dfed7764e19da1b83517751fa9ff3c15b8fafaec6f7ff285792a"
+    },
+    {
+      "name": "mlp-mlp_multitask-12",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.997699283031958e-17,
+      "sha256": "399b16e1c934ee2bc531372a6dff610fdec31adab7f190bbaf4f136ec39c7a3e"
+    },
+    {
+      "name": "mlp-mlp_multitask-12",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "61915d4d74918f7e0068ab17dff5f34c1522b996af77db78ecffdec61564ac29"
+    },
+    {
+      "name": "mlp-mlp_direct-24",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.993633524885137e-17,
+      "sha256": "f1dc1c258214188f84abcf64431b632363b987658c9cb0736f78939b14ce8eee"
+    },
+    {
+      "name": "mlp-mlp_direct-24",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.999054535747565e-17,
+      "sha256": "4b0de41bc8601694d69df0868b466477d6dd0b9857d3ffba7391db8a79ea3bb2"
+    },
+    {
+      "name": "mlp-mlp_residual-24",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "9346db34304eec74ca4b5e01e8438a1a33d0074dede451a7a46c47d71e460fbb"
+    },
+    {
+      "name": "mlp-mlp_residual-24",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "896032e823055789bd9edc9ca26f42d465d75f71fdc56159d4ca65563459bf2e"
+    },
+    {
+      "name": "mlp-mlp_multitask-24",
+      "partition": "temporal_test",
+      "rows": 13244,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b00deb5abe65b9ae854b97a59eefdee16a0024d3ed7e2e64284aa082abfbae72"
+    },
+    {
+      "name": "mlp-mlp_multitask-24",
+      "partition": "geographic_test",
+      "rows": 13167,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "321f763fb58321b3f5f8d0642217d155a5081d20667da867a28f91af6853e87b"
+    }
+  ]
+}

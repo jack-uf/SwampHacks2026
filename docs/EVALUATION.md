@@ -36,6 +36,8 @@ The separate [historical-transition and weather-correction study](ANALOG_RESEARC
 
 The separate [hourly high-flow onset study](SHIFT_HYDROLOGY_RESULTS.md) predicts subdaily discharge onsets at 6, 12 and 24 hours on a frozen 2025 test. The 12-hour residual model is the only candidate to clear an average-precision gate, and it does so by trading event recall and lead; no horizon passes every promotion gate, so the candidates stay experimental.
 
+The separate [MLP onset study](MLP_ONSET_RESULTS.md) retests the response experiment's neural architecture on the hourly target with a fresh 28-gauge cohort. A plain perceptron ranks best at 24 hours in both the temporal and geographic partition and warns earlier, but detects fewer events than the linear extrapolation at the frozen alert budget, so no candidate promotes.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

@@ -79,7 +79,6 @@ def load_data(stage):
 
 def fit(family):
     from scripts.shift_hydrology_metrics import metrics
-    from scripts.mlp_onset_network import fit_network, horizon_heads
     destination = OUT / (family + '-selection.json')
     if destination.exists() or (OUT / 'selection.json').exists():
         raise FileExistsError('Candidate selection already frozen')
@@ -99,10 +98,12 @@ def fit(family):
             if family == 'baseline':
                 pass
             elif kind.startswith('mlp'):
+                # Imported here, never at module scope: torch and LightGBM cannot share a process.
+                from scripts.mlp_onset_network import fit_network, horizon_heads
                 multi = kind == 'mlp_multitask'
                 trained = fit_network(kind, FEATURES,
-                    horizon_heads(train) if multi else horizon_heads(train, [horizon]),
-                    horizon_heads(calibration) if multi else horizon_heads(calibration, [horizon]))
+                    horizon_heads(train) if multi else horizon_heads(train, [horizon], single=True),
+                    horizon_heads(calibration) if multi else horizon_heads(calibration, [horizon], single=True))
                 bundle['network'] = trained
             else:
                 if family == 'logistic':

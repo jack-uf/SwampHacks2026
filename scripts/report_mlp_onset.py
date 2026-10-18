@@ -73,6 +73,34 @@ def coverage(frame, ledger, horizon, role):
         event_coverage=len(represented_pairs) / len(all_events) if all_events else None)
 
 
+def mlp_comparisons(selected, records, evaluations, canonical, horizon):
+    """Frozen-threshold MLP comparisons; the protocol selects on validation, so these are descriptive."""
+    per_horizon = selected['selected'][str(horizon)]
+    baseline = records[per_horizon['baseline']]
+    result = {}
+    for kind in ['mlp_direct', 'mlp_residual', 'mlp_multitask']:
+        name = f'mlp-{kind}-{horizon}'
+        if name not in records:
+            continue
+        candidate = records[name]
+        block = {}
+        for partition in ['temporal_test', 'geographic_test']:
+            expected = canonical[partition].loc[canonical[partition].horizon.eq(horizon)]
+            control = read_predictions(baseline, partition, evaluations, expected)
+            test = read_predictions(candidate, partition, evaluations, expected)
+            frame = paired_frame(control, test)
+            block[partition] = dict(
+                threshold=candidate['threshold'], selected_threshold=baseline['threshold'],
+                candidate=metrics(frame, frame.candidate, candidate['threshold']),
+                baseline=metrics(frame, frame.control, baseline['threshold']),
+                uncertainty=paired_uncertainty(frame, frame.control, frame.candidate,
+                                               baseline['threshold'], candidate['threshold']),
+                lead=jointly_detected_lead_delta(frame, frame.control, frame.candidate,
+                                                 baseline['threshold'], candidate['threshold']))
+        result[name] = block
+    return result
+
+
 def report():
     protocol()
     if (OUT / 'evaluation.json').exists():
@@ -125,6 +153,7 @@ def report():
             uncertainty=paired_uncertainty(pooled, pooled.control, pooled.candidate,
                                            baseline['threshold'], candidate['threshold']))
         evidence.update(selection=pair, promotion=promotion_gates(evidence))
+        evidence['mlp_comparisons'] = mlp_comparisons(selected, records, evaluations, canonical, horizon)
         results[str(horizon)] = evidence
         print(horizon, pair, 'statistical pass', evidence['promotion']['statistical_pass'], flush=True)
     write_json(OUT / 'evaluation.json', dict(horizons=results,
