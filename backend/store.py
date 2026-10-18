@@ -55,6 +55,10 @@ def initialize():
           rating TEXT, mitigation TEXT, rationale TEXT NOT NULL, supervisor TEXT NOT NULL, entry_fingerprint TEXT NOT NULL, created_at TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS jha_checks (mission_id TEXT PRIMARY KEY REFERENCES missions(id), checked_at TEXT NOT NULL,
           assessed_at TEXT NOT NULL, stale INTEGER NOT NULL);
+        CREATE TABLE IF NOT EXISTS window_decisions (id TEXT PRIMARY KEY, mission_id TEXT NOT NULL REFERENCES missions(id),
+          created_at TEXT NOT NULL, actor TEXT NOT NULL, identity TEXT NOT NULL,
+          choice TEXT NOT NULL CHECK(choice IN ('move','keep')), start TEXT, note TEXT,
+          snapshot TEXT NOT NULL, jha_version INTEGER NOT NULL);
         CREATE TABLE IF NOT EXISTS audit (seq INTEGER PRIMARY KEY AUTOINCREMENT, at TEXT NOT NULL, actor TEXT, identity TEXT NOT NULL,
           action TEXT NOT NULL, target TEXT NOT NULL, detail TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS jha_decision_identity (decision_id TEXT PRIMARY KEY REFERENCES jha_decisions(id),

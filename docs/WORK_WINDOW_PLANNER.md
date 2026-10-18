@@ -38,19 +38,24 @@ The member share is the fraction of ensemble members crossing a screening limit 
 
 ## Measured behaviour
 
+## Recording a decision
+
+`POST /api/missions/{id}/window-decisions` records what a supervisor decided, not what the tool advised. The client echoes the snapshot digest of the comparison it rendered; the server recomputes the comparison and answers 409 when the forecast moved, so a record can never be attached to a view that no longer exists. A move must name a window the current comparison listed and that window must not be restricted; anything else is 422 or 409. The stored record holds the actor, the token identity, the choice, the window, an optional note bounded to 280 characters, the snapshot digest and the JHA version current at the time, and the same transaction writes an audit row. The mission detail returns the recorded decisions and the planner marks the latest one stale when the forecast has since changed. The tool never reschedules the crew; the record states what the comparison showed.
+
 `scripts/evaluate_planner.py` runs eight synthetic scenarios across heat, rain, wind, flat and degenerate conditions, checks the decision rule, and compares the chosen window against three simple baselines: keep the plan, take the earliest usable window, take the same hour the next day. Current results, recorded in `experiments/sprint-20261017-planner/evaluation.json`:
 
 | Metric | Value |
 | --- | ---: |
-| Scenarios matching their expected outcome | 8 of 8 |
+| Scenarios matching their expected outcome | 9 of 9 |
 | Constraint violations | 0 |
 | Moves recommended | 4 |
 | Mean weighted improvement on a move | .787 |
 | Moves at or better than the best simple baseline | 4 of 4 |
 | Declines (immaterial, all restricted) | 3 |
-| Insufficient-evidence outcomes | 1 |
+| Insufficient-evidence outcomes | 2 |
+| Recommendations unchanged after a +1 degree, +5 percent gust refresh | 9 of 9 |
 
-The scenarios are synthetic weather on a fixed grid. They test the decision rule and its constraints, not forecast skill; nothing here claims the planner improves real outcomes, only that it declines when the evidence is thin and that its recommendations clear the stated bars.
+The scenarios are synthetic weather on a fixed grid. They test the decision rule, its constraints and its stability under an ordinary forecast update, not forecast skill; nothing here claims the planner improves real outcomes, only that it declines when the evidence is thin, holds its recommendation when the forecast moves by a plausible amount, and clears the stated bars against simple baselines.
 
 ## Limits
 

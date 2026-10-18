@@ -139,3 +139,21 @@ def test_work_window_endpoint_reports_a_decision_and_rejects_bad_parameters(clie
     assert client.get('/api/missions/nope/work-windows').status_code == 404
     assert client.get(f'/api/missions/{mid}/work-windows', params=dict(flex_hours=99)).status_code == 422
     assert client.get(f'/api/missions/{mid}/work-windows', params=dict(step_hours=9)).status_code == 422
+
+
+def test_malformed_member_timestamps_are_ignored_not_fatal():
+    start = anchor()
+    times = [(start+timedelta(hours=i)).isoformat() for i in range(6)]
+    times[3] = 'not-a-time'
+    members = dict(wind_gusts_10m=[[60]*6]*3, apparent_temperature=[[20]*6]*3, precipitation=[[0]*6]*3)
+    out = planner.exceedances(dict(available=True, times=times, members=members, model='gfs_seamless'),
+                              start, start+timedelta(hours=6), activity('aerial_lift_crane'))
+    assert out['members'] == 3 and out['restrict_share'] == 1.0
+
+
+def test_missing_forecast_is_reported_instead_of_guessed():
+    start = anchor()
+    plan = planner.plan(dict(forecast=[], summary={}, feed=dict(available=False)), activity('general_site_work'), 8,
+                        hours=48, now=start.isoformat(), planned_start=start.isoformat())
+    assert plan['windows'] == [] and plan['candidate_count'] == 0
+    assert plan['recommendation']['choice'] == 'insufficient' and 'No hourly forecast' in plan['recommendation']['reason']

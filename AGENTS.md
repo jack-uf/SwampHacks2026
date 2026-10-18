@@ -64,8 +64,11 @@ Credit exactly these, in both the README and Devpost, and ask the team whether t
 | Site Hazard Memory with per-factor relevance | `backend/memory.py`, `scripts/build_hazard_memory.py` | Mission detail, "Site Hazard Memory" | `tests/test_memory.py` |
 | Cross-entity plan overlaps (Sperry) | `backend/overlap.py`, `scripts/build_planned_projects.py`, `/api/plan-overlaps` | `frontend/src/missions.tsx` (`OverlapsView`) | `tests/test_overlap.py` |
 | Work-window comparison with ensemble spread | `backend/planner.py`, `/api/missions/{id}/work-windows`, terrain and ensemble providers in `backend/providers.py` | Mission detail, "Work windows" | `tests/test_planner.py` |
+| Window decisions recorded against the comparison a supervisor saw | `/api/missions/{id}/window-decisions`, `window_decisions` table in `backend/store.py` | Mission detail, "Work windows" actions | `tests/test_window_decisions.py` |
 
 Its decision rule, constraint set and uncertainty language are documented in `docs/WORK_WINDOW_PLANNER.md` and measured by `scripts/evaluate_planner.py`. A move needs one weighted hazard to improve a whole band with no weighted hazard worse, members can only veto, windows below 75 percent forecast coverage are skipped, and lower exposure is never described as safety.
+
+A window decision echoes the snapshot digest of the comparison the supervisor was looking at; the server recomputes the windows and answers 409 when the forecast has moved since, so no record can be attached to a stale view. A move must name a listed, unrestricted window, and every record writes an audit row carrying the JHA version current at the time.
 | Jev abstention v2 and held-out evaluation | `backend/jev.py` (`abstention`), `scripts/evaluate_jev.py` | Report triage text in `frontend/src/main.tsx` | `tests/test_jev.py`, `tests/test_jev_evaluation.py` |
 
 The reasoning behind each design choice is in `docs/DECISIONS.md`.

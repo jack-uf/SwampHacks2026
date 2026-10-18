@@ -602,6 +602,7 @@ async def mission_detail(mission_id: str):
                 memory_source=dict(noaa=len(noaa), crew=len(crew), note=(memory.dataset() or {}).get('note')),
                 planned_nearby=overlap.near_mission(plans['projects'], mission['latitude'], mission['longitude'], mission['shift_start'],
                                                     site['operator'])[:6] if plans else [],
+                window_decisions=window_decisions(mission_id),
                 planned_source=dict(inventory=plans['inventory'], note=plans['note'], url=plans['source']['url']) if plans else None)
 
 
@@ -613,6 +614,24 @@ class Decision(BaseModel):
     rating: Literal['low', 'elevated', 'high'] | None = None
     mitigation: str | None = Field(default=None, max_length=1000)
     version: int = Field(ge=1)
+
+
+def window_decisions(mission_id, limit=5):
+    """Recorded supervisor window decisions, newest first."""
+    with db() as c:
+        rows = [dict(r) for r in c.execute('SELECT * FROM window_decisions WHERE mission_id=? ORDER BY created_at DESC LIMIT ?',
+                                           (mission_id, limit))]
+    return rows
+
+
+def plan_snapshot(body):
+    """Canonical digest of the comparison a supervisor is looking at, so a decision cannot be recorded against a stale view."""
+    material = dict(planned_start=body['planned_start'], horizon_hours=body['horizon_hours'],
+                    duration_hours=body['duration_hours'], flex_hours=body['constraints']['flex_hours'],
+                    weather_fetched_at=body.get('weather_fetched_at'), ensemble_available=body.get('ensemble_available'),
+                    recommendation=body['recommendation'], planned=body['planned'],
+                    windows=[dict(start=w['start'], risk=w['risk'], restricted=w['restricted']) for w in body['windows']])
+    return hashlib.sha256(json.dumps(material, sort_keys=True, default=str).encode()).hexdigest()
 
 
 @app.get('/api/missions/{mission_id}/work-windows')
@@ -638,10 +657,56 @@ async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int
     plan = planner.plan(weather, activity, duration, terrain=terrain, ensemble=ensemble, now=now.isoformat(),
                         hours=horizon, step_hours=step_hours, limit=limit, planned_start=mission['shift_start'],
                         timezone=site['timezone'], flex_hours=flex_hours, busy=busy)
-    return dict(mission_id=mission_id, activity=dict(id=mission['activity'], **activity),
+    body = dict(mission_id=mission_id, activity=dict(id=mission['activity'], **activity),
                 anchor=now.isoformat(), planned_start=mission['shift_start'], generated_at=now.isoformat(),
                 conditions_source=weather.get('source'), weather_fetched_at=(weather.get('feed') or {}).get('fetched_at'),
                 ensemble_available=bool(ensemble.get('available')), terrain_source=(terrain or {}).get('source'), **plan)
+    body['snapshot'] = plan_snapshot(body)
+    recorded = window_decisions(mission_id, 1)
+    body['decision'] = dict(recorded[0], stale=recorded[0]['snapshot'] != body['snapshot']) if recorded else None
+    return body
+
+
+class WindowDecision(BaseModel):
+    choice: Literal['move', 'keep']
+    start: str | None = None
+    note: str | None = Field(default=None, max_length=280)
+    snapshot: str = Field(min_length=32, max_length=64)
+    supervisor: str = Field(min_length=2, max_length=80)
+    hours: int = Field(default=48, ge=12, le=120)
+    step_hours: int = Field(default=1, ge=1, le=6)
+    flex_hours: int = Field(default=2, ge=0, le=8)
+    limit: int = Field(default=8, ge=1, le=24)
+
+
+@app.post('/api/missions/{mission_id}/window-decisions')
+async def record_window_decision(mission_id: str, value: WindowDecision, actor: dict = Depends(admin)):
+    """Record a supervisor's window decision against the exact comparison they saw."""
+    mission_or_404(mission_id)
+    plan = await mission_work_windows(mission_id, value.hours, value.step_hours, value.flex_hours, value.limit)
+    if plan['snapshot'] != value.snapshot:
+        raise HTTPException(409, 'The forecast moved since that comparison was rendered; review the current windows before recording a decision.')
+    start = None
+    if value.choice == 'move':
+        if not value.start:
+            raise HTTPException(422, 'A move must name the window it moves the shift to.')
+        match = next((w for w in plan['windows'] if w['start'] == value.start), None)
+        if match is None:
+            raise HTTPException(422, 'That start is not one of the compared windows.')
+        if match['restricted']:
+            raise HTTPException(409, 'That window carries a restriction, so it cannot be recorded as a schedule move.')
+        start = match['start']
+    latest = versions_for(mission_id)[-1]
+    record = dict(id=str(uuid.uuid4()), mission_id=mission_id, created_at=now_utc().isoformat(),
+                  actor=actor['name'] or value.supervisor.strip(), identity=actor['identity'], choice=value.choice,
+                  start=start, note=(value.note or '').strip() or None, snapshot=value.snapshot, jha_version=latest['version'])
+    with db() as c:
+        c.execute('BEGIN IMMEDIATE')
+        c.execute('INSERT INTO window_decisions VALUES (:id,:mission_id,:created_at,:actor,:identity,:choice,:start,:note,:snapshot,:jha_version)', record)
+        audit(c, actor, 'window.decide', record['id'], typed_name=record['actor'], mission_id=mission_id,
+              choice=record['choice'], start=start, snapshot=value.snapshot, jha_version=record['jha_version'],
+              recommendation=plan['recommendation']['choice'])
+    return dict(record, stale=False)
 
 
 @app.post('/api/missions/{mission_id}/decisions')

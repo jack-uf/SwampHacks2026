@@ -1,13 +1,16 @@
 {
   "metrics": {
-    "scenarios": 8,
-    "matched": 8,
+    "scenarios": 9,
+    "matched": 9,
     "constraint_violations": 0,
     "moves": 4,
     "declined": 3,
-    "insufficient": 1,
+    "insufficient": 2,
     "mean_improvement_on_move": 0.787,
-    "chosen_at_or_better_than_naive": 4
+    "chosen_at_or_better_than_naive": 4,
+    "stable_under_refresh": 9,
+    "stability": 1.0,
+    "moves_stable": 4
   },
   "records": [
     {
@@ -33,7 +36,8 @@
         "later_same_hour": 0.167
       },
       "violations": [],
-      "ensemble_available": true
+      "ensemble_available": true,
+      "stable_under_refresh": true
     },
     {
       "name": "rain_front_excavation",
@@ -58,7 +62,8 @@
         "later_same_hour": 0.49
       },
       "violations": [],
-      "ensemble_available": true
+      "ensemble_available": true,
+      "stable_under_refresh": true
     },
     {
       "name": "all_windows_restricted",
@@ -83,7 +88,8 @@
         "later_same_hour": null
       },
       "violations": [],
-      "ensemble_available": true
+      "ensemble_available": true,
+      "stable_under_refresh": true
     },
     {
       "name": "flat_exposure",
@@ -108,7 +114,8 @@
         "later_same_hour": 0.168
       },
       "violations": [],
-      "ensemble_available": true
+      "ensemble_available": true,
+      "stable_under_refresh": true
     },
     {
       "name": "windy_morning_calm_evening",
@@ -133,7 +140,8 @@
         "later_same_hour": null
       },
       "violations": [],
-      "ensemble_available": true
+      "ensemble_available": true,
+      "stable_under_refresh": true
     },
     {
       "name": "no_ensemble_still_moves_on_large_gain",
@@ -158,7 +166,8 @@
         "later_same_hour": 0.167
       },
       "violations": [],
-      "ensemble_available": false
+      "ensemble_available": false,
+      "stable_under_refresh": true
     },
     {
       "name": "near_tie_declines",
@@ -183,7 +192,8 @@
         "later_same_hour": 0.176
       },
       "violations": [],
-      "ensemble_available": true
+      "ensemble_available": true,
+      "stable_under_refresh": true
     },
     {
       "name": "unknown_exposure_declines",
@@ -208,7 +218,34 @@
         "later_same_hour": 0.0
       },
       "violations": [],
-      "ensemble_available": false
+      "ensemble_available": false,
+      "stable_under_refresh": true
+    },
+    {
+      "name": "weather_unavailable",
+      "expect": "insufficient",
+      "choice": "insufficient",
+      "matched": true,
+      "reason": "No hourly forecast is available for this facility.",
+      "improvement": null,
+      "planned_risk": null,
+      "chosen_risk": null,
+      "candidate_count": 0,
+      "excluded": {
+        "past": 0,
+        "hour_band": 0,
+        "overlap": 0,
+        "coverage": 0
+      },
+      "near_ties": 0,
+      "naive": {
+        "keep": null,
+        "earliest": null,
+        "later_same_hour": null
+      },
+      "violations": [],
+      "ensemble_available": false,
+      "stable_under_refresh": true
     }
   ]
 }

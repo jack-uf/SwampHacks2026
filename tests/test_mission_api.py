@@ -24,6 +24,21 @@ def test_mission_validation_and_supervisor_only(client):
     assert {a['id'] for a in client.get('/api/activities').json()} >= {'excavation_trenching', 'aerial_lift_crane'}
 
 
+def test_missing_terrain_degrades_without_breaking_the_jha(client, monkeypatch):
+    async def unavailable(site):
+        return dict(source='USGS 3DEP Elevation Point Query Service', available=False, samples={}, missing=['centre'],
+                    note='Terrain samples incomplete; relief not estimated')
+    monkeypatch.setattr(main.providers, 'terrain', unavailable)
+    site = main.SITES[0]
+    created = client.post('/api/missions', json=mission_body(site), headers=AUTH)
+    assert created.status_code == 200
+    detail = client.get('/api/missions/'+created.json()['id'])
+    assert detail.status_code == 200
+    entries = detail.json()['jha']['entries']
+    assert [e for e in entries if e['hazard'] == 'unstable_terrain']
+    assert [item for entry in entries for item in entry['evidence'] if item['id'].startswith('terrain:')] == []
+
+
 def test_crew_report_lifecycle_versions_the_mission_jha_with_attribution(client):
     s = main.SITES[0]
     created = client.post('/api/missions', json=mission_body(s), headers=AUTH)

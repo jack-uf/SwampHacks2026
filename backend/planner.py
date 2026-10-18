@@ -84,8 +84,13 @@ def exceedances(ensemble, begin, end, activity):
     """Member statistics for one window: limit crossings and the share that would restrict work."""
     if not ensemble or not ensemble.get('available'):
         return None
-    times = [parse_time(t) for t in ensemble['times']]
-    index = [i for i, t in enumerate(times) if begin <= t < end]
+    times = []
+    for stamp in ensemble['times']:
+        try:
+            times.append(parse_time(stamp))
+        except ValueError:
+            times.append(None)  # a malformed member timestamp is not evidence about this window
+    index = [i for i, t in enumerate(times) if t is not None and begin <= t < end]
     if not index:
         return None
     elevated, high = activity.get('wind', DEFAULT_WIND)

@@ -2200,6 +2200,9 @@ td strong {
 .verdict-move { border-left-color: #4a7958; background: #f6f9f2; }
 .verdict-keep { border-left-color: #c9952f; background: #fbf7ea; color: var(--warn-text); }
 .verdict-insufficient { border-left-color: #9aa39c; color: #5c665f; }
+.window-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 6px 0 4px; }
+.window-actions input { flex: 1 1 220px; min-width: 180px; padding: 7px 10px; font-size: 13px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); color: inherit; }
 .window-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 13px; }
 .window-class { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: #6b756e; }
 .window-prob { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--warn-text, #8a6d1f); }

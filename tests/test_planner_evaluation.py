@@ -5,10 +5,11 @@ def test_scenario_suite_is_consistent_and_constraint_clean():
     report = run_scenarios()
     metrics = report['metrics']
     assert metrics['constraint_violations'] == 0
-    assert metrics['matched'] == metrics['scenarios'] == len(report['records']) == 8
-    assert metrics['moves'] >= 3 and metrics['insufficient'] >= 1 and metrics['declined'] >= 2
+    assert metrics['matched'] == metrics['scenarios'] == len(report['records']) == 9
+    assert metrics['moves'] >= 3 and metrics['insufficient'] >= 2 and metrics['declined'] >= 2
     assert metrics['mean_improvement_on_move'] > .2
     assert metrics['chosen_at_or_better_than_naive'] == metrics['moves']
+    assert metrics['stability'] == 1.0 and metrics['moves_stable'] == metrics['moves']
 
 
 def test_every_recommendation_avoids_restricted_windows_and_keeps_the_planned_gain():

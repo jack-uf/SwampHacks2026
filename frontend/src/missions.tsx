@@ -418,7 +418,8 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
         </p>
 
         <h3 className="section-subtitle">Work windows</h3>
-        <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} tz={tz} />
+        <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} tz={tz}
+          action={action} supervisor={mission.supervisor} busy={busy} />
 
         <div className="section-title jha-title">
           <div>
@@ -620,9 +621,19 @@ function MissionDetail({ detail, api, action, busy, onReport }: { detail: any; a
   );
 }
 
-function WorkWindows({ api, missionId, revision, tz }: { api: Api; missionId: string; revision: number; tz: string }) {
+function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy }: {
+  api: Api;
+  missionId: string;
+  revision: number;
+  tz: string;
+  action: Action;
+  supervisor: string;
+  busy: boolean;
+}) {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState("");
+  const [note, setNote] = useState("");
+  const [tick, setTick] = useState(0);
   useEffect(() => {
     let live = true;
     setData(null);
@@ -633,7 +644,24 @@ function WorkWindows({ api, missionId, revision, tz }: { api: Api; missionId: st
     return () => {
       live = false;
     };
-  }, [missionId, revision]);
+  }, [missionId, revision, tick]);
+  const record = async (choice: "move" | "keep", start?: string) => {
+    if (!data) return;
+    const ok = await action(
+      () =>
+        api(`/api/missions/${missionId}/window-decisions`, {
+          method: "POST",
+          body: JSON.stringify({ choice, start, note: note.trim() || null, snapshot: data.snapshot, supervisor }),
+        }),
+      choice === "move"
+        ? "Window decision recorded. Reschedule the crew in your own system; this record states what the comparison showed."
+        : "Window decision recorded: the planned shift stands.",
+    );
+    if (ok) {
+      setNote("");
+      setTick((value) => value + 1);
+    }
+  };
   if (error) return <p className="body-note">Work-window comparison unavailable. {error}</p>;
   if (!data) return <p className="body-note">Comparing candidate windows…</p>;
   const verdict = data.recommendation;
@@ -650,11 +678,44 @@ function WorkWindows({ api, missionId, revision, tz }: { api: Api; missionId: st
     (data.ensemble_available ? "Weather-model members are shown; " : "No member sample was available, so this rests on the single-run forecast; ") +
     "starts stay within " + data.constraints.flex_hours + " h of the planned " + data.constraints.planned_local_hour +
     ":00 site-time start. " + data.notes[4];
+  const recorded = data.decision
+    ? "Recorded " + (data.decision.choice === "move" ? "move to " + zoned(data.decision.start, tz) : "keep of the planned window") +
+      " by " + data.decision.actor + " on " + zoned(data.decision.created_at, tz) +
+      (data.decision.note ? " · " + data.decision.note : "") +
+      (data.decision.stale ? ". The forecast has changed since; record again if the decision still holds." : "")
+    : "";
   return (
     <>
       <div className={"window-verdict verdict-" + verdict.choice} role="status">
         <TriangleAlert size={16} />
         <span>{banner}</span>
+      </div>
+      {data.decision && <p className={"body-note" + (data.decision.stale ? " warning-text" : "")}>{recorded}</p>}
+      <div className="window-actions">
+        <input
+          value={note}
+          onChange={(event) => setNote(event.target.value)}
+          placeholder="Optional note for the audit record"
+          maxLength={280}
+          disabled={busy}
+        />
+        <button type="button" className="primary" disabled={busy} onClick={() => record("keep")}>
+          Record: keep the plan
+        </button>
+        {verdict.choice === "move" && (
+          <button type="button" className="primary" disabled={busy} onClick={() => record("move", verdict.start)}>
+            Record: move to the recommended window
+          </button>
+        )}
+        {verdict.choice === "move" &&
+          data.windows
+            .filter((w: any) => !w.restricted && w.start !== verdict.start && w.start !== data.planned_start)
+            .slice(0, 2)
+            .map((w: any) => (
+              <button type="button" key={w.start} disabled={busy} onClick={() => record("move", w.start)}>
+                Move to {zoned(w.start, tz)}
+              </button>
+            ))}
       </div>
       {data.candidate_count > 0 && (
       <div className="work-windows">
