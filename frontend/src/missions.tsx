@@ -700,6 +700,12 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy, o
       (data.decision.note ? " · " + data.decision.note : "") +
       (data.decision.stale ? ". The forecast has changed since; record again if the decision still holds." : "")
     : "";
+  const modelLine = (model: any) =>
+    Object.entries(model.hazards)
+      .map(([hazard, value]: [string, any]) =>
+        hazard + " " + Math.round((value.probability ?? 0) * 100) + "%" + (value.warning_supported ? "" : " (threshold unsupported)"),
+      )
+      .join(" · ") + " on " + model.target_date + " · " + model.granularity + ". " + model.note;
   return (
     <>
       <div className={"window-verdict verdict-" + verdict.choice} role="status">
@@ -780,6 +786,7 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy, o
               {w.unknown.length ? " · unknown " + w.unknown.join(", ") : ""}
             </small>
             {w.drivers.length > 0 && <small className="window-drivers">Drivers: {w.drivers.join(", ")}</small>}
+              {w.model && <small className="window-model">{modelLine(w.model)}</small>}
           </div>
         ))}
       </div>

@@ -138,6 +138,7 @@ def test_work_window_endpoint_reports_a_decision_and_rejects_bad_parameters(clie
         assert key in body
     assert body['recommendation']['choice'] in ('move', 'keep', 'insufficient')
     assert body['constraints']['planned_local_hour'] is not None
+    assert all('model' in window for window in body['windows'])
     assert client.get('/api/missions/nope/work-windows').status_code == 404
     assert client.get(f'/api/missions/{mid}/work-windows', params=dict(flex_hours=99)).status_code == 422
     assert client.get(f'/api/missions/{mid}/work-windows', params=dict(step_hours=9)).status_code == 422
@@ -159,3 +160,22 @@ def test_missing_forecast_is_reported_instead_of_guessed():
                         hours=48, now=start.isoformat(), planned_start=start.isoformat())
     assert plan['windows'] == [] and plan['candidate_count'] == 0
     assert plan['recommendation']['choice'] == 'insufficient' and 'No hourly forecast' in plan['recommendation']['reason']
+
+
+def test_county_day_model_context_is_disclosed_without_changing_the_advice():
+    start = anchor()
+    rows = hourly(start, 24, 30, 26, 0.0)
+    model = dict(available=True, target_date=(start+timedelta(hours=8)).date().isoformat(),
+                 hazards=dict(flood=dict(probability=.2, threshold=.05, elevated=True, warning_supported=True,
+                                         model='balanced logistic',
+                                         tested=dict(period='2026 H1', precision=.4, recall=.5))))
+    arguments = dict(now=start.isoformat(), hours=24, step_hours=1, planned_start=start.isoformat())
+    without = planner.plan(weather(rows), activity('general_site_work'), 8, **arguments)
+    with_model = planner.plan(weather(rows), activity('general_site_work'), 8, model=model, **arguments)
+    assert without['windows'][0]['model'] is None
+    attached = [w for w in with_model['windows'] if w['model']]
+    assert attached and attached[0]['model']['granularity'].startswith('county-day')
+    assert attached[0]['model']['hazards']['flood']['warning_supported'] is True
+    assert [(w['start'], w['risk'], w['restricted']) for w in with_model['windows']] == \
+           [(w['start'], w['risk'], w['restricted']) for w in without['windows']]
+    assert with_model['recommendation'] == without['recommendation']

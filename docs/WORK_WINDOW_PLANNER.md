@@ -6,6 +6,8 @@ The planner answers two questions for a planned shift: is there a better window 
 
 The same Open-Meteo hourly forecast the JHA cites, the NOAA GFS ensemble member sample, the five-point 3DEP terrain sample, the mission's own activity and shift length, the site's timezone, and the other open missions at the same site.
 
+It also copies the served county-day hazard models onto any window whose calendar days cover the model's target date, so a supervisor sees the same probability the JHA cites without leaving the comparison. This is disclosure, not a model input: the county-day probability never enters the risk score, the restriction flag or the recommendation, its granularity is stated on every window it appears on, and a threshold the test partition does not support is labelled as such. A test asserts that recommendations and window scores are identical with and without the model attached.
+
 ## Exposure model
 
 Bands are the JHA's screening bands, unchanged: apparent temperature 32.2 and 39.4 degrees Celsius, shift rainfall 10 and 25 millimetres, and the activity's gust limits (45 and 72 km/h by default). Ranking uses a continuous severity instead of band counts, with the lower anchor one band below the elevated threshold, so 0.5 is the elevated band and 1.0 the high band. Severity is weighted by the activity's per-hazard sensitivity and summed. This removes the tie behaviour of integer band sums, where equal-looking windows used to order themselves by clock time.

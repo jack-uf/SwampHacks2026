@@ -138,6 +138,26 @@ def hour_distance(left, right):
     return min(distance, 24 - distance)
 
 
+def model_context(model, begin, end):
+    """County-day model probabilities for the days a window covers, copied as context only.
+
+    The served models predict a reported hazard for a county-day, not an exposure for a shift.
+    Nothing here feeds the risk score, the restriction flag or the recommendation.
+    """
+    if not model or not model.get('available') or not model.get('target_date'):
+        return None
+    if not (begin.date().isoformat() <= model['target_date'] <= end.date().isoformat()):
+        return None
+    hazards = {}
+    for hazard, value in sorted((model.get('hazards') or {}).items()):
+        hazards[hazard] = dict(probability=value.get('probability'), threshold=value.get('threshold'),
+                               elevated=value.get('elevated'), warning_supported=value.get('warning_supported'),
+                               model=value.get('model'), tested=value.get('tested'))
+    return dict(target_date=model['target_date'], granularity='county-day, not a shift window',
+                note='Disclosed for the supervisor. This never sets a rating or changes a window recommendation.',
+                hazards=hazards)
+
+
 def material(planned, best, decisive):
     """One weighted hazard must improve a whole band while none of them gets meaningfully worse."""
     for hazard in decisive:
@@ -199,7 +219,8 @@ def decide(windows, planned, decisive, ensemble_available, tolerance=TOLERANCE, 
 
 
 def plan(weather, activity, duration_hours, terrain=None, ensemble=None, now=None, hours=48, step_hours=1, limit=8,
-         planned_start=None, timezone=None, flex_hours=None, busy=(), tolerance=TOLERANCE, member_veto=MEMBER_VETO):
+         planned_start=None, timezone=None, flex_hours=None, busy=(), model=None, tolerance=TOLERANCE,
+         member_veto=MEMBER_VETO):
     """Compare candidate windows of one shift length and decide whether any of them is worth a change."""
     rows = (weather or {}).get('forecast') or []
     base = dict(windows=[], planned=None, candidate_count=0, skipped=0, horizon_hours=hours, duration_hours=duration_hours,
@@ -234,6 +255,7 @@ def plan(weather, activity, duration_hours, terrain=None, ensemble=None, now=Non
                 base['excluded']['coverage'] += 1
             else:
                 window = dict(start=begin.isoformat(), end=end.isoformat(), hours_available=conditions['hours_available'],
+                    model=model_context(model, begin, end),
                     coverage=conditions['coverage'], apparent_max_c=conditions['apparent_max_c'],
                     gust_max_kmh=conditions['gust_max_kmh'], rain_mm=conditions['rain_mm'], wet_hours=conditions['wet_hours'],
                     soil_moisture_max=conditions['soil_moisture_max'], soil_deep_max=conditions.get('soil_deep_max'),

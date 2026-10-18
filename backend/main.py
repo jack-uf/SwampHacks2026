@@ -673,9 +673,10 @@ async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int
     weather = await providers.weather(site)
     ensemble = await providers.ensemble(site, days=ceil(horizon/24))
     terrain = await providers.terrain(site)
+    model = await predictions(dict(site, latitude=mission['latitude'], longitude=mission['longitude']))
     plan = planner.plan(weather, activity, duration, terrain=terrain, ensemble=ensemble, now=now.isoformat(),
                         hours=horizon, step_hours=step_hours, limit=limit, planned_start=mission['shift_start'],
-                        timezone=site['timezone'], flex_hours=flex_hours, busy=busy)
+                        timezone=site['timezone'], flex_hours=flex_hours, busy=busy, model=model)
     body = dict(mission_id=mission_id, activity=dict(id=mission['activity'], **activity),
                 anchor=now.isoformat(), planned_start=mission['shift_start'], generated_at=now.isoformat(),
                 conditions_source=weather.get('source'), weather_fetched_at=(weather.get('feed') or {}).get('fetched_at'),

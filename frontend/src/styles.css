@@ -2207,6 +2207,7 @@ td strong {
 .window-class { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: #6b756e; }
 .window-prob { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--warn-text, #8a6d1f); }
 .window-drivers { color: var(--warn-text, #8a6d1f); }
+.window-model { color: #5c665f; }
 .jha-entry.rating-stop_work, .jha-entry.rating-high { border-left: 4px solid #d4553c; background: #fffaf8; }
 .jha-entry.rating-simulated_stop_work { border-left: 4px dashed #b88a2e; background: #fffcf3; }
 .jha-entry.rating-elevated { border-left: 4px solid #e2a93a; }
