@@ -10,6 +10,22 @@ def fixture(name):
     return json.loads((FIXTURES / name).read_text())
 
 
+def test_gauge_trend_reports_direction_and_headroom_or_abstains():
+    rising = providers.gauge_trend([('2026-10-18T00:00:00+00:00', 2.0), ('2026-10-18T06:00:00+00:00', 2.4),
+                                    ('2026-10-18T12:00:00+00:00', 3.1)], flood_stage=4.0)
+    assert rising['available'] is True and rising['direction'] == 'rising'
+    assert rising['change_6h_m'] == 0.7 and rising['change_24h_m'] is None
+    assert rising['headroom_m'] == 0.9 and rising['above_flood_stage'] is False
+    falling = providers.gauge_trend([('2026-10-17T12:00:00+00:00', 3.0), ('2026-10-18T12:00:00+00:00', 2.4)])
+    assert falling['direction'] == 'falling' and falling['change_24h_m'] == -0.6
+    flat = providers.gauge_trend([('2026-10-17T12:00:00+00:00', '3.0'), ('2026-10-18T12:00:00+00:00', '3.01')])
+    assert flat['direction'] == 'flat'
+    assert providers.gauge_trend([('2026-10-18T12:00:00+00:00', 3.0)])['available'] is False
+    assert providers.gauge_trend([('not-a-time', 3.0), ('2026-10-18T12:00:00+00:00', 'n/a')])['available'] is False
+    above = providers.gauge_trend([('2026-10-18T00:00:00+00:00', 3.9), ('2026-10-18T06:00:00+00:00', 4.2)], flood_stage=4.0)
+    assert above['above_flood_stage'] is True and above['headroom_m'] == -0.2
+
+
 def test_hourly_rows_drops_ragged_or_non_list_variables_without_failing():
     rows, dropped = providers.hourly_rows(dict(time=['2026-10-18T00:00', '2026-10-18T01:00'],
                                               temperature_2m=[20, 21], precipitation=[0],

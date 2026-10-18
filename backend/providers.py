@@ -94,6 +94,40 @@ async def weather(site):
                 dropped_variables=dropped)
 
 
+def gauge_trend(readings, flood_stage=None):
+    """Rate of change of a gauge series, as the hydrologic signal the JHA never had.
+
+    Readings are (ISO timestamp, stage in metres) pairs, oldest first. Values that do not parse
+    are skipped rather than filled; a series with fewer than two usable readings has no trend.
+    """
+    series = []
+    for stamp, stage in readings:
+        try:
+            series.append((parse_time(stamp), float(stage)))
+        except (TypeError, ValueError):
+            continue
+    series = [(moment, stage) for moment, stage in series if isfinite(stage)]
+    series.sort(key=lambda item: item[0])
+    if len(series) < 2:
+        return dict(available=False, note='Fewer than two usable gauge readings; no trend computed')
+    latest_at, latest = series[-1]
+    def change(hours):
+        cutoff = latest_at - timedelta(hours=hours)
+        earlier = [stage for moment, stage in series if moment <= cutoff]
+        return None if not earlier else round(latest - earlier[-1], 3)
+    change_6h, change_24h = change(6), change(24)
+    reference = change_24h if change_24h is not None else change_6h
+    direction = 'unknown' if reference is None else 'flat' if abs(reference) < .05 else 'rising' if reference > 0 else 'falling'
+    result = dict(available=True, readings=len(series), latest_m=round(latest, 3), latest_at=latest_at.isoformat(),
+                  change_6h_m=change_6h, change_24h_m=change_24h, direction=direction,
+                  note='Observed gauge stage trend; a rise is not a flood forecast')
+    if flood_stage is not None and isfinite(flood_stage):
+        result['flood_stage_m'] = round(flood_stage, 3)
+        result['headroom_m'] = round(flood_stage - latest, 3)
+        result['above_flood_stage'] = latest >= flood_stage
+    return result
+
+
 EPQS = 'https://epqs.nationalmap.gov/v1/json'
 ELEVATION_RANGE = (-500., 9000.)  # metres; outside this a sample is a provider error, not terrain
 
