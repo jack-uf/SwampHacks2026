@@ -1,0 +1,52 @@
+{
+  "epochs_run": 22,
+  "validation_log_loss": 0.015745436772704124,
+  "parameters": 23185,
+  "seconds": 472.95415079199984,
+  "inner_train_rows": 76995,
+  "inner_validation_rows": 8555,
+  "fills": {
+    "windows": {
+      "train": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "validation": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scored": {
+        "calibration": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "temporal_validation": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "geographic_validation": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "engineered": {},
+    "statics": {}
+  }
+}

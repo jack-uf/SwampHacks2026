@@ -1,0 +1,99 @@
+{
+  "epochs_run": 8,
+  "validation_log_loss": 0.017277974635362625,
+  "parameters": 26497,
+  "seconds": 198.46013170800006,
+  "inner_train_rows": 76995,
+  "inner_validation_rows": 8555,
+  "fills": {
+    "windows": {
+      "train": [
+        98,
+        0,
+        0,
+        0
+      ],
+      "validation": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "scored": {
+        "calibration": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "threshold": [
+          70,
+          0,
+          0,
+          0
+        ],
+        "temporal_validation": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "geographic_validation": [
+          2,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "engineered": {
+      "train": {
+        "hrrr_point12": 64186,
+        "hrrr_basin12": 64186,
+        "hrrr_max12": 64186,
+        "hrrr_point_ratio": 64186,
+        "hrrr_basin_ratio": 64186,
+        "hrrr_max_ratio": 64186
+      },
+      "calibration": {
+        "hrrr_point12": 38204,
+        "hrrr_basin12": 38204,
+        "hrrr_max12": 38204,
+        "hrrr_point_ratio": 38204,
+        "hrrr_basin_ratio": 38204,
+        "hrrr_max_ratio": 38204
+      },
+      "threshold": {
+        "hrrr_point12": 66922,
+        "hrrr_basin12": 66922,
+        "hrrr_max12": 66922,
+        "hrrr_point_ratio": 66922,
+        "hrrr_basin_ratio": 66922,
+        "hrrr_max_ratio": 66922
+      },
+      "temporal_validation": {
+        "hrrr_point12": 38895,
+        "hrrr_basin12": 38895,
+        "hrrr_max12": 38895,
+        "hrrr_point_ratio": 38895,
+        "hrrr_basin_ratio": 38895,
+        "hrrr_max_ratio": 38895
+      },
+      "geographic_validation": {
+        "hrrr_point12": 13372,
+        "hrrr_basin12": 13372,
+        "hrrr_max12": 13372,
+        "hrrr_point_ratio": 13372,
+        "hrrr_basin_ratio": 13372,
+        "hrrr_max_ratio": 13372
+      }
+    },
+    "statics": {
+      "train": {},
+      "calibration": {},
+      "threshold": {},
+      "temporal_validation": {},
+      "geographic_validation": {}
+    }
+  }
+}

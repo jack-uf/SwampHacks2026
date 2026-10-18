@@ -1,0 +1,53 @@
+{
+  "completed_utc": "2026-10-18T09:16:54.341378+00:00",
+  "source": "USGS OGC continuous items (parameter 00060)",
+  "unit_conversion": "USGS cfs x 0.0283168 = CAMELSH m3 s-1",
+  "stations": [
+    {
+      "station": "10183500",
+      "window": [
+        "2024-05-01T00:00:00Z",
+        "2024-06-30T23:59:59Z"
+      ],
+      "readings": 5856,
+      "approvals": {
+        "Approved": 5856
+      },
+      "qualifiers": {
+        "none": 5856
+      },
+      "overlap_hours": 1464,
+      "correlation": 0.9999999999999989,
+      "median_ratio": 0.9999999986342962,
+      "ratio_p10": 0.9999999628014837,
+      "ratio_p90": 1.000000034314717,
+      "hours_only_usgs": 0,
+      "hours_only_camelsh": 0,
+      "max_abs_diff": 4.7618408238747634e-07,
+      "labelling": "CAMELSH hour-start means correspond to USGS readings within [t, t+1h) labelled t, per usgsdownload_Hourly.m (dateshift start, accumarray mean)."
+    },
+    {
+      "station": "01105880",
+      "window": [
+        "2024-05-01T00:00:00Z",
+        "2024-06-30T23:59:59Z"
+      ],
+      "readings": 5856,
+      "approvals": {
+        "Approved": 5856
+      },
+      "qualifiers": {
+        "none": 5856
+      },
+      "overlap_hours": 1464,
+      "correlation": 0.9999999999999951,
+      "median_ratio": 0.9999999984132737,
+      "ratio_p10": 0.9999999674087713,
+      "ratio_p90": 1.0000000293949378,
+      "hours_only_usgs": 0,
+      "hours_only_camelsh": 0,
+      "max_abs_diff": 2.8515777517057472e-08,
+      "labelling": "CAMELSH hour-start means correspond to USGS readings within [t, t+1h) labelled t, per usgsdownload_Hourly.m (dateshift start, accumarray mean)."
+    }
+  ]
+}

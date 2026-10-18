@@ -1,0 +1,197 @@
+{
+  "experiment": "External benchmark: Google Flood Hub architecture trained under this repository protocol",
+  "label": "Google architecture under our protocol. Not Google published performance.",
+  "revision": "The first window implementation reproduced the sequence sprint window ending at the decision hour inclusive, giving the candidates two hours of fresher discharge than the frozen candidate is allowed to read, and its trained artifacts are preserved under superseded-fresh-discharge/ as a development note only. This revision delays the discharge channel by two hours so the newest value in every window equals q_2; the delivered comparison uses this contract.",
+  "audit": {
+    "file": "experiments/high-flow-external-20261018/audit.json",
+    "sha256": "459923c8046154cf714ee8716a3f96f4ee1482f9949bfc31bcff5f40eeaefd0a",
+    "conclusion_google": "The released weights cannot be applied to our 88 gauges under this protocol without training overlap contamination. All 88 gauges are in the training basin list as camels_<id> and all 88 appear in the released in-sample metrics, and the training window contains our train, calibration and threshold partitions. The 2024 development and 2025-2026 confirmation years are outside the training window, but the daily input contract cannot be built from the caches, so no zero-shot or fine-tuned application exists here either. This sprint trains the architecture from scratch under our protocol.",
+    "conclusion_rivermamba": "The released reforecasts are daily. A daily cadence with a one-day minimum lead cannot express a six-hour decision or a six-hour onset horizon, and the AIFAS index carries GRDC station identifiers rather than our 88 USGS gauge identifiers, so no comparison was run and none should be forced."
+  },
+  "method": "Per decision time, one raw hourly window of the 168 hours ending at that time inclusive (log1p(discharge/reference) delayed two hours so its newest value equals the frozen receipt-delay contract q_2, precipitation, temperature_2m and soil_moisture_0_to_7cm with the six-hour receipt delay the signals sprint already applies), fed to the Google release encoder conventions adapted to a single binary six-hour onset head. google_lstm_engineered additionally receives the frozen candidate feature set and the static attributes through their own embeddings; google_lstm_raw does not. The released Mean-Embedding-Forecast-LSTM needs daily hres/graphcast/imerg/cpc arrays, 365-day sequences and 84 Multimet statics the caches do not contain, so it cannot run here; see audit.json.",
+  "control": {
+    "name": "winner_forecast",
+    "experiment": "experiments/high-flow-signals-20261018/cycle-11",
+    "results_sha256": "02695d7ea80aa786a52ae28f594aca6888d89053222dca999b443f7658702984",
+    "freeze_sha256": "e0ca59eac9fc7f87d9e9554cc2faca9e035450d7f446de8665d5305ca19bf1dc",
+    "artifact_sha256": "700201d02801c4300ab8b3ff4042c813f506c76272886703fe0127a15b58375f",
+    "predictions": {
+      "temporal_validation": "402a239c30e3773d0695231f6b87591ccc953161e994c72a4bdcc7d1e024d432",
+      "geographic_validation": "726d3f5e10de3353a9aad7de73cdbe49f39f511849017a8c489903698bfb58ee"
+    }
+  },
+  "population": {
+    "dataset": "experiments/high-flow-signals-20261018/development.csv.gz",
+    "dataset_sha256": "3d79cfb0d0942a6a8574e845a977f720174ab9b952e85eddda89319afe4982d4",
+    "gauges": 88,
+    "forecast_dataset": "experiments/high-flow-signals-20261018/hrrr/features.csv.gz",
+    "forecast_dataset_sha256": "10d1cb3ec5d98361a23c9a510a2ee9187585a9095fb2f4d22d237c09d7ae6c92",
+    "window_hours": 168,
+    "channels": [
+      "log_flow",
+      "precipitation",
+      "temperature_2m",
+      "soil_moisture_0_to_7cm"
+    ],
+    "weather_delay_hours": 6,
+    "discharge_delay_hours": 2,
+    "window_contract": "Channel 0 is delayed two hours at window build so the newest discharge in every window equals the frozen receipt-delay q_2; the weather channels keep the six-hour receipt delay. Stored series bytes stay un-delayed and byte-identical to the sequence sprint, so the provenance check keeps its meaning.",
+    "reference": "log1p(discharge/reference_cfs) rebuilt from the cached USGS pages",
+    "unit": "One row is one eligible decision at the frozen six-hour cadence, horizon 6 only."
+  },
+  "engineered": {
+    "source": "cycle-11 freeze.json configurations.winner_forecast.features",
+    "features": [
+      "q_2",
+      "q_8",
+      "q_14",
+      "q_26",
+      "q_50",
+      "q_74",
+      "q_170",
+      "rise_6",
+      "rise_12",
+      "rise_24",
+      "rise_48",
+      "rise_72",
+      "rise_168",
+      "acceleration",
+      "range_24",
+      "range_72",
+      "season_sin",
+      "season_cos",
+      "latitude",
+      "longitude",
+      "log_area",
+      "elevation_m",
+      "rain_3_lag6",
+      "rain_6_lag6",
+      "rain_12_lag6",
+      "rain_24_lag6",
+      "rain_48_lag6",
+      "rain_72_lag6",
+      "rain_168_lag6",
+      "temperature_lag6",
+      "soil_lag6",
+      "positive_degree_24_lag6",
+      "rain_soil_lag6",
+      "rain24_ratio",
+      "rain168_ratio",
+      "soil_change_6d",
+      "rain_share_6h",
+      "margin",
+      "linear_margin",
+      "damped_margin",
+      "time_to_reference",
+      "rise_persistence",
+      "recent_fraction",
+      "relative_range",
+      "hrrr_available",
+      "hrrr_point12",
+      "hrrr_basin12",
+      "hrrr_max12",
+      "hrrr_point_ratio",
+      "hrrr_basin_ratio",
+      "hrrr_max_ratio"
+    ],
+    "count": 51,
+    "note": "The engineered branch receives exactly the frozen candidate feature set and no feature the frozen candidate could not compute at the decision time. Missing entries are standardized with inner-training statistics and filled with zero after scaling; the frozen candidate let LightGBM handle missing values natively."
+  },
+  "statics": [
+    "season_sin",
+    "season_cos",
+    "latitude",
+    "longitude",
+    "log_area",
+    "elevation_m"
+  ],
+  "split": {
+    "definition": "scripts/high_flow_research.split(cycle=4), reserved HUC4s from experiments/sprint-20261017-mlp-geo/stations.json role=geographic_test",
+    "commentary": "Train 2020-2021, calibrate 2022, threshold 2023, score 2024. Unchanged."
+  },
+  "calibration": {
+    "inputs": [
+      "season_sin",
+      "season_cos",
+      "margin",
+      "log_area"
+    ],
+    "estimator": "StandardScaler + LogisticRegression(C=1, max_iter=2000, random_state=42) on the 2022 partition, identical to scripts/high_flow_signals.py",
+    "requirement": "Calibration slope must be positive."
+  },
+  "threshold": {
+    "rule": "scripts/high_flow_research.threshold on the 2023 partition, inclusive",
+    "pooled": 1.0,
+    "region": 2.0
+  },
+  "candidates": [
+    {
+      "name": "google_lstm_engineered",
+      "engineered": true,
+      "statics": true,
+      "description": "raw hourly window plus the frozen cycle-11 engineered feature set and statics"
+    },
+    {
+      "name": "google_lstm_raw",
+      "engineered": false,
+      "statics": false,
+      "description": "raw hourly window only"
+    }
+  ],
+  "architecture": {
+    "channel_hidden": 16,
+    "lstm_hidden": 64,
+    "engineered_hidden": 32,
+    "statics_hidden": 16,
+    "head_hidden": 32,
+    "dropout": 0.2
+  },
+  "training": {
+    "epochs": 30,
+    "patience": 5,
+    "batch": 512,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "validation_tail": 0.1,
+    "early_stopping": "Contiguous tail of the training period by decision_time (last 10% of rows), never calibration, threshold or 2024 rows."
+  },
+  "comparison": {
+    "reference": "winner_forecast",
+    "budgets": [
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "ceiling": {
+      "pooled": 1.5,
+      "region": 3.0
+    },
+    "draws": 500,
+    "seed": 42,
+    "clusters": "huc4",
+    "gates": "the sixteen promotion gates of scripts/report_high_flow_signals.py, computed against the frozen candidate",
+    "rows": "identical evaluation rows, proven against the stored cycle-11 prediction files"
+  },
+  "storage": {
+    "artifact": "one float16 hourly four-channel series per gauge under series/, about 31 MB, plus one gzipped index per partition, per-partition prediction files and one model bundle per candidate; well under the 300 MB budget",
+    "regeneration": "Delete series/ and index/ and rerun assemble; freeze.json then still describes the run."
+  },
+  "code_sha256": {
+    "scripts/high_flow_external.py": "1492cba5dcd424b3bb85a6c8fec2ad1a8b59b49db96155b6aa0c1f3d461b3b8f",
+    "scripts/high_flow_external_worker.py": "b56f6d017357a53f1284ebd91251b6fd90f4c1573078fbdfb98f98d2eb959dd9",
+    "scripts/high_flow_sequence_windows.py": "178736c951e336ac8314c183e1e30f80c8b808b634567024a5863ed3cb75e63b",
+    "scripts/high_flow_signals.py": "19af00fe5ffc8ae32fa85cf0e0efaf1d4ef4fe2275d2d17c0f56b5d32950b0d5",
+    "scripts/high_flow_research.py": "1b1010dced32222d938563047253087653dd3839bdabeb2af115bab0b26f2b14",
+    "scripts/shift_hydrology_metrics.py": "cc0a130dd54a9ac9f11b1332477a19cb9b4ad11107b18a9bfa44acc88b98e28e",
+    "scripts/shift_hydrology.py": "9a1f9e64fcc75af21469c31a1a7eebf01497651d63ce2bb3a7483c1a73c1c38d",
+    "scripts/hydrology_research.py": "3cd150dae537cb5a3e209fef5414e0a2c2651fc94238479b224a6b86fda66c22"
+  },
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5"
+  }
+}

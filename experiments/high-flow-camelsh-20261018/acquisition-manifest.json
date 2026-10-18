@@ -1,0 +1,130 @@
+{
+  "generated_utc": "2026-10-18T09:20:06.863879+00:00",
+  "dataset": {
+    "name": "CAMELSH: A Large-Sample Hourly Hydrometeorological Dataset and Attributes at Watershed-Scale for CONUS",
+    "citation": "Tran et al., Scientific Data (2025), doi:10.1038/s41597-025-05612-6",
+    "licence": "CC-BY-4.0 (Zenodo records 15066778, 16729675, 15264814, 21302482)",
+    "gauges_hourly_streamflow": 5767,
+    "gauges_with_attributes": 9008,
+    "coverage": "1980-01-01 00:00:00 to 2024-12-31 23:00:00 UTC, hourly",
+    "streamflow_units": "m3 s-1 (converted from USGS cfs with the 0.0283168 constant in datatransform.m)",
+    "streamflow_statistic": "hourly mean of USGS Instantaneous Values Service readings (parameter 00060, typically 15 to 60 minute cadence), labelled by hour start",
+    "missing_values": "IEEE NaN, no interpolation; all USGS flag classes are retained",
+    "basin_polygons": "Provided as CAMELSH_shapefile.shp (GAGES-II derived) and CAMELSH_shapefile_hydroATLAS.shp, field GAGE_ID, in shapefiles.7z",
+    "archive_format": "Hourly2.zip: one deflate-compressed NetCDF4/HDF5 file per gauge, named <STAID>_hourly.nc with variables time, streamflow, water_level",
+    "source_urls": {
+      "streamflow_archive": "https://zenodo.org/api/records/16729675/files/Hourly2.zip/content",
+      "attributes": "https://zenodo.org/api/records/15066778/files/attributes.7z/content",
+      "info_csv": "https://zenodo.org/api/records/15066778/files/info.csv/content",
+      "repository": "https://github.com/vinhngoctran/CAMELSH",
+      "alternate_drive": "https://drive.google.com/drive/folders/15dk6qlU38LqsUkf9hiIZHXGtzzrDfl-q"
+    }
+  },
+  "acquired": {
+    "archive_bytes": 4176462827,
+    "archive_md5": "8bab1c99329db3fa6b1b6cb464a2a573",
+    "head_bytes": 4096,
+    "tail_bytes": 8000000,
+    "central_directory": {
+      "offset": 4175908959,
+      "bytes": 553846
+    },
+    "members_indexed": 5767,
+    "selected": 570,
+    "fetched": 570,
+    "fetch_failures": [],
+    "request_bytes": 419982291,
+    "extracted_files": 570,
+    "extracted_dir": "/tmp/camelsh-20261018/extracted",
+    "member_manifest": "selection.json plus fetch-log.jsonl (per-station csize, usize, crc32, sha256, request bytes)"
+  },
+  "coverage": {
+    "summary": {
+      "completed_utc": "2026-10-18T09:16:26.312016+00:00",
+      "gauges": 570,
+      "read_errors": [],
+      "with_2021_2024": 555,
+      "at_least_half_year_2021_2024": 553,
+      "at_least_full_year_2021_2024": 550,
+      "valid_hours_total": 114781707,
+      "compressed_bytes": 419932111,
+      "note": "valid hours are hours with a non-NaN streamflow value; NaN hours are missing observations, not gaps that were filled."
+    },
+    "csv": "coverage.csv"
+  },
+  "overlap": {
+    "fitted_in_archive": 88,
+    "fitted_total": 88,
+    "reserved_in_archive": 179,
+    "reserved_total": 179,
+    "info_observed_total": 3166,
+    "info_observed_in_archive": 3056,
+    "info_observed_not_in_archive": [
+      "01030000",
+      "01087000",
+      "01141500",
+      "01155910",
+      "01436500",
+      "01581690",
+      "01585400",
+      "01594400",
+      "01598650",
+      "01645200"
+    ],
+    "info_observed_not_in_archive_count": 110
+  },
+  "exclusions": {
+    "fitted": {
+      "source": "experiments/high-flow-signals-20261018/development.csv.gz",
+      "count": 88,
+      "sha256": "3d79cfb0d0942a6a8574e845a977f720174ab9b952e85eddda89319afe4982d4"
+    },
+    "reserved": {
+      "source": "experiments/high-flow-signals-20261018/fresh-geography/camels-screen.json",
+      "count": 179,
+      "sha256": "63f244dbda177f9eab1a7792071f1fc9c45d127a09dc73eac20d43d2fb15c955"
+    }
+  },
+  "not_acquired": [
+    {
+      "file": "timeseries.7z",
+      "record": "15066778",
+      "bytes": 21247136353,
+      "reason": "Original-release NLDAS-2 forcing plus streamflow bundle; superseded for streamflow by Hourly2.zip and not needed for onset compatibility."
+    },
+    {
+      "file": "timeseries_nonobs.7z",
+      "record": "15070091",
+      "bytes": 35655472043,
+      "reason": "Gauges without observed streamflow; outside the training population."
+    },
+    {
+      "file": "shapefiles.7z",
+      "record": "15066778",
+      "bytes": 530604106,
+      "reason": "Catchment polygons for all 9,008 basins, including the reserved cohort; deferred until a candidate cohort is chosen."
+    },
+    {
+      "file": "Hourly.7z",
+      "record": "15413207",
+      "bytes": null,
+      "reason": "5,188-gauge streamflow and water level archive; record is access restricted and was superseded by the open Hourly2.zip."
+    },
+    {
+      "file": "ERA5-Land annual 7z archives",
+      "record": "15264814",
+      "bytes": null,
+      "reason": "Hourly ERA5-Land forcing for 9,008 basins, about 2.4 GB per year; this task needs streamflow semantics, and the project already provides its own weather pipeline."
+    },
+    {
+      "file": "NWM.7z / NWM_Q_nc.zip / CAMELSH_FCS.zip / StreamTemperature.zip",
+      "record": "16763144, 21302482, 21324088",
+      "bytes": null,
+      "reason": "Benchmark simulations, actual-forecast archives and stream temperature; not streamflow observations."
+    }
+  ],
+  "verification": {
+    "onset_check": "onset-check.json (decision_rows sample)",
+    "usgs_crosscheck": "usgs-crosscheck.json"
+  }
+}

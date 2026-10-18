@@ -125,13 +125,24 @@ def collect():
             x=json.loads(gzip.decompress(path.read_bytes()))
             if x['issue_time']!=issue.isoformat():raise ValueError('Cached issue mismatch')
             return
+        absent=HR/'fields'/(issue.strftime('%Y%m%dT%H')+'.missing.json')
+        if absent.exists():return
         init=issue-pd.Timedelta(hours=6)
         url=BUCKET+f'/hrrr.{init:%Y%m%d}/conus/hrrr.t{init:%H}z.wrfsfcf12.grib2'
         for attempt in range(3):
             try:
-                idx=httpx.get(url+'.idx',timeout=30);idx.raise_for_status()
+                idx=httpx.get(url+'.idx',timeout=30)
+                if idx.status_code==404:
+                    write_json(absent,dict(issue_time=issue.isoformat(),url=url+'.idx',status=404,
+                        kind='archive gap',recorded_at=datetime.now(timezone.utc).isoformat()))
+                    return
+                idx.raise_for_status()
                 start,stop=precipitation_range(idx.text)
                 response=httpx.get(url,headers={'Range':f'bytes={start}-{stop}'},timeout=45)
+                if response.status_code==404:
+                    write_json(absent,dict(issue_time=issue.isoformat(),url=url,status=404,
+                        kind='archive gap',recorded_at=datetime.now(timezone.utc).isoformat()))
+                    return
                 response.raise_for_status()
                 content_range=response.headers.get('content-range','')
                 if response.status_code!=206 or not content_range.startswith(f'bytes {start}-{stop}/') or len(response.content)!=stop-start+1:
@@ -160,10 +171,13 @@ def materialize():
         x=json.loads(gzip.decompress(p.read_bytes()))
         rows.extend(dict(station=sid,decision_time=x['issue_time'],**v) for sid,v in x['stations'].items())
     f=pd.DataFrame(rows)
-    if f.duplicated(['station','decision_time']).any() or len(f)!=len(schedule())*len(grid()['stations']):
+    gaps=sorted(p.name.split('.')[0] for p in (HR/'fields').glob('*.missing.json'))
+    expected=(len(schedule())-len(gaps))*len(grid()['stations'])
+    if f.duplicated(['station','decision_time']).any() or len(f)!=expected:
         raise ValueError('Incomplete forecast acquisition for the declared schedule')
     f.to_csv(target,index=False,compression={'method':'gzip','mtime':0})
     write_json(HR/'features.json',dict(sha256=digest(target),rows=len(f),
+        archive_gaps=gaps,
         source_hashes={str(p.relative_to(ROOT)):digest(p) for p in (HR/'fields').glob('*.json.gz')}))
 
 

@@ -1,0 +1,294 @@
+{
+  "google": {
+    "clone": "/tmp/planit-ext/flood-forecasting",
+    "model": "mean_embedding_forecast_lstm",
+    "head": "cmal",
+    "package_version": "1.13.0",
+    "epochs": 125,
+    "hidden_size": 512,
+    "n_distributions": 3,
+    "train_start": "1982-01-01",
+    "train_end": "2023-09-30",
+    "window_note": "Shipped run config.yml trains, validates and tests on 01/01/1982 to 30/09/2023 with no temporal holdout; the released README describes the same full-period, no-holdout design and marks temporary benchmarking on it as invalid.",
+    "listed_basins": {
+      "file_lines": 15955,
+      "readme_listed": 15955,
+      "readme_evaluable": 10137,
+      "released_metric_rows": 10137
+    },
+    "gauges": {
+      "ours": 88,
+      "in_training_list": 88,
+      "in_released_metrics": 88,
+      "released_in_sample": {
+        "nse_median": 0.7393,
+        "nse_p10": 0.4573,
+        "nse_p90": 0.8601,
+        "kge_median": 0.7051,
+        "note": "Released full-period metrics are in-sample for every one of our 88 gauges; they support no claim about our task or our 2024 rows."
+      }
+    },
+    "inputs": {
+      "hindcast_channels": [
+        "cpc_precipitation",
+        "graphcast_temperature_2m",
+        "graphcast_total_precipitation",
+        "hres_surface_net_solar_radiation",
+        "hres_surface_net_thermal_radiation",
+        "hres_surface_pressure",
+        "hres_temperature_2m",
+        "hres_total_precipitation",
+        "imerg_precipitation"
+      ],
+      "forecast_channels": [
+        "graphcast_temperature_2m",
+        "graphcast_total_precipitation",
+        "hres_surface_net_solar_radiation",
+        "hres_surface_net_thermal_radiation",
+        "hres_surface_pressure",
+        "hres_temperature_2m",
+        "hres_total_precipitation"
+      ],
+      "union_mapping": {
+        "cpc_precipitation": "era5land_total_precipitation",
+        "imerg_precipitation": "era5land_total_precipitation",
+        "graphcast_temperature_2m": "era5land_temperature_2m",
+        "graphcast_total_precipitation": "era5land_total_precipitation",
+        "hres_surface_net_solar_radiation": "era5land_surface_net_solar_radiation",
+        "hres_surface_net_thermal_radiation": "era5land_surface_net_thermal_radiation",
+        "hres_surface_pressure": "era5land_surface_pressure",
+        "hres_temperature_2m": "era5land_temperature_2m",
+        "hres_total_precipitation": "era5land_total_precipitation"
+      },
+      "static_attributes": [
+        "p_mean",
+        "pet_mean_ERA5_LAND",
+        "aridity_ERA5_LAND",
+        "frac_snow",
+        "moisture_index_ERA5_LAND",
+        "seasonality_ERA5_LAND",
+        "high_prec_freq",
+        "high_prec_dur",
+        "low_prec_freq",
+        "low_prec_dur",
+        "aet_mm_syr",
+        "ari_ix_sav",
+        "crp_pc_sse",
+        "ele_mt_sav",
+        "ero_kh_sav",
+        "for_pc_sse",
+        "gdp_ud_ssu",
+        "gla_pc_sse",
+        "glc_pc_s01",
+        "glc_pc_s02",
+        "glc_pc_s03",
+        "glc_pc_s04",
+        "glc_pc_s06",
+        "glc_pc_s07",
+        "glc_pc_s08",
+        "glc_pc_s09",
+        "glc_pc_s10",
+        "glc_pc_s11",
+        "glc_pc_s12",
+        "glc_pc_s13",
+        "glc_pc_s14",
+        "glc_pc_s15",
+        "glc_pc_s16",
+        "glc_pc_s17",
+        "glc_pc_s18",
+        "glc_pc_s19",
+        "glc_pc_s20",
+        "glc_pc_s21",
+        "glc_pc_s22",
+        "hft_ix_s09",
+        "hft_ix_s93",
+        "inu_pc_slt",
+        "inu_pc_smn",
+        "inu_pc_smx",
+        "ire_pc_sse",
+        "kar_pc_sse",
+        "lka_pc_sse",
+        "nli_ix_sav",
+        "pac_pc_sse",
+        "pet_mm_syr",
+        "pnv_pc_s01",
+        "pnv_pc_s02",
+        "pnv_pc_s03",
+        "pnv_pc_s04",
+        "pnv_pc_s05",
+        "pnv_pc_s06",
+        "pnv_pc_s07",
+        "pnv_pc_s08",
+        "pnv_pc_s09",
+        "pnv_pc_s10",
+        "pnv_pc_s11",
+        "pnv_pc_s12",
+        "pnv_pc_s13",
+        "pnv_pc_s14",
+        "pnv_pc_s15",
+        "ppd_pk_sav",
+        "pre_mm_syr",
+        "prm_pc_sse",
+        "rdd_mk_sav",
+        "snw_pc_syr",
+        "swc_pc_syr",
+        "tmp_dc_syr",
+        "urb_pc_sse",
+        "wet_pc_s01",
+        "wet_pc_s02",
+        "wet_pc_s03",
+        "wet_pc_s04",
+        "wet_pc_s05",
+        "wet_pc_s06",
+        "wet_pc_s07",
+        "wet_pc_s08",
+        "wet_pc_s09",
+        "wet_pc_sg1",
+        "wet_pc_sg2"
+      ],
+      "static_count": 84,
+      "seq_length": 365,
+      "lead_time": 7,
+      "forecast_overlap": 365,
+      "predict_last_n": 8,
+      "target_variables": [
+        "streamflow"
+      ],
+      "timestep": "daily"
+    },
+    "cached_contract": {
+      "cached_weather_variables": [
+        "precipitation",
+        "temperature_2m",
+        "soil_moisture_0_to_7cm"
+      ],
+      "cached_weather_coverage": [
+        "2019-12-01T00:00",
+        "2024-12-31T23:00"
+      ],
+      "cached_discharge": "USGS instantaneous discharge pages reassembled to an hourly calendar, 2020-2024, for the 88 gauges",
+      "first_train_decision": "2020-01-08",
+      "required_history_days": 365,
+      "available_history_before_first_train_decision": 38,
+      "exact_static_name_matches": [
+        "frac_snow",
+        "high_prec_dur",
+        "high_prec_freq",
+        "low_prec_dur",
+        "low_prec_freq",
+        "p_mean"
+      ],
+      "missing_hindcast_channels": [
+        "cpc_precipitation",
+        "graphcast_temperature_2m",
+        "graphcast_total_precipitation",
+        "hres_surface_net_solar_radiation",
+        "hres_surface_net_thermal_radiation",
+        "hres_surface_pressure",
+        "hres_temperature_2m",
+        "hres_total_precipitation",
+        "imerg_precipitation"
+      ],
+      "missing_forecast_channels": [
+        "graphcast_temperature_2m",
+        "graphcast_total_precipitation",
+        "hres_surface_net_solar_radiation",
+        "hres_surface_net_thermal_radiation",
+        "hres_surface_pressure",
+        "hres_temperature_2m",
+        "hres_total_precipitation"
+      ],
+      "note": "None of the required hres/graphcast/imerg/cpc channel names exists in the weather cache; only ERA5 precipitation, temperature_2m and soil moisture 0-7cm are cached (two of the nine hindcast quantities, under different names), no daily as-issued forecast product is cached, and 6 of the 84 required statics match our cached CAMELS attribute names."
+    },
+    "year_overlap": {
+      "train 2020-2021": {
+        "overlaps_training_window": true,
+        "overlap_window": [
+          "2020-01-01",
+          "2021-12-31"
+        ]
+      },
+      "calibration 2022": {
+        "overlaps_training_window": true,
+        "overlap_window": [
+          "2022-01-01",
+          "2022-12-31"
+        ]
+      },
+      "threshold 2023": {
+        "overlaps_training_window": true,
+        "overlap_window": [
+          "2023-01-01",
+          "2023-09-30"
+        ]
+      },
+      "2024 development partitions": {
+        "overlaps_training_window": false,
+        "overlap_window": null
+      },
+      "2025-2026 confirmation": {
+        "overlaps_training_window": false,
+        "overlap_window": null
+      }
+    },
+    "conclusion": "The released weights cannot be applied to our 88 gauges under this protocol without training overlap contamination. All 88 gauges are in the training basin list as camels_<id> and all 88 appear in the released in-sample metrics, and the training window contains our train, calibration and threshold partitions. The 2024 development and 2025-2026 confirmation years are outside the training window, but the daily input contract cannot be built from the caches, so no zero-shot or fine-tuned application exists here either. This sprint trains the architecture from scratch under our protocol."
+  },
+  "rivermamba": {
+    "clone": "/tmp/planit-ext/RiverMamba_code",
+    "huggingface": {
+      "files": [
+        {
+          "path": "Licenses",
+          "size": 0
+        },
+        {
+          "path": ".gitattributes",
+          "size": 2461
+        },
+        {
+          "path": "GRDC_Meta",
+          "size": 329695
+        },
+        {
+          "path": "Licenses/license_rivermamba_reforecasts_models.txt",
+          "size": 302
+        },
+        {
+          "path": "README.md",
+          "size": 354
+        },
+        {
+          "path": "README.txt",
+          "size": 5442
+        },
+        {
+          "path": "RiverMamba_glofas_reanalysis.7z",
+          "size": 177065371
+        },
+        {
+          "path": "RiverMamba_glofas_reanalysis_full_map.7z",
+          "size": 27246237945
+        },
+        {
+          "path": "RiverMamba_grdc_obs.7z",
+          "size": 181043185
+        }
+      ],
+      "note": "Public Hugging Face file listing fetched 2026-10-18; metadata only, no archive downloaded. The full-map archive alone is 27.2 GB."
+    },
+    "reforecasts": "One file per issue day at 00:00 UTC, seven daily lead steps, discharge averaged over 24 hours (dis24), for 3,366 AIFAS river points indexed to GRDC stations, or a 0.05-degree global map for 2024 only",
+    "period": "2019-2024 reforecasts from models trained 1979-2018 (AIFAS) or 1979-2023 (full map)",
+    "conclusion": "The released reforecasts are daily. A daily cadence with a one-day minimum lead cannot express a six-hour decision or a six-hour onset horizon, and the AIFAS index carries GRDC station identifiers rather than our 88 USGS gauge identifiers, so no comparison was run and none should be forced."
+  },
+  "evidence": {
+    "experiments/high-flow-external-20261018/audit/multimet-basins-list-without-chirps.txt": "0aaf27d83c995154f28ecd255a9bc521f0f9d48f31eaf0e153dd8543d1d04833",
+    "experiments/high-flow-external-20261018/audit/google-floodhub-test-metrics.csv": "807a8cc32582da0ecfa6964b391645d344c603a425fa5d96590a3c0c1521daa4",
+    "experiments/high-flow-external-20261018/audit/google-floodhub-config.yml": "316528e1e3f1ece7cdb51d09458d15c8092f30424920e5459d50391cf4d7a814",
+    "experiments/high-flow-external-20261018/audit/google-floodhub-pretrained-README.md": "31bed763ecff6d46f6ee674d2ce62f09d19dcae3b79e394af986a2a9475710de",
+    "experiments/high-flow-external-20261018/audit/rivermamba-README.md": "a78fa3cfca8ea5434ded82e4fcb893c843187225cb2c28f68a578c41698b8128",
+    "experiments/high-flow-external-20261018/audit/rivermamba-huggingface-tree.json": "70446620f28e4836ac5680d687ff31743c9c2082d072cffd08a5345731f83010",
+    "experiments/high-flow-external-20261018/audit/rivermamba-dataset-README.txt": "c5320ef01e7ab72c5339158b79cd17cf2fe10b596fcb31ddd1064961f08ae346"
+  },
+  "fetched": "2026-10-18",
+  "reference_clone": "/tmp/planit-ext"
+}

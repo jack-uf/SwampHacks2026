@@ -17,8 +17,9 @@ positive-area catchment screening instead:
 `experiments/high-flow-signals-20261018/fresh-geography/camels-screen.json` measures every unused
 catchment in the retained full-resolution boundary set against every catchment any earlier experiment
 exposed. 278 unused catchments were screened, **193 are polygon-independent, and 179 of those are
-mutually disjoint**, spread over sixteen HUC2 regions (Oregon and Washington 78, Upper Missouri 21,
-Ohio 21, Texas-Gulf 13, California 11, and smaller groups elsewhere). Only boundary geometry was used;
+mutually disjoint**, spread over sixteen HUC2 regions (Upper Missouri 40, Pacific Northwest 38,
+South Atlantic-Gulf 21, Missouri 15, Ohio 14, Texas-Gulf 13, California 11, and smaller groups
+elsewhere). Only boundary geometry was used;
 no discharge, reference or outcome was acquired or inspected for that screen.
 
 ## Cohorts and periods
