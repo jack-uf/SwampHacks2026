@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import gzip
 import hashlib
 import json
+import time
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -46,6 +47,8 @@ def parse_observations(features, station, statistic='00011'):
             continue
         if p['approval_status'] == 'Approved' and not p.get('qualifier') and np.isfinite(value) and value >= 0:
             rows[t] = value
+    if not rows:
+        return pd.Series(index=pd.DatetimeIndex([], tz='UTC' if statistic=='00011' else None), dtype=float)
     return pd.Series(rows, dtype=float).sort_index()
 
 
@@ -73,6 +76,7 @@ def decision_rows(q, reference, station):
     frame['season_cos'] = np.cos(2*np.pi*q.index.dayofyear/365.25)
     for name in ['station', 'huc', 'role', 'latitude', 'longitude', 'elevation_m']:
         frame[name] = station[name]
+    frame['huc'] = station['huc'][:8]
     frame['log_area'] = np.log1p(station['area_km2'])
     # Eligibility is observable through t-2h, not through the prediction issue time.
     eligible = below.rolling(24).sum().shift(2).eq(24) & q.notna().rolling(169).sum().shift(2).eq(169)
@@ -90,6 +94,7 @@ def decision_rows(q, reference, station):
         f['decision_time'] = f.index.map(lambda t: t.isoformat())
         f['horizon'] = horizon
         f['reference_cfs'] = reference
+        f['future_max_log_flow'] = x.shift(-1)[::-1].rolling(horizon).max()[::-1].loc[f.index]
         result.append(f)
     return pd.concat(result, ignore_index=True), FEATURES, events
 
@@ -103,7 +108,18 @@ def cached_page(path, url):
         if meta['url'] != url or digest(path) != meta['sha256']:
             raise ValueError('Cache checksum or URL changed')
         return json.loads(gzip.decompress(path.read_bytes()))
+    waits = []
     response = httpx.get(url, timeout=90, follow_redirects=True)
+    for attempt in range(3):
+        if response.status_code != 429:
+            break
+        delay = response.headers.get('Retry-After','')
+        if not delay.isdigit() or not 0 < int(delay) <= 60:
+            raise ValueError('USGS rate limit requires an explicit later rerun: '+delay)
+        waits.append(int(delay))
+        print('USGS rate limit; honoring Retry-After', delay, 'seconds',flush=True)
+        time.sleep(int(delay))
+        response = httpx.get(url, timeout=90, follow_redirects=True)
     response.raise_for_status()
     if not response.content or len(response.content) > 40_000_000:
         raise ValueError('Empty or oversized USGS response')
@@ -113,7 +129,8 @@ def cached_page(path, url):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(gzip.compress(response.content, mtime=0))
     write_json(record, dict(url=url, retrieved_utc=datetime.now(timezone.utc).isoformat(),
-        status=response.status_code, uncompressed_bytes=len(response.content), sha256=digest(path)))
+        status=response.status_code, rate_limit_waits_seconds=waits,
+        uncompressed_bytes=len(response.content), sha256=digest(path)))
     return payload
 
 

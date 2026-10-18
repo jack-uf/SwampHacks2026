@@ -63,3 +63,52 @@ def test_missing_hours_cannot_create_quiet_history_or_negative_labels():
     rows, _, events = decision_rows(q, 100., station)
     assert q.index[254].isoformat() not in events
     assert not ((rows.decision_time == q.index[240].isoformat()) & rows.horizon.eq(24)).any()
+
+
+def test_year_boundary_labels_are_purged_and_geography_never_fits():
+    from scripts.shift_hydrology_worker import partitions
+    f = pd.DataFrame(dict(decision_time=['2022-12-30T18:00:00+00:00',
+        '2022-12-31T06:00:00+00:00','2023-01-10T00:00:00+00:00',
+        '2024-06-01T00:00:00+00:00','2025-06-01T00:00:00+00:00'],
+        role=['development','development','development','geographic_validation','geographic_test']))
+    p = partitions(f)
+    assert p['train'].index.tolist() == [0]
+    assert p['calibration'].index.tolist() == [2]
+    assert p['geographic_validation'].index.tolist() == [3]
+    assert p['geographic_test'].index.tolist() == [4]
+
+
+def test_physical_extrapolation_accounts_for_two_hour_observation_delay():
+    from scripts.shift_hydrology_worker import physical_score
+    f = pd.DataFrame(dict(q_2=[.5], q_8=[.2], horizon=[6]))
+    assert physical_score('linear', f)[0] == pytest.approx(.9)
+    assert .5 < physical_score('damped', f)[0] < .9
+
+
+def test_empty_or_rejected_measurements_keep_a_datetime_index():
+    for rows in [[], [observation('2023-01-01T00:00:00Z', qualifier='ice')]]:
+        series = parse_observations(rows, '12345678')
+        assert isinstance(series.index, pd.DatetimeIndex)
+        assert series.index.tz is not None
+        assert series.empty
+
+
+def test_acquisition_honors_bounded_retry_after_and_hashes_cached_bytes(tmp_path, monkeypatch):
+    import httpx
+    import scripts.shift_hydrology as research
+    requests, sleeps = [], []
+    def get(url, **kwargs):
+        requests.append(url)
+        if len(requests) == 1:
+            return httpx.Response(429, headers={'Retry-After':'2'}, request=httpx.Request('GET',url))
+        return httpx.Response(200,json={'type':'FeatureCollection','features':[], 'links':[]}, request=httpx.Request('GET',url))
+    monkeypatch.setattr(httpx,'get',get)
+    monkeypatch.setattr(research.time,'sleep',sleeps.append)
+    path = tmp_path/'source.json.gz'
+    assert research.cached_page(path,'https://example.test/observations')['features'] == []
+    assert sleeps == [2] and len(requests) == 2
+    assert research.cached_page(path,'https://example.test/observations')['features'] == []
+    assert len(requests) == 2
+    path.write_bytes(b'corrupt')
+    with pytest.raises(ValueError,match='checksum'):
+        research.cached_page(path,'https://example.test/observations')
