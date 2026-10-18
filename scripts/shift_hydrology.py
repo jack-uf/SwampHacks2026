@@ -81,7 +81,9 @@ def decision_rows(q, reference, station):
     # Eligibility is observable through t-2h, not through the prediction issue time.
     eligible = below.rolling(24).sum().shift(2).eq(24) & q.notna().rolling(169).sum().shift(2).eq(169)
     complete_future = q.notna().shift(-1)[::-1].rolling(24).sum()[::-1].eq(24)
-    eligible &= (q.index.hour % 6 == 0) & complete_future
+    # Buffer readings certify outcomes only; they never determine observable quiet eligibility.
+    certified_buffer = q.notna().rolling(2).sum().eq(2)
+    eligible &= (q.index.hour % 6 == 0) & complete_future & certified_buffer
     result = []
     for horizon in [6, 12, 24]:
         f = frame.loc[eligible].copy()
@@ -114,11 +116,15 @@ def cached_page(path, url):
         if response.status_code != 429:
             break
         delay = response.headers.get('Retry-After','')
-        if not delay.isdigit() or not 0 < int(delay) <= 60:
-            raise ValueError('USGS rate limit requires an explicit later rerun: '+delay)
+        if not delay.isdigit() or not 0 < int(delay) <= 3600:
+            raise RuntimeError('USGS rate limit requires an explicit later rerun: '+delay)
         waits.append(int(delay))
         print('USGS rate limit; honoring Retry-After', delay, 'seconds',flush=True)
-        time.sleep(int(delay))
+        remaining = int(delay)
+        while remaining:
+            pause = min(remaining,60)
+            time.sleep(pause)
+            remaining -= pause
         response = httpx.get(url, timeout=90, follow_redirects=True)
     response.raise_for_status()
     if not response.content or len(response.content) > 40_000_000:
@@ -140,13 +146,17 @@ def observations(station, year=None):
                  for month in [1, 4, 7, 10]] if year else [('2000-01-01', '2015-12-31')]
     pieces = []
     for quarter, (start, end) in enumerate(intervals):
+        stop = end
+        if year and quarter == 3:
+            end = (pd.Timestamp(end)-pd.Timedelta(seconds=1)).isoformat()
         url = API + collection + '/items?' + urlencode(dict(f='json', monitoring_location_id='USGS-'+station,
             parameter_code='00060', datetime=start+'/'+end, limit=50000, skipGeometry='true'))
         features, page = [], 0
         while url:
             if page >= 10:
                 raise ValueError('USGS pagination exceeds bounded request budget')
-            path = OUT / 'sources' / station / f'{year or "reference"}-{quarter}-{page}.json.gz'
+            suffix = '-bounded' if year and quarter == 3 else ''
+            path = OUT / 'sources' / station / f'{year or "reference"}-{quarter}-{page}{suffix}.json.gz'
             payload = cached_page(path, url)
             features.extend(payload['features'])
             links = [x['href'] for x in payload['links'] if x['rel'] == 'next']
@@ -157,7 +167,7 @@ def observations(station, year=None):
         # API intervals include both endpoints. Remove the end here, not by silently deduplicating.
         series = parse_observations(features, station, '00011' if year else '00003')
         if year:
-            series = series.loc[series.index < pd.Timestamp(end)]
+            series = series.loc[series.index < pd.Timestamp(stop)]
         pieces.append(series)
     result = pd.concat(pieces).sort_index()
     if result.index.has_duplicates:
@@ -239,8 +249,8 @@ def protocol():
 
 def collect(stage):
     protocol()
-    if stage == 'test' and not (OUT/'selection.json').exists():
-        raise ValueError('Freeze model and thresholds before acquiring final outcomes')
+    if stage == 'test':
+        verify_selection()
     stations = json.loads((OUT/'stations.json').read_text())
     references = json.loads((OUT/'references.json').read_text())
     destination = OUT / (stage+'.csv.gz')
@@ -285,6 +295,23 @@ def collect(stage):
     write_json(OUT/(stage+'-provenance.json'), dict(dataset_sha256=digest(destination), rows=len(frame),
         source_requests={str(p.relative_to(OUT)):json.loads(p.read_text())['sha256'] for p in (OUT/'sources').rglob('*.request.json')},
         observation_availability='Retrospective approved USGS discharge; assumed two-hour receipt delay, not an as-issued replay'))
+
+
+def implementation_hashes():
+    return {str(p.relative_to(ROOT)):digest(p) for p in [ROOT/'scripts/shift_hydrology.py',
+        ROOT/'scripts/shift_hydrology_worker.py', ROOT/'scripts/shift_hydrology_metrics.py']}
+
+
+def verify_selection():
+    selection = json.loads((OUT/'selection.json').read_text())
+    if selection['protocol_sha256'] != digest(OUT/'protocol.json') or selection['dataset_sha256'] != digest(OUT/'development.csv.gz'):
+        raise ValueError('Frozen development inputs changed')
+    if selection['code_sha256'] != implementation_hashes():
+        raise ValueError('Candidate implementation changed after selection')
+    for r in selection['candidates']:
+        if digest(OUT/'artifacts'/(r['name']+'.joblib')) != r['artifact_sha256']:
+            raise ValueError('Frozen candidate artifact changed')
+    return selection
 
 
 if __name__ == '__main__':

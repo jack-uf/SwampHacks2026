@@ -93,6 +93,20 @@ def test_empty_or_rejected_measurements_keep_a_datetime_index():
         assert series.empty
 
 
+def test_missing_blind_interval_is_unknown_but_known_crossing_remains_negative():
+    q, station = fixture_flow()
+    issue = q.index[252]
+    q.loc[q.index[253:]] = 110
+    rows, _, _ = decision_rows(q, 100., station)
+    assert rows.loc[rows.decision_time.eq(issue.isoformat())].target.eq(1).all()
+    q.loc[issue-pd.Timedelta(hours=1)] = np.nan
+    uncertain, _, _ = decision_rows(q, 100., station)
+    assert not uncertain.decision_time.eq(issue.isoformat()).any()
+    q.loc[issue-pd.Timedelta(hours=1)] = 110
+    crossed, _, _ = decision_rows(q, 100., station)
+    assert crossed.loc[crossed.decision_time.eq(issue.isoformat())].target.eq(0).all()
+
+
 def test_acquisition_honors_bounded_retry_after_and_hashes_cached_bytes(tmp_path, monkeypatch):
     import httpx
     import scripts.shift_hydrology as research
@@ -112,3 +126,35 @@ def test_acquisition_honors_bounded_retry_after_and_hashes_cached_bytes(tmp_path
     path.write_bytes(b'corrupt')
     with pytest.raises(ValueError,match='checksum'):
         research.cached_page(path,'https://example.test/observations')
+
+
+def test_development_requests_never_cross_into_final_year(monkeypatch):
+    import scripts.shift_hydrology as research
+    from urllib.parse import urlparse, parse_qs
+    intervals = []
+    def page(path, url):
+        intervals.append(parse_qs(urlparse(url).query)['datetime'][0])
+        return {'features':[], 'links':[]}
+    monkeypatch.setattr(research,'cached_page',page)
+    assert research.observations('12345678',2024).empty
+    assert len(intervals) == 4
+    assert pd.Timestamp(intervals[-1].split('/')[1]) < pd.Timestamp('2025-01-01T00:00Z')
+
+
+def test_final_acquisition_rejects_a_changed_artifact(tmp_path, monkeypatch):
+    import scripts.shift_hydrology as research
+    import json
+    (tmp_path/'artifacts').mkdir()
+    for name in ['protocol.json','development.csv.gz']:
+        (tmp_path/name).write_bytes(b'frozen')
+    model = tmp_path/'artifacts/candidate.joblib'
+    model.write_bytes(b'frozen')
+    selection = dict(protocol_sha256=research.digest(tmp_path/'protocol.json'),
+        dataset_sha256=research.digest(tmp_path/'development.csv.gz'),code_sha256=research.implementation_hashes(),
+        candidates=[dict(name='candidate',artifact_sha256=research.digest(model))])
+    (tmp_path/'selection.json').write_text(json.dumps(selection))
+    monkeypatch.setattr(research,'OUT',tmp_path)
+    assert research.verify_selection() == selection
+    model.write_bytes(b'changed')
+    with pytest.raises(ValueError,match='artifact'):
+        research.verify_selection()

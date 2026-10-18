@@ -13,7 +13,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from scripts.hydrology_research import budget_threshold
-from scripts.shift_hydrology import OUT, ROOT, FEATURES, STATIC, digest, protocol, write_json
+from scripts.shift_hydrology import OUT, ROOT, FEATURES, STATIC, digest, protocol, write_json, implementation_hashes, verify_selection
 
 
 def partitions(frame):
@@ -133,7 +133,9 @@ def fit(family):
                 peak_rss_mb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024**2)
             records.append(record)
             print(name,'validation AP',round(record['selection_ap'],4),'seconds',round(record['fit_seconds'],1),flush=True)
-    write_json(destination,dict(candidates=records,versions={x:importlib.metadata.version(x) for x in
+    write_json(destination,dict(candidates=records,dataset_sha256=digest(OUT/'development.csv.gz'),
+        protocol_sha256=digest(OUT/'protocol.json'),code_sha256=implementation_hashes(),
+        versions={x:importlib.metadata.version(x) for x in
         ['numpy','pandas','scikit-learn','joblib']+([family] if family in ['xgboost','lightgbm'] else [])}))
 
 
@@ -141,8 +143,17 @@ def select():
     protocol()
     if (OUT/'selection.json').exists():
         raise FileExistsError('Final selection already frozen')
-    candidates = [r for family in ['baseline','logistic','lightgbm','xgboost']
-        for r in json.loads((OUT/(family+'-selection.json')).read_text())['candidates'] if 'excluded' not in r]
+    candidates = []
+    for family in ['baseline','logistic','lightgbm','xgboost']:
+        result=json.loads((OUT/(family+'-selection.json')).read_text())
+        if (result['dataset_sha256'] != digest(OUT/'development.csv.gz') or
+            result['protocol_sha256'] != digest(OUT/'protocol.json') or result['code_sha256'] != implementation_hashes()):
+            raise ValueError('Candidate family used different frozen inputs')
+        for r in result['candidates']:
+            if 'excluded' not in r:
+                if digest(OUT/'artifacts'/(r['name']+'.joblib')) != r['artifact_sha256']:
+                    raise ValueError('Candidate artifact changed before selection')
+                candidates.append(r)
     selected = {}
     rank = lambda r:(-r['selection_ap'],r['selection_brier'],r['name'])
     for h in [6,12,24]:
@@ -150,12 +161,53 @@ def select():
         selected[str(h)] = dict(candidate=min([r for r in options if r['family']!='baseline'],key=rank)['name'],
                                 baseline=min([r for r in options if r['family']=='baseline'],key=rank)['name'])
     write_json(OUT/'selection.json',dict(selected=selected,candidates=candidates,
-        dataset_sha256=digest(OUT/'development.csv.gz'),protocol_sha256=digest(OUT/'protocol.json')))
+        dataset_sha256=digest(OUT/'development.csv.gz'),protocol_sha256=digest(OUT/'protocol.json'),
+        code_sha256=implementation_hashes()))
+
+
+def evaluate(family):
+    from scripts.shift_hydrology_metrics import metrics
+    selection = verify_selection()
+    destination = OUT/(family+'-evaluation.json')
+    if destination.exists():
+        raise FileExistsError('Final evaluation already recorded')
+    frame = load_data('test')
+    results = []
+    (OUT/'predictions').mkdir(exist_ok=True)
+    for record in selection['candidates']:
+        if record['family'] != family:
+            continue
+        path = OUT/'artifacts'/(record['name']+'.joblib')
+        if digest(path) != record['artifact_sha256']:
+            raise ValueError('Candidate artifact changed')
+        bundle = joblib.load(path)
+        parts = partitions(frame.loc[frame.horizon.eq(record['horizon'])])
+        for partition in ['temporal_test','geographic_test']:
+            f = parts[partition]
+            if f.empty:
+                raise ValueError('Final partition has no usable observations')
+            started = time.monotonic()
+            p = probabilities(bundle,f)
+            seconds = time.monotonic()-started
+            pred = f[['station','huc','decision_time','horizon','target','event_time']].copy()
+            pred['probability'] = p
+            output = OUT/'predictions'/(record['name']+'-'+partition+'.csv.gz')
+            pred.to_csv(output,index=False,compression={'method':'gzip','mtime':0})
+            results.append(dict(name=record['name'],partition=partition,
+                metrics=metrics(pred,p,record['threshold']),prediction_sha256=digest(output),
+                inference_seconds=seconds,rows_per_second=len(f)/max(seconds,1e-9)))
+    write_json(destination,dict(results=results,dataset_sha256=digest(OUT/'test.csv.gz'),
+        selection_sha256=digest(OUT/'selection.json')))
 
 
 if __name__ == '__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command',choices=['fit','select'])
+    parser.add_argument('command',choices=['fit','select','evaluate'])
     parser.add_argument('family',nargs='?',choices=['baseline','logistic','lightgbm','xgboost'])
     args=parser.parse_args()
-    fit(args.family) if args.command=='fit' else select()
+    if args.command=='fit':
+        fit(args.family)
+    elif args.command=='evaluate':
+        evaluate(args.family)
+    else:
+        select()

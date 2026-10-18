@@ -1,0 +1,45 @@
+{
+  "explanation": "Inclusive requests may have acquired the single 2025-01-01T00:00:00Z reading before selection. Boundary readings were removed before all development materialization. No models fitted when discovered. Raw payloads preserved; subsequent requests stop strictly before 2025. This narrows the untouched-year claim.",
+  "requests": [
+    {
+      "path": "sources/01047000/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-01047000&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/01134500/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-01134500&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/01333000/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-01333000&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/01485500/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-01485500&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/02314500/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-02314500&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/02472000/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-02472000&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/03213700/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-03213700&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/03338780/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-03338780&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/03439000/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-03439000&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    },
+    {
+      "path": "sources/04185000/2024-3-0.json.gz.request.json",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-04185000&parameter_code=00060&datetime=2024-10-01T00%3A00%3A00Z%2F2025-01-01T00%3A00%3A00Z&limit=50000&skipGeometry=true"
+    }
+  ]
+}
