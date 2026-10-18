@@ -41,7 +41,7 @@ def hydrologic_features(frame):
     return f
 
 
-def split(frame, reserved):
+def split(frame, reserved, cycle=1):
     """Separate HUC4s and purge every label crossing a fitting boundary."""
     t = pd.to_datetime(frame.decision_time, utc=True)
     end = t + pd.Timedelta(hours=24)
@@ -52,6 +52,13 @@ def split(frame, reserved):
         threshold=t.ge('2023-07-01') & end.lt('2024-01-01'),
         temporal_validation=~geographic & t.ge('2024-01-01') & end.lt('2025-01-01'),
         geographic_validation=geographic & t.ge('2024-01-01') & end.lt('2025-01-01'))
+    if cycle >= 3:
+        masks['train'] = ~geographic & t.lt('2022-01-01') & end.lt('2022-01-01')
+        masks['calibration'] = ~geographic & t.ge('2022-01-01') & end.lt('2023-01-01')
+        if cycle == 4:
+            masks['threshold'] = t.ge('2023-01-01') & end.lt('2024-01-01')
+    fitted_stations = set(frame.loc[masks['train'], 'station'])
+    masks['temporal_validation'] &= frame.station.isin(fitted_stations)
     parts = {k: frame.loc[v].reset_index(drop=True) for k, v in masks.items()}
     if any(f.empty for f in parts.values()):
         raise ValueError('Empty research partition')
@@ -166,14 +173,14 @@ def run(cycle):
     f = load(pooled)
     stations = json.loads((LATEST / 'stations.json').read_text())
     reserved = {s['huc'][:4] for s in stations if s['role'] == 'geographic_test'}
-    parts = split(f, reserved)
+    parts = split(f, reserved, cycle)
     # Each tuple changes one factor relative to the named control in the protocol.
     if cycle == 1:
         configurations = [('original', FEATURES, False, 'platt'),
             ('no_coordinates', LOCAL, False, 'platt'),
             ('hydrologic', LOCAL + HYDRO, False, 'platt'),
             ('balanced', LOCAL + HYDRO, True, 'platt')]
-    elif cycle == 2:
+    elif cycle in [2, 3, 4]:
         configurations = [('expanded_original', FEATURES, False, 'platt'),
             ('expanded_no_coordinates', LOCAL, False, 'platt'),
             ('expanded_hydrologic', LOCAL + HYDRO, False, 'platt'),

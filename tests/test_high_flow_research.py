@@ -51,3 +51,17 @@ def test_hydrologic_features_use_log_two_reference_and_ignore_labels():
     b = hydrologic_features(f.assign(target=[1, 0], future_max_log_flow=[100, 200]))
     pd.testing.assert_frame_equal(a.drop(columns=['target', 'future_max_log_flow']),
                                   b.drop(columns=['target', 'future_max_log_flow']))
+
+
+def test_temporal_validation_requires_a_fitted_station_and_annual_schedule():
+    times = ['2021-03-01', '2022-03-01', '2022-08-01', '2023-03-01', '2023-08-01', '2024-03-01']
+    frame = pd.DataFrame([dict(huc=huc, station=station, decision_time=pd.Timestamp(t, tz='UTC').isoformat())
+        for huc, station in [('01010000', 'fitted'), ('04010000', 'geographic')] for t in times]
+        + [dict(huc='02010000', station='unfitted', decision_time='2024-03-01T00:00:00+00:00')])
+    half, annual = [split(frame, {'0401'}, cycle) for cycle in [3, 4]]
+    assert set(annual['temporal_validation'].station) == {'fitted'}
+    assert len(annual['calibration']) == 2
+    assert len(half['threshold']) == 2
+    assert len(annual['threshold']) == 4
+    pd.testing.assert_frame_equal(half['train'], annual['train'])
+    pd.testing.assert_frame_equal(half['calibration'], annual['calibration'])

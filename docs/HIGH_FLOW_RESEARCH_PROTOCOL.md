@@ -31,3 +31,11 @@ A promising development configuration requires an immutable pipeline, thresholds
 Deployment additionally requires historical input-availability evidence and a site-to-gauge applicability assessment. The approved USGS archive and an assumed delay cannot clear that requirement. If available evidence cannot support fresh temporal and geographic confirmation, stop with a documented non-promotion decision and the specific acquisition work required. Production model hashes are checked for each run, and the experiment never writes production artifacts or deterministic hazard rules.
 
 Each cycle writes its input, code, configuration and production hashes before fitting. Outputs refuse overwrite. Predictions, fitted artifacts and negative results remain under `experiments/high-flow-20261018/`. The results document records commands that actually ran and separates measured findings from hypotheses.
+
+## Adaptive development extension
+
+Cycles 1 and 2 exposed seasonal instability in thresholds selected on July through December 2023. Conditional calibration increased detections while exceeding operational budgets on 2024. Cycles 3 and 4 therefore test calendar coverage before any new outcomes are acquired. Both train before 2022 and calibrate throughout 2022. Cycle 3 selects thresholds on July through December 2023; cycle 4 uses all of 2023. Their training and calibration inputs are identical, isolating the threshold season effect. Comparisons with cycle 2 also change training and calibration years and cannot attribute differences to one factor.
+
+The expanded pool exposed an accounting issue: cycle 2's temporal partition included stations with no pre-2023 training records. Its retained scores mix station transfer and temporal transfer. The canonical partition now requires a temporal-validation station to have training records. Keep cycle 2's frozen outputs as historical evidence and use common-row rescoring for comparisons. The geographic partition remains HUC4-disjoint from training and calibration in every cycle.
+
+These extensions repeat all candidate ablations and baseline calibration methods. Candidate choices remain adaptive development decisions. The final results must disclose this selection and cannot use development bootstrap intervals to claim independent confirmation.
