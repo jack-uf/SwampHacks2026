@@ -34,6 +34,8 @@ The separate [connected-river feasibility study](UPSTREAM_RESEARCH_RESULTS.md) s
 
 The separate [historical-transition and weather-correction study](ANALOG_RESEARCH_RESULTS.md) improves AP on fresh watersheds using local pre-evaluation flow histories. Its event-recall and false-alert criteria fail, so the selected model remains experimental.
 
+The separate [hourly high-flow onset study](SHIFT_HYDROLOGY_RESULTS.md) predicts subdaily discharge onsets at 6, 12 and 24 hours on a frozen 2025 test. The 12-hour residual model is the only candidate to clear an average-precision gate, and it does so by trading event recall and lead; no horizon passes every promotion gate, so the candidates stay experimental.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

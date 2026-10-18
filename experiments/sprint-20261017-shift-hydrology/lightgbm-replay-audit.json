@@ -1,0 +1,176 @@
+{
+  "family": "lightgbm",
+  "selection_sha256": "6eebbc21abc7a610ff9bebf2c3d08d64d76f35cc815b6426ee9b26a4ae5d0096",
+  "test_sha256": "a9130cf6dc90b3d9eb69326ab1bf679ec1ba5d72a388c789a039158d021aeb4f",
+  "elapsed_seconds": 1.3328088328707963,
+  "checked": [
+    {
+      "name": "lightgbm-delayed-6",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "736261087695b332f2a11ec800bdad40eecab264d6631aef6077663ec0f0afd6"
+    },
+    {
+      "name": "lightgbm-delayed-6",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "354eaaaab86d0dfccef0e08c02abaed832b8f3413d74b54222db058618b3cbc7"
+    },
+    {
+      "name": "lightgbm-current-6",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "bfdbf84a7137595ee92465684948f5187048bee1a4a1e46dd591131b323072a2"
+    },
+    {
+      "name": "lightgbm-current-6",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "5d9e3176f6694d727cddedf219a59f9c7f853f157e38d0eebb8e4effa097bc30"
+    },
+    {
+      "name": "lightgbm-dynamics-6",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "bd71bb8134735a89bc28d0a567db9156dfe7942c522944503827a2ca26194ce2"
+    },
+    {
+      "name": "lightgbm-dynamics-6",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.980080997729068e-17,
+      "sha256": "722f104f08b588454463cd569ff6832aad7c4b623e860d1d4368717ce93f7519"
+    },
+    {
+      "name": "lightgbm-residual-6",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "24ec729ed9fc81be98a58b24f99f391644c7dd314ab2154cd649334d6421cf3a"
+    },
+    {
+      "name": "lightgbm-residual-6",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "206a3baef236fa4dd4ccf4340ef4514fdb59457c9743ebf0ca0cdafa79a5ee64"
+    },
+    {
+      "name": "lightgbm-delayed-12",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "850e3be1db21fce63cd15bf95cca151b7cee7c747cbc1d9862f0a00c16b73146"
+    },
+    {
+      "name": "lightgbm-delayed-12",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.93129189996722e-17,
+      "sha256": "33656b8fec6154cb6a48463b22a23c15836070ac753cad180c40395df3079763"
+    },
+    {
+      "name": "lightgbm-current-12",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "fcdccd88077195bb21a3b7969152c58ce99f1bc156112ae9f427decdd935089b"
+    },
+    {
+      "name": "lightgbm-current-12",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.952975943416931e-17,
+      "sha256": "ae051eac1b9abfb1c70d5c18bab27b5393e309c79fc26c0eeae052b5fa8f59e0"
+    },
+    {
+      "name": "lightgbm-dynamics-12",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "6865589f55d3b4457bc27871cd444f43b6a16a654ea1380d776f8f1023c90116"
+    },
+    {
+      "name": "lightgbm-dynamics-12",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b1674770681005f7094e4f5d3f5b1213b034fc93b7bbdc247b93254ea846654d"
+    },
+    {
+      "name": "lightgbm-residual-12",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "c87c52102e2a3c9730be2bb1fb933c5743a59ac54b05a3a36f0381d0f01fc3f6"
+    },
+    {
+      "name": "lightgbm-residual-12",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "7849765f16091b11e0e1bb1be04457341d069438b29960756a9f23f3de432d7f"
+    },
+    {
+      "name": "lightgbm-delayed-24",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "b91f501663450e78b976b9b577d59bcc19567c34890b7a41538b40c145f45235"
+    },
+    {
+      "name": "lightgbm-delayed-24",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "a3fe80f59e5399caee05886ab44d4a44f0ae00710c23b30189528150a328e290"
+    },
+    {
+      "name": "lightgbm-current-24",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "70840e567b5614128b60022a25fd166f96f4228648c8c674cef791cc0184e109"
+    },
+    {
+      "name": "lightgbm-current-24",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.93129189996722e-17,
+      "sha256": "0a6fb51d705407de988e8896b57a397002fab6835d685ad8e805a7793816ccf8"
+    },
+    {
+      "name": "lightgbm-dynamics-24",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "c7092142d0b66576784a3c0e4f8af325c8d384a7793a4a1998097098c42ca5c5"
+    },
+    {
+      "name": "lightgbm-dynamics-24",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "06df4a27aec53aea6af56b8524b44a473e31ef7fbeb23bb578c2b117e1de4cb9"
+    },
+    {
+      "name": "lightgbm-residual-24",
+      "partition": "temporal_test",
+      "rows": 12911,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "6b68fb66a1804355f0e8d9b9d7e75d51d057146bea186ec4625cdc05499e0a18"
+    },
+    {
+      "name": "lightgbm-residual-24",
+      "partition": "geographic_test",
+      "rows": 5671,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "6417c13611b1e1fd4248d9c68930eb9fc71c92c475d7f73c98204db9c1c5d95c"
+    }
+  ]
+}
