@@ -1,0 +1,10 @@
+{
+  "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/continuous/items?f=json&monitoring_location_id=USGS-03213700&parameter_code=00060&datetime=2023-10-01T00%3A00%3A00Z%2F2023-12-31T23%3A59%3A59%2B00%3A00&limit=50000&skipGeometry=true",
+  "retrieved_utc": "2026-10-18T02:29:21.017233+00:00",
+  "status": 200,
+  "rate_limit_waits_seconds": [
+    913
+  ],
+  "uncompressed_bytes": 5212324,
+  "sha256": "916c3c2a2c4aa560f528eefc112078d160c655ef4c09e1123e5aeb7d2cc03680"
+}
