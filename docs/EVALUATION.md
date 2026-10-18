@@ -40,6 +40,8 @@ The separate [MLP onset study](MLP_ONSET_RESULTS.md) retests the response experi
 
 The separate [hybrid MLP study](MLP_HYBRID_RESULTS.md) separates the operating point from the architecture on a second fresh cohort. A threshold rule that spends the promotion gate's own false-alert ceilings recovers events for every network at every horizon; the damped-offset hybrid, trailing-history features and a balanced loss each fail to improve ranking. No horizon passes every gate, and the remaining blockers are geographic.
 
+The separate [geographic generalization study](MLP_GEO_RESULTS.md) gives every candidate both threshold rules on a third cohort of 29 gauges across 18 regions. The perceptron's earlier recall advantage does not survive the matched comparison: it never wins selection, and its false alerts concentrate in one region so the regional ceiling forces it to a threshold that destroys its recall. LightGBM with the ceiling rule clears 11 of 13 gates at 6 hours and still does not promote.
+
 ## Limits
 
 - NOAA-reported county events, not site incidents or injuries; unreported does not mean safe.

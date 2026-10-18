@@ -1,0 +1,92 @@
+{
+  "family": "logistic",
+  "selection_sha256": "85a188c3182727de7c1a20caec61f5c3afe365464725dafea305cd9522192f5c",
+  "test_sha256": "6d26fb5155514ec11daff7b014f1e814f052eb84aa98001ae01f8fb2881e43fe",
+  "elapsed_seconds": 0.43533220887184143,
+  "checked": [
+    {
+      "name": "logistic-dynamics-row-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b5a6e070330f1e4af3ed91debd0d4a9440cba01b917c76f6390f21b37dbfc666"
+    },
+    {
+      "name": "logistic-dynamics-row-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "359a5303108d0dfb9369f385a86e553554b68ea5b559fd592088159f9170d026"
+    },
+    {
+      "name": "logistic-dynamics-ceiling-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "09be2da9e8e96d96be82ff28930f9e24275f027128221a5cd36a6b40e54a7ec9"
+    },
+    {
+      "name": "logistic-dynamics-ceiling-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "de603137bd40464c28f49ce749d8534522ba4fe6488c1de473628462806cf9c1"
+    },
+    {
+      "name": "logistic-dynamics-row-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "01c1e1cee350bbafc5df213b23a2455ddfa5c986984c03c60f38345bf09beb56"
+    },
+    {
+      "name": "logistic-dynamics-row-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "e7da29a73fecb9146d489a5d100db2ee80f6905b88afe9a7e2fd1593886f67f3"
+    },
+    {
+      "name": "logistic-dynamics-ceiling-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "bb834e2b65d78d08a4aa055ce699b4c06b0e990a1768a882d5ff92e7c25e449b"
+    },
+    {
+      "name": "logistic-dynamics-ceiling-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "62c31c29ae0f4889b887d4794ae16b6ae6a1ed892489bbd3bf8eecdc4006da70"
+    },
+    {
+      "name": "logistic-dynamics-row-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "d8bf1eba1ec59af106beb37760a9825ab028569354eb1ccd0db94a0350925fcc"
+    },
+    {
+      "name": "logistic-dynamics-row-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "a4e157f59bf8aadffe9f6c9256c3b5742b56a594fc123b61fbe80dfa66404b40"
+    },
+    {
+      "name": "logistic-dynamics-ceiling-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "db3d1a9d0a8938f7d8fc43b426b8049fd78231c3de8bb7296e184dfbda9ebfc9"
+    },
+    {
+      "name": "logistic-dynamics-ceiling-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "ab400d12d05094cfec34b0dcef216cfa84b33d055cb2921cb2a613155eb97c17"
+    }
+  ]
+}

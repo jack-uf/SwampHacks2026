@@ -1,0 +1,92 @@
+{
+  "family": "lightgbm",
+  "selection_sha256": "85a188c3182727de7c1a20caec61f5c3afe365464725dafea305cd9522192f5c",
+  "test_sha256": "6d26fb5155514ec11daff7b014f1e814f052eb84aa98001ae01f8fb2881e43fe",
+  "elapsed_seconds": 0.8911334169097245,
+  "checked": [
+    {
+      "name": "lightgbm-dynamics-row-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "220d31a60288d2cfeb3cf8aedfc32cb9f5a29123cd3d0154efdf041a171ae4ed"
+    },
+    {
+      "name": "lightgbm-dynamics-row-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.999054535747565e-17,
+      "sha256": "e2d8b5c91e1baaba332677621f2f78018b14d5b1d42b09be7cf516791d89748e"
+    },
+    {
+      "name": "lightgbm-dynamics-ceiling-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "a4710bb23825499ae2e3ba1c74dba8005b620ebccc56f66c958ec267676f43fa"
+    },
+    {
+      "name": "lightgbm-dynamics-ceiling-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.999054535747565e-17,
+      "sha256": "88c67608df726dcb463dbde14bf854c536f9a73d9ccebca692ca695f53a9db9e"
+    },
+    {
+      "name": "lightgbm-dynamics-row-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "117b51dc01caba5eab7f228f4b2148e163028f999a4705b9306893fbbe82705b"
+    },
+    {
+      "name": "lightgbm-dynamics-row-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "1dbeeb643dbfd9e259e936289e005b8e4ccaecde777561740a100d6d36324229"
+    },
+    {
+      "name": "lightgbm-dynamics-ceiling-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "7baa76a5b7d5746d688a9a9fe82cf6c4140f979c0f30f7963e387b86b0078ee6"
+    },
+    {
+      "name": "lightgbm-dynamics-ceiling-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "6bfdce88a60f1dde1a3a011f96e3a7c35aac1ef620265cb2d717911fd5fced86"
+    },
+    {
+      "name": "lightgbm-dynamics-row-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "96ab259c01b3d229c6a62fef5f20ce72e4ed115ea8feebe8132e79c16bfd7997"
+    },
+    {
+      "name": "lightgbm-dynamics-row-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "e9c78f616e3d4b5c77988e10ae3c4a652862421b28c25f592cc43edf6e33c503"
+    },
+    {
+      "name": "lightgbm-dynamics-ceiling-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "56a89092d9bfe5d3767724f7a2d77e5a123a536ae01af8a62b5926469a3bcfb1"
+    },
+    {
+      "name": "lightgbm-dynamics-ceiling-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "0e03c9f1b6282600b3763f8861cac314166f91c3aa06b682f81f017e77c4c13e"
+    }
+  ]
+}

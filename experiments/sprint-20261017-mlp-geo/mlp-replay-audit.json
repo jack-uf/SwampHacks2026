@@ -1,0 +1,344 @@
+{
+  "family": "mlp",
+  "selection_sha256": "85a188c3182727de7c1a20caec61f5c3afe365464725dafea305cd9522192f5c",
+  "test_sha256": "6d26fb5155514ec11daff7b014f1e814f052eb84aa98001ae01f8fb2881e43fe",
+  "elapsed_seconds": 2.4762777499854565,
+  "checked": [
+    {
+      "name": "mlp-direct-row-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "44d9fb0c1141dc1ca4abc3763386315d1b3075eb558ab75c2e1a01cc784d5929"
+    },
+    {
+      "name": "mlp-direct-row-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "2194202d336d860eb5d6186d28e19baed534f280d12ba7a19ffaaa712f6a9302"
+    },
+    {
+      "name": "mlp-direct-ceiling-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "c3925af6798b2dbadec75b89a22886c17470209a40d6fabb41e351b4b8990560"
+    },
+    {
+      "name": "mlp-direct-ceiling-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "1862828d0b6aa5de182ffa7faa7f43a17237274bddf2c1322d62ea9ed527ce1c"
+    },
+    {
+      "name": "mlp-hybrid-row-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "4b2bc6df433f6338cf8a91412ef6046a41e43db24860d81c211a4fabf61e83fd"
+    },
+    {
+      "name": "mlp-hybrid-row-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "896b145efd4e2449bd427465b4af16d4046e090816f87b4e9e6938af2d854cc5"
+    },
+    {
+      "name": "mlp-hybrid-ceiling-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "183fc2776f74f61da33b0b930e042945a494cac76bf6599e7f9b1e7655123a6e"
+    },
+    {
+      "name": "mlp-hybrid-ceiling-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "6760f02fc16616ff6a61edec5da778b604953f1383380b1c695ec0a82f7193f6"
+    },
+    {
+      "name": "mlp-hybrid_prior-row-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "dfa1abfcb5412885a6ff435d843f6baa7e69c0850eda7c924313f242e2088f1f"
+    },
+    {
+      "name": "mlp-hybrid_prior-row-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "8dfea752d5445f5e05b05ec4611654faae5220fb23b8049477b3c68868fb88c3"
+    },
+    {
+      "name": "mlp-hybrid_prior-ceiling-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "0d7a0ec912c9a42c3dcadd35cee06d2529477a43b7ae93363c97b24ed42e28dc"
+    },
+    {
+      "name": "mlp-hybrid_prior-ceiling-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "d661c3b65e33b42d26384d83cbee4c6645df520b36f5c94ef9f021775942456d"
+    },
+    {
+      "name": "mlp-hybrid_balanced-row-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "bf030314dd6b0f441c9becb35fecbe31ff329161c594b3661a6f2d49693b5050"
+    },
+    {
+      "name": "mlp-hybrid_balanced-row-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "bed9da239ab8c72aa9948601d1e3e0c6033060eb7f87934c16f8113cbf6a00e9"
+    },
+    {
+      "name": "mlp-hybrid_balanced-ceiling-6",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b87ed314e9d60843064d7d3c4ac8ba22852976f94bf864d2f00b9a6072fa44c0"
+    },
+    {
+      "name": "mlp-hybrid_balanced-ceiling-6",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "32ce8f6d5ec8087205b62104f08a59fec77b11388d808fb5c3b660e265643ea3"
+    },
+    {
+      "name": "mlp-direct-row-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "2b9a5e40cc4a04f167f0a796abe87155ceb761aded07b6558e27b28f4916e40d"
+    },
+    {
+      "name": "mlp-direct-row-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "db7a8915d4fcb640bd11c395a63bfbb63bb68db5703395f45a251ec412c8a486"
+    },
+    {
+      "name": "mlp-direct-ceiling-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "02101b2c6e4b0098de3476b19b75be917b2f8cc88dd669bf912ef37eb8bf8d2e"
+    },
+    {
+      "name": "mlp-direct-ceiling-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "cba45031f4f3893bff95b767149cc59c6b1d4c7714087ad1941ea3e8ed2a5b6a"
+    },
+    {
+      "name": "mlp-hybrid-row-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "dd2b0e90b8b3088845d08503ce0afaa7b946bb6e0e88645f5547a7a97834104f"
+    },
+    {
+      "name": "mlp-hybrid-row-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "55babecd245fd45158b9020515a9bde557301ca92c5fa18c295748b1752750a9"
+    },
+    {
+      "name": "mlp-hybrid-ceiling-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "1ea2b897a2a6e7908c6a00f401c9782ce7d28702ec235bff316a23f3a563353a"
+    },
+    {
+      "name": "mlp-hybrid-ceiling-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "58a1869e38ed405275f255b0f780ba6d0a6ead15dccc25db4b729f62df61c956"
+    },
+    {
+      "name": "mlp-hybrid_prior-row-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "af99feea2f3a29b52670128342d2396bb90f50825a7e6a592e331467dd566a44"
+    },
+    {
+      "name": "mlp-hybrid_prior-row-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "53d30c88437005d1637051eb164126c4924bdef22b143f03009880c5906a52cc"
+    },
+    {
+      "name": "mlp-hybrid_prior-ceiling-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "1baee81bd3552fb95d51cf872bfe0fe30c3d866671cd0b45b8dc61c237c7f595"
+    },
+    {
+      "name": "mlp-hybrid_prior-ceiling-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.985502008591496e-17,
+      "sha256": "c0091046d63625c07b8a99891394b35bc998661ddba6e79c964adfac8a92f2f9"
+    },
+    {
+      "name": "mlp-hybrid_balanced-row-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "ce34bfc99078ab18e07c14de25cb2d807d4635fc218293249b171efb4483028b"
+    },
+    {
+      "name": "mlp-hybrid_balanced-row-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b5f5b5d6c466d7fa71d778349ab2df508c6fbaab7b21a3dcdd71ac0937125014"
+    },
+    {
+      "name": "mlp-hybrid_balanced-ceiling-12",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "a2567c775a150de22b0fdf2f972685025deb5a61ed0611d3a2f235c15055cf0f"
+    },
+    {
+      "name": "mlp-hybrid_balanced-ceiling-12",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b5caa12d89428212a4310cc2284b4e803e49e0311a97faed2fc5eebeb60e26a0"
+    },
+    {
+      "name": "mlp-direct-row-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "0121b6ab57a3508421554aeb12334f17bd7043fa2d7771fdf158250a460f1db5"
+    },
+    {
+      "name": "mlp-direct-row-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "363adc1c7b46423204bce368c088c830d839d2211d263d56c2d5f7b543ddb370"
+    },
+    {
+      "name": "mlp-direct-ceiling-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "2ae0c0b0589d04a03dfc7a06185a60fe634a69e1bc02a571202bb1d1dc1d19e7"
+    },
+    {
+      "name": "mlp-direct-ceiling-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.990923019453923e-17,
+      "sha256": "c1931b33d82b7d4f01465acb8c2804959530115ab9f395f0f55a9c26313c667b"
+    },
+    {
+      "name": "mlp-hybrid-row-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.993633524885137e-17,
+      "sha256": "e7260587368df4f03549eac469d068541dcb20e6f8a872512e3ee77d4e88f773"
+    },
+    {
+      "name": "mlp-hybrid-row-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "dc2a2e546fa972ce40a912a4b76849f5aedd851e20648b4c3bb342c1eb5de10e"
+    },
+    {
+      "name": "mlp-hybrid-ceiling-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.993633524885137e-17,
+      "sha256": "c5b5714e862d89d7a7fff4552e3ae2723f926c73a02d0e4267513c96c2f99bcc"
+    },
+    {
+      "name": "mlp-hybrid-ceiling-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "4c7add2120b23951c19c75c5c8ae88adbb3110c4a63a0bbe9b99371587ed689f"
+    },
+    {
+      "name": "mlp-hybrid_prior-row-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "0214371687e3317b741b169b29727b17a8a257f76b57ac102a50451ed96550ad"
+    },
+    {
+      "name": "mlp-hybrid_prior-row-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "4033a7f48e6e1a4b4bb8c401113510d4695d4b15b48ed2c7769f8f4100ee3f68"
+    },
+    {
+      "name": "mlp-hybrid_prior-ceiling-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "3857bbde50c0d56f0d554eac5fda3fa7aeb88156b10de1ea3381d62280b33505"
+    },
+    {
+      "name": "mlp-hybrid_prior-ceiling-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "6d910c513efcd44c55687cacdadbb372f4f0b79dbde5e3a77071132efe86f85a"
+    },
+    {
+      "name": "mlp-hybrid_balanced-row-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "f27f1958ca0ce515956894552245e053c5d57a12ba2d552e0c4608eac346f4fc"
+    },
+    {
+      "name": "mlp-hybrid_balanced-row-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "5c70efe8aa30267e8d449a4a4f056693a2835978f2d17460330140fcdc0f9a9a"
+    },
+    {
+      "name": "mlp-hybrid_balanced-ceiling-24",
+      "partition": "temporal_test",
+      "rows": 13842,
+      "max_abs_probability_error": 9.974659986866641e-17,
+      "sha256": "308d001091e122c8de777c39b634933cc2e94b82275acbe925df16da7cb48408"
+    },
+    {
+      "name": "mlp-hybrid_balanced-ceiling-24",
+      "partition": "geographic_test",
+      "rows": 9822,
+      "max_abs_probability_error": 9.996344030316351e-17,
+      "sha256": "b310d8d60b3732532ca1d16348e2ca8979a3e118c1cac9c7095bf3723af1a5a7"
+    }
+  ]
+}
