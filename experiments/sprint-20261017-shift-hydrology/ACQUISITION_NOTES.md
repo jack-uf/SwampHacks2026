@@ -22,7 +22,7 @@ Sandbox DNS resolution fails, whereas approved network execution reaches the off
 
 Each model family records the development dataset, protocol and implementation hashes. Selection verifies these hashes and every candidate artifact before freezing. Final-year acquisition and inference verify the same lock. This prevents family results from silently referring to different datasets or implementations.
 
-Test acquisition starts in January 2025 without preceding-year warmup. The seven-day history requirement therefore removes the opening week even where observations are complete. Event coverage reports all certified onsets and the subset with eligible decisions; conditional event recall is not whole-year surveillance recall.
+Test acquisition starts in January 2025 without preceding-year warmup. The seven-day history requirement therefore removes the opening week even where observations are complete. Event coverage reports all certified onsets and the subset with eligible decisions, retaining stations with no eligible rows. A sequential diagnostic records the first requirement that eliminates all prior scheduled decisions: complete history, quiet interval, buffer completeness, future completeness, or year-boundary purge. These causes are mutually exclusive under that stated ordering, rather than causal estimates of independently recoverable events. Conditional event recall is not whole-year surveillance recall. Lead times refer to hourly binned crossings and can differ from subhourly first-crossing times by up to one hour.
 
 ## Citation correction
 

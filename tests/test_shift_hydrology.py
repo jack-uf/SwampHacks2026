@@ -60,8 +60,8 @@ def test_future_changes_labels_but_never_past_features():
 def test_missing_hours_cannot_create_quiet_history_or_negative_labels():
     q, station = fixture_flow()
     q.iloc[250] = np.nan
-    rows, _, events = decision_rows(q, 100., station)
-    assert q.index[254].isoformat() not in events
+    rows, _, diagnostics = decision_rows(q, 100., station)
+    assert q.index[254].isoformat() not in diagnostics['events']
     assert not ((rows.decision_time == q.index[240].isoformat()) & rows.horizon.eq(24)).any()
 
 

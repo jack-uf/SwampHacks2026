@@ -79,11 +79,13 @@ def decision_rows(q, reference, station):
     frame['huc'] = station['huc'][:8]
     frame['log_area'] = np.log1p(station['area_km2'])
     # Eligibility is observable through t-2h, not through the prediction issue time.
-    eligible = below.rolling(24).sum().shift(2).eq(24) & q.notna().rolling(169).sum().shift(2).eq(169)
+    quiet = below.rolling(24).sum().shift(2).eq(24)
+    history = q.notna().rolling(169).sum().shift(2).eq(169)
     complete_future = q.notna().shift(-1)[::-1].rolling(24).sum()[::-1].eq(24)
-    # Buffer readings certify outcomes only; they never determine observable quiet eligibility.
     certified_buffer = q.notna().rolling(2).sum().eq(2)
-    eligible &= (q.index.hour % 6 == 0) & complete_future & certified_buffer
+    scheduled = pd.Series(q.index.hour % 6 == 0, index=q.index)
+    # Buffer readings certify outcomes only; they never determine observable quiet eligibility.
+    eligible = scheduled & quiet & history & complete_future & certified_buffer
     result = []
     for horizon in [6, 12, 24]:
         f = frame.loc[eligible].copy()
@@ -98,7 +100,25 @@ def decision_rows(q, reference, station):
         f['reference_cfs'] = reference
         f['future_max_log_flow'] = x.shift(-1)[::-1].rolling(horizon).max()[::-1].loc[f.index]
         result.append(f)
-    return pd.concat(result, ignore_index=True), FEATURES, events
+    safe_year = pd.Series((q.index+pd.Timedelta(hours=24)).year == q.index.year,index=q.index)
+    losses = []
+    for event in q.index[onset]:
+        reasons = {}
+        for horizon in [6,12,24]:
+            possible = scheduled & (q.index < event) & (q.index >= event-pd.Timedelta(hours=horizon))
+            reason = 'no_prior_decision'
+            for name,mask in [('missing_history',history),('quiet_interval',quiet),
+                              ('missing_buffer',certified_buffer),('missing_future',complete_future),
+                              ('year_boundary',safe_year)]:
+                if not possible.any():
+                    break
+                reason = name
+                possible &= mask
+            if possible.any():
+                reason = 'eligible'
+            reasons[str(horizon)] = reason
+        losses.append(dict(event_time=event.isoformat(),reasons=reasons))
+    return pd.concat(result, ignore_index=True), FEATURES, dict(events=events,event_eligibility=losses)
 
 
 def cached_page(path, url):
@@ -275,11 +295,11 @@ def collect(stage):
             if q.empty:
                 raise IneligibleGauge('No accepted instantaneous discharge')
             q = q.reindex(pd.date_range(f'{years[0]}-01-01', f'{years[-1]+1}-01-01', freq='h', tz='UTC', inclusive='left'))
-            rows, _, events = decision_rows(q, reference, s)
+            rows, _, diagnostics = decision_rows(q, reference, s)
             coverage = dict(station=sid, huc=s['huc'], role=s['role'], reference_cfs=reference,
                 years=years, accepted_hours=int(q.notna().sum()), total_hours=len(q),
-                decisions=int(len(rows)//3), events=events, positives=rows.groupby('horizon').target.sum().to_dict())
-            print(sid, s['role'], 'hours', coverage['accepted_hours'], 'events',len(events), flush=True)
+                decisions=int(len(rows)//3), **diagnostics, positives=rows.groupby('horizon').target.sum().to_dict())
+            print(sid, s['role'], 'hours', coverage['accepted_hours'], 'events',len(diagnostics['events']), flush=True)
             return rows, coverage
         except (IneligibleGauge, ValueError) as e:
             print(sid, 'EXCLUDED', str(e), flush=True)

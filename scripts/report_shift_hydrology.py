@@ -1,10 +1,9 @@
 """Verify frozen predictions, event coverage and precommitted promotion gates."""
 import json
 
-import numpy as np
 import pandas as pd
 
-from scripts.shift_hydrology import OUT, protocol, digest, write_json
+from scripts.shift_hydrology import OUT, protocol, digest, write_json, verify_selection
 from scripts.shift_hydrology_metrics import metrics, paired_uncertainty, jointly_detected_lead_delta
 
 
@@ -51,11 +50,17 @@ def paired_frame(control,candidate):
     return frame
 
 
-def coverage(frame, ledger, horizon):
+def coverage(frame, ledger, horizon, role):
     represented = frame.loc[frame.target.eq(1),['station','event_time']].drop_duplicates()
     represented_pairs = set(map(tuple,represented.to_numpy()))
-    stations = set(frame.station)
-    all_events = {(r['station'],event) for r in ledger if r['station'] in stations for event in r.get('events',[])}
+    records = [r for r in ledger if r['role']==role]
+    all_events = {(r['station'],event) for r in records for event in r.get('events',[])}
+    from collections import Counter
+    losses = Counter(event['reasons'][str(horizon)] for r in records for event in r.get('event_eligibility',[]))
+    expected = {(r['station'],event['event_time']) for r in records for event in r.get('event_eligibility',[])
+                if event['reasons'][str(horizon)]=='eligible'}
+    if expected != represented_pairs:
+        raise ValueError('Event eligibility diagnostics disagree with evaluated labels')
     if not represented_pairs.issubset(all_events):
         raise ValueError('Positive prediction labels not found in raw event ledger')
     blind = 0
@@ -65,6 +70,7 @@ def coverage(frame, ledger, horizon):
         for event in event_times:
             blind += int(((decisions>=event)&(decisions<event+pd.Timedelta(hours=2))).sum())
     return dict(horizon=horizon,all_certified_onsets=len(all_events),eligible_events=len(represented_pairs),
+        eligibility_reasons=dict(losses),excluded_gauges=[r['station'] for r in records if 'excluded' in r],
         events_without_eligible_warning_decision=len(all_events-represented_pairs),
         eligible_decisions_with_onset_in_observation_blind_interval=blind,
         event_coverage=len(represented_pairs)/len(all_events) if all_events else None)
@@ -74,7 +80,7 @@ def report():
     protocol()
     if (OUT/'evaluation.json').exists():
         raise FileExistsError('Final report already recorded')
-    selected=json.loads((OUT/'selection.json').read_text())
+    selected=verify_selection()
     records={r['name']:r for r in selected['candidates']}
     evaluations=[]
     summary=[]
@@ -108,7 +114,7 @@ def report():
                 candidate=metrics(f,f.candidate,candidate['threshold']),
                 uncertainty=paired_uncertainty(f,f.control,f.candidate,baseline['threshold'],candidate['threshold']),
                 lead=jointly_detected_lead_delta(f,f.control,f.candidate,baseline['threshold'],candidate['threshold']),
-                coverage=coverage(f,ledger,horizon),
+                coverage=coverage(f,ledger,horizon,'development' if partition=='temporal_test' else 'geographic_test'),
                 stations={sid:dict(baseline=metrics(g,g.control,baseline['threshold']),
                                    candidate=metrics(g,g.candidate,candidate['threshold'])) for sid,g in f.groupby('station')})
         pooled=pd.concat(frames,ignore_index=True)
