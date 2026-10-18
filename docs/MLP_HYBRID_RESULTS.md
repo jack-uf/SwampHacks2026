@@ -63,7 +63,7 @@ The clearest joint result is that none of the three architectural or objective c
 
 ## Geographic generalization
 
-The geographic partition is where the system still fails. The candidate leads on average precision in all three geographic cells, by .043, .012 and .012, but only the 6-hour interval approaches significance and it stops one thousandth short of zero. Event recall swings from a four-point gain at 6 hours to a twelve-point loss at 12 hours, and the 24-hour candidate warns four hours later than the baseline on the events both detect.
+The geographic partition is where the system still fails. The candidate leads on average precision in all three geographic cells, by .043, .012 and .012, but only the 6-hour interval approaches significance and it stops one thousandth short of zero. Event recall swings from a four-point gain at 6 hours to a twelve-point loss at 12 hours. Median lead on the events both models detect is unchanged at every horizon, and on the sets each model detects alone the 24-hour baseline's median lead is longer, 6.0 hours against the candidate's 3.0.
 
 Part of this is a population effect that the gates already anticipated: the geographic partition carries 50 events across eight gauges, and the paired bootstrap over twelve HUC4 clusters is thin. The honest reading is that the ranking advantage is real but unproven geographically, and the recall advantage is not consistent enough to claim.
 
