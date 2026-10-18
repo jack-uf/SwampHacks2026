@@ -21,6 +21,7 @@ type Api = (path: string, options?: RequestInit) => Promise<any>;
 type Action = (fn: () => Promise<any>, message: string) => Promise<boolean>;
 
 import { observeMapResize } from "./map";
+import { HydrologyPanel } from "./HydrologyPanel";
 
 const fmt = (v: number | null | undefined, digits = 1) => (v == null ? "—" : v.toFixed(digits));
 const zoned = (v: string | null | undefined, tz?: string) =>
@@ -425,6 +426,7 @@ function MissionDetail({ detail, api, action, busy, onReport, onApplied }: {
           {zoned(conditions.fetched_at, tz)}. {conditions.note} Missing hours stay unknown.
         </p>
 
+        <HydrologyPanel key={mission.id} api={api} path={`/missions/${mission.id}/hydrology`} onChecked={onApplied} />
         <h3 className="section-subtitle">Work windows</h3>
         <WorkWindows api={api} missionId={mission.id} revision={versions[versions.length - 1].version} tz={tz}
           action={action} supervisor={mission.supervisor} busy={busy} onApplied={onApplied} />
@@ -648,7 +650,7 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy, o
     let live = true;
     setData(null);
     setError("");
-    api(`/api/missions/${missionId}/work-windows?hours=48&step_hours=1&flex_hours=2`)
+    api(`/missions/${missionId}/work-windows?hours=48&step_hours=1&flex_hours=2`)
       .then((d) => live && setData(d))
       .catch((e) => live && setError(String(e?.message || e)));
     return () => {
@@ -660,7 +662,7 @@ function WorkWindows({ api, missionId, revision, tz, action, supervisor, busy, o
     let result: any = null;
     const ok = await action(
       async () => {
-        result = await api(`/api/missions/${missionId}/window-decisions`, {
+        result = await api(`/missions/${missionId}/window-decisions`, {
           method: "POST",
           body: JSON.stringify({ choice, start, apply, note: note.trim() || null, snapshot: data.snapshot, supervisor }),
         });

@@ -23,9 +23,12 @@ async def fetch(key, url, params, ttl=1800):
         async with LIMIT:
             async with httpx.AsyncClient(timeout=35, follow_redirects=True) as client:
                 for attempt in range(3):
-                    response = await client.get(url, params=params, headers={
+                    headers = {
                         'User-Agent': os.getenv('PLANIT_USER_AGENT', 'PlanITControl/0.1 local research prototype'),
-                        'Accept': 'application/geo+json, application/json'})
+                        'Accept': 'application/geo+json, application/json'}
+                    if url.startswith('https://api.waterdata.usgs.gov/') and os.getenv('USGS_API_KEY'):
+                        headers['X-Api-Key'] = os.environ['USGS_API_KEY']
+                    response = await client.get(url, params=params, headers=headers)
                     if response.status_code not in (429, 500, 502, 503, 504) or attempt == 2:
                         break
                     await asyncio.sleep(2**attempt)

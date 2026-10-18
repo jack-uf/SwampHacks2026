@@ -20,7 +20,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from PIL import Image, UnidentifiedImageError
-from backend import providers, jev, missions, memory, overlap, planner
+from backend import providers, jev, missions, memory, overlap, planner, hydrology
 from backend.domain import now_utc, parse_time, lightning_state, hazard_index, briefing_due, distance_miles
 from backend.store import initialize, db, get_cache, put_cache
 from backend.predict import predictions
@@ -91,6 +91,7 @@ def mission_context(mission, site, assessment):
                 weather=weather, alerts=assessment['alerts']['items'], model=assessment['model'], floodplain=assessment['floodplain'],
                 reports=site_reports(site['id']), lightning=strike_states(work_point),
                 gauges=assessment.get('gauges'), wildfires=assessment.get('wildfires'), terrain=assessment.get('terrain'),
+                hydrology=hydrology.cached(work_point),
                 live_feed_configured=bool(os.getenv('PLANIT_LIGHTNING_TOKEN')))
 
 
@@ -361,6 +362,25 @@ async def refresh():
     return dict(status='refresh requested')
 
 
+@app.get('/api/sites/{site_id}/hydrology')
+async def site_hydrology(site_id: str):
+    site = site_or_404(site_id)
+    result = await hydrology.inspect(site)
+    update_missions(site, 'Live river context checked')
+    return result
+
+
+@app.get('/api/missions/{mission_id}/hydrology')
+async def mission_hydrology(mission_id: str):
+    mission = mission_or_404(mission_id)
+    site = SITE_BY_ID[mission['site_id']]
+    result = await hydrology.inspect(dict(site, latitude=mission['latitude'], longitude=mission['longitude']))
+    assessment = cached_assessment(site)
+    if assessment and parse_time(mission['shift_end']) > now_utc():
+        record_jha(mission, site, assessment, 'Live river context checked at the work location')
+    return result
+
+
 @app.get('/api/evaluation')
 def evaluation():
     path = ROOT/'models/evaluation.json'
@@ -615,6 +635,7 @@ async def mission_detail(mission_id: str):
                 planned_nearby=overlap.near_mission(plans['projects'], mission['latitude'], mission['longitude'], mission['shift_start'],
                                                     site['operator'])[:6] if plans else [],
                 window_decisions=window_decisions(mission_id),
+                hydrology=hydrology.cached(work_point),
                 planned_source=dict(inventory=plans['inventory'], note=plans['note'], url=plans['source']['url']) if plans else None)
 
 
@@ -678,6 +699,7 @@ async def mission_work_windows(mission_id: str, hours: int = 48, step_hours: int
                         hours=horizon, step_hours=step_hours, limit=limit, planned_start=mission['shift_start'],
                         timezone=site['timezone'], flex_hours=flex_hours, busy=busy, model=model)
     body = dict(mission_id=mission_id, activity=dict(id=mission['activity'], **activity),
+                hydrology=hydrology.cached(dict(site, latitude=mission['latitude'], longitude=mission['longitude'])),
                 anchor=now.isoformat(), planned_start=mission['shift_start'], generated_at=now.isoformat(),
                 conditions_source=weather.get('source'), weather_fetched_at=(weather.get('feed') or {}).get('fetched_at'),
                 ensemble_available=bool(ensemble.get('available')), terrain_source=(terrain or {}).get('source'), **plan)

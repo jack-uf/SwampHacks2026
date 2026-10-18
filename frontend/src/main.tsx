@@ -36,6 +36,7 @@ import "leaflet/dist/leaflet.css";
 import "./styles.css";
 import { observeMapResize } from "./map";
 import { KindBadge, MissionsView, OverlapsView } from "./missions";
+import { HydrologyPanel } from "./HydrologyPanel";
 
 type Site = {
   id: string;
@@ -1032,6 +1033,7 @@ function App() {
                           <small className="source-line">
                             NWS checked {time(detail.alerts.feed.fetched_at)}
                           </small>
+                          <HydrologyPanel key={detail.site.id} api={api} path={`/sites/${detail.site.id}/hydrology`} />
                           <h3 className="section-subtitle">
                             Flood exposure & other hazards
                           </h3>

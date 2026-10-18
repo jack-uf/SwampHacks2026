@@ -155,6 +155,9 @@ def build_jha(mission, ctx):
     point = (mission['latitude'], mission['longitude'])
     for item in gauge_evidence(point, ctx.get('gauges'), ctx['now']):
         add('flood', item)
+    from backend.hydrology import jha_evidence
+    for item in jha_evidence(ctx.get('hydrology')):
+        add('flood', item)
     for item in wildfire_evidence(point, ctx.get('wildfires'), ctx['now']):
         add('wildfire', item)
     if activity.get('terrain'):

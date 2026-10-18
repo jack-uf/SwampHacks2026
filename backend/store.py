@@ -32,6 +32,9 @@ def initialize():
     with db() as c:
         c.executescript('''
         CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, payload TEXT NOT NULL, fetched_at TEXT NOT NULL, error TEXT);
+        CREATE TABLE IF NOT EXISTS hydrology_receipts (id TEXT PRIMARY KEY, station TEXT NOT NULL,
+          received_at TEXT NOT NULL, url TEXT NOT NULL, status INTEGER, sha256 TEXT NOT NULL, body BLOB NOT NULL);
+        CREATE INDEX IF NOT EXISTS hydrology_receipts_station_time ON hydrology_receipts(station, received_at);
         CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, site_id TEXT NOT NULL, classification TEXT NOT NULL,
           description TEXT NOT NULL, latitude REAL NOT NULL, longitude REAL NOT NULL, created_at TEXT NOT NULL,
           status TEXT NOT NULL CHECK(status IN ('pending','verified','rejected','resolved')), image TEXT);

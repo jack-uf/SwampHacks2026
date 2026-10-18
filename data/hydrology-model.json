@@ -1,0 +1,727 @@
+{
+  "operationally_promoted": false,
+  "candidate": {
+    "path": "experiments/high-flow-20261018/artifacts/cycle-4-expanded_original.joblib",
+    "sha256": "8e26d9810f6ac3db152cc767e419ab0b3f6c53a0921d8b6fac649f99dfaf8660",
+    "threshold": 0.10851271591094244
+  },
+  "baseline": {
+    "path": "experiments/high-flow-20261018/artifacts/cycle-4-linear-conditional.joblib",
+    "sha256": "99888de8576e1ee86f68627e8bcc5153f6842afe3a855ccd02f99c77f6921f2b",
+    "threshold": 0.04424429072478961
+  },
+  "stations": {
+    "01047000": {
+      "reference_cfs": 3750.0,
+      "huc": "01030003",
+      "latitude": 44.86916667,
+      "longitude": -69.955,
+      "area_km2": 911.6758148382717,
+      "elevation_m": 92.305632
+    },
+    "01134500": {
+      "reference_cfs": 703.0,
+      "huc": "01080102",
+      "latitude": 44.5117231,
+      "longitude": -71.8373143,
+      "area_km2": 194.76710589726724,
+      "elevation_m": 336.334608
+    },
+    "01333000": {
+      "reference_cfs": 304.0,
+      "huc": "02020003",
+      "latitude": 42.70886815,
+      "longitude": -73.1967511,
+      "area_km2": 110.33349350031355,
+      "elevation_m": 186.11088
+    },
+    "01485500": {
+      "reference_cfs": 192.30000000000015,
+      "huc": "02080111",
+      "latitude": 38.228917,
+      "longitude": -75.471444,
+      "area_km2": 116.29046615408637,
+      "elevation_m": 3.3710880000000003
+    },
+    "02314500": {
+      "reference_cfs": 2634.499999999998,
+      "huc": "03110201",
+      "latitude": 30.68102778,
+      "longitude": -82.56013889,
+      "area_km2": 2926.6865646796814,
+      "elevation_m": 27.7368
+    },
+    "02472000": {
+      "reference_cfs": 4043.999999999997,
+      "huc": "03170004",
+      "latitude": 31.70694444,
+      "longitude": -89.4069444,
+      "area_km2": 1924.3611659796486,
+      "elevation_m": 59.97549600000001
+    },
+    "03213700": {
+      "reference_cfs": 3530.0,
+      "huc": "05070201",
+      "latitude": 37.67311758,
+      "longitude": -82.28012402,
+      "area_km2": 2424.2288712744967,
+      "elevation_m": 188.948568
+    },
+    "03439000": {
+      "reference_cfs": 506.0,
+      "huc": "06010105",
+      "latitude": 35.1433333,
+      "longitude": -82.8247222,
+      "area_km2": 175.86019269181432,
+      "elevation_m": 662.623008
+    },
+    "04185000": {
+      "reference_cfs": 1720.0,
+      "huc": "04100006",
+      "latitude": 41.50449567,
+      "longitude": -84.4296719,
+      "area_km2": 1061.89512523776,
+      "elevation_m": 208.577688
+    },
+    "05362000": {
+      "reference_cfs": 3010.0,
+      "huc": "07050004",
+      "latitude": 45.30803838,
+      "longitude": -90.9565247,
+      "area_km2": 1491.8331515535365,
+      "elevation_m": 333.10982400000006
+    },
+    "05591550": {
+      "reference_cfs": 157.0,
+      "huc": "07140201",
+      "latitude": 39.5067222,
+      "longitude": -88.5272778,
+      "area_km2": 89.61358861762558,
+      "elevation_m": 187.875672
+    },
+    "07208500": {
+      "reference_cfs": 47.014999999999915,
+      "huc": "11080002",
+      "latitude": 36.37234444,
+      "longitude": -104.9692889,
+      "area_km2": 168.34922717184,
+      "elevation_m": 2048.2560000000003
+    },
+    "07359610": {
+      "reference_cfs": 800.0,
+      "huc": "08040102",
+      "latitude": 34.38277778,
+      "longitude": -93.6061111,
+      "area_km2": 352.23838300569594,
+      "elevation_m": 186.5376
+    },
+    "08050800": {
+      "reference_cfs": 29.06499999999997,
+      "huc": "12030103",
+      "latitude": 33.55455428,
+      "longitude": -96.9472267,
+      "area_km2": 100.49153868103676,
+      "elevation_m": 194.974464
+    },
+    "08164000": {
+      "reference_cfs": 1370.5000000000018,
+      "huc": "12100101",
+      "latitude": 28.95998449,
+      "longitude": -96.6863668,
+      "area_km2": 2116.020286144511,
+      "elevation_m": 4.218432
+    },
+    "08377900": {
+      "reference_cfs": 132.0,
+      "huc": "13060001",
+      "latitude": 35.77711389,
+      "longitude": -105.6580278,
+      "area_km2": 137.78736746987522,
+      "elevation_m": 2404.8720000000003
+    },
+    "09107000": {
+      "reference_cfs": 464.0,
+      "huc": "14020001",
+      "latitude": 38.86027127,
+      "longitude": -106.5666966,
+      "area_km2": 331.518478123008,
+      "elevation_m": 2844.494184
+    },
+    "09404450": {
+      "reference_cfs": 29.61999999999989,
+      "huc": "15010008",
+      "latitude": 37.3394272,
+      "longitude": -112.6043769,
+      "area_km2": 192.17711778693123,
+      "elevation_m": 1789.806936
+    },
+    "10023000": {
+      "reference_cfs": 37.4,
+      "huc": "16010101",
+      "latitude": 41.60994177,
+      "longitude": -111.2540876,
+      "area_km2": 135.71537698160637,
+      "elevation_m": 1953.883824
+    },
+    "01055000": {
+      "reference_cfs": 1160.999999999999,
+      "huc": "01040002",
+      "latitude": 44.64277778,
+      "longitude": -70.58888889,
+      "area_km2": 249.67485383639033,
+      "elevation_m": 187.534296
+    },
+    "01142500": {
+      "reference_cfs": 216.0,
+      "huc": "01080105",
+      "latitude": 43.93450969,
+      "longitude": -72.6578821,
+      "area_km2": 78.99463736524802,
+      "elevation_m": 192.063624
+    },
+    "01568000": {
+      "reference_cfs": 1010.0,
+      "huc": "02050305",
+      "latitude": 40.3233483,
+      "longitude": -77.1688404,
+      "area_km2": 536.1275388395521,
+      "elevation_m": 128.59816800000002
+    },
+    "02018000": {
+      "reference_cfs": 1328.9999999999964,
+      "huc": "02080201",
+      "latitude": 37.66596174,
+      "longitude": -79.9114388,
+      "area_km2": 852.106088300544,
+      "elevation_m": 302.413416
+    },
+    "02298123": {
+      "reference_cfs": 1150.0,
+      "huc": "03100101",
+      "latitude": 27.05199986,
+      "longitude": -81.7845267,
+      "area_km2": 603.467229708288,
+      "elevation_m": 7.62
+    },
+    "03028000": {
+      "reference_cfs": 457.2000000000007,
+      "huc": "05010005",
+      "latitude": 41.57533955,
+      "longitude": -78.69224919,
+      "area_km2": 163.169250951168,
+      "elevation_m": 457.5048000000001
+    },
+    "03180500": {
+      "reference_cfs": 999.0,
+      "huc": "05050003",
+      "latitude": 38.54372659,
+      "longitude": -79.833115,
+      "area_km2": 344.46841867468794,
+      "elevation_m": 822.783216
+    },
+    "04024430": {
+      "reference_cfs": 1570.0,
+      "huc": "04010301",
+      "latitude": 46.6333333,
+      "longitude": -92.0938889,
+      "area_km2": 1087.7950063411204,
+      "elevation_m": 183.21528
+    },
+    "04197170": {
+      "reference_cfs": 183.69999999999985,
+      "huc": "04100011",
+      "latitude": 41.1136659,
+      "longitude": -83.1682521,
+      "area_km2": 89.61358861762558,
+      "elevation_m": 221.641416
+    },
+    "05503800": {
+      "reference_cfs": 288.0,
+      "huc": "07110005",
+      "latitude": 39.5848333,
+      "longitude": -91.9935,
+      "area_km2": 207.19904882688007,
+      "elevation_m": 198.12
+    },
+    "05592050": {
+      "reference_cfs": 389.0,
+      "huc": "07140201",
+      "latitude": 39.40588889,
+      "longitude": -88.8968056,
+      "area_km2": 241.1278930722815,
+      "elevation_m": 167.688768
+    },
+    "06280300": {
+      "reference_cfs": 1780.0,
+      "huc": "10080013",
+      "latitude": 44.20788889,
+      "longitude": -109.55525,
+      "area_km2": 792.536361762816,
+      "elevation_m": 1889.76
+    },
+    "06447500": {
+      "reference_cfs": 70.42999999999998,
+      "huc": "10140203",
+      "latitude": 43.166917,
+      "longitude": -101.632306,
+      "area_km2": 810.6662785351683,
+      "elevation_m": 930.651936
+    },
+    "07151500": {
+      "reference_cfs": 803.6999999999998,
+      "huc": "11060005",
+      "latitude": 37.12868889,
+      "longitude": -97.6015694,
+      "area_km2": 2056.450559606784,
+      "elevation_m": 337.88604
+    },
+    "07184000": {
+      "reference_cfs": 803.5999999999985,
+      "huc": "11070205",
+      "latitude": 37.28116187,
+      "longitude": -95.0327471,
+      "area_km2": 510.2276577361918,
+      "elevation_m": 249.521472
+    },
+    "07295000": {
+      "reference_cfs": 1168.4999999999943,
+      "huc": "08060206",
+      "latitude": 31.22694444,
+      "longitude": -91.2955556,
+      "area_km2": 466.1978598604799,
+      "elevation_m": 28.809696
+    },
+    "07362100": {
+      "reference_cfs": 1820.0,
+      "huc": "08040201",
+      "latitude": 33.37527778,
+      "longitude": -92.7766667,
+      "area_km2": 997.1454224793599,
+      "elevation_m": 29.510736
+    },
+    "09447800": {
+      "reference_cfs": 6.3,
+      "huc": "15040005",
+      "latitude": 32.9556458,
+      "longitude": -109.5312047,
+      "area_km2": 782.176409321472,
+      "elevation_m": 1060.176696
+    },
+    "09510200": {
+      "reference_cfs": 45.094999999999985,
+      "huc": "15060203",
+      "latitude": 33.69422687,
+      "longitude": -111.54182105,
+      "area_km2": 424.75805009510395,
+      "elevation_m": 536.679648
+    },
+    "10172700": {
+      "reference_cfs": 6.59,
+      "huc": "16020304",
+      "latitude": 39.97939105,
+      "longitude": -112.3802297,
+      "area_km2": 64.74970275840002,
+      "elevation_m": 1891.914936
+    },
+    "10242000": {
+      "reference_cfs": 141.0,
+      "huc": "16030006",
+      "latitude": 37.67219924,
+      "longitude": -113.0346702,
+      "area_km2": 209.53003812618235,
+      "elevation_m": 1823.621448
+    },
+    "11148900": {
+      "reference_cfs": 569.0,
+      "huc": "18060005",
+      "latitude": 35.78857918,
+      "longitude": -121.0938048,
+      "area_km2": 419.57807387443205,
+      "elevation_m": 247.509792
+    },
+    "11266500": {
+      "reference_cfs": 2674.499999999998,
+      "huc": "18040008",
+      "latitude": 37.71627778,
+      "longitude": -119.6656667,
+      "area_km2": 831.3861834178557,
+      "elevation_m": 1178.0154240000002
+    },
+    "12025700": {
+      "reference_cfs": 718.0,
+      "huc": "17100103",
+      "latitude": 46.77260276,
+      "longitude": -122.5940086,
+      "area_km2": 103.59952441343995,
+      "elevation_m": 0.0
+    },
+    "14187000": {
+      "reference_cfs": 684.0,
+      "huc": "17090006",
+      "latitude": 44.37234769,
+      "longitude": -122.6231384,
+      "area_km2": 134.16138411540473,
+      "elevation_m": 219.456
+    },
+    "01123000": {
+      "reference_cfs": 165.0,
+      "huc": "01100002",
+      "latitude": 41.67164947,
+      "longitude": -72.05227712,
+      "area_km2": 77.69964331008002,
+      "elevation_m": 67.153536
+    },
+    "01170100": {
+      "reference_cfs": 358.10000000000036,
+      "huc": "01080203",
+      "latitude": 42.70341695,
+      "longitude": -72.67064738,
+      "area_km2": 107.22550776791043,
+      "elevation_m": 132.438648
+    },
+    "01638480": {
+      "reference_cfs": 321.2999999999993,
+      "huc": "02070008",
+      "latitude": 39.25510206,
+      "longitude": -77.5763778,
+      "area_km2": 231.80393587507191,
+      "elevation_m": 75.22464000000001
+    },
+    "02011460": {
+      "reference_cfs": 326.89999999999964,
+      "huc": "02080201",
+      "latitude": 38.24540129,
+      "longitude": -79.76866328,
+      "area_km2": 157.73027591946234,
+      "elevation_m": 670.5020880000001
+    },
+    "02472500": {
+      "reference_cfs": 1160.0,
+      "huc": "03170004",
+      "latitude": 31.42583333,
+      "longitude": -89.4147222,
+      "area_km2": 787.3563855421438,
+      "elevation_m": 48.66132
+    },
+    "03015500": {
+      "reference_cfs": 2530.0,
+      "huc": "05010001",
+      "latitude": 41.8525587,
+      "longitude": -79.3172708,
+      "area_km2": 831.3861834178557,
+      "elevation_m": 361.58424
+    },
+    "03070500": {
+      "reference_cfs": 1470.0,
+      "huc": "05020004",
+      "latitude": 39.62175,
+      "longitude": -79.7045556,
+      "area_km2": 517.9976220672002,
+      "elevation_m": 403.06752000000006
+    },
+    "04043050": {
+      "reference_cfs": 160.0,
+      "huc": "04020103",
+      "latitude": 47.22853637,
+      "longitude": -88.3853928,
+      "area_km2": 72.519667089408,
+      "elevation_m": 189.49720800000003
+    },
+    "04224775": {
+      "reference_cfs": 351.25,
+      "huc": "04130002",
+      "latitude": 42.5358611,
+      "longitude": -77.7039444,
+      "area_km2": 230.24994300887042,
+      "elevation_m": 216.965784
+    },
+    "05414000": {
+      "reference_cfs": 296.0,
+      "huc": "07060003",
+      "latitude": 42.7311111,
+      "longitude": -90.6402778,
+      "area_km2": 367.7783116677121,
+      "elevation_m": 195.791328
+    },
+    "05592575": {
+      "reference_cfs": 234.39999999999785,
+      "huc": "07140202",
+      "latitude": 38.9370833,
+      "longitude": -88.9528056,
+      "area_km2": 114.47747447685123,
+      "elevation_m": 150.17496
+    },
+    "06352000": {
+      "reference_cfs": 126.79999999999929,
+      "huc": "10130205",
+      "latitude": 46.155278,
+      "longitude": -102.475278,
+      "area_km2": 1442.6233774571517,
+      "elevation_m": 753.5235120000001
+    },
+    "06888500": {
+      "reference_cfs": 440.0,
+      "huc": "10270102",
+      "latitude": 39.06472106,
+      "longitude": -96.1691605,
+      "area_km2": 823.6162190868482,
+      "elevation_m": 293.107872
+    },
+    "07197000": {
+      "reference_cfs": 1030.0,
+      "huc": "11110103",
+      "latitude": 35.9216222,
+      "longitude": -94.8372472,
+      "area_km2": 808.076290424832,
+      "elevation_m": 213.765384
+    },
+    "09430600": {
+      "reference_cfs": 92.72499999999992,
+      "huc": "15040001",
+      "latitude": 33.16666667,
+      "longitude": -108.6497222,
+      "area_km2": 178.70917961318406,
+      "elevation_m": 1648.977144
+    },
+    "09505800": {
+      "reference_cfs": 104.89999999999964,
+      "huc": "15060203",
+      "latitude": 34.53863606,
+      "longitude": -111.6940356,
+      "area_km2": 624.1871345909761,
+      "elevation_m": 1106.424
+    },
+    "11141280": {
+      "reference_cfs": 17.2,
+      "huc": "18060006",
+      "latitude": 35.23551667,
+      "longitude": -120.4723504,
+      "area_km2": 54.130751506022406,
+      "elevation_m": 171.54144
+    },
+    "11476600": {
+      "reference_cfs": 451.0,
+      "huc": "18010106",
+      "latitude": 40.3514969,
+      "longitude": -124.0050136,
+      "area_km2": 72.77866590044157,
+      "elevation_m": 83.679792
+    },
+    "13313000": {
+      "reference_cfs": 1470.0,
+      "huc": "17060208",
+      "latitude": 44.96166667,
+      "longitude": -115.5,
+      "area_km2": 564.617408053248,
+      "elevation_m": 1419.0726
+    },
+    "14305500": {
+      "reference_cfs": 5014.499999999998,
+      "huc": "17100204",
+      "latitude": 44.7151172,
+      "longitude": -123.8873348,
+      "area_km2": 523.177598287872,
+      "elevation_m": 31.187136
+    },
+    "01181000": {
+      "reference_cfs": 758.0,
+      "huc": "01080206",
+      "latitude": 42.23731169,
+      "longitude": -72.895654,
+      "area_km2": 243.4588823715839,
+      "elevation_m": 116.720112
+    },
+    "01414500": {
+      "reference_cfs": 188.0,
+      "huc": "02040102",
+      "latitude": 42.10616667,
+      "longitude": -74.73052778,
+      "area_km2": 65.26770038046722,
+      "elevation_m": 395.380464
+    },
+    "02014000": {
+      "reference_cfs": 544.6000000000004,
+      "huc": "02080201",
+      "latitude": 37.72901408,
+      "longitude": -80.0422802,
+      "area_km2": 396.26818088140783,
+      "elevation_m": 388.1567040000001
+    },
+    "02464000": {
+      "reference_cfs": 1383.4999999999943,
+      "huc": "03160112",
+      "latitude": 33.47928058,
+      "longitude": -87.5972297,
+      "area_km2": 577.5673486049282,
+      "elevation_m": 71.076312
+    },
+    "03078000": {
+      "reference_cfs": 468.0,
+      "huc": "05020006",
+      "latitude": 39.70219444,
+      "longitude": -79.13638889,
+      "area_km2": 166.27723668357123,
+      "elevation_m": 636.623568
+    },
+    "04115265": {
+      "reference_cfs": 68.5,
+      "huc": "04050005",
+      "latitude": 43.2497545,
+      "longitude": -84.9811245,
+      "area_km2": 102.82252798033916,
+      "elevation_m": 240.813336
+    },
+    "04127997": {
+      "reference_cfs": 331.0,
+      "huc": "04070004",
+      "latitude": 45.27445746,
+      "longitude": -84.6000315,
+      "area_km2": 497.27771718451197,
+      "elevation_m": 232.662984
+    },
+    "05057200": {
+      "reference_cfs": 273.5499999999997,
+      "huc": "09020203",
+      "latitude": 47.229167,
+      "longitude": -98.124444,
+      "area_km2": 1869.9714156625926,
+      "elevation_m": 401.235672
+    },
+    "05501000": {
+      "reference_cfs": 1463.4999999999943,
+      "huc": "07110004",
+      "latitude": 39.817,
+      "longitude": -91.5460278,
+      "area_km2": 916.8557910589437,
+      "elevation_m": 144.39290400000002
+    },
+    "05593900": {
+      "reference_cfs": 282.1999999999989,
+      "huc": "07140203",
+      "latitude": 39.14891667,
+      "longitude": -89.3524722,
+      "area_km2": 143.74434012364796,
+      "elevation_m": 175.147224
+    },
+    "06278300": {
+      "reference_cfs": 179.0,
+      "huc": "10080010",
+      "latitude": 44.508056,
+      "longitude": -107.403056,
+      "area_km2": 59.051728915660775,
+      "elevation_m": 2758.44
+    },
+    "06853800": {
+      "reference_cfs": 45.54999999999982,
+      "huc": "10250016",
+      "latitude": 39.89918,
+      "longitude": -98.2503276,
+      "area_km2": 587.9273010462722,
+      "elevation_m": 487.990896
+    },
+    "07066000": {
+      "reference_cfs": 1302.5,
+      "huc": "11010008",
+      "latitude": 37.1540833,
+      "longitude": -91.3581667,
+      "area_km2": 1030.8152679137281,
+      "elevation_m": 187.811664
+    },
+    "07340300": {
+      "reference_cfs": 674.2999999999993,
+      "huc": "11140109",
+      "latitude": 34.38,
+      "longitude": -94.2363889,
+      "area_km2": 232.06293468610568,
+      "elevation_m": 235.226352
+    },
+    "07373000": {
+      "reference_cfs": 159.0,
+      "huc": "08040304",
+      "latitude": 31.5362873,
+      "longitude": -92.4084714,
+      "area_km2": 132.08939362713605,
+      "elevation_m": 23.359872000000003
+    },
+    "08025500": {
+      "reference_cfs": 743.7999999999975,
+      "huc": "12010005",
+      "latitude": 31.30712737,
+      "longitude": -93.5157295,
+      "area_km2": 383.31824032972787,
+      "elevation_m": 42.013632
+    },
+    "08378500": {
+      "reference_cfs": 364.4499999999998,
+      "huc": "13060001",
+      "latitude": 35.70835,
+      "longitude": -105.6827028,
+      "area_km2": 489.5077528535041,
+      "elevation_m": 2286.896112
+    },
+    "09035900": {
+      "reference_cfs": 190.0,
+      "huc": "14010001",
+      "latitude": 39.79581958,
+      "longitude": -106.0305734,
+      "area_km2": 70.96567422320636,
+      "elevation_m": 2727.96
+    },
+    "09484000": {
+      "reference_cfs": 48.889999999999965,
+      "huc": "15050302",
+      "latitude": 32.3147222,
+      "longitude": -110.8109167,
+      "area_km2": 91.944577916928,
+      "elevation_m": 826.9315440000001
+    },
+    "09508300": {
+      "reference_cfs": 35.699999999999996,
+      "huc": "15060203",
+      "latitude": 34.16086787,
+      "longitude": -111.6929235,
+      "area_km2": 94.27556721623039,
+      "elevation_m": 707.1360000000001
+    },
+    "10234500": {
+      "reference_cfs": 138.75,
+      "huc": "16030007",
+      "latitude": 38.2798,
+      "longitude": -112.568286,
+      "area_km2": 235.6889180405761,
+      "elevation_m": 1890.829848
+    },
+    "11151300": {
+      "reference_cfs": 24.1,
+      "huc": "18060005",
+      "latitude": 36.26802087,
+      "longitude": -121.066303,
+      "area_km2": 603.467229708288,
+      "elevation_m": 130.856736
+    },
+    "11480390": {
+      "reference_cfs": 930.75,
+      "huc": "18010102",
+      "latitude": 40.28428216,
+      "longitude": -123.3352727,
+      "area_km2": 242.94088474951667,
+      "elevation_m": 813.422808
+    },
+    "12041200": {
+      "reference_cfs": 6694.0000000000055,
+      "huc": "17100101",
+      "latitude": 47.80674726,
+      "longitude": -124.2510329,
+      "area_km2": 655.266991915008,
+      "elevation_m": 49.877472
+    }
+  },
+  "reference": "2000-2015 daily-mean USGS discharge 95th percentile, not a flood threshold",
+  "source_datasets": {
+    "experiments/sprint-20261017-shift-hydrology/development.csv.gz": "ab0685d8a5a5b15663aa382641ad34f34e60b5ee5c095c6c9cb263818f5359b8",
+    "experiments/sprint-20261017-mlp-onset/development.csv.gz": "c60d84e7502380a8feff1f2ef394118f12c17f989fcaa9300ffc16f65da45906",
+    "experiments/sprint-20261017-mlp-hybrid/development.csv.gz": "7e05dd7b02c06a2ecc3c3c3a1c03ee001512f52f37320458fb19ddbf57913bb4",
+    "experiments/sprint-20261017-mlp-geo/development.csv.gz": "1c3beaad3a3670981899c71331a6524acaaefeaab002a5ef5608a97990ba21e6"
+  },
+  "decision_sha256": "db5535a0a13e1b2d0f396d0903f933cc953e953a1f6660310829b60fb4f10b6b"
+}
