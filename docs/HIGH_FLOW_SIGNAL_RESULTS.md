@@ -134,6 +134,31 @@ carry a selection effect they do not measure. Independent confirmation needs the
 unchanged on watersheds and outcome periods that no earlier study has opened, which does not exist in
 this repository today.
 
+## Forecast coverage changes the ceiling
+
+The HRRR pilot existed for 12 UTC decisions only, so three of every four rows had no forecast features. The
+completed four-hour acquisition (7,307 of 7,308 issues; 2022-02-27 00 UTC is a recorded archive gap) closes
+the archive gaps: on the 160,776 shared rows the expanded fields reproduce the pilot exactly, maximum absolute
+difference zero. Cycle 14 re-runs cycle 11 configurations on the expanded block, and the effect is the largest
+single change in this sprint.
+
+| Cycle 15 candidate, 2024 development | temporal events | temporal AP | geographic events | geographic AP | false alerts per hundred |
+| --- | --- | --- | --- | --- | --- |
+| Comparator under the same rule | 73 | .084 | 30 | .096 | 0.76 / 0.80 |
+| Full forecast coverage, one-per-hundred rule | 163 | .304 | 75 | .263 | 0.91 / 1.89 (ceiling breach) |
+| Full forecast coverage, tight rule (pooled .75, regional 1.5) | 140 | .283 | 67 | .248 | 0.63 / 1.12 |
+
+With forecasts at every decision hour the model finds 140 temporal and 67 geographic events against the
+comparator's 73 and 30, that is roughly twice the detections, with paired lower bounds of +.156 and +.071 AP
+and +.126 and +.187 event recall. The one-per-hundred rule breaches the realized geographic ceiling (worst
+HUC2 17 at 3.17 per hundred), so cycle 15 pairs each operating-point rule with a comparator selected under the
+same rule. The tight rule keeps 67 geographic detections at 1.12 false alerts per hundred with no HUC2 above
+2.54, and its AP is unchanged because ranking does not depend on the threshold.
+
+The rule was chosen after seeing 2024 development outcomes, so it is a development selection and must be
+frozen before any confirmation run, exactly as the confirmation protocol requires. The candidate also differs
+from the previously confirmed model, so the cycle-11 confirmation result does not transfer to it.
+
 ## Architecture comparisons
 
 Two neural families were trained on rows, features, calibrator and threshold rules identical to the tree
