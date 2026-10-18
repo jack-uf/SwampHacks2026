@@ -1,0 +1,86 @@
+{
+  "experiment": "Hourly sequence model for the six-hour high-flow onset task",
+  "method": "Per decision time, one hourly window of the 168 hours ending at that time inclusive: log1p(discharge/reference), precipitation, temperature_2m and soil_moisture_0_to_7cm with the six-hour receipt delay scripts/high_flow_signals.py already applies to the tree candidates, so the sequence model is not handed fresher weather than its control.",
+  "population": {
+    "dataset": "experiments/high-flow-signals-20261018/development.csv.gz",
+    "dataset_sha256": "3d79cfb0d0942a6a8574e845a977f720174ab9b952e85eddda89319afe4982d4",
+    "gauges": 88,
+    "window_hours": 168,
+    "channels": [
+      "log_flow",
+      "precipitation",
+      "temperature_2m",
+      "soil_moisture_0_to_7cm"
+    ],
+    "weather_delay_hours": 6,
+    "weather_note": "ERA5 reanalysis; the delay is the retrospective availability assumption the signals sprint already uses, not an as-issued forecast.",
+    "unit": "One row is one eligible decision at the frozen six-hour cadence, horizon 6 only."
+  },
+  "storage": {
+    "artifact": "one float16 hourly four-channel series per gauge under series/, about 31 MB in total, plus one gzipped index per partition and the worker logits",
+    "note": "Windows are sliced from the series on demand; a materialized float32 window per decision row needs about 760 MB, which this machine cannot spare. Every stored byte is rebuilt by the frozen code from the cached pages, whose hashes are recorded in series.json, and no window array is kept after training and scoring.",
+    "population": "Every eligible decision of the 88-gauge signals population is kept. Subsample of decision times: none. Storage scales with gauge-hours, not decision rows, so a one-hour-a-day subsample would free no space and would break the identical-row comparison with the stored cycle-11 predictions.",
+    "regeneration": "Delete series/ and index/ and rerun assemble; freeze.json then still describes the run."
+  },
+  "split": {
+    "definition": "scripts/high_flow_research.split(cycle=4), reserved HUC4s from experiments/sprint-20261017-mlp-geo/stations.json role=geographic_test",
+    "commentary": "Train 2020-2021, calibrate 2022, threshold 2023, score 2024. Unchanged."
+  },
+  "calibration": {
+    "inputs": [
+      "season_sin",
+      "season_cos",
+      "margin",
+      "log_area"
+    ],
+    "estimator": "StandardScaler + LogisticRegression(C=1, max_iter=2000, random_state=42) on the 2022 partition, identical to scripts/high_flow_signals.py",
+    "requirement": "Calibration slope must be positive."
+  },
+  "threshold": {
+    "rule": "scripts/high_flow_research.threshold on the 2023 partition, inclusive",
+    "pooled": 1.0,
+    "region": 2.0
+  },
+  "architecture": {
+    "hidden": 32,
+    "kernel": 5,
+    "dilations": [
+      1,
+      2,
+      4
+    ],
+    "dropout": 0.2,
+    "stem_stride": 3
+  },
+  "training": {
+    "epochs": 40,
+    "patience": 5,
+    "batch": 512,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "seed": 42,
+    "validation_tail": 0.1,
+    "early_stopping": "Contiguous tail of the training period by decision_time (last 10% of rows), never calibration, threshold or 2024 rows."
+  },
+  "comparison": {
+    "control": "experiments/high-flow-signals-20261018/cycle-11/winner_forecast-temporal_validation.csv.gz",
+    "draws": 500,
+    "seed": 42,
+    "clusters": "huc4",
+    "metrics": "scripts/shift_hydrology_metrics.metrics and paired_uncertainty"
+  },
+  "code_sha256": {
+    "scripts/high_flow_sequence.py": "9481f3067092db1bf308a07a0a72fbf256821f619ebeb6dc667cf95d45d165eb",
+    "scripts/high_flow_sequence_windows.py": "178736c951e336ac8314c183e1e30f80c8b808b634567024a5863ed3cb75e63b",
+    "scripts/high_flow_sequence_worker.py": "667b176e9b70c184491d29e39eabc6e80218e6d5192bc93cdc4214d0a3225615",
+    "scripts/shift_hydrology.py": "9a1f9e64fcc75af21469c31a1a7eebf01497651d63ce2bb3a7483c1a73c1c38d",
+    "scripts/high_flow_research.py": "1b1010dced32222d938563047253087653dd3839bdabeb2af115bab0b26f2b14",
+    "scripts/shift_hydrology_metrics.py": "cc0a130dd54a9ac9f11b1332477a19cb9b4ad11107b18a9bfa44acc88b98e28e"
+  },
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5"
+  }
+}

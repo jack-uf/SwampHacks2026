@@ -1,0 +1,35 @@
+{
+  "dataset_sha256": "7473e1ec95398b8c4d85e1ffcdf0cd0c28b4f3484dbfe48cdfa86d9aaefdb4c5",
+  "code_sha256": "847cebb5dab430c2fa239b0f962d98e2e3d21f5d2cc2cc18a20e9b35940c72be",
+  "configurations": [
+    "linear",
+    "damped",
+    "upstream_physical",
+    "local_lightgbm",
+    "upstream_lightgbm",
+    "upstream_logistic"
+  ],
+  "partitions": {
+    "train": {
+      "rows": 4711,
+      "events": 33,
+      "gauges": 2
+    },
+    "calibration": {
+      "rows": 2247,
+      "events": 10,
+      "gauges": 2
+    },
+    "threshold": {
+      "rows": 2680,
+      "events": 8,
+      "gauges": 3
+    },
+    "validation": {
+      "rows": 3811,
+      "events": 14,
+      "gauges": 3
+    }
+  },
+  "evidence": "Adaptive development only; uninspected geographic pairs remain unopened."
+}

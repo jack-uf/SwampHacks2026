@@ -1,0 +1,3138 @@
+{
+  "cycle": 8,
+  "subset": "covered",
+  "draws": 500,
+  "reference": "linear_conditional",
+  "results_sha256": "e268042cf7acb2263b0e115bbfe7aac19d45fa4fd96b2b783a760b334e2e28db",
+  "candidates": {
+    "linear_conditional": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.11439936597031865,
+        "brier": 0.004515506027880655,
+        "precision": 0.14925373134328357,
+        "row_recall": 0.32786885245901637,
+        "false_alerts_per_100": 0.8799012040753319,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.03519604816301328,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12924,
+            "mean_probability": 0.00539649773677283,
+            "observed_rate": 0.004023522129371711
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 22,
+            "mean_probability": 0.12954570963194315,
+            "observed_rate": 0.36363636363636365
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 5,
+            "mean_probability": 0.24355612756644457,
+            "observed_rate": 0.2
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 2,
+            "mean_probability": 0.3164136182502342,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 1,
+            "mean_probability": 0.4156606380868094,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 1,
+            "mean_probability": 0.543036841633764,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 1,
+            "mean_probability": 0.6155747956545031,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 20,
+        "event_recall": 0.32786885245901637,
+        "median_lead_hours": 2.0,
+        "false_warning_episodes": 104,
+        "worst_region_false_alerts_per_100": 1.7898832684824904,
+        "worst_region": "15",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 1.1371712864250179,
+            "ap": 0.26666666666666666
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.7318695941450433,
+            "ap": 0.14535573468496027
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 0.7518796992481203,
+            "ap": 1.0
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.1022044088176353,
+            "ap": 0.06235674315201523
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 0.6230529595015576,
+            "ap": 0.6142857142857143
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 0.6211180124223602,
+            "ap": 0.05917508417508417
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 0.9564293304994687,
+            "ap": 0.07741339247993241
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 0.3663003663003663,
+            "ap": 0.2124505276273329
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.46860356138706655,
+            "ap": 0.03867940584771843
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.9933774834437086,
+            "ap": 0.039596273291925464
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 1.192504258943782,
+            "ap": 1.0
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.7407407407407407,
+            "ap": 0.25
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 1.7898832684824904,
+            "ap": 0.14448635057471265
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.6468305304010349,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.2307692307692308,
+            "ap": 0.4835714285714286
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.6932409012131716,
+            "ap": 0.5
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.0,
+          "ap_difference_95": [
+            0.0,
+            0.0
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.0,
+          "event_recall_difference_95": [
+            0.0,
+            0.0
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.0,
+          "false_alerts_per_100_difference_95": [
+            0.0,
+            0.0
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 20,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.0666989272367535,
+        "brier": 0.005343595343732968,
+        "precision": 0.09259259259259259,
+        "row_recall": 0.20833333333333334,
+        "false_alerts_per_100": 1.1001347103726986,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.04400538841490795,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4435,
+            "mean_probability": 0.004858286564487025,
+            "observed_rate": 0.00496054114994363
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 14,
+            "mean_probability": 0.14828387636775692,
+            "observed_rate": 0.14285714285714285
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 2,
+            "mean_probability": 0.3700468031313825,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 3,
+            "mean_probability": 0.4128757165523053,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 5,
+        "event_recall": 0.20833333333333334,
+        "median_lead_hours": 2.0,
+        "false_warning_episodes": 44,
+        "worst_region_false_alerts_per_100": 2.5925925925925926,
+        "worst_region": "18",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.746268656716418,
+            "ap": 0.017543859649122806
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.04362426788897377
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 1.6286644951140066,
+            "ap": 0.5
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 1.362862010221465,
+            "ap": 0.06829046687168018
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.02137887022397892
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.974025974025974,
+            "ap": 0.03588516746411483
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 0.49261083743842365,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 1.3197969543147208,
+            "ap": 0.3472222222222222
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 2.5925925925925926,
+            "ap": 0.0951928990628681
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.0,
+          "ap_difference_95": [
+            0.0,
+            0.0
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.0,
+          "event_recall_difference_95": [
+            0.0,
+            0.0
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.0,
+          "false_alerts_per_100_difference_95": [
+            0.0,
+            0.0
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 5,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.0,
+        "ap_difference_95": [
+          0.0,
+          0.0
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.0,
+        "event_recall_difference_95": [
+          0.0,
+          0.0
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": 0.0,
+        "false_alerts_per_100_difference_95": [
+          0.0,
+          0.0
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    },
+    "control_conditional": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.17851991290212826,
+        "brier": 0.004207215909414281,
+        "precision": 0.19491525423728814,
+        "row_recall": 0.3770491803278688,
+        "false_alerts_per_100": 0.7332510033961099,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.029330040135844396,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12825,
+            "mean_probability": 0.0038804946402512044,
+            "observed_rate": 0.002884990253411306
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 89,
+            "mean_probability": 0.1420194837982842,
+            "observed_rate": 0.12359550561797752
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 37,
+            "mean_probability": 0.23949665382783925,
+            "observed_rate": 0.2702702702702703
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 5,
+            "mean_probability": 0.3551477922047866,
+            "observed_rate": 0.6
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 23,
+        "event_recall": 0.3770491803278688,
+        "median_lead_hours": 3.0,
+        "false_warning_episodes": 89,
+        "worst_region_false_alerts_per_100": 1.8633540372670807,
+        "worst_region": "06",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 0.8528784648187633,
+            "ap": 0.16233766233766234
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.6653359946773121,
+            "ap": 0.34456538889873123
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 1.1278195488721805,
+            "ap": 0.3333333333333333
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.8036072144288577,
+            "ap": 0.06992726584665004
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 0.8307372793354102,
+            "ap": 0.7333333333333334
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 1.8633540372670807,
+            "ap": 0.275062656641604
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 0.8501594048884166,
+            "ap": 0.20683850463262227
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 0.6105006105006106,
+            "ap": 0.3075768593152501
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.49019607843137253,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.46860356138706655,
+            "ap": 0.07699548678272082
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.33112582781456956,
+            "ap": 0.5303030303030303
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 0.8560311284046692,
+            "ap": 0.09881297947335682
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.2307692307692308,
+            "ap": 0.3238437001594896
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.5199306759098787,
+            "ap": 0.16666666666666666
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.06412054693180962,
+          "ap_difference_95": [
+            0.0025715496938782385,
+            0.1362304800821768
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.04918032786885246,
+          "event_recall_difference_95": [
+            -0.0802876888460302,
+            0.16605797576154588
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.146650200679222,
+          "false_alerts_per_100_difference_95": [
+            -0.4032884445300668,
+            0.09887500788629065
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 14,
+          "control_median_lead_hours": 2.5,
+          "candidate_median_lead_hours": 2.5,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.089102088397902,
+        "brier": 0.005208797125510619,
+        "precision": 0.11320754716981132,
+        "row_recall": 0.25,
+        "false_alerts_per_100": 1.055231252806466,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.042209250112258644,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4396,
+            "mean_probability": 0.003937378496119508,
+            "observed_rate": 0.003639672429481347
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 42,
+            "mean_probability": 0.14077920791133114,
+            "observed_rate": 0.11904761904761904
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 12,
+            "mean_probability": 0.23409510605595893,
+            "observed_rate": 0.16666666666666666
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 2,
+            "mean_probability": 0.34362988241161024,
+            "observed_rate": 0.5
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 2,
+            "mean_probability": 0.4765426684987042,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 6,
+        "event_recall": 0.25,
+        "median_lead_hours": 2.0,
+        "false_warning_episodes": 45,
+        "worst_region_false_alerts_per_100": 1.7258883248730965,
+        "worst_region": "17",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.373134328358209,
+            "ap": 0.07692307692307693
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.3050761421319797
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 1.6286644951140066,
+            "ap": 0.3333333333333333
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 1.7035775127768313,
+            "ap": 0.11432083997873471
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.17123287671232876,
+            "ap": 0.039452631421543344
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.974025974025974,
+            "ap": 0.09242424242424242
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 1.477832512315271,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.3412969283276451,
+            "ap": 0.5
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 1.7258883248730965,
+            "ap": 0.2440087145969499
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 0.5555555555555556,
+            "ap": 0.10502632677940349
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.022403161161148502,
+          "ap_difference_95": [
+            -0.03256406257939902,
+            0.07573411010672292
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.041666666666666664,
+          "event_recall_difference_95": [
+            0.0,
+            0.14285714285714285
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.0449034575662326,
+          "false_alerts_per_100_difference_95": [
+            -0.6729022321643435,
+            0.3212020194992392
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 5,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.06194075495310382,
+        "ap_difference_95": [
+          0.04162697093967178,
+          0.08103774345346593
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.0784313725490196,
+        "event_recall_difference_95": [
+          0.024399034881296355,
+          0.130409429280397
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": -0.11768589347991447,
+        "false_alerts_per_100_difference_95": [
+          -0.38355241456787054,
+          0.0929520316151349
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    },
+    "rain6_ratio_conditional": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.22918443803423183,
+        "brier": 0.00411743989747593,
+        "precision": 0.21311475409836064,
+        "row_recall": 0.4262295081967213,
+        "false_alerts_per_100": 0.7409694350108058,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.02963877740043223,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12817,
+            "mean_probability": 0.0035205868074624207,
+            "observed_rate": 0.002730748225013654
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 81,
+            "mean_probability": 0.1404723577902175,
+            "observed_rate": 0.13580246913580246
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 40,
+            "mean_probability": 0.24246645794337057,
+            "observed_rate": 0.175
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 16,
+            "mean_probability": 0.3397141256211266,
+            "observed_rate": 0.375
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 2,
+            "mean_probability": 0.4316998855721555,
+            "observed_rate": 1.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 26,
+        "event_recall": 0.4262295081967213,
+        "median_lead_hours": 3.0,
+        "false_warning_episodes": 89,
+        "worst_region_false_alerts_per_100": 1.7034068136272544,
+        "worst_region": "04",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 0.35536602700781805,
+            "ap": 0.19090909090909092
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.7984031936127745,
+            "ap": 0.41029514756953894
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 1.5037593984962405,
+            "ap": 0.5
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.7034068136272544,
+            "ap": 0.08285244399712938
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 1.0384215991692627,
+            "ap": 0.7412087912087912
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 1.5527950310559007,
+            "ap": 0.30952380952380953
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 1.0626992561105206,
+            "ap": 0.327665770609319
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 1.098901098901099,
+            "ap": 0.33147788501861664
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.49019607843137253,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.5623242736644799,
+            "ap": 0.08535777947542654
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.6622516556291391,
+            "ap": 0.5147058823529411
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.2
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 0.4669260700389105,
+            "ap": 0.1608620138031903
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.5384615384615385,
+            "ap": 0.49333333333333335
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.6932409012131716,
+            "ap": 0.25
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.11478507206391318,
+          "ap_difference_95": [
+            0.038424689766689515,
+            0.19859108014552143
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.09836065573770492,
+          "event_recall_difference_95": [
+            -0.03677560646900269,
+            0.2293025274937293
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.1389317690645261,
+          "false_alerts_per_100_difference_95": [
+            -0.47847058630253814,
+            0.178027740838804
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 14,
+          "control_median_lead_hours": 2.5,
+          "candidate_median_lead_hours": 2.5,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.10244574453502893,
+        "brier": 0.0053291463698772286,
+        "precision": 0.09230769230769231,
+        "row_recall": 0.25,
+        "false_alerts_per_100": 1.3246519982038616,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.05298607992815447,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4380,
+            "mean_probability": 0.004176690804424783,
+            "observed_rate": 0.00410958904109589
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 45,
+            "mean_probability": 0.15214516801098238,
+            "observed_rate": 0.044444444444444446
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 17,
+            "mean_probability": 0.23574855759847763,
+            "observed_rate": 0.11764705882352941
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 8,
+            "mean_probability": 0.3668752428946819,
+            "observed_rate": 0.125
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 4,
+            "mean_probability": 0.42934342285790567,
+            "observed_rate": 0.25
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 6,
+        "event_recall": 0.25,
+        "median_lead_hours": 1.5,
+        "false_warning_episodes": 53,
+        "worst_region_false_alerts_per_100": 2.7411167512690353,
+        "worst_region": "17",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.746268656716418,
+            "ap": 0.03333333333333333
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.15507614213197968
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 1.3029315960912051,
+            "ap": 0.3333333333333333
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 1.5332197614991483,
+            "ap": 0.15616883116883118
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.06412828697370421
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.6493506493506493,
+            "ap": 0.115625
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 1.9704433497536946,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.5
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 2.7411167512690353,
+            "ap": 0.3075757575757576
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 1.4814814814814814,
+            "ap": 0.16097006441834028
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.03574681729827543,
+          "ap_difference_95": [
+            -0.02058348008807016,
+            0.06393445123253227
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.041666666666666664,
+          "event_recall_difference_95": [
+            -0.129375,
+            0.13793103448275862
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.224517287831163,
+          "false_alerts_per_100_difference_95": [
+            -0.4003672185068971,
+            0.7557983341477283
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 4,
+          "control_median_lead_hours": 1.5,
+          "candidate_median_lead_hours": 1.5,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.08457262975408354,
+        "ap_difference_95": [
+          0.054818958853791316,
+          0.11578179957606866
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.11029411764705882,
+        "event_recall_difference_95": [
+          0.040197537253887125,
+          0.17643495568574433
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": -0.024398294989738365,
+        "false_alerts_per_100_difference_95": [
+          -0.31211168524569655,
+          0.23784783004968021
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    },
+    "rain6_ratio_wetness": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.21890152368895224,
+        "brier": 0.004116644939799654,
+        "precision": 0.211864406779661,
+        "row_recall": 0.4098360655737705,
+        "false_alerts_per_100": 0.7178141401667181,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.028712565606668725,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12816,
+            "mean_probability": 0.0035090325176745274,
+            "observed_rate": 0.0026529338327091136
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 82,
+            "mean_probability": 0.1388906469456864,
+            "observed_rate": 0.13414634146341464
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 36,
+            "mean_probability": 0.2421991765787241,
+            "observed_rate": 0.19444444444444445
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 19,
+            "mean_probability": 0.34042524064736784,
+            "observed_rate": 0.42105263157894735
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 3,
+            "mean_probability": 0.4395476350787113,
+            "observed_rate": 0.3333333333333333
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 25,
+        "event_recall": 0.4098360655737705,
+        "median_lead_hours": 3.0,
+        "false_warning_episodes": 87,
+        "worst_region_false_alerts_per_100": 1.7034068136272544,
+        "worst_region": "04",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 0.35536602700781805,
+            "ap": 0.20833333333333331
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.8649367930805056,
+            "ap": 0.38494119943395305
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 1.5037593984962405,
+            "ap": 0.5
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.7034068136272544,
+            "ap": 0.07865784928474515
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 1.0384215991692627,
+            "ap": 0.6102564102564103
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 1.5527950310559007,
+            "ap": 0.321256038647343
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 0.9564293304994687,
+            "ap": 0.32606060606060605
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 0.8547008547008547,
+            "ap": 0.31972930365704844
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.49019607843137253,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.37488284910965325,
+            "ap": 0.11800856800856802
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.6622516556291391,
+            "ap": 0.5153846153846153
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.2
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 0.4669260700389105,
+            "ap": 0.16720377146073742
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.5384615384615385,
+            "ap": 0.4840384615384616
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.8665511265164645,
+            "ap": 0.2
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.1045021577186336,
+          "ap_difference_95": [
+            0.028296113748156267,
+            0.17902750504727588
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.08196721311475409,
+          "event_recall_difference_95": [
+            -0.08205645161290322,
+            0.2189747431506849
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.16208706390861377,
+          "false_alerts_per_100_difference_95": [
+            -0.49232804109560324,
+            0.1487134937843896
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 13,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.11156954754355249,
+        "brier": 0.0052804840382255315,
+        "precision": 0.09523809523809523,
+        "row_recall": 0.25,
+        "false_alerts_per_100": 1.279748540637629,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.051189941625505164,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4374,
+            "mean_probability": 0.004009341882223354,
+            "observed_rate": 0.0038866026520347507
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 54,
+            "mean_probability": 0.14538466373937955,
+            "observed_rate": 0.05555555555555555
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 13,
+            "mean_probability": 0.24836607878237427,
+            "observed_rate": 0.07692307692307693
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 8,
+            "mean_probability": 0.3460758727536323,
+            "observed_rate": 0.25
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 5,
+            "mean_probability": 0.43999384373955613,
+            "observed_rate": 0.2
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 6,
+        "event_recall": 0.25,
+        "median_lead_hours": 1.5,
+        "false_warning_episodes": 51,
+        "worst_region_false_alerts_per_100": 2.6395939086294415,
+        "worst_region": "17",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.746268656716418,
+            "ap": 0.030303030303030304
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.14920255183413075
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 1.3029315960912051,
+            "ap": 0.3333333333333333
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 1.5332197614991483,
+            "ap": 0.1607297228578693
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.05629787570086077
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.6493506493506493,
+            "ap": 0.0861344537815126
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 1.477832512315271,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 2.6395939086294415,
+            "ap": 0.5555555555555556
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 1.4814814814814814,
+            "ap": 0.1583225108225108
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.04487062030679899,
+          "ap_difference_95": [
+            -0.007783663117385473,
+            0.13660957608460939
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.041666666666666664,
+          "event_recall_difference_95": [
+            -0.129375,
+            0.13793103448275862
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.1796138302649304,
+          "false_alerts_per_100_difference_95": [
+            -0.41148859702283014,
+            0.6948414861025987
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 4,
+          "control_median_lead_hours": 1.5,
+          "candidate_median_lead_hours": 1.5,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.08574339641876756,
+        "ap_difference_95": [
+          0.055702645235202276,
+          0.11689523324846804
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.1053921568627451,
+        "event_recall_difference_95": [
+          0.03332918912559891,
+          0.17748860182370815
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": -0.03587984557314465,
+        "false_alerts_per_100_difference_95": [
+          -0.3326161520310758,
+          0.2254240313202139
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    },
+    "rain6_ratio_hydro": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.22854718473331886,
+        "brier": 0.004139195480153055,
+        "precision": 0.20353982300884957,
+        "row_recall": 0.3770491803278688,
+        "false_alerts_per_100": 0.6946588453226304,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.02778635381290522,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12815,
+            "mean_probability": 0.0034555238328905077,
+            "observed_rate": 0.002575107296137339
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 82,
+            "mean_probability": 0.13696786717616896,
+            "observed_rate": 0.17073170731707318
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 41,
+            "mean_probability": 0.2434265055734481,
+            "observed_rate": 0.17073170731707318
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 16,
+            "mean_probability": 0.34532845413339885,
+            "observed_rate": 0.3125
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 2,
+            "mean_probability": 0.4228512880611337,
+            "observed_rate": 1.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 23,
+        "event_recall": 0.3770491803278688,
+        "median_lead_hours": 3.0,
+        "false_warning_episodes": 86,
+        "worst_region_false_alerts_per_100": 1.8633540372670807,
+        "worst_region": "06",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 0.5685856432125089,
+            "ap": 0.16666666666666666
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.8649367930805056,
+            "ap": 0.3637048736392159
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 1.5037593984962405,
+            "ap": 1.0
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.503006012024048,
+            "ap": 0.07671546642583858
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 0.8307372793354102,
+            "ap": 0.6454545454545455
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 1.8633540372670807,
+            "ap": 0.25898078529657476
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 0.8501594048884166,
+            "ap": 0.335609857978279
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 0.8547008547008547,
+            "ap": 0.26391279569460807
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.49019607843137253,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.46860356138706655,
+            "ap": 0.16796495600619313
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.33112582781456956,
+            "ap": 0.5085470085470085
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.2
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.5
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 0.4669260700389105,
+            "ap": 0.13472222222222222
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.2307692307692308,
+            "ap": 0.4625
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.6932409012131716,
+            "ap": 0.2
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.11414781876300022,
+          "ap_difference_95": [
+            0.032213449323960544,
+            0.19082641442896106
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.04918032786885246,
+          "event_recall_difference_95": [
+            -0.08857843137254902,
+            0.1755835667600373
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.18524235875270145,
+          "false_alerts_per_100_difference_95": [
+            -0.5045256512912172,
+            0.10504247735431854
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 13,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.11721293774130359,
+        "brier": 0.0052409514621218735,
+        "precision": 0.1076923076923077,
+        "row_recall": 0.2916666666666667,
+        "false_alerts_per_100": 1.3022002694207453,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.05208801077682981,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4360,
+            "mean_probability": 0.0037239844715765136,
+            "observed_rate": 0.003669724770642202
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 64,
+            "mean_probability": 0.1319986414234055,
+            "observed_rate": 0.0625
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 18,
+            "mean_probability": 0.23460471247222164,
+            "observed_rate": 0.1111111111111111
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 9,
+            "mean_probability": 0.35297782666255445,
+            "observed_rate": 0.1111111111111111
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 3,
+            "mean_probability": 0.4178035369549405,
+            "observed_rate": 0.3333333333333333
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 7,
+        "event_recall": 0.2916666666666667,
+        "median_lead_hours": 2.0,
+        "false_warning_episodes": 52,
+        "worst_region_false_alerts_per_100": 3.4482758620689653,
+        "worst_region": "11",
+        "false_alert_ceiling_met": false,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.373134328358209,
+            "ap": 0.03571428571428571
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.1343025268258913
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 0.6514657980456026,
+            "ap": 0.5
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 1.362862010221465,
+            "ap": 0.15302197802197803
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.12063492063492062
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.6493506493506493,
+            "ap": 0.07837301587301587
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 3.4482758620689653,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 2.6395939086294415,
+            "ap": 0.3625
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 1.6666666666666667,
+            "ap": 0.16580568663901998
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.050514010504550094,
+          "ap_difference_95": [
+            0.008607858215666177,
+            0.07935917805322644
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.08333333333333333,
+          "event_recall_difference_95": [
+            0.0,
+            0.14814814814814814
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.2020655590480467,
+          "false_alerts_per_100_difference_95": [
+            -0.41623926900185615,
+            0.7894910107868723
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 5,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.09027804373426461,
+        "ap_difference_95": [
+          0.058664823524988835,
+          0.12580052256489443
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.09803921568627451,
+        "event_recall_difference_95": [
+          0.03468529145493838,
+          0.14785340913823983
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": -0.06027814056288302,
+        "false_alerts_per_100_difference_95": [
+          -0.36272861311192084,
+          0.16817926623372978
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    },
+    "rain6_ratio_wetness_hydro": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.24084949106268502,
+        "brier": 0.004105976783223977,
+        "precision": 0.22123893805309736,
+        "row_recall": 0.4098360655737705,
+        "false_alerts_per_100": 0.6792219820932387,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.027168879283729547,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12814,
+            "mean_probability": 0.0034218452665811696,
+            "observed_rate": 0.00257530825659435
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 87,
+            "mean_probability": 0.1392458492557141,
+            "observed_rate": 0.16091954022988506
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 35,
+            "mean_probability": 0.24863367122866847,
+            "observed_rate": 0.14285714285714285
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 15,
+            "mean_probability": 0.3458298582226813,
+            "observed_rate": 0.3333333333333333
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 5,
+            "mean_probability": 0.4273835014379344,
+            "observed_rate": 0.8
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 25,
+        "event_recall": 0.4098360655737705,
+        "median_lead_hours": 3.0,
+        "false_warning_episodes": 85,
+        "worst_region_false_alerts_per_100": 1.8633540372670807,
+        "worst_region": "06",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 0.4975124378109453,
+            "ap": 0.20192307692307693
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.7984031936127745,
+            "ap": 0.3990800018074878
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 1.5037593984962405,
+            "ap": 1.0
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.6032064128256514,
+            "ap": 0.07376320343482957
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 0.726895119418484,
+            "ap": 0.7323671497584541
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 1.8633540372670807,
+            "ap": 0.33333333333333337
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 0.8501594048884166,
+            "ap": 0.3221864342553998
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 1.098901098901099,
+            "ap": 0.2968927453679419
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.49019607843137253,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.5623242736644799,
+            "ap": 0.1430302005859815
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.33112582781456956,
+            "ap": 0.5096153846153846
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.5
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.3333333333333333
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 0.311284046692607,
+            "ap": 0.13669590643274854
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.2307692307692308,
+            "ap": 0.5523809523809524
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.5199306759098787,
+            "ap": 0.25
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.12645012509236636,
+          "ap_difference_95": [
+            0.05018838702742454,
+            0.20301342005128964
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.08196721311475409,
+          "event_recall_difference_95": [
+            -0.058823529411764705,
+            0.19353233830845767
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.20067922198209323,
+          "false_alerts_per_100_difference_95": [
+            -0.5502961653604413,
+            0.1341232340899151
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 15,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.1430548179718856,
+        "brier": 0.00515058999515882,
+        "precision": 0.1206896551724138,
+        "row_recall": 0.2916666666666667,
+        "false_alerts_per_100": 1.1450381679389312,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.04580152671755725,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4369,
+            "mean_probability": 0.003763879859816364,
+            "observed_rate": 0.003433279926756695
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 59,
+            "mean_probability": 0.13368012087631465,
+            "observed_rate": 0.06779661016949153
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 15,
+            "mean_probability": 0.23904332422346466,
+            "observed_rate": 0.2
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 9,
+            "mean_probability": 0.3541211776692155,
+            "observed_rate": 0.1111111111111111
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 2,
+            "mean_probability": 0.4371923629858099,
+            "observed_rate": 0.5
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 7,
+        "event_recall": 0.2916666666666667,
+        "median_lead_hours": 2.0,
+        "false_warning_episodes": 48,
+        "worst_region_false_alerts_per_100": 2.955665024630542,
+        "worst_region": "11",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.373134328358209,
+            "ap": 0.038461538461538464
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.15538080675695354
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 0.6514657980456026,
+            "ap": 0.5
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 1.0221465076660987,
+            "ap": 0.1692485754985755
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.0,
+            "ap": 0.12078494526099316
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.6493506493506493,
+            "ap": 0.1413934426229508
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 2.955665024630542,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 2.5380710659898478,
+            "ap": 0.5158730158730158
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 1.1111111111111112,
+            "ap": 0.16695767195767194
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.0763558907351321,
+          "ap_difference_95": [
+            0.024814812861237174,
+            0.1307803574311316
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.08333333333333333,
+          "event_recall_difference_95": [
+            0.0,
+            0.14814814814814814
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.0449034575662326,
+          "false_alerts_per_100_difference_95": [
+            -0.6599799072388338,
+            0.6922724255525609
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 5,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.09826681704948688,
+        "ap_difference_95": [
+          0.06573240523855378,
+          0.135252882478422
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.10049019607843138,
+        "event_recall_difference_95": [
+          0.041381501366010154,
+          0.1528295584902493
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": -0.09185240466725031,
+        "false_alerts_per_100_difference_95": [
+          -0.4031532395596602,
+          0.12788950005227004
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    },
+    "forecast_scaled_wetness": {
+      "temporal_validation": {
+        "rows": 12956,
+        "positives": 61,
+        "ap": 0.23111288898307655,
+        "brier": 0.00407347496591891,
+        "precision": 0.21739130434782608,
+        "row_recall": 0.4098360655737705,
+        "false_alerts_per_100": 0.6946588453226304,
+        "eligible_decision_exposure_station_days": 3239.0,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.02778635381290522,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 12836,
+            "mean_probability": 0.0023134263663333716,
+            "observed_rate": 0.002648800249298847
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 62,
+            "mean_probability": 0.14160573737013907,
+            "observed_rate": 0.16129032258064516
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 24,
+            "mean_probability": 0.2521606912597906,
+            "observed_rate": 0.25
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 17,
+            "mean_probability": 0.34935767354383185,
+            "observed_rate": 0.23529411764705882
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 13,
+            "mean_probability": 0.4485826619498359,
+            "observed_rate": 0.46153846153846156
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 3,
+            "mean_probability": 0.5533483263476401,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 1,
+            "mean_probability": 0.6296314153311257,
+            "observed_rate": 1.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 61,
+        "detected_events": 25,
+        "event_recall": 0.4098360655737705,
+        "median_lead_hours": 4.0,
+        "false_warning_episodes": 89,
+        "worst_region_false_alerts_per_100": 1.8461538461538463,
+        "worst_region": "17",
+        "false_alert_ceiling_met": true,
+        "regions": {
+          "01": {
+            "rows": 1407,
+            "events": 2,
+            "false_alerts_per_100": 0.8528784648187633,
+            "ap": 0.05964912280701754
+          },
+          "02": {
+            "rows": 1503,
+            "events": 9,
+            "false_alerts_per_100": 0.9314703925482368,
+            "ap": 0.38072860645960055
+          },
+          "03": {
+            "rows": 266,
+            "events": 1,
+            "false_alerts_per_100": 1.5037593984962405,
+            "ap": 0.5
+          },
+          "04": {
+            "rows": 998,
+            "events": 5,
+            "false_alerts_per_100": 1.2024048096192386,
+            "ap": 0.08696608946608947
+          },
+          "05": {
+            "rows": 963,
+            "events": 5,
+            "false_alerts_per_100": 0.5192107995846313,
+            "ap": 0.5304093567251462
+          },
+          "06": {
+            "rows": 322,
+            "events": 3,
+            "false_alerts_per_100": 1.2422360248447204,
+            "ap": 0.6984126984126984
+          },
+          "07": {
+            "rows": 941,
+            "events": 4,
+            "false_alerts_per_100": 0.7438894792773645,
+            "ap": 0.3521901709401709
+          },
+          "08": {
+            "rows": 819,
+            "events": 13,
+            "false_alerts_per_100": 1.343101343101343,
+            "ap": 0.3304196847117331
+          },
+          "09": {
+            "rows": 204,
+            "events": 0,
+            "false_alerts_per_100": 0.9803921568627451,
+            "ap": null
+          },
+          "10": {
+            "rows": 212,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "11": {
+            "rows": 1067,
+            "events": 5,
+            "false_alerts_per_100": 0.37488284910965325,
+            "ap": 0.18940052706177685
+          },
+          "12": {
+            "rows": 302,
+            "events": 2,
+            "false_alerts_per_100": 0.9933774834437086,
+            "ap": 0.5769230769230769
+          },
+          "13": {
+            "rows": 587,
+            "events": 1,
+            "false_alerts_per_100": 0.17035775127768313,
+            "ap": 0.5
+          },
+          "14": {
+            "rows": 405,
+            "events": 1,
+            "false_alerts_per_100": 0.0,
+            "ap": 1.0
+          },
+          "15": {
+            "rows": 1285,
+            "events": 4,
+            "false_alerts_per_100": 0.23346303501945526,
+            "ap": 0.27484848484848484
+          },
+          "16": {
+            "rows": 773,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 325,
+            "events": 5,
+            "false_alerts_per_100": 1.8461538461538463,
+            "ap": 0.5547979797979798
+          },
+          "18": {
+            "rows": 577,
+            "events": 1,
+            "false_alerts_per_100": 0.3466204506065858,
+            "ap": 0.3333333333333333
+          }
+        },
+        "paired": {
+          "clusters": 37,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.1167135230127579,
+          "ap_difference_95": [
+            0.015459414077559193,
+            0.2040627497424228
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.08196721311475409,
+          "event_recall_difference_95": [
+            -0.12036206896551724,
+            0.24072413793103445
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": -0.18524235875270145,
+          "false_alerts_per_100_difference_95": [
+            -0.546615119131328,
+            0.1324743956901682
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 9,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "geographic_validation": {
+        "rows": 4454,
+        "positives": 24,
+        "ap": 0.13389311827611255,
+        "brier": 0.00525743284245057,
+        "precision": 0.12345679012345678,
+        "row_recall": 0.4166666666666667,
+        "false_alerts_per_100": 1.5940727436012574,
+        "eligible_decision_exposure_station_days": 1113.5,
+        "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+        "false_warnings_per_station_day": 0.06376290974405029,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "rows": 4369,
+            "mean_probability": 0.0029659225008868443,
+            "observed_rate": 0.002975509269855802
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "rows": 41,
+            "mean_probability": 0.1438933224827249,
+            "observed_rate": 0.12195121951219512
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "rows": 25,
+            "mean_probability": 0.2358493121928993,
+            "observed_rate": 0.04
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "rows": 10,
+            "mean_probability": 0.34625127066173855,
+            "observed_rate": 0.4
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "rows": 8,
+            "mean_probability": 0.4489258126284321,
+            "observed_rate": 0.125
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "rows": 1,
+            "mean_probability": 0.6067560794699718,
+            "observed_rate": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          },
+          {
+            "lower": 0.9,
+            "upper": 1.0,
+            "rows": 0,
+            "mean_probability": null,
+            "observed_rate": null
+          }
+        ],
+        "events": 24,
+        "detected_events": 10,
+        "event_recall": 0.4166666666666667,
+        "median_lead_hours": 2.0,
+        "false_warning_episodes": 66,
+        "worst_region_false_alerts_per_100": 3.6548223350253806,
+        "worst_region": "17",
+        "false_alert_ceiling_met": false,
+        "regions": {
+          "02": {
+            "rows": 268,
+            "events": 1,
+            "false_alerts_per_100": 0.373134328358209,
+            "ap": 0.5
+          },
+          "03": {
+            "rows": 340,
+            "events": 3,
+            "false_alerts_per_100": 0.8823529411764706,
+            "ap": 0.4836158192090395
+          },
+          "04": {
+            "rows": 307,
+            "events": 1,
+            "false_alerts_per_100": 1.9543973941368078,
+            "ap": 0.5
+          },
+          "05": {
+            "rows": 587,
+            "events": 4,
+            "false_alerts_per_100": 0.8517887563884157,
+            "ap": 0.23390863522442468
+          },
+          "07": {
+            "rows": 584,
+            "events": 3,
+            "false_alerts_per_100": 0.3424657534246575,
+            "ap": 0.21296296296296297
+          },
+          "10": {
+            "rows": 308,
+            "events": 2,
+            "false_alerts_per_100": 0.974025974025974,
+            "ap": 0.09632034632034632
+          },
+          "11": {
+            "rows": 203,
+            "events": 0,
+            "false_alerts_per_100": 1.9704433497536946,
+            "ap": null
+          },
+          "12": {
+            "rows": 293,
+            "events": 1,
+            "false_alerts_per_100": 0.6825938566552902,
+            "ap": 0.3333333333333333
+          },
+          "15": {
+            "rows": 39,
+            "events": 0,
+            "false_alerts_per_100": 0.0,
+            "ap": null
+          },
+          "17": {
+            "rows": 985,
+            "events": 3,
+            "false_alerts_per_100": 3.6548223350253806,
+            "ap": 0.18525641025641026
+          },
+          "18": {
+            "rows": 540,
+            "events": 6,
+            "false_alerts_per_100": 1.6666666666666667,
+            "ap": 0.2501443001443001
+          }
+        },
+        "paired": {
+          "clusters": 11,
+          "weak_clusters": false,
+          "draws": 500,
+          "ap_difference": 0.06719419103935906,
+          "ap_difference_95": [
+            -0.029139661778932596,
+            0.21291802374508417
+          ],
+          "valid_ap_draws": 500,
+          "event_recall_difference": 0.20833333333333334,
+          "event_recall_difference_95": [
+            0.0,
+            0.3675877192982456
+          ],
+          "valid_event_recall_draws": 500,
+          "false_alerts_per_100_difference": 0.4939380332285586,
+          "false_alerts_per_100_difference_95": [
+            -0.28297932268539994,
+            1.3569664363424714
+          ],
+          "valid_false_alerts_per_100_draws": 500
+        },
+        "lead": {
+          "jointly_detected_events": 5,
+          "control_median_lead_hours": 2.0,
+          "candidate_median_lead_hours": 2.0,
+          "median_lead_delta_hours": 0.0
+        },
+        "brier_delta": null
+      },
+      "pooled": {
+        "clusters": 48,
+        "weak_clusters": false,
+        "draws": 500,
+        "ap_difference": 0.08551878114455012,
+        "ap_difference_95": [
+          0.052803446462465875,
+          0.12522599715950788
+        ],
+        "valid_ap_draws": 500,
+        "event_recall_difference": 0.10049019607843138,
+        "event_recall_difference_95": [
+          0.03179873562591967,
+          0.16810109289617478
+        ],
+        "valid_event_recall_draws": 500,
+        "false_alerts_per_100_difference": 0.03587984557314465,
+        "false_alerts_per_100_difference_95": [
+          -0.25795808906791146,
+          0.2793402961205625
+        ],
+        "valid_false_alerts_per_100_draws": 500
+      }
+    }
+  }
+}

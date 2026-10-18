@@ -1,0 +1,16 @@
+{
+  "epochs_run": 16,
+  "validation_log_loss": 0.021062122657895088,
+  "parameters": 16161,
+  "seconds": 409.5695019159466,
+  "inner_train_rows": 76995,
+  "inner_validation_rows": 8555,
+  "filled_entries": {
+    "train": 0,
+    "validation": 0,
+    "calibration": 0,
+    "threshold": 0,
+    "temporal_validation": 0,
+    "geographic_validation": 0
+  }
+}

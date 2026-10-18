@@ -1,0 +1,94 @@
+{
+    "type":"Feature",
+    "properties":{
+        "id":"USGS-02255600",
+        "agency_code":"USGS",
+        "agency_name":"U.S. Geological Survey",
+        "monitoring_location_number":"02255600",
+        "monitoring_location_name":"FISHEATING CREEK NEAR LAKE PLACID,FL",
+        "district_code":"125",
+        "country_code":"US",
+        "country_name":"United States of America",
+        "state_code":"12",
+        "state_name":"Florida",
+        "county_code":"055",
+        "county_name":"Highlands County",
+        "minor_civil_division_code":null,
+        "site_type_code":"ST",
+        "site_type":"Stream",
+        "hydrologic_unit_code":"030901030102",
+        "basin_code":null,
+        "altitude":0.0,
+        "altitude_accuracy":0.01,
+        "altitude_method_code":"L",
+        "altitude_method_name":"Level or other surveyed method.",
+        "vertical_datum":"NAVD88",
+        "vertical_datum_name":"North American Vertical Datum of 1988",
+        "horizontal_positional_accuracy_code":"S",
+        "horizontal_positional_accuracy":"Accurate to + or - 1 sec.",
+        "horizontal_position_method_code":"M",
+        "horizontal_position_method_name":"Interpolated from MAP.",
+        "original_horizontal_datum":"NAD27",
+        "original_horizontal_datum_name":"North American Datum of 1927",
+        "drainage_area":60.0,
+        "contributing_drainage_area":null,
+        "time_zone_abbreviation":"EST",
+        "uses_daylight_savings":"Y",
+        "construction_date":null,
+        "aquifer_code":null,
+        "national_aquifer_code":null,
+        "aquifer_type_code":null,
+        "well_constructed_depth":null,
+        "hole_constructed_depth":null,
+        "depth_source_code":null,
+        "revision_note":null,
+        "revision_created":null,
+        "revision_modified":null
+    },
+    "id":"USGS-02255600",
+    "geometry":{
+        "type":"Point",
+        "coordinates":[
+            -81.4614637347149,
+            27.2092149865987
+        ]
+    },
+    "links":[
+        {
+            "type":"application/json",
+            "rel":"root",
+            "title":"The landing page of this server as JSON",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1?f=json"
+        },
+        {
+            "type":"text/html",
+            "rel":"root",
+            "title":"The landing page of this server as HTML",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1?f=html"
+        },
+        {
+            "rel":"self",
+            "type":"application/geo+json",
+            "title":"This document as JSON",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items/USGS-02255600?f=json"
+        },
+        {
+            "rel":"alternate",
+            "type":"application/ld+json",
+            "title":"This document as RDF (JSON-LD)",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items/USGS-02255600?f=jsonld"
+        },
+        {
+            "rel":"alternate",
+            "type":"text/html",
+            "title":"This document as HTML",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations/items/USGS-02255600?f=html"
+        },
+        {
+            "rel":"collection",
+            "type":"application/json",
+            "title":"Monitoring locations",
+            "href":"https://api.waterdata.usgs.gov/ogcapi/v1/collections/monitoring-locations"
+        }
+    ]
+}

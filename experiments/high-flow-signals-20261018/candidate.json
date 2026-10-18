@@ -1,0 +1,145 @@
+{
+  "temporal_validation": {
+    "metrics": {
+      "rows": 51851,
+      "positives": 306,
+      "events": 306,
+      "detected_events": 116,
+      "event_recall": 0.3790849673202614,
+      "ap": 0.18687946258604649,
+      "brier": 0.005219266615503467,
+      "precision": 0.19627749576988154,
+      "row_recall": 0.3790849673202614,
+      "false_alerts_per_100": 0.9160864785635764,
+      "median_lead_hours": 3.0,
+      "false_warning_episodes": 315,
+      "worst_region": "06",
+      "worst_region_false_alerts_per_100": 2.241112828438949,
+      "false_alert_ceiling_met": true
+    },
+    "paired": {
+      "clusters": 37,
+      "weak_clusters": false,
+      "draws": 500,
+      "ap_difference": 0.10292932681329275,
+      "ap_difference_95": [
+        0.06646525042005809,
+        0.14011792497274028
+      ],
+      "valid_ap_draws": 500,
+      "event_recall_difference": 0.10457516339869281,
+      "event_recall_difference_95": [
+        0.02985686402081978,
+        0.17377388394822574
+      ],
+      "valid_event_recall_draws": 500,
+      "false_alerts_per_100_difference": -0.06557250583402442,
+      "false_alerts_per_100_difference_95": [
+        -0.43980116526117224,
+        0.23124235808722501
+      ],
+      "valid_false_alerts_per_100_draws": 500
+    },
+    "lead": {
+      "jointly_detected_events": 63,
+      "control_median_lead_hours": 2.0,
+      "candidate_median_lead_hours": 2.0,
+      "median_lead_delta_hours": 0.0
+    },
+    "brier_delta": -0.0004851800050110506
+  },
+  "geographic_validation": {
+    "metrics": {
+      "rows": 17826,
+      "positives": 102,
+      "events": 102,
+      "detected_events": 56,
+      "event_recall": 0.5490196078431373,
+      "ap": 0.18826953029674848,
+      "brier": 0.005124115591103787,
+      "precision": 0.18360655737704917,
+      "row_recall": 0.5490196078431373,
+      "false_alerts_per_100": 1.3968360821272299,
+      "median_lead_hours": 3.0,
+      "false_warning_episodes": 145,
+      "worst_region": "18",
+      "worst_region_false_alerts_per_100": 2.678983833718245,
+      "false_alert_ceiling_met": true
+    },
+    "paired": {
+      "clusters": 11,
+      "weak_clusters": false,
+      "draws": 500,
+      "ap_difference": 0.09183492441657007,
+      "ap_difference_95": [
+        0.03977205835844946,
+        0.19370226255703546
+      ],
+      "valid_ap_draws": 500,
+      "event_recall_difference": 0.22549019607843138,
+      "event_recall_difference_95": [
+        0.10485074626865672,
+        0.37232545045045035
+      ],
+      "valid_event_recall_draws": 500,
+      "false_alerts_per_100_difference": 0.3365870077415012,
+      "false_alerts_per_100_difference_95": [
+        -0.026206630172937166,
+        0.7145994377362684
+      ],
+      "valid_false_alerts_per_100_draws": 500
+    },
+    "lead": {
+      "jointly_detected_events": 31,
+      "control_median_lead_hours": 2.0,
+      "candidate_median_lead_hours": 2.0,
+      "median_lead_delta_hours": 0.0
+    },
+    "brier_delta": -0.000406819144166108
+  },
+  "pooled": {
+    "clusters": 48,
+    "weak_clusters": false,
+    "draws": 500,
+    "ap_difference": 0.09651419240205732,
+    "ap_difference_95": [
+      0.06728652283128654,
+      0.13302463617001153
+    ],
+    "valid_ap_draws": 500,
+    "event_recall_difference": 0.13480392156862744,
+    "event_recall_difference_95": [
+      0.06863507779349365,
+      0.19970001453216793
+    ],
+    "valid_event_recall_draws": 500,
+    "false_alerts_per_100_difference": 0.03731503939607044,
+    "false_alerts_per_100_difference_95": [
+      -0.25976876291676726,
+      0.279661806479642
+    ],
+    "valid_false_alerts_per_100_draws": 500
+  },
+  "gates": {
+    "at_least_20_events_per_partition": true,
+    "at_least_50_events_total": true,
+    "temporal_test_events": true,
+    "temporal_test_ap": true,
+    "temporal_test_event_gain": true,
+    "temporal_test_brier": true,
+    "temporal_test_false_alerts": true,
+    "temporal_test_lead": true,
+    "geographic_test_events": true,
+    "geographic_test_ap": true,
+    "geographic_test_event_gain": true,
+    "geographic_test_brier": true,
+    "geographic_test_false_alerts": true,
+    "geographic_test_lead": true,
+    "total_events": true,
+    "pooled_event_uncertainty": true
+  },
+  "passed": true,
+  "candidate": "winner_forecast",
+  "reference": "linear_conditional",
+  "evidence": "Inspected development partitions. Not independent confirmation."
+}
