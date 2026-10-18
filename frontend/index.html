@@ -3,15 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111a17" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%23111a17%27/%3E%3Cpath d=%27M9 23V9h8a5 5 0 010 10h-8%27 fill=%27none%27 stroke=%27%23b7f36b%27 stroke-width=%273%27/%3E%3C/svg%3E"
-    />
-    <title>PlanIT Control · Field intelligence</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="PlanIT Control field-safety console layout." />
+    <title>PlanIT Control | Layout</title>
+    <style>
+      body { margin: 0; }
+      #wireframe, #wireframe * { box-sizing: border-box; }
+      #wireframe { color: #000; background: #fff; font: 14px/1.5 Arial, sans-serif; min-height: 100vh; }
+      #wireframe a { color: inherit; text-underline-offset: 4px; }
+      #wireframe h1, #wireframe h2, #wireframe h3, #wireframe p { margin: 0; }
+      #wireframe h1 { font-size: 28px; line-height: 1.2; }
+      #wireframe h2 { font-size: 18px; }
+      #wireframe h3 { font-size: 14px; }
+      #wireframe small, #wireframe .caption { font-size: 12px; }
+      #wireframe .masthead { padding: 24px 32px; border-bottom: 2px solid; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+      #wireframe .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 11px; margin-bottom: 8px; }
+      #wireframe .tag { border: 1px solid; padding: 5px 10px; display: inline-block; font-size: 12px; }
+      #wireframe .shell { display: grid; grid-template-columns: 200px minmax(0, 1fr); }
+      #wireframe nav { border-right: 1px solid; padding: 24px 16px; }
+      #wireframe nav a { display: block; padding: 12px 8px; border-bottom: 1px solid; text-decoration: none; }
+      #wireframe main { padding: 28px; min-width: 0; max-width: 1600px; width: 100%; margin: auto; }
+      #wireframe section { scroll-margin-top: 20px; margin-bottom: 28px; }
+      #wireframe .section-heading { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 12px; }
+      #wireframe .grid { display: grid; gap: 16px; }
+      #wireframe .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      #wireframe .two { grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); }
+      #wireframe .equal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #wireframe .readings { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #wireframe .box { border: 1px solid; padding: 18px; min-width: 0; }
+      #wireframe .box > h3 { margin-bottom: 12px; }
+      #wireframe .value { font-size: 28px; margin: 12px 0; }
+      #wireframe .placeholder { border: 1px dashed; display: grid; place-content: center; text-align: center; padding: 24px; min-height: 130px; gap: 8px; }
+      #wireframe .map { min-height: 330px; }
+      #wireframe .row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid; }
+      #wireframe .row:last-child { border-bottom: 0; }
+      #wireframe .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      #wireframe label { display: grid; gap: 6px; }
+      #wireframe input, #wireframe select, #wireframe textarea, #wireframe button { color: #000; background: #fff; border: 1px solid #000; border-radius: 0; padding: 10px; font: inherit; width: 100%; min-width: 0; }
+      #wireframe textarea { resize: vertical; min-height: 100px; }
+      #wireframe input[type=checkbox] { width: auto; margin: 0 8px 0 0; }
+      #wireframe .check { display: block; margin-top: 12px; }
+      #wireframe .wide { grid-column: 1 / -1; }
+      #wireframe .table-wrap { overflow-x: auto; }
+      #wireframe table { width: 100%; border-collapse: collapse; min-width: 660px; text-align: left; }
+      #wireframe th, #wireframe td { padding: 14px 12px; border: 1px solid; vertical-align: top; font-size: 12px; }
+      #wireframe .note { margin-top: 12px; font-size: 12px; }
+      #wireframe footer { border-top: 1px solid; padding: 20px 32px; }
+      #wireframe :focus-visible { outline: 2px solid #000; outline-offset: 4px; }
+      @media (max-width: 1100px) { #wireframe .shell { grid-template-columns: 160px minmax(0, 1fr); } #wireframe .two { grid-template-columns: 1fr; } #wireframe .stats, #wireframe .readings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 680px) { #wireframe .masthead { padding: 20px; align-items: start; flex-direction: column; } #wireframe .shell { display: block; } #wireframe nav { border-right: 0; border-bottom: 1px solid; display: flex; gap: 12px; overflow-x: auto; padding: 12px 20px; } #wireframe nav a { white-space: nowrap; padding: 6px 0; } #wireframe main { padding: 20px; } #wireframe .equal, #wireframe .readings, #wireframe .fields { grid-template-columns: 1fr; } #wireframe .section-heading { flex-direction: column; gap: 4px; } #wireframe .map { min-height: 250px; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="wireframe">
+      <header class="masthead">
+        <div><p class="eyebrow">Field safety / Operations workspace</p><h1>PlanIT Control</h1></div>
+        <div><span class="tag">Layout preview / No live data</span> &nbsp; <a href="?view=live">Open interactive console</a></div>
+      </header>
+      <div class="shell">
+        <nav aria-label="Workspace sections">
+          <a href="#overview">Overview</a><a href="#conditions">Site conditions</a><a href="#missions">Missions &amp; JHA</a><a href="#reports">Crew reports</a><a href="#memory">Hazard memory</a><a href="#overlaps">Plan overlaps</a><a href="#briefings">Briefings &amp; sources</a>
+        </nav>
+        <main>
+          <section id="overview">
+            <div class="section-heading"><h2>Operations overview</h2><span class="caption">Placeholders show the intended data positions.</span></div>
+            <div class="grid stats">
+              <article class="box"><h3>Facilities</h3><div class="value">[count]</div><p class="caption">Selected region / Assessed sites</p></article>
+              <article class="box"><h3>Open missions</h3><div class="value">[count]</div><p class="caption">Shift dates / Mission status</p></article>
+              <article class="box"><h3>Readiness</h3><div class="value">[rating]</div><p class="caption">Unknown inputs / Stop-work holds</p></article>
+              <article class="box"><h3>Reports to review</h3><div class="value">[count]</div><p class="caption">Pending / Urgent / Clarification</p></article>
+            </div>
+            <div class="grid two" style="margin-top:16px">
+              <article class="box"><h3>Facility &amp; hazard map</h3><div class="placeholder map"><strong>Map area</strong><span>Facility locations / Selected site / Crew reports</span><small>Map controls and source attribution</small></div></article>
+              <article class="box"><h3>Facility watchlist</h3><label>Search or filter facilities<input disabled placeholder="Facility name, state, or operator" /></label><div class="row"><strong>[Facility name]</strong><span>[Index range]</span></div><div class="row"><span>[Location / Operator]</span><span>[Coverage]</span></div><div class="row"><span>[Facility name]</span><span>[Readiness]</span></div><div class="row"><span>[Facility name]</span><span>[Readiness]</span></div><p class="note">Rank / Missing inputs / Last assessment</p></article>
+            </div>
+          </section>
+          <section id="conditions">
+            <div class="section-heading"><h2>Selected facility / Environmental conditions</h2><span class="caption">[Name] / [Operator] / [County, state] / [Coordinates] / [Capacity &amp; technology]</span></div>
+            <div class="grid readings">
+              <article class="box"><h3>Heat &amp; wind</h3><div class="value">[temperature] / [gust]</div><p>Feels-like temperature / Wind speed</p><p class="note">Evidence kind / Source / Timestamp</p></article>
+              <article class="box"><h3>Rain &amp; soil</h3><div class="value">[rainfall] / [moisture]</div><p>Forecast window / Soil conditions</p><p class="note">Evidence kind / Source / Timestamp</p></article>
+              <article class="box"><h3>Lightning</h3><div class="value">[feed status]</div><p>Nearest strike / Stop-work timer</p><p class="note">Unavailable without a configured live feed. Replays are simulated.</p></article>
+              <article class="box"><h3>Flood screening</h3><div class="value">[flood category]</div><p>Gauge / Distance / Observed &amp; predicted stage</p><p class="note">Mapped exposure / Feed freshness / Source</p></article>
+              <article class="box"><h3>Wildfire screening</h3><div class="value">[incident status]</div><p>Nearby incident / Distance / Containment</p><p class="note">Evidence kind / Source / Timestamp</p></article>
+              <article class="box"><h3>Official alerts &amp; models</h3><div class="value">[alert count]</div><p>Alert detail / Expiry / Model availability</p><p class="note">County-scoped predictions / Limits / Citations</p></article>
+            </div>
+          </section>
+          <section id="missions">
+            <div class="section-heading"><h2>Missions &amp; living Job Hazard Analysis</h2><span class="caption">[Mission status] / [Readiness] / [JHA version]</span></div>
+            <div class="grid equal">
+              <article class="box"><h3>Plan a mission</h3><div class="fields"><label>Facility<select disabled><option>Select facility</option></select></label><label>Mission name<input disabled placeholder="Work description" /></label><label>Activity<select disabled><option>Select activity</option></select></label><label>Crew size<input disabled placeholder="Crew count" /></label><label>Shift starts<input disabled type="datetime-local" /></label><label>Shift ends<input disabled type="datetime-local" /></label></div></article>
+              <article class="box"><h3>Mission summary &amp; version history</h3><div class="row"><span>Shift / Activity</span><span>[Mission details]</span></div><div class="row"><span>Predicted shift coverage</span><span>[Coverage]</span></div><div class="row"><span>Version / Trigger</span><span>[Version &amp; reason]</span></div><div class="placeholder"><span>Evidence additions, removals &amp; rating changes</span></div></article>
+            </div>
+            <div class="box table-wrap" style="margin-top:16px"><table><caption style="text-align:left;margin-bottom:12px">JHA hazard entries</caption><thead><tr><th>Hazard</th><th>Rating</th><th>Evidence kind</th><th>Evidence &amp; citation</th><th>Supervisor decision</th></tr></thead><tbody>
+              <tr><td>Heat / Storm / Flood</td><td>[Rating]</td><td>[Kind]</td><td>[Source / Conditions / Time]</td><td>[Controls / Rationale]</td></tr>
+              <tr><td>Lightning / Wildfire</td><td>[Rating]</td><td>[Kind]</td><td>[Source / Conditions / Time]</td><td>[Who / When / Version]</td></tr>
+              <tr><td>Wildlife / Unstable terrain / Equipment obstruction / Other</td><td>[Rating]</td><td>[Kind]</td><td>[Crew report / Review status]</td><td>[Decision / Stale status]</td></tr>
+            </tbody></table><p class="note">Evidence kinds: observed, reported, predicted, official_alert, simulated, unavailable, ai_suggestion, historical.</p></div>
+            <article class="box" style="margin-top:16px"><h3>Supervisor decision</h3><div class="fields"><label>Hazard / JHA version<input disabled placeholder="Select entry and current version" /></label><label>Decision<select disabled><option>Select decision</option></select></label><label class="wide">Controls &amp; rationale<textarea disabled placeholder="Record mitigation and reason for the decision"></textarea></label></div><p class="note">Identity / Authentication method / Decision timestamp / Audit trail. Stop-work entries cannot be overridden.</p></article>
+          </section>
+          <section id="reports">
+            <div class="section-heading"><h2>Crew reports</h2><span class="caption">Collection &amp; supervisor review</span></div>
+            <div class="grid equal">
+              <article class="box"><h3>Submit an observation</h3><div class="fields"><label>Mission / Facility<input disabled placeholder="Linked mission and site" /></label><label>Location<input disabled placeholder="Latitude / Longitude" /></label><label class="wide">Observation<textarea disabled placeholder="Describe the conditions or hazard"></textarea></label><label>Hazard categories<select disabled><option>Select categories</option></select></label><label>Photo<input disabled type="file" accept="image/*" /></label></div><label class="check"><input disabled type="checkbox" />Consent to share observation text for advisory Jev suggestions</label><p class="note">Layout preview: submission controls are disabled.</p></article>
+              <article class="box"><h3>Review queue &amp; report detail</h3><div class="row"><span>[Report ID / Mission]</span><span>[Pending / Verified / Rejected]</span></div><div class="placeholder"><span>Photo preview &amp; original observation</span></div><div class="row"><span>Advisory Jev suggestions</span><span>[Labels / Abstention]</span></div><div class="row"><span>Supervisor review</span><span>[Corrections / Reason]</span></div><p class="note">AI suggestions do not verify a report or set a hazard rating.</p></article>
+            </div>
+          </section>
+          <section id="memory">
+            <div class="section-heading"><h2>Site Hazard Memory</h2><span class="caption">Historical context for supervisor review</span></div>
+            <div class="grid equal"><article class="box"><h3>Relevant historical records</h3><div class="placeholder"><span>[Event type / Date / Location / Impact]</span><span>[Official weather report or reviewed crew report]</span></div></article><article class="box"><h3>Record relevance &amp; source</h3><div class="row"><span>Geography / Conditions</span><span>[Factor relevance]</span></div><div class="row"><span>Activity / Season / Impact</span><span>[Factor relevance]</span></div><p class="note">Source citation / Record detail. Memory informs review and does not change ratings.</p></article></div>
+          </section>
+          <section id="overlaps">
+            <div class="section-heading"><h2>Public construction plan overlaps</h2><span class="caption">Cross-entity generator plans</span></div>
+            <div class="grid two"><article class="box"><h3>Planned project map</h3><div class="placeholder map"><span>Plant locations &amp; proximity pairs</span><small>Owner / Sector / Planned operation filters</small></div></article><article class="box"><h3>Overlap comparison</h3><div class="row"><span>[Plant / Owner A]</span><span>[Operation date]</span></div><div class="row"><span>[Plant / Owner B]</span><span>[Operation date]</span></div><div class="row"><span>Separation / Timing</span><span>[Miles / Months]</span></div><div class="placeholder"><span>Ranked pairs / Possible affiliates / Source</span></div><p class="note">Suspect coordinates and excluded comparisons appear here.</p></article></div>
+          </section>
+          <section id="briefings">
+            <div class="section-heading"><h2>Briefings, provenance &amp; access</h2></div>
+            <div class="grid readings"><article class="box"><h3>Next-day briefing</h3><div class="placeholder"><span>[Local date / Facility / Summary]</span><span>[Hazards / Controls / Generation status]</span></div></article><article class="box"><h3>Sources &amp; refresh</h3><div class="row"><span>Provider / Evidence kind</span><span>[Status]</span></div><div class="row"><span>Retrieved / Valid through</span><span>[Timestamp]</span></div><p class="note">Missing feeds / Stale inputs / Coverage / Citation links</p></article><article class="box"><h3>Supervisor access</h3><label>Supervisor token<input disabled type="password" placeholder="Private token" /></label><p class="note">Personal-token identity or self-declared name / Append-only mutation audit</p></article></div>
+          </section>
+        </main>
+      </div>
+      <footer>Layout preview only. All bracketed values are placeholders. Decision support for supervisor review.</footer>
+    </div>
+    <script type="module" src="/src/wireframe.ts"></script>
   </body>
 </html>

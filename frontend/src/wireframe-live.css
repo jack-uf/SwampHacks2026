@@ -1,0 +1,25 @@
+﻿/* Interactions stay inside the original wireframe grid and boxes. */
+#wireframe .live-status { margin-bottom: 12px; overflow-wrap: anywhere; }
+#wireframe .reload-data { width: auto; margin-bottom: 20px; cursor: pointer; }
+#wireframe .live-list { max-height: 340px; overflow: auto; }
+#wireframe button { cursor: pointer; }
+#wireframe button:disabled { cursor: not-allowed; opacity: .5; }
+#wireframe .live-list .row { width: 100%; text-align: left; border: 0; border-bottom: 1px solid; align-items: start; }
+#wireframe .live-list .row[aria-pressed=true] { outline: 2px solid; outline-offset: -3px; }
+#wireframe .map { display: block; height: 330px; padding: 0; filter: grayscale(1); }
+#wireframe .leaflet-container { font-family: Arial, sans-serif; text-align: left; }
+#wireframe .leaflet-control-zoom a { width: 30px; height: 30px; }
+#wireframe .leaflet-control-attribution { font-size: 10px; }
+#wireframe .leaflet-container img { max-width: none; }
+#wireframe form > button { margin-top: 14px; }
+#wireframe .mission-picker { margin-bottom: 14px; }
+#wireframe .report-item { padding: 14px 0; border-bottom: 1px solid; overflow-wrap: anywhere; }
+#wireframe .report-photo { max-width: 100%; max-height: 160px; object-fit: contain; }
+#wireframe .review-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+#wireframe .review-actions button { width: auto; }
+#wireframe pre { white-space: pre-wrap; overflow-wrap: anywhere; text-align: left; font-size: 12px; }
+#wireframe details { text-align: left; padding: 10px 0; overflow-wrap: anywhere; }
+#wireframe summary { cursor: pointer; }
+#wireframe .placeholder { overflow: auto; max-height: 240px; }
+#wireframe #audit-results { max-height: 200px; overflow: auto; white-space: pre-wrap; font-size: 11px; overflow-wrap: anywhere; }
+@media (max-width: 680px) { #wireframe .map { height: 250px; } }
