@@ -220,7 +220,8 @@ def collect(stage):
 def implementation_hashes():
     return {str(p.relative_to(ROOT)): digest(p) for p in [ROOT / 'scripts/mlp_hybrid.py',
         ROOT / 'scripts/mlp_hybrid_network.py', ROOT / 'scripts/mlp_hybrid_worker.py',
-        ROOT / 'scripts/shift_hydrology_metrics.py']}
+        ROOT / 'scripts/shift_hydrology_metrics.py', ROOT / 'experiments/sprint-20261017-mlp-hybrid/amendment-1.md',
+        ROOT / 'experiments/sprint-20261017-mlp-hybrid/amendment-2.md']}
 
 
 def verify_selection():
