@@ -1,0 +1,25 @@
+{
+  "document": "docs/MLP_GEO_PROTOCOL.md",
+  "document_sha256": "3fc2bed42e7de8051ba7754645fc0c800453e29ce8d8439635af2875b0e14dda",
+  "stations_sha256": "e706c167e84d2cb9b55c403ae91f8c01069045a78e3e9aef5dc361dfdbd81f25",
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5"
+  },
+  "excluded_prior_stations": 382,
+  "development_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "geographic_years": [
+    2023,
+    2024
+  ],
+  "test_year": 2025,
+  "hash_salt": "geo31"
+}
