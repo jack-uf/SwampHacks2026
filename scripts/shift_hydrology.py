@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 import gzip
 import hashlib
 import json
+import os
 import time
 from pathlib import Path
 from urllib.parse import urlencode
@@ -124,6 +125,7 @@ def decision_rows(q, reference, station):
 def cached_page(path, url):
     """Persist compressed response bytes and exact request provenance."""
     import httpx
+    from dotenv import dotenv_values
     record = path.with_suffix(path.suffix + '.request.json')
     if path.exists():
         meta = json.loads(record.read_text())
@@ -131,7 +133,9 @@ def cached_page(path, url):
             raise ValueError('Cache checksum or URL changed')
         return json.loads(gzip.decompress(path.read_bytes()))
     waits = []
-    response = httpx.get(url, timeout=90, follow_redirects=True)
+    key = os.environ.get('USGS_API_KEY') or dotenv_values(ROOT/'.env').get('USGS_API_KEY')
+    headers = {'X-Api-Key':key} if key and url.startswith(API) else {}
+    response = httpx.get(url, headers=headers, timeout=90, follow_redirects=True)
     for attempt in range(3):
         if response.status_code != 429:
             break
@@ -145,7 +149,7 @@ def cached_page(path, url):
             pause = min(remaining,60)
             time.sleep(pause)
             remaining -= pause
-        response = httpx.get(url, timeout=90, follow_redirects=True)
+        response = httpx.get(url, headers=headers, timeout=90, follow_redirects=True)
     response.raise_for_status()
     if not response.content or len(response.content) > 40_000_000:
         raise ValueError('Empty or oversized USGS response')

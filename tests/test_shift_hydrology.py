@@ -128,6 +128,20 @@ def test_acquisition_honors_bounded_retry_after_and_hashes_cached_bytes(tmp_path
         research.cached_page(path,'https://example.test/observations')
 
 
+def test_usgs_key_is_sent_only_as_a_header_and_never_saved(tmp_path, monkeypatch):
+    import httpx
+    import scripts.shift_hydrology as research
+    monkeypatch.setenv('USGS_API_KEY', 'test-credential-not-for-provenance')
+    def get(url, **kwargs):
+        assert kwargs['headers'] == {'X-Api-Key':'test-credential-not-for-provenance'}
+        assert 'test-credential' not in url
+        return httpx.Response(200,json={'type':'FeatureCollection','features':[], 'links':[]}, request=httpx.Request('GET',url))
+    monkeypatch.setattr(httpx,'get',get)
+    path = tmp_path/'source.json.gz'
+    research.cached_page(path,research.API+'continuous/items?f=json')
+    assert 'test-credential' not in path.with_suffix('.gz.request.json').read_text()
+
+
 def test_development_requests_never_cross_into_final_year(monkeypatch):
     import scripts.shift_hydrology as research
     from urllib.parse import urlparse, parse_qs
