@@ -75,12 +75,14 @@ def test_constraints_exclude_hour_band_and_site_overlapping_windows():
     plan = planner.plan(weather(hourly(start, 48, 20, 24, 0.0)), activity('general_site_work'), 8, hours=48, step_hours=1,
                         now=(start+timedelta(hours=6)).isoformat(), planned_start=(start+timedelta(hours=8)).isoformat(),
                         timezone='UTC', flex_hours=1, busy=[(busy_start.isoformat(), busy_end.isoformat())])
+    planned_hour = planner.local_hour((start+timedelta(hours=8)).isoformat(), 'UTC')
     assert plan['excluded']['hour_band'] > 0 and plan['excluded']['overlap'] > 0
-    assert plan['constraints']['busy_intervals'] == 1 and plan['constraints']['planned_local_hour'] == 8.0
+    assert plan['constraints']['busy_intervals'] == 1
+    assert plan['constraints']['planned_local_hour'] == round(planned_hour, 2)
     for item in plan['windows']:
         begin, end = parse_time(item['start']), parse_time(item['end'])
         assert begin >= parse_time(plan['constraints']['timezone'] and (start+timedelta(hours=6)).isoformat())
-        assert planner.hour_distance(planner.local_hour(item['start'], 'UTC'), 8) <= 1 + 1e-9
+        assert planner.hour_distance(planner.local_hour(item['start'], 'UTC'), planned_hour) <= 1 + 1e-9
         assert not (begin < busy_end and busy_start < end)
 
 

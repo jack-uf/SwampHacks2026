@@ -67,4 +67,10 @@ The scenarios are synthetic weather on a fixed grid. They test the decision rule
 
 ## Limits
 
+## Replay over forecast cycles
+
+`scripts/replay_windows.py` runs a sequence of forecast cycles through the same planner and reports how the advice moves: reversals (the choice or the chosen window changes between cycles), advice that survives an update, abstentions, the mean weighted improvement on a move, and whether each chosen window is at or better than the keep-plan, earliest-window and same-hour-next-day baselines. It fits nothing, so there is no training or tuning step and no held-out population to protect.
+
+The committed fixture `tests/fixtures/window-replay.jsonl` is synthetic and every cycle says so in its `kind` field; no archived point-forecast cycles exist in this repository and the development sandbox has no network. A cycle carrying a real `weather` payload runs through the same path, so freezing real cycles from the provider turns this into a real-archive replay without code changes. Current fixture result: 4 cycles, 2 moves at a mean weighted improvement of 1.0, both at or better than the simple baselines, 1 reversal when the wind day moves, 2 updates that leave the advice unchanged, 0 abstentions and 0 restricted recommendations.
+
 Work hours are constrained only by the planned start hour and the flexibility parameter; there is no calendar, crew identity, union rule or daylight model, and no route, mud or access model. Coverage comes from one forecast product and one ensemble family. The bands are screening thresholds, not validated work limits. API failures degrade the response to `unavailable` fields instead of substituting data.

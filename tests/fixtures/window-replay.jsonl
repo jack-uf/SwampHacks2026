@@ -1,0 +1,4 @@
+{"kind": "synthetic-fixture", "note": "Hand-built wind profile on a fixed hourly grid; not an archived forecast.", "cycle": "2026-10-18T00:00:00+00:00", "profile": "windy_then_calm"}
+{"kind": "synthetic-fixture", "note": "Same profile as the first cycle: a refresh that changes nothing.", "cycle": "2026-10-18T06:00:00+00:00", "profile": "windy_then_calm"}
+{"kind": "synthetic-fixture", "note": "The wind day and the calm day swap, so the advice should change.", "cycle": "2026-10-18T12:00:00+00:00", "profile": "calm_then_windy"}
+{"kind": "synthetic-fixture", "note": "Every window restricted: the planner should decline to move.", "cycle": "2026-10-18T18:00:00+00:00", "profile": "all_windy"}
