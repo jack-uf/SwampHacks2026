@@ -1,0 +1,24 @@
+{
+  "document": "docs/MLP_HYBRID_PROTOCOL.md",
+  "document_sha256": "b71eace6662f2773bf3eb72f7615ce76e5304c2ffff16c8c76b6b25a5092c8b3",
+  "stations_sha256": "d44206d2965a5cf2d3a76327452b8dfcdb1398086375b475e04a8227dfcc98f0",
+  "preserved": {
+    "models/hazards.joblib": "39330197a074f817000cc2fc4f187d32341ea81b240cb84ed2f0512dcb96efca",
+    "models/spatial-cv.json": "fde031830fac97d3ec34b12fe906f1fc81a381dc5e7939861a1d88d3e0dac8da",
+    "models/selection.json": "44a0cde67839156d7c680c60444ebd7c914d2c043095899650a9df9deba2ad93",
+    "models/evaluation.json": "4ea73c907c00e62073740d4be9070f159d71cb52be1fd3049fccbee995d164f5"
+  },
+  "excluded_prior_stations": 358,
+  "development_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "geographic_years": [
+    2023,
+    2024
+  ],
+  "test_year": 2025
+}
