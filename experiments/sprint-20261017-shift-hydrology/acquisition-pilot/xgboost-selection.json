@@ -1,0 +1,1752 @@
+{
+  "candidates": [
+    {
+      "name": "xgboost-dynamics-6",
+      "horizon": 6,
+      "family": "xgboost",
+      "kind": "dynamics",
+      "features": [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "latitude",
+        "longitude",
+        "log_area",
+        "elevation_m"
+      ],
+      "threshold": 0.08782844581046897,
+      "artifact_sha256": "ffd3312f449d34179b0bba53c6914c2c900bf81767c62e694b8dba676da0d68b",
+      "validation": {
+        "temporal_validation": {
+          "rows": 5308,
+          "positives": 24,
+          "ap": 0.10394455399821019,
+          "brier": 0.004271910433372495,
+          "precision": 0.140625,
+          "row_recall": 0.375,
+          "false_alerts_per_100": 1.0361718161266014,
+          "eligible_decision_exposure_station_days": 1327.0,
+          "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+          "false_warnings_per_station_day": 0.04144687264506405,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "rows": 5264,
+              "mean_probability": 0.0044515487695021725,
+              "observed_rate": 0.003609422492401216
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "rows": 44,
+              "mean_probability": 0.13000753859461286,
+              "observed_rate": 0.11363636363636363
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            }
+          ],
+          "events": 24,
+          "detected_events": 9,
+          "event_recall": 0.375,
+          "median_lead_hours": 4.0,
+          "false_warning_episodes": 38,
+          "regions": {
+            "01": {
+              "rows": 1987,
+              "positives": 11,
+              "ap": 0.17258482307219852,
+              "brier": 0.005094131088529836,
+              "precision": 0.17142857142857143,
+              "row_recall": 0.5454545454545454,
+              "false_alerts_per_100": 1.4594866633115249,
+              "eligible_decision_exposure_station_days": 496.75,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.058379466532461,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 1961,
+                  "mean_probability": 0.005477881354305753,
+                  "observed_rate": 0.0030596634370219276
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 26,
+                  "mean_probability": 0.12980226095734518,
+                  "observed_rate": 0.19230769230769232
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 11,
+              "detected_events": 6,
+              "event_recall": 0.5454545454545454,
+              "median_lead_hours": 4.0,
+              "false_warning_episodes": 23
+            },
+            "02": {
+              "rows": 2197,
+              "positives": 11,
+              "ap": 0.06877299458633207,
+              "brier": 0.004836734834476766,
+              "precision": 0.10714285714285714,
+              "row_recall": 0.2727272727272727,
+              "false_alerts_per_100": 1.137915339098771,
+              "eligible_decision_exposure_station_days": 549.25,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.04551661356395084,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 2180,
+                  "mean_probability": 0.004535582298819489,
+                  "observed_rate": 0.005045871559633028
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 17,
+                  "mean_probability": 0.12988254248971706,
+                  "observed_rate": 0.0
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 11,
+              "detected_events": 3,
+              "event_recall": 0.2727272727272727,
+              "median_lead_hours": 4.0,
+              "false_warning_episodes": 14
+            },
+            "04": {
+              "rows": 1124,
+              "positives": 2,
+              "ap": 0.10476190476190475,
+              "brier": 0.0017143733773015701,
+              "precision": 0.0,
+              "row_recall": 0.0,
+              "false_alerts_per_100": 0.08896797153024912,
+              "eligible_decision_exposure_station_days": 281.0,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.0035587188612099642,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 1123,
+                  "mean_probability": 0.0024962225961168293,
+                  "observed_rate": 0.0017809439002671415
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 1,
+                  "mean_probability": 0.13746969094680275,
+                  "observed_rate": 0.0
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 2,
+              "detected_events": 0,
+              "event_recall": 0.0,
+              "median_lead_hours": null,
+              "false_warning_episodes": 1
+            }
+          }
+        },
+        "geographic_validation": {
+          "rows": 2212,
+          "positives": 13,
+          "ap": 0.2628082694337285,
+          "brier": 0.005336341424221099,
+          "precision": 0.4166666666666667,
+          "row_recall": 0.38461538461538464,
+          "false_alerts_per_100": 0.31645569620253167,
+          "eligible_decision_exposure_station_days": 553.0,
+          "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+          "false_warnings_per_station_day": 0.012658227848101266,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "rows": 2201,
+              "mean_probability": 0.005710218730312688,
+              "observed_rate": 0.003634711494775102
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "rows": 11,
+              "mean_probability": 0.12699555137455396,
+              "observed_rate": 0.45454545454545453
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            }
+          ],
+          "events": 13,
+          "detected_events": 5,
+          "event_recall": 0.38461538461538464,
+          "median_lead_hours": 3.0,
+          "false_warning_episodes": 6,
+          "regions": {
+            "03": {
+              "rows": 2212,
+              "positives": 13,
+              "ap": 0.2628082694337285,
+              "brier": 0.005336341424221099,
+              "precision": 0.4166666666666667,
+              "row_recall": 0.38461538461538464,
+              "false_alerts_per_100": 0.31645569620253167,
+              "eligible_decision_exposure_station_days": 553.0,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.012658227848101266,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 2201,
+                  "mean_probability": 0.005710218730312688,
+                  "observed_rate": 0.003634711494775102
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 11,
+                  "mean_probability": 0.12699555137455396,
+                  "observed_rate": 0.45454545454545453
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 13,
+              "detected_events": 5,
+              "event_recall": 0.38461538461538464,
+              "median_lead_hours": 3.0,
+              "false_warning_episodes": 6
+            }
+          }
+        }
+      },
+      "selection_ap": 0.18337641171596933,
+      "selection_brier": 0.0048041259287967975,
+      "train_rows": 9967,
+      "calibration_rows": 5617,
+      "fit_seconds": 0.1575195409823209,
+      "peak_rss_mb": 280.84375
+    },
+    {
+      "name": "xgboost-dynamics-12",
+      "horizon": 12,
+      "family": "xgboost",
+      "kind": "dynamics",
+      "features": [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "latitude",
+        "longitude",
+        "log_area",
+        "elevation_m"
+      ],
+      "threshold": 0.11137474733031101,
+      "artifact_sha256": "28638447334a6b51d0caefe8b14bf18318fd5391679d770f4aee0715757d3883",
+      "validation": {
+        "temporal_validation": {
+          "rows": 5308,
+          "positives": 48,
+          "ap": 0.1291990144575489,
+          "brier": 0.00836245651474845,
+          "precision": 0.1875,
+          "row_recall": 0.25,
+          "false_alerts_per_100": 0.9796533534287868,
+          "eligible_decision_exposure_station_days": 1327.0,
+          "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+          "false_warnings_per_station_day": 0.03918613413715147,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "rows": 5226,
+              "mean_probability": 0.006832947322703832,
+              "observed_rate": 0.006888633754305396
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "rows": 68,
+              "mean_probability": 0.13509395187663806,
+              "observed_rate": 0.14705882352941177
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "rows": 14,
+              "mean_probability": 0.22670129956949217,
+              "observed_rate": 0.14285714285714285
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            }
+          ],
+          "events": 24,
+          "detected_events": 10,
+          "event_recall": 0.4166666666666667,
+          "median_lead_hours": 5.0,
+          "false_warning_episodes": 29,
+          "regions": {
+            "01": {
+              "rows": 1987,
+              "positives": 22,
+              "ap": 0.20616750872979425,
+              "brier": 0.009987888538028084,
+              "precision": 0.2,
+              "row_recall": 0.2727272727272727,
+              "false_alerts_per_100": 1.2078510317060895,
+              "eligible_decision_exposure_station_days": 496.75,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.04831404126824358,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 1951,
+                  "mean_probability": 0.006755184837716248,
+                  "observed_rate": 0.008200922603792926
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 31,
+                  "mean_probability": 0.13590282341564675,
+                  "observed_rate": 0.16129032258064516
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 5,
+                  "mean_probability": 0.22685692742424252,
+                  "observed_rate": 0.2
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 11,
+              "detected_events": 5,
+              "event_recall": 0.45454545454545453,
+              "median_lead_hours": 4.0,
+              "false_warning_episodes": 15
+            },
+            "02": {
+              "rows": 2197,
+              "positives": 22,
+              "ap": 0.10229288678206543,
+              "brier": 0.00946980079212433,
+              "precision": 0.17647058823529413,
+              "row_recall": 0.2727272727272727,
+              "false_alerts_per_100": 1.2744651797906237,
+              "eligible_decision_exposure_station_days": 549.25,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.05097860719162494,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 2155,
+                  "mean_probability": 0.008864994163487011,
+                  "observed_rate": 0.007424593967517401
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 33,
+                  "mean_probability": 0.13782233714792122,
+                  "observed_rate": 0.15151515151515152
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 9,
+                  "mean_probability": 0.22661483965018642,
+                  "observed_rate": 0.1111111111111111
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 11,
+              "detected_events": 5,
+              "event_recall": 0.45454545454545453,
+              "median_lead_hours": 6.0,
+              "false_warning_episodes": 14
+            },
+            "04": {
+              "rows": 1124,
+              "positives": 4,
+              "ap": 0.15365047534165183,
+              "brier": 0.003324583910076342,
+              "precision": null,
+              "row_recall": 0.0,
+              "false_alerts_per_100": 0.0,
+              "eligible_decision_exposure_station_days": 281.0,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.0,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 1120,
+                  "mean_probability": 0.0030585309533497414,
+                  "observed_rate": 0.0035714285714285713
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 4,
+                  "mean_probability": 0.10631601896123413,
+                  "observed_rate": 0.0
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 2,
+              "detected_events": 0,
+              "event_recall": 0.0,
+              "median_lead_hours": null,
+              "false_warning_episodes": 0
+            }
+          }
+        },
+        "geographic_validation": {
+          "rows": 2212,
+          "positives": 26,
+          "ap": 0.18469947435040088,
+          "brier": 0.010891493251619833,
+          "precision": 0.375,
+          "row_recall": 0.23076923076923078,
+          "false_alerts_per_100": 0.45207956600361665,
+          "eligible_decision_exposure_station_days": 553.0,
+          "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+          "false_warnings_per_station_day": 0.018083182640144666,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "rows": 2190,
+              "mean_probability": 0.009381116633454872,
+              "observed_rate": 0.0091324200913242
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "rows": 18,
+              "mean_probability": 0.12792714130408248,
+              "observed_rate": 0.2222222222222222
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "rows": 4,
+              "mean_probability": 0.24280719815602012,
+              "observed_rate": 0.5
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            }
+          ],
+          "events": 13,
+          "detected_events": 5,
+          "event_recall": 0.38461538461538464,
+          "median_lead_hours": 3.0,
+          "false_warning_episodes": 6,
+          "regions": {
+            "03": {
+              "rows": 2212,
+              "positives": 26,
+              "ap": 0.18469947435040088,
+              "brier": 0.010891493251619833,
+              "precision": 0.375,
+              "row_recall": 0.23076923076923078,
+              "false_alerts_per_100": 0.45207956600361665,
+              "eligible_decision_exposure_station_days": 553.0,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.018083182640144666,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 2190,
+                  "mean_probability": 0.009381116633454872,
+                  "observed_rate": 0.0091324200913242
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 18,
+                  "mean_probability": 0.12792714130408248,
+                  "observed_rate": 0.2222222222222222
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 4,
+                  "mean_probability": 0.24280719815602012,
+                  "observed_rate": 0.5
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 13,
+              "detected_events": 5,
+              "event_recall": 0.38461538461538464,
+              "median_lead_hours": 3.0,
+              "false_warning_episodes": 6
+            }
+          }
+        }
+      },
+      "selection_ap": 0.1569492444039749,
+      "selection_brier": 0.00962697488318414,
+      "train_rows": 9967,
+      "calibration_rows": 5617,
+      "fit_seconds": 0.15243370807729661,
+      "peak_rss_mb": 285.671875
+    },
+    {
+      "name": "xgboost-dynamics-24",
+      "horizon": 24,
+      "family": "xgboost",
+      "kind": "dynamics",
+      "features": [
+        "q_2",
+        "q_8",
+        "q_14",
+        "q_26",
+        "q_50",
+        "q_74",
+        "q_170",
+        "rise_6",
+        "rise_12",
+        "rise_24",
+        "rise_48",
+        "rise_72",
+        "rise_168",
+        "acceleration",
+        "range_24",
+        "range_72",
+        "season_sin",
+        "season_cos",
+        "latitude",
+        "longitude",
+        "log_area",
+        "elevation_m"
+      ],
+      "threshold": 0.12829527704736643,
+      "artifact_sha256": "3b154f63605ec418c165035c7b4024245755856a84b0136111d02026f071c40e",
+      "validation": {
+        "temporal_validation": {
+          "rows": 5308,
+          "positives": 96,
+          "ap": 0.13482187702784906,
+          "brier": 0.01658516615841148,
+          "precision": 0.20481927710843373,
+          "row_recall": 0.17708333333333334,
+          "false_alerts_per_100": 1.2434061793519215,
+          "eligible_decision_exposure_station_days": 1327.0,
+          "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+          "false_warnings_per_station_day": 0.04973624717407687,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "rows": 5166,
+              "mean_probability": 0.014047355520535284,
+              "observed_rate": 0.013743708865660086
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "rows": 115,
+              "mean_probability": 0.13313555994526682,
+              "observed_rate": 0.17391304347826086
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "rows": 24,
+              "mean_probability": 0.23310651288462922,
+              "observed_rate": 0.16666666666666666
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "rows": 3,
+              "mean_probability": 0.3471994552692157,
+              "observed_rate": 0.3333333333333333
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            }
+          ],
+          "events": 24,
+          "detected_events": 8,
+          "event_recall": 0.3333333333333333,
+          "median_lead_hours": 18.5,
+          "false_warning_episodes": 27,
+          "regions": {
+            "01": {
+              "rows": 1987,
+              "positives": 44,
+              "ap": 0.18671666304992332,
+              "brier": 0.02037728136267326,
+              "precision": 0.3333333333333333,
+              "row_recall": 0.13636363636363635,
+              "false_alerts_per_100": 0.6039255158530448,
+              "eligible_decision_exposure_station_days": 496.75,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.02415702063412179,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 1948,
+                  "mean_probability": 0.01605406843785885,
+                  "observed_rate": 0.018480492813141684
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 37,
+                  "mean_probability": 0.12717683942928318,
+                  "observed_rate": 0.16216216216216217
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 2,
+                  "mean_probability": 0.25582082228843533,
+                  "observed_rate": 1.0
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 11,
+              "detected_events": 2,
+              "event_recall": 0.18181818181818182,
+              "median_lead_hours": 22.0,
+              "false_warning_episodes": 8
+            },
+            "02": {
+              "rows": 2197,
+              "positives": 44,
+              "ap": 0.1289905861739579,
+              "brier": 0.018406631373968422,
+              "precision": 0.16923076923076924,
+              "row_recall": 0.25,
+              "false_alerts_per_100": 2.4578971324533456,
+              "eligible_decision_exposure_station_days": 549.25,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.09831588529813381,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 2096,
+                  "mean_probability": 0.016257506347997247,
+                  "observed_rate": 0.013358778625954198
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 76,
+                  "mean_probability": 0.13650516549023542,
+                  "observed_rate": 0.17105263157894737
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 22,
+                  "mean_probability": 0.2310415756661014,
+                  "observed_rate": 0.09090909090909091
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 3,
+                  "mean_probability": 0.3471994552692157,
+                  "observed_rate": 0.3333333333333333
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 11,
+              "detected_events": 6,
+              "event_recall": 0.5454545454545454,
+              "median_lead_hours": 16.5,
+              "false_warning_episodes": 19
+            },
+            "04": {
+              "rows": 1124,
+              "positives": 8,
+              "ap": 0.4336279461279461,
+              "brier": 0.006321205313707959,
+              "precision": null,
+              "row_recall": 0.0,
+              "false_alerts_per_100": 0.0,
+              "eligible_decision_exposure_station_days": 281.0,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.0,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 1122,
+                  "mean_probability": 0.006434563276946683,
+                  "observed_rate": 0.006238859180035651
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 2,
+                  "mean_probability": 0.11532687878215866,
+                  "observed_rate": 0.5
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 2,
+              "detected_events": 0,
+              "event_recall": 0.0,
+              "median_lead_hours": null,
+              "false_warning_episodes": 0
+            }
+          }
+        },
+        "geographic_validation": {
+          "rows": 2212,
+          "positives": 52,
+          "ap": 0.14789575548718237,
+          "brier": 0.022028516305694308,
+          "precision": 0.5833333333333334,
+          "row_recall": 0.1346153846153846,
+          "false_alerts_per_100": 0.22603978300180833,
+          "eligible_decision_exposure_station_days": 553.0,
+          "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+          "false_warnings_per_station_day": 0.009041591320072333,
+          "reliability_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "rows": 2187,
+              "mean_probability": 0.016970837501954744,
+              "observed_rate": 0.019204389574759947
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "rows": 19,
+              "mean_probability": 0.1237973843047448,
+              "observed_rate": 0.3157894736842105
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "rows": 6,
+              "mean_probability": 0.24322428348571826,
+              "observed_rate": 0.6666666666666666
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "rows": 0,
+              "mean_probability": null,
+              "observed_rate": null
+            }
+          ],
+          "events": 13,
+          "detected_events": 5,
+          "event_recall": 0.38461538461538464,
+          "median_lead_hours": 3.0,
+          "false_warning_episodes": 4,
+          "regions": {
+            "03": {
+              "rows": 2212,
+              "positives": 52,
+              "ap": 0.14789575548718237,
+              "brier": 0.022028516305694308,
+              "precision": 0.5833333333333334,
+              "row_recall": 0.1346153846153846,
+              "false_alerts_per_100": 0.22603978300180833,
+              "eligible_decision_exposure_station_days": 553.0,
+              "station_day_denominator": "eligible_decision_exposure_rows_divided_by_4",
+              "false_warnings_per_station_day": 0.009041591320072333,
+              "reliability_bins": [
+                {
+                  "lower": 0.0,
+                  "upper": 0.1,
+                  "rows": 2187,
+                  "mean_probability": 0.016970837501954744,
+                  "observed_rate": 0.019204389574759947
+                },
+                {
+                  "lower": 0.1,
+                  "upper": 0.2,
+                  "rows": 19,
+                  "mean_probability": 0.1237973843047448,
+                  "observed_rate": 0.3157894736842105
+                },
+                {
+                  "lower": 0.2,
+                  "upper": 0.3,
+                  "rows": 6,
+                  "mean_probability": 0.24322428348571826,
+                  "observed_rate": 0.6666666666666666
+                },
+                {
+                  "lower": 0.3,
+                  "upper": 0.4,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.4,
+                  "upper": 0.5,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.5,
+                  "upper": 0.6,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.6,
+                  "upper": 0.7,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.7,
+                  "upper": 0.8,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.8,
+                  "upper": 0.9,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                },
+                {
+                  "lower": 0.9,
+                  "upper": 1.0,
+                  "rows": 0,
+                  "mean_probability": null,
+                  "observed_rate": null
+                }
+              ],
+              "events": 13,
+              "detected_events": 5,
+              "event_recall": 0.38461538461538464,
+              "median_lead_hours": 3.0,
+              "false_warning_episodes": 4
+            }
+          }
+        }
+      },
+      "selection_ap": 0.14135881625751573,
+      "selection_brier": 0.019306841232052896,
+      "train_rows": 9967,
+      "calibration_rows": 5617,
+      "fit_seconds": 0.16190533409826458,
+      "peak_rss_mb": 288.484375
+    }
+  ],
+  "dataset_sha256": "578e6f0a5b6fe2bf4a28a8db1605ba86f92fcf43330075f31b3651ed692b1281",
+  "protocol_sha256": "80f6e25716759b748449da8a6704d9628d6a9969df2a6ed8ac3f38b1ebd2f0a5",
+  "code_sha256": {
+    "scripts/shift_hydrology.py": "518d16c7bb7beaa8501892a4375a5a042bbd3129c99c947e94562720c6ed1391",
+    "scripts/shift_hydrology_worker.py": "c88ac1f2b2cbe77a88273964aa072207d1d6fe49e9440d5c0c4287dba7836f86",
+    "scripts/shift_hydrology_metrics.py": "cc0a130dd54a9ac9f11b1332477a19cb9b4ad11107b18a9bfa44acc88b98e28e"
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3",
+    "xgboost": "3.2.0"
+  }
+}
